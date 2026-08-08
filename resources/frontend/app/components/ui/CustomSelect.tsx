@@ -55,9 +55,9 @@ export function CustomSelect({
                 type="button"
                 onClick={() => !disabled && setIsOpen(!isOpen)}
                 className={`w-full ${buttonClassName || "bg-slate-50 dark:bg-[#13111C] rounded-xl py-3"} ${icon && !buttonClassName ? 'pl-11 pr-4' : (buttonClassName ? '' : 'px-4')} border ${
-                    isOpen ? "border-indigo-500 ring-2 ring-indigo-500/20" : "border-slate-200 dark:border-white/10"
+                    isOpen ? "border-blue-500 ring-2 ring-blue-500/20" : "border-slate-200 dark:border-white/10"
                 } font-['Manrope'] font-bold text-[13px] text-left transition-all flex items-center justify-between shadow-sm dark:shadow-none ${
-                    disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-indigo-300 dark:hover:border-white/20"
+                    disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-blue-300 dark:hover:border-white/20"
                 }`}
                 disabled={disabled}
             >
@@ -65,7 +65,7 @@ export function CustomSelect({
                     {selectedOption ? selectedOption.label : placeholder}
                 </span>
                 <ChevronDown
-                    className={`w-4 h-4 text-slate-500 dark:text-slate-400 transition-transform duration-200 ${isOpen ? "rotate-180 text-indigo-500" : ""}`}
+                    className={`w-4 h-4 text-slate-500 dark:text-slate-400 transition-transform duration-200 ${isOpen ? "rotate-180 text-blue-500" : ""}`}
                 />
             </button>
 
@@ -81,12 +81,12 @@ export function CustomSelect({
                             }}
                             className={`w-full text-left px-4 py-2.5 font-['Manrope'] text-[13px] font-bold flex items-center justify-between transition-colors ${
                                 value === option.value
-                                    ? "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400"
+                                    ? "bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400"
                                     : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5"
                             }`}
                         >
                             <span>{option.label}</span>
-                            {value === option.value && <Check className="w-4 h-4 text-indigo-500" />}
+                            {value === option.value && <Check className="w-4 h-4 text-blue-500" />}
                         </button>
                     ))}
                 </div>

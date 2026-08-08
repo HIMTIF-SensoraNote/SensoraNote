@@ -28,7 +28,7 @@ export function ConfirmDialog({
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[400px] bg-white dark:bg-[#1C1A29] border-slate-200 dark:border-white/10 rounded-[32px] overflow-hidden p-0 gap-0 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
         <div className="p-8 flex flex-col items-center text-center">
-          <div className={`w-16 h-16 rounded-3xl flex items-center justify-center mb-6 ${variant === 'danger' ? 'bg-rose-50 dark:bg-rose-500/10 text-rose-500' : 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600'}`}>
+          <div className={`w-16 h-16 rounded-3xl flex items-center justify-center mb-6 ${variant === 'danger' ? 'bg-rose-50 dark:bg-rose-500/10 text-rose-500' : 'bg-blue-50 dark:bg-blue-500/10 text-blue-600'}`}>
             <AlertTriangle className="w-8 h-8" />
           </div>
           
@@ -57,7 +57,7 @@ export function ConfirmDialog({
               onConfirm();
               onOpenChange(false);
             }}
-            className={`flex-1 h-12 rounded-2xl font-bold text-white shadow-lg transition-all font-['Lexend_Deca'] text-[13px] uppercase tracking-wider ${variant === 'danger' ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-500/20' : 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600/20'}`}
+            className={`flex-1 h-12 rounded-2xl font-bold text-white shadow-lg transition-all font-['Lexend_Deca'] text-[13px] uppercase tracking-wider ${variant === 'danger' ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-500/20' : 'bg-blue-600 hover:bg-blue-700 shadow-blue-600/20'}`}
           >
             {confirmText}
           </Button>

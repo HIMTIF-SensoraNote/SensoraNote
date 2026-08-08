@@ -81,9 +81,9 @@ function Reel({ activeIndex, delay }: { activeIndex: number; delay: number }) {
       <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none opacity-80" />
       
       {/* Centered Slot Highlight Area */}
-      <div className="absolute inset-y-3 inset-x-0 bg-[#5D5CE6]/5 border-y border-[#5D5CE6]/25 pointer-events-none z-10" />
+      <div className="absolute inset-y-3 inset-x-0 bg-[#1d4ed8]/5 border-y border-[#1d4ed8]/25 pointer-events-none z-10" />
       {/* Centered Slot Laser Line */}
-      <div className="absolute top-1/2 left-0 right-0 h-[1.5px] bg-[#5D5CE6]/45 pointer-events-none z-10 -translate-y-1/2" />
+      <div className="absolute top-1/2 left-0 right-0 h-[1.5px] bg-[#1d4ed8]/45 pointer-events-none z-10 -translate-y-1/2" />
 
       <motion.div
         className="absolute top-0 left-0 w-full flex flex-col items-center justify-start"
@@ -128,7 +128,7 @@ function MarqueeRow({ items, direction = 'left', speed = 30 }: { items: string[]
         {duplicatedItems.map((item, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-white/[0.02] border border-white/5 shadow-2xl backdrop-blur-xl text-sm font-bold text-white hover:border-[#5D5CE6]/25 transition-all duration-300 select-none"
+            className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-white/[0.02] border border-white/5 shadow-2xl backdrop-blur-xl text-sm font-bold text-white hover:border-[#1d4ed8]/25 transition-all duration-300 select-none"
           >
             {item}
           </div>
@@ -187,11 +187,11 @@ function ScrollRevealText() {
     <div ref={containerRef} id="visi-misi" className="relative py-16 md:py-40 bg-[#080616] overflow-hidden flex items-center justify-center">
       {/* Decorative radial lighting behind text */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full blur-[120px] opacity-[0.05] pointer-events-none"
-           style={{ background: 'radial-gradient(circle, #5D5CE6 0%, transparent 60%)' }} />
+           style={{ background: 'radial-gradient(circle, #1d4ed8 0%, transparent 60%)' }} />
       <GrainNoise />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-        <p className="text-xs md:text-sm font-semibold text-[#8B5CF6] tracking-[0.2em] uppercase mb-4 flex items-center justify-center gap-2">
+        <p className="text-xs md:text-sm font-semibold text-[#2563eb] tracking-[0.2em] uppercase mb-4 flex items-center justify-center gap-2">
           <Sparkles className="w-4 h-4 animate-spin-slow" /> {t('landing.philosophy_vision') || 'VISI KAMI'}
         </p>
 
@@ -216,7 +216,7 @@ function ScrollRevealText() {
         </h3>
 
         <motion.div 
-          className="mt-8 md:mt-12 inline-flex items-center gap-3 text-[10px] md:text-sm font-semibold text-[#8B5CF6] border border-[#8B5CF6]/20 bg-[#8B5CF6]/5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full"
+          className="mt-8 md:mt-12 inline-flex items-center gap-3 text-[10px] md:text-sm font-semibold text-[#2563eb] border border-[#2563eb]/20 bg-[#2563eb]/5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -400,8 +400,8 @@ function TopicWarpSection({ openAuthModal }: { openAuthModal: (tab: 'login' | 'r
     // Slightly larger size for stronger visual impact: 2px to 5px
     const size = 2.0 + ((idx % 3) * 1.5);
     
-    // Staggered premium gradient colors: white, deep purple, and neon violet/blue
-    const colors = ["#ffffff", "#5D5CE6", "#8B5CF6", "#c084fc", "#ffffff"];
+    // Staggered premium gradient colors: white, deep blue, and neon blue/blue
+    const colors = ["#ffffff", "#1d4ed8", "#2563eb", "#c084fc", "#ffffff"];
     const color = colors[idx % colors.length];
     
     // Sway offset
@@ -446,16 +446,16 @@ function TopicWarpSection({ openAuthModal }: { openAuthModal: (tab: 'login' | 'r
 
       {/* Subtle radial glow behind center text */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-5">
-        <div className="w-[60vw] h-[60vw] max-w-[550px] max-h-[550px] rounded-full bg-[#5D5CE6]/[0.02] blur-[120px]" />
+        <div className="w-[60vw] h-[60vw] max-w-[550px] max-h-[550px] rounded-full bg-[#1d4ed8]/[0.02] blur-[120px]" />
       </div>
 
       {/* Volumetric Dual-Layer Portal Glow at the bottom boundary */}
-      {/* Layer 1: Wide, ambient violet glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90vw] h-16 bg-gradient-to-t from-white/[0.08] via-[#5D5CE6]/[0.03] to-transparent blur-2xl pointer-events-none rounded-[100%] z-5" />
+      {/* Layer 1: Wide, ambient blue glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90vw] h-16 bg-gradient-to-t from-white/[0.08] via-[#1d4ed8]/[0.03] to-transparent blur-2xl pointer-events-none rounded-[100%] z-5" />
       {/* Layer 2: Center, intense white core glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[55vw] h-8 bg-gradient-to-t from-white/[0.22] via-[#8B5CF6]/[0.08] to-transparent blur-xl pointer-events-none rounded-[100%] z-5" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[55vw] h-8 bg-gradient-to-t from-white/[0.22] via-[#2563eb]/[0.08] to-transparent blur-xl pointer-events-none rounded-[100%] z-5" />
       {/* Glowing horizontal portal boundary beam line */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/30 via-[#8B5CF6]/35 to-transparent pointer-events-none z-10 filter drop-shadow(0 0 5px rgba(255,255,255,0.45))" />
+      <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/30 via-[#2563eb]/35 to-transparent pointer-events-none z-10 filter drop-shadow(0 0 5px rgba(255,255,255,0.45))" />
 
       {/* Portal Sparkles - tiny glowing dots emerging from the bottom portal boundary and fading out quickly within 1/3 height or rising higher */}
       {PORTAL_SPARKLES.map((sparkle, idx) => (
@@ -583,7 +583,7 @@ export function LandingPage() {
       title: t('landing.cockpit_latex_title') || 'LaTeX Rich Editor',
       badge: t('landing.cockpit_latex_badge') || 'Formula Cerdas',
       icon: Code,
-      color: '#8B5CF6',
+      color: '#2563eb',
       desc: t('landing.cockpit_latex_desc') || 'Tulis rumus matematika dan sains seindah jurnal akademis profesional menggunakan render engine KaTeX berkecepatan tinggi.',
       mockupType: 'editor',
     },
@@ -768,7 +768,7 @@ export function LandingPage() {
   const activeCockpit = COCKPIT_FEATURES.find(f => f.id === activeCockpitTab) || COCKPIT_FEATURES[0];
 
   return (
-    <div className="font-sans text-gray-100 bg-[#06050e] min-h-screen overflow-x-clip selection:bg-[#5D5CE6]/30 selection:text-white">
+    <div className="font-sans text-gray-100 bg-[#06050e] min-h-screen overflow-x-clip selection:bg-[#1d4ed8]/30 selection:text-white">
       <AnimatePresence>
         {isLoading && (
           <BrutalistLoader key="loader" onComplete={() => setIsLoading(false)} />
@@ -795,7 +795,7 @@ export function LandingPage() {
         <div 
           className="absolute inset-0 opacity-[0.035] pointer-events-none"
           style={{
-            backgroundImage: 'linear-gradient(#5D5CE6 1px, transparent 1px), linear-gradient(90deg, #5D5CE6 1px, transparent 1px)',
+            backgroundImage: 'linear-gradient(#1d4ed8 1px, transparent 1px), linear-gradient(90deg, #1d4ed8 1px, transparent 1px)',
             backgroundSize: '50px 50px',
           }}
         />
@@ -806,19 +806,19 @@ export function LandingPage() {
           initial={{ opacity: 0 }}
           animate={!isLoading ? { opacity: 0.15 } : { opacity: 0 }}
           transition={{ duration: 1.5, delay: 0.2 }}
-          className="absolute top-1/4 left-1/6 w-80 h-80 rounded-full blur-[120px] bg-[#5D5CE6] pointer-events-none animate-pulse-slow" 
+          className="absolute top-1/4 left-1/6 w-80 h-80 rounded-full blur-[120px] bg-[#1d4ed8] pointer-events-none animate-pulse-slow" 
         />
         <motion.div 
           initial={{ opacity: 0 }}
           animate={!isLoading ? { opacity: 0.12 } : { opacity: 0 }}
           transition={{ duration: 1.5, delay: 0.4 }}
-          className="absolute bottom-1/4 right-1/6 w-[400px] h-[400px] rounded-full blur-[140px] bg-[#8B5CF6] pointer-events-none animate-pulse-slow" 
+          className="absolute bottom-1/4 right-1/6 w-[400px] h-[400px] rounded-full blur-[140px] bg-[#2563eb] pointer-events-none animate-pulse-slow" 
           style={{ animationDelay: '2s' }} 
         />
 
         {/* Interactive Mouse-Tracking Glowing Follower */}
         <motion.div 
-          className="absolute w-[35vw] h-[35vw] rounded-full blur-[100px] bg-gradient-to-tr from-[#5D5CE6] to-[#8B5CF6] pointer-events-none opacity-[0.18]"
+          className="absolute w-[35vw] h-[35vw] rounded-full blur-[100px] bg-gradient-to-tr from-[#1d4ed8] to-[#2563eb] pointer-events-none opacity-[0.18]"
           style={{
             left: glowX,
             top: glowY,
@@ -844,7 +844,7 @@ export function LandingPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="block text-transparent bg-clip-text bg-gradient-to-b from-[#d8b4fe] via-[#8B5CF6] to-[#4f46e5] drop-shadow-[0_3px_0px_#3730a3] drop-shadow-[0_4px_6px_rgba(93,92,230,0.5)]"
+              className="block text-transparent bg-clip-text bg-gradient-to-b from-[#d8b4fe] via-[#2563eb] to-[#4f46e5] drop-shadow-[0_3px_0px_#3730a3] drop-shadow-[0_4px_6px_rgba(93,92,230,0.5)]"
               style={{ fontSize: 'clamp(2rem, 8vw, 5rem)' }}
             >
               {t('landing.hero_title_2') || 'Berkembang.'}
@@ -872,7 +872,7 @@ export function LandingPage() {
               onClick={() => openAuthModal('register')}
               className="w-full sm:w-auto cursor-pointer relative inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-extrabold text-sm sm:text-base text-white overflow-hidden group transition-all"
               style={{ 
-                background: 'linear-gradient(135deg, #8B5CF6, #5D5CE6)',
+                background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',
                 boxShadow: 'inset 0 1.5px 2px rgba(255,255,255,0.4), inset 0 -4px 10px rgba(0,0,0,0.25), 0 10px 25px -4px rgba(93,92,230,0.7)'
               }}
             >
@@ -908,7 +908,7 @@ export function LandingPage() {
             </div>
             
             {/* Ambient subtle glow beneath */}
-            <div className="absolute inset-x-24 top-1/2 -translate-y-1/2 h-16 bg-gradient-to-r from-[#5D5CE6]/10 to-[#8B5CF6]/10 blur-3xl -z-10" />
+            <div className="absolute inset-x-24 top-1/2 -translate-y-1/2 h-16 bg-gradient-to-r from-[#1d4ed8]/10 to-[#2563eb]/10 blur-3xl -z-10" />
           </motion.div>
         </div>
       </section>
@@ -939,7 +939,7 @@ export function LandingPage() {
                 </p>
                 <h2 className="font-display font-extrabold tracking-tight leading-[1.1] text-white" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}>
                   {t('landing.multilang_title_1') || 'Pembelajaran'}<br />
-                  <span className="text-[#5D5CE6]">{t('landing.multilang_title_2') || 'Tanpa Batas'}</span><br />
+                  <span className="text-[#1d4ed8]">{t('landing.multilang_title_2') || 'Tanpa Batas'}</span><br />
                   {t('landing.multilang_title_3') || 'Bahasa.'}
                 </h2>
                 <p className="text-gray-400 mt-6 max-w-md text-sm md:text-base leading-relaxed">
@@ -950,7 +950,7 @@ export function LandingPage() {
               {/* Premium mechanical horizontal gaming console for active language and acak bahasa */}
               <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-4 sm:p-5 rounded-3xl bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-2xl max-w-md shadow-2xl relative group/slot overflow-hidden">
                 {/* Ambient glow behind slot */}
-                <div className="absolute -inset-10 bg-[#5D5CE6]/8 rounded-full blur-3xl opacity-0 group-hover/slot:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                <div className="absolute -inset-10 bg-[#1d4ed8]/8 rounded-full blur-3xl opacity-0 group-hover/slot:opacity-100 transition-opacity duration-700 pointer-events-none" />
                 
                 {/* Reels Chamber on the Left */}
                 <div className="relative p-3.5 bg-black/45 border border-white/10 rounded-2xl shadow-[inset_0_4px_20px_rgba(0,0,0,0.85)] flex gap-2">
@@ -959,8 +959,8 @@ export function LandingPage() {
                   <Reel activeIndex={activeWord} delay={0.24} />
                   
                   {/* Laser target cursor line on the left/right sides of reels */}
-                  <div className="absolute inset-y-0 left-0 w-[2.5px] bg-gradient-to-b from-transparent via-[#5D5CE6]/50 to-transparent pointer-events-none" />
-                  <div className="absolute inset-y-0 right-0 w-[2.5px] bg-gradient-to-b from-transparent via-[#5D5CE6]/50 to-transparent pointer-events-none" />
+                  <div className="absolute inset-y-0 left-0 w-[2.5px] bg-gradient-to-b from-transparent via-[#1d4ed8]/50 to-transparent pointer-events-none" />
+                  <div className="absolute inset-y-0 right-0 w-[2.5px] bg-gradient-to-b from-transparent via-[#1d4ed8]/50 to-transparent pointer-events-none" />
                 </div>
 
                 {/* Info Panel & Premium SPIN Button on the Right */}
@@ -975,7 +975,7 @@ export function LandingPage() {
                   {/* Premium Pill AI Scrambler Button (No text, sleek pill shape, glowing, Shuffle icon) */}
                   <div className="relative mt-2">
                     {/* Pulsing outer glow invitation */}
-                    <div className="absolute inset-0 rounded-full bg-[#5D5CE6]/15 border border-[#5D5CE6]/20 animate-pulse pointer-events-none scale-105" />
+                    <div className="absolute inset-0 rounded-full bg-[#1d4ed8]/15 border border-[#1d4ed8]/20 animate-pulse pointer-events-none scale-105" />
                     
                     <motion.button
                       onClick={() => {
@@ -987,7 +987,7 @@ export function LandingPage() {
                         boxShadow: '0 0 20px rgba(93,92,230,0.5)'
                       }}
                       whileTap={{ scale: 0.96 }}
-                      className="cursor-pointer h-10 w-28 rounded-full bg-gradient-to-r from-[#5D5CE6] to-[#8B5CF6] flex items-center justify-center text-white shadow-lg shadow-[#5D5CE6]/25 border border-white/20 hover:brightness-110 transition-all duration-300 relative overflow-hidden group"
+                      className="cursor-pointer h-10 w-28 rounded-full bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] flex items-center justify-center text-white shadow-lg shadow-[#1d4ed8]/25 border border-white/20 hover:brightness-110 transition-all duration-300 relative overflow-hidden group"
                       title="Acak Bahasa"
                     >
                       {/* Subtly animated shuffle icon */}
@@ -1015,7 +1015,7 @@ export function LandingPage() {
                 }}
               >
                 {/* Glowing border outline effect */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#5D5CE6]/30 via-transparent to-[#8B5CF6]/30 opacity-60 pointer-events-none blur-[0.5px]" />
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1d4ed8]/30 via-transparent to-[#2563eb]/30 opacity-60 pointer-events-none blur-[0.5px]" />
                 
                 {/* Dynamic sheet glare overlay reflection */}
                 <motion.div
@@ -1030,7 +1030,7 @@ export function LandingPage() {
 
                 {/* Ambient breathing back-glow */}
                 <motion.div 
-                  className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#5D5CE6] to-[#8B5CF6] opacity-[0.12] blur-md -z-20 pointer-events-none"
+                  className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] opacity-[0.12] blur-md -z-20 pointer-events-none"
                   animate={{
                     opacity: [0.1, 0.2, 0.1]
                   }}
@@ -1042,7 +1042,7 @@ export function LandingPage() {
                 />
 
                 {/* Dynamic light accent */}
-                <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#8B5CF6]/15 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#2563eb]/15 rounded-full blur-3xl pointer-events-none" />
                 
                 {/* Floating Translucent Background Glyphs */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-3xl z-0">
@@ -1091,11 +1091,11 @@ export function LandingPage() {
                 </div>
 
                 <div className="flex items-center justify-between relative z-10" style={{ transform: "translateZ(30px)" }}>
-                  <Globe className="w-8 h-8 text-[#5D5CE6] animate-pulse" />
+                  <Globe className="w-8 h-8 text-[#1d4ed8] animate-pulse" />
                   
                   {/* Dynamic scrolling matrix cyber code */}
                   <div className="flex items-center gap-1.5">
-                    <span className="h-2 w-2 rounded-full bg-[#5D5CE6] animate-pulse" />
+                    <span className="h-2 w-2 rounded-full bg-[#1d4ed8] animate-pulse" />
                     <span className="text-[10px] text-gray-500 font-bold tracking-widest font-mono uppercase">
                       LOCALE: <MorphingText text={`BAYU_${MULTI_LANG_TEXTS[activeWord].code}`} />
                     </span>
@@ -1128,7 +1128,7 @@ export function LandingPage() {
                   
                   {/* Dynamic interactive count-up supported languages */}
                   <span className="flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors duration-300">
-                    <Users className="w-4 h-4 text-[#5D5CE6]" /> 
+                    <Users className="w-4 h-4 text-[#1d4ed8]" /> 
                     <span>
                       <CountUp to={40} />+ {t('landing.multilang_supported') || 'Bahasa Didukung'}
                     </span>
@@ -1151,11 +1151,11 @@ export function LandingPage() {
         <section id="eksplorasi-topik" className="relative py-12 md:py-24 bg-transparent">
           {/* Ambient neon backdrop glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] rounded-full blur-[130px] opacity-[0.05] pointer-events-none"
-               style={{ background: 'radial-gradient(circle, #8B5CF6 0%, transparent 60%)' }} />
+               style={{ background: 'radial-gradient(circle, #2563eb 0%, transparent 60%)' }} />
 
           <div className="max-w-6xl mx-auto px-6 relative z-10">
             <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16">
-              <p className="text-xs md:text-sm font-semibold text-[#5D5CE6] tracking-[0.2em] uppercase mb-4">
+              <p className="text-xs md:text-sm font-semibold text-[#1d4ed8] tracking-[0.2em] uppercase mb-4">
                 {t('landing.explore_badge') || 'EKSPLORASI TOPIK'}
               </p>
               <h2 className="font-display font-extrabold tracking-tight text-white text-3xl md:text-4xl leading-tight">
@@ -1178,7 +1178,7 @@ export function LandingPage() {
                   {i === activeSubject && (
                     <motion.div
                       layoutId="activeSubjectPill"
-                      className="absolute inset-0 bg-gradient-to-r from-[#5D5CE6] to-[#8B5CF6] -z-10 shadow-lg shadow-[#5D5CE6]/20"
+                      className="absolute inset-0 bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] -z-10 shadow-lg shadow-[#1d4ed8]/20"
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   )}
@@ -1208,8 +1208,8 @@ export function LandingPage() {
                   className="bg-gradient-to-br from-white/[0.04] to-white/[0.01] rounded-3xl p-5 md:p-12 border border-white/10 shadow-2xl backdrop-blur-xl relative overflow-hidden flex flex-col md:flex-row items-center gap-6 md:gap-10 cursor-default select-none group/subcard"
                 >
                   {/* Dynamic light sheet glare reflection */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#5D5CE6]/15 via-transparent to-[#8B5CF6]/15 opacity-50 pointer-events-none blur-[0.5px]" />
-                  <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#5D5CE6]/10 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1d4ed8]/15 via-transparent to-[#2563eb]/15 opacity-50 pointer-events-none blur-[0.5px]" />
+                  <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#1d4ed8]/10 rounded-full blur-3xl pointer-events-none" />
 
                   {/* Left Side: Illustration Box with Dynamic SVGs vector background */}
                   <div 
@@ -1268,7 +1268,7 @@ export function LandingPage() {
                     </svg>
                     
                     {/* Floating glow behind emoji */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-[#5D5CE6]/10 to-[#8B5CF6]/10 opacity-0 group-hover/subcard:opacity-100 transition-opacity duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-[#1d4ed8]/10 to-[#2563eb]/10 opacity-0 group-hover/subcard:opacity-100 transition-opacity duration-700" />
                     
                     <span className="relative z-10 transform group-hover/subcard:scale-110 group-hover/subcard:rotate-6 transition-transform duration-500 select-none">
                       {currentSubject.icon}
@@ -1277,7 +1277,7 @@ export function LandingPage() {
 
                   {/* Right Side: Description content */}
                   <div className="flex-1 text-center md:text-left" style={{ transform: "translateZ(45px)" }}>
-                    <span className="text-[10px] font-bold text-[#8B5CF6] tracking-widest uppercase font-mono block">{t('landing.explore_field') || 'EKSPLORASI BIDANG'}</span>
+                    <span className="text-[10px] font-bold text-[#2563eb] tracking-widest uppercase font-mono block">{t('landing.explore_field') || 'EKSPLORASI BIDANG'}</span>
                     <h3 className="font-display font-black text-2xl md:text-4xl text-white tracking-tight mt-2.5 leading-none">
                       {currentSubject.name}
                     </h3>
@@ -1288,7 +1288,7 @@ export function LandingPage() {
                     {/* Floating feature pills inside subject */}
                     <div className="mt-4 md:mt-8 flex flex-wrap gap-2 justify-center md:justify-start">
                       {currentSubject.tags?.map((tag, tIdx) => (
-                        <span key={tIdx} className="text-xs font-bold text-gray-300 bg-white/5 border border-white/10 px-4 py-2 rounded-full hover:border-[#5D5CE6]/35 hover:bg-white/10 transition-all duration-300">
+                        <span key={tIdx} className="text-xs font-bold text-gray-300 bg-white/5 border border-white/10 px-4 py-2 rounded-full hover:border-[#1d4ed8]/35 hover:bg-white/10 transition-all duration-300">
                           {tag}
                         </span>
                       ))}
@@ -1296,7 +1296,7 @@ export function LandingPage() {
 
                     <button
                       onClick={() => openAuthModal('register')}
-                      className="cursor-pointer mt-6 md:mt-8 inline-flex items-center gap-2.5 text-sm font-bold text-white hover:text-[#5D5CE6] transition-colors group justify-center md:justify-start w-full md:w-auto"
+                      className="cursor-pointer mt-6 md:mt-8 inline-flex items-center gap-2.5 text-sm font-bold text-white hover:text-[#1d4ed8] transition-colors group justify-center md:justify-start w-full md:w-auto"
                     >
                       <span>{t('landing.explore_notes_btn') || 'Jelajahi Catatan'} {currentSubject.name}</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -1322,7 +1322,7 @@ export function LandingPage() {
           {/* Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 md:mb-16">
             <div className="text-left">
-              <p className="text-xs md:text-sm font-semibold text-[#8B5CF6] tracking-[0.2em] uppercase mb-3">
+              <p className="text-xs md:text-sm font-semibold text-[#2563eb] tracking-[0.2em] uppercase mb-3">
                 {t('landing.feature_badge') || 'FITUR INTI'}
               </p>
               <h2 className="font-display font-extrabold tracking-tight text-white text-3xl md:text-4xl leading-tight">
@@ -1338,11 +1338,11 @@ export function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Cell 1: LaTeX Rich Editor (Double Width) */}
-            <div className="md:col-span-2 bg-gradient-to-br from-white/[0.04] to-white/[0.01] rounded-3xl p-5 sm:p-8 border border-white/10 flex flex-col justify-between min-h-[340px] md:min-h-[380px] hover:border-[#8B5CF6]/30 transition-all duration-300 relative group overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#8B5CF6]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="md:col-span-2 bg-gradient-to-br from-white/[0.04] to-white/[0.01] rounded-3xl p-5 sm:p-8 border border-white/10 flex flex-col justify-between min-h-[340px] md:min-h-[380px] hover:border-[#2563eb]/30 transition-all duration-300 relative group overflow-hidden shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#2563eb]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#8B5CF6]">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#2563eb]">
                     <Code className="w-5 h-5" />
                   </div>
                   <span className="text-[9px] text-gray-500 font-bold uppercase tracking-widest font-mono">01 / {t('landing.feat1_badge') || 'RICH EDITOR'}</span>
@@ -1355,7 +1355,7 @@ export function LandingPage() {
               <div className="mt-8 bg-[#0c0a1a]/80 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/5 font-mono text-[11px] w-full shadow-inner relative z-10">
                 <div className="flex items-center justify-between border-b border-white/5 pb-2.5 mb-3 text-[9px] text-gray-500 font-bold">
                   <span>{t('landing.mockup_latex_title') || 'LaTeX EDITOR ENGINE'}</span>
-                  <span className="text-[#8B5CF6] animate-pulse">{t('landing.mockup_latex_status') || 'ACTIVE RENDERING'}</span>
+                  <span className="text-[#2563eb] animate-pulse">{t('landing.mockup_latex_status') || 'ACTIVE RENDERING'}</span>
                 </div>
                 <p className="text-emerald-400 font-bold">// {t('landing.mockup_latex_input') || 'Input KaTeX:'}</p>
                 <p className="text-gray-300 mt-0.5 font-semibold">{"$$\\int_{-\\infty}^{\\infty} e^{-x^2} \\, dx = \\sqrt{\\pi}$$"}</p>
@@ -1374,7 +1374,7 @@ export function LandingPage() {
             </div>
 
             {/* Cell 2: Verified Pakar (Standard Width) */}
-            <div className="bg-gradient-to-br from-[#5D5CE6] to-[#8B5CF6] rounded-3xl p-5 sm:p-8 flex flex-col justify-between min-h-[340px] md:min-h-[380px] hover:shadow-lg hover:shadow-[#5D5CE6]/20 transition-all duration-300 relative overflow-hidden group shadow-2xl">
+            <div className="bg-gradient-to-br from-[#1d4ed8] to-[#2563eb] rounded-3xl p-5 sm:p-8 flex flex-col justify-between min-h-[340px] md:min-h-[380px] hover:shadow-lg hover:shadow-[#1d4ed8]/20 transition-all duration-300 relative overflow-hidden group shadow-2xl">
               <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div>
                 <div className="flex items-center justify-between mb-6">
@@ -1458,17 +1458,17 @@ export function LandingPage() {
             </div>
 
             {/* Cell 5: Student Community (Full Width Banner) */}
-            <div className="md:col-span-3 bg-gradient-to-br from-[#0c0a1a] via-[#100c25] to-[#150f38] rounded-3xl p-5 sm:p-8 md:p-10 border border-white/10 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 hover:border-[#8B5CF6]/50 transition-all duration-300 relative group overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#8B5CF6]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="md:col-span-3 bg-gradient-to-br from-[#0c0a1a] via-[#100c25] to-[#150f38] rounded-3xl p-5 sm:p-8 md:p-10 border border-white/10 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 hover:border-[#2563eb]/50 transition-all duration-300 relative group overflow-hidden shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#2563eb]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               {/* Left: Icon + Avatars */}
               <div className="flex flex-col items-center gap-4 relative z-10 shrink-0">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#8B5CF6]">
+                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#2563eb]">
                   <Users className="w-7 h-7" />
                 </div>
                 <div className="flex -space-x-2">
                   {['H', 'B', 'M', 'Y'].map((char, i) => (
-                    <div key={i} className="w-8 h-8 rounded-full border-2 border-[#0c0a1a] bg-gradient-to-tr from-[#5D5CE6] to-[#8B5CF6] text-white flex items-center justify-center text-[10px] font-black">
+                    <div key={i} className="w-8 h-8 rounded-full border-2 border-[#0c0a1a] bg-gradient-to-tr from-[#1d4ed8] to-[#2563eb] text-white flex items-center justify-center text-[10px] font-black">
                       {char}
                     </div>
                   ))}
@@ -1482,7 +1482,7 @@ export function LandingPage() {
                 <p className="text-gray-400 mt-2 text-sm leading-relaxed max-w-xl">
                   {t('landing.feat5_desc') || 'Bagikan catatanmu dan diskusikan rumus-rumus sains serta kode pemrograman bersama ribuan pelajar berdedikasi tinggi lainnya.'}
                 </p>
-                <span className="inline-flex items-center gap-1.5 mt-4 text-[10px] text-[#8B5CF6] font-black tracking-wider uppercase">
+                <span className="inline-flex items-center gap-1.5 mt-4 text-[10px] text-[#2563eb] font-black tracking-wider uppercase">
                   <Users className="w-3.5 h-3.5" /> {t('landing.feat5_active') || 'KOMUNITAS AKTIF'}
                 </span>
               </div>
@@ -1499,7 +1499,7 @@ export function LandingPage() {
         <GrainNoise />
 
         {/* Massive atmospheric background glowing flow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[35vw] rounded-full blur-[140px] opacity-[0.22] pointer-events-none bg-gradient-to-r from-[#5D5CE6] via-[#7B6BF5] to-[#8B5CF6]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[35vw] rounded-full blur-[140px] opacity-[0.22] pointer-events-none bg-gradient-to-r from-[#1d4ed8] via-[#7B6BF5] to-[#2563eb]" />
         
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <p className="text-xs md:text-sm font-semibold text-gray-400 tracking-[0.2em] uppercase mb-4 sm:mb-6">
@@ -1518,8 +1518,8 @@ export function LandingPage() {
           {/* Magnetic CTA Button */}
           <motion.button
             onClick={() => openAuthModal('register')}
-            className="cursor-pointer relative inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-14 sm:py-6 rounded-full font-bold text-sm sm:text-base md:text-lg text-white overflow-hidden shadow-2xl shadow-[#5D5CE6]/30 group w-full sm:w-auto"
-            style={{ background: 'linear-gradient(135deg, #5D5CE6, #8B5CF6)' }}
+            className="cursor-pointer relative inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-14 sm:py-6 rounded-full font-bold text-sm sm:text-base md:text-lg text-white overflow-hidden shadow-2xl shadow-[#1d4ed8]/30 group w-full sm:w-auto"
+            style={{ background: 'linear-gradient(135deg, #1d4ed8, #2563eb)' }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.96 }}
             transition={{ type: 'spring', stiffness: 400, damping: 15 }}
@@ -1534,9 +1534,9 @@ export function LandingPage() {
 
           {/* Value indicators */}
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-8 sm:mt-10 text-[10px] sm:text-xs text-gray-500 font-bold uppercase tracking-widest">
-            <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-[#5D5CE6]" /> {t('landing.value_free') || 'Gratis Selamanya'}</span>
-            <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-[#5D5CE6]" /> {t('landing.value_instant') || 'Setup Instan'}</span>
-            <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-[#5D5CE6]" /> {t('landing.value_community') || 'Komunitas Aktif'}</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-[#1d4ed8]" /> {t('landing.value_free') || 'Gratis Selamanya'}</span>
+            <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-[#1d4ed8]" /> {t('landing.value_instant') || 'Setup Instan'}</span>
+            <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-[#1d4ed8]" /> {t('landing.value_community') || 'Komunitas Aktif'}</span>
           </div>
         </div>
       </section>

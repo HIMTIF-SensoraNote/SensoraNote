@@ -26,8 +26,8 @@ export default function ThemePage() {
       title: t("theme.dark") || 'Gelap',
       description: t("theme.dark_desc") || 'Meredupkan layar, nyaman untuk mata di malam hari.',
       icon: Moon,
-      color: 'text-indigo-400',
-      bgColor: 'bg-indigo-50 dark:bg-indigo-500/10'
+      color: 'text-blue-400',
+      bgColor: 'bg-blue-50 dark:bg-blue-500/10'
     },
     {
       id: 'system',
@@ -78,8 +78,8 @@ export default function ThemePage() {
                     onClick={() => setTheme(option.id as any)}
                     className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 flex items-center gap-5 group
                       ${isActive
-                        ? 'bg-indigo-50/50 dark:bg-indigo-500/10 border-indigo-200 dark:border-indigo-500/30 shadow-[0_4px_20px_rgba(79,70,229,0.08)] dark:shadow-none'
-                        : 'bg-white dark:bg-white/5 border-slate-100 dark:border-white/10 hover:border-indigo-100 dark:hover:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10'
+                        ? 'bg-blue-50/50 dark:bg-blue-500/10 border-blue-200 dark:border-blue-500/30 shadow-[0_4px_20px_rgba(79,70,229,0.08)] dark:shadow-none'
+                        : 'bg-white dark:bg-white/5 border-slate-100 dark:border-white/10 hover:border-blue-100 dark:hover:border-white/20 hover:bg-slate-50 dark:hover:bg-white/10'
                       }
                     `}
                   >
@@ -87,7 +87,7 @@ export default function ThemePage() {
                       <Icon size={24} className={option.color} strokeWidth={isActive ? 2.5 : 2} />
                     </div>
                     <div className="flex-1">
-                      <h3 className={`text-[15px] font-bold mb-1 transition-colors ${isActive ? 'text-indigo-700 dark:text-indigo-400' : 'text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400'}`}>
+                      <h3 className={`text-[15px] font-bold mb-1 transition-colors ${isActive ? 'text-blue-700 dark:text-blue-400' : 'text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400'}`}>
                         {option.title}
                       </h3>
                       <p className="text-[13px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
@@ -97,8 +97,8 @@ export default function ThemePage() {
 
                     <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors
                       ${isActive
-                        ? 'border-indigo-600 bg-indigo-600 dark:border-indigo-500 dark:bg-indigo-500'
-                        : 'border-slate-200 dark:border-white/20 group-hover:border-indigo-300 dark:group-hover:border-white/40'
+                        ? 'border-blue-600 bg-blue-600 dark:border-blue-500 dark:bg-blue-500'
+                        : 'border-slate-200 dark:border-white/20 group-hover:border-blue-300 dark:group-hover:border-white/40'
                       }`}
                     >
                       {isActive && <Check size={14} className="text-white" strokeWidth={3} />}
@@ -119,8 +119,8 @@ export default function ThemePage() {
                 <div className="flex-1 h-6 bg-white dark:bg-[#13111C] rounded-md border border-slate-200 dark:border-white/5 opacity-50"></div>
               </div>
               <div className="p-6 bg-white dark:bg-[#13111C]">
-                <div className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-500/20 mb-4 flex items-center justify-center">
-                  <div className="w-5 h-5 rounded-sm bg-indigo-500 dark:bg-indigo-400"></div>
+                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-500/20 mb-4 flex items-center justify-center">
+                  <div className="w-5 h-5 rounded-sm bg-blue-500 dark:bg-blue-400"></div>
                 </div>
                 <div className="w-2/3 h-5 bg-slate-200 dark:bg-white/10 rounded-md mb-3"></div>
                 <div className="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-md mb-2"></div>

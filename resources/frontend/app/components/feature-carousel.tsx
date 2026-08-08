@@ -21,7 +21,7 @@ const features = [
     title: 'Catatan Terstruktur',
     description: 'Organisir catatan berdasarkan mata pelajaran, kelas, dan semester dengan mudah. Sistem kategorisasi otomatis membuat semua materimu tersusun rapi.',
     color: 'from-blue-500 to-blue-600',
-    bgGradient: 'from-blue-50 to-indigo-50',
+    bgGradient: 'from-blue-50 to-blue-50',
     stats: 'Auto-Organize',
     highlight: 'Mudah Dicari',
   },
@@ -38,8 +38,8 @@ const features = [
     icon: Share2,
     title: 'Berbagi & Diskusi',
     description: 'Bagikan catatan dengan teman dan diskusikan materi bersama komunitas. Kolaborasi membuat belajar jadi lebih efektif dan menyenangkan.',
-    color: 'from-purple-500 to-purple-600',
-    bgGradient: 'from-purple-50 to-pink-50',
+    color: 'from-blue-500 to-blue-600',
+    bgGradient: 'from-blue-50 to-pink-50',
     stats: 'Real-time Collab',
     highlight: 'Kolaboratif',
   },
@@ -65,8 +65,8 @@ const features = [
     icon: Users,
     title: 'Komunitas Aktif',
     description: 'Bergabung dengan ribuan pelajar dari seluruh Indonesia. Saling berbagi catatan, diskusi materi, dan tumbuh bersama dalam komunitas yang supportif.',
-    color: 'from-indigo-500 to-blue-600',
-    bgGradient: 'from-indigo-50 to-blue-50',
+    color: 'from-blue-500 to-blue-600',
+    bgGradient: 'from-blue-50 to-blue-50',
     stats: 'Community Driven',
     highlight: 'Supportif',
   },
@@ -262,7 +262,7 @@ export function FeatureCarousel() {
                     className="absolute -bottom-4 -right-4 bg-white dark:bg-[#1C1A29] rounded-2xl shadow-2xl px-6 py-3 border-2 border-slate-200 dark:border-white/10"
                   >
                     <div className="flex items-center gap-2">
-                      <Shield className="w-5 h-5 text-primary dark:text-indigo-400" />
+                      <Shield className="w-5 h-5 text-primary dark:text-blue-400" />
                       <span className="font-bold text-slate-900 dark:text-slate-100">Fitur Unggulan</span>
                     </div>
                   </motion.div>
@@ -319,7 +319,7 @@ export function FeatureCarousel() {
             whileTap={{ scale: 0.95 }}
             className={`p-4 rounded-xl border-2 transition-all ${
               index === currentIndex
-                ? 'border-primary bg-primary/5 dark:bg-indigo-500/10 shadow-lg'
+                ? 'border-primary bg-primary/5 dark:bg-blue-500/10 shadow-lg'
                 : 'border-slate-100 dark:border-white/5 bg-white dark:bg-[#1C1A29] hover:border-primary/50 hover:shadow-md'
             }`}
           >

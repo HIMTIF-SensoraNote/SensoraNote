@@ -80,7 +80,7 @@ export function BrutalistLoader({ onComplete }: BrutalistLoaderProps) {
       const size = 1.8 + ((idx % 3) * 1.2);
       
       // Staggered colors matching landing page branding
-      const colors = ["#ffffff", "#5D5CE6", "#8B5CF6", "#c084fc", "#ffffff"];
+      const colors = ["#ffffff", "#1d4ed8", "#2563eb", "#c084fc", "#ffffff"];
       const color = colors[idx % colors.length];
       
       // Sway movement offsets
@@ -124,13 +124,13 @@ export function BrutalistLoader({ onComplete }: BrutalistLoaderProps) {
         <div
           className="absolute inset-0 opacity-[0.035] pointer-events-none"
           style={{
-            backgroundImage: 'linear-gradient(#5D5CE6 1px, transparent 1px), linear-gradient(90deg, #5D5CE6 1px, transparent 1px)',
+            backgroundImage: 'linear-gradient(#1d4ed8 1px, transparent 1px), linear-gradient(90deg, #1d4ed8 1px, transparent 1px)',
             backgroundSize: '50px 50px',
           }}
         />
 
         {/* Ambient Indigo/Violet Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] rounded-full blur-[130px] bg-[#5D5CE6]/[0.08] pointer-events-none animate-pulse-slow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] rounded-full blur-[130px] bg-[#1d4ed8]/[0.08] pointer-events-none animate-pulse-slow" />
 
         {/* Center Content: Title "SensoraNote" */}
         <div className="relative z-10 flex flex-col items-center max-w-2xl w-full text-center">
@@ -140,7 +140,7 @@ export function BrutalistLoader({ onComplete }: BrutalistLoaderProps) {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-md shadow-lg"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#8B5CF6] animate-pulse" />
+            <Sparkles className="w-3.5 h-3.5 text-[#2563eb] animate-pulse" />
             <span className="text-[10px] tracking-[0.2em] font-mono text-white/60 font-semibold uppercase">{t('loader.sys_load') || 'SYSTEM LOAD IN PROGRESS'}</span>
           </motion.div>
 
@@ -153,12 +153,12 @@ export function BrutalistLoader({ onComplete }: BrutalistLoaderProps) {
               textShadow: '0 0 30px rgba(93,92,230,0.25)',
             }}
           >
-            Belajar<span className="text-[#5D5CE6]">Yuk</span>
+            Belajar<span className="text-[#1d4ed8]">Yuk</span>
           </motion.h1>
         </div>
 
         {/* Horizontal Splitting Line Glow */}
-        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#5D5CE6]/40 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#1d4ed8]/40 to-transparent pointer-events-none" />
       </motion.div>
 
       {/* 2. LOWER SHUTTER PANEL (slides DOWN on exit) */}
@@ -172,13 +172,13 @@ export function BrutalistLoader({ onComplete }: BrutalistLoaderProps) {
         <div
           className="absolute inset-0 opacity-[0.035] pointer-events-none"
           style={{
-            backgroundImage: 'linear-gradient(#5D5CE6 1px, transparent 1px), linear-gradient(90deg, #5D5CE6 1px, transparent 1px)',
+            backgroundImage: 'linear-gradient(#1d4ed8 1px, transparent 1px), linear-gradient(90deg, #1d4ed8 1px, transparent 1px)',
             backgroundSize: '50px 50px',
           }}
         />
 
         {/* Ambient Violet Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] rounded-full blur-[130px] bg-[#8B5CF6]/[0.08] pointer-events-none animate-pulse-slow" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] rounded-full blur-[130px] bg-[#2563eb]/[0.08] pointer-events-none animate-pulse-slow" style={{ animationDelay: '1.5s' }} />
 
         {/* Center Content: Subtitle "SensoraNote" & Sleek Progress Line */}
         <div className="relative z-10 flex flex-col items-center max-w-2xl w-full text-center">
@@ -197,7 +197,7 @@ export function BrutalistLoader({ onComplete }: BrutalistLoaderProps) {
           {/* Minimalist Progress Line */}
           <div className="w-48 h-[2px] bg-white/10 rounded-full overflow-hidden relative shadow-[0_0_4px_rgba(255,255,255,0.1)] mb-4">
             <motion.div
-              className="h-full bg-gradient-to-r from-[#5D5CE6] to-[#8B5CF6] shadow-[0_0_8px_#5D5CE6]"
+              className="h-full bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] shadow-[0_0_8px_#1d4ed8]"
               style={{ width: `${counter}%` }}
               transition={{ ease: 'easeOut' }}
             />
@@ -208,26 +208,26 @@ export function BrutalistLoader({ onComplete }: BrutalistLoaderProps) {
             <span className="font-mono text-xs tracking-[0.25em] text-white/50 uppercase tabular-nums">
               {t('loader.loading') || 'LOADING'} {Math.min(Math.floor(counter), 100)}%
             </span>
-            <span className="font-mono text-[9px] tracking-[0.18em] text-[#8B5CF6]/80 uppercase h-4 transition-all duration-300">
+            <span className="font-mono text-[9px] tracking-[0.18em] text-[#2563eb]/80 uppercase h-4 transition-all duration-300">
               {SYSTEM_LOGS[logIndex]}
             </span>
           </div>
         </div>
 
         {/* Horizontal Splitting Line Glow */}
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#8B5CF6]/40 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#2563eb]/40 to-transparent pointer-events-none" />
 
         {/* ==========================================================
             PORTAL EFFECTS AND RISING GLOWING DOT PARTICLES (AT THE BOTTOM)
             ========================================================== */}
         
         {/* Volumetric Dual-Layer Portal Glow at the bottom boundary */}
-        {/* Layer 1: Wide, ambient violet glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90vw] h-16 bg-gradient-to-t from-white/[0.08] via-[#5D5CE6]/[0.03] to-transparent blur-2xl pointer-events-none rounded-[100%] z-5" />
+        {/* Layer 1: Wide, ambient blue glow */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90vw] h-16 bg-gradient-to-t from-white/[0.08] via-[#1d4ed8]/[0.03] to-transparent blur-2xl pointer-events-none rounded-[100%] z-5" />
         {/* Layer 2: Center, intense white core glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[55vw] h-8 bg-gradient-to-t from-white/[0.22] via-[#8B5CF6]/[0.08] to-transparent blur-xl pointer-events-none rounded-[100%] z-5" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[55vw] h-8 bg-gradient-to-t from-white/[0.22] via-[#2563eb]/[0.08] to-transparent blur-xl pointer-events-none rounded-[100%] z-5" />
         {/* Glowing horizontal portal boundary beam line */}
-        <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/30 via-[#8B5CF6]/35 to-transparent pointer-events-none z-10 filter drop-shadow(0 0 5px rgba(255,255,255,0.45))" />
+        <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/30 via-[#2563eb]/35 to-transparent pointer-events-none z-10 filter drop-shadow(0 0 5px rgba(255,255,255,0.45))" />
 
         {/* Portal Sparkles - tiny glowing dots emerging from bottom and floating upwards */}
         {portalSparkles.map((sparkle, idx) => (

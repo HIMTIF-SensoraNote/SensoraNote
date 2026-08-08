@@ -612,7 +612,7 @@ export default function PublicExplorePage() {
                                 "all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s",
                         }}
                     >
-                        <div className="relative overflow-hidden bg-gradient-to-br from-primary via-indigo-600 to-purple-700 rounded-[2rem] p-8 sm:p-14 text-center shadow-2xl">
+                        <div className="relative overflow-hidden bg-gradient-to-br from-primary via-blue-600 to-blue-700 rounded-[2rem] p-8 sm:p-14 text-center shadow-2xl">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
                             <div className="absolute bottom-0 left-0 w-48 h-48 bg-fuchsia-500/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl pointer-events-none"></div>
 

@@ -228,7 +228,7 @@ export default function AdminDashboard() {
         {
             label: t('admin_dashboard.total_notes'),
             value: totalNotes,
-            color: "text-indigo-500",
+            color: "text-blue-500",
             icon: FileText,
             increment: "+8%",
         },
@@ -524,13 +524,13 @@ export default function AdminDashboard() {
                                             value={searchQuery}
                                             onChange={(e) => setSearchQuery(e.target.value)}
                                             placeholder={t('admin_dashboard.search_placeholder')}
-                                            className="w-full pl-9 pr-4 py-2 bg-gray-100/50 dark:bg-white/5 border-none rounded-full text-[14px] text-gray-900 dark:text-gray-100 placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-all"
+                                            className="w-full pl-9 pr-4 py-2 bg-gray-100/50 dark:bg-white/5 border-none rounded-full text-[14px] text-gray-900 dark:text-gray-100 placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all"
                                         />
                                     </div>
                                     <div className="relative shrink-0">
                                         <button 
                                             onClick={() => setShowFilterPopup(!showFilterPopup)}
-                                            className={`px-3 py-2 bg-gray-100/50 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 rounded-full transition-colors flex items-center justify-center h-full ${showFilterPopup || statusFilter !== "semua" || sortBy !== "terbaru" ? "text-indigo-600" : "text-gray-500"}`}
+                                            className={`px-3 py-2 bg-gray-100/50 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 rounded-full transition-colors flex items-center justify-center h-full ${showFilterPopup || statusFilter !== "semua" || sortBy !== "terbaru" ? "text-blue-600" : "text-gray-500"}`}
                                         >
                                             <Filter className="w-4 h-4" />
                                         </button>
@@ -587,7 +587,7 @@ export default function AdminDashboard() {
                                                 {tab.id === "sertifikasi" && pendingCerts.filter((c) => c.status === 'pending').length > 0 && (
                                                     <span className="ml-1.5 text-rose-500">({pendingCerts.filter((c) => c.status === 'pending').length})</span>
                                                 )}
-                                                {isActive && <div className="absolute bottom-0 left-0 right-0 h-1 bg-indigo-500 rounded-t-full" />}
+                                                {isActive && <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-500 rounded-t-full" />}
                                             </button>
                                         );
                                     })}
@@ -648,12 +648,12 @@ export default function AdminDashboard() {
                                                     <article key={cert.id} className="group flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6 sm:gap-8 py-6 px-6 bg-transparent hover:bg-slate-50/50 dark:hover:bg-white/[0.02] transition-colors border border-slate-100 dark:border-white/5 rounded-[24px]">
                                                         <div className="flex-1 min-w-0 flex flex-col w-full">
                                                             <div className="flex items-center gap-3 mb-2">
-                                                                <div className="w-10 h-10 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-xl flex items-center justify-center border border-indigo-100/50 dark:border-indigo-500/20 shrink-0">
+                                                                <div className="w-10 h-10 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center border border-blue-100/50 dark:border-blue-500/20 shrink-0">
                                                                     <FileText className="w-5 h-5" />
                                                                 </div>
                                                                 <div>
                                                                     <h4 className="font-['Lexend_Deca'] font-bold text-slate-900 dark:text-slate-100 text-[16px] leading-none mb-1">{t('admin_dashboard.card_user_id') !== 'admin_dashboard.card_user_id' ? t('admin_dashboard.card_user_id') : 'User ID:'} {cert.user_id}</h4>
-                                                                    <p className="font-['Manrope'] text-[13px] text-slate-500 dark:text-slate-400 font-bold">{t('admin_dashboard.card_field') !== 'admin_dashboard.card_field' ? t('admin_dashboard.card_field') : 'Bidang:'} <span className="text-indigo-600 dark:text-indigo-400">{cert.bidang_keahlian}</span></p>
+                                                                    <p className="font-['Manrope'] text-[13px] text-slate-500 dark:text-slate-400 font-bold">{t('admin_dashboard.card_field') !== 'admin_dashboard.card_field' ? t('admin_dashboard.card_field') : 'Bidang:'} <span className="text-blue-600 dark:text-blue-400">{cert.bidang_keahlian}</span></p>
                                                                 </div>
                                                             </div>
                                                             <div className="flex items-center gap-3 mt-4">
@@ -676,7 +676,7 @@ export default function AdminDashboard() {
                                                             <div className="flex flex-row sm:flex-col gap-2 w-full sm:w-auto shrink-0 border-t sm:border-t-0 pt-4 sm:pt-0 border-gray-200 dark:border-white/10">
                                                                 <button
                                                                     onClick={() => handleVerifyCert(cert.id, "approve")}
-                                                                    className="flex-1 sm:flex-none px-4 py-2 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full font-bold text-[12px] hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition-all flex items-center justify-center gap-1.5"
+                                                                    className="flex-1 sm:flex-none px-4 py-2 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-full font-bold text-[12px] hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-all flex items-center justify-center gap-1.5"
                                                                 >
                                                                     <CheckCircle size={14} /> {t('admin_dashboard.card_approve') !== 'admin_dashboard.card_approve' ? t('admin_dashboard.card_approve') : 'Setujui'}
                                                                 </button>
@@ -737,7 +737,7 @@ export default function AdminDashboard() {
                                                                     {/* Author Header */}
                                                                     <div className="flex items-center gap-1.5 mb-2 flex-wrap text-[13px] font-['Manrope'] text-slate-800">
                                                                         <div className="flex items-center gap-1.5 group/author">
-                                                                            <AvatarImage src={author?.avatar} size={20} className="ring-2 ring-transparent group-hover/author:ring-indigo-500/20 transition-all" />
+                                                                            <AvatarImage src={author?.avatar} size={20} className="ring-2 ring-transparent group-hover/author:ring-blue-500/20 transition-all" />
                                                                             <span className="font-bold text-slate-950 dark:text-slate-200 group-hover/author:underline tracking-tight">{author?.name}</span>
                                                                             {author?.is_dormant && (
                                                                                 <span className="bg-rose-100 text-rose-600 text-[9px] px-1.5 py-0.5 rounded font-black tracking-widest uppercase">DORMANT</span>
@@ -758,7 +758,7 @@ export default function AdminDashboard() {
                                                                     </div>
 
                                                                     {/* Title */}
-                                                                    <h2 className="text-[20px] md:text-[22px] font-extrabold text-slate-900 dark:text-slate-100 leading-[1.25] tracking-tight group-hover:text-indigo-600 transition-colors line-clamp-2 mb-2 font-['Lexend_Deca']">
+                                                                    <h2 className="text-[20px] md:text-[22px] font-extrabold text-slate-900 dark:text-slate-100 leading-[1.25] tracking-tight group-hover:text-blue-600 transition-colors line-clamp-2 mb-2 font-['Lexend_Deca']">
                                                                         {note.title}
                                                                     </h2>
 
@@ -778,11 +778,11 @@ export default function AdminDashboard() {
                                                                 </div>
 
                                                                 {/* Thumbnail */}
-                                                                <div className="w-full sm:w-[160px] md:w-[200px] h-[180px] sm:h-[130px] md:h-[150px] shrink-0 rounded-2xl overflow-hidden bg-slate-50 dark:bg-white/5 relative shadow-sm border border-slate-100 dark:border-white/5 flex items-center justify-center group-hover:border-indigo-200 dark:group-hover:border-indigo-500/30 transition-colors">
+                                                                <div className="w-full sm:w-[160px] md:w-[200px] h-[180px] sm:h-[130px] md:h-[150px] shrink-0 rounded-2xl overflow-hidden bg-slate-50 dark:bg-white/5 relative shadow-sm border border-slate-100 dark:border-white/5 flex items-center justify-center group-hover:border-blue-200 dark:group-hover:border-blue-500/30 transition-colors">
                                                                     {note.thumbnail ? (
                                                                         <img src={note.thumbnail} alt={note.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                                                     ) : (
-                                                                        <div className="w-full h-full flex items-center justify-center group-hover:scale-105 transition-transform duration-500" style={{ backgroundColor: `${subject?.color || "#5D5CE6"}10` }}>
+                                                                        <div className="w-full h-full flex items-center justify-center group-hover:scale-105 transition-transform duration-500" style={{ backgroundColor: `${subject?.color || "#1d4ed8"}10` }}>
                                                                             <span className="text-5xl">{subject?.icon || "📘"}</span>
                                                                         </div>
                                                                     )}
@@ -850,7 +850,7 @@ export default function AdminDashboard() {
                                                     <article key={report.id || report._id} className="group flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6 sm:gap-8 py-6 px-6 bg-transparent hover:bg-slate-50/50 dark:hover:bg-white/[0.02] transition-colors border border-slate-100 dark:border-white/5 rounded-[24px]">
                                                         <div className="flex-1 min-w-0 flex flex-col w-full h-full">
                                                             <div className="flex items-center gap-2 mb-3 flex-wrap">
-                                                                <span className="bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[10px] px-2 py-0.5 rounded font-black tracking-widest uppercase">
+                                                                <span className="bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] px-2 py-0.5 rounded font-black tracking-widest uppercase">
                                                                     {t('admin_dashboard.reported_prefix')} {report.type ? t(`admin_dashboard.report_type_${report.type}`) : t('admin_dashboard.report_type_catatan')}
                                                                 </span>
                                                                 <span className="text-[12px] font-['Manrope'] text-slate-500 dark:text-slate-400 font-bold">
@@ -862,7 +862,7 @@ export default function AdminDashboard() {
                                                                     </span>
                                                                 )}
                                                             </div>
-                                                            <h2 className="text-[18px] md:text-[20px] font-extrabold text-slate-900 dark:text-slate-100 leading-[1.25] tracking-tight group-hover:text-indigo-600 transition-colors line-clamp-2 mb-2 font-['Lexend_Deca']">
+                                                            <h2 className="text-[18px] md:text-[20px] font-extrabold text-slate-900 dark:text-slate-100 leading-[1.25] tracking-tight group-hover:text-blue-600 transition-colors line-clamp-2 mb-2 font-['Lexend_Deca']">
                                                                 {report.post_id ? `${t('admin_dashboard.note_id')}: ${report.post_id}` : report.type === "catatan" ? report.noteTitle : report.userName}
                                                             </h2>
                                                             <div className="mb-4">
@@ -940,13 +940,13 @@ export default function AdminDashboard() {
                                                                     <AvatarImage src={u.avatar} alt={u.name} size={64} className="rounded-2xl object-cover bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10" />
                                                                 </div>
                                                                 <div className="min-w-0">
-                                                                    <h4 className="font-['Lexend_Deca'] font-bold text-slate-900 dark:text-slate-100 text-[18px] mb-2 truncate group-hover:text-indigo-600 transition-colors flex items-center gap-2 flex-wrap">
+                                                                    <h4 className="font-['Lexend_Deca'] font-bold text-slate-900 dark:text-slate-100 text-[18px] mb-2 truncate group-hover:text-blue-600 transition-colors flex items-center gap-2 flex-wrap">
                                                                         {u.name}
                                                                         {u.is_dormant && (
                                                                             <span className="bg-rose-100 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400 text-[10px] px-2 py-0.5 rounded border border-rose-200 dark:border-rose-500/30 font-black tracking-widest uppercase">DORMANT</span>
                                                                         )}
                                                                         {u.role === "admin" && (
-                                                                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 font-bold text-[12px] border border-purple-100 dark:border-purple-500/20">
+                                                                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold text-[12px] border border-blue-100 dark:border-blue-500/20">
                                                                                 <Shield className="w-3.5 h-3.5" /> {t('admin_dashboard.role_admin') || 'Admin'}
                                                                             </span>
                                                                         )}
@@ -1087,7 +1087,7 @@ export default function AdminDashboard() {
                             {/* Quick Action */}
                             <div className="bg-gray-50 dark:bg-white/5 rounded-xl p-5 border border-gray-200 dark:border-white/10">
                                 <div className="flex items-center gap-2 mb-2">
-                                    <ShieldCheck className="w-4 h-4 text-indigo-500" />
+                                    <ShieldCheck className="w-4 h-4 text-blue-500" />
                                     <h4 className="font-bold text-gray-900 dark:text-gray-100 text-[14px]">{t('admin_dashboard.tech_support')}</h4>
                                 </div>
                                 <p className="text-gray-500 dark:text-gray-400 text-[13px] leading-relaxed">{t('admin_dashboard.tech_support_desc')}</p>

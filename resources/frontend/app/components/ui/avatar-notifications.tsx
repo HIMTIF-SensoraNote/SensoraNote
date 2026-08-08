@@ -166,7 +166,7 @@ export default function AvatarNotifications() {
 
     const getIcon = (type: string) => {
         if (type === "sertifikasi")
-            return <Shield className="w-4 h-4 text-indigo-500" />;
+            return <Shield className="w-4 h-4 text-blue-500" />;
         if (type === "report")
             return <AlertCircle className="w-4 h-4 text-rose-500" />;
         if (type === "verifikasi")
@@ -175,7 +175,7 @@ export default function AvatarNotifications() {
         if (type === "comment")
             return <MessageCircle className="w-4 h-4 text-blue-500" />;
         if (type === "follow")
-            return <UserPlus className="w-4 h-4 text-purple-500" />;
+            return <UserPlus className="w-4 h-4 text-blue-500" />;
         return <Bell className="w-4 h-4 text-gray-500" />;
     };
 
@@ -209,7 +209,7 @@ export default function AvatarNotifications() {
                                 {t('notifications.title') !== 'notifications.title' ? t('notifications.title') : 'Notifikasi'}
                             </h2>
                             {hasNotifications && (
-                                <span className="bg-indigo-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">
+                                <span className="bg-blue-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">
                                     {unreadCount}
                                 </span>
                             )}
@@ -217,7 +217,7 @@ export default function AvatarNotifications() {
                         {hasNotifications && (
                             <button
                                 onClick={clearAll}
-                                className="text-[12px] font-bold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors"
+                                className="text-[12px] font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
                             >
                                 {t('notifications.mark_all_read') !== 'notifications.mark_all_read' ? t('notifications.mark_all_read') : 'Tandai dibaca'}
                             </button>
@@ -248,7 +248,7 @@ export default function AvatarNotifications() {
                                     }
                                     className={cn(
                                         "group relative flex items-start gap-3 p-4 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors border-b border-gray-100 dark:border-white/5 last:border-0",
-                                        !item.is_read && "bg-indigo-50/50 dark:bg-indigo-500/10"
+                                        !item.is_read && "bg-blue-50/50 dark:bg-blue-500/10"
                                     )}
                                 >
                                     
@@ -256,7 +256,7 @@ export default function AvatarNotifications() {
                                         <div
                                             className={cn(
                                                 "h-10 w-10 rounded-full flex items-center justify-center shadow-sm border border-gray-200 dark:border-white/10 overflow-hidden bg-white dark:bg-[#1C1A29]",
-                                                !item.is_read && "ring-2 ring-indigo-500 ring-offset-1 dark:ring-offset-[#1C1A29]"
+                                                !item.is_read && "ring-2 ring-blue-500 ring-offset-1 dark:ring-offset-[#1C1A29]"
                                             )}
                                         >
                                             {item.actor ? (
@@ -269,12 +269,12 @@ export default function AvatarNotifications() {
                                             ) : (
                                                 <div className={cn(
                                                     "h-full w-full flex items-center justify-center",
-                                                    item.type === "sertifikasi" ? "bg-indigo-50 dark:bg-indigo-500/10" :
+                                                    item.type === "sertifikasi" ? "bg-blue-50 dark:bg-blue-500/10" :
                                                     item.type === "report" ? "bg-rose-50 dark:bg-rose-500/10" :
                                                     item.type === "verifikasi" ? "bg-emerald-50 dark:bg-emerald-500/10" :
                                                     item.type === "like" ? "bg-pink-50 dark:bg-pink-500/10" :
                                                     item.type === "comment" ? "bg-blue-50 dark:bg-blue-500/10" :
-                                                    item.type === "follow" ? "bg-purple-50 dark:bg-purple-500/10" : "bg-gray-50 dark:bg-white/5"
+                                                    item.type === "follow" ? "bg-blue-50 dark:bg-blue-500/10" : "bg-gray-50 dark:bg-white/5"
                                                 )}>
                                                     {getIcon(item.type)}
                                                 </div>
@@ -284,12 +284,12 @@ export default function AvatarNotifications() {
                                         {item.actor && (
                                             <div className={cn(
                                                 "absolute -right-1 -bottom-1 w-[18px] h-[18px] rounded-full flex items-center justify-center border-2 border-white dark:border-[#1C1A29] shadow-sm",
-                                                item.type === "sertifikasi" ? "bg-indigo-500 text-white" :
+                                                item.type === "sertifikasi" ? "bg-blue-500 text-white" :
                                                 item.type === "report" ? "bg-rose-500 text-white" :
                                                 item.type === "verifikasi" ? "bg-emerald-500 text-white" :
                                                 item.type === "like" ? "bg-pink-500 text-white" :
                                                 item.type === "comment" ? "bg-blue-500 text-white" :
-                                                item.type === "follow" ? "bg-purple-500 text-white" : "bg-gray-500 text-white"
+                                                item.type === "follow" ? "bg-blue-500 text-white" : "bg-gray-500 text-white"
                                             )}>
                                                 {React.cloneElement(getIcon(item.type) as React.ReactElement, { className: "w-2.5 h-2.5 text-white" })}
                                             </div>
@@ -299,7 +299,7 @@ export default function AvatarNotifications() {
                                         <div className="flex items-start justify-between gap-2">
                                             <div className="flex items-start gap-2 min-w-0">
                                                 {!item.is_read && (
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 shrink-0"></div>
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0"></div>
                                                 )}
                                                 <div className="flex flex-col gap-1 min-w-0">
                                                     <p className={cn(
@@ -326,7 +326,7 @@ export default function AvatarNotifications() {
                             setOpen(false);
                             navigate("/notifications");
                         }}
-                        className="w-full py-2.5 text-[13px] font-bold text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 rounded-full transition-colors"
+                        className="w-full py-2.5 text-[13px] font-bold text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-full transition-colors"
                     >
                         {t('notifications.view_all_notifications') !== 'notifications.view_all_notifications' ? t('notifications.view_all_notifications') : 'Lihat Semua Notifikasi'}
                     </button>

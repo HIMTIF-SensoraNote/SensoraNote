@@ -139,3 +139,17 @@ input, textarea, [contenteditable="true"], .ql-editor {
   unicode-bidi: plaintext;
   text-align: start;
 }
+
+/* ==========================================================================
+   SIENNA ACCESSIBILITY WIDGET SCALING
+   Reduce the size of the widget because it's too large by default
+   ========================================================================== */
+.asw-menu-btn {
+  transform: scale(0.85) !important;
+}
+
+@media (max-width: 768px) {
+  .asw-menu-btn {
+    transform: scale(0.75) !important;
+  }
+}

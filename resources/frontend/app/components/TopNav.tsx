@@ -58,7 +58,7 @@ export function TopNav({ isSidebarExpanded, toggleSidebar }: TopNavProps) {
         {/* SensoraNote Logo */}
         <Link to="/home" className="flex items-center gap-2 mr-6 shrink-0 group">
            <ApplicationLogo className="w-8 h-8" />
-           <span className="font-['Lexend_Deca'] font-extrabold text-[22px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-800 dark:from-[#7B7BFF] dark:to-[#A78BFA] hidden sm:block">
+           <span className="font-['Lexend_Deca'] font-extrabold text-[22px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-800 dark:from-[#60a5fa] dark:to-[#93c5fd] hidden sm:block">
               SensoraNote
            </span>
         </Link>

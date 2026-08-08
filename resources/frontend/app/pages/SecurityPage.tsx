@@ -98,7 +98,7 @@ export default function SecurityPage() {
                         {/* Section 1: Change Password */}
                         <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none space-y-5">
                             <div className="flex items-center gap-2 mb-2">
-                                <Lock className="w-4 h-4 text-indigo-600 dark:text-primary" />
+                                <Lock className="w-4 h-4 text-blue-600 dark:text-primary" />
                                 <h2 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100">
                                     {t("security.change_password")}
                                 </h2>

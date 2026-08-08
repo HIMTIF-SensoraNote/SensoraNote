@@ -50,8 +50,8 @@ export default function PrivacyPage() {
                 <div className="max-w-xl mx-auto px-5">
                     {/* Hero Section */}
                     <div className="text-center mb-10 mt-6">
-                        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-indigo-50 dark:bg-indigo-500/10 mb-6 border border-indigo-100 dark:border-indigo-500/20">
-                            <Shield className="w-10 h-10 text-indigo-600 dark:text-indigo-400" />
+                        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-50 dark:bg-blue-500/10 mb-6 border border-blue-100 dark:border-blue-500/20">
+                            <Shield className="w-10 h-10 text-blue-600 dark:text-blue-400" />
                         </div>
                         <h2 className="font-['Lexend_Deca'] font-extrabold text-2xl text-gray-900 dark:text-gray-100 mb-3">
                             {t("privacy_page.hero_title") || "Privasi Anda"}
@@ -67,7 +67,7 @@ export default function PrivacyPage() {
                             {principles.map((p, idx) => (
                                 <div key={idx} className="bg-white dark:bg-[#1C1A29] rounded-3xl p-5 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none text-center">
                                     <div className="w-12 h-12 rounded-full bg-slate-50 dark:bg-white/5 flex items-center justify-center mx-auto mb-3 border border-slate-100 dark:border-white/10">
-                                        <p.icon className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+                                        <p.icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                                     </div>
                                     <h3 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 text-[15px] mb-1">{p.label}</h3>
                                     <p className="font-['Manrope'] text-[13px] text-gray-500 dark:text-gray-400">{p.desc}</p>
@@ -78,7 +78,7 @@ export default function PrivacyPage() {
                         {/* Data Collection */}
                         <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none">
                             <h3 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
-                                <Info className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                                <Info className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                                 {t("privacy_page.collection_title") || "1. Data yang Kami Kumpulkan"}
                             </h3>
                             <p className="font-['Manrope'] text-[14px] text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
@@ -87,7 +87,7 @@ export default function PrivacyPage() {
                             <div className="space-y-3">
                                 {collections.map((item, i) => (
                                     <div key={i} className="flex gap-3 items-start p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 shrink-0"></div>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></div>
                                         <div>
                                             <h4 className="font-['Manrope'] font-bold text-[14px] text-gray-900 dark:text-gray-100">{item.title}</h4>
                                             <p className="font-['Manrope'] text-[13px] text-gray-500 dark:text-gray-400 mt-1">{item.text}</p>
@@ -100,13 +100,13 @@ export default function PrivacyPage() {
                         {/* Data Usage */}
                         <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none">
                             <h3 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
-                                <Shield className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                                <Shield className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                                 {t("privacy_page.usage_title") || "2. Penggunaan Data"}
                             </h3>
                             <div className="space-y-3">
                                 {usages.map((text, i) => (
                                     <div key={i} className="flex items-center gap-3">
-                                        <CheckCircle className="w-5 h-5 text-indigo-600 dark:text-indigo-400 shrink-0" />
+                                        <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0" />
                                         <span className="font-['Manrope'] text-[14px] text-gray-600 dark:text-gray-300">{text}</span>
                                     </div>
                                 ))}

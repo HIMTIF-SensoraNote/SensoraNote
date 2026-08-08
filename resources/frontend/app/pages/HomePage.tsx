@@ -434,7 +434,7 @@ export default function HomePage() {
                             </h3>
                             <Link 
                                 to="/explore?tab=terbaru"
-                                className="text-[13px] font-['Lexend_Deca'] font-bold text-primary hover:text-indigo-800 transition-colors"
+                                className="text-[13px] font-['Lexend_Deca'] font-bold text-primary hover:text-blue-800 transition-colors"
                             >
                                 {t('home.view_all')}
                             </Link>

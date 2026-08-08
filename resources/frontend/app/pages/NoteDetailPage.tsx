@@ -33,6 +33,7 @@ import {
     Pencil,
     Highlighter,
     Lock as LockIcon,
+    Languages,
 } from "lucide-react";
 import {
     getNoteById,
@@ -109,7 +110,7 @@ export default function NoteDetailPage() {
         green:  { bg: "var(--hl-green)", darkBg: "var(--hl-green)", label: "Hijau" },
         blue:   { bg: "var(--hl-blue)", darkBg: "var(--hl-blue)", label: "Biru" },
         red:    { bg: "var(--hl-red)", darkBg: "var(--hl-red)", label: "Merah" },
-        purple: { bg: "var(--hl-purple)", darkBg: "var(--hl-purple)", label: "Ungu" },
+        blue: { bg: "var(--hl-blue)", darkBg: "var(--hl-blue)", label: "Ungu" },
     };
 
     const handleDownloadPDF = () => {
@@ -331,7 +332,7 @@ export default function NoteDetailPage() {
                         mark.user-highlight[data-color="green"] { background-color: rgba(134, 239, 172, 0.8) !important; }
                         mark.user-highlight[data-color="blue"] { background-color: rgba(147, 197, 253, 0.8) !important; }
                         mark.user-highlight[data-color="red"] { background-color: rgba(252, 165, 165, 0.8) !important; }
-                        mark.user-highlight[data-color="purple"] { background-color: rgba(196, 181, 253, 0.8) !important; }
+                        mark.user-highlight[data-color="blue"] { background-color: rgba(196, 181, 253, 0.8) !important; }
 
                         /* Remove tooltip UI from print */
                         .highlight-tooltip { display: none !important; }
@@ -707,9 +708,9 @@ export default function NoteDetailPage() {
                     element.scrollIntoView({ behavior: "smooth", block: "center" });
                     
                     // Highlight the comment briefly
-                    element.classList.add("ring-2", "ring-indigo-500", "ring-offset-2", "bg-indigo-50", "dark:bg-indigo-500/10");
+                    element.classList.add("ring-2", "ring-blue-500", "ring-offset-2", "bg-blue-50", "dark:bg-blue-500/10");
                     setTimeout(() => {
-                        element.classList.remove("ring-2", "ring-indigo-500", "ring-offset-2", "bg-indigo-50", "dark:bg-indigo-500/10");
+                        element.classList.remove("ring-2", "ring-blue-500", "ring-offset-2", "bg-blue-50", "dark:bg-blue-500/10");
                     }, 2500);
                 }
             }, 600); // Waktu cukup untuk animasi drawer
@@ -800,6 +801,78 @@ export default function NoteDetailPage() {
     const [reportDescription, setReportDescription] = useState("");
     const [isSubmittingReport, setIsSubmittingReport] = useState(false);
     const [isSubmittingComment, setIsSubmittingComment] = useState(false);
+    
+    const [isTranslatingNote, setIsTranslatingNote] = useState(false);
+    const [translatedNoteContent, setTranslatedNoteContent] = useState<string | null>(null);
+    const [translatedNoteTitle, setTranslatedNoteTitle] = useState<string | null>(null);
+    const [translatedComments, setTranslatedComments] = useState<Record<string, string>>({});
+    const [translatingCommentId, setTranslatingCommentId] = useState<string | null>(null);
+
+    const handleTranslateNote = async () => {
+        if (translatedNoteContent) {
+            setTranslatedNoteContent(null);
+            setTranslatedNoteTitle(null);
+            return;
+        }
+        
+        setIsTranslatingNote(true);
+        try {
+            const token = localStorage.getItem("bayu-token") || sessionStorage.getItem("bayu-token");
+            const targetLang = language === 'system' ? 'id' : language;
+            const sourceLang = targetLang === 'id' ? null : 'id';
+            
+            const [titleRes, contentRes] = await Promise.all([
+                axios.post('/api/translate-content', {
+                    text: note.title,
+                    target_lang: targetLang,
+                    source_lang: sourceLang
+                }, { headers: token ? { Authorization: `Bearer ${token}` } : {} }),
+                axios.post('/api/translate-content', {
+                    text: note.content,
+                    target_lang: targetLang,
+                    source_lang: sourceLang
+                }, { headers: token ? { Authorization: `Bearer ${token}` } : {} })
+            ]);
+            
+            setTranslatedNoteTitle(titleRes.data.translated);
+            setTranslatedNoteContent(contentRes.data.translated);
+        } catch (e) {
+            console.error(e);
+            showToast("Gagal menerjemahkan", "error");
+        } finally {
+            setIsTranslatingNote(false);
+        }
+    };
+
+    const handleTranslateComment = async (commentId: string, content: string) => {
+        if (translatedComments[commentId]) {
+            const newTranslated = { ...translatedComments };
+            delete newTranslated[commentId];
+            setTranslatedComments(newTranslated);
+            return;
+        }
+        
+        setTranslatingCommentId(commentId);
+        try {
+            const token = localStorage.getItem("bayu-token") || sessionStorage.getItem("bayu-token");
+            const targetLang = language === 'system' ? 'id' : language;
+            const sourceLang = targetLang === 'id' ? null : 'id';
+            
+            const res = await axios.post('/api/translate-content', {
+                text: content,
+                target_lang: targetLang,
+                source_lang: sourceLang
+            }, {
+                headers: token ? { Authorization: `Bearer ${token}` } : {}
+            });
+            setTranslatedComments(prev => ({ ...prev, [commentId]: res.data.translated }));
+        } catch (e) {
+            console.error(e);
+            showToast("Gagal menerjemahkan", "error");
+        } finally {
+            setTranslatingCommentId(null);
+        }
+    };
     const [isSubmittingReply, setIsSubmittingReply] = useState(false);
 
     useEffect(() => {
@@ -866,13 +939,13 @@ export default function NoteDetailPage() {
                 if (el) {
                     el.scrollIntoView({ behavior: "smooth", block: "center" });
                     el.classList.add(
-                        "bg-indigo-50",
-                        "dark:bg-indigo-500/20",
+                        "bg-blue-50",
+                        "dark:bg-blue-500/20",
                         "transition-colors",
                         "duration-1000",
                     );
                     setTimeout(
-                        () => el.classList.remove("bg-indigo-50", "dark:bg-indigo-500/20"),
+                        () => el.classList.remove("bg-blue-50", "dark:bg-blue-500/20"),
                         3000,
                     );
                 }
@@ -1427,9 +1500,10 @@ export default function NoteDetailPage() {
 
     // Here, we simulate HTML content if the mock data just provides plain text.
     // We'll wrap it in standard paragraph tags to work with Quill's styling.
-    const processedContent = note.content.includes("<")
-        ? note.content
-        : `<p>${note.content.replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br/>")}</p><br/><br/><p class="text-gray-500 italic text-center">...[Unduh file versi komplit di Bawah]...</p>`;
+    const contentToRender = translatedNoteContent || note.content;
+    const processedContent = contentToRender.includes("<")
+        ? contentToRender
+        : `<p>${contentToRender.replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br/>")}</p><br/><br/><p class="text-gray-500 italic text-center">...[Unduh file versi komplit di Bawah]...</p>`;
 
     const noteContent = (
         <div className={`pb-20 ${!isAuthenticated ? "pt-16 sm:pt-20" : ""}`}>
@@ -1543,7 +1617,7 @@ export default function NoteDetailPage() {
             <article className="max-w-3xl mx-auto px-5 lg:px-0 pt-8 mt-2">
                 {/* Title */}
                 <h1 className="font-['Lexend_Deca'] font-extrabold text-[2.5rem] md:text-[3.25rem] text-gray-900 dark:text-gray-100 mb-4 leading-[1.12] tracking-tight">
-                    {note.title}
+                    {translatedNoteTitle || note.title}
                 </h1>
 
                 {/* Category & Tags (Substack / Medium style over title) */}
@@ -1674,6 +1748,18 @@ export default function NoteDetailPage() {
                                 strokeWidth={2.5}
                             />
                         </button>
+                        <button
+                            onClick={handleTranslateNote}
+                            className={`p-2 hover:bg-gray-50 dark:hover:bg-white/10 rounded-full transition-colors ml-1 group flex items-center gap-1.5 ${translatedNoteContent ? 'bg-primary/10 text-primary' : 'text-gray-600 dark:text-gray-400 hover:text-gray-950 dark:hover:text-gray-100'}`}
+                            title="Translate"
+                        >
+                            {isTranslatingNote ? (
+                                <Loader2 className="w-[18px] h-[18px] transition-transform animate-spin" strokeWidth={2.5} />
+                            ) : (
+                                <Languages className="w-[18px] h-[18px] transition-transform group-hover:scale-110" strokeWidth={2.5} />
+                            )}
+                            <span className="text-[13px] font-bold hidden sm:inline">{translatedNoteContent ? "Original" : "Translate"}</span>
+                        </button>
                     </div>
 
                     <div className="flex items-center gap-3">
@@ -1741,12 +1827,12 @@ export default function NoteDetailPage() {
                 {/* CLEAN DOWNLOAD CARD */}
                 <div className="mt-16 mb-16 relative w-full rounded-[32px] overflow-hidden border border-gray-200/50 dark:border-white/5 bg-white dark:bg-[#1C1A29] shadow-sm">
                     {/* Background Accents for Dark/Light Mode */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-50/50 dark:bg-indigo-500/5 rounded-full blur-[80px] pointer-events-none -translate-y-1/2 translate-x-1/4" />
-                    <div className="absolute bottom-0 left-0 w-40 h-40 bg-violet-50/50 dark:bg-primary/5 rounded-full blur-[60px] pointer-events-none translate-y-1/3 -translate-x-1/3" />
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50/50 dark:bg-blue-500/5 rounded-full blur-[80px] pointer-events-none -translate-y-1/2 translate-x-1/4" />
+                    <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-50/50 dark:bg-primary/5 rounded-full blur-[60px] pointer-events-none translate-y-1/3 -translate-x-1/3" />
                     
                     <div className="relative z-10 p-10 sm:p-14 text-center flex flex-col items-center">
                         <div className="w-14 h-14 bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5 rounded-2xl flex items-center justify-center mb-6">
-                            <Download className="w-6 h-6 text-indigo-500 dark:text-indigo-400" strokeWidth={2} />
+                            <Download className="w-6 h-6 text-blue-500 dark:text-blue-400" strokeWidth={2} />
                         </div>
                         
                         <h3 className="font-['Lexend_Deca'] font-bold text-2xl text-gray-900 dark:text-white mb-3 tracking-tight">
@@ -1759,7 +1845,7 @@ export default function NoteDetailPage() {
                         
                         <button
                             onClick={handleDownloadPDF}
-                            className="flex items-center justify-center gap-2.5 px-8 py-4 bg-indigo-500 hover:bg-indigo-600 dark:bg-[#706BFF] dark:hover:bg-[#5C57FF] text-white rounded-2xl text-[13px] font-['Lexend_Deca'] font-bold uppercase tracking-wider transition-all active:scale-95 shadow-md shadow-indigo-500/20 dark:shadow-none"
+                            className="flex items-center justify-center gap-2.5 px-8 py-4 bg-blue-500 hover:bg-blue-600 dark:bg-[#706BFF] dark:hover:bg-[#5C57FF] text-white rounded-2xl text-[13px] font-['Lexend_Deca'] font-bold uppercase tracking-wider transition-all active:scale-95 shadow-md shadow-blue-500/20 dark:shadow-none"
                         >
                             <FileText className="w-4 h-4 opacity-80" />
                             {t("note_detail.download_pdf")}
@@ -1771,7 +1857,7 @@ export default function NoteDetailPage() {
                 {note.isValidated && validator && (
                     <div className="bg-white dark:bg-[#1C1A29] rounded-[40px] p-8 md:p-12 flex flex-col lg:flex-row items-center justify-between gap-10 mb-24 shadow-[0_20px_50px_-12px_rgba(93,92,230,0.12)] dark:shadow-none border border-emerald-50 dark:border-white/5 relative overflow-hidden group mt-12">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-50/50 dark:bg-emerald-500/10 rounded-full blur-[80px] pointer-events-none -translate-y-1/2 translate-x-1/4" />
-                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-indigo-50/30 dark:bg-indigo-500/10 rounded-full blur-[60px] pointer-events-none" />
+                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-50/30 dark:bg-blue-500/10 rounded-full blur-[60px] pointer-events-none" />
 
                         <div className="flex flex-col md:flex-row items-center text-center md:text-left gap-8 flex-1 relative z-10">
                             <div className="w-24 h-24 bg-emerald-500 rounded-[36px] flex items-center justify-center shadow-lg shadow-emerald-500/25 transition-transform duration-700">
@@ -1803,7 +1889,7 @@ export default function NoteDetailPage() {
 
                         <Link
                             to={validator.id ? `/profile/${validator.id}` : "#"}
-                            className="bg-slate-50/80 dark:bg-white/5 backdrop-blur-md rounded-[32px] p-8 border border-slate-100 dark:border-white/10 shadow-sm dark:shadow-none flex items-center gap-6 shrink-0 w-full lg:w-auto relative z-10 group/pakar hover:border-indigo-100 dark:hover:border-primary/30 transition-all duration-500 cursor-pointer"
+                            className="bg-slate-50/80 dark:bg-white/5 backdrop-blur-md rounded-[32px] p-8 border border-slate-100 dark:border-white/10 shadow-sm dark:shadow-none flex items-center gap-6 shrink-0 w-full lg:w-auto relative z-10 group/pakar hover:border-blue-100 dark:hover:border-primary/30 transition-all duration-500 cursor-pointer"
                         >
                             <div className="relative">
                                 <AvatarImage
@@ -1821,7 +1907,7 @@ export default function NoteDetailPage() {
                             </div>
                             <div>
                                 <p className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.25em] mb-1.5">{t("note_detail.verified_by")}</p>
-                                <p className="text-[18px] font-['Lexend_Deca'] font-black text-slate-900 dark:text-slate-100 group-hover/pakar:text-indigo-600 dark:group-hover/pakar:text-primary transition-colors leading-none mb-2">
+                                <p className="text-[18px] font-['Lexend_Deca'] font-black text-slate-900 dark:text-slate-100 group-hover/pakar:text-blue-600 dark:group-hover/pakar:text-primary transition-colors leading-none mb-2">
                                     {validator.name || validator.username}
                                 </p>
                                 <div className="flex items-center gap-2 mt-3 bg-white px-3 py-1.5 rounded-xl border border-slate-100 w-fit shadow-sm">
@@ -1969,7 +2055,7 @@ export default function NoteDetailPage() {
                         </h4>
                         <button
                             onClick={() => setIsCommentDrawerOpen(true)}
-                            className="font-['Manrope'] font-bold text-[14px] text-primary hover:text-indigo-600 transition-colors"
+                            className="font-['Manrope'] font-bold text-[14px] text-primary hover:text-blue-600 transition-colors"
                         >{t("note_detail.write_comment")}</button>
                     </div>
 
@@ -1981,7 +2067,7 @@ export default function NoteDetailPage() {
                                 <div className="flex-1">
                                     <div className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-4 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all">
                                         {quoteContext && (
-                                            <div className="mb-3 pl-3 border-l-4 border-indigo-300 dark:border-indigo-500 bg-indigo-50/50 dark:bg-indigo-500/10 p-2 rounded-r-lg flex justify-between items-start gap-2">
+                                            <div className="mb-3 pl-3 border-l-4 border-blue-300 dark:border-blue-500 bg-blue-50/50 dark:bg-blue-500/10 p-2 rounded-r-lg flex justify-between items-start gap-2">
                                                 <p className="text-[12px] font-['Manrope'] text-gray-600 dark:text-gray-400 italic line-clamp-2 font-medium">
                                                     "{quoteContext}"
                                                 </p>
@@ -2003,7 +2089,7 @@ export default function NoteDetailPage() {
                                             <button
                                                 onClick={handleComment}
                                                 disabled={!commentText.trim() || isSubmittingComment}
-                                                className="px-5 py-2 bg-primary hover:bg-indigo-600 disabled:opacity-50 text-white rounded-xl text-[13px] font-['Lexend_Deca'] font-bold transition-all shadow-sm flex items-center gap-1.5"
+                                                className="px-5 py-2 bg-primary hover:bg-blue-600 disabled:opacity-50 text-white rounded-xl text-[13px] font-['Lexend_Deca'] font-bold transition-all shadow-sm flex items-center gap-1.5"
                                             >
                                                 {isSubmittingComment ? t('note_detail.comment_sending') : t('note_detail.comment_send')} <Send className="w-4 h-4" />
                                             </button>
@@ -2048,7 +2134,7 @@ export default function NoteDetailPage() {
                                                             <span className="font-['Manrope'] text-[11px] font-bold text-gray-500 dark:text-gray-500">{comment.created_at ? new Date(comment.created_at).toLocaleDateString((language === 'ar' ? 'ar-EG' : language === 'fa' ? 'fa-IR' : language === 'id' ? 'id-ID' : language)) : t("note_detail.date_just_now")}</span>
                                                         </div>
                                                         {comment.quote_context && (
-                                                            <div className="mb-2 pl-3 border-l-[3px] border-indigo-200 dark:border-indigo-500/50 bg-indigo-50/50 dark:bg-indigo-500/10 py-1.5 pr-2 rounded-r-lg">
+                                                            <div className="mb-2 pl-3 border-l-[3px] border-blue-200 dark:border-blue-500/50 bg-blue-50/50 dark:bg-blue-500/10 py-1.5 pr-2 rounded-r-lg">
                                                                 <p className="font-['Manrope'] text-[13px] text-gray-600 dark:text-gray-400 italic line-clamp-1 font-medium">
                                                                     "{comment.quote_context}"
                                                                 </p>
@@ -2065,7 +2151,7 @@ export default function NoteDetailPage() {
                                                                 <div className="flex gap-2 mt-2">
                                                                     <button
                                                                         onClick={() => handleUpdateComment(rootId)}
-                                                                        className="px-4 py-1.5 bg-primary text-white text-[11px] font-['Lexend_Deca'] font-bold rounded-lg hover:bg-indigo-600 transition-colors"
+                                                                        className="px-4 py-1.5 bg-primary text-white text-[11px] font-['Lexend_Deca'] font-bold rounded-lg hover:bg-blue-600 transition-colors"
                                                                     >{t("note_detail.save")}</button>
                                                                     <button
                                                                         onClick={() => {
@@ -2078,7 +2164,7 @@ export default function NoteDetailPage() {
                                                             </div>
                                                         ) : (
                                                             <p className="font-['Manrope'] text-[14px] text-gray-700 dark:text-gray-300 leading-relaxed font-medium mb-3">
-                                                                {comment.content}
+                                                                {translatedComments[rootId] || comment.content}
                                                             </p>
                                                         )}
                                                         <div className="flex items-center gap-4 text-[11px] font-['Lexend_Deca'] font-black text-gray-500 dark:text-gray-400">
@@ -2097,6 +2183,18 @@ export default function NoteDetailPage() {
                                                                  className="flex items-center gap-1.5 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
                                                              >
                                                                  <MessageSquare className="w-3.5 h-3.5" strokeWidth={3} />{t("note_detail.reply")}</button>
+
+                                                             <button 
+                                                                 onClick={() => handleTranslateComment(rootId, comment.content)}
+                                                                 className={`flex items-center gap-1.5 transition-colors ${translatedComments[rootId] ? 'text-primary' : 'hover:text-gray-900 dark:hover:text-gray-100'}`}
+                                                             >
+                                                                 {translatingCommentId === rootId ? (
+                                                                     <Loader2 className="w-3.5 h-3.5 animate-spin" strokeWidth={3} />
+                                                                 ) : (
+                                                                     <Languages className="w-3.5 h-3.5" strokeWidth={3} />
+                                                                 )}
+                                                                 {translatedComments[rootId] ? "Original" : "Translate"}
+                                                             </button>
                                                              
                                                              <div className="relative">
                                                                 <button 
@@ -2168,7 +2266,7 @@ export default function NoteDetailPage() {
                                                             {childReplies.length > 2 && (
                                                                 <button
                                                                     onClick={() => setIsCommentDrawerOpen(true)}
-                                                                    className="ml-[40px] text-[12px] font-['Manrope'] font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors flex items-center gap-1"
+                                                                    className="ml-[40px] text-[12px] font-['Manrope'] font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors flex items-center gap-1"
                                                                 >
                                                                     {t("note_detail.view_more_replies").replace("{{count}}", (childReplies.length - 2).toString())}
                                                                 </button>
@@ -2200,7 +2298,7 @@ export default function NoteDetailPage() {
                                 Lainnya dari <span className="text-primary">{author.name || author.username}</span>
                             </h4>
                             {moreFromAuthor.length >= 4 && (
-                                <Link to={`/profile/${author.id || author._id}`} className="text-sm font-bold text-primary hover:text-indigo-700 transition-colors">{t("note_detail.view_all")}</Link>
+                                <Link to={`/profile/${author.id || author._id}`} className="text-sm font-bold text-primary hover:text-blue-700 transition-colors">{t("note_detail.view_all")}</Link>
                             )}
                         </div>
                         <div className="grid grid-cols-1 gap-4">
@@ -2283,9 +2381,9 @@ export default function NoteDetailPage() {
                     </div>
                     {/* Sort Filter UI */}
                     <div className="flex items-center gap-3 px-6 pb-4 overflow-x-auto custom-scrollbar">
-                        <button onClick={() => setCommentSort("newest")} className={`whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-['Manrope'] font-bold transition-all ${commentSort === "newest" ? "bg-indigo-600 dark:bg-indigo-500 text-white shadow-md shadow-indigo-500/20" : "bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10"}`}>{t("note_detail.sort_newest") || "Terbaru"}</button>
-                        <button onClick={() => setCommentSort("top")} className={`whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-['Manrope'] font-bold transition-all ${commentSort === "top" ? "bg-indigo-600 dark:bg-indigo-500 text-white shadow-md shadow-indigo-500/20" : "bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10"}`}>{t("note_detail.sort_top") || "Terpopuler"}</button>
-                        <button onClick={() => setCommentSort("oldest")} className={`whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-['Manrope'] font-bold transition-all ${commentSort === "oldest" ? "bg-indigo-600 dark:bg-indigo-500 text-white shadow-md shadow-indigo-500/20" : "bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10"}`}>{t("note_detail.sort_oldest") || "Terlama"}</button>
+                        <button onClick={() => setCommentSort("newest")} className={`whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-['Manrope'] font-bold transition-all ${commentSort === "newest" ? "bg-blue-600 dark:bg-blue-500 text-white shadow-md shadow-blue-500/20" : "bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10"}`}>{t("note_detail.sort_newest") || "Terbaru"}</button>
+                        <button onClick={() => setCommentSort("top")} className={`whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-['Manrope'] font-bold transition-all ${commentSort === "top" ? "bg-blue-600 dark:bg-blue-500 text-white shadow-md shadow-blue-500/20" : "bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10"}`}>{t("note_detail.sort_top") || "Terpopuler"}</button>
+                        <button onClick={() => setCommentSort("oldest")} className={`whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-['Manrope'] font-bold transition-all ${commentSort === "oldest" ? "bg-blue-600 dark:bg-blue-500 text-white shadow-md shadow-blue-500/20" : "bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10"}`}>{t("note_detail.sort_oldest") || "Terlama"}</button>
                     </div>
                 </div>
 
@@ -2432,14 +2530,14 @@ export default function NoteDetailPage() {
                                                     </div>
                                                     {/* Render Quote Context jika ada */}
                                                     {comment.quote_context && (
-                                                        <div className="mb-2 pl-3 border-l-[3px] border-indigo-200 dark:border-indigo-500/50 bg-indigo-50/50 dark:bg-indigo-500/10 py-1.5 pr-2 rounded-r-lg relative group">
+                                                        <div className="mb-2 pl-3 border-l-[3px] border-blue-200 dark:border-blue-500/50 bg-blue-50/50 dark:bg-blue-500/10 py-1.5 pr-2 rounded-r-lg relative group">
                                                             <p className={`font-['Manrope'] text-[13px] text-gray-600 dark:text-gray-400 italic font-medium transition-all duration-300 pr-6 ${expandedQuotes[cid] ? '' : 'line-clamp-2'}`}>
                                                                 "{comment.quote_context}"
                                                             </p>
                                                             {comment.quote_context.length > 90 && (
                                                                 <button 
                                                                     onClick={() => setExpandedQuotes(prev => ({ ...prev, [cid]: !prev[cid] }))}
-                                                                    className={`absolute bottom-1 right-2 p-1 bg-white dark:bg-[#1C1A29] rounded-full shadow-sm hover:text-indigo-500 transition-colors opacity-100 sm:opacity-0 sm:group-hover:opacity-100 flex items-center justify-center border border-gray-100 dark:border-white/5 ${expandedQuotes[cid] ? 'text-indigo-500' : 'text-gray-400'}`}
+                                                                    className={`absolute bottom-1 right-2 p-1 bg-white dark:bg-[#1C1A29] rounded-full shadow-sm hover:text-blue-500 transition-colors opacity-100 sm:opacity-0 sm:group-hover:opacity-100 flex items-center justify-center border border-gray-100 dark:border-white/5 ${expandedQuotes[cid] ? 'text-blue-500' : 'text-gray-400'}`}
                                                                 >
                                                                     <MoreHorizontal className="w-3 h-3" />
                                                                 </button>
@@ -2457,7 +2555,7 @@ export default function NoteDetailPage() {
                                                             <div className="flex gap-2 mt-2">
                                                                 <button
                                                                     onClick={() => handleUpdateComment(cid)}
-                                                                    className="px-4 py-1.5 bg-primary text-white text-[11px] font-['Lexend_Deca'] font-bold rounded-lg hover:bg-indigo-600 transition-colors"
+                                                                    className="px-4 py-1.5 bg-primary text-white text-[11px] font-['Lexend_Deca'] font-bold rounded-lg hover:bg-blue-600 transition-colors"
                                                                 >{t("note_detail.save")}</button>
                                                                 <button
                                                                     onClick={() => {
@@ -2470,7 +2568,7 @@ export default function NoteDetailPage() {
                                                         </div>
                                                     ) : (
                                                         <p className="font-['Manrope'] text-[15px] text-gray-800 dark:text-gray-300 mb-3 leading-relaxed font-medium">
-                                                            {comment.content}
+                                                            {translatedComments[cid] || comment.content}
                                                         </p>
                                                     )}
                                                     <div className="flex items-center gap-4 text-xs font-['Manrope'] font-extrabold text-gray-500 dark:text-gray-400">
@@ -2505,6 +2603,17 @@ export default function NoteDetailPage() {
                                                             />{" "}
                                                             {t("note_detail.comment_reply")}
                                                         </button>
+                                                        <button 
+                                                            onClick={() => handleTranslateComment(cid, comment.content)}
+                                                            className={`flex items-center gap-1.5 transition-colors ${translatedComments[cid] ? 'text-primary' : 'hover:text-gray-900 dark:hover:text-gray-100'}`}
+                                                        >
+                                                            {translatingCommentId === cid ? (
+                                                                <Loader2 className="w-3.5 h-3.5 animate-spin" strokeWidth={3} />
+                                                            ) : (
+                                                                <Languages className="w-3.5 h-3.5" strokeWidth={3} />
+                                                            )}
+                                                            {translatedComments[cid] ? "Original" : "Translate"}
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2536,8 +2645,8 @@ export default function NoteDetailPage() {
 
                 <div className="p-6 border-t border-gray-100 dark:border-white/5 bg-gray-50/30 dark:bg-white/[0.02]">
                     {replyingTo && (
-                        <div className="flex items-center justify-between mb-3 px-4 py-2 bg-indigo-50 dark:bg-indigo-500/10 rounded-xl border border-indigo-100 dark:border-indigo-500/20">
-                            <p className="text-xs font-['Manrope'] font-bold text-indigo-600 dark:text-indigo-400">
+                        <div className="flex items-center justify-between mb-3 px-4 py-2 bg-blue-50 dark:bg-blue-500/10 rounded-xl border border-blue-100 dark:border-blue-500/20">
+                            <p className="text-xs font-['Manrope'] font-bold text-blue-600 dark:text-blue-400">
                                 {t("note_detail.comment_replying")} {" "}
                                 <span className="font-extrabold">
                                     @{replyingTo.name}
@@ -2545,14 +2654,14 @@ export default function NoteDetailPage() {
                             </p>
                             <button
                                 onClick={() => setReplyingTo(null)}
-                                className="p-1 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 rounded-full transition-colors"
+                                className="p-1 hover:bg-blue-100 dark:hover:bg-blue-500/20 rounded-full transition-colors"
                             >
-                                <X className="w-3 h-3 text-indigo-600 dark:text-indigo-400" />
+                                <X className="w-3 h-3 text-blue-600 dark:text-blue-400" />
                             </button>
                         </div>
                     )}
                     {quoteContext && (
-                        <div className="mb-3 pl-3 border-l-4 border-indigo-300 dark:border-indigo-500 bg-indigo-50 dark:bg-indigo-500/10 p-2.5 rounded-r-xl flex justify-between items-start gap-2">
+                        <div className="mb-3 pl-3 border-l-4 border-blue-300 dark:border-blue-500 bg-blue-50 dark:bg-blue-500/10 p-2.5 rounded-r-xl flex justify-between items-start gap-2">
                             <p className="text-[13px] font-['Manrope'] text-gray-700 dark:text-gray-300 italic line-clamp-3 font-medium">
                                 "{quoteContext}"
                             </p>
@@ -2591,7 +2700,7 @@ export default function NoteDetailPage() {
                             disabled={
                                 !replyText.trim() || isSubmittingReply
                             }
-                            className="w-12 h-12 bg-primary hover:bg-indigo-700 disabled:opacity-50 text-white rounded-2xl flex items-center justify-center transition-all shadow-lg shadow-primary/20 shrink-0"
+                            className="w-12 h-12 bg-primary hover:bg-blue-700 disabled:opacity-50 text-white rounded-2xl flex items-center justify-center transition-all shadow-lg shadow-primary/20 shrink-0"
                         >
                             {isSubmittingReply ? (
                                 <Loader2 className="w-5 h-5 animate-spin" />
@@ -2712,8 +2821,8 @@ export default function NoteDetailPage() {
                 <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-md p-4 animate-in fade-in duration-300">
                     <div className="bg-white dark:bg-[#1C1A29] rounded-[32px] w-full max-w-md max-h-[90vh] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] dark:shadow-[0_25px_70px_-10px_rgba(0,0,0,0.6)] overflow-hidden border border-white dark:border-white/5 transform animate-in zoom-in-95 slide-in-from-bottom-4 duration-300 flex flex-col">
                         {/* Header with Icon - Identical to Report Modal */}
-                        <div className="bg-indigo-50 dark:bg-indigo-500/10 p-6 pb-5 text-center border-b border-indigo-100/50 dark:border-white/5 shrink-0">
-                            <div className="w-14 h-14 bg-white dark:bg-[#252336] text-indigo-600 dark:text-primary rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-sm dark:shadow-none border border-indigo-200/30 dark:border-primary/20">
+                        <div className="bg-blue-50 dark:bg-blue-500/10 p-6 pb-5 text-center border-b border-blue-100/50 dark:border-white/5 shrink-0">
+                            <div className="w-14 h-14 bg-white dark:bg-[#252336] text-blue-600 dark:text-primary rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-sm dark:shadow-none border border-blue-200/30 dark:border-primary/20">
                                 <Share2 className="w-7 h-7" strokeWidth={2.5} />
                             </div>
                             <h3 className="font-['Lexend_Deca'] font-extrabold text-xl text-gray-900 dark:text-gray-100 mb-1">{t("note_detail.share_note")}</h3>
@@ -2811,7 +2920,7 @@ export default function NoteDetailPage() {
                                     }
                                     className="flex flex-col items-center gap-2 group"
                                 >
-                                    <div className="w-11 h-11 bg-[#0088cc] text-white rounded-[16px] flex items-center justify-center shadow-lg shadow-sky-100/50 dark:shadow-sky-900/20 group-hover:-translate-y-1 transition-all">
+                                    <div className="w-11 h-11 bg-[#0088cc] text-white rounded-[16px] flex items-center justify-center shadow-lg shadow-blue-100/50 dark:shadow-blue-900/20 group-hover:-translate-y-1 transition-all">
                                         <Send className="w-5 h-5 fill-white" />
                                     </div>
                                     <span className="text-[9px] font-black text-gray-500 uppercase tracking-wider">
@@ -2919,7 +3028,7 @@ export default function NoteDetailPage() {
                                         type="text"
                                         readOnly
                                         value={window.location.href}
-                                        className="w-full pl-11 pr-24 py-3.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl text-[12.5px] font-bold text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-4 focus:ring-indigo-500/5 focus:border-indigo-400 transition-all"
+                                        className="w-full pl-11 pr-24 py-3.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl text-[12.5px] font-bold text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-4 focus:ring-blue-500/5 focus:border-blue-400 transition-all"
                                     />
                                     <button
                                         onClick={() => {
@@ -2931,7 +3040,7 @@ export default function NoteDetailPage() {
                                                 "success",
                                             );
                                         }}
-                                        className="absolute right-2 top-2 bottom-2 px-4 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-wider rounded-xl hover:bg-indigo-700 transition-all shadow-md shadow-indigo-100 dark:shadow-none active:scale-95"
+                                        className="absolute right-2 top-2 bottom-2 px-4 bg-blue-600 text-white text-[10px] font-black uppercase tracking-wider rounded-xl hover:bg-blue-700 transition-all shadow-md shadow-blue-100 dark:shadow-none active:scale-95"
                                     >
                                         {t("note_detail.copy_btn")}
                                     </button>

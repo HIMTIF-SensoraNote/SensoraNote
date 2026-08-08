@@ -32,8 +32,8 @@ export default function BlogPage() {
                 <div className="max-w-xl mx-auto px-5">
                     {/* Hero Section */}
                     <div className="text-center mb-10 mt-6">
-                        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-cyan-50 dark:bg-cyan-500/10 mb-6 border border-cyan-100 dark:border-cyan-500/20">
-                            <PenTool className="w-10 h-10 text-cyan-600 dark:text-cyan-400" />
+                        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-50 dark:bg-blue-500/10 mb-6 border border-blue-100 dark:border-blue-500/20">
+                            <PenTool className="w-10 h-10 text-blue-600 dark:text-blue-400" />
                         </div>
                         <h2 className="font-['Lexend_Deca'] font-extrabold text-2xl text-gray-900 dark:text-gray-100 mb-3">
                             {t("blog_page.hero_title") || "Blog SensoraNote"}

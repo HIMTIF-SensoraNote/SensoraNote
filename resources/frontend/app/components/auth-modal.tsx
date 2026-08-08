@@ -46,7 +46,7 @@ function AuthModalSelect({ value, onChange, options, icon, inputClass }: AuthMod
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className={`${inputClass} !pl-10 !text-[13px] font-bold text-left flex items-center justify-between cursor-pointer ${isOpen ? 'ring-4 ring-[#5D5CE6]/20 border-[#5D5CE6]/40 bg-[#0c0a1a]' : ''}`}
+          className={`${inputClass} !pl-10 !text-[13px] font-bold text-left flex items-center justify-between cursor-pointer ${isOpen ? 'ring-4 ring-[#1d4ed8]/20 border-[#1d4ed8]/40 bg-[#0c0a1a]' : ''}`}
         >
           <span className="truncate">{selectedOption?.label || (t("auth_modal.select_placeholder") !== "auth_modal.select_placeholder" ? t("auth_modal.select_placeholder") : "Pilih...")}</span>
           <ChevronDown className="w-4 h-4 text-slate-400 transition-transform duration-300" />
@@ -73,7 +73,7 @@ function AuthModalSelect({ value, onChange, options, icon, inputClass }: AuthMod
                   }}
                   className={`w-full text-left px-3 py-2.5 rounded-xl font-['Manrope'] text-[13px] font-bold transition-colors flex items-center justify-between ${
                     value === option.value 
-                      ? 'bg-[#5D5CE6]/20 text-[#8B5CF6]' 
+                      ? 'bg-[#1d4ed8]/20 text-[#2563eb]' 
                       : 'text-gray-300 hover:bg-white/5'
                   }`}
                 >
@@ -168,9 +168,9 @@ export function AuthModal({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
   if (!isOpen) return null;
 
   // PREMIUM INPUT STYLING (Apple / Chronicle Aesthetic)
-  const inputClass = "w-full pl-12 pr-4 py-3.5 bg-[#0c0a1a] border border-white/5 rounded-2xl font-['Manrope'] text-[15px] text-white transition-all focus:outline-none focus:ring-4 focus:ring-[#5D5CE6]/20 focus:border-[#8B5CF6]/40 placeholder:text-white/70 hover:bg-[#0f0d22]";
+  const inputClass = "w-full pl-12 pr-4 py-3.5 bg-[#0c0a1a] border border-white/5 rounded-2xl font-['Manrope'] text-[15px] text-white transition-all focus:outline-none focus:ring-4 focus:ring-[#1d4ed8]/20 focus:border-[#2563eb]/40 placeholder:text-white/70 hover:bg-[#0f0d22]";
   const labelClass = "block text-[13px] font-['Lexend_Deca'] font-bold text-gray-300 pl-1 mb-2 tracking-wide";
-  const iconClass = "absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-slate-400 group-focus-within:text-[#8B5CF6] transition-colors duration-300";
+  const iconClass = "absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-slate-400 group-focus-within:text-[#2563eb] transition-colors duration-300";
 
   return (
     <AnimatePresence>
@@ -196,15 +196,15 @@ export function AuthModal({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
               className="bg-[#06050e]/95 backdrop-blur-2xl border border-white/5 rounded-[2.5rem] shadow-[0_0_80px_-15px_rgba(0,0,0,0.8)] w-full max-w-[480px] max-h-[90vh] flex flex-col relative overflow-hidden"
             >
               {/* Premium Glow Accents */}
-              <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#5D5CE6]/20 rounded-full blur-[80px] pointer-events-none"></div>
-              <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#8B5CF6]/20 rounded-full blur-[80px] pointer-events-none"></div>
+              <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#1d4ed8]/20 rounded-full blur-[80px] pointer-events-none"></div>
+              <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-[#2563eb]/20 rounded-full blur-[80px] pointer-events-none"></div>
 
               {/* Close Button */}
               <button
                 onClick={onClose}
                 className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all z-50 group border border-white/5 backdrop-blur-sm"
               >
-                <X className="w-4 h-4 text-gray-400 group-hover:rotate-90 group-hover:text-[#8B5CF6] transition-all duration-300" strokeWidth={2.5} />
+                <X className="w-4 h-4 text-gray-400 group-hover:rotate-90 group-hover:text-[#2563eb] transition-all duration-300" strokeWidth={2.5} />
               </button>
 
               {/* Content Scrollable Area */}
@@ -280,7 +280,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                               <div className="space-y-1.5">
                                 <label className={labelClass}>{t("auth_modal.username") !== "auth_modal.username" ? t("auth_modal.username") : "Username"}</label>
                                 <div className="relative group">
-                                  <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-slate-400 group-focus-within:text-[#8B5CF6] transition-colors">@</span>
+                                  <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-slate-400 group-focus-within:text-[#2563eb] transition-colors">@</span>
                                   <input
                                     type="text" name="username" value={formData.username}
                                     onChange={(e) => setFormData(prev => ({ ...prev, username: e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, '') }))}
@@ -352,7 +352,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                             <button
                               type="button"
                               onClick={() => setShowPassword(!showPassword)}
-                              className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#8B5CF6] transition-colors focus:outline-none"
+                              className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#2563eb] transition-colors focus:outline-none"
                             >
                               {showPassword ? <EyeOff className="w-[18px] h-[18px]" strokeWidth={2.5} /> : <Eye className="w-[18px] h-[18px]" strokeWidth={2.5} />}
                             </button>
@@ -365,7 +365,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                             <label className="flex items-center cursor-pointer group">
                               <div className="relative flex items-center justify-center">
                                 <input type="checkbox" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} className="peer sr-only" />
-                                <div className="w-5 h-5 border-2 border-white/10 rounded-md peer-checked:bg-gradient-to-tr peer-checked:from-[#5D5CE6] peer-checked:to-[#8B5CF6] peer-checked:border-transparent transition-colors flex items-center justify-center">
+                                <div className="w-5 h-5 border-2 border-white/10 rounded-md peer-checked:bg-gradient-to-tr peer-checked:from-[#1d4ed8] peer-checked:to-[#2563eb] peer-checked:border-transparent transition-colors flex items-center justify-center">
                                   <CheckCircle className={`w-3.5 h-3.5 text-white transition-transform duration-200 peer-checked:scale-100 ${rememberMe ? 'scale-100' : 'scale-0'}`} strokeWidth={3} />
                                 </div>
                               </div>
@@ -375,7 +375,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                             </label>
                             <button 
                               type="button" onClick={() => setActiveTab('forgot')} 
-                              className="text-[13px] text-[#8B5CF6] hover:text-[#5D5CF6] font-bold transition-colors"
+                              className="text-[13px] text-[#2563eb] hover:text-[#5D5CF6] font-bold transition-colors"
                             >
                               {t("auth_modal.forgot_password") !== "auth_modal.forgot_password" ? t("auth_modal.forgot_password") : "Lupa Password?"}
                             </button>
@@ -386,7 +386,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                         <div className="pt-4">
                           <button
                             type="submit" disabled={isSubmitting}
-                            className="w-full bg-gradient-to-r from-[#5D5CE6] to-[#8B5CF6] text-white hover:opacity-90 py-4 rounded-2xl font-['Lexend_Deca'] font-extrabold text-[15px] shadow-[0_4px_20px_-2px_rgba(93,92,230,0.3)] hover:shadow-2xl transition-all active:scale-[0.98] flex items-center justify-center gap-2"
+                            className="w-full bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] text-white hover:opacity-90 py-4 rounded-2xl font-['Lexend_Deca'] font-extrabold text-[15px] shadow-[0_4px_20px_-2px_rgba(93,92,230,0.3)] hover:shadow-2xl transition-all active:scale-[0.98] flex items-center justify-center gap-2"
                           >
                             {isSubmitting ? (
                               <Loader2 className="w-5 h-5 animate-spin" />
@@ -417,17 +417,17 @@ export function AuthModal({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                               className="flex items-center justify-center gap-3 py-3.5 bg-[#0c0a1a] border border-white/5 rounded-2xl hover:bg-[#0f0d22] transition-colors active:scale-95 group w-full"
                             >
                               <svg className="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                              <span className="font-['Lexend_Deca'] font-bold text-gray-300 group-hover:text-[#8B5CF6] transition-colors">{t("auth_modal.continue_with_google") !== "auth_modal.continue_with_google" ? t("auth_modal.continue_with_google") : "Lanjutkan dengan Google"}</span>
+                              <span className="font-['Lexend_Deca'] font-bold text-gray-300 group-hover:text-[#2563eb] transition-colors">{t("auth_modal.continue_with_google") !== "auth_modal.continue_with_google" ? t("auth_modal.continue_with_google") : "Lanjutkan dengan Google"}</span>
                             </button>
                           </div>
                           
                           <div className="text-center text-[12px] text-gray-400 mt-6 leading-relaxed">
                             {t("auth_modal.terms_prefix") !== "auth_modal.terms_prefix" ? t("auth_modal.terms_prefix") : "Dengan melanjutkan, Anda menyetujui"}{' '}
-                            <Link to="/terms" onClick={onClose} className="font-semibold text-[#8B5CF6] hover:text-[#5D5CE6] hover:underline transition-colors">
+                            <Link to="/terms" onClick={onClose} className="font-semibold text-[#2563eb] hover:text-[#1d4ed8] hover:underline transition-colors">
                               {t("auth_modal.terms") !== "auth_modal.terms" ? t("auth_modal.terms") : "Syarat & Ketentuan"}
                             </Link>
                             {' '}{t("auth_modal.terms_and") !== "auth_modal.terms_and" ? t("auth_modal.terms_and") : "serta"}{' '}
-                            <Link to="/privacy" onClick={onClose} className="font-semibold text-[#8B5CF6] hover:text-[#5D5CE6] hover:underline transition-colors">
+                            <Link to="/privacy" onClick={onClose} className="font-semibold text-[#2563eb] hover:text-[#1d4ed8] hover:underline transition-colors">
                               {t("auth_modal.privacy") !== "auth_modal.privacy" ? t("auth_modal.privacy") : "Kebijakan Privasi"}
                             </Link>
                           </div>
@@ -446,7 +446,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                     >
                       <div className="text-center mb-10">
                         <div className="inline-flex items-center justify-center w-16 h-16 bg-[#0c0a1a] rounded-full mb-6 border border-white/5">
-                          <Sparkles className="w-8 h-8 text-[#8B5CF6]" />
+                          <Sparkles className="w-8 h-8 text-[#2563eb]" />
                         </div>
                         <h3 className="font-['Lexend_Deca'] text-3xl font-extrabold text-white mb-3">{t("auth_modal.forgot_password") !== "auth_modal.forgot_password" ? t("auth_modal.forgot_password") : "Lupa Password?"}</h3>
                         <p className="font-['Manrope'] text-[15px] text-gray-400 font-medium leading-relaxed max-w-sm mx-auto">
@@ -484,7 +484,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                               setIsSubmitting(false);
                             }
                           }}
-                          className="w-full bg-gradient-to-r from-[#5D5CE6] to-[#8B5CF6] text-white hover:opacity-90 py-4 rounded-2xl font-['Lexend_Deca'] font-extrabold text-[15px] shadow-[0_4px_20px_-2px_rgba(93,92,230,0.3)] hover:shadow-2xl transition-all active:scale-[0.98]"
+                          className="w-full bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] text-white hover:opacity-90 py-4 rounded-2xl font-['Lexend_Deca'] font-extrabold text-[15px] shadow-[0_4px_20px_-2px_rgba(93,92,230,0.3)] hover:shadow-2xl transition-all active:scale-[0.98]"
                         >
                           {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin mx-auto" /> : (t("auth_modal.send_reset_link") !== "auth_modal.send_reset_link" ? t("auth_modal.send_reset_link") : "Kirim Tautan Reset")}
                         </button>
@@ -492,7 +492,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                         <div className="text-center pt-2">
                           <button
                             type="button" onClick={() => setActiveTab('login')}
-                            className="text-[14px] font-bold text-gray-400 hover:text-[#8B5CF6] transition-colors font-['Lexend_Deca']"
+                            className="text-[14px] font-bold text-gray-400 hover:text-[#2563eb] transition-colors font-['Lexend_Deca']"
                           >
                             {t("auth_modal.back_to_login") !== "auth_modal.back_to_login" ? t("auth_modal.back_to_login") : "Kembali ke Login"}
                           </button>

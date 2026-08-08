@@ -16,9 +16,14 @@ use App\Http\Controllers\SertifikasiController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\TranslationController;
 use App\Models\Follow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+// Auto-Translation Endpoints
+Route::get('/translations/{lang}', [TranslationController::class, 'getStaticTranslations']);
+Route::post('/translate-content', [TranslationController::class, 'translateDynamicContent']);
 
 Route::post('/v1/register', [AuthController::class, 'register'])->middleware('throttle:5,1');
 Route::post('/v1/login', [AuthController::class, 'login'])->middleware('throttle:10,1');

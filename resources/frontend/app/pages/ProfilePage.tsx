@@ -541,7 +541,7 @@ export default function ProfilePage() {
                                     </span>
                                 )}
                                 {currentUser.role === "admin" && (
-                                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 font-bold text-[12px] border border-purple-100 dark:border-purple-500/20">
+                                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold text-[12px] border border-blue-100 dark:border-blue-500/20">
                                         <Shield className="w-3.5 h-3.5" /> {t('profile.admin_badge') || 'Admin'}
                                     </span>
                                 )}
@@ -610,8 +610,8 @@ export default function ProfilePage() {
                         {currentUser.role !== "pakar" && currentUser.role !== "admin" && (
                             <div className="bg-gray-50 dark:bg-white/5 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 mb-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-indigo-100 dark:bg-indigo-500/20 rounded-xl flex items-center justify-center">
-                                        <Sparkles className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-500/20 rounded-xl flex items-center justify-center">
+                                        <Sparkles className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                                     </div>
                                     <div className="text-left">
                                         <h3 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 text-[14px]">
@@ -622,7 +622,7 @@ export default function ProfilePage() {
                                 </div>
                                 <button
                                     onClick={() => setApplyModalOpen(true)}
-                                    className="w-full sm:w-auto bg-slate-900 dark:bg-indigo-600 hover:bg-black dark:hover:bg-indigo-700 text-white font-bold text-[13px] px-6 py-2 rounded-full transition-all shadow-sm dark:shadow-none"
+                                    className="w-full sm:w-auto bg-slate-900 dark:bg-blue-600 hover:bg-black dark:hover:bg-blue-700 text-white font-bold text-[13px] px-6 py-2 rounded-full transition-all shadow-sm dark:shadow-none"
                                 >
                                     {t('profile.register')}
                                 </button>
@@ -836,7 +836,7 @@ export default function ProfilePage() {
                                                     />
                                                 )}
                                                 <div className="absolute top-2 left-2 bg-white/90 dark:bg-[#13111C]/90 backdrop-blur-md text-gray-800 dark:text-gray-200 text-[10px] font-['Lexend_Deca'] font-bold px-2.5 py-1 rounded-lg shadow-sm flex items-center gap-1.5 border border-white/20">
-                                                    <MessageCircle className="w-3 h-3 text-indigo-500" /> {t('profile.discussion_label')}
+                                                    <MessageCircle className="w-3 h-3 text-blue-500" /> {t('profile.discussion_label')}
                                                 </div>
                                             </div>
 
@@ -876,7 +876,7 @@ export default function ProfilePage() {
                                                             </DropdownMenuTrigger>
                                                             <DropdownMenuContent align="end" className="w-40 font-['Manrope'] rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 dark:border-white/10 p-2">
                                                                 <DropdownMenuItem 
-                                                                    className="cursor-pointer text-slate-700 dark:text-slate-300 font-semibold focus:bg-indigo-50 focus:text-indigo-600 dark:focus:bg-indigo-500/10 dark:focus:text-indigo-400 rounded-xl py-2.5"
+                                                                    className="cursor-pointer text-slate-700 dark:text-slate-300 font-semibold focus:bg-blue-50 focus:text-blue-600 dark:focus:bg-blue-500/10 dark:focus:text-blue-400 rounded-xl py-2.5"
                                                                     onClick={(e) => {
                                                                         e.stopPropagation();
                                                                         navigate(`/note/${activity.post_id}?edit_comment=${activity.id}#comment-${activity.id}`);

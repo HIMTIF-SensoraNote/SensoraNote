@@ -3,7 +3,7 @@ export const HIGHLIGHT_COLORS = [
   { id: 'green', color: 'var(--hl-green)', label: 'Hijau' },
   { id: 'blue', color: 'var(--hl-blue)', label: 'Biru' },
   { id: 'red', color: 'var(--hl-red)', label: 'Merah' },
-  { id: 'purple', color: 'var(--hl-purple)', label: 'Ungu' },
+  { id: 'blue', color: 'var(--hl-blue)', label: 'Ungu' },
   { id: 'orange', color: 'var(--hl-orange)', label: 'Oranye' },
 ];
 

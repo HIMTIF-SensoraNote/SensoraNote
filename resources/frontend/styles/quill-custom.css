@@ -42,13 +42,13 @@
 .ql-toolbar button:hover .ql-stroke,
 .ql-toolbar button:focus .ql-stroke,
 .ql-toolbar button.ql-active .ql-stroke {
-  stroke: #5D5CE6 !important;
+  stroke: #1d4ed8 !important;
 }
 
 .ql-toolbar button:hover .ql-fill,
 .ql-toolbar button:focus .ql-fill,
 .ql-toolbar button.ql-active .ql-fill {
-  fill: #5D5CE6 !important;
+  fill: #1d4ed8 !important;
 }
 
 .ql-snow.ql-toolbar button:hover,
@@ -57,13 +57,13 @@
 .ql-snow .ql-toolbar button:focus,
 .ql-snow.ql-toolbar button.ql-active,
 .ql-snow .ql-toolbar button.ql-active {
-  background: #5D5CE6 !important;
+  background: #1d4ed8 !important;
   background-opacity: 0.1 !important;
   border-radius: 8px;
 }
 
 .ql-snow a {
-  color: #5D5CE6 !important;
+  color: #1d4ed8 !important;
 }
 
 /* Quill content styling */

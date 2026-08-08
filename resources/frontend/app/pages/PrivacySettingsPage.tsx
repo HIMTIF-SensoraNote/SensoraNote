@@ -106,7 +106,7 @@ export default function PrivacySettingsPage() {
                                 <div className="flex-1">
                                     <div className="flex items-center gap-2 mb-1">
                                         {isPrivate ? (
-                                            <Lock className="w-4 h-4 text-indigo-600 dark:text-primary" />
+                                            <Lock className="w-4 h-4 text-blue-600 dark:text-primary" />
                                         ) : (
                                             <Globe className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                                         )}

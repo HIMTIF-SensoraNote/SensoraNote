@@ -160,7 +160,7 @@ export default function NotificationDetailPage() {
                     </p>
                     <button 
                         onClick={() => navigate(-1)}
-                        className="px-6 py-2.5 bg-indigo-600 text-white rounded-full font-bold text-sm hover:bg-indigo-700 transition-colors"
+                        className="px-6 py-2.5 bg-blue-600 text-white rounded-full font-bold text-sm hover:bg-blue-700 transition-colors"
                     >
                         {t("notif_detail.back")}
                     </button>
@@ -211,11 +211,11 @@ export default function NotificationDetailPage() {
                             {/* Sender Info */}
                             <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-white/5 rounded-2xl">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-500/20 flex items-center justify-center shrink-0 border border-indigo-200 dark:border-indigo-500/30 overflow-hidden">
+                                    <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-500/20 flex items-center justify-center shrink-0 border border-blue-200 dark:border-blue-500/30 overflow-hidden">
                                         {notif.actor?.avatar ? (
                                             <img src={notif.actor.avatar} alt={notif.actor.name} className="w-full h-full object-cover" />
                                         ) : (
-                                            <ShieldCheck className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                                            <ShieldCheck className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                                         )}
                                     </div>
                                     <div>

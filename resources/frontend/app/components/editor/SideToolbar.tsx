@@ -309,7 +309,7 @@ export function SideToolbar({ quillRef, onFormulaClick }: SideToolbarProps) {
     { id: 'image', icon: ImageIcon, label: t('editor.image'), color: 'text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-500/10' },
     { id: 'video', icon: Film, label: t('editor.video'), color: 'text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-500/10' },
     { id: 'code', icon: Terminal, label: t('editor.code'), color: 'text-orange-600 hover:bg-orange-50 dark:hover:bg-orange-500/10' },
-    { id: 'formula', icon: Calculator, label: t('editor.formula'), color: 'text-purple-600 hover:bg-purple-50 dark:hover:bg-purple-500/10' },
+    { id: 'formula', icon: Calculator, label: t('editor.formula'), color: 'text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-500/10' },
     { id: 'divider', icon: Minus, label: t('editor.divider'), color: 'text-slate-500 hover:bg-slate-50 dark:hover:bg-white/5' },
     { id: 'quote', icon: Quote, label: t('editor.quote'), color: 'text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-500/10' },
   ];
@@ -317,7 +317,7 @@ export function SideToolbar({ quillRef, onFormulaClick }: SideToolbarProps) {
   const btnClass = (active: boolean) =>
     `relative flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-150 shrink-0 ${
       active
-        ? 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400'
+        ? 'bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400'
         : 'text-slate-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-slate-100 dark:hover:bg-white/10'
     }`;
 
@@ -429,8 +429,8 @@ export function SideToolbar({ quillRef, onFormulaClick }: SideToolbarProps) {
               onClick={() => { setExpandedPlus(v => !v); setShowColorPicker(false); }}
               className={`flex items-center gap-1 px-2.5 h-8 rounded-lg text-[12px] font-['Lexend_Deca'] font-bold transition-all duration-200 shrink-0 ${
                 expandedPlus
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                  : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10'
+                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
+                  : 'text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10'
               }`}
               title={t('editor.insert_block_title')}
             >
@@ -453,7 +453,7 @@ export function SideToolbar({ quillRef, onFormulaClick }: SideToolbarProps) {
                 key={c.id}
                 onClick={() => applyHighlight(c.color)}
                 className={`w-6 h-6 rounded-full border-2 transition-all hover:scale-125 active:scale-100 ${
-                  formats.background === c.color ? 'border-indigo-500 scale-110 shadow-sm shadow-indigo-400/30' : 'border-transparent'
+                  formats.background === c.color ? 'border-blue-500 scale-110 shadow-sm shadow-blue-400/30' : 'border-transparent'
                 }`}
                 style={{ background: c.color }}
                 title={c.label}

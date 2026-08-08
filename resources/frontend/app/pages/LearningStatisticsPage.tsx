@@ -239,7 +239,7 @@ const LearningStatisticsPage = () => {
                  <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-1">{new Intl.DateTimeFormat(language, { month: 'long', year: 'numeric' }).format(new Date(displayYear, displayMonth))} • {t('stats.progress')}</p>
               </div>
            </div>
-           <button onClick={handleShare} className="w-10 h-10 rounded-full bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-primary transition-colors active:scale-95">
+           <button onClick={handleShare} className="w-10 h-10 rounded-full bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-primary transition-colors active:scale-95">
               <Share2 size={18} />
            </button>
         </div>
@@ -256,7 +256,7 @@ const LearningStatisticsPage = () => {
                     <h2 className="text-xl font-['Lexend_Deca'] font-bold text-slate-800 dark:text-slate-100">{t('stats.summary_today')}</h2>
                     <button 
                       onClick={() => setIsGoalModalOpen(true)}
-                      className="text-[13px] font-bold text-indigo-600 hover:text-indigo-700 transition-colors"
+                      className="text-[13px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
                     >
                        {t('stats.set_target')}
                     </button>
@@ -265,9 +265,9 @@ const LearningStatisticsPage = () => {
                  <div className="grid grid-cols-2 gap-4">
                     {/* PROGRESS CARD */}
                     <div className="col-span-1 lg:col-span-1 bg-white dark:bg-[#1C1A29] rounded-[24px] p-4 sm:p-6 border border-slate-200 dark:border-white/5 shadow-sm dark:shadow-none hover:shadow-md transition-shadow group relative overflow-hidden flex flex-col justify-between">
-                       <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50 dark:bg-indigo-500/10 rounded-bl-full -z-10 opacity-50 group-hover:scale-110 transition-transform duration-500" />
+                       <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 dark:bg-blue-500/10 rounded-bl-full -z-10 opacity-50 group-hover:scale-110 transition-transform duration-500" />
                        <div className="flex items-center justify-between mb-6">
-                          <div className="w-10 h-10 bg-indigo-100 dark:bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
+                          <div className="w-10 h-10 bg-blue-100 dark:bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
                              <Target size={20} />
                           </div>
                           <span className="text-[12px] sm:text-[13px] font-bold text-slate-500 dark:text-slate-400 text-right">{Math.round(((stats?.summary?.today_duration || 0) / (stats?.daily_target || 1)) * 100) || 0}%</span>
@@ -280,7 +280,7 @@ const LearningStatisticsPage = () => {
 
                        <div className="w-full h-2 bg-slate-100 dark:bg-white/10 rounded-full overflow-hidden mb-2 mt-auto">
                           <div 
-                            className="h-full bg-indigo-600 rounded-full transition-all duration-1000" 
+                            className="h-full bg-blue-600 rounded-full transition-all duration-1000" 
                             style={{ width: `${Math.min(((stats?.summary?.today_duration || 0) / (stats?.daily_target || 1)) * 100, 100) || 0}%` }}                          
                             />
                        </div>
@@ -365,7 +365,7 @@ const LearningStatisticsPage = () => {
                                     return (
                                        <div key={day} className={`aspect-square rounded-md flex items-center justify-center text-[11px] font-semibold relative
                                           ${isToday && isStreak ? 'bg-white text-orange-500 shadow-sm' : 
-                                            isToday ? 'bg-white text-indigo-600 shadow-sm' : 
+                                            isToday ? 'bg-white text-blue-600 shadow-sm' : 
                                             isStreak ? 'bg-white/20 text-white' : 
                                             'bg-black/5 text-white/40'}
                                        `}>
@@ -426,7 +426,7 @@ const LearningStatisticsPage = () => {
                              {activeChartData.map((entry: any, index: number) => (
                                 <Cell 
                                   key={`cell-${index}`} 
-                                  fill="#5D5CE6" 
+                                  fill="#1d4ed8" 
                                   className="hover:opacity-80 transition-opacity cursor-pointer"
                                 />
                              ))}
@@ -523,9 +523,9 @@ const LearningStatisticsPage = () => {
                  <div className="flex items-center justify-between mb-5">
                     <h3 className="text-[16px] font-['Lexend_Deca'] font-bold text-slate-800 dark:text-slate-100">{t('stats.calendar_title')}</h3>
                     <div className="flex items-center gap-2">
-                       <button onClick={() => setMonthOffset(m => m - 1)} className="p-1 text-slate-400 hover:text-indigo-600 dark:hover:text-primary transition-colors rounded-full hover:bg-indigo-50 dark:hover:bg-primary/10"><ChevronRight size={16} className="rotate-180" /></button>
+                       <button onClick={() => setMonthOffset(m => m - 1)} className="p-1 text-slate-400 hover:text-blue-600 dark:hover:text-primary transition-colors rounded-full hover:bg-blue-50 dark:hover:bg-primary/10"><ChevronRight size={16} className="rotate-180" /></button>
                        <span className="text-[12px] font-bold text-slate-500 dark:text-slate-400 min-w-[70px] text-center">{new Intl.DateTimeFormat(language, { month: 'long' }).format(displayDate)}</span>
-                       <button onClick={() => setMonthOffset(m => m + 1)} className="p-1 text-slate-400 hover:text-indigo-600 dark:hover:text-primary transition-colors rounded-full hover:bg-indigo-50 dark:hover:bg-primary/10"><ChevronRight size={16} /></button>
+                       <button onClick={() => setMonthOffset(m => m + 1)} className="p-1 text-slate-400 hover:text-blue-600 dark:hover:text-primary transition-colors rounded-full hover:bg-blue-50 dark:hover:bg-primary/10"><ChevronRight size={16} /></button>
                     </div>
                  </div>
                  <div className="grid grid-cols-7 gap-1.5 text-center mb-2">
@@ -545,7 +545,7 @@ const LearningStatisticsPage = () => {
                        return (
                           <div key={day} className={`aspect-square rounded-lg flex items-center justify-center text-[12px] font-semibold relative
                              ${isToday && isStreak ? 'bg-orange-500 text-white shadow-md' : 
-                               isToday ? 'bg-indigo-600 text-white shadow-md' : 
+                               isToday ? 'bg-blue-600 text-white shadow-md' : 
                                isStreak ? 'bg-orange-100 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400' : 
                                'bg-slate-50 dark:bg-white/5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/10 cursor-pointer'}
                           `}>
@@ -584,8 +584,8 @@ const LearningStatisticsPage = () => {
             </button>
             
             <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 bg-indigo-50 rounded-[28px] flex items-center justify-center mb-6">
-                <Target className="text-indigo-600 w-8 h-8" />
+              <div className="w-16 h-16 bg-blue-50 rounded-[28px] flex items-center justify-center mb-6">
+                <Target className="text-blue-600 w-8 h-8" />
               </div>
               
               <h3 className="font-['Lexend_Deca'] text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2 tracking-tight">{t('stats.set_goal_title')}</h3>
@@ -600,11 +600,11 @@ const LearningStatisticsPage = () => {
                   <div className="flex flex-col items-center gap-3">
                     <button 
                       onClick={() => setTempHours((prev: number) => (prev + 1) % 24)}
-                      className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-primary transition-all"
+                      className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-400 hover:bg-blue-50 dark:hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-primary transition-all"
                     >
                       <ChevronUp size={20} />
                     </button>
-                    <div className="w-20 h-24 sm:w-24 sm:h-28 bg-indigo-50/50 dark:bg-indigo-500/5 rounded-[28px] border-2 border-indigo-100/50 dark:border-indigo-500/20 relative overflow-hidden group focus-within:border-indigo-400 transition-colors flex flex-col items-center justify-center">
+                    <div className="w-20 h-24 sm:w-24 sm:h-28 bg-blue-50/50 dark:bg-blue-500/5 rounded-[28px] border-2 border-blue-100/50 dark:border-blue-500/20 relative overflow-hidden group focus-within:border-blue-400 transition-colors flex flex-col items-center justify-center">
                        <input 
                          type="text"
                          value={tempHours.toString().padStart(2, '0')}
@@ -613,13 +613,13 @@ const LearningStatisticsPage = () => {
                            setTempHours(Math.min(val, 23));
                          }}
                          style={{ textAlign: 'center' }}
-                         className="w-full bg-transparent text-4xl sm:text-5xl font-['Lexend_Deca'] font-bold text-indigo-600 tabular-nums focus:outline-none leading-none mt-1 px-0 tracking-normal"
+                         className="w-full bg-transparent text-4xl sm:text-5xl font-['Lexend_Deca'] font-bold text-blue-600 tabular-nums focus:outline-none leading-none mt-1 px-0 tracking-normal"
                        />
-                       <div className="text-[9px] font-bold text-indigo-300 uppercase tracking-[0.2em] pointer-events-none mt-1">{t('stats.hours')}</div>
+                       <div className="text-[9px] font-bold text-blue-300 uppercase tracking-[0.2em] pointer-events-none mt-1">{t('stats.hours')}</div>
                     </div>
                     <button 
                       onClick={() => setTempHours((prev: number) => (prev - 1 + 24) % 24)}
-                      className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-primary transition-all"
+                      className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-400 hover:bg-blue-50 dark:hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-primary transition-all"
                     >
                       <ChevronDown size={20} />
                     </button>
@@ -627,19 +627,19 @@ const LearningStatisticsPage = () => {
 
                   {/* SEPARATOR */}
                   <div className="flex flex-col gap-2 relative z-10">
-                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                   </div>
 
                   {/* MINUTES COLUMN */}
                   <div className="flex flex-col items-center gap-3">
                     <button 
                       onClick={() => setTempMinutes((prev: number) => (prev + 5) % 60)}
-                      className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-primary transition-all"
+                      className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-400 hover:bg-blue-50 dark:hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-primary transition-all"
                     >
                       <ChevronUp size={20} />
                     </button>
-                    <div className="w-20 h-24 sm:w-24 sm:h-28 bg-indigo-50/50 dark:bg-indigo-500/5 rounded-[28px] border-2 border-indigo-100/50 dark:border-indigo-500/20 relative overflow-hidden focus-within:border-indigo-400 transition-colors flex flex-col items-center justify-center">
+                    <div className="w-20 h-24 sm:w-24 sm:h-28 bg-blue-50/50 dark:bg-blue-500/5 rounded-[28px] border-2 border-blue-100/50 dark:border-blue-500/20 relative overflow-hidden focus-within:border-blue-400 transition-colors flex flex-col items-center justify-center">
                        <input 
                          type="text"
                          value={tempMinutes.toString().padStart(2, '0')}
@@ -648,13 +648,13 @@ const LearningStatisticsPage = () => {
                            setTempMinutes(Math.min(val, 59));
                          }}
                          style={{ textAlign: 'center' }}
-                         className="w-full bg-transparent text-4xl sm:text-5xl font-['Lexend_Deca'] font-bold text-indigo-600 tabular-nums focus:outline-none leading-none mt-1 px-0 tracking-normal"
+                         className="w-full bg-transparent text-4xl sm:text-5xl font-['Lexend_Deca'] font-bold text-blue-600 tabular-nums focus:outline-none leading-none mt-1 px-0 tracking-normal"
                        />
-                       <div className="text-[9px] font-bold text-indigo-300 uppercase tracking-[0.2em] pointer-events-none mt-1">{t('stats.mins')}</div>
+                       <div className="text-[9px] font-bold text-blue-300 uppercase tracking-[0.2em] pointer-events-none mt-1">{t('stats.mins')}</div>
                     </div>
                     <button 
                       onClick={() => setTempMinutes((prev: number) => (prev - 5 + 60) % 60)}
-                      className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-primary transition-all"
+                      className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-400 hover:bg-blue-50 dark:hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-primary transition-all"
                     >
                       <ChevronDown size={20} />
                     </button>
@@ -686,7 +686,7 @@ const LearningStatisticsPage = () => {
         console.error("Gagal nyimpen target:", error);
     }
 }}
-                      className="w-full py-5 bg-indigo-600 text-white rounded-[24px] text-[13px] font-bold uppercase tracking-widest shadow-xl shadow-indigo-100 dark:shadow-none hover:-translate-y-1 hover:bg-indigo-700 transition-all duration-300"
+                      className="w-full py-5 bg-blue-600 text-white rounded-[24px] text-[13px] font-bold uppercase tracking-widest shadow-xl shadow-blue-100 dark:shadow-none hover:-translate-y-1 hover:bg-blue-700 transition-all duration-300"
                    >
                       {t('stats.save_target')}
                    </button>
@@ -707,8 +707,8 @@ const LearningStatisticsPage = () => {
       {showShareModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-md p-4 animate-in fade-in duration-300">
             <div className="bg-white dark:bg-[#1C1A29] rounded-[32px] w-full max-w-md max-h-[90vh] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] dark:shadow-[0_25px_70px_-10px_rgba(0,0,0,0.6)] overflow-hidden border border-white dark:border-white/5 transform animate-in zoom-in-95 slide-in-from-bottom-4 duration-300 flex flex-col">
-                <div className="bg-indigo-50 dark:bg-indigo-500/10 p-6 pb-5 text-center border-b border-indigo-100/50 dark:border-white/5 shrink-0">
-                    <div className="w-14 h-14 bg-white dark:bg-[#1C1A29] text-indigo-600 dark:text-primary rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-sm dark:shadow-none border border-indigo-200/30 dark:border-primary/20">
+                <div className="bg-blue-50 dark:bg-blue-500/10 p-6 pb-5 text-center border-b border-blue-100/50 dark:border-white/5 shrink-0">
+                    <div className="w-14 h-14 bg-white dark:bg-[#1C1A29] text-blue-600 dark:text-primary rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-sm dark:shadow-none border border-blue-200/30 dark:border-primary/20">
                         <Share2 className="w-7 h-7" strokeWidth={2.5} />
                     </div>
                     <h3 className="font-['Lexend_Deca'] font-extrabold text-xl text-gray-900 dark:text-gray-100 mb-1">
@@ -740,7 +740,7 @@ const LearningStatisticsPage = () => {
                             <span className="text-[9px] font-black text-gray-500 dark:text-gray-400 uppercase tracking-wider">FB</span>
                         </button>
                         <button onClick={() => window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(`Cek statistik belajarku di SensoraNote! Streak: ${stats?.summary?.current_streak || 0} hari.`)}`, "_blank")} className="flex flex-col items-center gap-2 group">
-                            <div className="w-11 h-11 bg-[#0088cc] text-white rounded-[16px] flex items-center justify-center shadow-lg shadow-sky-100/50 dark:shadow-sky-900/20 group-hover:-translate-y-1 transition-all">
+                            <div className="w-11 h-11 bg-[#0088cc] text-white rounded-[16px] flex items-center justify-center shadow-lg shadow-blue-100/50 dark:shadow-blue-900/20 group-hover:-translate-y-1 transition-all">
                                 <Send className="w-5 h-5 fill-white" />
                             </div>
                             <span className="text-[9px] font-black text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tele</span>
@@ -755,8 +755,8 @@ const LearningStatisticsPage = () => {
                             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-gray-400">
                                 <Link2 className="w-4 h-4" />
                             </div>
-                            <input type="text" readOnly value={window.location.href} className="w-full pl-11 pr-24 py-3.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl text-[12.5px] font-bold text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-4 focus:ring-indigo-500/5 focus:border-indigo-400 transition-all" />
-                            <button onClick={() => { navigator.clipboard.writeText(window.location.href); showToast("Link berhasil disalin!", "success"); }} className="absolute right-2 top-2 bottom-2 px-4 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-wider rounded-xl hover:bg-indigo-700 transition-all shadow-md shadow-indigo-100 active:scale-95">
+                            <input type="text" readOnly value={window.location.href} className="w-full pl-11 pr-24 py-3.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl text-[12.5px] font-bold text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-4 focus:ring-blue-500/5 focus:border-blue-400 transition-all" />
+                            <button onClick={() => { navigator.clipboard.writeText(window.location.href); showToast("Link berhasil disalin!", "success"); }} className="absolute right-2 top-2 bottom-2 px-4 bg-blue-600 text-white text-[10px] font-black uppercase tracking-wider rounded-xl hover:bg-blue-700 transition-all shadow-md shadow-blue-100 active:scale-95">
                                 {t('stats.copy')}
                             </button>
                         </div>

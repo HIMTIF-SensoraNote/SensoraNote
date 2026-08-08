@@ -42,7 +42,7 @@ export function PromptDialog({
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[400px] bg-white dark:bg-[#1C1A29] border-slate-200 dark:border-white/10 rounded-[32px] overflow-hidden p-0 gap-0 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
         <div className="p-8 pb-4 flex flex-col items-center text-center">
-          <div className="w-16 h-16 rounded-3xl flex items-center justify-center mb-6 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600">
+          <div className="w-16 h-16 rounded-3xl flex items-center justify-center mb-6 bg-blue-50 dark:bg-blue-500/10 text-blue-600">
             <MessageSquare className="w-8 h-8" />
           </div>
           
@@ -58,7 +58,7 @@ export function PromptDialog({
               value={value}
               onChange={(e) => setValue(e.target.value)}
               placeholder={placeholder}
-              className="w-full bg-gray-50 dark:bg-white/5 border-gray-200 dark:border-white/10 text-gray-900 dark:text-gray-100 rounded-2xl h-12 px-4 focus:ring-2 focus:ring-indigo-500/20 transition-all font-['Manrope']"
+              className="w-full bg-gray-50 dark:bg-white/5 border-gray-200 dark:border-white/10 text-gray-900 dark:text-gray-100 rounded-2xl h-12 px-4 focus:ring-2 focus:ring-blue-500/20 transition-all font-['Manrope']"
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   handleConfirm();
@@ -83,7 +83,7 @@ export function PromptDialog({
           <Button
             type="button"
             onClick={handleConfirm}
-            className="flex-1 h-12 rounded-2xl font-bold text-white shadow-lg transition-all font-['Lexend_Deca'] text-[13px] uppercase tracking-wider bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600/20"
+            className="flex-1 h-12 rounded-2xl font-bold text-white shadow-lg transition-all font-['Lexend_Deca'] text-[13px] uppercase tracking-wider bg-blue-600 hover:bg-blue-700 shadow-blue-600/20"
           >
             {confirmText}
           </Button>

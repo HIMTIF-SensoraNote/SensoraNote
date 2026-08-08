@@ -14,7 +14,7 @@ export default function DownloadAppPage() {
             {/* Background Decorations */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 <div className="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] rounded-full bg-primary/5 blur-[100px]" />
-                <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-indigo-500/5 blur-[100px]" />
+                <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-blue-500/5 blur-[100px]" />
             </div>
 
             <button 
@@ -26,7 +26,7 @@ export default function DownloadAppPage() {
             </button>
 
             <div className="relative z-10 flex flex-col items-center max-w-lg mx-auto text-center animate-in fade-in zoom-in duration-500">
-                <div className="w-24 h-24 mb-8 bg-white dark:bg-[#1C1A29] rounded-[32px] shadow-2xl shadow-indigo-500/10 border border-gray-100 dark:border-white/10 flex items-center justify-center relative">
+                <div className="w-24 h-24 mb-8 bg-white dark:bg-[#1C1A29] rounded-[32px] shadow-2xl shadow-blue-500/10 border border-gray-100 dark:border-white/10 flex items-center justify-center relative">
                     <ApplicationLogo className="w-14 h-14" />
                     <div className="absolute -bottom-2 -right-2 bg-amber-500 text-white text-[11px] font-black tracking-wider px-2.5 py-0.5 rounded-full border-2 border-white dark:border-[#1C1A29] shadow-sm">
                         DEV
@@ -42,9 +42,9 @@ export default function DownloadAppPage() {
                 </p>
 
                 <div className="w-full bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-3xl p-8 mb-10 flex flex-col items-center shadow-inner">
-                    <div className="w-14 h-14 bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 rounded-full flex items-center justify-center mb-5 relative">
+                    <div className="w-14 h-14 bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center mb-5 relative">
                         <Settings className="w-7 h-7 animate-spin" style={{ animationDuration: '3s' }} />
-                        <div className="absolute top-0 right-0 w-3 h-3 bg-indigo-400 rounded-full animate-ping" />
+                        <div className="absolute top-0 right-0 w-3 h-3 bg-blue-400 rounded-full animate-ping" />
                     </div>
                     <h3 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-white text-lg mb-6">
                         {t('download_app.status')}
@@ -73,7 +73,7 @@ export default function DownloadAppPage() {
 
                 <Link 
                     to="/home"
-                    className="h-[52px] px-8 bg-primary hover:bg-indigo-700 text-white rounded-full flex items-center justify-center font-['Lexend_Deca'] font-bold transition-all shadow-[0_4px_16px_rgba(93,92,230,0.3)] hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(93,92,230,0.4)]"
+                    className="h-[52px] px-8 bg-primary hover:bg-blue-700 text-white rounded-full flex items-center justify-center font-['Lexend_Deca'] font-bold transition-all shadow-[0_4px_16px_rgba(93,92,230,0.3)] hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(93,92,230,0.4)]"
                 >
                     {t('download_app.back_to_home')}
                 </Link>

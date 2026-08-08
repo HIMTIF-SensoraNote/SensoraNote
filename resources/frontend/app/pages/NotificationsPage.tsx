@@ -43,7 +43,7 @@ interface Notification {
 const getNotificationIcon = (type: string) => {
     switch (type) {
         case "sertifikasi":
-            return <Shield className="w-5 h-5 text-indigo-500" />;
+            return <Shield className="w-5 h-5 text-blue-500" />;
         case "report":
             return <AlertCircle className="w-5 h-5 text-rose-500" />;
         case "verifikasi":
@@ -53,7 +53,7 @@ const getNotificationIcon = (type: string) => {
         case "comment":
             return <MessageCircle className="w-5 h-5 text-blue-500" />;
         case "follow":
-            return <UserPlus className="w-5 h-5 text-purple-500" />;
+            return <UserPlus className="w-5 h-5 text-blue-500" />;
         default:
             return <Bell className="w-5 h-5 text-gray-500" />;
     }
@@ -62,7 +62,7 @@ const getNotificationIcon = (type: string) => {
 const getNotificationBg = (type: string) => {
     switch (type) {
         case "sertifikasi":
-            return "bg-indigo-50 border-indigo-100";
+            return "bg-blue-50 border-blue-100";
         case "report":
             return "bg-rose-50 border-rose-100";
         case "verifikasi":
@@ -72,7 +72,7 @@ const getNotificationBg = (type: string) => {
         case "comment":
             return "bg-blue-50 border-blue-100";
         case "follow":
-            return "bg-purple-50 border-purple-100";
+            return "bg-blue-50 border-blue-100";
         default:
             return "bg-gray-50 border-gray-100";
     }
@@ -217,16 +217,16 @@ export default function NotificationsPage() {
                                 {t('notifications.title')}
                             </h1>
                             <div className="flex items-center gap-2 mt-2 sm:mt-0 opacity-80 sm:opacity-100">
-                                <Bell className="w-5 h-5 text-indigo-500 animate-pulse" />
+                                <Bell className="w-5 h-5 text-blue-500 animate-pulse" />
                                 <span className="text-[13px] font-['Manrope'] font-medium text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-white/5 px-3 py-1.5 rounded-full border border-slate-200/50 dark:border-white/10">
-                                    {t('notifications.you_have')} <strong className="text-indigo-600 dark:text-indigo-400 mx-0.5">{unreadCount}</strong> {t('notifications.new_updates')}
+                                    {t('notifications.you_have')} <strong className="text-blue-600 dark:text-blue-400 mx-0.5">{unreadCount}</strong> {t('notifications.new_updates')}
                                 </span>
                             </div>
                         </div>
                         {unreadCount > 0 && (
                             <button
                                 onClick={handleMarkAllAsRead}
-                                className="flex items-center gap-2 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[13px] font-bold px-5 py-2 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition-colors"
+                                className="flex items-center gap-2 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[13px] font-bold px-5 py-2 rounded-full hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-colors"
                             >
                                 <Check className="w-[14px] h-[14px] mr-1.5" strokeWidth={2.5} />
                                 {t('notifications.mark_all_read')}
@@ -244,13 +244,13 @@ export default function NotificationsPage() {
                             className={cn(
                                 "relative px-4 sm:px-6 py-2.5 text-[14px] font-semibold font-['Manrope'] transition-all duration-300 rounded-full sm:rounded-none sm:rounded-t-xl overflow-hidden",
                                 filter === "all"
-                                    ? "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 sm:bg-transparent"
+                                    ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10 sm:bg-transparent"
                                     : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5"
                             )}
                         >
                             <span className="relative z-10">{t('notifications.all')}</span>
                             {filter === "all" && (
-                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 hidden sm:block" />
+                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400 hidden sm:block" />
                             )}
                         </button>
                         <button
@@ -258,7 +258,7 @@ export default function NotificationsPage() {
                             className={cn(
                                 "relative px-4 sm:px-6 py-2.5 text-[14px] font-semibold font-['Manrope'] transition-all duration-300 flex items-center gap-2 rounded-full sm:rounded-none sm:rounded-t-xl overflow-hidden",
                                 filter === "unread"
-                                    ? "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 sm:bg-transparent"
+                                    ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10 sm:bg-transparent"
                                     : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5"
                             )}
                         >
@@ -269,7 +269,7 @@ export default function NotificationsPage() {
                                 </span>
                             )}
                             {filter === "unread" && (
-                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 hidden sm:block" />
+                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400 hidden sm:block" />
                             )}
                         </button>
                     </div>
@@ -335,7 +335,7 @@ export default function NotificationsPage() {
                                         className={cn(
                                             "group relative overflow-hidden rounded-2xl p-5 transition-colors cursor-pointer border",
                                             !notif.is_read
-                                                ? "bg-indigo-50/50 dark:bg-indigo-500/10 border-indigo-100 dark:border-indigo-500/20 hover:bg-indigo-50 dark:hover:bg-indigo-500/20"
+                                                ? "bg-blue-50/50 dark:bg-blue-500/10 border-blue-100 dark:border-blue-500/20 hover:bg-blue-50 dark:hover:bg-blue-500/20"
                                                 : "bg-white dark:bg-[#1C1A29] border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/10"
                                         )}
                                         style={{
@@ -360,12 +360,12 @@ export default function NotificationsPage() {
                                                     ) : (
                                                         <div className={cn(
                                                             "w-full h-full flex items-center justify-center",
-                                                            notif.type === "sertifikasi" ? "bg-indigo-50 dark:bg-indigo-500/10" :
+                                                            notif.type === "sertifikasi" ? "bg-blue-50 dark:bg-blue-500/10" :
                                                             notif.type === "report" ? "bg-rose-50 dark:bg-rose-500/10" :
                                                             notif.type === "verifikasi" ? "bg-emerald-50 dark:bg-emerald-500/10" :
                                                             notif.type === "like" ? "bg-pink-50 dark:bg-pink-500/10" :
                                                             notif.type === "comment" ? "bg-blue-50 dark:bg-blue-500/10" :
-                                                            notif.type === "follow" ? "bg-purple-50 dark:bg-purple-500/10" : "bg-gray-50 dark:bg-white/5"
+                                                            notif.type === "follow" ? "bg-blue-50 dark:bg-blue-500/10" : "bg-gray-50 dark:bg-white/5"
                                                         )}>
                                                             {getNotificationIcon(notif.type)}
                                                         </div>
@@ -376,12 +376,12 @@ export default function NotificationsPage() {
                                                 {notif.actor && (
                                                     <div className={cn(
                                                         "absolute -right-1 -bottom-1 w-6 h-6 rounded-full flex items-center justify-center border-2 border-white dark:border-[#1C1A29] shadow-sm",
-                                                        notif.type === "sertifikasi" ? "bg-indigo-500 text-white" :
+                                                        notif.type === "sertifikasi" ? "bg-blue-500 text-white" :
                                                         notif.type === "report" ? "bg-rose-500 text-white" :
                                                         notif.type === "verifikasi" ? "bg-emerald-500 text-white" :
                                                         notif.type === "like" ? "bg-pink-500 text-white" :
                                                         notif.type === "comment" ? "bg-blue-500 text-white" :
-                                                        notif.type === "follow" ? "bg-purple-500 text-white" : "bg-gray-500 text-white"
+                                                        notif.type === "follow" ? "bg-blue-500 text-white" : "bg-gray-500 text-white"
                                                     )}>
                                                         {(() => {
                                                             const icon = getNotificationIcon(notif.type);
@@ -397,7 +397,7 @@ export default function NotificationsPage() {
                                                     {notif.title && (
                                                         <div className="flex items-center gap-2">
                                                             {!notif.is_read && (
-                                                                <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></div>
+                                                                <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></div>
                                                             )}
                                                             <h4 className={cn(
                                                                 "text-[15px]",
@@ -420,7 +420,7 @@ export default function NotificationsPage() {
 
                                                 {notif.link && (
                                                     <div className="hidden sm:flex items-center gap-1 mt-2">
-                                                        <span className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover:translate-x-0">
+                                                        <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover:translate-x-0">
                                                             Lihat Detail
                                                         </span>
                                                     </div>
@@ -430,7 +430,7 @@ export default function NotificationsPage() {
                                             {/* Right Chevron */}
                                             {notif.link && (
                                                 <div className="shrink-0 flex items-center justify-center self-center pl-2 sm:pl-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover:translate-x-0">
-                                                    <div className="w-8 h-8 rounded-full bg-gray-50 dark:bg-white/5 flex items-center justify-center text-gray-400 dark:text-gray-500 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-500/10 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                                                    <div className="w-8 h-8 rounded-full bg-gray-50 dark:bg-white/5 flex items-center justify-center text-gray-400 dark:text-gray-500 group-hover:bg-blue-50 dark:group-hover:bg-blue-500/10 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                                                         <ChevronRight className="w-4 h-4" />
                                                     </div>
                                                 </div>

@@ -90,7 +90,7 @@ export function FormulaModal({ isOpen, onClose, onInsertFormula }: FormulaModalP
               <button
                 onClick={() => formulaInput.trim() && insertFormula(formulaInput.trim())}
                 disabled={!formulaInput.trim()}
-                className="px-4 py-2 bg-primary text-white rounded-xl text-sm font-['Manrope'] font-semibold disabled:opacity-40 hover:bg-indigo-700 transition-colors"
+                className="px-4 py-2 bg-primary text-white rounded-xl text-sm font-['Manrope'] font-semibold disabled:opacity-40 hover:bg-blue-700 transition-colors"
               >
                 {t('editor.insert') !== 'editor.insert' ? t('editor.insert') : 'Sisipkan'}
               </button>

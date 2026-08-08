@@ -429,7 +429,7 @@ export function PublishPreviewModal(props: PublishPreviewModalProps) {
             </div>
 
             {/* Expert Verification Toggle */}
-            <div className="mb-8 bg-indigo-50/50 dark:bg-indigo-500/5 border border-indigo-100 dark:border-indigo-500/10 rounded-2xl p-5">
+            <div className="mb-8 bg-blue-50/50 dark:bg-blue-500/5 border border-blue-100 dark:border-blue-500/10 rounded-2xl p-5">
                <div className="flex items-center justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <p className="font-['Lexend_Deca'] font-bold text-slate-800 dark:text-slate-100 text-[14px] mb-0.5">{t('upload.submit_expert')}</p>
@@ -440,7 +440,7 @@ export function PublishPreviewModal(props: PublishPreviewModalProps) {
                     role="switch"
                     aria-checked={meta.ajukanPakar}
                     onClick={() => setMeta({ ...meta, ajukanPakar: !meta.ajukanPakar })}
-                    className={`relative shrink-0 w-12 h-7 rounded-full transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 ${meta.ajukanPakar ? 'bg-indigo-600' : 'bg-slate-200 dark:bg-white/10'}`}
+                    className={`relative shrink-0 w-12 h-7 rounded-full transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/10 ${meta.ajukanPakar ? 'bg-blue-600' : 'bg-slate-200 dark:bg-white/10'}`}
                   >
                     <span className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-md transition-transform duration-300 ${meta.ajukanPakar ? 'translate-x-5' : 'translate-x-0'}`} />
                   </button>

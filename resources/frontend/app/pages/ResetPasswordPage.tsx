@@ -117,7 +117,7 @@ export default function ResetPasswordPage() {
                     
                     <a
                         href={appUrl}
-                        className="md:hidden mb-6 w-full bg-indigo-100 hover:bg-indigo-200 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 dark:hover:bg-indigo-900/50 py-3 rounded-xl font-['Lexend_Deca'] font-bold text-[14px] flex items-center justify-center gap-2 transition-all"
+                        className="md:hidden mb-6 w-full bg-blue-100 hover:bg-blue-200 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 dark:hover:bg-blue-900/50 py-3 rounded-xl font-['Lexend_Deca'] font-bold text-[14px] flex items-center justify-center gap-2 transition-all"
                     >
                         <Smartphone className="w-5 h-5" />
                         <span>{t('reset_password.open_in_app') !== 'reset_password.open_in_app' ? t('reset_password.open_in_app') : 'Buka di Aplikasi SensoraNote Mobile'}</span>
@@ -134,7 +134,7 @@ export default function ResetPasswordPage() {
                                     type="password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full pl-11 pr-4 py-3.5 bg-gray-50 dark:bg-[#1C1A29] border border-gray-200 dark:border-white/10 rounded-2xl font-['Manrope'] text-[15px] text-gray-900 dark:text-gray-100 transition-all focus:bg-white dark:focus:bg-[#252336] focus:outline-none focus:ring-4 focus:ring-indigo-100 dark:focus:ring-indigo-500/10 focus:border-indigo-500 placeholder:text-slate-500 dark:placeholder:text-slate-400"
+                                    className="w-full pl-11 pr-4 py-3.5 bg-gray-50 dark:bg-[#1C1A29] border border-gray-200 dark:border-white/10 rounded-2xl font-['Manrope'] text-[15px] text-gray-900 dark:text-gray-100 transition-all focus:bg-white dark:focus:bg-[#252336] focus:outline-none focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-500/10 focus:border-blue-500 placeholder:text-slate-500 dark:placeholder:text-slate-400"
                                     placeholder={t('reset_password.new_password_placeholder')}
                                     required
                                     minLength={8}
@@ -152,7 +152,7 @@ export default function ResetPasswordPage() {
                                     type="password"
                                     value={passwordConfirmation}
                                     onChange={(e) => setPasswordConfirmation(e.target.value)}
-                                    className="w-full pl-11 pr-4 py-3.5 bg-gray-50 dark:bg-[#1C1A29] border border-gray-200 dark:border-white/10 rounded-2xl font-['Manrope'] text-[15px] text-gray-900 dark:text-gray-100 transition-all focus:bg-white dark:focus:bg-[#252336] focus:outline-none focus:ring-4 focus:ring-indigo-100 dark:focus:ring-indigo-500/10 focus:border-indigo-500 placeholder:text-slate-500 dark:placeholder:text-slate-400"
+                                    className="w-full pl-11 pr-4 py-3.5 bg-gray-50 dark:bg-[#1C1A29] border border-gray-200 dark:border-white/10 rounded-2xl font-['Manrope'] text-[15px] text-gray-900 dark:text-gray-100 transition-all focus:bg-white dark:focus:bg-[#252336] focus:outline-none focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-500/10 focus:border-blue-500 placeholder:text-slate-500 dark:placeholder:text-slate-400"
                                     placeholder={t('reset_password.confirm_password_placeholder')}
                                     required
                                     minLength={8}
@@ -163,7 +163,7 @@ export default function ResetPasswordPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className={`w-full bg-primary hover:bg-indigo-700 text-white py-4 rounded-full font-['Lexend_Deca'] font-bold text-[15px] shadow-lg shadow-indigo-600/20 hover:shadow-xl hover:-translate-y-0.5 transition-all mt-8 flex items-center justify-center gap-2 ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                            className={`w-full bg-primary hover:bg-blue-700 text-white py-4 rounded-full font-['Lexend_Deca'] font-bold text-[15px] shadow-lg shadow-blue-600/20 hover:shadow-xl hover:-translate-y-0.5 transition-all mt-8 flex items-center justify-center gap-2 ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                         >
                             {loading ? (
                                 <>

@@ -319,7 +319,7 @@ export function NoteCard({ note, onLike, onDelete, className = "", showBookmark 
                                                             showToast(t('noteCard.submit_to_expert_error') || "Gagal mengajukan ke Pakar", "error");
                                                         }
                                                     }}
-                                                    className="w-full text-left px-4 py-2 text-[13px] font-['Manrope'] font-bold text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 flex items-center gap-2"
+                                                    className="w-full text-left px-4 py-2 text-[13px] font-['Manrope'] font-bold text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10 flex items-center gap-2"
                                                 >
                                                     <ShieldCheck className="w-4 h-4" /> {t('noteCard.submit_to_expert') || 'Ajukan ke Pakar'}
                                                 </button>

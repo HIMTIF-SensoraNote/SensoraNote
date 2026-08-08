@@ -1,8 +1,9 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import idTranslations from '../locales/id.json';
 
-export type LanguageCode = 'id' | 'en' | 'en-GB' | 'ja' | 'ko' | 'zh' | 'zh-TW' | 'es' | 'fr' | 'de' | 'pt' | 'ru' | 'ur' | 'hi' | 'tr' | 'ar' | 'ms' | 'bn' | 'vi' | 'fa' | 'it' | 'th' | 'pa' | 'sw' | 'nl' | 'pl' | 'uk' | 'ro' | 'cs' | 'el' | 'hu' | 'sv' | 'fi' | 'da' | 'tl' | 'my' | 'km' | 'lo' | 'ne' | 'si' | 'he' | 'am' | 'zu' | 'af';
-export type LanguagePreference = LanguageCode | 'system';
+// Top 20 Most Spoken Languages
+export type LanguageCode = string;
+export type LanguagePreference = string;
 
 interface LanguageContextType {
   language: LanguagePreference;
@@ -12,7 +13,7 @@ interface LanguageContextType {
   loading: boolean;
 }
 
-const SUPPORTED_LANGUAGES: LanguageCode[] = ['id', 'en', 'en-GB', 'ja', 'ko', 'zh', 'zh-TW', 'es', 'fr', 'de', 'pt', 'ru', 'ur', 'hi', 'tr', 'ar', 'ms', 'bn', 'vi', 'fa', 'it', 'th', 'pa', 'sw', 'nl', 'pl', 'uk', 'ro', 'cs', 'el', 'hu', 'sv', 'fi', 'da', 'tl', 'my', 'km', 'lo', 'ne', 'si', 'he', 'am', 'zu', 'af'];
+const SUPPORTED_LANGUAGES: LanguageCode[] = ['id', 'en', 'zh', 'hi', 'es', 'fr', 'ar', 'bn', 'ru', 'pt', 'ur', 'de', 'ja', 'tr', 'vi', 'ko', 'it', 'th', 'nl', 'pl'];
 
 function detectSystemLanguage(): LanguageCode {
   const browserLang = navigator.language?.toLowerCase() || 'id';
@@ -52,13 +53,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setResolvedLanguage(resolved);
     localStorage.setItem('bayu-lang', language);
     document.documentElement.setAttribute('lang', resolved);
-    
-    // Set global UI direction to LTR so the layout never breaks.
-    // Text rendering and input direction will be handled by CSS/Unicode bidirectionality.
     document.documentElement.dir = 'ltr';
   }, [language]);
 
-  // Load translations dynamically when resolvedLanguage changes
+  // Load translations from Backend Translation API
   useEffect(() => {
     if (resolvedLanguage === 'id') {
       setTranslations(idTranslations);
@@ -66,12 +64,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
 
     setLoading(true);
+    
+    // Fetch locally bundled json file from frontend locales
     import(`../locales/${resolvedLanguage}.json`)
       .then((module) => {
         setTranslations(module.default);
       })
       .catch((err) => {
-        console.error(`Failed to load translations for ${resolvedLanguage}:`, err);
+        console.warn(`Translation file for ${resolvedLanguage} not found. Falling back to Indonesian.`);
         setTranslations(idTranslations);
       })
       .finally(() => {
@@ -79,7 +79,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       });
   }, [resolvedLanguage]);
 
-  // Listen for system language changes when set to 'system'
   useEffect(() => {
     if (language !== 'system') return;
 

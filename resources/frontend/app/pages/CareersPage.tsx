@@ -52,7 +52,7 @@ export default function CareersPage() {
                             <p className="font-['Manrope'] text-[14px] text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                                 {t("careers_page.no_vacancies_desc") || "Saat ini kami belum membuka posisi baru, namun kami selalu tertarik dengan talenta berbakat."}
                             </p>
-                            <a href="mailto:careers@sensoranote.id" className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-full transition-colors shadow-sm text-[14px]">
+                            <a href="mailto:careers@sensoranote.id" className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full transition-colors shadow-sm text-[14px]">
                                 <Mail className="w-4 h-4" /> {t("careers_page.contact_btn") || "Hubungi Kami"}
                             </a>
                         </div>

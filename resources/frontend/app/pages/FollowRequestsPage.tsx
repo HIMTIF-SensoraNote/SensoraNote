@@ -154,7 +154,7 @@ export default function FollowRequestsPage() {
                                                     size={56}
                                                     className="rounded-full ring-2 ring-slate-100 dark:ring-white/5 group-hover:ring-primary/20 transition-all"
                                                 />
-                                                <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-gradient-to-br from-primary to-indigo-600 rounded-full border-[2.5px] border-white dark:border-[#1C1A29] flex items-center justify-center shadow-md">
+                                                <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-gradient-to-br from-primary to-blue-600 rounded-full border-[2.5px] border-white dark:border-[#1C1A29] flex items-center justify-center shadow-md">
                                                     <UserPlus className="w-3 h-3 text-white" strokeWidth={3} />
                                                 </div>
                                             </Link>
@@ -190,7 +190,7 @@ export default function FollowRequestsPage() {
                                             <button
                                                 onClick={() => handleResponse(reqId, 'accept')}
                                                 disabled={isProcessing}
-                                                className="flex-1 h-11 flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-indigo-600 text-white rounded-2xl font-['Manrope'] font-bold text-[13px] shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:from-primary/90 hover:to-indigo-600/90 transition-all active:scale-[0.97] disabled:opacity-40"
+                                                className="flex-1 h-11 flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-blue-600 text-white rounded-2xl font-['Manrope'] font-bold text-[13px] shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:from-primary/90 hover:to-blue-600/90 transition-all active:scale-[0.97] disabled:opacity-40"
                                             >
                                                 {isProcessing ? (
                                                     <Loader2 className="w-4 h-4 animate-spin" />

@@ -100,7 +100,7 @@ export function CertificateViewerModal({ isOpen, onClose, certUrl, userName = "U
             <DialogContent className="sm:max-w-[800px] bg-white/95 dark:bg-[#1C1A29]/95 backdrop-blur-xl border-white/20 dark:border-white/10 p-0 overflow-hidden shadow-2xl rounded-3xl animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[90vh] [&>button]:hidden">
                 <DialogHeader className="px-6 py-4 border-b border-gray-100 dark:border-white/5 bg-gray-50/50 dark:bg-white/5 flex flex-row items-center justify-between sticky top-0 z-10 shrink-0">
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-indigo-50 dark:bg-indigo-500/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                        <div className="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
                             {isPdf ? <FileText size={20} /> : <ImageIcon size={20} />}
                         </div>
                         <DialogTitle className="text-xl font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 m-0">
@@ -124,14 +124,14 @@ export function CertificateViewerModal({ isOpen, onClose, certUrl, userName = "U
                         />
                     ) : (
                         <div className="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 p-8 text-center bg-white dark:bg-white/5 rounded-2xl border border-dashed border-gray-300 dark:border-white/20">
-                            <FileText size={48} className="mb-4 text-indigo-300 dark:text-indigo-500/50" />
+                            <FileText size={48} className="mb-4 text-blue-300 dark:text-blue-500/50" />
                             <p className="font-['Manrope'] font-medium mb-4">
                                 Preview not available for this file type.
                             </p>
                             <button
                                 onClick={handleDownload}
                                 disabled={isDownloading}
-                                className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition-all shadow-lg flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all shadow-lg flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 <Download size={16} className={isDownloading ? "animate-bounce" : ""} />
                                 {isDownloading ? "Mengunduh..." : t("admin_dashboard.view_cert_download")}
@@ -151,7 +151,7 @@ export function CertificateViewerModal({ isOpen, onClose, certUrl, userName = "U
                         <button
                             onClick={handleDownload}
                             disabled={isDownloading}
-                            className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-indigo-600/20 flex items-center gap-2 font-['Manrope'] text-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-blue-600/20 flex items-center gap-2 font-['Manrope'] text-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             <Download size={16} className={isDownloading ? "animate-bounce" : ""} />
                             {isDownloading ? "Mengunduh..." : t("admin_dashboard.view_cert_download")}

@@ -948,7 +948,7 @@ export default function ExplorePage() {
                                                                     <LockIcon className="w-3.5 h-3.5 text-gray-400 shrink-0" />
                                                                 )}
                                                                 {u.role === 'admin' && (
-                                                                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 font-bold text-[12px] border border-purple-100 dark:border-purple-500/20" title="Admin">
+                                                                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold text-[12px] border border-blue-100 dark:border-blue-500/20" title="Admin">
                                                                         <Shield className="w-3.5 h-3.5" /> {t('profile.admin_badge') || 'Admin'}
                                                                     </span>
                                                                 )}
@@ -1116,7 +1116,7 @@ export default function ExplorePage() {
                                 "all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s",
                         }}
                     >
-                        <div className="relative overflow-hidden bg-gradient-to-br from-primary via-indigo-600 to-purple-700 rounded-[2rem] p-8 sm:p-14 text-center shadow-2xl">
+                        <div className="relative overflow-hidden bg-gradient-to-br from-primary via-blue-600 to-blue-700 rounded-[2rem] p-8 sm:p-14 text-center shadow-2xl">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
                             <div className="absolute bottom-0 left-0 w-48 h-48 bg-fuchsia-500/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl pointer-events-none"></div>
 

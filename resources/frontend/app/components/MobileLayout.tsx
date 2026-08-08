@@ -57,7 +57,7 @@ export function MobileLayout({ children, showBottomNav = true, hideTopNav = fals
 
   return (
     // Base layout: Full column structure.
-    <div className="h-screen w-full flex flex-col bg-white dark:bg-[#13111C] text-slate-900 dark:text-[#E8E6F0] overflow-hidden selection:bg-indigo-600/20 selection:text-indigo-600">
+    <div className="h-screen w-full flex flex-col bg-white dark:bg-[#13111C] text-slate-900 dark:text-[#E8E6F0] overflow-hidden selection:bg-blue-600/20 selection:text-blue-600">
       
       {/* 1. DESKTOP & TABLET TOP REGION */}
       {!hideTopNav && (
@@ -84,18 +84,18 @@ export function MobileLayout({ children, showBottomNav = true, hideTopNav = fals
         >
            <div className="flex items-center justify-between px-5 h-[60px]">
                <div className="flex items-center">
-                   <button onClick={() => setIsMobileMenuOpen(true)} className="p-2 -ml-2 text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-primary outline-none transition-colors rounded-md">
+                   <button onClick={() => setIsMobileMenuOpen(true)} className="p-2 -ml-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-primary outline-none transition-colors rounded-md">
                        <Menu className="w-6 h-6" />
                    </button>
                    <Link to="/home" className="flex items-center shrink-0 group outline-none ml-2">
-                      <span className="font-['Lexend_Deca'] font-extrabold text-[22px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-800 dark:from-[#7B7BFF] dark:to-[#A78BFA]">
+                      <span className="font-['Lexend_Deca'] font-extrabold text-[22px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-800 dark:from-[#60a5fa] dark:to-[#93c5fd]">
                          SensoraNote
                       </span>
                    </Link>
                </div>
                
                <div className="flex items-center gap-4">
-                  <button onClick={() => navigate('/explore')} className="text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-primary transition-colors rounded-full hover:bg-indigo-50 dark:hover:bg-white/5 outline-none">
+                  <button onClick={() => navigate('/explore')} className="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-primary transition-colors rounded-full hover:bg-blue-50 dark:hover:bg-white/5 outline-none">
                     <Search className="w-[22px] h-[22px]" strokeWidth={2} />
                   </button>
                   <div className="mt-1">
@@ -184,7 +184,7 @@ export function MobileLayout({ children, showBottomNav = true, hideTopNav = fals
                <div className="p-4 border-b border-slate-100 dark:border-white/5 flex items-center justify-between">
                  <div className="flex items-center gap-2">
                      <ApplicationLogo className="w-6 h-6" style={{ overflow: 'visible' }} />
-                     <span className="font-['Lexend_Deca'] font-extrabold text-[18px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-800 dark:from-[#7B7BFF] dark:to-[#A78BFA]">SensoraNote</span>
+                     <span className="font-['Lexend_Deca'] font-extrabold text-[18px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-800 dark:from-[#60a5fa] dark:to-[#93c5fd]">SensoraNote</span>
                  </div>
                  <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 bg-slate-50 dark:bg-white/5 rounded-full text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
                    <X className="w-4 h-4" />

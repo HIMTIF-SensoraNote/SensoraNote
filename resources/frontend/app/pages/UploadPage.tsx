@@ -434,11 +434,11 @@ export default function UploadPage() {
       {isLoadingDraft && (
         <div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-[100] flex flex-col items-center justify-center animate-in fade-in duration-300">
           <div className="relative">
-            <div className="w-16 h-16 rounded-2xl bg-indigo-50 flex items-center justify-center animate-bounce">
-              <FileText className="w-8 h-8 text-indigo-600" />
+            <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center animate-bounce">
+              <FileText className="w-8 h-8 text-blue-600" />
             </div>
             <div className="absolute -bottom-1 -right-1">
-              <Loader2 className="w-6 h-6 text-indigo-500 animate-spin" />
+              <Loader2 className="w-6 h-6 text-blue-500 animate-spin" />
             </div>
           </div>
           <h3 className="mt-6 font-['Lexend_Deca'] font-extrabold text-gray-900 dark:text-gray-100 text-lg">
@@ -464,7 +464,7 @@ export default function UploadPage() {
                   <ArrowLeft className="w-5 h-5" strokeWidth={2.5} />
                 </button>
                 <div className="hidden sm:flex items-center gap-2.5 min-w-0">
-                  <div className="w-2 h-2 rounded-full bg-indigo-500 shrink-0 shadow-[0_0_8px_rgba(99,102,241,0.4)] animate-pulse"></div>
+                  <div className="w-2 h-2 rounded-full bg-blue-500 shrink-0 shadow-[0_0_8px_rgba(99,102,241,0.4)] animate-pulse"></div>
                   <span className="text-[14px] font-['Lexend_Deca'] font-extrabold text-gray-900 dark:text-gray-100 truncate max-w-[200px]">
                     {title.trim() ? title : t('upload.new_draft')}
                   </span>

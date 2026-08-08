@@ -578,7 +578,7 @@ export default function PublicProfilePage() {
                                         </span>
                                     )}
                                     {profileUser?.role === "admin" && (
-                                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 font-bold text-[12px] border border-purple-100 dark:border-purple-500/20">
+                                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold text-[12px] border border-blue-100 dark:border-blue-500/20">
                                             <Shield className="w-3.5 h-3.5" /> {t('profile.admin_badge') || 'Admin'}
                                         </span>
                                     )}
@@ -750,7 +750,7 @@ export default function PublicProfilePage() {
                                                     />
                                                 )}
                                                 <div className="absolute top-2 left-2 bg-white/90 dark:bg-[#13111C]/90 backdrop-blur-md text-gray-800 dark:text-gray-200 text-[10px] font-['Lexend_Deca'] font-bold px-2.5 py-1 rounded-lg shadow-sm flex items-center gap-1.5 border border-white/20">
-                                                    <MessageCircle className="w-3 h-3 text-indigo-500" /> {t('public_profile.discussion_label') || 'DISKUSI'}
+                                                    <MessageCircle className="w-3 h-3 text-blue-500" /> {t('public_profile.discussion_label') || 'DISKUSI'}
                                                 </div>
                                             </div>
 
@@ -786,7 +786,7 @@ export default function PublicProfilePage() {
                                                                 e.stopPropagation();
                                                                 navigate(`/note/${activity.post_id}#comment-${activity.id}`);
                                                             }}
-                                                            className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-500/10 dark:hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 transition-colors"
+                                                            className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 dark:bg-blue-500/10 dark:hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 transition-colors"
                                                         >
                                                             <MessageSquarePlus className="w-3.5 h-3.5" />
                                                             <span className="text-[11px] font-extrabold">{t('public_profile.btn_reply') || 'Balas'}</span>

@@ -477,7 +477,7 @@ export function ExportDataModal({
                                     onClick={() => setCategory(opt.id as any)}
                                     className={`flex items-center gap-2 p-3 rounded-xl border font-bold text-[13px] transition-all ${
                                         category === opt.id 
-                                        ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400" 
+                                        ? "border-blue-500 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400" 
                                         : "border-gray-200 dark:border-white/10 bg-white dark:bg-[#1C1A29] text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/5"
                                     }`}
                                 >
@@ -557,7 +557,7 @@ export function ExportDataModal({
                     <button 
                         onClick={handleExport}
                         disabled={isExporting}
-                        className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-bold text-[13px] transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold text-[13px] transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {isExporting ? (
                             <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>

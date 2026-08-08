@@ -32,8 +32,8 @@ export default function AboutPage() {
                 <div className="max-w-xl mx-auto px-5">
                     {/* Hero Section */}
                     <div className="text-center mb-10 mt-6">
-                        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-indigo-50 dark:bg-indigo-500/10 mb-6 border border-indigo-100 dark:border-indigo-500/20">
-                            <Users className="w-10 h-10 text-indigo-600 dark:text-indigo-400" />
+                        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-50 dark:bg-blue-500/10 mb-6 border border-blue-100 dark:border-blue-500/20">
+                            <Users className="w-10 h-10 text-blue-600 dark:text-blue-400" />
                         </div>
                         <h2 className="font-['Lexend_Deca'] font-extrabold text-2xl text-gray-900 dark:text-gray-100 mb-3">
                             {t("about_page.hero_title") || "Mengenal SensoraNote"}
@@ -47,7 +47,7 @@ export default function AboutPage() {
                         {/* Visi & Misi */}
                         <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none">
                             <h3 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
-                                <Target className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                                <Target className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                                 {t("about_page.vision_title") || "Visi & Misi"}
                             </h3>
                             <p className="font-['Manrope'] text-[14px] text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -58,7 +58,7 @@ export default function AboutPage() {
                         {/* Komunitas */}
                         <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none">
                             <h3 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
-                                <Users className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                                <Users className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                                 {t("about_page.community_title") || "Komunitas Kami"}
                             </h3>
                             <p className="font-['Manrope'] text-[14px] text-gray-600 dark:text-gray-400 leading-relaxed">

@@ -15,7 +15,7 @@ export default function CommunityGuidelinesPage() {
     const values = [
         {
             icon: MessageCircle,
-            color: 'text-indigo-500',
+            color: 'text-blue-500',
             title: t("community_guidelines.values.0.title") || 'Saling Menghargai',
             desc: t("community_guidelines.values.0.desc") || 'Berkomunikasi dengan sopan, baik saat memberi komentar maupun memberikan kritik membangun.'
         },
@@ -69,7 +69,7 @@ export default function CommunityGuidelinesPage() {
                         {/* Values */}
                         <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none">
                             <h3 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
-                                <Users className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                                <Users className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                                 {t("community_guidelines.values_title") || "Nilai Utama"}
                             </h3>
                             <div className="space-y-4">

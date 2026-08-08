@@ -20,12 +20,12 @@ export function DefaultThumbnail({
     
     // Fallback colors if subject not found
     const fallbackColors = [
-        'bg-indigo-100 dark:bg-indigo-500/10 text-indigo-500 dark:text-indigo-400',
+        'bg-blue-100 dark:bg-blue-500/10 text-blue-500 dark:text-blue-400',
         'bg-emerald-100 dark:bg-emerald-500/10 text-emerald-500 dark:text-emerald-400',
         'bg-amber-100 dark:bg-amber-500/10 text-amber-500 dark:text-amber-400',
         'bg-rose-100 dark:bg-rose-500/10 text-rose-500 dark:text-rose-400',
-        'bg-sky-100 dark:bg-sky-500/10 text-sky-500 dark:text-sky-400',
-        'bg-purple-100 dark:bg-purple-500/10 text-purple-500 dark:text-purple-400',
+        'bg-blue-100 dark:bg-blue-500/10 text-blue-500 dark:text-blue-400',
+        'bg-blue-100 dark:bg-blue-500/10 text-blue-500 dark:text-blue-400',
     ];
 
     // Simple hash function for consistent color based on title or subject

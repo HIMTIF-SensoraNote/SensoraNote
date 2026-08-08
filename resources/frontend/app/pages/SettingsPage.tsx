@@ -33,7 +33,7 @@ import { AvatarImage } from '../components/ui/DefaultImages';
 import { useLanguage, type LanguagePreference } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
 
-const langDisplayNames: Record<LanguagePreference, string> = {
+const langDisplayNames: Record<string, string> = {
   id: 'Indonesia',
   en: 'English (US)',
   'en-GB': 'English (UK)',
@@ -176,13 +176,13 @@ export default function SettingsPage() {
         {/* SEARCH BAR */}
         <div className="px-6 pt-6 pb-2">
           <div className="relative group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 group-focus-within:text-indigo-600 dark:group-focus-within:text-primary transition-colors" size={18} />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 group-focus-within:text-blue-600 dark:group-focus-within:text-primary transition-colors" size={18} />
             <input 
               type="text" 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('settings.search_placeholder')} 
-              className="w-full bg-slate-100 dark:bg-white/5 border-none rounded-full py-3 pl-12 pr-4 text-sm font-medium text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-primary/20 focus:bg-white dark:focus:bg-white/10 transition-all"
+              className="w-full bg-slate-100 dark:bg-white/5 border-none rounded-full py-3 pl-12 pr-4 text-sm font-medium text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:ring-blue-100 dark:focus:ring-primary/20 focus:bg-white dark:focus:bg-white/10 transition-all"
             />
           </div>
         </div>
@@ -193,7 +193,7 @@ export default function SettingsPage() {
             <div className="bg-white dark:bg-[#1C1A29] border border-slate-100 dark:border-white/5 rounded-3xl p-5 shadow-sm hover:shadow-md dark:shadow-none transition-shadow duration-300">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 bg-indigo-600 dark:bg-primary rounded-md flex items-center justify-center">
+                  <div className="w-5 h-5 bg-blue-600 dark:bg-primary rounded-md flex items-center justify-center">
                     <Sparkles size={12} className="text-white" />
                   </div>
                   <span className="text-[11px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">{t('settings.account_center')}</span>
@@ -219,14 +219,14 @@ export default function SettingsPage() {
               </p>
 
               <div className="space-y-4 border-t border-slate-50 dark:border-white/5 pt-4">
-                <Link to="/edit-profile" className={`flex items-center justify-between text-[13px] font-semibold text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-primary transition-colors group ${!matchesSearch(t('settings.personal_details')) && !matchesSearch(user.name) ? 'hidden' : ''}`}>
+                <Link to="/edit-profile" className={`flex items-center justify-between text-[13px] font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-primary transition-colors group ${!matchesSearch(t('settings.personal_details')) && !matchesSearch(user.name) ? 'hidden' : ''}`}>
                   <div className="flex items-center gap-3">
                     <User size={18} className="text-slate-400 dark:text-slate-500" />
                     {t('settings.personal_details')}
                   </div>
                   <ChevronRight size={16} className="text-slate-200 dark:text-slate-600 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
-                <Link to="/settings/security" className={`flex items-center justify-between text-[13px] font-semibold text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-primary transition-colors group cursor-pointer ${!matchesSearch(t('settings.password_security')) && !matchesSearch(user.name) ? 'hidden' : ''}`}>
+                <Link to="/settings/security" className={`flex items-center justify-between text-[13px] font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-primary transition-colors group cursor-pointer ${!matchesSearch(t('settings.password_security')) && !matchesSearch(user.name) ? 'hidden' : ''}`}>
                   <div className="flex items-center gap-3">
                     <Lock size={18} className="text-slate-400 dark:text-slate-500" />
                     {t('settings.password_security')}

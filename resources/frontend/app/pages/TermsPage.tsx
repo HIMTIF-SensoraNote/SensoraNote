@@ -50,8 +50,8 @@ export default function TermsPage() {
                 <div className="max-w-xl mx-auto px-5">
                     {/* Hero Section */}
                     <div className="text-center mb-10 mt-6">
-                        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-indigo-50 dark:bg-indigo-500/10 mb-6 border border-indigo-100 dark:border-indigo-500/20">
-                            <ShieldCheck className="w-10 h-10 text-indigo-600 dark:text-indigo-400" />
+                        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-50 dark:bg-blue-500/10 mb-6 border border-blue-100 dark:border-blue-500/20">
+                            <ShieldCheck className="w-10 h-10 text-blue-600 dark:text-blue-400" />
                         </div>
                         <h2 className="font-['Lexend_Deca'] font-extrabold text-2xl text-gray-900 dark:text-gray-100 mb-3">
                             {t("terms_page.hero_title") || "Syarat & Ketentuan"}
@@ -65,7 +65,7 @@ export default function TermsPage() {
                         {/* 1. Penerimaan */}
                         <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none">
                             <h3 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
-                                <ShieldCheck className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                                <ShieldCheck className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                                 {t("terms_page.section1_title") || "1. Penerimaan Ketentuan"}
                             </h3>
                             <p className="font-['Manrope'] text-[14px] text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -76,7 +76,7 @@ export default function TermsPage() {
                         {/* 2. Akun */}
                         <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none">
                             <h3 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
-                                <UserCheck className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                                <UserCheck className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                                 {t("terms_page.section2_title") || "2. Pendaftaran Akun"}
                             </h3>
                             <p className="font-['Manrope'] text-[14px] text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
@@ -85,7 +85,7 @@ export default function TermsPage() {
                             <div className="space-y-3">
                                 {section2Items.map((item, i) => (
                                     <div key={i} className="flex gap-3 items-start p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5">
-                                        <div className="w-5 h-5 rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-[10px] font-bold text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-white/10 shrink-0">
+                                        <div className="w-5 h-5 rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-[10px] font-bold text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-white/10 shrink-0">
                                             {i + 1}
                                         </div>
                                         <p className="font-['Manrope'] text-[13px] text-gray-600 dark:text-gray-400 mt-0.5">{item}</p>
@@ -97,10 +97,10 @@ export default function TermsPage() {
                         {/* 3. HKI */}
                         <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none">
                             <h3 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
-                                <AlertCircle className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                                <AlertCircle className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                                 {t("terms_page.section3_title") || "3. Hak Kekayaan Intelektual"}
                             </h3>
-                            <div className="p-4 bg-indigo-50/50 dark:bg-indigo-500/10 rounded-2xl border border-indigo-100 dark:border-white/5">
+                            <div className="p-4 bg-blue-50/50 dark:bg-blue-500/10 rounded-2xl border border-blue-100 dark:border-white/5">
                                 <p className="font-['Manrope'] text-[14px] text-gray-700 dark:text-gray-300 leading-relaxed italic">
                                     {t("terms_page.section3_quote") || '"Setiap catatan yang Anda unggah ke SensoraNote tetap menjadi milik Anda. Namun, dengan mengunggahnya, Anda memberikan lisensi kepada SensoraNote untuk menampilkan, mendistribusikan, dan mempromosikan konten tersebut di dalam ekosistem platform kami untuk tujuan pendidikan."'}
                                 </p>
@@ -134,7 +134,7 @@ export default function TermsPage() {
                     </div>
                     
                     <div className="text-center pb-8 pt-4">
-                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500 mb-2" dangerouslySetInnerHTML={{ __html: t("terms_page.contact") || 'Ada pertanyaan? Hubungi <a href="mailto:support@sensoranote.id" className="text-indigo-600 dark:text-indigo-400 font-bold">support@sensoranote.id</a>' }} />
+                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500 mb-2" dangerouslySetInnerHTML={{ __html: t("terms_page.contact") || 'Ada pertanyaan? Hubungi <a href="mailto:support@sensoranote.id" className="text-blue-600 dark:text-blue-400 font-bold">support@sensoranote.id</a>' }} />
                         <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500 mt-6" dangerouslySetInnerHTML={{ __html: t("terms_page.footer") || '&copy; 2026 SensoraNote Platform.<br/>Semua Hak Dilindungi.' }} />
                     </div>
                 </div>

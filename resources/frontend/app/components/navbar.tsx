@@ -91,7 +91,7 @@ export function Navbar({ variant = 'default', theme = 'light', isLoading = false
             />
             <span 
               style={{ transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)' }} 
-              className={`font-extrabold tracking-tight bg-gradient-to-r ${theme === 'dark' ? 'from-[#5D5CE6] to-[#8B5CF6]' : 'from-primary to-[#8B5CF6]'} bg-clip-text text-transparent ${isScrolled ? 'text-lg' : 'text-2xl'}`}
+              className={`font-extrabold tracking-tight bg-gradient-to-r ${theme === 'dark' ? 'from-[#1d4ed8] to-[#2563eb]' : 'from-primary to-[#2563eb]'} bg-clip-text text-transparent ${isScrolled ? 'text-lg' : 'text-2xl'}`}
             >
               SensoraNote
             </span>
@@ -145,7 +145,7 @@ export function Navbar({ variant = 'default', theme = 'light', isLoading = false
                   className={`rounded-full font-bold transition-all hover:-translate-y-0.5 hover:opacity-95 ${
                     theme === 'dark'
                       ? 'shadow-lg shadow-white/5'
-                      : 'bg-primary hover:bg-indigo-700 text-white shadow-md hover:shadow-lg hover:shadow-primary/30'
+                      : 'bg-primary hover:bg-blue-700 text-white shadow-md hover:shadow-lg hover:shadow-primary/30'
                   } ${
                     isScrolled 
                       ? 'px-4 py-1.5 text-xs md:text-sm' 

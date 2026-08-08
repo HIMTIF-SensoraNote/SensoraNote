@@ -156,7 +156,7 @@ export default function Login() {
     if (searchParams.get('token') || searchParams.get('code')) {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-[#13111C]">
-                <div className="w-10 h-10 border-4 border-indigo-500/20 border-t-indigo-600 rounded-full animate-spin mb-4"></div>
+                <div className="w-10 h-10 border-4 border-blue-500/20 border-t-blue-600 rounded-full animate-spin mb-4"></div>
                 <p className="text-slate-500 dark:text-slate-400 font-medium font-['Manrope'] animate-pulse">
                     {t('auth.processing_auth') === 'auth.processing_auth' ? "Memproses otentikasi..." : t('auth.processing_auth')}
                 </p>
@@ -166,7 +166,7 @@ export default function Login() {
 
     const renderVisual = () => (
         <>
-            <div className="absolute inset-0 bg-gradient-to-br from-[#4338CA] via-[#5D5CE6] to-[#8B5CF6] opacity-90"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#4338CA] via-[#1d4ed8] to-[#2563eb] opacity-90"></div>
             <div className="absolute -top-1/4 -right-1/4 w-[500px] h-[500px] bg-[#FFD166]/20 rounded-full blur-[100px] mix-blend-screen pointer-events-none"></div>
             <div className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-[#FF6B6B]/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
             <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-white/10 rounded-full blur-[80px] mix-blend-overlay pointer-events-none"></div>
@@ -445,8 +445,8 @@ export default function Login() {
             {/* Mobile View (Stacked) */}
             <div className="flex lg:hidden w-full flex-col justify-center px-6 sm:px-12 py-12 relative z-10 overflow-y-auto scrollbar-hide">
                 {/* Background Decorations for mobile */}
-                <div className="absolute top-[-10%] right-[-10%] w-72 h-72 bg-indigo-50 dark:bg-indigo-500/10 rounded-full blur-3xl -z-10 opacity-70"></div>
-                <div className="absolute bottom-[-10%] left-[-10%] w-64 h-64 bg-purple-50 dark:bg-fuchsia-500/10 rounded-full blur-3xl -z-10 opacity-70"></div>
+                <div className="absolute top-[-10%] right-[-10%] w-72 h-72 bg-blue-50 dark:bg-blue-500/10 rounded-full blur-3xl -z-10 opacity-70"></div>
+                <div className="absolute bottom-[-10%] left-[-10%] w-64 h-64 bg-blue-50 dark:bg-fuchsia-500/10 rounded-full blur-3xl -z-10 opacity-70"></div>
                 
                 {renderForm()}
             </div>
@@ -478,7 +478,7 @@ export default function Login() {
                                         type="email"
                                         value={forgotPasswordEmail}
                                         onChange={(e) => setForgotPasswordEmail(e.target.value)}
-                                        className="w-full pl-11 pr-4 py-3 bg-gray-50 dark:bg-[#13111C] border border-gray-200 dark:border-white/10 rounded-xl font-['Manrope'] text-[14px] text-gray-900 dark:text-gray-100 transition-all focus:bg-white dark:focus:bg-[#252336] focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500"
+                                        className="w-full pl-11 pr-4 py-3 bg-gray-50 dark:bg-[#13111C] border border-gray-200 dark:border-white/10 rounded-xl font-['Manrope'] text-[14px] text-gray-900 dark:text-gray-100 transition-all focus:bg-white dark:focus:bg-[#252336] focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500"
                                         placeholder={t('forgot_password.email_placeholder')}
                                         required
                                     />
@@ -487,7 +487,7 @@ export default function Login() {
                             <button
                                 type="submit"
                                 disabled={isForgotLoading}
-                                className={`w-full bg-primary hover:bg-indigo-700 text-white py-3 rounded-xl font-['Lexend_Deca'] font-bold text-[14px] shadow-lg shadow-indigo-600/20 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 ${isForgotLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                className={`w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-xl font-['Lexend_Deca'] font-bold text-[14px] shadow-lg shadow-blue-600/20 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 ${isForgotLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                             >
                                 {isForgotLoading ? (
                                     <>

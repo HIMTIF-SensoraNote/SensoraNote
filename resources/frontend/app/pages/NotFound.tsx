@@ -15,7 +15,7 @@ export default function NotFound() {
           <p className="text-gray-500 dark:text-gray-400 mb-6">{t('not_found.message')}</p>
           <Link
             to="/home"
-            className="inline-block bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 transition-colors"
+            className="inline-block bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition-colors"
           >
             {t('not_found.back_home')}
           </Link>
