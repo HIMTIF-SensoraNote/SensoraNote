@@ -1,5 +1,5 @@
 # =============================================================================
-# Ba-Yu — Render Blueprint (Infrastructure as Code)
+# SensoraNote — Render Blueprint (Infrastructure as Code)
 #
 # Cara pakai:
 # 1. Push file ini ke GitHub
@@ -12,7 +12,7 @@ services:
   - type: web
     name: bayu
     runtime: docker
-    repo: https://github.com/Haitsam06/Ba-Yu
+    repo: https://github.com/Haitsam06/SensoraNote
     branch: main
     plan: free
     dockerfilePath: ./Dockerfile
@@ -20,7 +20,7 @@ services:
     envVars:
       # ── App Core ──
       - key: APP_NAME
-        value: "Ba-Yu"
+        value: "SensoraNote"
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
@@ -70,7 +70,7 @@ services:
       - key: MAIL_FROM_ADDRESS
         sync: false
       - key: MAIL_FROM_NAME
-        value: "Ba-Yu Support"
+        value: "SensoraNote Support"
 
       # ── Cloudinary ──
       - key: CLOUDINARY_URL

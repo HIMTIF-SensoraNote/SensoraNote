@@ -93,7 +93,7 @@ export function Navbar({ variant = 'default', theme = 'light', isLoading = false
               style={{ transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)' }} 
               className={`font-extrabold tracking-tight bg-gradient-to-r ${theme === 'dark' ? 'from-[#5D5CE6] to-[#8B5CF6]' : 'from-primary to-[#8B5CF6]'} bg-clip-text text-transparent ${isScrolled ? 'text-lg' : 'text-2xl'}`}
             >
-              Ba-Yu
+              SensoraNote
             </span>
           </Link>
 

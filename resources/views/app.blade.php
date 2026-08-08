@@ -21,5 +21,8 @@
     </head>
     <body class="font-sans antialiased bg-gray-50 dark:bg-[#13111C] text-slate-900 dark:text-slate-100 transition-colors duration-300">
         @inertia
+        
+        <!-- Sienna Accessibility Widget -->
+        <script src="https://cdn.jsdelivr.net/npm/sienna-accessibility/dist/sienna-accessibility.umd.js" async></script>
     </body>
 </html>

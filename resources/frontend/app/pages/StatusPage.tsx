@@ -63,7 +63,7 @@ export default function StatusPage() {
                     </div>
                     
                     <div className="text-center pb-8 pt-4">
-                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500" dangerouslySetInnerHTML={{ __html: t("status_page.footer") || '&copy; 2026 Ba-Yu Platform.<br/>Semua Hak Dilindungi.' }} />
+                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500" dangerouslySetInnerHTML={{ __html: t("status_page.footer") || '&copy; 2026 SensoraNote Platform.<br/>Semua Hak Dilindungi.' }} />
                     </div>
                 </div>
             </div>

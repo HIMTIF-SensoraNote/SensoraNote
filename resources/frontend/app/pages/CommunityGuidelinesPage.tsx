@@ -61,7 +61,7 @@ export default function CommunityGuidelinesPage() {
                             {t("community_guidelines.hero_title") || "Panduan Komunitas"}
                         </h2>
                         <p className="font-['Manrope'] text-[15px] leading-relaxed text-gray-500 dark:text-gray-400">
-                            {t("community_guidelines.hero_desc") || "Mari ciptakan lingkungan belajar yang aman, positif, dan saling mendukung di Ba-Yu."}
+                            {t("community_guidelines.hero_desc") || "Mari ciptakan lingkungan belajar yang aman, positif, dan saling mendukung di SensoraNote."}
                         </p>
                     </div>
 
@@ -108,7 +108,7 @@ export default function CommunityGuidelinesPage() {
                     </div>
                     
                     <div className="text-center pb-8 pt-4">
-                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500" dangerouslySetInnerHTML={{ __html: t("community_guidelines.footer") || '&copy; 2026 Ba-Yu Platform.<br/>Semua Hak Dilindungi.' }} />
+                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500" dangerouslySetInnerHTML={{ __html: t("community_guidelines.footer") || '&copy; 2026 SensoraNote Platform.<br/>Semua Hak Dilindungi.' }} />
                     </div>
                 </div>
             </div>

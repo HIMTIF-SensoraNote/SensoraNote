@@ -89,7 +89,7 @@ export function MobileLayout({ children, showBottomNav = true, hideTopNav = fals
                    </button>
                    <Link to="/home" className="flex items-center shrink-0 group outline-none ml-2">
                       <span className="font-['Lexend_Deca'] font-extrabold text-[22px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-800 dark:from-[#7B7BFF] dark:to-[#A78BFA]">
-                         Ba-Yu
+                         SensoraNote
                       </span>
                    </Link>
                </div>
@@ -184,7 +184,7 @@ export function MobileLayout({ children, showBottomNav = true, hideTopNav = fals
                <div className="p-4 border-b border-slate-100 dark:border-white/5 flex items-center justify-between">
                  <div className="flex items-center gap-2">
                      <ApplicationLogo className="w-6 h-6" style={{ overflow: 'visible' }} />
-                     <span className="font-['Lexend_Deca'] font-extrabold text-[18px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-800 dark:from-[#7B7BFF] dark:to-[#A78BFA]">Ba-Yu</span>
+                     <span className="font-['Lexend_Deca'] font-extrabold text-[18px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-800 dark:from-[#7B7BFF] dark:to-[#A78BFA]">SensoraNote</span>
                  </div>
                  <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 bg-slate-50 dark:bg-white/5 rounded-full text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
                    <X className="w-4 h-4" />

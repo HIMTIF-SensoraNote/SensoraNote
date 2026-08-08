@@ -20,7 +20,7 @@
     "title": "設定",
     "search_placeholder": "設定を検索...",
     "account_center": "アカウントセンター",
-    "account_desc": "Ba-Yuプラットフォーム全体のアカウント設定と接続されたエクスペリエンスを管理します。",
+    "account_desc": "SensoraNoteプラットフォーム全体のアカウント設定と接続されたエクスペリエンスを管理します。",
     "personal_details": "個人情報",
     "profile_details": "プロフィールと個人情報",
     "password_security": "パスワードとセキュリティ",
@@ -49,7 +49,7 @@
   "theme": {
     "title": "外観",
     "subtitle": "アプリのテーマを選択",
-    "description": "より快適な読書と学習体験のために、Ba-Yuアプリの外観をカスタマイズします。",
+    "description": "より快適な読書と学習体験のために、SensoraNoteアプリの外観をカスタマイズします。",
     "light": "ライト",
     "light_desc": "明るい部屋の条件に適した、清潔で明るい外観。",
     "dark": "ダーク",
@@ -60,7 +60,7 @@
   "language": {
     "title": "言語",
     "subtitle": "アプリの言語を選択",
-    "description": "お好みに合わせてBa-Yuアプリの表示言語をカスタマイズしてください。",
+    "description": "お好みに合わせてSensoraNoteアプリの表示言語をカスタマイズしてください。",
     "system": "システムに従う",
     "system_desc": "デバイスの言語設定に合わせます。",
     "info": "言語の変更は、すべてのアプリインターフェース要素にすぐに適用されます。ユーザーが作成したコンテンツ（ノート、コメント）は元の言語のままになります。"
@@ -74,7 +74,7 @@
     "whatsapp": "WhatsAppチャット",
     "email": "メールを送信",
     "community_guidelines": "コミュニティガイドライン",
-    "community_guidelines_desc": "Ba-Yuでノートを共有するためのルールとマナーをお読みください。"
+    "community_guidelines_desc": "SensoraNoteでノートを共有するためのルールとマナーをお読みください。"
   },
   "stats": {
     "title": "学習統計",
@@ -101,7 +101,7 @@
     "notes_created": "作成したノート",
     "total_materials": "合計教材",
     "completed": "完了",
-    "footer_info": "データは学習セッション終了後に自動的に更新されます。© 2026 Ba-Yu Education。",
+    "footer_info": "データは学習セッション終了後に自動的に更新されます。© 2026 SensoraNote Education。",
     "set_goal_title": "1日の目標を設定",
     "set_goal_desc": "デジタルの精度で1日の学習時間の目標を設定します。",
     "hours": "時間",
@@ -123,7 +123,7 @@
     "forgot_password": "パスワードをお忘れですか？",
     "reset_password": "パスワードをリセット",
     "welcome": "ようこそ",
-    "welcome_desc": "ログインしてBa-Yuを続けてください。",
+    "welcome_desc": "ログインしてSensoraNoteを続けてください。",
     "start_journey": "旅を始めよう",
     "start_journey_desc": "登録して最初のノートを共有しましょう。",
     "login_tab": "ログイン",
@@ -197,7 +197,7 @@
     "following_count": "フォロー中",
     "followers_count": "フォロワー",
     "register_expert": "専門家として登録",
-    "register_expert_sub": "Ba-Yuの認定コントリビューターになりましょう",
+    "register_expert_sub": "SensoraNoteの認定コントリビューターになりましょう",
     "register": "登録",
     "tab_notes": "ノート",
     "tab_drafts": "下書き",
@@ -545,7 +545,7 @@
     "author_pending": "保留中",
     "author_follow": "フォロー",
     "verified_expert": "認証済みエキスパート",
-    "report_help_desc": "Ba-Yuエコシステムを教育的で安全、かつ快適に保つためにご協力ください。",
+    "report_help_desc": "SensoraNoteエコシステムを教育的で安全、かつ快適に保つためにご協力ください。",
     "report_main_reason": "主な理由",
     "close_modal": "モーダルを閉じる",
     "report_note": "ノートを報告",
@@ -568,8 +568,8 @@
     "respond_btn": "返信する",
     "downloaded_at": "ダウンロード：",
     "pdf_restricted_title": "保護された資料",
-    "pdf_restricted_desc": "この PDF 版には資料の一部のみが含まれています。完全版をダウンロードするには、Ba-Yu アプリで著者 <b>@{author}</b> をフォローしてください。",
-    "pdf_footer": "このドキュメントは未来の学習プラットフォーム <span class=\"footer-brand\">Ba-Yu</span> からダウンロードされました",
+    "pdf_restricted_desc": "この PDF 版には資料の一部のみが含まれています。完全版をダウンロードするには、SensoraNote アプリで著者 <b>@{author}</b> をフォローしてください。",
+    "pdf_footer": "このドキュメントは未来の学習プラットフォーム <span class=\"footer-brand\">SensoraNote</span> からダウンロードされました",
     "sort_newest": "最新",
     "sort_oldest": "最古",
     "sort_top": "トップコメント"
@@ -617,7 +617,7 @@
     "recently": "たった今",
     "discussion_label": "ディスカッション",
     "report_modal_title": "ユーザーを報告",
-    "report_modal_desc": "Ba-Yuエコシステムを教育的で安全かつ快適に保つためにご協力ください。",
+    "report_modal_desc": "SensoraNoteエコシステムを教育的で安全かつ快適に保つためにご協力ください。",
     "report_reason_label": "主な理由",
     "report_reason_spam": "スパム / 迷惑な広告",
     "report_reason_false_info": "虚偽の情報 / 誤った情報",
@@ -658,7 +658,7 @@
     "guide_3_title": "視覚的品質",
     "guide_3_desc": "文字と画像は読みやすくなければなりません。",
     "quality_priority": "品質優先",
-    "quality_desc": "Ba-Yuの資料の品質維持にご貢献いただきありがとうございます。",
+    "quality_desc": "SensoraNoteの資料の品質維持にご貢献いただきありがとうございます。",
     "validate": "資料を検証",
     "reject_material": "資料を拒否",
     "quality": "資料の品質",
@@ -869,7 +869,7 @@
     "prompt_approve_pakar": "専門家を承認",
     "prompt_reject_pakar": "リクエストを拒否",
     "prompt_pakar_placeholder": "ユーザーへのメモ...",
-    "prompt_approve_default": "おめでとうございます！あなたはBa-Yuの公式専門家になりました。",
+    "prompt_approve_default": "おめでとうございます！あなたはSensoraNoteの公式専門家になりました。",
     "prompt_reject_default": "申し訳ありませんが、あなたのポートフォリオは私たちの基準を満たしていません。",
     "toast_pakar_approved": "専門家のリクエストが承認されました。",
     "toast_pakar_rejected": "専門家のリクエストが拒否されました。",
@@ -1055,8 +1055,8 @@
     "pdf_written_by": "作成者:",
     "pdf_downloaded": "ダウンロード日:",
     "pdf_protected_title": "保護された資料",
-    "pdf_protected_desc": "このPDFには一部の資料のみが含まれています。完全版をダウンロードするには、Ba-Yuアプリで著者 <b>@{{author}}</b> をフォローしてください。",
-    "pdf_footer": "このドキュメントは <span class=\"footer-brand\">Ba-Yu</span> からダウンロードされました - 未来の学習プラットフォーム",
+    "pdf_protected_desc": "このPDFには一部の資料のみが含まれています。完全版をダウンロードするには、SensoraNoteアプリで著者 <b>@{{author}}</b> をフォローしてください。",
+    "pdf_footer": "このドキュメントは <span class=\"footer-brand\">SensoraNote</span> からダウンロードされました - 未来の学習プラットフォーム",
     "draft_badge": "下書き",
     "draft_label": "下書き",
     "last_edit": "最終更新",
@@ -1194,7 +1194,7 @@
     "desc_private": "フォロワーのみがあなたのプロフィールとノートを閲覧できます。他人の投稿へのコメントは引き続き公開されます。",
     "desc_public": "誰でもあなたのプロフィールとノートを閲覧し、共有したコンテンツとやり取りできます。",
     "deactivate_title": "アカウントの無効化（休眠）",
-    "deactivate_desc": "アカウントはBa-Yuプラットフォームから非表示（休眠）になります。プロフィール、ノート、コメントは他のユーザーには表示されません。<strong>30日以内に再度ログインしない場合、すべてのデータは完全に削除されます。</strong>",
+    "deactivate_desc": "アカウントはSensoraNoteプラットフォームから非表示（休眠）になります。プロフィール、ノート、コメントは他のユーザーには表示されません。<strong>30日以内に再度ログインしない場合、すべてのデータは完全に削除されます。</strong>",
     "deactivate_button": "アカウントを無効にする",
     "dialog_title": "アカウントを無効化しますか？",
     "dialog_desc": "アカウントは一般公開から隠され、30日間休眠状態になります。30日を過ぎる前にログインすることで再有効化できます。続行してもよろしいですか？",
@@ -1222,7 +1222,7 @@
   "privacy_page": {
     "title": "プライバシーポリシー",
     "hero_title": "あなたのプライバシー",
-    "hero_desc": "あなたのデータはBa-Yuで安全に守られています。私たちは透明性とデータ保護を最優先事項としています。",
+    "hero_desc": "あなたのデータはSensoraNoteで安全に守られています。私たちは透明性とデータ保護を最優先事項としています。",
     "principles": [
       {
         "label": "安全",
@@ -1259,14 +1259,14 @@
       "重要な通知の提供。",
       "プラットフォーム機能の改善。"
     ],
-    "footer": "© 2026 Ba-Yuプラットフォーム。あなたのプライバシーは私たちの信頼です。"
+    "footer": "© 2026 SensoraNoteプラットフォーム。あなたのプライバシーは私たちの信頼です。"
   },
   "terms_page": {
     "title": "利用規約",
     "hero_title": "利用規約",
-    "hero_desc": "最終更新日：2026年5月7日。Ba-Yu学習エコシステムのためのルール。",
+    "hero_desc": "最終更新日：2026年5月7日。SensoraNote学習エコシステムのためのルール。",
     "section1_title": "1. 規約の同意",
-    "section1_desc": "Ba-Yuプラットフォームにアクセスすることで、これらの規約に同意したものとみなされます。",
+    "section1_desc": "SensoraNoteプラットフォームにアクセスすることで、これらの規約に同意したものとみなされます。",
     "section2_title": "2. アカウント登録",
     "section2_desc": "正確な情報で登録する必要があります。以下の責任を負います：",
     "section2_items": [
@@ -1275,7 +1275,7 @@
       "真実かつ正確な情報の提供。"
     ],
     "section3_title": "3. 知的財産権",
-    "section3_quote": "「アップロードしたノートはあなたのものですが、Ba-Yuに表示・配布のライセンスを付与します。」",
+    "section3_quote": "「アップロードしたノートはあなたのものですが、SensoraNoteに表示・配布のライセンスを付与します。」",
     "section4_title": "4. 利用ルール",
     "allowed_title": "許可されること",
     "allowed_items": [
@@ -1289,13 +1289,13 @@
       "ヘイトスピーチの拡散。",
       "プラットフォームシステムの破損。"
     ],
-    "contact": "質問は <a href=\"mailto:support@ba-yu.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@ba-yu.id</a>",
-    "footer": "&copy; 2026 Ba-Yu プラットフォーム。<br/>全著作権所有。"
+    "contact": "質問は <a href=\"mailto:support@sensoranote.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@sensoranote.id</a>",
+    "footer": "&copy; 2026 SensoraNote プラットフォーム。<br/>全著作権所有。"
   },
   "community_guidelines": {
     "title": "コミュニティガイドライン",
     "hero_title": "コミュニティガイドライン",
-    "hero_desc": "Ba-Yuで安全で、ポジティブで、支え合う学習環境を作りましょう。",
+    "hero_desc": "SensoraNoteで安全で、ポジティブで、支え合う学習環境を作りましょう。",
     "values_title": "コアバリュー",
     "values": [
       {
@@ -1315,7 +1315,7 @@
       "スパム、違法プロモーション、または詐欺行為。",
       "他人の個人情報の共有（ドクシング）。"
     ],
-    "footer": "&copy; 2026 Ba-Yu プラットフォーム。<br/>全著作権所有。"
+    "footer": "&copy; 2026 SensoraNote プラットフォーム。<br/>全著作権所有。"
   },
   "help_page": {
     "title": "ヘルプセンター",
@@ -1326,7 +1326,7 @@
     "faq_title": "よくある質問 (FAQ)",
     "faqs": [
       {
-        "q": "Ba-Yu のエキスパートになるにはどうすればよいですか?",
+        "q": "SensoraNote のエキスパートになるにはどうすればよいですか?",
         "a": "エキスパートになるには、質の高いメモを頻繁に共有する必要があります。あなたのノートが「人気」カテゴリに頻繁に含まれ、多くの「いいね！」を獲得した場合、管理チームがノートを確認し、エキスパート ステータスを与えます。"
       },
       {
@@ -1362,8 +1362,8 @@
         "a": "専門家に提出されたメモは、盗作が検出された場合、画像解像度が低い場合、または不正確な公式/理論が含まれている場合、拒否される場合があります。ノートの詳細で専門家のフィードバックレビューを読んで改善することができます。"
       },
       {
-        "q": "Ba-Yu プラットフォームは有料ですか?",
-        "a": "いいえ、Ba-Yu はインドネシア全土のすべての生徒と教師が完全に無料で、知識や構造化された学習ノートを共有するために使用できます。"
+        "q": "SensoraNote プラットフォームは有料ですか?",
+        "a": "いいえ、SensoraNote はインドネシア全土のすべての生徒と教師が完全に無料で、知識や構造化された学習ノートを共有するために使用できます。"
       }
     ],
     "contact_title": "まだ助けが必要ですか？",
@@ -1372,49 +1372,49 @@
     "contact_email_title": "Eメール",
     "contact_email_desc": "詳細と添付ファイル",
     "guidelines_title": "コミュニティガイドライン",
-    "guidelines_desc": "Ba-Yuでのノート共有のルールと倫理を読んでください。",
-    "wa_template": "こんにちは、Ba-Yu サポートチーム、私は {{name}} です。問題について助けが必要です: ... 日: {{day}}。",
-    "email_subject": "Ba-Yu アプリケーションの問題のヘルプ - {{name}}",
-    "email_body": "Ba-Yu サポートチーム、こんにちは。\n\n私は{{名前}}です。問題について助けが必要です:\n...\n\n私は {{day}} にこの障害に直面しました。\n\n助けてください、ありがとう！"
+    "guidelines_desc": "SensoraNoteでのノート共有のルールと倫理を読んでください。",
+    "wa_template": "こんにちは、SensoraNote サポートチーム、私は {{name}} です。問題について助けが必要です: ... 日: {{day}}。",
+    "email_subject": "SensoraNote アプリケーションの問題のヘルプ - {{name}}",
+    "email_body": "SensoraNote サポートチーム、こんにちは。\n\n私は{{名前}}です。問題について助けが必要です:\n...\n\n私は {{day}} にこの障害に直面しました。\n\n助けてください、ありがとう！"
   },
   "about_page": {
     "title": "私たちについて",
-    "hero_title": "Ba-Yuを知る",
-    "hero_desc": "Ba-Yuプラットフォームの背後にある旅、使命、チームに近づきましょう。",
+    "hero_title": "SensoraNoteを知る",
+    "hero_desc": "SensoraNoteプラットフォームの背後にある旅、使命、チームに近づきましょう。",
     "vision_title": "ビジョンと使命",
-    "vision_desc": "私たちは、すべての学生が高品質の資料に平等にアクセスするに値すると信じています。Ba-Yuは、インドネシア全土の学生が公平、安全、かつアクセス可能なノート交換を促進するために構築されました。",
+    "vision_desc": "私たちは、すべての学生が高品質の資料に平等にアクセスするに値すると信じています。SensoraNoteは、インドネシア全土の学生が公平、安全、かつアクセス可能なノート交換を促進するために構築されました。",
     "community_title": "私たちのコミュニティ",
     "community_desc": "さまざまな教育機関から何千人もの学生や専門家が参加しています。厳格な検証と報告システムにより、このエコシステムを前向きで建設的なものに保ちます。",
-    "footer": "&copy; 2026 Ba-Yu プラットフォーム。<br/>全著作権所有。"
+    "footer": "&copy; 2026 SensoraNote プラットフォーム。<br/>全著作権所有。"
   },
   "careers_page": {
     "title": "キャリア",
-    "hero_title": "Ba-Yuでのキャリア",
+    "hero_title": "SensoraNoteでのキャリア",
     "hero_desc": "未来の教育エコシステムを構築するためにご参加ください。",
     "no_vacancies_title": "まだ空きがありません",
     "no_vacancies_desc": "現在、新しいポジションを募集していませんが、常に才能のある個人に興味を持っています。",
     "contact_btn": "お問い合わせ",
-    "footer": "&copy; 2026 Ba-Yu プラットフォーム。<br/>全著作権所有。"
+    "footer": "&copy; 2026 SensoraNote プラットフォーム。<br/>全著作権所有。"
   },
   "blog_page": {
     "title": "ブログと更新",
-    "hero_title": "Ba-Yu ブログ",
+    "hero_title": "SensoraNote ブログ",
     "hero_desc": "開発チームからのストーリー、洞察、最新の機能更新。",
     "coming_soon_title": "近日公開",
     "coming_soon_desc": "教育と技術に関する興味深い記事を準備しています。初公開にご期待ください！",
-    "footer": "&copy; 2026 Ba-Yu プラットフォーム。<br/>全著作権所有。"
+    "footer": "&copy; 2026 SensoraNote プラットフォーム。<br/>全著作権所有。"
   },
   "status_page": {
     "title": "システムステータス",
     "hero_title": "すべてのシステムは正常です",
     "hero_desc": "プラットフォームは正常に動作しています。",
     "status_operational": "運用中",
-    "footer": "&copy; 2026 Ba-Yu プラットフォーム。<br/>全著作権所有。"
+    "footer": "&copy; 2026 SensoraNote プラットフォーム。<br/>全著作権所有。"
   },
   "auth_modal": {
     "welcome": "ようこそ",
     "create_account": "新しいアカウントを作成",
-    "login_desc": "ログインしてBa-Yuのすべての機能にアクセスします。",
+    "login_desc": "ログインしてSensoraNoteのすべての機能にアクセスします。",
     "register_desc": "今すぐ登録してメモの管理を始めましょう。",
     "login": "ログイン",
     "register": "登録",
@@ -1445,7 +1445,7 @@
     "login_btn": "アカウントにログイン",
     "register_btn": "今すぐ登録",
     "or_continue_with": "または次で続行",
-    "terms_prefix": "登録することにより、Ba-Yuサービスの",
+    "terms_prefix": "登録することにより、SensoraNoteサービスの",
     "terms": "利用規約",
     "terms_and": "および",
     "privacy": "プライバシーポリシー",
@@ -1477,11 +1477,11 @@
     "no_data_filter": "エクスポート用のフィルターに一致するデータはありません。",
     "export_failed": "データのエクスポートに失敗しました。エラー：",
     "print_failed": "印刷ウィンドウを開けませんでした。ブラウザでポップアップが許可されていることを確認してください。",
-    "report_title": "Ba-Yu データエクスポートレポート",
+    "report_title": "SensoraNote データエクスポートレポート",
     "extracted_at": "抽出日：",
-    "footer_note": "Ba-Yu プラットフォーム &mdash; このドキュメントは自動的に生成されます。",
+    "footer_note": "SensoraNote プラットフォーム &mdash; このドキュメントは自動的に生成されます。",
     "doc_info": "このドキュメントには",
-    "doc_info2": "Ba-Yuプラットフォームから抽出されたデータが含まれています。抽出日：",
+    "doc_info2": "SensoraNoteプラットフォームから抽出されたデータが含まれています。抽出日：",
     "doc_all_cat": "データにはすべてのカテゴリが含まれます：ノート、レポート、およびユーザー。",
     "doc_only_cat": "表示されるデータは次のカテゴリのみです：",
     "doc_filter_verify": "検証ステータスフィルター：",
@@ -1538,7 +1538,7 @@
     "submit_button": "保存して続行",
     "submitting": "保存中...",
     "username_error": "ユーザーネームには文字、数字、アンダースコア (_) のみを使用できます",
-    "success_msg": "プロフィールが正常に完成しました！Ba-Yuへようこそ",
+    "success_msg": "プロフィールが正常に完成しました！SensoraNoteへようこそ",
     "error_msg": "プロフィールの保存中にエラーが発生しました",
     "edu_sd": "小学校",
     "edu_smp": "中学校",
@@ -1622,14 +1622,14 @@
     "not_found_title": "メッセージが見つかりません",
     "not_found_desc": "このメッセージは削除されたか、利用できなくなっている可能性があります。",
     "back": "戻る",
-    "system": "Ba-Yu システム",
+    "system": "SensoraNote システム",
     "regards": "よろしくお願いします、",
-    "team": "Ba-Yu EduPlatform チーム"
+    "team": "SensoraNote EduPlatform チーム"
   },
   "landing": {
-    "philosophy_text": "私たちは、最高の教育はコラボレーションから生まれると信じています。 Ba-Yu は、アイデアを整理し、洞察を共有し、支援的な学習コミュニティで一緒に成長するのを支援します。",
+    "philosophy_text": "私たちは、最高の教育はコラボレーションから生まれると信じています。 SensoraNote は、アイデアを整理し、洞察を共有し、支援的な学習コミュニティで一緒に成長するのを支援します。",
     "philosophy_vision": "私たちのビジョン",
-    "philosophy_motto": "Ba-Yu の哲学 — 学び、共有し、共に成長する",
+    "philosophy_motto": "SensoraNote の哲学 — 学び、共有し、共に成長する",
     "row1_1": "40以上の言語をサポート",
     "row1_2": "ダイナミック テキスト エディター",
     "row1_3": "広範な研究トピック",
@@ -1693,14 +1693,14 @@
     "multilang_title_1": "学ぶ",
     "multilang_title_2": "無制限",
     "multilang_title_3": "言語。",
-    "multilang_desc": "Ba-Yu は 40 以上の言語のインターフェースをサポートしており、世界中の学生が当社のプラットフォームを使用して共同作業し、快適に学習できるようにしています。",
+    "multilang_desc": "SensoraNote は 40 以上の言語のインターフェースをサポートしており、世界中の学生が当社のプラットフォームを使用して共同作業し、快適に学習できるようにしています。",
     "multilang_supported": "サポートされている言語",
     "explore_badge": "トピックの探索",
     "explore_title": "さまざまな科学分野を 1 つのプラットフォームで。",
     "explore_field": "フィールド探索",
     "explore_notes_btn": "ノートを調べる",
     "feature_badge": "コア機能",
-    "feature_title": "Ba-Yu を支えるテクノロジー。",
+    "feature_title": "SensoraNote を支えるテクノロジー。",
     "feature_desc": "私たちは、各コース教材を効果的に整理、確認、習得できるように、スマートなメモ取りエコシステムを設計しました。",
     "feat1_badge": "リッチエディター",
     "feat1_title": "LaTeXリッチエディタ",
@@ -1831,11 +1831,11 @@
     "failed_title": "検証に失敗しました",
     "failed_desc": "検証リンクが無効であるか、有効期限が切れています。新しいリンクをリクエストしてください。",
     "redirect_mobile": "モバイルアプリを開いています...",
-    "open_app": "Ba-Yuモバイルアプリを開く",
+    "open_app": "SensoraNoteモバイルアプリを開く",
     "go_to_login": "ログインに移動"
   },
   "download_app": {
-    "title": "Get Ba-Yu App",
+    "title": "Get SensoraNote App",
     "subtitle": "Learn easier from anywhere. Coming soon to App Store and Google Play.",
     "status": "Currently in development...",
     "back_to_home": "Back to Home"

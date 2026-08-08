@@ -57,7 +57,7 @@ export default function PrivacyPage() {
                             {t("privacy_page.hero_title") || "Privasi Anda"}
                         </h2>
                         <p className="font-['Manrope'] text-[15px] leading-relaxed text-gray-500 dark:text-gray-400">
-                            {t("privacy_page.hero_desc") || "Data Anda aman bersama Ba-Yu. Kami menjaga transparansi dan perlindungan data sebagai prioritas utama."}
+                            {t("privacy_page.hero_desc") || "Data Anda aman bersama SensoraNote. Kami menjaga transparansi dan perlindungan data sebagai prioritas utama."}
                         </p>
                     </div>
 
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
                     </div>
                     
                     <div className="text-center pb-8 pt-4">
-                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500" dangerouslySetInnerHTML={{ __html: t("privacy_page.footer") || '&copy; 2026 Ba-Yu Platform.<br/>Privasi Anda adalah Amanah Kami.' }} />
+                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500" dangerouslySetInnerHTML={{ __html: t("privacy_page.footer") || '&copy; 2026 SensoraNote Platform.<br/>Privasi Anda adalah Amanah Kami.' }} />
                     </div>
                 </div>
             </div>

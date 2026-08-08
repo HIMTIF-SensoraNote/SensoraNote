@@ -180,7 +180,7 @@ function ScrollRevealText() {
     offset: ["start end", "end start"]
   });
 
-  const text = t('landing.philosophy_text') || "Kami percaya bahwa pendidikan terbaik lahir dari kolaborasi. Ba-Yu hadir untuk membantu Anda menyusun gagasan, berbagi wawasan, dan tumbuh bersama dalam komunitas belajar yang saling mendukung.";
+  const text = t('landing.philosophy_text') || "Kami percaya bahwa pendidikan terbaik lahir dari kolaborasi. SensoraNote hadir untuk membantu Anda menyusun gagasan, berbagi wawasan, dan tumbuh bersama dalam komunitas belajar yang saling mendukung.";
   const words = text.split(" ");
 
   return (
@@ -223,7 +223,7 @@ function ScrollRevealText() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <CornerDownRight className="w-4 h-4" />
-          <span>{t('landing.philosophy_motto') || 'Filosofi Ba-Yu — Belajar, Berbagi, Tumbuh Bersama'}</span>
+          <span>{t('landing.philosophy_motto') || 'Filosofi SensoraNote — Belajar, Berbagi, Tumbuh Bersama'}</span>
         </motion.div>
       </div>
     </div>
@@ -943,7 +943,7 @@ export function LandingPage() {
                   {t('landing.multilang_title_3') || 'Bahasa.'}
                 </h2>
                 <p className="text-gray-400 mt-6 max-w-md text-sm md:text-base leading-relaxed">
-                  {t('landing.multilang_desc') || 'Ba-Yu mendukung tampilan antarmuka dalam 40+ bahasa, memungkinkan pelajar dari berbagai belahan dunia untuk berkolaborasi dan belajar dengan nyaman menggunakan platform kami.'}
+                  {t('landing.multilang_desc') || 'SensoraNote mendukung tampilan antarmuka dalam 40+ bahasa, memungkinkan pelajar dari berbagai belahan dunia untuk berkolaborasi dan belajar dengan nyaman menggunakan platform kami.'}
                 </p>
               </motion.div>
 
@@ -1326,7 +1326,7 @@ export function LandingPage() {
                 {t('landing.feature_badge') || 'FITUR INTI'}
               </p>
               <h2 className="font-display font-extrabold tracking-tight text-white text-3xl md:text-4xl leading-tight">
-                {t('landing.feature_title') || 'Teknologi Di Balik Ba-Yu.'}
+                {t('landing.feature_title') || 'Teknologi Di Balik SensoraNote.'}
               </h2>
             </div>
             <p className="text-gray-400 text-sm md:text-base max-w-sm text-left leading-relaxed">

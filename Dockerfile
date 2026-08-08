@@ -1,5 +1,5 @@
 # =============================================================================
-# Ba-Yu Production Dockerfile
+# SensoraNote Production Dockerfile
 # Stack: Laravel 12 + MongoDB + Vite (React SPA) + Sanctum
 # Target: Render free tier (also works for Railway, Fly.io, etc.)
 # =============================================================================

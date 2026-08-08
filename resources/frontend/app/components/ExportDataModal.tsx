@@ -196,7 +196,7 @@ export function ExportDataModal({
         let bodyContent = `
             <div style="margin-bottom:30px;">
                 <p style="color:#555;font-size:13px;line-height:1.6;">
-                    ${t("export_modal.doc_info") || "Dokumen ini berisi"} <strong>${totalRecords}</strong> ${t("export_modal.doc_info2") || "data yang diekstrak dari platform Ba-Yu pada"} <strong>${now}</strong>.
+                    ${t("export_modal.doc_info") || "Dokumen ini berisi"} <strong>${totalRecords}</strong> ${t("export_modal.doc_info2") || "data yang diekstrak dari platform SensoraNote pada"} <strong>${now}</strong>.
                     ${category === "semua" ? (t("export_modal.doc_all_cat") || "Data mencakup seluruh kategori: Catatan, Laporan, dan Pengguna.") : `${t("export_modal.doc_only_cat") || "Data yang ditampilkan hanya kategori"} <strong>${category}</strong>.`}
                     ${verifyStatus !== "semua" ? ` ${t("export_modal.doc_filter_verify") || "Filter status verifikasi:"} <strong>${verifyStatus}</strong>.` : ""}
                     ${limit > 0 ? ` ${t("export_modal.doc_limit") || "Dibatasi maksimal"} <strong>${limit}</strong> ${t("export_modal.doc_limit2") || "data per kategori."}` : ""}
@@ -248,7 +248,7 @@ export function ExportDataModal({
             <!DOCTYPE html>
             <html>
             <head>
-                <title>Export Data Ba-Yu - ${now}</title>
+                <title>Export Data SensoraNote - ${now}</title>
                 <style>
                     @media print {
                         body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -259,13 +259,13 @@ export function ExportDataModal({
             </head>
             <body>
                 <div style="margin-bottom:24px;">
-                    <h1 style="font-size:28px;color:#1e1b4b;margin-bottom:4px;">📊 ${t("export_modal.report_title") || "Laporan Ekspor Data Ba-Yu"}</h1>
+                    <h1 style="font-size:28px;color:#1e1b4b;margin-bottom:4px;">📊 ${t("export_modal.report_title") || "Laporan Ekspor Data SensoraNote"}</h1>
                     <p style="color:#888;font-size:13px;">${t("export_modal.extracted_at") || "Diekstrak pada:"} ${now}</p>
                 </div>
                 <hr style="border:0;border-top:1px solid #e5e7eb;margin-bottom:24px;"/>
                 ${bodyContent}
                 <div style="margin-top:40px;padding-top:16px;border-top:1px solid #e5e7eb;text-align:center;color:#aaa;font-size:11px;">
-                    ${t("export_modal.footer_note") || "Ba-Yu Platform &mdash; Dokumen ini digenerate secara otomatis."}
+                    ${t("export_modal.footer_note") || "SensoraNote Platform &mdash; Dokumen ini digenerate secara otomatis."}
                 </div>
             </body>
             </html>

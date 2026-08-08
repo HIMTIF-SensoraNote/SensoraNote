@@ -20,7 +20,7 @@
     "title": "Asetukset",
     "search_placeholder": "Hakuasetukset...",
     "account_center": "Tilikeskus",
-    "account_desc": "Hallinnoi tilisi asetuksia ja yhdistettyjä kokemuksia Ba-Yu-alustalla.",
+    "account_desc": "Hallinnoi tilisi asetuksia ja yhdistettyjä kokemuksia SensoraNote-alustalla.",
     "personal_details": "Henkilökohtaiset tiedot",
     "profile_details": "Profiili ja henkilötiedot",
     "password_security": "Salasana ja suojaus",
@@ -49,7 +49,7 @@
   "theme": {
     "title": "Ulkonäkö",
     "subtitle": "Valitse sovellusteema",
-    "description": "Mukauta Ba-Yu-sovelluksen ulkoasua, jotta luku- ja oppimiskokemus on mukavampi.",
+    "description": "Mukauta SensoraNote-sovelluksen ulkoasua, jotta luku- ja oppimiskokemus on mukavampi.",
     "light": "Kevyt",
     "light_desc": "Puhdas ja kirkas ulkonäkö, sopii valoisiin huoneolosuhteisiin.",
     "dark": "Tumma",
@@ -60,7 +60,7 @@
   "language": {
     "title": "Kieli",
     "subtitle": "Valitse Sovelluksen kieli",
-    "description": "Mukauta Ba-Yu-sovelluksen näyttökieli mieltymystesi mukaan.",
+    "description": "Mukauta SensoraNote-sovelluksen näyttökieli mieltymystesi mukaan.",
     "system": "Seuraa järjestelmää",
     "system_desc": "Säätyy laitteesi kieliasetusten mukaan.",
     "info": "Kielimuutokset otetaan välittömästi käyttöön kaikissa sovelluksen käyttöliittymäelementeissä. Käyttäjien luoma sisältö (muistiinpanot, kommentit) säilyy alkuperäisellä kielellään."
@@ -74,7 +74,7 @@
     "whatsapp": "WhatsApp chat",
     "email": "Lähetä Sähköposti",
     "community_guidelines": "yhteisön säännöt",
-    "community_guidelines_desc": "Lue säännöt ja etiikka muistiinpanojen jakamisesta Ba-Yussa."
+    "community_guidelines_desc": "Lue säännöt ja etiikka muistiinpanojen jakamisesta SensoraNotessa."
   },
   "stats": {
     "title": "Oppimistilastot",
@@ -101,7 +101,7 @@
     "notes_created": "Muistiinpanot luotu",
     "total_materials": "Materiaalit yhteensä",
     "completed": "Valmis",
-    "footer_info": "Tiedot päivitetään automaattisesti jokaisen oppimiskerran päätyttyä. © 2026 Ba-Yu Education.",
+    "footer_info": "Tiedot päivitetään automaattisesti jokaisen oppimiskerran päätyttyä. © 2026 SensoraNote Education.",
     "set_goal_title": "Aseta päivittäinen tavoite",
     "set_goal_desc": "Aseta päivittäinen oppimiskestotavoitteesi digitaalisella tarkkuudella.",
     "hours": "Tuntia",
@@ -123,7 +123,7 @@
     "forgot_password": "Unohditko salasanan?",
     "reset_password": "Palauta salasana",
     "welcome": "Tervetuloa Takaisin",
-    "welcome_desc": "Kirjaudu sisään jatkaaksesi Ba-Yuun.",
+    "welcome_desc": "Kirjaudu sisään jatkaaksesi SensoraNoteun.",
     "start_journey": "Aloita matkasi",
     "start_journey_desc": "Rekisteröidy ja jaa ensimmäinen muistiinpanosi.",
     "login_tab": "Kirjaudu sisään",
@@ -197,7 +197,7 @@
     "following_count": "Jälkeen",
     "followers_count": "Seuraajat",
     "register_expert": "Ryhdy asiantuntijaksi",
-    "register_expert_sub": "Ryhdy Ba-Yu:n vahvistetuksi avustajaksi",
+    "register_expert_sub": "Ryhdy SensoraNote:n vahvistetuksi avustajaksi",
     "register": "Rekisteröidy",
     "tab_notes": "Huomautuksia",
     "tab_drafts": "Luonnokset",
@@ -545,7 +545,7 @@
     "author_pending": "Odottaa",
     "author_follow": "Seuraa",
     "verified_expert": "Vahvistettu asiantuntija",
-    "report_help_desc": "Auta meitä pitämään Ba-Yu-ekosysteemin opettavaisena, turvallisena ja mukavana.",
+    "report_help_desc": "Auta meitä pitämään SensoraNote-ekosysteemin opettavaisena, turvallisena ja mukavana.",
     "report_main_reason": "Pääsyy",
     "close_modal": "Sulje Modal",
     "report_note": "Raportti Huomautus",
@@ -568,8 +568,8 @@
     "respond_btn": "VASTATA",
     "downloaded_at": "Ladattu:",
     "pdf_restricted_title": "Suojattu materiaali",
-    "pdf_restricted_desc": "Tämä PDF-versio sisältää vain osittaista materiaalia. Lataa täysversio seuraamalla kirjoittajaa <b>@{author}</b> Ba-Yu-sovelluksessa.",
-    "pdf_footer": "Tämä asiakirja on ladattu osoitteesta <span class=\"footer-brand\">Ba-Yu</span> - The Future Learning Platform",
+    "pdf_restricted_desc": "Tämä PDF-versio sisältää vain osittaista materiaalia. Lataa täysversio seuraamalla kirjoittajaa <b>@{author}</b> SensoraNote-sovelluksessa.",
+    "pdf_footer": "Tämä asiakirja on ladattu osoitteesta <span class=\"footer-brand\">SensoraNote</span> - The Future Learning Platform",
     "sort_newest": "Uusin",
     "sort_oldest": "Vanhin",
     "sort_top": "Suosituimmat kommentit"
@@ -617,7 +617,7 @@
     "recently": "Juuri nyt",
     "discussion_label": "KESKUSTELU",
     "report_modal_title": "Ilmoita käyttäjä",
-    "report_modal_desc": "Auta meitä pitämään Ba-Yu-ekosysteemin opettavaisena, turvallisena ja mukavana.",
+    "report_modal_desc": "Auta meitä pitämään SensoraNote-ekosysteemin opettavaisena, turvallisena ja mukavana.",
     "report_reason_label": "Pääsyy",
     "report_reason_spam": "Markkinointi roskapostia / häiritseviä mainoksia",
     "report_reason_false_info": "Väärää tietoa / Väärää tietoa",
@@ -626,7 +626,7 @@
     "report_reason_copyright": "Tekijänoikeusloukkaus / plagiointi",
     "report_reason_other": "Muu syy...",
     "report_detail_label": "Lisätiedot",
-    "report_success": "Raportti lähetetty onnistuneesti. Kiitos, että pidät Ba-Yun turvassa!",
+    "report_success": "Raportti lähetetty onnistuneesti. Kiitos, että pidät SensoraNoten turvassa!",
     "report_failed": "Raportin lähettäminen epäonnistui.",
     "btn_reply": "Vastata"
   },
@@ -658,7 +658,7 @@
     "guide_3_title": "Visuaalinen laatu",
     "guide_3_desc": "Kirjoitusten ja kuvien tulee olla luettavia.",
     "quality_priority": "Laatu prioriteetti",
-    "quality_desc": "Kiitos, että autat säilyttämään materiaalin laadun Ba-Yussa.",
+    "quality_desc": "Kiitos, että autat säilyttämään materiaalin laadun SensoraNotessa.",
     "validate": "Vahvista materiaali",
     "reject_material": "Hylkää materiaali",
     "quality": "Materiaalin laatu",
@@ -869,7 +869,7 @@
     "prompt_approve_pakar": "Hyväksy asiantuntija",
     "prompt_reject_pakar": "Hylkää pyyntö",
     "prompt_pakar_placeholder": "Huomautus käyttäjälle...",
-    "prompt_approve_default": "Onnittelut! Olet nyt Ba-Yun virallinen asiantuntija.",
+    "prompt_approve_default": "Onnittelut! Olet nyt SensoraNoten virallinen asiantuntija.",
     "prompt_reject_default": "Valitettavasti portfoliosi ei täytä kriteereitämme.",
     "toast_pakar_approved": "Asiantuntijan pyyntö hyväksytty.",
     "toast_pakar_rejected": "Asiantuntijan pyyntö hylätty.",
@@ -1055,8 +1055,8 @@
     "pdf_written_by": "Kirjoittaja:",
     "pdf_downloaded": "Ladattu:",
     "pdf_protected_title": "Suojattu materiaali",
-    "pdf_protected_desc": "Tämä PDF sisältää vain osittaista materiaalia. Lataa täysversio seuraamalla kirjoittajaa <b>@{{author}}</b> Ba-Yu-sovelluksessa.",
-    "pdf_footer": "Tämä asiakirja on ladattu osoitteesta <span class=\"footer-brand\">Ba-Yu</span> - The Future Learning Platform",
+    "pdf_protected_desc": "Tämä PDF sisältää vain osittaista materiaalia. Lataa täysversio seuraamalla kirjoittajaa <b>@{{author}}</b> SensoraNote-sovelluksessa.",
+    "pdf_footer": "Tämä asiakirja on ladattu osoitteesta <span class=\"footer-brand\">SensoraNote</span> - The Future Learning Platform",
     "draft_badge": "LUONNOS",
     "draft_label": "Luonnos",
     "last_edit": "Viimeisin muokkaus:",
@@ -1194,7 +1194,7 @@
     "desc_private": "Vain seuraajat voivat tarkastella profiiliasi ja muistiinpanojasi. Kommenttisi muiden viesteihin ovat edelleen julkisesti näkyvissä.",
     "desc_public": "Kaikki voivat tarkastella profiiliasi ja muistiinpanojasi ja olla vuorovaikutuksessa jakamasi sisällön kanssa.",
     "deactivate_title": "Poista tili käytöstä (lepotilassa)",
-    "deactivate_desc": "Tilisi piilotetaan (lepotilassa) Ba-Yu-alustalta. Profiilisi, muistiinpanosi ja kommenttisi eivät näy muille käyttäjille. <strong>Jos et kirjaudu takaisin sisään 30 päivän kuluessa, kaikki tietosi poistetaan pysyvästi.</strong>",
+    "deactivate_desc": "Tilisi piilotetaan (lepotilassa) SensoraNote-alustalta. Profiilisi, muistiinpanosi ja kommenttisi eivät näy muille käyttäjille. <strong>Jos et kirjaudu takaisin sisään 30 päivän kuluessa, kaikki tietosi poistetaan pysyvästi.</strong>",
     "deactivate_button": "Poista tili käytöstä",
     "dialog_title": "Poista tili käytöstä?",
     "dialog_desc": "Tilisi piilotetaan yleisöltä ja siirtyy lepotilaan 30 päiväksi. Voit aktivoida sen uudelleen kirjautumalla sisään ennen kuin 30 päivää on kulunut. Haluatko varmasti jatkaa?",
@@ -1222,7 +1222,7 @@
   "privacy_page": {
     "title": "Tietosuojakäytäntö",
     "hero_title": "Yksityisyytesi",
-    "hero_desc": "Tietosi ovat turvassa Ba-Yulla. Pidämme läpinäkyvyyttä ja tietosuojaa ensisijaisena prioriteettinamme.",
+    "hero_desc": "Tietosi ovat turvassa SensoraNotella. Pidämme läpinäkyvyyttä ja tietosuojaa ensisijaisena prioriteettinamme.",
     "principles": [
       {
         "label": "Turvallinen",
@@ -1259,14 +1259,14 @@
       "Tärkeiden ilmoitusten antaminen.",
       "Alustan ominaisuuksien parantaminen."
     ],
-    "footer": "© 2026 Ba-Yu-alusta. Yksityisyytesi on luottamuksemme."
+    "footer": "© 2026 SensoraNote-alusta. Yksityisyytesi on luottamuksemme."
   },
   "terms_page": {
     "title": "Ehdot",
     "hero_title": "Ehdot",
-    "hero_desc": "Päivitetty viimeksi: 7. toukokuuta 2026. Säännöt mukavalle Ba-Yu-oppimisekosysteemille.",
+    "hero_desc": "Päivitetty viimeksi: 7. toukokuuta 2026. Säännöt mukavalle SensoraNote-oppimisekosysteemille.",
     "section1_title": "1. Ehtojen hyväksyminen",
-    "section1_desc": "Kun avaat ja käytät Ba-Yu-alustaa, sinun katsotaan lukeneen, ymmärtäneen ja sitoutuneen noudattamaan näitä käyttöehtoja. Jos et ole samaa mieltä, älä jatka palveluidemme käyttöä molemminpuolisen turvallisuuden vuoksi.",
+    "section1_desc": "Kun avaat ja käytät SensoraNote-alustaa, sinun katsotaan lukeneen, ymmärtäneen ja sitoutuneen noudattamaan näitä käyttöehtoja. Jos et ole samaa mieltä, älä jatka palveluidemme käyttöä molemminpuolisen turvallisuuden vuoksi.",
     "section2_title": "2. Tilin rekisteröinti",
     "section2_desc": "Muistiinpanojen jakamisominaisuuden käyttäminen edellyttää rekisteröitymistä oikeilla tiedoilla. Olet täysin vastuussa:",
     "section2_items": [
@@ -1275,7 +1275,7 @@
       "Oikeiden ja täsmällisten tietojen tarjoaminen."
     ],
     "section3_title": "3. Immateriaalioikeudet",
-    "section3_quote": "\"Kaikki Ba-Yuhun lataamasi muistiinpanot pysyvät sinun. Lähettämällä ne kuitenkin annat Ba-Yulle luvan näyttää, jakaa ja mainostaa tätä sisältöä alustaekosysteemissämme koulutustarkoituksiin.\"",
+    "section3_quote": "\"Kaikki SensoraNotehun lataamasi muistiinpanot pysyvät sinun. Lähettämällä ne kuitenkin annat SensoraNotelle luvan näyttää, jakaa ja mainostaa tätä sisältöä alustaekosysteemissämme koulutustarkoituksiin.\"",
     "section4_title": "4. Käyttösäännöt",
     "allowed_title": "Mikä on sallittua",
     "allowed_items": [
@@ -1289,13 +1289,13 @@
       "Vihapuheen levittäminen.",
       "Alustajärjestelmän vaurioituminen."
     ],
-    "contact": "Onko sinulla kysyttävää? Ota yhteyttä <a href=\"mailto:support@ba-yu.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@ba-yu.id</a>",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Kaikki oikeudet pidätetään."
+    "contact": "Onko sinulla kysyttävää? Ota yhteyttä <a href=\"mailto:support@sensoranote.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@sensoranote.id</a>",
+    "footer": "© 2026 SensoraNote Platform.<br/>Kaikki oikeudet pidätetään."
   },
   "community_guidelines": {
     "title": "yhteisön säännöt",
     "hero_title": "yhteisön säännöt",
-    "hero_desc": "Luodaan turvallinen, positiivinen ja tukeva oppimisympäristö Ba-Yulle.",
+    "hero_desc": "Luodaan turvallinen, positiivinen ja tukeva oppimisympäristö SensoraNotelle.",
     "values_title": "Perusarvot",
     "values": [
       {
@@ -1315,7 +1315,7 @@
       "Roskaposti, laittomat tarjoukset tai petokset.",
       "Muiden henkilökohtaisten tietojen jakaminen (doxxing)."
     ],
-    "footer": "© 2026 Ba-Yu Platform.<br/>Kaikki oikeudet pidätetään."
+    "footer": "© 2026 SensoraNote Platform.<br/>Kaikki oikeudet pidätetään."
   },
   "help_page": {
     "title": "Ohjekeskus",
@@ -1326,7 +1326,7 @@
     "faq_title": "Usein kysytyt kysymykset (FAQ)",
     "faqs": [
       {
-        "q": "Kuinka tulla asiantuntijaksi Ba-Yussa?",
+        "q": "Kuinka tulla asiantuntijaksi SensoraNotessa?",
         "a": "Jotta voit tulla asiantuntijaksi, sinun on usein jaettava laatuhuomautuksia. Jos muistiinpanosi ovat usein \"Suositut\"-kategoriassa ja saavat paljon tykkäyksiä, järjestelmänvalvojatiimimme tarkistaa ne ja antaa sinulle Asiantuntija-tilan."
       },
       {
@@ -1362,8 +1362,8 @@
         "a": "Asiantuntijalle toimitetut huomautukset voidaan hylätä, jos havaitaan plagiointia, niiden kuvan resoluutio on huono tai jos ne sisältävät epätarkkoja kaavoja/teorioita. Voit lukea asiantuntijapalautteita muistiinpanosi tiedoista parantaaksesi sitä."
       },
       {
-        "q": "Onko Ba-Yu-alusta maksullinen?",
-        "a": "Ei, Ba-Yu on täysin ilmainen kaikille opiskelijoille ja opettajille kaikkialla Indonesiassa jakaakseen tietoa ja strukturoituja opiskelumuistiinpanoja!"
+        "q": "Onko SensoraNote-alusta maksullinen?",
+        "a": "Ei, SensoraNote on täysin ilmainen kaikille opiskelijoille ja opettajille kaikkialla Indonesiassa jakaakseen tietoa ja strukturoituja opiskelumuistiinpanoja!"
       }
     ],
     "contact_title": "Tarvitsetko edelleen apua?",
@@ -1372,49 +1372,49 @@
     "contact_email_title": "Sähköposti",
     "contact_email_desc": "Yksityiskohdat ja liitteet",
     "guidelines_title": "yhteisön säännöt",
-    "guidelines_desc": "Lue muistiinpanojen jakamisen säännöt ja etiikka Ba-Yussa.",
-    "wa_template": "Hei Ba-Yu-tukitiimi, olen {{name}}. Tarvitsen apua ongelmaan: ... {{day}}.",
-    "email_subject": "Ba-Yu-sovellusongelma-apu - {{name}}",
-    "email_body": "Hei Ba-Yu-tukitiimi,\n\nOlen {{name}}. Tarvitsen apua ongelmaan:\n...\n\nKohtasin tämän esteen {{day}}.\n\nOle hyvä ja auta, kiitos!"
+    "guidelines_desc": "Lue muistiinpanojen jakamisen säännöt ja etiikka SensoraNotessa.",
+    "wa_template": "Hei SensoraNote-tukitiimi, olen {{name}}. Tarvitsen apua ongelmaan: ... {{day}}.",
+    "email_subject": "SensoraNote-sovellusongelma-apu - {{name}}",
+    "email_body": "Hei SensoraNote-tukitiimi,\n\nOlen {{name}}. Tarvitsen apua ongelmaan:\n...\n\nKohtasin tämän esteen {{day}}.\n\nOle hyvä ja auta, kiitos!"
   },
   "about_page": {
     "title": "Tietoja meistä",
-    "hero_title": "Tutustu Ba-Yuun",
-    "hero_desc": "Pääset lähemmäksi matkaa, tehtävää ja Ba-Yu-alustan takana olevaa tiimiä.",
+    "hero_title": "Tutustu SensoraNoteun",
+    "hero_desc": "Pääset lähemmäksi matkaa, tehtävää ja SensoraNote-alustan takana olevaa tiimiä.",
     "vision_title": "Visio & Missio",
-    "vision_desc": "Uskomme, että jokainen opiskelija ansaitsee yhtäläisen pääsyn laadukkaisiin materiaaleihin. Ba-Yu rakennettiin helpottamaan reilua, turvallista ja esteetöntä muistiinpanojen vaihtoa opiskelijoille kaikkialla Indonesiassa.",
+    "vision_desc": "Uskomme, että jokainen opiskelija ansaitsee yhtäläisen pääsyn laadukkaisiin materiaaleihin. SensoraNote rakennettiin helpottamaan reilua, turvallista ja esteetöntä muistiinpanojen vaihtoa opiskelijoille kaikkialla Indonesiassa.",
     "community_title": "Yhteisömme",
     "community_desc": "Mukaan on liittynyt tuhansia opiskelijoita ja asiantuntijoita eri oppilaitoksista. Tiukkojen todentamis- ja raportointijärjestelmien avulla pidämme tämän ekosysteemin positiivisena ja rakentavana.",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Kaikki oikeudet pidätetään."
+    "footer": "© 2026 SensoraNote Platform.<br/>Kaikki oikeudet pidätetään."
   },
   "careers_page": {
     "title": "Ura",
-    "hero_title": "Ura Ba-Yussa",
+    "hero_title": "Ura SensoraNotessa",
     "hero_desc": "Tule mukaan rakentamaan tulevaisuuden koulutusekosysteemiä.",
     "no_vacancies_title": "Ei vielä avoimia työpaikkoja",
     "no_vacancies_desc": "Emme tällä hetkellä avaa uusia työpaikkoja, mutta olemme aina kiinnostuneita lahjakkaista henkilöistä.",
     "contact_btn": "Ota yhteyttä",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Kaikki oikeudet pidätetään."
+    "footer": "© 2026 SensoraNote Platform.<br/>Kaikki oikeudet pidätetään."
   },
   "blog_page": {
     "title": "Blogi & päivitykset",
-    "hero_title": "Ba-Yu blogi",
+    "hero_title": "SensoraNote blogi",
     "hero_desc": "Tarinoita, oivalluksia ja viimeisimmät ominaisuuspäivitykset kehitystiimistä.",
     "coming_soon_title": "Tulossa pian",
     "coming_soon_desc": "Valmistamme sinulle mielenkiintoisia artikkeleita koulutuksesta ja teknologiasta. Pysy kuulolla ensi-iltamme!",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Kaikki oikeudet pidätetään."
+    "footer": "© 2026 SensoraNote Platform.<br/>Kaikki oikeudet pidätetään."
   },
   "status_page": {
     "title": "Järjestelmän tila",
     "hero_title": "Kaikki järjestelmät normaalit",
     "hero_desc": "Alusta toimii normaalisti.",
     "status_operational": "Toiminnassa",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Kaikki oikeudet pidätetään."
+    "footer": "© 2026 SensoraNote Platform.<br/>Kaikki oikeudet pidätetään."
   },
   "auth_modal": {
     "welcome": "Tervetuloa",
     "create_account": "Luo uusi tili",
-    "login_desc": "Kirjaudu sisään päästäksesi kaikkiin Ba-Yu-ominaisuuksiin.",
+    "login_desc": "Kirjaudu sisään päästäksesi kaikkiin SensoraNote-ominaisuuksiin.",
     "register_desc": "Rekisteröidy ja aloita muistiinpanojen hallinta nyt.",
     "login": "Kirjaudu sisään",
     "register": "Rekisteröidy",
@@ -1449,7 +1449,7 @@
     "terms": "Ehdot",
     "terms_and": "ja",
     "privacy": "Tietosuojakäytäntö",
-    "terms_suffix": "Ba-Yu-palveluista.",
+    "terms_suffix": "SensoraNote-palveluista.",
     "reset_throttled": "Odota hetki (60 sekuntia) ennen kuin yrität uudelleen.",
     "reset_sent": "Salasanan palautuslinkki on lähetetty sähköpostiisi."
   },
@@ -1477,11 +1477,11 @@
     "no_data_filter": "Mikään data ei vastaa vientisuodatinta.",
     "export_failed": "Tietojen vienti epäonnistui. Virhe:",
     "print_failed": "Tulostusikkunan avaaminen epäonnistui. Varmista, että ponnahdusikkunat ovat sallittuja selaimessasi.",
-    "report_title": "Ba-Yu Data Export Report",
+    "report_title": "SensoraNote Data Export Report",
     "extracted_at": "Poimittu:",
-    "footer_note": "Ba-Yu-alusta — Tämä asiakirja luodaan automaattisesti.",
+    "footer_note": "SensoraNote-alusta — Tämä asiakirja luodaan automaattisesti.",
     "doc_info": "Tämä asiakirja sisältää",
-    "doc_info2": "Ba-Yu-alustalta poimitut tiedot",
+    "doc_info2": "SensoraNote-alustalta poimitut tiedot",
     "doc_all_cat": "Tiedot sisältävät kaikki luokat: muistiinpanot, raportit ja käyttäjät.",
     "doc_only_cat": "Näytetyt tiedot koskevat vain luokkaa",
     "doc_filter_verify": "Vahvistuksen tilasuodatin:",
@@ -1538,7 +1538,7 @@
     "submit_button": "Tallenna ja jatka",
     "submitting": "Tallennetaan...",
     "username_error": "Käyttäjätunnus voi sisältää vain kirjaimia, numeroita ja alaviivoja (_)",
-    "success_msg": "Profiili suoritettu onnistuneesti! Tervetuloa Ba-Yuun",
+    "success_msg": "Profiili suoritettu onnistuneesti! Tervetuloa SensoraNoteun",
     "error_msg": "Profiilia tallennettaessa tapahtui virhe",
     "edu_sd": "Peruskoulu (SD)",
     "edu_smp": "Yläaste (SMP)",
@@ -1622,14 +1622,14 @@
     "not_found_title": "Viestiä ei löydy",
     "not_found_desc": "Tämä viesti on ehkä poistettu tai se ei ole enää saatavilla.",
     "back": "Takaisin",
-    "system": "Ba-Yu järjestelmä",
+    "system": "SensoraNote järjestelmä",
     "regards": "Terveisin",
-    "team": "Ba-Yu EduPlatform -tiimi"
+    "team": "SensoraNote EduPlatform -tiimi"
   },
   "landing": {
-    "philosophy_text": "Uskomme, että paras koulutus syntyy yhteistyöstä. Ba-Yu auttaa sinua järjestämään ideoita, jakamaan oivalluksia ja kasvamaan yhdessä tukevassa oppimisyhteisössä.",
+    "philosophy_text": "Uskomme, että paras koulutus syntyy yhteistyöstä. SensoraNote auttaa sinua järjestämään ideoita, jakamaan oivalluksia ja kasvamaan yhdessä tukevassa oppimisyhteisössä.",
     "philosophy_vision": "MEIDÄN VISIOME",
-    "philosophy_motto": "Ba-Yu-filosofia – opi, jaa, kasva yhdessä",
+    "philosophy_motto": "SensoraNote-filosofia – opi, jaa, kasva yhdessä",
     "row1_1": "Yli 40 tuettua kieltä",
     "row1_2": "Dynaaminen tekstieditori",
     "row1_3": "Laajat opiskeluaiheet",
@@ -1693,14 +1693,14 @@
     "multilang_title_1": "Oppiminen",
     "multilang_title_2": "Ilman rajoitusta",
     "multilang_title_3": "Kieli.",
-    "multilang_desc": "Ba-Yu tukee käyttöliittymiä yli 40 kielellä, jolloin opiskelijat kaikkialta maailmasta voivat tehdä yhteistyötä ja oppia mukavasti alustamme avulla.",
+    "multilang_desc": "SensoraNote tukee käyttöliittymiä yli 40 kielellä, jolloin opiskelijat kaikkialta maailmasta voivat tehdä yhteistyötä ja oppia mukavasti alustamme avulla.",
     "multilang_supported": "Tuetut kielet",
     "explore_badge": "AIHETUTKIMUS",
     "explore_title": "Eri tieteenaloja yhdellä alustalla.",
     "explore_field": "KENTTÄTUTKIMUS",
     "explore_notes_btn": "Tutustu muistiinpanoihin",
     "feature_badge": "YDIN OMINAISUUDET",
-    "feature_title": "Teknologia Ba-Yun takana.",
+    "feature_title": "Teknologia SensoraNoten takana.",
     "feature_desc": "Suunnittelimme älykkään muistiinpanoekosysteemin, joka auttaa sinua organisoimaan, tarkistamaan ja hallitsemaan jokaisen kurssimateriaalin tehokkaasti.",
     "feat1_badge": "RICH editori",
     "feat1_title": "LaTeX Rich Editor",
@@ -1831,11 +1831,11 @@
     "failed_title": "Vahvistus epäonnistui",
     "failed_desc": "Vahvistuslinkki on virheellinen tai vanhentunut. Pyydä uusi linkki.",
     "redirect_mobile": "Avataan mobiilisovellusta...",
-    "open_app": "Avaa Ba-Yu-mobiilisovellus",
+    "open_app": "Avaa SensoraNote-mobiilisovellus",
     "go_to_login": "Siirry kohtaan Kirjautuminen"
   },
   "download_app": {
-    "title": "Get Ba-Yu App",
+    "title": "Get SensoraNote App",
     "subtitle": "Learn easier from anywhere. Coming soon to App Store and Google Play.",
     "status": "Currently in development...",
     "back_to_home": "Back to Home"

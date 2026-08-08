@@ -139,7 +139,7 @@ class UserController extends Controller
             $cloudinary = new Cloudinary(env('CLOUDINARY_URL'));
 
             $upload = $cloudinary->uploadApi()->upload($request->file('avatar')->getRealPath(), [
-                'folder' => 'ba-yu-avatars',
+                'folder' => 'sensoranote-avatars',
             ]);
 
             $validated['avatar'] = $upload['secure_url'];

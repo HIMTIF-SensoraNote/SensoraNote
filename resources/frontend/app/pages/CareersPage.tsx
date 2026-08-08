@@ -36,7 +36,7 @@ export default function CareersPage() {
                             <Briefcase className="w-10 h-10 text-amber-600 dark:text-amber-400" />
                         </div>
                         <h2 className="font-['Lexend_Deca'] font-extrabold text-2xl text-gray-900 dark:text-gray-100 mb-3">
-                            {t("careers_page.hero_title") || "Berkarir di Ba-Yu"}
+                            {t("careers_page.hero_title") || "Berkarir di SensoraNote"}
                         </h2>
                         <p className="font-['Manrope'] text-[15px] leading-relaxed text-gray-500 dark:text-gray-400">
                             {t("careers_page.hero_desc") || "Bergabung bersama kami membangun ekosistem edukasi masa depan."}
@@ -52,14 +52,14 @@ export default function CareersPage() {
                             <p className="font-['Manrope'] text-[14px] text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                                 {t("careers_page.no_vacancies_desc") || "Saat ini kami belum membuka posisi baru, namun kami selalu tertarik dengan talenta berbakat."}
                             </p>
-                            <a href="mailto:careers@ba-yu.id" className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-full transition-colors shadow-sm text-[14px]">
+                            <a href="mailto:careers@sensoranote.id" className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-full transition-colors shadow-sm text-[14px]">
                                 <Mail className="w-4 h-4" /> {t("careers_page.contact_btn") || "Hubungi Kami"}
                             </a>
                         </div>
                     </div>
                     
                     <div className="text-center pb-8 pt-4">
-                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500" dangerouslySetInnerHTML={{ __html: t("careers_page.footer") || '&copy; 2026 Ba-Yu Platform.<br/>Semua Hak Dilindungi.' }} />
+                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500" dangerouslySetInnerHTML={{ __html: t("careers_page.footer") || '&copy; 2026 SensoraNote Platform.<br/>Semua Hak Dilindungi.' }} />
                     </div>
                 </div>
             </div>

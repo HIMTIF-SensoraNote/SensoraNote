@@ -721,13 +721,13 @@ const LearningStatisticsPage = () => {
 
                 <div className="p-6 pt-6 overflow-y-auto custom-scrollbar">
                     <div className="grid grid-cols-4 gap-y-6 gap-x-3 mb-6">
-                        <button onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent(`Cek statistik belajarku di Ba-Yu! Streak: ${stats?.summary?.current_streak || 0} hari. ${window.location.href}`)}`, "_blank")} className="flex flex-col items-center gap-2 group">
+                        <button onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent(`Cek statistik belajarku di SensoraNote! Streak: ${stats?.summary?.current_streak || 0} hari. ${window.location.href}`)}`, "_blank")} className="flex flex-col items-center gap-2 group">
                             <div className="w-11 h-11 bg-[#25D366] text-white rounded-[16px] flex items-center justify-center shadow-lg shadow-green-100/50 dark:shadow-green-900/20 group-hover:-translate-y-1 transition-all">
                                 <MessageCircleIcon className="w-5 h-5 fill-white" />
                             </div>
                             <span className="text-[9px] font-black text-gray-500 dark:text-gray-400 uppercase tracking-wider">WA</span>
                         </button>
-                        <button onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Gila, streak belajarku udah ${stats?.summary?.current_streak || 0} hari di Ba-Yu! 🚀`)}&url=${encodeURIComponent(window.location.href)}`, "_blank")} className="flex flex-col items-center gap-2 group">
+                        <button onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Gila, streak belajarku udah ${stats?.summary?.current_streak || 0} hari di SensoraNote! 🚀`)}&url=${encodeURIComponent(window.location.href)}`, "_blank")} className="flex flex-col items-center gap-2 group">
                             <div className="w-11 h-11 bg-black text-white rounded-[16px] flex items-center justify-center shadow-lg shadow-gray-200/50 dark:shadow-black/30 group-hover:-translate-y-1 transition-all">
                                 <Twitter className="w-5 h-5 fill-white" />
                             </div>
@@ -739,7 +739,7 @@ const LearningStatisticsPage = () => {
                             </div>
                             <span className="text-[9px] font-black text-gray-500 dark:text-gray-400 uppercase tracking-wider">FB</span>
                         </button>
-                        <button onClick={() => window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(`Cek statistik belajarku di Ba-Yu! Streak: ${stats?.summary?.current_streak || 0} hari.`)}`, "_blank")} className="flex flex-col items-center gap-2 group">
+                        <button onClick={() => window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(`Cek statistik belajarku di SensoraNote! Streak: ${stats?.summary?.current_streak || 0} hari.`)}`, "_blank")} className="flex flex-col items-center gap-2 group">
                             <div className="w-11 h-11 bg-[#0088cc] text-white rounded-[16px] flex items-center justify-center shadow-lg shadow-sky-100/50 dark:shadow-sky-900/20 group-hover:-translate-y-1 transition-all">
                                 <Send className="w-5 h-5 fill-white" />
                             </div>

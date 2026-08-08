@@ -36,7 +36,7 @@ export default function Welcome({
 
     return (
         <>
-            <Head title="Ba-Yu Gateway" />
+            <Head title="SensoraNote Gateway" />
             
             {/* Custom Animations injected via a style block to ensure standalone compatibility */}
             <style>{`
@@ -197,7 +197,7 @@ export default function Welcome({
                             {/* Logo centered */}
                             <img 
                                 src="/logo.svg" 
-                                alt="Ba-Yu Logo" 
+                                alt="SensoraNote Logo" 
                                 className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-[0_0_12px_rgba(93,92,230,0.4)] transition-transform duration-500 group-hover:scale-110" 
                             />
                         </div>
@@ -216,7 +216,7 @@ export default function Welcome({
                 {/* 7. Subtle background copyright/hint footer (extremely low-opacity) */}
                 <div className="absolute bottom-6 left-0 right-0 text-center pointer-events-none z-10 opacity-20">
                     <p className="text-[10px] tracking-[0.3em] uppercase font-bold text-slate-500">
-                        Ba-Yu Gateway
+                        SensoraNote Gateway
                     </p>
                 </div>
             </div>

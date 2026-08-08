@@ -192,7 +192,7 @@ export default function Login() {
                         </h2>
                         <p className="text-[17px] xl:text-[19px] text-white/80 font-['Manrope'] font-medium drop-shadow-sm leading-relaxed max-w-md">
                             {isLogin
-                                ? (t('auth.panel_desc_login') === 'auth.panel_desc_login' ? "Masuk untuk melanjutkan petualangan belajarmu bersama Ba-Yu dan bagikan wawasanmu." : t('auth.panel_desc_login'))
+                                ? (t('auth.panel_desc_login') === 'auth.panel_desc_login' ? "Masuk untuk melanjutkan petualangan belajarmu bersama SensoraNote dan bagikan wawasanmu." : t('auth.panel_desc_login'))
                                 : (t('auth.panel_desc_register') === 'auth.panel_desc_register' ? "Bergabunglah dengan ribuan pelajar dan pakar untuk berbagi, belajar, dan tumbuh bersama." : t('auth.panel_desc_register'))}
                         </p>
                     </motion.div>
@@ -210,7 +210,7 @@ export default function Login() {
                 </h1>
                 <p className="font-['Manrope'] text-[15px] text-gray-500 font-medium">
                     {isLogin 
-                        ? (t('auth.welcome_desc') === 'auth.welcome_desc' ? "Masuk untuk melanjutkan ke Ba-Yu." : t('auth.welcome_desc')) 
+                        ? (t('auth.welcome_desc') === 'auth.welcome_desc' ? "Masuk untuk melanjutkan ke SensoraNote." : t('auth.welcome_desc')) 
                         : (t('auth.start_journey_desc') === 'auth.start_journey_desc' ? "Daftar dan bagikan catatan pertamamu." : t('auth.start_journey_desc'))}
                 </p>
             </div>

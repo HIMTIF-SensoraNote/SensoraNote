@@ -20,7 +20,7 @@
     "title": "ቅንብሮች",
     "search_placeholder": "ቅንብሮችን ፈልግ...",
     "account_center": "መለያ ማዕከል",
-    "account_desc": "በBa-Yu መድረክ ላይ የመለያ ቅንብሮችዎን እና የተገናኙ ተሞክሮዎችን ያስተዳድሩ።",
+    "account_desc": "በSensoraNote መድረክ ላይ የመለያ ቅንብሮችዎን እና የተገናኙ ተሞክሮዎችን ያስተዳድሩ።",
     "personal_details": "የግል ዝርዝሮች",
     "profile_details": "መገለጫ እና የግል ዝርዝሮች",
     "password_security": "የይለፍ ቃል እና ደህንነት",
@@ -60,7 +60,7 @@
   "language": {
     "title": "ቋንቋ",
     "subtitle": "የመተግበሪያ ቋንቋ ይምረጡ",
-    "description": "እንደ ምርጫዎ የBa-Yu መተግበሪያ ማሳያ ቋንቋን ያብጁ።",
+    "description": "እንደ ምርጫዎ የSensoraNote መተግበሪያ ማሳያ ቋንቋን ያብጁ።",
     "system": "ስርዓትን ተከተል",
     "system_desc": "ወደ መሳሪያዎ ቋንቋ ቅንብሮች ያስተካክላል።",
     "info": "የቋንቋ ለውጦች ወዲያውኑ በሁሉም የመተግበሪያ በይነገጽ ክፍሎች ላይ ይተገበራሉ። በተጠቃሚ የተፈጠረ ይዘት (ማስታወሻዎች፣ አስተያየቶች) በመጀመሪያው ቋንቋ ይቀራል።"
@@ -197,7 +197,7 @@
     "following_count": "በመከተል ላይ",
     "followers_count": "ተከታዮች",
     "register_expert": "ኤክስፐርት ሁን",
-    "register_expert_sub": "በBa-yu ላይ የተረጋገጠ አስተዋጽዖ አበርካች ይሁኑ",
+    "register_expert_sub": "በSensoraNote ላይ የተረጋገጠ አስተዋጽዖ አበርካች ይሁኑ",
     "register": "ይመዝገቡ",
     "tab_notes": "ማስታወሻዎች",
     "tab_drafts": "ረቂቆች",
@@ -568,7 +568,7 @@
     "respond_btn": "መልስ ስጥ",
     "downloaded_at": "የወረደው፡-",
     "pdf_restricted_title": "የተጠበቀ ቁሳቁስ",
-    "pdf_restricted_desc": "ይህ የፒዲኤፍ ስሪት ከፊል ይዘት ብቻ ነው የያዘው። ሙሉውን ቅጂ ለማውረድ በBa-Yu መተግበሪያ ላይ ደራሲውን <b>@{author}</b> ይከተሉ።",
+    "pdf_restricted_desc": "ይህ የፒዲኤፍ ስሪት ከፊል ይዘት ብቻ ነው የያዘው። ሙሉውን ቅጂ ለማውረድ በSensoraNote መተግበሪያ ላይ ደራሲውን <b>@{author}</b> ይከተሉ።",
     "pdf_footer": "ይህ ሰነድ ከ<span class=\"footer-brand\">ባ-ዩ</span> - የወደፊቱ የመማሪያ መድረክ ወርዷል።",
     "sort_newest": "አዲሱ",
     "sort_oldest": "በጣም የቆየ",
@@ -1055,7 +1055,7 @@
     "pdf_written_by": "የተፃፈው፡-",
     "pdf_downloaded": "የወረደው በ፡",
     "pdf_protected_title": "የተጠበቀ ቁሳቁስ",
-    "pdf_protected_desc": "ይህ ፒዲኤፍ የያዘው ከፊል ቁሳቁስ ብቻ ነው። ሙሉውን ቅጂ ለማውረድ በBa-Yu መተግበሪያ ላይ ደራሲውን <b>@{{author}}</b> ይከተሉ።",
+    "pdf_protected_desc": "ይህ ፒዲኤፍ የያዘው ከፊል ቁሳቁስ ብቻ ነው። ሙሉውን ቅጂ ለማውረድ በSensoraNote መተግበሪያ ላይ ደራሲውን <b>@{{author}}</b> ይከተሉ።",
     "pdf_footer": "ይህ ሰነድ ከ<span class=\"footer-brand\">ባ-ዩ</span> - የወደፊቱ የመማሪያ መድረክ ወርዷል።",
     "draft_badge": "ረቂቅ",
     "draft_label": "ረቂቅ",
@@ -1222,7 +1222,7 @@
   "privacy_page": {
     "title": "የግላዊነት ፖሊሲ",
     "hero_title": "የእርስዎ ግላዊነት",
-    "hero_desc": "ውሂብህ በBa-yu ደህንነቱ የተጠበቀ ነው። የግልጽነት እና የመረጃ ጥበቃን እንደ ዋና ተግባራችን እንጠብቃለን።",
+    "hero_desc": "ውሂብህ በSensoraNote ደህንነቱ የተጠበቀ ነው። የግልጽነት እና የመረጃ ጥበቃን እንደ ዋና ተግባራችን እንጠብቃለን።",
     "principles": [
       {
         "label": "ደህንነቱ የተጠበቀ",
@@ -1266,7 +1266,7 @@
     "hero_title": "ውሎች እና ሁኔታዎች",
     "hero_desc": "ለመጨረሻ ጊዜ የተሻሻለው፡ ሜይ 7፣ 2026። ምቹ የBa-ዩ ትምህርት ሥነ-ምህዳር ደንቦች።",
     "section1_title": "1. ውሎችን መቀበል",
-    "section1_desc": "የBa-Yu መድረክን በመድረስ እና በመጠቀም፣ እንዳነበቡ፣ እንደተረዱት እና በእነዚህ ውሎች እና ሁኔታዎች እንደተስማሙ ይቆጠራሉ። ካልተስማሙ እባክዎን አገልግሎቶቻችንን ለጋራ ደህንነት መጠቀሙን አይቀጥሉም።",
+    "section1_desc": "የSensoraNote መድረክን በመድረስ እና በመጠቀም፣ እንዳነበቡ፣ እንደተረዱት እና በእነዚህ ውሎች እና ሁኔታዎች እንደተስማሙ ይቆጠራሉ። ካልተስማሙ እባክዎን አገልግሎቶቻችንን ለጋራ ደህንነት መጠቀሙን አይቀጥሉም።",
     "section2_title": "2. የመለያ ምዝገባ",
     "section2_desc": "የማስታወሻ መጋራት ባህሪን ለመጠቀም በትክክለኛ መረጃ መመዝገብ ያስፈልግዎታል። ለሚከተሉት ሙሉ ሀላፊነት አለብዎት፡-",
     "section2_items": [
@@ -1275,7 +1275,7 @@
       "ትክክለኛ እና ትክክለኛ መረጃ መስጠት።"
     ],
     "section3_title": "3. የአእምሯዊ ንብረት መብቶች",
-    "section3_quote": "\"ወደ ባ-ዩ የምትሰቅላቸው ማንኛቸውም ማስታወሻዎች ያንተ እንደሆኑ ይቆያሉ። ነገር ግን እነሱን በመስቀል፣ ለBa-Yu ያንን ይዘት በመድረክ ስነ-ምህዳራችን ውስጥ ለትምህርታዊ ዓላማ እንዲያሳይ፣ እንዲያሰራጭ እና እንዲያስተዋውቅ ፍቃድ ትሰጣለህ።\"",
+    "section3_quote": "\"ወደ ባ-ዩ የምትሰቅላቸው ማንኛቸውም ማስታወሻዎች ያንተ እንደሆኑ ይቆያሉ። ነገር ግን እነሱን በመስቀል፣ ለSensoraNote ያንን ይዘት በመድረክ ስነ-ምህዳራችን ውስጥ ለትምህርታዊ ዓላማ እንዲያሳይ፣ እንዲያሰራጭ እና እንዲያስተዋውቅ ፍቃድ ትሰጣለህ።\"",
     "section4_title": "4. የአጠቃቀም ደንቦች",
     "allowed_title": "የተፈቀደው",
     "allowed_items": [
@@ -1289,8 +1289,8 @@
       "የጥላቻ ንግግርን ማስፋፋት።",
       "የመድረክ ስርዓቱን ማበላሸት."
     ],
-    "contact": "ጥያቄዎች አሉዎት? ያነጋግሩ <a href=\"mailto:support@ba-yu.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@ba-yu.id</a>",
-    "footer": "© 2026 Ba-Yu Platform።<br/>መብቱ በህግ የተጠበቀ ነው።"
+    "contact": "ጥያቄዎች አሉዎት? ያነጋግሩ <a href=\"mailto:support@sensoranote.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@sensoranote.id</a>",
+    "footer": "© 2026 SensoraNote Platform።<br/>መብቱ በህግ የተጠበቀ ነው።"
   },
   "community_guidelines": {
     "title": "የማህበረሰብ መመሪያዎች",
@@ -1315,7 +1315,7 @@
       "አይፈለጌ መልዕክት፣ ህገወጥ ማስተዋወቂያዎች ወይም ማጭበርበር።",
       "የሌሎች ሰዎችን የግል መረጃ ማጋራት (doxxing)።"
     ],
-    "footer": "© 2026 Ba-Yu Platform።<br/>መብቱ በህግ የተጠበቀ ነው።"
+    "footer": "© 2026 SensoraNote Platform።<br/>መብቱ በህግ የተጠበቀ ነው።"
   },
   "help_page": {
     "title": "የእገዛ ማዕከል",
@@ -1385,7 +1385,7 @@
     "vision_desc": "እያንዳንዱ ተማሪ ጥራት ያለው ቁሳቁስ እኩል ማግኘት ይገባዋል ብለን እናምናለን። ባ-ዩ የተገነባው በመላው ኢንዶኔዥያ ላሉ ተማሪዎች ፍትሃዊ፣ ደህንነቱ የተጠበቀ እና ተደራሽ የሆነ የማስታወሻ ልውውጥን ለማመቻቸት ነው።",
     "community_title": "የእኛ ማህበረሰብ",
     "community_desc": "ከተለያዩ የትምህርት ተቋማት የተውጣጡ በሺዎች የሚቆጠሩ ተማሪዎች እና ባለሙያዎች ተቀላቅለዋል. በጥብቅ የማረጋገጫ እና የሪፖርት ማቅረቢያ ስርዓቶች ይህንን ስነ-ምህዳር አወንታዊ እና ገንቢ እናቆየዋለን።",
-    "footer": "© 2026 Ba-Yu Platform።<br/>መብቱ በህግ የተጠበቀ ነው።"
+    "footer": "© 2026 SensoraNote Platform።<br/>መብቱ በህግ የተጠበቀ ነው።"
   },
   "careers_page": {
     "title": "ሙያዎች",
@@ -1394,7 +1394,7 @@
     "no_vacancies_title": "እስካሁን ምንም ክፍት የስራ ቦታዎች የሉም",
     "no_vacancies_desc": "በአሁኑ ጊዜ አዳዲስ የስራ መደቦችን አንከፍትም ፣ ግን ሁል ጊዜ ችሎታ ያላቸው ግለሰቦችን እንፈልጋለን።",
     "contact_btn": "ያግኙን",
-    "footer": "© 2026 Ba-Yu Platform።<br/>መብቱ በህግ የተጠበቀ ነው።"
+    "footer": "© 2026 SensoraNote Platform።<br/>መብቱ በህግ የተጠበቀ ነው።"
   },
   "blog_page": {
     "title": "ብሎግ እና ዝማኔዎች",
@@ -1402,19 +1402,19 @@
     "hero_desc": "ከልማት ቡድን የመጡ ታሪኮች፣ ግንዛቤዎች እና የቅርብ ጊዜ የባህሪ ዝማኔዎች።",
     "coming_soon_title": "በቅርብ ቀን",
     "coming_soon_desc": "ስለ ትምህርት እና ቴክኖሎጂ አስደሳች ጽሑፎችን እያዘጋጀን ነው። ለቅድመ ዝግጅት ዝግጅታችን ይጠብቁ!",
-    "footer": "© 2026 Ba-Yu Platform።<br/>መብቱ በህግ የተጠበቀ ነው።"
+    "footer": "© 2026 SensoraNote Platform።<br/>መብቱ በህግ የተጠበቀ ነው።"
   },
   "status_page": {
     "title": "የስርዓት ሁኔታ",
     "hero_title": "ሁሉም ስርዓቶች መደበኛ",
     "hero_desc": "መድረክ በመደበኛነት እየሰራ ነው።",
     "status_operational": "የሚሰራ",
-    "footer": "© 2026 Ba-Yu Platform።<br/>መብቱ በህግ የተጠበቀ ነው።"
+    "footer": "© 2026 SensoraNote Platform።<br/>መብቱ በህግ የተጠበቀ ነው።"
   },
   "auth_modal": {
     "welcome": "እንኳን ደህና መጣህ",
     "create_account": "አዲስ መለያ ፍጠር",
-    "login_desc": "ሁሉንም የBa-yu ባህሪያትን ለመድረስ ይግቡ።",
+    "login_desc": "ሁሉንም የSensoraNote ባህሪያትን ለመድረስ ይግቡ።",
     "register_desc": "ይመዝገቡ እና ማስታወሻዎችዎን አሁን ማስተዳደር ይጀምሩ።",
     "login": "ግባ",
     "register": "ይመዝገቡ",
@@ -1835,7 +1835,7 @@
     "go_to_login": "ወደ Login ይሂዱ"
   },
   "download_app": {
-    "title": "Get Ba-Yu App",
+    "title": "Get SensoraNote App",
     "subtitle": "Learn easier from anywhere. Coming soon to App Store and Google Play.",
     "status": "Currently in development...",
     "back_to_home": "Back to Home"

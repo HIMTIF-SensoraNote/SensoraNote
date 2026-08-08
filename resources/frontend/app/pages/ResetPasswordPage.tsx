@@ -120,7 +120,7 @@ export default function ResetPasswordPage() {
                         className="md:hidden mb-6 w-full bg-indigo-100 hover:bg-indigo-200 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 dark:hover:bg-indigo-900/50 py-3 rounded-xl font-['Lexend_Deca'] font-bold text-[14px] flex items-center justify-center gap-2 transition-all"
                     >
                         <Smartphone className="w-5 h-5" />
-                        <span>{t('reset_password.open_in_app') !== 'reset_password.open_in_app' ? t('reset_password.open_in_app') : 'Buka di Aplikasi Ba-Yu Mobile'}</span>
+                        <span>{t('reset_password.open_in_app') !== 'reset_password.open_in_app' ? t('reset_password.open_in_app') : 'Buka di Aplikasi SensoraNote Mobile'}</span>
                     </a>
 
                     <form onSubmit={handleSubmit} className="space-y-5 relative z-10">

@@ -228,7 +228,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                         </h2>
                         <p className="font-['Manrope'] text-[15px] text-gray-400 font-medium leading-relaxed">
                           {activeTab === 'login' 
-                            ? t("auth_modal.login_desc") !== "auth_modal.login_desc" ? t("auth_modal.login_desc") : "Masuk untuk mengakses semua fitur cerdas Ba-Yu." 
+                            ? t("auth_modal.login_desc") !== "auth_modal.login_desc" ? t("auth_modal.login_desc") : "Masuk untuk mengakses semua fitur cerdas SensoraNote." 
                             : t("auth_modal.register_desc") !== "auth_modal.register_desc" ? t("auth_modal.register_desc") : "Daftar sekarang dan nikmati ekosistem catatan modern."}
                         </p>
                       </div>

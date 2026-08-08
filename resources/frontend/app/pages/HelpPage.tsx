@@ -30,18 +30,18 @@ export default function HelpPage() {
 
     // Get translated templates with dynamic interpolations
     const waMessage = t("help_page.wa_template", { name: userName, day: currentDay }) ||
-        `Halo Tim Dukungan Ba-Yu, saya ${userName}. Saya membutuhkan bantuan terkait masalah: ... pada hari ${currentDay}.`;
+        `Halo Tim Dukungan SensoraNote, saya ${userName}. Saya membutuhkan bantuan terkait masalah: ... pada hari ${currentDay}.`;
     const waUrl = `https://wa.me/6282182643377?text=${encodeURIComponent(waMessage)}`;
 
     const emailSubject = t("help_page.email_subject", { name: userName }) ||
-        `Bantuan Kendala Aplikasi Ba-Yu - ${userName}`;
+        `Bantuan Kendala Aplikasi SensoraNote - ${userName}`;
     const emailBody = t("help_page.email_body", { name: userName, day: currentDay }) ||
-        `Halo Tim Dukungan Ba-Yu,\n\nSaya ${userName}. Saya membutuhkan bantuan terkait masalah:\n...\n\nKendala ini saya hadapi pada hari ${currentDay}.\n\nMohon bantuannya, terima kasih!`;
+        `Halo Tim Dukungan SensoraNote,\n\nSaya ${userName}. Saya membutuhkan bantuan terkait masalah:\n...\n\nKendala ini saya hadapi pada hari ${currentDay}.\n\nMohon bantuannya, terima kasih!`;
     const emailUrl = `mailto:support.bayu@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
     const FAQS = [
         {
-            question: t("help_page.faqs.0.q") || "Bagaimana cara menjadi Pakar di Ba-Yu?",
+            question: t("help_page.faqs.0.q") || "Bagaimana cara menjadi Pakar di SensoraNote?",
             answer: t("help_page.faqs.0.a") || "Untuk menjadi Pakar, kamu harus sering membagikan catatan berkualitas. Jika catatanmu sering masuk kategori 'Populer' dan mendapatkan banyak like, tim Admin kami akan meninjaunya dan memberikan status Pakar."
         },
         {
@@ -77,8 +77,8 @@ export default function HelpPage() {
             answer: t("help_page.faqs.8.a") || "Catatan yang diajukan ke Pakar dapat ditolak jika terdeteksi plagiasi, memiliki resolusi gambar yang buruk, atau berisi rumus/teori yang kurang akurat. Kamu bisa membaca ulasan masukan dari Pakar di detail catatanmu untuk memperbaikinya."
         },
         {
-            question: t("help_page.faqs.9.q") || "Apakah platform Ba-Yu ini berbayar?",
-            answer: t("help_page.faqs.9.a") || "Tidak, Ba-Yu sepenuhnya gratis untuk digunakan oleh semua pelajar dan pengajar di seluruh Indonesia untuk saling berbagi ilmu pengetahuan dan catatan belajar terstruktur!"
+            question: t("help_page.faqs.9.q") || "Apakah platform SensoraNote ini berbayar?",
+            answer: t("help_page.faqs.9.a") || "Tidak, SensoraNote sepenuhnya gratis untuk digunakan oleh semua pelajar dan pengajar di seluruh Indonesia untuk saling berbagi ilmu pengetahuan dan catatan belajar terstruktur!"
         }
     ];
 
@@ -212,7 +212,7 @@ export default function HelpPage() {
                                         {t("help_page.guidelines_title") || "Panduan Komunitas"}
                                     </h3>
                                     <p className="font-['Manrope'] text-[13px] text-gray-400">
-                                        {t("help_page.guidelines_desc") || "Baca aturan dan etika berbagi catatan di Ba-Yu."}
+                                        {t("help_page.guidelines_desc") || "Baca aturan dan etika berbagi catatan di SensoraNote."}
                                     </p>
                                 </div>
                                 <ExternalLink className="w-5 h-5 text-gray-500 group-hover:text-white transition-colors" />

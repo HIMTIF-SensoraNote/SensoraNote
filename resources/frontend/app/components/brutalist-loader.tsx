@@ -132,7 +132,7 @@ export function BrutalistLoader({ onComplete }: BrutalistLoaderProps) {
         {/* Ambient Indigo/Violet Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] rounded-full blur-[130px] bg-[#5D5CE6]/[0.08] pointer-events-none animate-pulse-slow" />
 
-        {/* Center Content: Title "BelajarYuk" */}
+        {/* Center Content: Title "SensoraNote" */}
         <div className="relative z-10 flex flex-col items-center max-w-2xl w-full text-center">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -180,7 +180,7 @@ export function BrutalistLoader({ onComplete }: BrutalistLoaderProps) {
         {/* Ambient Violet Glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] rounded-full blur-[130px] bg-[#8B5CF6]/[0.08] pointer-events-none animate-pulse-slow" style={{ animationDelay: '1.5s' }} />
 
-        {/* Center Content: Subtitle "Ba-Yu" & Sleek Progress Line */}
+        {/* Center Content: Subtitle "SensoraNote" & Sleek Progress Line */}
         <div className="relative z-10 flex flex-col items-center max-w-2xl w-full text-center">
           <motion.h2
             initial={{ opacity: 0 }}
@@ -191,7 +191,7 @@ export function BrutalistLoader({ onComplete }: BrutalistLoaderProps) {
               textShadow: '0 0 20px rgba(255,255,255,0.15)',
             }}
           >
-            Ba-Yu
+            SensoraNote
           </motion.h2>
 
           {/* Minimalist Progress Line */}

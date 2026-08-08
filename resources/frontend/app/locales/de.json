@@ -20,7 +20,7 @@
     "title": "Einstellungen",
     "search_placeholder": "Einstellungen suchen...",
     "account_center": "Accountcenter",
-    "account_desc": "Verwalten Sie Ihre Accounteinstellungen und verbundenen Erfahrungen auf der Ba-Yu-Plattform.",
+    "account_desc": "Verwalten Sie Ihre Accounteinstellungen und verbundenen Erfahrungen auf der SensoraNote-Plattform.",
     "personal_details": "Persönliche Daten",
     "profile_details": "Profil und Persönliche Daten",
     "password_security": "Passwort und Sicherheit",
@@ -49,7 +49,7 @@
   "theme": {
     "title": "Erscheinungsbild",
     "subtitle": "App-Theme auswählen",
-    "description": "Passen Sie das Erscheinungsbild der Ba-Yu App für ein angenehmeres Lese- und Lernerlebnis an.",
+    "description": "Passen Sie das Erscheinungsbild der SensoraNote App für ein angenehmeres Lese- und Lernerlebnis an.",
     "light": "Hell",
     "light_desc": "Klares und helles Erscheinungsbild, geeignet für helle Räume.",
     "dark": "Dunkel",
@@ -60,7 +60,7 @@
   "language": {
     "title": "Sprache",
     "subtitle": "App-Sprache Wählen",
-    "description": "Passen Sie die Anzeigesprache von Ba-Yu nach Ihren Vorlieben an.",
+    "description": "Passen Sie die Anzeigesprache von SensoraNote nach Ihren Vorlieben an.",
     "system": "System Folgen",
     "system_desc": "Passt sich an die Spracheinstellungen Ihres Geräts an.",
     "info": "Sprachänderungen werden sofort auf alle Elemente der App-Oberfläche angewendet. Von Benutzern erstellte Inhalte (Notizen, Kommentare) bleiben in ihrer Originalsprache."
@@ -74,7 +74,7 @@
     "whatsapp": "WhatsApp Chat",
     "email": "E-Mail Senden",
     "community_guidelines": "Community-Richtlinien",
-    "community_guidelines_desc": "Lesen Sie die Regeln und die Etikette zum Teilen von Notizen auf Ba-Yu."
+    "community_guidelines_desc": "Lesen Sie die Regeln und die Etikette zum Teilen von Notizen auf SensoraNote."
   },
   "stats": {
     "title": "Statistiken",
@@ -101,7 +101,7 @@
     "notes_created": "Notizen",
     "total_materials": "Materialien Gesamt",
     "completed": "Abgeschlossen",
-    "footer_info": "Daten nach jeder Sitzung aktualisiert. © 2026 Ba-Yu Education.",
+    "footer_info": "Daten nach jeder Sitzung aktualisiert. © 2026 SensoraNote Education.",
     "set_goal_title": "Tagesziel",
     "set_goal_desc": "Setze deine tägliche Zieldauer.",
     "hours": "Stunden",
@@ -123,7 +123,7 @@
     "forgot_password": "Passwort vergessen?",
     "reset_password": "Passwort Zurücksetzen",
     "welcome": "Willkommen",
-    "welcome_desc": "Melden Sie sich an, um zu Ba-Yu fortzufahren.",
+    "welcome_desc": "Melden Sie sich an, um zu SensoraNote fortzufahren.",
     "start_journey": "Beginnen Sie Ihre Reise",
     "start_journey_desc": "Registrieren Sie sich und teilen Sie Ihre erste Notiz.",
     "login_tab": "Anmelden",
@@ -197,7 +197,7 @@
     "following_count": "Folge ich",
     "followers_count": "Follower",
     "register_expert": "Als Experte registrieren",
-    "register_expert_sub": "Werden Sie verifizierter Mitwirkender auf Ba-Yu",
+    "register_expert_sub": "Werden Sie verifizierter Mitwirkender auf SensoraNote",
     "register": "Registrieren",
     "tab_notes": "Notizen",
     "tab_drafts": "Entwürfe",
@@ -545,7 +545,7 @@
     "author_pending": "Ausstehend",
     "author_follow": "Folgen",
     "verified_expert": "Verifizierter Experte",
-    "report_help_desc": "Helfen Sie uns, das Ba-Yu-Ökosystem lehrreich, sicher und komfortabel zu halten.",
+    "report_help_desc": "Helfen Sie uns, das SensoraNote-Ökosystem lehrreich, sicher und komfortabel zu halten.",
     "report_main_reason": "Hauptgrund",
     "close_modal": "Modal schließen",
     "report_note": "Notiz melden",
@@ -568,8 +568,8 @@
     "respond_btn": "ANTWORTEN",
     "downloaded_at": "Heruntergeladen:",
     "pdf_restricted_title": "Geschütztes Material",
-    "pdf_restricted_desc": "Diese PDF-Version enthält nur teilweises Material. Folgen Sie dem Autor <b>@{author}</b> in der Ba-Yu App, um die vollständige Version herunterzuladen.",
-    "pdf_footer": "Dieses Dokument wurde von <span class=\"footer-brand\">Ba-Yu</span> heruntergeladen - Die Lernplattform der Zukunft",
+    "pdf_restricted_desc": "Diese PDF-Version enthält nur teilweises Material. Folgen Sie dem Autor <b>@{author}</b> in der SensoraNote App, um die vollständige Version herunterzuladen.",
+    "pdf_footer": "Dieses Dokument wurde von <span class=\"footer-brand\">SensoraNote</span> heruntergeladen - Die Lernplattform der Zukunft",
     "sort_newest": "Neueste",
     "sort_oldest": "Älteste",
     "sort_top": "Top-Kommentare"
@@ -617,7 +617,7 @@
     "recently": "Gerade eben",
     "discussion_label": "DISKUSSION",
     "report_modal_title": "Benutzer melden",
-    "report_modal_desc": "Helfen Sie uns, das Ba-Yu-Ökosystem lehrreich, sicher und komfortabel zu halten.",
+    "report_modal_desc": "Helfen Sie uns, das SensoraNote-Ökosystem lehrreich, sicher und komfortabel zu halten.",
     "report_reason_label": "Hauptgrund",
     "report_reason_spam": "Marketing-Spam / Störende Anzeigen",
     "report_reason_false_info": "Falsche Informationen / Fehlinformationen",
@@ -626,7 +626,7 @@
     "report_reason_copyright": "Urheberrechtsverletzung / Plagiat",
     "report_reason_other": "Anderer Grund...",
     "report_detail_label": "Zusätzliche Details",
-    "report_success": "Meldung erfolgreich gesendet. Vielen Dank, dass Sie Ba-Yu sicher halten!",
+    "report_success": "Meldung erfolgreich gesendet. Vielen Dank, dass Sie SensoraNote sicher halten!",
     "report_failed": "Meldung konnte nicht gesendet werden.",
     "btn_reply": "Antworten"
   },
@@ -658,7 +658,7 @@
     "guide_3_title": "Visuelle Qualität",
     "guide_3_desc": "Schrift und Bilder müssen lesbar sein.",
     "quality_priority": "Qualitätspriorität",
-    "quality_desc": "Vielen Dank für Ihren Beitrag zur Erhaltung der Materialqualität auf Ba-Yu.",
+    "quality_desc": "Vielen Dank für Ihren Beitrag zur Erhaltung der Materialqualität auf SensoraNote.",
     "validate": "Material validieren",
     "reject_material": "Material ablehnen",
     "quality": "Materialqualität",
@@ -869,7 +869,7 @@
     "prompt_approve_pakar": "Experten genehmigen",
     "prompt_reject_pakar": "Anfrage ablehnen",
     "prompt_pakar_placeholder": "Notiz für Benutzer...",
-    "prompt_approve_default": "Herzlichen Glückwunsch! Sie sind jetzt ein offizieller Experte bei Ba-Yu.",
+    "prompt_approve_default": "Herzlichen Glückwunsch! Sie sind jetzt ein offizieller Experte bei SensoraNote.",
     "prompt_reject_default": "Leider erfüllt Ihr Portfolio nicht unsere Kriterien.",
     "toast_pakar_approved": "Expertenanfrage genehmigt.",
     "toast_pakar_rejected": "Expertenanfrage abgelehnt.",
@@ -1055,8 +1055,8 @@
     "pdf_written_by": "Geschrieben von:",
     "pdf_downloaded": "Heruntergeladen am:",
     "pdf_protected_title": "Geschütztes Material",
-    "pdf_protected_desc": "Dieses PDF enthält nur einen Teil des Materials. Folgen Sie dem Autor <b>@{{author}}</b> in der Ba-Yu App, um die vollständige Version herunterzuladen.",
-    "pdf_footer": "Dieses Dokument wurde von <span class=\"footer-brand\">Ba-Yu</span> heruntergeladen - Die Lernplattform der Zukunft",
+    "pdf_protected_desc": "Dieses PDF enthält nur einen Teil des Materials. Folgen Sie dem Autor <b>@{{author}}</b> in der SensoraNote App, um die vollständige Version herunterzuladen.",
+    "pdf_footer": "Dieses Dokument wurde von <span class=\"footer-brand\">SensoraNote</span> heruntergeladen - Die Lernplattform der Zukunft",
     "draft_badge": "ENTWURF",
     "draft_label": "Entwurf",
     "last_edit": "Letzte Änderung",
@@ -1194,7 +1194,7 @@
     "desc_private": "Nur Follower können dein Profil und deine Notizen sehen. Deine Kommentare zu den Beiträgen anderer bleiben öffentlich sichtbar.",
     "desc_public": "Jeder kann dein Profil und deine Notizen sehen und mit den von dir geteilten Inhalten interagieren.",
     "deactivate_title": "Konto deaktivieren (Ruhezustand)",
-    "deactivate_desc": "Ihr Konto wird auf der Ba-Yu-Plattform ausgeblendet (Ruhezustand). Ihr Profil, Ihre Notizen und Kommentare sind für andere Benutzer nicht sichtbar. <strong>Wenn Sie sich nicht innerhalb von 30 Tagen wieder anmelden, werden alle Ihre Daten dauerhaft gelöscht.</strong>",
+    "deactivate_desc": "Ihr Konto wird auf der SensoraNote-Plattform ausgeblendet (Ruhezustand). Ihr Profil, Ihre Notizen und Kommentare sind für andere Benutzer nicht sichtbar. <strong>Wenn Sie sich nicht innerhalb von 30 Tagen wieder anmelden, werden alle Ihre Daten dauerhaft gelöscht.</strong>",
     "deactivate_button": "Konto deaktivieren",
     "dialog_title": "Account deaktivieren?",
     "dialog_desc": "Dein Account wird vor der Öffentlichkeit verborgen und wechselt für 30 Tage in einen ruhenden Zustand. Du kannst ihn reaktivieren, indem du dich anmeldest, bevor die 30 Tage ablaufen. Bist du sicher, dass du fortfahren möchtest?",
@@ -1222,7 +1222,7 @@
   "privacy_page": {
     "title": "Datenschutzrichtlinie",
     "hero_title": "Ihre Privatsphäre",
-    "hero_desc": "Ihre Daten sind bei Ba-Yu sicher. Transparenz und Datenschutz haben für uns oberste Priorität.",
+    "hero_desc": "Ihre Daten sind bei SensoraNote sicher. Transparenz und Datenschutz haben für uns oberste Priorität.",
     "principles": [
       {
         "label": "Sicher",
@@ -1259,14 +1259,14 @@
       "Bereitstellung wichtiger Benachrichtigungen.",
       "Verbesserung der Plattformfunktionen."
     ],
-    "footer": "© 2026 Ba-Yu-Plattform. Ihre Privatsphäre ist unser Vertrauen."
+    "footer": "© 2026 SensoraNote-Plattform. Ihre Privatsphäre ist unser Vertrauen."
   },
   "terms_page": {
     "title": "Allgemeine Geschäftsbedingungen",
     "hero_title": "AGB",
-    "hero_desc": "Zuletzt aktualisiert: 7. Mai 2026. Regeln für ein angenehmes Ba-Yu-Lernökosystem.",
+    "hero_desc": "Zuletzt aktualisiert: 7. Mai 2026. Regeln für ein angenehmes SensoraNote-Lernökosystem.",
     "section1_title": "1. Annahme der Bedingungen",
-    "section1_desc": "Durch den Zugriff auf und die Nutzung der Ba-Yu-Plattform gelten diese Bedingungen als gelesen, verstanden und akzeptiert.",
+    "section1_desc": "Durch den Zugriff auf und die Nutzung der SensoraNote-Plattform gelten diese Bedingungen als gelesen, verstanden und akzeptiert.",
     "section2_title": "2. Accountregistrierung",
     "section2_desc": "Um die Notizfreigabe zu nutzen, müssen Sie sich mit genauen Informationen registrieren. Sie sind voll verantwortlich für:",
     "section2_items": [
@@ -1275,7 +1275,7 @@
       "Bereitstellung wahrer und genauer Informationen."
     ],
     "section3_title": "3. Geistige Eigentumsrechte",
-    "section3_quote": "\"Alle Notizen, die Sie hochladen, bleiben Ihr Eigentum. Sie gewähren Ba-Yu jedoch die Lizenz zur Anzeige und Verteilung.\"",
+    "section3_quote": "\"Alle Notizen, die Sie hochladen, bleiben Ihr Eigentum. Sie gewähren SensoraNote jedoch die Lizenz zur Anzeige und Verteilung.\"",
     "section4_title": "4. Nutzungsregeln",
     "allowed_title": "Erlaubt",
     "allowed_items": [
@@ -1289,13 +1289,13 @@
       "Verbreitung von Hassreden.",
       "Beschädigung des Plattformsystems."
     ],
-    "contact": "Fragen? Kontakt <a href=\"mailto:support@ba-yu.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@ba-yu.id</a>",
-    "footer": "&copy; 2026 Ba-Yu-Plattform.<br/>Alle Rechte vorbehalten."
+    "contact": "Fragen? Kontakt <a href=\"mailto:support@sensoranote.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@sensoranote.id</a>",
+    "footer": "&copy; 2026 SensoraNote-Plattform.<br/>Alle Rechte vorbehalten."
   },
   "community_guidelines": {
     "title": "Community-Richtlinien",
     "hero_title": "Community-Richtlinien",
-    "hero_desc": "Lassen Sie uns auf Ba-Yu eine sichere, positive und unterstützende Lernumgebung schaffen.",
+    "hero_desc": "Lassen Sie uns auf SensoraNote eine sichere, positive und unterstützende Lernumgebung schaffen.",
     "values_title": "Grundwerte",
     "values": [
       {
@@ -1315,7 +1315,7 @@
       "Spam, illegale Werbung oder Betrug.",
       "Weitergabe persönlicher Daten anderer Personen (Doxxing)."
     ],
-    "footer": "&copy; 2026 Ba-Yu-Plattform.<br/>Alle Rechte vorbehalten."
+    "footer": "&copy; 2026 SensoraNote-Plattform.<br/>Alle Rechte vorbehalten."
   },
   "help_page": {
     "title": "Hilfecenter",
@@ -1326,7 +1326,7 @@
     "faq_title": "Häufig gestellte Fragen (FAQ)",
     "faqs": [
       {
-        "q": "Wie werde ich Experte bei Ba-Yu?",
+        "q": "Wie werde ich Experte bei SensoraNote?",
         "a": "Um ein Experte zu werden, müssen Sie regelmäßig Qualitätsnotizen teilen. Wenn Ihre Notizen häufig in der Kategorie „Beliebt“ sind und viele „Gefällt mir“-Angaben erhalten, überprüft unser Admin-Team sie und verleiht Ihnen den Expertenstatus."
       },
       {
@@ -1362,8 +1362,8 @@
         "a": "Dem Experten vorgelegte Notizen können abgelehnt werden, wenn ein Plagiat festgestellt wird, eine schlechte Bildauflösung vorliegt oder ungenaue Formeln/Theorien enthalten. Sie können in Ihren Notizdetails Expertenbewertungen lesen, um sie zu verbessern."
       },
       {
-        "q": "Ist die Ba-Yu-Plattform kostenpflichtig?",
-        "a": "Nein, Ba-Yu ist für alle Schüler und Lehrer in ganz Indonesien völlig kostenlos und kann zum Wissensaustausch und strukturierten Lernnotizen genutzt werden!"
+        "q": "Ist die SensoraNote-Plattform kostenpflichtig?",
+        "a": "Nein, SensoraNote ist für alle Schüler und Lehrer in ganz Indonesien völlig kostenlos und kann zum Wissensaustausch und strukturierten Lernnotizen genutzt werden!"
       }
     ],
     "contact_title": "Brauchen Sie noch Hilfe?",
@@ -1372,49 +1372,49 @@
     "contact_email_title": "E-Mail",
     "contact_email_desc": "Details & Anhänge",
     "guidelines_title": "Community-Richtlinien",
-    "guidelines_desc": "Lesen Sie die Regeln und Ethik des Teilens von Notizen auf Ba-Yu.",
-    "wa_template": "Hallo Ba-Yu-Support-Team, ich bin {{name}}. Ich brauche Hilfe bei dem Problem: ... am {{day}}.",
-    "email_subject": "Hilfe zu Ba-Yu-Anwendungsproblemen – {{name}}",
-    "email_body": "Hallo Ba-Yu-Support-Team,\n\nIch bin {{name}}. Ich brauche Hilfe bei einem Problem:\n...\n\nIch stand am {{day}} vor diesem Hindernis.\n\nBitte helfen Sie, danke!"
+    "guidelines_desc": "Lesen Sie die Regeln und Ethik des Teilens von Notizen auf SensoraNote.",
+    "wa_template": "Hallo SensoraNote-Support-Team, ich bin {{name}}. Ich brauche Hilfe bei dem Problem: ... am {{day}}.",
+    "email_subject": "Hilfe zu SensoraNote-Anwendungsproblemen – {{name}}",
+    "email_body": "Hallo SensoraNote-Support-Team,\n\nIch bin {{name}}. Ich brauche Hilfe bei einem Problem:\n...\n\nIch stand am {{day}} vor diesem Hindernis.\n\nBitte helfen Sie, danke!"
   },
   "about_page": {
     "title": "Über uns",
-    "hero_title": "Lernen Sie Ba-Yu kennen",
-    "hero_desc": "Erfahren Sie mehr über die Reise, die Mission und das Team hinter der Ba-Yu-Plattform.",
+    "hero_title": "Lernen Sie SensoraNote kennen",
+    "hero_desc": "Erfahren Sie mehr über die Reise, die Mission und das Team hinter der SensoraNote-Plattform.",
     "vision_title": "Vision und Mission",
-    "vision_desc": "Wir glauben, dass jeder Schüler gleichen Zugang zu hochwertigen Materialien verdient. Ba-Yu wurde entwickelt, um einen fairen, sicheren und zugänglichen Notenaustausch für Schüler in ganz Indonesien zu erleichtern.",
+    "vision_desc": "Wir glauben, dass jeder Schüler gleichen Zugang zu hochwertigen Materialien verdient. SensoraNote wurde entwickelt, um einen fairen, sicheren und zugänglichen Notenaustausch für Schüler in ganz Indonesien zu erleichtern.",
     "community_title": "Unsere Community",
     "community_desc": "Tausende von Studenten und Experten verschiedener Bildungseinrichtungen haben sich uns angeschlossen. Mit strengen Verifizierungs- und Meldesystemen halten wir dieses Ökosystem positiv und konstruktiv.",
-    "footer": "&copy; 2026 Ba-Yu-Plattform.<br/>Alle Rechte vorbehalten."
+    "footer": "&copy; 2026 SensoraNote-Plattform.<br/>Alle Rechte vorbehalten."
   },
   "careers_page": {
     "title": "Karriere",
-    "hero_title": "Karriere bei Ba-Yu",
+    "hero_title": "Karriere bei SensoraNote",
     "hero_desc": "Bauen Sie mit uns das Bildungsökosystem der Zukunft auf.",
     "no_vacancies_title": "Noch keine Stellenangebote",
     "no_vacancies_desc": "Derzeit eröffnen wir keine neuen Positionen, sind aber immer an talentierten Personen interessiert.",
     "contact_btn": "Kontaktiere uns",
-    "footer": "&copy; 2026 Ba-Yu-Plattform.<br/>Alle Rechte vorbehalten."
+    "footer": "&copy; 2026 SensoraNote-Plattform.<br/>Alle Rechte vorbehalten."
   },
   "blog_page": {
     "title": "Blog & Updates",
-    "hero_title": "Ba-Yu-Blog",
+    "hero_title": "SensoraNote-Blog",
     "hero_desc": "Geschichten, Einblicke und die neuesten Feature-Updates vom Entwicklungsteam.",
     "coming_soon_title": "Demnächst",
     "coming_soon_desc": "Wir bereiten interessante Artikel über Bildung und Technologie für Sie vor. Bleiben Sie dran für unseren ersten Start!",
-    "footer": "&copy; 2026 Ba-Yu-Plattform.<br/>Alle Rechte vorbehalten."
+    "footer": "&copy; 2026 SensoraNote-Plattform.<br/>Alle Rechte vorbehalten."
   },
   "status_page": {
     "title": "Systemstatus",
     "hero_title": "Alle Systeme normal",
     "hero_desc": "Plattform funktioniert einwandfrei.",
     "status_operational": "Betriebsbereit",
-    "footer": "&copy; 2026 Ba-Yu-Plattform.<br/>Alle Rechte vorbehalten."
+    "footer": "&copy; 2026 SensoraNote-Plattform.<br/>Alle Rechte vorbehalten."
   },
   "auth_modal": {
     "welcome": "Willkommen",
     "create_account": "Neuen Account Erstellen",
-    "login_desc": "Melden Sie sich an, um auf alle Ba-Yu-Funktionen zuzugreifen.",
+    "login_desc": "Melden Sie sich an, um auf alle SensoraNote-Funktionen zuzugreifen.",
     "register_desc": "Registrieren Sie sich und verwalten Sie jetzt Ihre Notizen.",
     "login": "Anmelden",
     "register": "Registrieren",
@@ -1449,7 +1449,7 @@
     "terms": "Allgemeinen Geschäftsbedingungen",
     "terms_and": "und der",
     "privacy": "Datenschutzrichtlinie",
-    "terms_suffix": "der Ba-Yu-Dienste zu.",
+    "terms_suffix": "der SensoraNote-Dienste zu.",
     "reset_throttled": "Bitte warten Sie einen Moment (60 Sekunden), bevor Sie es erneut versuchen.",
     "reset_sent": "Der Link zum Zurücksetzen des Passworts wurde an Ihre E-Mail gesendet."
   },
@@ -1477,11 +1477,11 @@
     "no_data_filter": "Keine Daten entsprechen dem Filter für den Export.",
     "export_failed": "Fehler beim Exportieren der Daten. Fehler: ",
     "print_failed": "Druckfenster konnte nicht geöffnet werden. Bitte stellen Sie sicher, dass Pop-ups in Ihrem Browser zugelassen sind.",
-    "report_title": "Ba-Yu Datenexportbericht",
+    "report_title": "SensoraNote Datenexportbericht",
     "extracted_at": "Extrahiert am:",
-    "footer_note": "Ba-Yu Plattform &mdash; Dieses Dokument wird automatisch generiert.",
+    "footer_note": "SensoraNote Plattform &mdash; Dieses Dokument wird automatisch generiert.",
     "doc_info": "Dieses Dokument enthält",
-    "doc_info2": "Daten, die von der Ba-Yu-Plattform extrahiert wurden am",
+    "doc_info2": "Daten, die von der SensoraNote-Plattform extrahiert wurden am",
     "doc_all_cat": "Die Daten umfassen alle Kategorien: Notizen, Berichte und Benutzer.",
     "doc_only_cat": "Die angezeigten Daten beziehen sich nur auf die Kategorie",
     "doc_filter_verify": "Filter Verifizierungsstatus:",
@@ -1538,7 +1538,7 @@
     "submit_button": "Speichern & Weiter",
     "submitting": "Speichern...",
     "username_error": "Benutzername darf nur Buchstaben, Zahlen und Unterstriche (_) enthalten",
-    "success_msg": "Profil erfolgreich vervollständigt! Willkommen bei Ba-Yu",
+    "success_msg": "Profil erfolgreich vervollständigt! Willkommen bei SensoraNote",
     "error_msg": "Beim Speichern des Profils ist ein Fehler aufgetreten",
     "edu_sd": "Grundschule",
     "edu_smp": "Mittelschule",
@@ -1622,14 +1622,14 @@
     "not_found_title": "Nachricht nicht gefunden",
     "not_found_desc": "Diese Nachricht wurde möglicherweise gelöscht oder ist nicht mehr verfügbar.",
     "back": "Zurück",
-    "system": "Ba-Yu-System",
+    "system": "SensoraNote-System",
     "regards": "Viele Grüße,",
-    "team": "Ba-Yu EduPlatform-Team"
+    "team": "SensoraNote EduPlatform-Team"
   },
   "landing": {
-    "philosophy_text": "Wir glauben, dass die beste Bildung durch Zusammenarbeit entsteht. Ba-Yu ist hier, um Ihnen dabei zu helfen, Ideen zu organisieren, Erkenntnisse auszutauschen und in einer unterstützenden Lerngemeinschaft zusammenzuwachsen.",
+    "philosophy_text": "Wir glauben, dass die beste Bildung durch Zusammenarbeit entsteht. SensoraNote ist hier, um Ihnen dabei zu helfen, Ideen zu organisieren, Erkenntnisse auszutauschen und in einer unterstützenden Lerngemeinschaft zusammenzuwachsen.",
     "philosophy_vision": "UNSERE VISION",
-    "philosophy_motto": "Ba-Yu-Philosophie – Gemeinsam lernen, teilen, wachsen",
+    "philosophy_motto": "SensoraNote-Philosophie – Gemeinsam lernen, teilen, wachsen",
     "row1_1": "Über 40 Sprachen werden unterstützt",
     "row1_2": "Dynamischer Texteditor",
     "row1_3": "Umfangreiche Studienthemen",
@@ -1693,14 +1693,14 @@
     "multilang_title_1": "Lernen",
     "multilang_title_2": "Ohne Limit",
     "multilang_title_3": "Sprache.",
-    "multilang_desc": "Ba-Yu unterstützt Schnittstellen in über 40 Sprachen und ermöglicht Studierenden aus aller Welt die bequeme Zusammenarbeit und das Lernen über unsere Plattform.",
+    "multilang_desc": "SensoraNote unterstützt Schnittstellen in über 40 Sprachen und ermöglicht Studierenden aus aller Welt die bequeme Zusammenarbeit und das Lernen über unsere Plattform.",
     "multilang_supported": "Unterstützte Sprachen",
     "explore_badge": "THEMENERKLÄRUNG",
     "explore_title": "Verschiedene Wissenschaftsbereiche auf einer Plattform.",
     "explore_field": "FELD-ERKUNDUNG",
     "explore_notes_btn": "Entdecken Sie Notizen",
     "feature_badge": "KERNFUNKTIONEN",
-    "feature_title": "Die Technologie hinter Ba-Yu.",
+    "feature_title": "Die Technologie hinter SensoraNote.",
     "feature_desc": "Wir haben ein intelligentes Notizen-Ökosystem entwickelt, das Ihnen dabei hilft, jedes Kursmaterial effektiv zu organisieren, zu überprüfen und zu beherrschen.",
     "feat1_badge": "REICHER HERAUSGEBER",
     "feat1_title": "LaTeX-Rich-Editor",
@@ -1831,11 +1831,11 @@
     "failed_title": "Überprüfung fehlgeschlagen",
     "failed_desc": "Der Bestätigungslink ist ungültig oder abgelaufen. Bitte fordern Sie einen neuen Link an.",
     "redirect_mobile": "Mobile App wird geöffnet...",
-    "open_app": "Öffnen Sie die Ba-Yu Mobile App",
+    "open_app": "Öffnen Sie die SensoraNote Mobile App",
     "go_to_login": "Gehen Sie zu Anmelden"
   },
   "download_app": {
-    "title": "Get Ba-Yu App",
+    "title": "Get SensoraNote App",
     "subtitle": "Learn easier from anywhere. Coming soon to App Store and Google Play.",
     "status": "Currently in development...",
     "back_to_home": "Back to Home"

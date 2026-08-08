@@ -20,7 +20,7 @@
     "title": "Beállítások elemre",
     "search_placeholder": "Keresési beállítások...",
     "account_center": "Fiókközpont",
-    "account_desc": "Kezelje fiókbeállításait és a kapcsolódó élményeket a Ba-Yu platformon.",
+    "account_desc": "Kezelje fiókbeállításait és a kapcsolódó élményeket a SensoraNote platformon.",
     "personal_details": "Személyes adatok",
     "profile_details": "Profil és személyes adatok",
     "password_security": "Jelszó és biztonság",
@@ -49,7 +49,7 @@
   "theme": {
     "title": "Megjelenés",
     "subtitle": "Válassza az Alkalmazástémát",
-    "description": "Szabja testre a Ba-Yu alkalmazás megjelenését a kényelmesebb olvasási és tanulási élmény érdekében.",
+    "description": "Szabja testre a SensoraNote alkalmazás megjelenését a kényelmesebb olvasási és tanulási élmény érdekében.",
     "light": "Fény",
     "light_desc": "Tiszta és világos megjelenés, világos szobakörülményekhez alkalmas.",
     "dark": "Sötét",
@@ -60,7 +60,7 @@
   "language": {
     "title": "Nyelv",
     "subtitle": "Válassza az Alkalmazás nyelve lehetőséget",
-    "description": "Szabja testre a Ba-Yu alkalmazás megjelenítési nyelvét igényei szerint.",
+    "description": "Szabja testre a SensoraNote alkalmazás megjelenítési nyelvét igényei szerint.",
     "system": "Kövesse a rendszert",
     "system_desc": "Az eszköz nyelvi beállításaihoz igazodik.",
     "info": "A nyelvi módosítások azonnal alkalmazásra kerülnek az alkalmazás felületének összes elemére. A felhasználók által készített tartalom (jegyzetek, megjegyzések) az eredeti nyelven marad."
@@ -74,7 +74,7 @@
     "whatsapp": "WhatsApp chat",
     "email": "E-mail küldése",
     "community_guidelines": "közösségi irányelvek",
-    "community_guidelines_desc": "Olvassa el a Ba-Yu-val kapcsolatos megjegyzések megosztásának szabályait és etikáját."
+    "community_guidelines_desc": "Olvassa el a SensoraNote-val kapcsolatos megjegyzések megosztásának szabályait és etikáját."
   },
   "stats": {
     "title": "Tanulási statisztika",
@@ -101,7 +101,7 @@
     "notes_created": "Jegyzetek létrehozva",
     "total_materials": "Összes anyag",
     "completed": "Befejezve",
-    "footer_info": "Az adatok automatikusan frissülnek minden tanulási munkamenet végén. © 2026 Ba-Yu Education.",
+    "footer_info": "Az adatok automatikusan frissülnek minden tanulási munkamenet végén. © 2026 SensoraNote Education.",
     "set_goal_title": "Állítsa be a napi célt",
     "set_goal_desc": "Állítsa be a napi tanulási időtartam célját digitális pontossággal.",
     "hours": "Órák",
@@ -123,7 +123,7 @@
     "forgot_password": "Elfelejtetted a jelszavad?",
     "reset_password": "Jelszó visszaállítása",
     "welcome": "Üdvözöljük Vissza",
-    "welcome_desc": "Jelentkezzen be, hogy továbbléphessen Ba-Yu-ba.",
+    "welcome_desc": "Jelentkezzen be, hogy továbbléphessen SensoraNote-ba.",
     "start_journey": "Kezdje el utazását",
     "start_journey_desc": "Regisztráljon és ossza meg első jegyzetét.",
     "login_tab": "Bejelentkezés",
@@ -197,7 +197,7 @@
     "following_count": "Következő",
     "followers_count": "Követői",
     "register_expert": "Legyen Szakértő",
-    "register_expert_sub": "Legyél ellenőrzött közreműködő a Ba-Yu-n",
+    "register_expert_sub": "Legyél ellenőrzött közreműködő a SensoraNote-n",
     "register": "Nyilvántartás",
     "tab_notes": "Megjegyzések",
     "tab_drafts": "Dámajáték",
@@ -545,7 +545,7 @@
     "author_pending": "Függőben levő",
     "author_follow": "Kövesd",
     "verified_expert": "Ellenőrzött szakértő",
-    "report_help_desc": "Segítsen nekünk, hogy a Ba-Yu ökoszisztéma oktatási, biztonságos és kényelmes legyen.",
+    "report_help_desc": "Segítsen nekünk, hogy a SensoraNote ökoszisztéma oktatási, biztonságos és kényelmes legyen.",
     "report_main_reason": "Fő ok",
     "close_modal": "Modal bezárása",
     "report_note": "Jelentés Megjegyzés",
@@ -568,8 +568,8 @@
     "respond_btn": "REAGÁL",
     "downloaded_at": "Letöltve:",
     "pdf_restricted_title": "Védett anyag",
-    "pdf_restricted_desc": "Ez a PDF verzió csak részleges anyagot tartalmaz. A teljes verzió letöltéséhez kövesse a szerzőt <b>@{author}</b> a Ba-Yu alkalmazásban.",
-    "pdf_footer": "Ezt a dokumentumot a <span class=\"footer-brand\">Ba-Yu</span> - The Future Learning Platform webhelyről töltötték le",
+    "pdf_restricted_desc": "Ez a PDF verzió csak részleges anyagot tartalmaz. A teljes verzió letöltéséhez kövesse a szerzőt <b>@{author}</b> a SensoraNote alkalmazásban.",
+    "pdf_footer": "Ezt a dokumentumot a <span class=\"footer-brand\">SensoraNote</span> - The Future Learning Platform webhelyről töltötték le",
     "sort_newest": "Legújabb",
     "sort_oldest": "Legrégebbi",
     "sort_top": "Legjobb megjegyzések"
@@ -617,7 +617,7 @@
     "recently": "Éppen most",
     "discussion_label": "VITA",
     "report_modal_title": "Felhasználó jelentése",
-    "report_modal_desc": "Segítsen nekünk, hogy a Ba-Yu ökoszisztéma oktatási, biztonságos és kényelmes legyen.",
+    "report_modal_desc": "Segítsen nekünk, hogy a SensoraNote ökoszisztéma oktatási, biztonságos és kényelmes legyen.",
     "report_reason_label": "Fő ok",
     "report_reason_spam": "Marketing spam / Bomlasztó hirdetések",
     "report_reason_false_info": "Hamis információ / téves információ",
@@ -626,7 +626,7 @@
     "report_reason_copyright": "Szerzői jog megsértése / plágium",
     "report_reason_other": "Más ok...",
     "report_detail_label": "További részletek",
-    "report_success": "A jelentés sikeresen elküldve. Köszönjük, hogy biztonságban tartja Ba-Yut!",
+    "report_success": "A jelentés sikeresen elküldve. Köszönjük, hogy biztonságban tartja SensoraNotet!",
     "report_failed": "Nem sikerült elküldeni a jelentést.",
     "btn_reply": "Válasz"
   },
@@ -658,7 +658,7 @@
     "guide_3_title": "Vizuális minőség",
     "guide_3_desc": "Az írásnak és a képeknek olvashatónak kell lenniük.",
     "quality_priority": "Minőségi prioritás",
-    "quality_desc": "Köszönjük, hogy hozzájárult a Ba-Yu anyagminőségének fenntartásához.",
+    "quality_desc": "Köszönjük, hogy hozzájárult a SensoraNote anyagminőségének fenntartásához.",
     "validate": "Érvényesítse az anyagot",
     "reject_material": "Anyag elutasítása",
     "quality": "Anyagminőség",
@@ -869,7 +869,7 @@
     "prompt_approve_pakar": "Szakértő jóváhagyása",
     "prompt_reject_pakar": "Kérelem elutasítása",
     "prompt_pakar_placeholder": "Megjegyzés a felhasználónak...",
-    "prompt_approve_default": "Gratulálok! Ön most a Ba-Yu hivatalos szakértője.",
+    "prompt_approve_default": "Gratulálok! Ön most a SensoraNote hivatalos szakértője.",
     "prompt_reject_default": "Sajnáljuk, portfóliója nem felel meg kritériumainknak.",
     "toast_pakar_approved": "Szakértői kérés jóváhagyva.",
     "toast_pakar_rejected": "A szakértői kérelmet elutasították.",
@@ -1055,8 +1055,8 @@
     "pdf_written_by": "Írta:",
     "pdf_downloaded": "Letöltve:",
     "pdf_protected_title": "Védett anyag",
-    "pdf_protected_desc": "Ez a PDF csak részleges anyagot tartalmaz. A teljes verzió letöltéséhez kövesse a szerzőt <b>@{{author}}</b> a Ba-Yu alkalmazásban.",
-    "pdf_footer": "Ezt a dokumentumot a <span class=\"footer-brand\">Ba-Yu</span> - The Future Learning Platform webhelyről töltötték le",
+    "pdf_protected_desc": "Ez a PDF csak részleges anyagot tartalmaz. A teljes verzió letöltéséhez kövesse a szerzőt <b>@{{author}}</b> a SensoraNote alkalmazásban.",
+    "pdf_footer": "Ezt a dokumentumot a <span class=\"footer-brand\">SensoraNote</span> - The Future Learning Platform webhelyről töltötték le",
     "draft_badge": "TERVEZET",
     "draft_label": "Piszkozat",
     "last_edit": "Utolsó szerkesztés:",
@@ -1194,7 +1194,7 @@
     "desc_private": "Csak a követők láthatják profilodat és jegyzeteidet. Mások bejegyzéseihez fűzött megjegyzései továbbra is nyilvánosan láthatók lesznek.",
     "desc_public": "Mindenki megtekintheti profilját és jegyzeteit, és kapcsolatba léphet az Ön által megosztott tartalommal.",
     "deactivate_title": "Fiók deaktiválása (alvó)",
-    "deactivate_desc": "Fiókja el lesz rejtve (alvó) a Ba-Yu platform elől. Profilja, jegyzetei és megjegyzései nem lesznek láthatók más felhasználók számára. <strong>Ha 30 napon belül nem jelentkezik be, minden adata véglegesen törlődik.</strong>",
+    "deactivate_desc": "Fiókja el lesz rejtve (alvó) a SensoraNote platform elől. Profilja, jegyzetei és megjegyzései nem lesznek láthatók más felhasználók számára. <strong>Ha 30 napon belül nem jelentkezik be, minden adata véglegesen törlődik.</strong>",
     "deactivate_button": "Fiók kikapcsolása",
     "dialog_title": "Fiók kikapcsolása?",
     "dialog_desc": "Fiókja el lesz rejtve a nyilvánosság elől, és 30 napig alvó állapotba kerül. Újraaktiválhatja, ha a 30 nap lejárta előtt bejelentkezik. Biztosan folytatja?",
@@ -1222,7 +1222,7 @@
   "privacy_page": {
     "title": "Adatvédelmi szabályzat",
     "hero_title": "Az Ön adatvédelme",
-    "hero_desc": "Adatai biztonságban vannak a Ba-Yu-val. Az átláthatóságot és az adatvédelmet kiemelten kezeljük.",
+    "hero_desc": "Adatai biztonságban vannak a SensoraNote-val. Az átláthatóságot és az adatvédelmet kiemelten kezeljük.",
     "principles": [
       {
         "label": "Biztonságos",
@@ -1259,14 +1259,14 @@
       "Fontos értesítések biztosítása.",
       "A platform jellemzőinek fejlesztése."
     ],
-    "footer": "© 2026 Ba-Yu Platform. Az Ön személyes adatai a mi bizalmunk."
+    "footer": "© 2026 SensoraNote Platform. Az Ön személyes adatai a mi bizalmunk."
   },
   "terms_page": {
     "title": "Általános Szerződési Feltételek",
     "hero_title": "Általános Szerződési Feltételek",
-    "hero_desc": "Utolsó frissítés: 2026. május 7. A kényelmes Ba-Yu tanulási ökoszisztéma szabályai.",
+    "hero_desc": "Utolsó frissítés: 2026. május 7. A kényelmes SensoraNote tanulási ökoszisztéma szabályai.",
     "section1_title": "1. A feltételek elfogadása",
-    "section1_desc": "A Ba-Yu platform elérésével és használatával úgy tekintjük, hogy elolvasta, megértette és magára nézve kötelezőnek ismeri el ezeket a feltételeket. Ha nem ért egyet, kérjük, ne használja tovább szolgáltatásainkat a kölcsönös biztonság érdekében.",
+    "section1_desc": "A SensoraNote platform elérésével és használatával úgy tekintjük, hogy elolvasta, megértette és magára nézve kötelezőnek ismeri el ezeket a feltételeket. Ha nem ért egyet, kérjük, ne használja tovább szolgáltatásainkat a kölcsönös biztonság érdekében.",
     "section2_title": "2. Számla regisztráció",
     "section2_desc": "A jegyzetmegosztó funkció használatához pontos adatokkal kell regisztrálnia. Ön teljes mértékben felelős:",
     "section2_items": [
@@ -1275,7 +1275,7 @@
       "Valós és pontos információszolgáltatás."
     ],
     "section3_title": "3. Szellemi tulajdonjogok",
-    "section3_quote": "\"A Ba-Yu-ra feltöltött összes jegyzet a tiéd marad. Feltöltésükkel azonban engedélyt ad a Ba-Yu-nak arra, hogy oktatási célból megjelenítse, terjessze és népszerűsítse ezt a tartalmat platform-ökoszisztémánkon belül.\"",
+    "section3_quote": "\"A SensoraNote-ra feltöltött összes jegyzet a tiéd marad. Feltöltésükkel azonban engedélyt ad a SensoraNote-nak arra, hogy oktatási célból megjelenítse, terjessze és népszerűsítse ezt a tartalmat platform-ökoszisztémánkon belül.\"",
     "section4_title": "4. Használati szabályok",
     "allowed_title": "Mi megengedett",
     "allowed_items": [
@@ -1289,13 +1289,13 @@
       "Gyűlöletbeszéd terjesztése.",
       "A platformrendszer károsodása."
     ],
-    "contact": "Kérdései vannak? Lépjen kapcsolatba a következővel: <a href=\"mailto:support@ba-yu.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@ba-yu.id</a>",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Minden jog fenntartva."
+    "contact": "Kérdései vannak? Lépjen kapcsolatba a következővel: <a href=\"mailto:support@sensoranote.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@sensoranote.id</a>",
+    "footer": "© 2026 SensoraNote Platform.<br/>Minden jog fenntartva."
   },
   "community_guidelines": {
     "title": "közösségi irányelvek",
     "hero_title": "közösségi irányelvek",
-    "hero_desc": "Teremtsünk biztonságos, pozitív és támogató tanulási környezetet a Ba-Yu-n.",
+    "hero_desc": "Teremtsünk biztonságos, pozitív és támogató tanulási környezetet a SensoraNote-n.",
     "values_title": "Alapvető értékek",
     "values": [
       {
@@ -1315,7 +1315,7 @@
       "Spam, illegális promóciók vagy csalás.",
       "Mások személyes adatainak megosztása (doxxing)."
     ],
-    "footer": "© 2026 Ba-Yu Platform.<br/>Minden jog fenntartva."
+    "footer": "© 2026 SensoraNote Platform.<br/>Minden jog fenntartva."
   },
   "help_page": {
     "title": "Súgó",
@@ -1326,7 +1326,7 @@
     "faq_title": "Gyakran Ismételt Kérdések (GYIK)",
     "faqs": [
       {
-        "q": "Hogyan lehetsz szakértő a Ba-Yu-nál?",
+        "q": "Hogyan lehetsz szakértő a SensoraNote-nál?",
         "a": "Ahhoz, hogy Szakértő lehessen, gyakran meg kell osztania minőségi megjegyzéseket. Ha jegyzetei gyakran a „Népszerű” kategóriába tartoznak, és sok kedvelést kapnak, adminisztrátori csapatunk áttekinti őket, és szakértői státuszt ad."
       },
       {
@@ -1362,8 +1362,8 @@
         "a": "A Szakértőnek benyújtott feljegyzések elutasíthatók, ha plágiumot észlelnek, rossz képfelbontásúak, vagy pontatlan képleteket/elméleteket tartalmaznak. A megjegyzés részleteiben szakértői visszajelzéseket olvashat, hogy javítsa."
       },
       {
-        "q": "Fizetős a Ba-Yu platform?",
-        "a": "Nem, a Ba-Yu-t Indonézia minden diákja és tanára teljesen ingyenesen használhatja tudásmegosztásra és strukturált tanulmányi jegyzetekre!"
+        "q": "Fizetős a SensoraNote platform?",
+        "a": "Nem, a SensoraNote-t Indonézia minden diákja és tanára teljesen ingyenesen használhatja tudásmegosztásra és strukturált tanulmányi jegyzetekre!"
       }
     ],
     "contact_title": "Még mindig segítségre van szüksége?",
@@ -1372,49 +1372,49 @@
     "contact_email_title": "Email",
     "contact_email_desc": "Részletek és mellékletek",
     "guidelines_title": "közösségi irányelvek",
-    "guidelines_desc": "Olvassa el a jegyzetmegosztás szabályait és etikáját a Ba-Yu-n.",
-    "wa_template": "Kedves Ba-Yu ügyfélszolgálati csapat, a nevem {{name}}. Segítségre van szükségem a következő problémában: ..., {{day}}.",
-    "email_subject": "Ba-Yu alkalmazás probléma súgó – {{name}}",
-    "email_body": "Szia Ba-Yu támogató csapat!\n\n{{name}} vagyok. Segítségre lenne szükségem egy problémával kapcsolatban:\n...\n\nEzzel az akadállyal szembesültem a következő napon: {{day}}.\n\nKérlek segítsetek, köszönöm!"
+    "guidelines_desc": "Olvassa el a jegyzetmegosztás szabályait és etikáját a SensoraNote-n.",
+    "wa_template": "Kedves SensoraNote ügyfélszolgálati csapat, a nevem {{name}}. Segítségre van szükségem a következő problémában: ..., {{day}}.",
+    "email_subject": "SensoraNote alkalmazás probléma súgó – {{name}}",
+    "email_body": "Szia SensoraNote támogató csapat!\n\n{{name}} vagyok. Segítségre lenne szükségem egy problémával kapcsolatban:\n...\n\nEzzel az akadállyal szembesültem a következő napon: {{day}}.\n\nKérlek segítsetek, köszönöm!"
   },
   "about_page": {
     "title": "Rólunk",
-    "hero_title": "Ismerd meg Ba-Yut",
-    "hero_desc": "Kerülj közelebb a Ba-Yu Platform mögötti utazáshoz, küldetéshez és csapathoz.",
+    "hero_title": "Ismerd meg SensoraNotet",
+    "hero_desc": "Kerülj közelebb a SensoraNote Platform mögötti utazáshoz, küldetéshez és csapathoz.",
     "vision_title": "Vision & Mission",
-    "vision_desc": "Hiszünk abban, hogy minden tanuló egyenlő hozzáférést érdemel a minőségi anyagokhoz. A Ba-Yu azért készült, hogy megkönnyítse a tisztességes, biztonságos és hozzáférhető jegyzetcserét a diákok számára Indonézia-szerte.",
+    "vision_desc": "Hiszünk abban, hogy minden tanuló egyenlő hozzáférést érdemel a minőségi anyagokhoz. A SensoraNote azért készült, hogy megkönnyítse a tisztességes, biztonságos és hozzáférhető jegyzetcserét a diákok számára Indonézia-szerte.",
     "community_title": "Közösségünk",
     "community_desc": "Több ezer diák és különböző oktatási intézmények szakemberei csatlakoztak. Szigorú ellenőrzési és jelentési rendszerekkel pozitívan és konstruktívan tartjuk ezt az ökoszisztémát.",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Minden jog fenntartva."
+    "footer": "© 2026 SensoraNote Platform.<br/>Minden jog fenntartva."
   },
   "careers_page": {
     "title": "Karrierek",
-    "hero_title": "Karrier a Ba-Yu-nál",
+    "hero_title": "Karrier a SensoraNote-nál",
     "hero_desc": "Csatlakozzon hozzánk a jövő oktatási ökoszisztémájának építésében.",
     "no_vacancies_title": "Még nincs üresedés",
     "no_vacancies_desc": "Jelenleg nem nyitunk új pozíciókat, de mindig érdeklődünk a tehetséges személyek iránt.",
     "contact_btn": "Lépjen kapcsolatba velünk",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Minden jog fenntartva."
+    "footer": "© 2026 SensoraNote Platform.<br/>Minden jog fenntartva."
   },
   "blog_page": {
     "title": "Blog és frissítések",
-    "hero_title": "Ba-Yu Blog",
+    "hero_title": "SensoraNote Blog",
     "hero_desc": "Történetek, betekintések és a legújabb funkciófrissítések a fejlesztőcsapattól.",
     "coming_soon_title": "Hamarosan",
     "coming_soon_desc": "Érdekes cikkekkel készülünk az oktatásról és a technológiáról. Maradjon velünk a premierrel kapcsolatban!",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Minden jog fenntartva."
+    "footer": "© 2026 SensoraNote Platform.<br/>Minden jog fenntartva."
   },
   "status_page": {
     "title": "Rendszer állapota",
     "hero_title": "Minden rendszer Normál",
     "hero_desc": "A platform normálisan működik.",
     "status_operational": "Működőképes",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Minden jog fenntartva."
+    "footer": "© 2026 SensoraNote Platform.<br/>Minden jog fenntartva."
   },
   "auth_modal": {
     "welcome": "Üdvözöljük",
     "create_account": "Új fiók létrehozása",
-    "login_desc": "Jelentkezzen be a Ba-Yu összes funkciójának eléréséhez.",
+    "login_desc": "Jelentkezzen be a SensoraNote összes funkciójának eléréséhez.",
     "register_desc": "Regisztráljon, és kezdje el kezelni jegyzeteit most.",
     "login": "Bejelentkezés",
     "register": "Nyilvántartás",
@@ -1449,7 +1449,7 @@
     "terms": "Általános Szerződési Feltételek",
     "terms_and": "és",
     "privacy": "Adatvédelmi szabályzat",
-    "terms_suffix": "Ba-Yu szolgáltatások.",
+    "terms_suffix": "SensoraNote szolgáltatások.",
     "reset_throttled": "Kérjük, várjon egy pillanatot (60 másodpercet), mielőtt újra próbálkozna.",
     "reset_sent": "A jelszó-visszaállítási linket elküldtük az e-mail címére."
   },
@@ -1477,11 +1477,11 @@
     "no_data_filter": "Egyetlen adat sem felel meg az exportáláshoz használt szűrőnek.",
     "export_failed": "Nem sikerült exportálni az adatokat. Hiba:",
     "print_failed": "Nem sikerült megnyitni a nyomtatási ablakot. Győződjön meg arról, hogy a felugró ablakok engedélyezettek a böngészőjében.",
-    "report_title": "Ba-Yu adatexportálási jelentés",
+    "report_title": "SensoraNote adatexportálási jelentés",
     "extracted_at": "Kivonat:",
-    "footer_note": "Ba-Yu platform — Ez a dokumentum automatikusan jön létre.",
+    "footer_note": "SensoraNote platform — Ez a dokumentum automatikusan jön létre.",
     "doc_info": "Ez a dokumentum tartalmazza",
-    "doc_info2": "a Ba-Yu platformról kinyert adatok",
+    "doc_info2": "a SensoraNote platformról kinyert adatok",
     "doc_all_cat": "Az adatok minden kategóriát tartalmaznak: Megjegyzések, jelentések és felhasználók.",
     "doc_only_cat": "A megjelenített adatok csak a kategóriára vonatkoznak",
     "doc_filter_verify": "Ellenőrzési állapotszűrő:",
@@ -1538,7 +1538,7 @@
     "submit_button": "Mentés és folytatás",
     "submitting": "Megtakarítás...",
     "username_error": "A felhasználónév csak betűket, számokat és aláhúzásjeleket (_) tartalmazhat",
-    "success_msg": "A profil sikeresen elkészült! Üdvözöljük Ba-Yuban",
+    "success_msg": "A profil sikeresen elkészült! Üdvözöljük SensoraNoteban",
     "error_msg": "Hiba történt a profil mentése közben",
     "edu_sd": "Általános Iskola (SD)",
     "edu_smp": "Középiskola (SMP)",
@@ -1622,14 +1622,14 @@
     "not_found_title": "Az üzenet nem található",
     "not_found_desc": "Lehet, hogy ezt az üzenetet törölték, vagy már nem érhető el.",
     "back": "Vissza",
-    "system": "Ba-Yu rendszer",
+    "system": "SensoraNote rendszer",
     "regards": "Üdvözlettel",
-    "team": "Ba-Yu EduPlatform csapata"
+    "team": "SensoraNote EduPlatform csapata"
   },
   "landing": {
-    "philosophy_text": "Hiszünk abban, hogy a legjobb oktatás az együttműködésből születik. A Ba-Yu azért van itt, hogy segítsen ötleteket rendszerezni, megosztani betekintést, és együtt fejlődni egy támogató tanulási közösségben.",
+    "philosophy_text": "Hiszünk abban, hogy a legjobb oktatás az együttműködésből születik. A SensoraNote azért van itt, hogy segítsen ötleteket rendszerezni, megosztani betekintést, és együtt fejlődni egy támogató tanulási közösségben.",
     "philosophy_vision": "LÁTÁSUNK",
-    "philosophy_motto": "Ba-Yu filozófia – Tanulj, oszd meg, fejlődj együtt",
+    "philosophy_motto": "SensoraNote filozófia – Tanulj, oszd meg, fejlődj együtt",
     "row1_1": "40+ támogatott nyelv",
     "row1_2": "Dinamikus szövegszerkesztő",
     "row1_3": "Kiterjedt tanulmányi témák",
@@ -1693,14 +1693,14 @@
     "multilang_title_1": "Tanulás",
     "multilang_title_2": "Korlátlanul",
     "multilang_title_3": "Nyelv.",
-    "multilang_desc": "A Ba-Yu több mint 40 nyelven támogatja az interfészeket, lehetővé téve a diákok számára a világ minden tájáról, hogy együttműködjenek és kényelmesen tanuljanak platformunk használatával.",
+    "multilang_desc": "A SensoraNote több mint 40 nyelven támogatja az interfészeket, lehetővé téve a diákok számára a világ minden tájáról, hogy együttműködjenek és kényelmesen tanuljanak platformunk használatával.",
     "multilang_supported": "Támogatott nyelvek",
     "explore_badge": "TÉMAFELDÖZÉS",
     "explore_title": "Különféle tudományterületek egy platformon.",
     "explore_field": "TERÜLETI FELTÁRÁS",
     "explore_notes_btn": "Fedezze fel a Jegyzeteket",
     "feature_badge": "ALAPVETŐ TULAJDONSÁGOK",
-    "feature_title": "A technológia Ba-Yu mögött.",
+    "feature_title": "A technológia SensoraNote mögött.",
     "feature_desc": "Intelligens jegyzetelési ökoszisztémát terveztünk, amely segít az egyes tananyagok hatékony rendszerezésében, ellenőrzésében és elsajátításában.",
     "feat1_badge": "GAZDAG SZERKESZTŐ",
     "feat1_title": "LaTeX gazdag szerkesztő",
@@ -1831,11 +1831,11 @@
     "failed_title": "Az ellenőrzés sikertelen",
     "failed_desc": "Az ellenőrző link érvénytelen vagy lejárt. Kérjen új linket.",
     "redirect_mobile": "Mobilalkalmazás megnyitása...",
-    "open_app": "Nyissa meg a Ba-Yu mobilalkalmazást",
+    "open_app": "Nyissa meg a SensoraNote mobilalkalmazást",
     "go_to_login": "Lépjen a Bejelentkezés menüpontra"
   },
   "download_app": {
-    "title": "Get Ba-Yu App",
+    "title": "Get SensoraNote App",
     "subtitle": "Learn easier from anywhere. Coming soon to App Store and Google Play.",
     "status": "Currently in development...",
     "back_to_home": "Back to Home"

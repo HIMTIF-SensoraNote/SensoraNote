@@ -36,7 +36,7 @@ export default function BlogPage() {
                             <PenTool className="w-10 h-10 text-cyan-600 dark:text-cyan-400" />
                         </div>
                         <h2 className="font-['Lexend_Deca'] font-extrabold text-2xl text-gray-900 dark:text-gray-100 mb-3">
-                            {t("blog_page.hero_title") || "Blog Ba-Yu"}
+                            {t("blog_page.hero_title") || "Blog SensoraNote"}
                         </h2>
                         <p className="font-['Manrope'] text-[15px] leading-relaxed text-gray-500 dark:text-gray-400">
                             {t("blog_page.hero_desc") || "Cerita, wawasan, dan pembaruan fitur terbaru dari tim pengembang."}
@@ -59,7 +59,7 @@ export default function BlogPage() {
                     </div>
                     
                     <div className="text-center pb-8 pt-4">
-                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500" dangerouslySetInnerHTML={{ __html: t("blog_page.footer") || '&copy; 2026 Ba-Yu Platform.<br/>Semua Hak Dilindungi.' }} />
+                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500" dangerouslySetInnerHTML={{ __html: t("blog_page.footer") || '&copy; 2026 SensoraNote Platform.<br/>Semua Hak Dilindungi.' }} />
                     </div>
                 </div>
             </div>

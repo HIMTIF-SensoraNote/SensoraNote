@@ -27,10 +27,10 @@ export function Footer() {
           <div className="col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4 group">
               <div className="w-10 h-10 transition-transform group-hover:scale-105 duration-300">
-                <img src="/logo.svg" alt="Ba-Yu Logo" className="w-full h-full object-contain" />
+                <img src="/logo.svg" alt="SensoraNote Logo" className="w-full h-full object-contain" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-[#5D5CE6] to-[#8B5CF6] bg-clip-text text-transparent transition-all duration-300">
-                Ba-Yu
+                SensoraNote
               </span>
             </Link>
             <p className="text-gray-400 mb-6">
@@ -127,7 +127,7 @@ export function Footer() {
 
         <div className="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm">
-            © 2026 Ba-Yu (BelajarYuk). All rights reserved.
+            © 2026 SensoraNote (SensoraNote). All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <Link to="/privacy" className="text-gray-400 hover:text-[#8B5CF6] transition-colors duration-200">

@@ -20,7 +20,7 @@
     "title": "Mipangilio",
     "search_placeholder": "Tafuta mipangilio...",
     "account_center": "Kituo cha Akaunti",
-    "account_desc": "Dhibiti mipangilio ya akaunti yako na matumizi yaliyounganishwa kwenye mfumo wa Ba-Yu.",
+    "account_desc": "Dhibiti mipangilio ya akaunti yako na matumizi yaliyounganishwa kwenye mfumo wa SensoraNote.",
     "personal_details": "Maelezo ya Kibinafsi",
     "profile_details": "Wasifu na Maelezo ya Kibinafsi",
     "password_security": "Nenosiri na Usalama",
@@ -49,7 +49,7 @@
   "theme": {
     "title": "Muonekano",
     "subtitle": "Chagua Mandhari ya Programu",
-    "description": "Geuza kukufaa mwonekano wa programu ya Ba-Yu ili upate uzoefu mzuri zaidi wa kusoma na kujifunza.",
+    "description": "Geuza kukufaa mwonekano wa programu ya SensoraNote ili upate uzoefu mzuri zaidi wa kusoma na kujifunza.",
     "light": "Mwanga",
     "light_desc": "Safi na kuonekana mkali, yanafaa kwa hali ya chumba mkali.",
     "dark": "Giza",
@@ -60,7 +60,7 @@
   "language": {
     "title": "Lugha",
     "subtitle": "Chagua Lugha ya Programu",
-    "description": "Geuza kukufaa lugha ya maonyesho ya programu ya Ba-Yu kulingana na upendavyo.",
+    "description": "Geuza kukufaa lugha ya maonyesho ya programu ya SensoraNote kulingana na upendavyo.",
     "system": "Fuata Mfumo",
     "system_desc": "Hurekebisha kwa mipangilio ya lugha ya kifaa chako.",
     "info": "Mabadiliko ya lugha yatatumika mara moja kwa vipengele vyote vya kiolesura cha programu. Maudhui yaliyoundwa na mtumiaji (maelezo, maoni) yanasalia katika lugha yake asili."
@@ -74,7 +74,7 @@
     "whatsapp": "Piga gumzo kwenye WhatsApp",
     "email": "Tuma Barua Pepe",
     "community_guidelines": "Miongozo ya Jumuiya",
-    "community_guidelines_desc": "Soma sheria na maadili ya kushiriki maelezo kuhusu Ba-Yu."
+    "community_guidelines_desc": "Soma sheria na maadili ya kushiriki maelezo kuhusu SensoraNote."
   },
   "stats": {
     "title": "Takwimu za Kujifunza",
@@ -101,7 +101,7 @@
     "notes_created": "Vidokezo vimeundwa",
     "total_materials": "Jumla ya Nyenzo",
     "completed": "Imekamilika",
-    "footer_info": "Data husasishwa kiotomatiki baada ya kila kipindi cha kujifunza kuisha. © 2026 Elimu ya Ba-Yu.",
+    "footer_info": "Data husasishwa kiotomatiki baada ya kila kipindi cha kujifunza kuisha. © 2026 Elimu ya SensoraNote.",
     "set_goal_title": "Weka Lengo la Kila Siku",
     "set_goal_desc": "Weka lengo lako la muda wa kujifunza kila siku kwa usahihi wa kidijitali.",
     "hours": "Saa",
@@ -123,7 +123,7 @@
     "forgot_password": "Umesahau nenosiri?",
     "reset_password": "Weka upya Nenosiri",
     "welcome": "Karibu tena",
-    "welcome_desc": "Ingia ili kuendelea hadi Ba-Yu.",
+    "welcome_desc": "Ingia ili kuendelea hadi SensoraNote.",
     "start_journey": "Anza Safari Yako",
     "start_journey_desc": "Sajili na ushiriki dokezo lako la kwanza.",
     "login_tab": "Ingia",
@@ -197,7 +197,7 @@
     "following_count": "Kufuatia",
     "followers_count": "Wafuasi",
     "register_expert": "Kuwa Mtaalam",
-    "register_expert_sub": "Kuwa mchangiaji aliyeidhinishwa kwenye Ba-Yu",
+    "register_expert_sub": "Kuwa mchangiaji aliyeidhinishwa kwenye SensoraNote",
     "register": "Sajili",
     "tab_notes": "Vidokezo",
     "tab_drafts": "Rasimu",
@@ -545,7 +545,7 @@
     "author_pending": "Inasubiri",
     "author_follow": "Fuata",
     "verified_expert": "Mtaalam aliyethibitishwa",
-    "report_help_desc": "Tusaidie kuweka mfumo ikolojia wa Ba-Yu kielimu, salama na kwa starehe.",
+    "report_help_desc": "Tusaidie kuweka mfumo ikolojia wa SensoraNote kielimu, salama na kwa starehe.",
     "report_main_reason": "Sababu Kuu",
     "close_modal": "Funga Modal",
     "report_note": "Ripoti Kumbuka",
@@ -568,8 +568,8 @@
     "respond_btn": "JIBU",
     "downloaded_at": "Imepakuliwa:",
     "pdf_restricted_title": "Nyenzo Zilizolindwa",
-    "pdf_restricted_desc": "Toleo hili la PDF lina nyenzo kidogo tu. Fuata mwandishi <b>@{author}</b> kwenye programu ya Ba-Yu ili kupakua toleo kamili.",
-    "pdf_footer": "Hati hii ilipakuliwa kutoka <span class=\"footer-brand\">Ba-Yu</span> - The Future Learning Platform",
+    "pdf_restricted_desc": "Toleo hili la PDF lina nyenzo kidogo tu. Fuata mwandishi <b>@{author}</b> kwenye programu ya SensoraNote ili kupakua toleo kamili.",
+    "pdf_footer": "Hati hii ilipakuliwa kutoka <span class=\"footer-brand\">SensoraNote</span> - The Future Learning Platform",
     "sort_newest": "Mpya zaidi",
     "sort_oldest": "Kongwe zaidi",
     "sort_top": "Maoni ya Juu"
@@ -617,7 +617,7 @@
     "recently": "Sasa hivi",
     "discussion_label": "MJADALA",
     "report_modal_title": "Ripoti Mtumiaji",
-    "report_modal_desc": "Tusaidie kuweka mfumo ikolojia wa Ba-Yu kielimu, salama na kwa starehe.",
+    "report_modal_desc": "Tusaidie kuweka mfumo ikolojia wa SensoraNote kielimu, salama na kwa starehe.",
     "report_reason_label": "Sababu Kuu",
     "report_reason_spam": "Barua taka za uuzaji / matangazo yanayosumbua",
     "report_reason_false_info": "Habari za uwongo / habari potofu",
@@ -626,7 +626,7 @@
     "report_reason_copyright": "Ukiukaji wa Hakimiliki / Wizi",
     "report_reason_other": "Sababu nyingine...",
     "report_detail_label": "Maelezo ya Ziada",
-    "report_success": "Ripoti imetumwa kwa mafanikio. Asante kwa kumweka Ba-Yu salama!",
+    "report_success": "Ripoti imetumwa kwa mafanikio. Asante kwa kumweka SensoraNote salama!",
     "report_failed": "Imeshindwa kutuma ripoti.",
     "btn_reply": "Jibu"
   },
@@ -658,7 +658,7 @@
     "guide_3_title": "Ubora wa Kuonekana",
     "guide_3_desc": "Maandishi na picha lazima zisomeke.",
     "quality_priority": "Kipaumbele cha Ubora",
-    "quality_desc": "Asante kwa kuchangia kudumisha ubora wa nyenzo kwenye Ba-Yu.",
+    "quality_desc": "Asante kwa kuchangia kudumisha ubora wa nyenzo kwenye SensoraNote.",
     "validate": "Thibitisha Nyenzo",
     "reject_material": "Kataa Nyenzo",
     "quality": "Ubora wa Nyenzo",
@@ -869,7 +869,7 @@
     "prompt_approve_pakar": "Idhinisha Mtaalam",
     "prompt_reject_pakar": "Kataa Ombi",
     "prompt_pakar_placeholder": "Dokezo kwa mtumiaji...",
-    "prompt_approve_default": "Hongera! Sasa wewe ni Mtaalamu rasmi wa Ba-Yu.",
+    "prompt_approve_default": "Hongera! Sasa wewe ni Mtaalamu rasmi wa SensoraNote.",
     "prompt_reject_default": "Samahani, jalada lako halifikii vigezo vyetu.",
     "toast_pakar_approved": "Ombi la kitaalam limeidhinishwa.",
     "toast_pakar_rejected": "Ombi la mtaalamu limekataliwa.",
@@ -1055,8 +1055,8 @@
     "pdf_written_by": "Imeandikwa na:",
     "pdf_downloaded": "Imepakuliwa kwenye:",
     "pdf_protected_title": "Nyenzo Zilizolindwa",
-    "pdf_protected_desc": "PDF hii ina nyenzo sehemu tu. Fuata mwandishi <b>@{{author}}</b> kwenye programu ya Ba-Yu ili kupakua toleo kamili.",
-    "pdf_footer": "Hati hii ilipakuliwa kutoka <span class=\"footer-brand\">Ba-Yu</span> - The Future Learning Platform",
+    "pdf_protected_desc": "PDF hii ina nyenzo sehemu tu. Fuata mwandishi <b>@{{author}}</b> kwenye programu ya SensoraNote ili kupakua toleo kamili.",
+    "pdf_footer": "Hati hii ilipakuliwa kutoka <span class=\"footer-brand\">SensoraNote</span> - The Future Learning Platform",
     "draft_badge": "RASIMU",
     "draft_label": "Rasimu",
     "last_edit": "Mabadiliko ya mwisho:",
@@ -1194,7 +1194,7 @@
     "desc_private": "Wafuasi pekee ndio wanaoweza kuona wasifu na madokezo yako. Maoni yako kwenye machapisho ya wengine bado yataonekana hadharani.",
     "desc_public": "Kila mtu anaweza kuona maelezo yako mafupi na madokezo, na kuingiliana na maudhui unayoshiriki.",
     "deactivate_title": "Zima Akaunti (Imelala)",
-    "deactivate_desc": "Akaunti yako itafichwa (tulivu) kutoka kwa jukwaa la Ba-Yu. Wasifu wako, madokezo na maoni yako hayataonekana kwa watumiaji wengine. <strong>Usipoingia tena ndani ya siku 30, data yako yote itafutwa kabisa.</strong>",
+    "deactivate_desc": "Akaunti yako itafichwa (tulivu) kutoka kwa jukwaa la SensoraNote. Wasifu wako, madokezo na maoni yako hayataonekana kwa watumiaji wengine. <strong>Usipoingia tena ndani ya siku 30, data yako yote itafutwa kabisa.</strong>",
     "deactivate_button": "Zima Akaunti",
     "dialog_title": "Ungependa Kuzima Akaunti?",
     "dialog_desc": "Akaunti yako itafichwa kutoka kwa umma na uingie katika hali ya Tulivu kwa siku 30. Unaweza kuiwasha tena kwa kuingia kabla ya siku 30 kuisha. Je, una uhakika unataka kuendelea?",
@@ -1222,7 +1222,7 @@
   "privacy_page": {
     "title": "Sera ya Faragha",
     "hero_title": "Faragha Yako",
-    "hero_desc": "Data yako iko salama kwa Ba-Yu. Tunadumisha uwazi na ulinzi wa data kama kipaumbele chetu kikuu.",
+    "hero_desc": "Data yako iko salama kwa SensoraNote. Tunadumisha uwazi na ulinzi wa data kama kipaumbele chetu kikuu.",
     "principles": [
       {
         "label": "Salama",
@@ -1259,14 +1259,14 @@
       "Inatoa arifa muhimu.",
       "Kuboresha vipengele vya jukwaa."
     ],
-    "footer": "© 2026 Ba-Yu Jukwaa. Faragha Yako ni Tumaini Letu."
+    "footer": "© 2026 SensoraNote Jukwaa. Faragha Yako ni Tumaini Letu."
   },
   "terms_page": {
     "title": "Sheria na Masharti",
     "hero_title": "Sheria na Masharti",
-    "hero_desc": "Ilisasishwa mara ya mwisho: Mei 7, 2026. Kanuni za mfumo mzuri wa kujifunza wa Ba-Yu.",
+    "hero_desc": "Ilisasishwa mara ya mwisho: Mei 7, 2026. Kanuni za mfumo mzuri wa kujifunza wa SensoraNote.",
     "section1_title": "1. Kukubali Masharti",
-    "section1_desc": "Kwa kufikia na kutumia jukwaa la Ba-Yu, unachukuliwa kuwa umesoma, umeelewa, na umekubali kuwa chini ya Sheria na Masharti haya. Ikiwa hukubaliani, tafadhali usiendelee kutumia huduma zetu kwa usalama wa pande zote.",
+    "section1_desc": "Kwa kufikia na kutumia jukwaa la SensoraNote, unachukuliwa kuwa umesoma, umeelewa, na umekubali kuwa chini ya Sheria na Masharti haya. Ikiwa hukubaliani, tafadhali usiendelee kutumia huduma zetu kwa usalama wa pande zote.",
     "section2_title": "2. Usajili wa Akaunti",
     "section2_desc": "Ili kutumia kipengele cha kushiriki madokezo, unatakiwa kujisajili kwa taarifa sahihi. Unawajibika kikamilifu kwa:",
     "section2_items": [
@@ -1275,7 +1275,7 @@
       "Kutoa taarifa za kweli na sahihi."
     ],
     "section3_title": "3. Haki Miliki",
-    "section3_quote": "\"Madokezo yoyote unayopakia kwa Ba-Yu yanaendelea kuwa yako. Hata hivyo, kwa kuyapakia, unaipa Ba-Yu leseni ya kuonyesha, kusambaza na kutangaza maudhui hayo ndani ya mfumo ikolojia wa jukwaa kwa madhumuni ya elimu.\"",
+    "section3_quote": "\"Madokezo yoyote unayopakia kwa SensoraNote yanaendelea kuwa yako. Hata hivyo, kwa kuyapakia, unaipa SensoraNote leseni ya kuonyesha, kusambaza na kutangaza maudhui hayo ndani ya mfumo ikolojia wa jukwaa kwa madhumuni ya elimu.\"",
     "section4_title": "4. Kanuni za Matumizi",
     "allowed_title": "Nini Inaruhusiwa",
     "allowed_items": [
@@ -1289,13 +1289,13 @@
       "Kueneza matamshi ya chuki.",
       "Kuharibu mfumo wa jukwaa."
     ],
-    "contact": "Una maswali? Wasiliana na <a href=\"mailto:support@ba-yu.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@ba-yu.id</a>",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Haki Zote Zimehifadhiwa."
+    "contact": "Una maswali? Wasiliana na <a href=\"mailto:support@sensoranote.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@sensoranote.id</a>",
+    "footer": "© 2026 SensoraNote Platform.<br/>Haki Zote Zimehifadhiwa."
   },
   "community_guidelines": {
     "title": "Miongozo ya Jumuiya",
     "hero_title": "Miongozo ya Jumuiya",
-    "hero_desc": "Hebu tuunde mazingira salama, chanya, na ya kuunga mkono ya kujifunza kwenye Ba-Yu.",
+    "hero_desc": "Hebu tuunde mazingira salama, chanya, na ya kuunga mkono ya kujifunza kwenye SensoraNote.",
     "values_title": "Maadili ya Msingi",
     "values": [
       {
@@ -1315,7 +1315,7 @@
       "Barua taka, matangazo haramu au ulaghai.",
       "Kushiriki taarifa za kibinafsi za watu wengine (doxxing)."
     ],
-    "footer": "© 2026 Ba-Yu Platform.<br/>Haki Zote Zimehifadhiwa."
+    "footer": "© 2026 SensoraNote Platform.<br/>Haki Zote Zimehifadhiwa."
   },
   "help_page": {
     "title": "Kituo cha Usaidizi",
@@ -1326,7 +1326,7 @@
     "faq_title": "Maswali Yanayoulizwa Mara Kwa Mara (FAQ)",
     "faqs": [
       {
-        "q": "Jinsi ya kuwa Mtaalam katika Ba-Yu?",
+        "q": "Jinsi ya kuwa Mtaalam katika SensoraNote?",
         "a": "Ili kuwa Mtaalamu, lazima ushiriki vidokezo vya ubora mara kwa mara. Ikiwa madokezo yako mara nyingi huwa katika kitengo cha 'Maarufu' na kupata kupendwa mara nyingi, timu yetu ya Wasimamizi itayahakiki na kukupa hadhi ya Mtaalamu."
       },
       {
@@ -1362,8 +1362,8 @@
         "a": "Madokezo yaliyowasilishwa kwa Mtaalamu yanaweza kukataliwa ikiwa wizi wa data utatambuliwa, una ubora duni wa picha, au una fomula/nadharia zisizo sahihi. Unaweza kusoma maoni ya kitaalamu katika maelezo yako ili kuyaboresha."
       },
       {
-        "q": "Je, jukwaa la Ba-Yu linalipwa?",
-        "a": "Hapana, Ba-Yu ni bure kabisa kwa wanafunzi na walimu wote nchini Indonesia kuitumia kubadilishana maarifa na vidokezo vya masomo vilivyopangwa!"
+        "q": "Je, jukwaa la SensoraNote linalipwa?",
+        "a": "Hapana, SensoraNote ni bure kabisa kwa wanafunzi na walimu wote nchini Indonesia kuitumia kubadilishana maarifa na vidokezo vya masomo vilivyopangwa!"
       }
     ],
     "contact_title": "Bado Unahitaji Msaada?",
@@ -1372,49 +1372,49 @@
     "contact_email_title": "Barua pepe",
     "contact_email_desc": "Maelezo na viambatisho",
     "guidelines_title": "Miongozo ya Jumuiya",
-    "guidelines_desc": "Soma sheria na maadili ya kushiriki maelezo kwenye Ba-Yu.",
-    "wa_template": "Hujambo Timu ya Usaidizi ya Ba-Yu, mimi ni {{jina}}. Nahitaji usaidizi kuhusu tatizo: ... mnamo {{siku}}.",
-    "email_subject": "Usaidizi wa Tatizo la Ba-Yu - {{name}}",
-    "email_body": "Habari Timu ya Msaada ya Ba-Yu,\n\nMimi ni {{jina}}. Nahitaji msaada kwa tatizo:\n...\n\nNilikumbana na kikwazo hiki mnamo {{siku}}.\n\nTafadhali msaada, asante!"
+    "guidelines_desc": "Soma sheria na maadili ya kushiriki maelezo kwenye SensoraNote.",
+    "wa_template": "Hujambo Timu ya Usaidizi ya SensoraNote, mimi ni {{jina}}. Nahitaji usaidizi kuhusu tatizo: ... mnamo {{siku}}.",
+    "email_subject": "Usaidizi wa Tatizo la SensoraNote - {{name}}",
+    "email_body": "Habari Timu ya Msaada ya SensoraNote,\n\nMimi ni {{jina}}. Nahitaji msaada kwa tatizo:\n...\n\nNilikumbana na kikwazo hiki mnamo {{siku}}.\n\nTafadhali msaada, asante!"
   },
   "about_page": {
     "title": "Kuhusu Sisi",
-    "hero_title": "Mfahamu Ba-Yu",
-    "hero_desc": "Sogeza karibu na safari, misheni, na timu nyuma ya Jukwaa la Ba-Yu.",
+    "hero_title": "Mfahamu SensoraNote",
+    "hero_desc": "Sogeza karibu na safari, misheni, na timu nyuma ya Jukwaa la SensoraNote.",
     "vision_title": "Maono na Dhamira",
-    "vision_desc": "Tunaamini kila mwanafunzi anastahili ufikiaji sawa wa nyenzo bora. Ba-Yu iliundwa ili kuwezesha ubadilishanaji wa madokezo wa haki, salama na unaoweza kufikiwa kwa wanafunzi kote Indonesia.",
+    "vision_desc": "Tunaamini kila mwanafunzi anastahili ufikiaji sawa wa nyenzo bora. SensoraNote iliundwa ili kuwezesha ubadilishanaji wa madokezo wa haki, salama na unaoweza kufikiwa kwa wanafunzi kote Indonesia.",
     "community_title": "Jumuiya Yetu",
     "community_desc": "Maelfu ya wanafunzi na wataalam kutoka taasisi mbalimbali za elimu wamejiunga. Kwa mifumo madhubuti ya uthibitishaji na kuripoti, tunaweka mfumo huu wa ikolojia kuwa mzuri na wenye kujenga.",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Haki Zote Zimehifadhiwa."
+    "footer": "© 2026 SensoraNote Platform.<br/>Haki Zote Zimehifadhiwa."
   },
   "careers_page": {
     "title": "Ajira",
-    "hero_title": "Ajira katika Ba-Yu",
+    "hero_title": "Ajira katika SensoraNote",
     "hero_desc": "Jiunge nasi katika kujenga mfumo ikolojia wa elimu wa siku zijazo.",
     "no_vacancies_title": "Bado Hakuna Nafasi za Kazi",
     "no_vacancies_desc": "Kwa sasa hatufungui nafasi mpya, lakini tunavutiwa kila wakati na watu wenye talanta.",
     "contact_btn": "Wasiliana Nasi",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Haki Zote Zimehifadhiwa."
+    "footer": "© 2026 SensoraNote Platform.<br/>Haki Zote Zimehifadhiwa."
   },
   "blog_page": {
     "title": "Blogu na Sasisho",
-    "hero_title": "Ba-Yu Blog",
+    "hero_title": "SensoraNote Blog",
     "hero_desc": "Hadithi, maarifa, na masasisho ya hivi punde kutoka kwa timu ya watengenezaji.",
     "coming_soon_title": "Inakuja Hivi Karibuni",
     "coming_soon_desc": "Tunakuandalia makala za kuvutia kuhusu elimu na teknolojia. Kaa tayari kwa uzinduzi wetu wa kwanza!",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Haki Zote Zimehifadhiwa."
+    "footer": "© 2026 SensoraNote Platform.<br/>Haki Zote Zimehifadhiwa."
   },
   "status_page": {
     "title": "Hali ya Mfumo",
     "hero_title": "Mifumo Yote ya Kawaida",
     "hero_desc": "Jukwaa linafanya kazi kawaida.",
     "status_operational": "Uendeshaji",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Haki Zote Zimehifadhiwa."
+    "footer": "© 2026 SensoraNote Platform.<br/>Haki Zote Zimehifadhiwa."
   },
   "auth_modal": {
     "welcome": "Karibu",
     "create_account": "Fungua Akaunti Mpya",
-    "login_desc": "Ingia ili kufikia vipengele vyote vya Ba-Yu.",
+    "login_desc": "Ingia ili kufikia vipengele vyote vya SensoraNote.",
     "register_desc": "Sajili na uanze kudhibiti madokezo yako sasa.",
     "login": "Ingia",
     "register": "Sajili",
@@ -1449,7 +1449,7 @@
     "terms": "Sheria na Masharti",
     "terms_and": "na",
     "privacy": "Sera ya Faragha",
-    "terms_suffix": "wa huduma za Ba-Yu.",
+    "terms_suffix": "wa huduma za SensoraNote.",
     "reset_throttled": "Tafadhali subiri kidogo (sekunde 60) kabla ya kujaribu tena.",
     "reset_sent": "Kiungo cha kuweka upya nenosiri kimetumwa kwa barua pepe yako."
   },
@@ -1477,11 +1477,11 @@
     "no_data_filter": "Hakuna data inayolingana na kichujio cha kuhamishwa.",
     "export_failed": "Imeshindwa kuhamisha data. Hitilafu:",
     "print_failed": "Imeshindwa kufungua dirisha la kuchapisha. Tafadhali hakikisha madirisha ibukizi yanaruhusiwa katika kivinjari chako.",
-    "report_title": "Ripoti ya Usafirishaji wa data ya Ba-Yu",
+    "report_title": "Ripoti ya Usafirishaji wa data ya SensoraNote",
     "extracted_at": "Imetolewa mnamo:",
-    "footer_note": "Jukwaa la Ba-Yu - Hati hii inatolewa kiotomatiki.",
+    "footer_note": "Jukwaa la SensoraNote - Hati hii inatolewa kiotomatiki.",
     "doc_info": "Hati hii ina",
-    "doc_info2": "data iliyotolewa kutoka kwa jukwaa la Ba-Yu kwenye",
+    "doc_info2": "data iliyotolewa kutoka kwa jukwaa la SensoraNote kwenye",
     "doc_all_cat": "Data inajumuisha aina zote: Vidokezo, Ripoti na Watumiaji.",
     "doc_only_cat": "Data inayoonyeshwa ni ya kitengo pekee",
     "doc_filter_verify": "Kichujio cha hali ya uthibitishaji:",
@@ -1538,7 +1538,7 @@
     "submit_button": "Hifadhi & Endelea",
     "submitting": "Inahifadhi...",
     "username_error": "Jina la mtumiaji linaweza tu kuwa na herufi, nambari, na mistari chini (_)",
-    "success_msg": "Wasifu umekamilika! Karibu na Ba-Yu",
+    "success_msg": "Wasifu umekamilika! Karibu na SensoraNote",
     "error_msg": "Hitilafu ilitokea wakati wa kuhifadhi wasifu",
     "edu_sd": "Shule ya Msingi (SD)",
     "edu_smp": "Shule ya Upili ya Vijana (SMP)",
@@ -1622,14 +1622,14 @@
     "not_found_title": "Ujumbe Haujapatikana",
     "not_found_desc": "Huenda ujumbe huu umefutwa au haupatikani tena.",
     "back": "Nyuma",
-    "system": "Mfumo wa Ba-Yu",
+    "system": "Mfumo wa SensoraNote",
     "regards": "Habari,",
-    "team": "Timu ya Ba-Yu EduPlatform"
+    "team": "Timu ya SensoraNote EduPlatform"
   },
   "landing": {
-    "philosophy_text": "Tunaamini kwamba elimu bora huzaliwa kutokana na ushirikiano. Ba-Yu yuko hapa kukusaidia kupanga mawazo, kushiriki maarifa, na kukua pamoja katika jumuiya ya kujifunza inayosaidia.",
+    "philosophy_text": "Tunaamini kwamba elimu bora huzaliwa kutokana na ushirikiano. SensoraNote yuko hapa kukusaidia kupanga mawazo, kushiriki maarifa, na kukua pamoja katika jumuiya ya kujifunza inayosaidia.",
     "philosophy_vision": "MAONO YETU",
-    "philosophy_motto": "Falsafa ya Ba-Yu - Jifunze, Shiriki, Ukue Pamoja",
+    "philosophy_motto": "Falsafa ya SensoraNote - Jifunze, Shiriki, Ukue Pamoja",
     "row1_1": "Lugha 40+ Zinatumika",
     "row1_2": "Kihariri cha Maandishi chenye Nguvu",
     "row1_3": "Mada za Utafiti wa Kina",
@@ -1693,14 +1693,14 @@
     "multilang_title_1": "Kujifunza",
     "multilang_title_2": "Bila kikomo",
     "multilang_title_3": "Lugha.",
-    "multilang_desc": "Ba-Yu hutumia violesura katika lugha 40+, hivyo kuruhusu wanafunzi kutoka kote ulimwenguni kushirikiana na kujifunza kwa raha kwa kutumia jukwaa letu.",
+    "multilang_desc": "SensoraNote hutumia violesura katika lugha 40+, hivyo kuruhusu wanafunzi kutoka kote ulimwenguni kushirikiana na kujifunza kwa raha kwa kutumia jukwaa letu.",
     "multilang_supported": "Lugha Zinazotumika",
     "explore_badge": "UTAFITI WA MADA",
     "explore_title": "Nyanja Mbalimbali za Sayansi kwenye Jukwaa Moja.",
     "explore_field": "UTAFITI WA SHAMBA",
     "explore_notes_btn": "Chunguza Vidokezo",
     "feature_badge": "SIFA MUHIMU",
-    "feature_title": "Teknolojia Nyuma ya Ba-Yu.",
+    "feature_title": "Teknolojia Nyuma ya SensoraNote.",
     "feature_desc": "Tumeunda mfumo mahiri wa kuchukua madokezo ili kukusaidia kupanga, kuthibitisha na kufahamu kila nyenzo kwa ufanisi.",
     "feat1_badge": "MHARIRI TAJIRI",
     "feat1_title": "LaTeX Tajiri Mhariri",
@@ -1831,11 +1831,11 @@
     "failed_title": "Uthibitishaji Umeshindwa",
     "failed_desc": "Kiungo cha uthibitishaji ni batili au muda wake umeisha. Tafadhali omba kiungo kipya.",
     "redirect_mobile": "Inafungua programu ya simu...",
-    "open_app": "Fungua Ba-Yu Mobile App",
+    "open_app": "Fungua SensoraNote Mobile App",
     "go_to_login": "Nenda kwa Ingia"
   },
   "download_app": {
-    "title": "Get Ba-Yu App",
+    "title": "Get SensoraNote App",
     "subtitle": "Learn easier from anywhere. Coming soon to App Store and Google Play.",
     "status": "Currently in development...",
     "back_to_home": "Back to Home"

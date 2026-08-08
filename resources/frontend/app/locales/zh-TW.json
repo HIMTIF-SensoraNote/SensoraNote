@@ -20,7 +20,7 @@
     "title": "設定",
     "search_placeholder": "搜尋設定...",
     "account_center": "帳戶中心",
-    "account_desc": "管理您在 Ba-Yu 平台上的帳戶設定和互聯體驗。",
+    "account_desc": "管理您在 SensoraNote 平台上的帳戶設定和互聯體驗。",
     "personal_details": "個人資料",
     "profile_details": "簡介和個人詳細信息",
     "password_security": "密碼與安全",
@@ -49,7 +49,7 @@
   "theme": {
     "title": "外貌",
     "subtitle": "選擇應用程式主題",
-    "description": "自訂Ba-Yu應用程式的外觀，以獲得更舒適的閱讀和學習體驗。",
+    "description": "自訂SensoraNote應用程式的外觀，以獲得更舒適的閱讀和學習體驗。",
     "light": "光",
     "light_desc": "外觀整潔明亮，適合明亮的房間條件。",
     "dark": "黑暗的",
@@ -60,7 +60,7 @@
   "language": {
     "title": "語言",
     "subtitle": "選擇應用程式語言",
-    "description": "根據您的喜好自訂Ba-Yu應用程式的顯示語言。",
+    "description": "根據您的喜好自訂SensoraNote應用程式的顯示語言。",
     "system": "關注系統",
     "system_desc": "根據您的裝置語言設定進行調整。",
     "info": "語言變更將立即應用於所有應用程式介面元素。用戶創建的內容（註釋、評論）保留其原始語言。"
@@ -74,7 +74,7 @@
     "whatsapp": "聊天 WhatsApp",
     "email": "傳送電子郵件",
     "community_guidelines": "社區準則",
-    "community_guidelines_desc": "閱讀 Ba-Yu 上分享筆記的規則和道德規範。"
+    "community_guidelines_desc": "閱讀 SensoraNote 上分享筆記的規則和道德規範。"
   },
   "stats": {
     "title": "學習統計學",
@@ -197,7 +197,7 @@
     "following_count": "下列的",
     "followers_count": "追隨者",
     "register_expert": "成為專家",
-    "register_expert_sub": "成為 Ba-Yu 上經過驗證的貢獻者",
+    "register_expert_sub": "成為 SensoraNote 上經過驗證的貢獻者",
     "register": "登記",
     "tab_notes": "筆記",
     "tab_drafts": "草稿",
@@ -568,7 +568,7 @@
     "respond_btn": "回應",
     "downloaded_at": "下載：",
     "pdf_restricted_title": "受保護的材料",
-    "pdf_restricted_desc": "此 PDF 版本僅包含部分資料。在Ba-Yu应用上关注作者<b>@{author}</b>即可下载完整版。",
+    "pdf_restricted_desc": "此 PDF 版本僅包含部分資料。在SensoraNote应用上关注作者<b>@{author}</b>即可下载完整版。",
     "pdf_footer": "本文檔下載自<span class=\"footer-brand\">巴文</span> - 未來學習平台",
     "sort_newest": "最新",
     "sort_oldest": "最古老的",
@@ -1055,7 +1055,7 @@
     "pdf_written_by": "撰寫者：",
     "pdf_downloaded": "下載於：",
     "pdf_protected_title": "受保護的材料",
-    "pdf_protected_desc": "此 PDF 僅包含部分資料。在Ba-Yu應用程式上追蹤作者<b>@{{author}}</b>即可下載完整版。",
+    "pdf_protected_desc": "此 PDF 僅包含部分資料。在SensoraNote應用程式上追蹤作者<b>@{{author}}</b>即可下載完整版。",
     "pdf_footer": "本文檔下載自<span class=\"footer-brand\">巴文</span> - 未來學習平台",
     "draft_badge": "草稿",
     "draft_label": "草稿",
@@ -1194,7 +1194,7 @@
     "desc_private": "只有追蹤者才能查看您的個人資料和註釋。您對其他人貼文的評論仍然是公開可見的。",
     "desc_public": "每個人都可以查看您的個人資料和筆記，並與您分享的內容互動。",
     "deactivate_title": "停用帳號（休眠）",
-    "deactivate_desc": "您的帳戶將從 Ba-Yu 平台隱藏（休眠）。其他用戶看不到您的個人資料、註釋和評論。 <strong>如果您在 30 天內未重新登錄，您的所有資料將永久刪除。 </strong>",
+    "deactivate_desc": "您的帳戶將從 SensoraNote 平台隱藏（休眠）。其他用戶看不到您的個人資料、註釋和評論。 <strong>如果您在 30 天內未重新登錄，您的所有資料將永久刪除。 </strong>",
     "deactivate_button": "停用帳戶",
     "dialog_title": "停用帳號？",
     "dialog_desc": "您的帳戶將對公眾隱藏，並進入休眠狀態 30 天。您可以在 30 天到期之前登入重新啟動它。您確定要繼續嗎？",
@@ -1222,7 +1222,7 @@
   "privacy_page": {
     "title": "隱私權政策",
     "hero_title": "您的隱私",
-    "hero_desc": "Ba-Yu 保證您的資料安全。我們將透明度和資料保護作為我們的首要任務。",
+    "hero_desc": "SensoraNote 保證您的資料安全。我們將透明度和資料保護作為我們的首要任務。",
     "principles": [
       {
         "label": "安全",
@@ -1275,7 +1275,7 @@
       "提供真實、準確的資訊。"
     ],
     "section3_title": "3. 智慧財產權",
-    "section3_quote": "「您上傳到 Ba-Yu 的任何筆記仍然屬於您。但是，透過上傳它們，您授予 Ba-Yu 許可，可以出於教育目的在我們的平台生態系統中展示、分發和推廣該內容。”",
+    "section3_quote": "「您上傳到 SensoraNote 的任何筆記仍然屬於您。但是，透過上傳它們，您授予 SensoraNote 許可，可以出於教育目的在我們的平台生態系統中展示、分發和推廣該內容。”",
     "section4_title": "4. 使用規則",
     "allowed_title": "允許什麼",
     "allowed_items": [
@@ -1289,13 +1289,13 @@
       "散布仇恨言論。",
       "損壞平台系統。"
     ],
-    "contact": "有疑問嗎？聯絡<a href=\"mailto:support@ba-yu.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@ba-yu.id</a>",
+    "contact": "有疑問嗎？聯絡<a href=\"mailto:support@sensoranote.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@sensoranote.id</a>",
     "footer": "© 2026 巴渝平台。 <br/>保留所有權利。"
   },
   "community_guidelines": {
     "title": "社區準則",
     "hero_title": "社區準則",
-    "hero_desc": "讓我們在 Ba-Yu 上創造一個安全、積極、支持性的學習環境。",
+    "hero_desc": "讓我們在 SensoraNote 上創造一個安全、積極、支持性的學習環境。",
     "values_title": "核心價值",
     "values": [
       {
@@ -1363,7 +1363,7 @@
       },
       {
         "q": "巴渝平台是付費的嗎？",
-        "a": "不，Ba-Yu 對印尼所有學生和教師完全免費，用於分享知識和結構化學習筆記！"
+        "a": "不，SensoraNote 對印尼所有學生和教師完全免費，用於分享知識和結構化學習筆記！"
       }
     ],
     "contact_title": "還需要幫忙嗎？",
@@ -1372,17 +1372,17 @@
     "contact_email_title": "電子郵件",
     "contact_email_desc": "詳情及附件",
     "guidelines_title": "社區準則",
-    "guidelines_desc": "閱讀 Ba-Yu 上分享筆記的規則和道德規範。",
-    "wa_template": "大家好，Ba-Yu 支援團隊，我是 {{name}}。我需要幫助解決這個問題：...{{day}}。",
-    "email_subject": "Ba-Yu 應用程式問題幫助 - {{name}}",
-    "email_body": "您好，Ba-Yu 支援團隊，\n\n我是{{name}}。我需要協助解決一個問題：\n……\n\n我在 {{day}} 遇到了這個障礙。\n\n請幫忙，謝謝！"
+    "guidelines_desc": "閱讀 SensoraNote 上分享筆記的規則和道德規範。",
+    "wa_template": "大家好，SensoraNote 支援團隊，我是 {{name}}。我需要幫助解決這個問題：...{{day}}。",
+    "email_subject": "SensoraNote 應用程式問題幫助 - {{name}}",
+    "email_body": "您好，SensoraNote 支援團隊，\n\n我是{{name}}。我需要協助解決一個問題：\n……\n\n我在 {{day}} 遇到了這個障礙。\n\n請幫忙，謝謝！"
   },
   "about_page": {
     "title": "關於我們",
     "hero_title": "認識巴渝",
     "hero_desc": "近距離了解巴渝平台背後的歷程、使命與團隊。",
     "vision_title": "願景與使命",
-    "vision_desc": "我們相信每個學生都應該平等地獲得優質材料。 Ba-Yu 的建立是為了促進印尼各地學生公平、安全和方便的筆記交換。",
+    "vision_desc": "我們相信每個學生都應該平等地獲得優質材料。 SensoraNote 的建立是為了促進印尼各地學生公平、安全和方便的筆記交換。",
     "community_title": "我們的社區",
     "community_desc": "來自各教育機構的數千名學生和專家加入其中。透過嚴格的驗證和報告系統，我們保持了這個生態系統的積極性和建設性。",
     "footer": "© 2026 巴渝平台。 <br/>保留所有權利。"
@@ -1414,7 +1414,7 @@
   "auth_modal": {
     "welcome": "歡迎",
     "create_account": "建立新帳戶",
-    "login_desc": "登入以存取所有 Ba-Yu 功能。",
+    "login_desc": "登入以存取所有 SensoraNote 功能。",
     "register_desc": "立即註冊並開始管理您的筆記。",
     "login": "登入",
     "register": "登記",
@@ -1481,7 +1481,7 @@
     "extracted_at": "提取於：",
     "footer_note": "巴渝平台－本文檔自動產生。",
     "doc_info": "本文檔包含",
-    "doc_info2": "從Ba-Yu平台擷取的數據",
+    "doc_info2": "從SensoraNote平台擷取的數據",
     "doc_all_cat": "數據包括所有類別：註釋、報告和使用者。",
     "doc_only_cat": "顯示的數據僅針對該類別",
     "doc_filter_verify": "驗證狀態過濾器：",
@@ -1627,7 +1627,7 @@
     "team": "巴育教育平台團隊"
   },
   "landing": {
-    "philosophy_text": "我們相信最好的教育源自於合作。 Ba-Yu 在這裡幫助您整理想法、分享見解並在支持性學習社群中共同成長。",
+    "philosophy_text": "我們相信最好的教育源自於合作。 SensoraNote 在這裡幫助您整理想法、分享見解並在支持性學習社群中共同成長。",
     "philosophy_vision": "我們的願景",
     "philosophy_motto": "巴渝哲學－學習、分享、共同成長",
     "row1_1": "支援 40 多種語言",
@@ -1693,14 +1693,14 @@
     "multilang_title_1": "學習",
     "multilang_title_2": "無限制",
     "multilang_title_3": "語言。",
-    "multilang_desc": "Ba-Yu 支援 40 多種語言的介面，讓來自世界各地的學生可以使用我們的平台輕鬆協作和學習。",
+    "multilang_desc": "SensoraNote 支援 40 多種語言的介面，讓來自世界各地的學生可以使用我們的平台輕鬆協作和學習。",
     "multilang_supported": "支援的語言",
     "explore_badge": "主題探索",
     "explore_title": "一個平台上的各個科學領域。",
     "explore_field": "實地探索",
     "explore_notes_btn": "探索筆記",
     "feature_badge": "核心特點",
-    "feature_title": "Ba-Yu 背後的技術。",
+    "feature_title": "SensoraNote 背後的技術。",
     "feature_desc": "我們設計了一個智慧筆記生態系統，幫助您有效地組織、驗證和掌握每個課程材料。",
     "feat1_badge": "豐富的編輯器",
     "feat1_title": "LaTeX 豐富編輯器",
@@ -1835,7 +1835,7 @@
     "go_to_login": "前往登入"
   },
   "download_app": {
-    "title": "Get Ba-Yu App",
+    "title": "Get SensoraNote App",
     "subtitle": "Learn easier from anywhere. Coming soon to App Store and Google Play.",
     "status": "Currently in development...",
     "back_to_home": "Back to Home"

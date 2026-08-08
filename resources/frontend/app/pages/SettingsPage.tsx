@@ -333,7 +333,7 @@ export default function SettingsPage() {
                <div className="w-5 h-5 rounded-md bg-slate-900 dark:bg-white flex items-center justify-center">
                  <Sparkles size={10} className="text-white dark:text-[#13111C]" />
                </div>
-               <span className="font-['Lexend_Deca'] font-black text-slate-900 dark:text-slate-100 tracking-tighter text-sm">Ba-Yu</span>
+               <span className="font-['Lexend_Deca'] font-black text-slate-900 dark:text-slate-100 tracking-tighter text-sm">SensoraNote</span>
             </div>
             <p className="text-[10px] font-bold text-slate-300 dark:text-slate-600 uppercase tracking-[0.3em]">{t('settings.version')} 1.2.4</p>
           </div>

@@ -20,7 +20,7 @@
     "title": "Nastavení",
     "search_placeholder": "Nastavení vyhledávání...",
     "account_center": "Account Center",
-    "account_desc": "Spravujte nastavení svého účtu a propojené zážitky napříč platformou Ba-Yu.",
+    "account_desc": "Spravujte nastavení svého účtu a propojené zážitky napříč platformou SensoraNote.",
     "personal_details": "Osobní údaje",
     "profile_details": "Profil a osobní údaje",
     "password_security": "Heslo a zabezpečení",
@@ -49,7 +49,7 @@
   "theme": {
     "title": "Vzhled",
     "subtitle": "Vyberte téma aplikace",
-    "description": "Přizpůsobte si vzhled aplikace Ba-Yu pro pohodlnější čtení a učení.",
+    "description": "Přizpůsobte si vzhled aplikace SensoraNote pro pohodlnější čtení a učení.",
     "light": "Světlo",
     "light_desc": "Čistý a světlý vzhled, vhodný do světlých místností.",
     "dark": "Tmavý",
@@ -60,7 +60,7 @@
   "language": {
     "title": "Jazyk",
     "subtitle": "Vyberte Jazyk aplikace",
-    "description": "Přizpůsobte si jazyk zobrazení aplikace Ba-Yu podle svých preferencí.",
+    "description": "Přizpůsobte si jazyk zobrazení aplikace SensoraNote podle svých preferencí.",
     "system": "Sledujte systém",
     "system_desc": "Přizpůsobí se nastavení jazyka vašeho zařízení.",
     "info": "Změny jazyka se okamžitě projeví na všech prvcích rozhraní aplikace. Uživatelem vytvořený obsah (poznámky, komentáře) zůstává v původním jazyce."
@@ -74,7 +74,7 @@
     "whatsapp": "WhatsApp chat",
     "email": "Odeslat e-mail",
     "community_guidelines": "Pokyny pro komunitu",
-    "community_guidelines_desc": "Přečtěte si pravidla a etiku pro sdílení poznámek na Ba-Yu."
+    "community_guidelines_desc": "Přečtěte si pravidla a etiku pro sdílení poznámek na SensoraNote."
   },
   "stats": {
     "title": "Statistika učení",
@@ -101,7 +101,7 @@
     "notes_created": "Poznámky vytvořeny",
     "total_materials": "Materiály celkem",
     "completed": "Dokončeno",
-    "footer_info": "Data se automaticky aktualizují po ukončení každé výukové relace. © 2026 Ba-Yu Vzdělávání.",
+    "footer_info": "Data se automaticky aktualizují po ukončení každé výukové relace. © 2026 SensoraNote Vzdělávání.",
     "set_goal_title": "Nastavte si denní cíl",
     "set_goal_desc": "Nastavte si cílovou denní dobu učení s digitální přesností.",
     "hours": "hodiny",
@@ -123,7 +123,7 @@
     "forgot_password": "Zapomněli jste heslo?",
     "reset_password": "Obnovit heslo",
     "welcome": "Vítejte zpět",
-    "welcome_desc": "Chcete-li pokračovat do Ba-Yu, přihlaste se.",
+    "welcome_desc": "Chcete-li pokračovat do SensoraNote, přihlaste se.",
     "start_journey": "Začněte svou cestu",
     "start_journey_desc": "Zaregistrujte se a sdílejte svou první poznámku.",
     "login_tab": "Přihlášení",
@@ -197,7 +197,7 @@
     "following_count": "Následující",
     "followers_count": "Následovníci",
     "register_expert": "Staňte se expertem",
-    "register_expert_sub": "Staňte se ověřeným přispěvatelem na Ba-Yu",
+    "register_expert_sub": "Staňte se ověřeným přispěvatelem na SensoraNote",
     "register": "Rejstřík",
     "tab_notes": "Poznámky",
     "tab_drafts": "Koncepty",
@@ -545,7 +545,7 @@
     "author_pending": "Čeká na vyřízení",
     "author_follow": "Následovat",
     "verified_expert": "Ověřený odborník",
-    "report_help_desc": "Pomozte nám udržet ekosystém Ba-Yu vzdělávací, bezpečný a pohodlný.",
+    "report_help_desc": "Pomozte nám udržet ekosystém SensoraNote vzdělávací, bezpečný a pohodlný.",
     "report_main_reason": "Hlavní důvod",
     "close_modal": "Zavřít Modal",
     "report_note": "Zpráva Poznámka",
@@ -568,8 +568,8 @@
     "respond_btn": "REAGOVAT",
     "downloaded_at": "Staženo:",
     "pdf_restricted_title": "Chráněný materiál",
-    "pdf_restricted_desc": "Tato verze PDF obsahuje pouze částečný materiál. Sledujte autora <b>@{author}</b> v aplikaci Ba-Yu a stáhněte si plnou verzi.",
-    "pdf_footer": "Tento dokument byl stažen z <span class=\"footer-brand\">Ba-Yu</span> – The Future Learning Platform",
+    "pdf_restricted_desc": "Tato verze PDF obsahuje pouze částečný materiál. Sledujte autora <b>@{author}</b> v aplikaci SensoraNote a stáhněte si plnou verzi.",
+    "pdf_footer": "Tento dokument byl stažen z <span class=\"footer-brand\">SensoraNote</span> – The Future Learning Platform",
     "sort_newest": "Nejnovější",
     "sort_oldest": "Nejstarší",
     "sort_top": "Nejlepší komentáře"
@@ -617,7 +617,7 @@
     "recently": "Právě teď",
     "discussion_label": "DISKUSE",
     "report_modal_title": "Nahlásit uživatele",
-    "report_modal_desc": "Pomozte nám udržet ekosystém Ba-Yu vzdělávací, bezpečný a pohodlný.",
+    "report_modal_desc": "Pomozte nám udržet ekosystém SensoraNote vzdělávací, bezpečný a pohodlný.",
     "report_reason_label": "Hlavní důvod",
     "report_reason_spam": "Marketingový spam / rušivé reklamy",
     "report_reason_false_info": "Nepravdivé informace / dezinformace",
@@ -626,7 +626,7 @@
     "report_reason_copyright": "Porušení autorských práv / Plagiátorství",
     "report_reason_other": "Jiný důvod...",
     "report_detail_label": "Další podrobnosti",
-    "report_success": "Zpráva byla úspěšně odeslána. Děkujeme, že udržujete Ba-Yu v bezpečí!",
+    "report_success": "Zpráva byla úspěšně odeslána. Děkujeme, že udržujete SensoraNote v bezpečí!",
     "report_failed": "Hlášení se nepodařilo odeslat.",
     "btn_reply": "Odpověď"
   },
@@ -658,7 +658,7 @@
     "guide_3_title": "Vizuální kvalita",
     "guide_3_desc": "Písmo a obrázky musí být čitelné.",
     "quality_priority": "Priorita kvality",
-    "quality_desc": "Děkujeme, že přispíváte k udržení kvality materiálu na Ba-Yu.",
+    "quality_desc": "Děkujeme, že přispíváte k udržení kvality materiálu na SensoraNote.",
     "validate": "Ověřte materiál",
     "reject_material": "Odmítnout materiál",
     "quality": "Kvalita materiálu",
@@ -869,7 +869,7 @@
     "prompt_approve_pakar": "Schválit odborníka",
     "prompt_reject_pakar": "Odmítnout žádost",
     "prompt_pakar_placeholder": "Poznámka pro uživatele...",
-    "prompt_approve_default": "Gratuluji! Nyní jste oficiální expert na Ba-Yu.",
+    "prompt_approve_default": "Gratuluji! Nyní jste oficiální expert na SensoraNote.",
     "prompt_reject_default": "Je nám líto, ale vaše portfolio nesplňuje naše kritéria.",
     "toast_pakar_approved": "Žádost odborníka schválena.",
     "toast_pakar_rejected": "Žádost odborníka zamítnuta.",
@@ -1055,8 +1055,8 @@
     "pdf_written_by": "Napsal:",
     "pdf_downloaded": "Staženo dne:",
     "pdf_protected_title": "Chráněný materiál",
-    "pdf_protected_desc": "Toto PDF obsahuje pouze částečný materiál. Sledujte autora <b>@{{author}}</b> v aplikaci Ba-Yu a stáhněte si plnou verzi.",
-    "pdf_footer": "Tento dokument byl stažen z <span class=\"footer-brand\">Ba-Yu</span> – The Future Learning Platform",
+    "pdf_protected_desc": "Toto PDF obsahuje pouze částečný materiál. Sledujte autora <b>@{{author}}</b> v aplikaci SensoraNote a stáhněte si plnou verzi.",
+    "pdf_footer": "Tento dokument byl stažen z <span class=\"footer-brand\">SensoraNote</span> – The Future Learning Platform",
     "draft_badge": "NÁVRH",
     "draft_label": "Návrh",
     "last_edit": "Poslední úprava:",
@@ -1194,7 +1194,7 @@
     "desc_private": "Váš profil a poznámky mohou zobrazit pouze sledující. Vaše komentáře k příspěvkům ostatních budou stále veřejně viditelné.",
     "desc_public": "Každý může zobrazit váš profil a poznámky a pracovat s obsahem, který sdílíte.",
     "deactivate_title": "Deaktivovat účet (neaktivní)",
-    "deactivate_desc": "Váš účet bude před platformou Ba-Yu skrytý (neaktivní). Váš profil, poznámky a komentáře nebudou viditelné pro ostatní uživatele. <strong>Pokud se do 30 dnů nepřihlásíte, všechna vaše data budou trvale smazána.</strong>",
+    "deactivate_desc": "Váš účet bude před platformou SensoraNote skrytý (neaktivní). Váš profil, poznámky a komentáře nebudou viditelné pro ostatní uživatele. <strong>Pokud se do 30 dnů nepřihlásíte, všechna vaše data budou trvale smazána.</strong>",
     "deactivate_button": "Deaktivovat účet",
     "dialog_title": "Deaktivovat účet?",
     "dialog_desc": "Váš účet bude skryt před veřejností a po dobu 30 dnů přejde do klidového stavu. Můžete jej znovu aktivovat přihlášením před uplynutím 30 dnů. Opravdu chcete pokračovat?",
@@ -1222,7 +1222,7 @@
   "privacy_page": {
     "title": "Zásady ochrany osobních údajů",
     "hero_title": "Vaše soukromí",
-    "hero_desc": "Vaše data jsou s Ba-Yu v bezpečí. Naší nejvyšší prioritou je transparentnost a ochrana údajů.",
+    "hero_desc": "Vaše data jsou s SensoraNote v bezpečí. Naší nejvyšší prioritou je transparentnost a ochrana údajů.",
     "principles": [
       {
         "label": "Zajistit",
@@ -1259,14 +1259,14 @@
       "Poskytování důležitých upozornění.",
       "Zlepšení funkcí platformy."
     ],
-    "footer": "© 2026 platforma Ba-Yu. Vaše soukromí je naší důvěrou."
+    "footer": "© 2026 platforma SensoraNote. Vaše soukromí je naší důvěrou."
   },
   "terms_page": {
     "title": "Smluvní podmínky",
     "hero_title": "Smluvní podmínky",
-    "hero_desc": "Poslední aktualizace: 7. května 2026. Pravidla pro pohodlný ekosystém učení Ba-Yu.",
+    "hero_desc": "Poslední aktualizace: 7. května 2026. Pravidla pro pohodlný ekosystém učení SensoraNote.",
     "section1_title": "1. Přijetí podmínek",
-    "section1_desc": "Vstupem a používáním platformy Ba-Yu se má za to, že jste si přečetli, porozuměli a souhlasíte s tím, že budete vázáni těmito podmínkami. Pokud nesouhlasíte, nepokračujte v používání našich služeb pro vzájemnou bezpečnost.",
+    "section1_desc": "Vstupem a používáním platformy SensoraNote se má za to, že jste si přečetli, porozuměli a souhlasíte s tím, že budete vázáni těmito podmínkami. Pokud nesouhlasíte, nepokračujte v používání našich služeb pro vzájemnou bezpečnost.",
     "section2_title": "2. Registrace účtu",
     "section2_desc": "Chcete-li používat funkci sdílení poznámek, musíte se zaregistrovat s přesnými informacemi. Jste plně zodpovědní za:",
     "section2_items": [
@@ -1275,7 +1275,7 @@
       "Poskytování pravdivých a přesných informací."
     ],
     "section3_title": "3. Práva duševního vlastnictví",
-    "section3_quote": "\"Všechny poznámky, které nahrajete do Ba-Yu, zůstávají vaše. Jejich nahráním však Ba-Yu udělujete licenci k zobrazování, distribuci a propagaci tohoto obsahu v rámci ekosystému naší platformy pro vzdělávací účely.\"",
+    "section3_quote": "\"Všechny poznámky, které nahrajete do SensoraNote, zůstávají vaše. Jejich nahráním však SensoraNote udělujete licenci k zobrazování, distribuci a propagaci tohoto obsahu v rámci ekosystému naší platformy pro vzdělávací účely.\"",
     "section4_title": "4. Pravidla používání",
     "allowed_title": "Co je povoleno",
     "allowed_items": [
@@ -1289,13 +1289,13 @@
       "Šíření nenávistných projevů.",
       "Poškození systému platformy."
     ],
-    "contact": "Máte otázky? Kontaktujte <a href=\"mailto:support@ba-yu.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@ba-yu.id</a>",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Všechna práva vyhrazena."
+    "contact": "Máte otázky? Kontaktujte <a href=\"mailto:support@sensoranote.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@sensoranote.id</a>",
+    "footer": "© 2026 SensoraNote Platform.<br/>Všechna práva vyhrazena."
   },
   "community_guidelines": {
     "title": "Pokyny pro komunitu",
     "hero_title": "Pokyny pro komunitu",
-    "hero_desc": "Vytvořme bezpečné, pozitivní a podpůrné vzdělávací prostředí na Ba-Yu.",
+    "hero_desc": "Vytvořme bezpečné, pozitivní a podpůrné vzdělávací prostředí na SensoraNote.",
     "values_title": "Základní hodnoty",
     "values": [
       {
@@ -1315,7 +1315,7 @@
       "Spam, nelegální propagace nebo podvody.",
       "Sdílení osobních údajů jiných lidí (doxxing)."
     ],
-    "footer": "© 2026 Ba-Yu Platform.<br/>Všechna práva vyhrazena."
+    "footer": "© 2026 SensoraNote Platform.<br/>Všechna práva vyhrazena."
   },
   "help_page": {
     "title": "Centrum nápovědy",
@@ -1326,7 +1326,7 @@
     "faq_title": "Často kladené otázky (FAQ)",
     "faqs": [
       {
-        "q": "Jak se stát expertem na Ba-Yu?",
+        "q": "Jak se stát expertem na SensoraNote?",
         "a": "Chcete-li se stát odborníkem, musíte často sdílet poznámky o kvalitě. Pokud jsou vaše poznámky často v kategorii „Populární“ a získávají mnoho lajků, náš tým administrátorů je zkontroluje a udělí vám status experta."
       },
       {
@@ -1362,8 +1362,8 @@
         "a": "Poznámky předložené expertovi mohou být odmítnuty, pokud je zjištěno plagiátorství, mají špatné rozlišení obrazu nebo obsahují nepřesné vzorce/teorie. Chcete-li ji zlepšit, můžete si v podrobnostech poznámky přečíst recenze odborné zpětné vazby."
       },
       {
-        "q": "Je platforma Ba-Yu placená?",
-        "a": "Ne, Ba-Yu je zcela zdarma pro všechny studenty a učitele v celé Indonésii, aby jej mohli používat ke sdílení znalostí a strukturovaných studijních poznámek!"
+        "q": "Je platforma SensoraNote placená?",
+        "a": "Ne, SensoraNote je zcela zdarma pro všechny studenty a učitele v celé Indonésii, aby jej mohli používat ke sdílení znalostí a strukturovaných studijních poznámek!"
       }
     ],
     "contact_title": "Stále potřebujete pomoc?",
@@ -1372,49 +1372,49 @@
     "contact_email_title": "E-mail",
     "contact_email_desc": "Podrobnosti a přílohy",
     "guidelines_title": "Pokyny pro komunitu",
-    "guidelines_desc": "Přečtěte si pravidla a etiku sdílení poznámek na Ba-Yu.",
-    "wa_template": "Dobrý den, tým podpory Ba-Yu, jmenuji se {{name}}. Potřebuji pomoc s problémem: ... dne {{day}}.",
-    "email_subject": "Nápověda k problému s aplikací Ba-Yu - {{name}}",
-    "email_body": "Dobrý den, tým podpory Ba-Yu,\n\nJsem {{name}}. Potřebuji pomoc s problémem:\n...\n\nTéto překážce jsem čelil dne {{day}}.\n\nProsím o pomoc, děkuji!"
+    "guidelines_desc": "Přečtěte si pravidla a etiku sdílení poznámek na SensoraNote.",
+    "wa_template": "Dobrý den, tým podpory SensoraNote, jmenuji se {{name}}. Potřebuji pomoc s problémem: ... dne {{day}}.",
+    "email_subject": "Nápověda k problému s aplikací SensoraNote - {{name}}",
+    "email_body": "Dobrý den, tým podpory SensoraNote,\n\nJsem {{name}}. Potřebuji pomoc s problémem:\n...\n\nTéto překážce jsem čelil dne {{day}}.\n\nProsím o pomoc, děkuji!"
   },
   "about_page": {
     "title": "O nás",
-    "hero_title": "Seznamte se s Ba-Yu",
-    "hero_desc": "Přibližte se k cestě, misi a týmu za platformou Ba-Yu.",
+    "hero_title": "Seznamte se s SensoraNote",
+    "hero_desc": "Přibližte se k cestě, misi a týmu za platformou SensoraNote.",
     "vision_title": "Vize a poslání",
-    "vision_desc": "Věříme, že každý student si zaslouží rovný přístup ke kvalitním materiálům. Ba-Yu byl postaven s cílem usnadnit spravedlivou, bezpečnou a dostupnou výměnu poznámek pro studenty v celé Indonésii.",
+    "vision_desc": "Věříme, že každý student si zaslouží rovný přístup ke kvalitním materiálům. SensoraNote byl postaven s cílem usnadnit spravedlivou, bezpečnou a dostupnou výměnu poznámek pro studenty v celé Indonésii.",
     "community_title": "Naše komunita",
     "community_desc": "Připojily se tisíce studentů a odborníků z různých vzdělávacích institucí. Díky přísným systémům ověřování a podávání zpráv udržujeme tento ekosystém pozitivní a konstruktivní.",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Všechna práva vyhrazena."
+    "footer": "© 2026 SensoraNote Platform.<br/>Všechna práva vyhrazena."
   },
   "careers_page": {
     "title": "Kariéra",
-    "hero_title": "Kariéra ve společnosti Ba-Yu",
+    "hero_title": "Kariéra ve společnosti SensoraNote",
     "hero_desc": "Přidejte se k nám při budování budoucího vzdělávacího ekosystému.",
     "no_vacancies_title": "Zatím žádná volná místa",
     "no_vacancies_desc": "Aktuálně neotevíráme nové pozice, ale vždy máme zájem o talentované jedince.",
     "contact_btn": "Kontaktujte nás",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Všechna práva vyhrazena."
+    "footer": "© 2026 SensoraNote Platform.<br/>Všechna práva vyhrazena."
   },
   "blog_page": {
     "title": "Blog a aktualizace",
-    "hero_title": "Blog Ba-Yu",
+    "hero_title": "Blog SensoraNote",
     "hero_desc": "Příběhy, postřehy a nejnovější aktualizace funkcí od vývojového týmu.",
     "coming_soon_title": "Již brzy",
     "coming_soon_desc": "Připravujeme pro vás zajímavé články o vzdělávání a technice. Zůstaňte naladěni na naši premiéru!",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Všechna práva vyhrazena."
+    "footer": "© 2026 SensoraNote Platform.<br/>Všechna práva vyhrazena."
   },
   "status_page": {
     "title": "Stav systému",
     "hero_title": "Všechny systémy normální",
     "hero_desc": "Platforma funguje normálně.",
     "status_operational": "Provozní",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Všechna práva vyhrazena."
+    "footer": "© 2026 SensoraNote Platform.<br/>Všechna práva vyhrazena."
   },
   "auth_modal": {
     "welcome": "Vítejte",
     "create_account": "Vytvořit nový účet",
-    "login_desc": "Pro přístup ke všem funkcím Ba-Yu se přihlaste.",
+    "login_desc": "Pro přístup ke všem funkcím SensoraNote se přihlaste.",
     "register_desc": "Zaregistrujte se a začněte spravovat své poznámky.",
     "login": "Přihlaste se",
     "register": "Rejstřík",
@@ -1449,7 +1449,7 @@
     "terms": "Smluvní podmínky",
     "terms_and": "a",
     "privacy": "Zásady ochrany osobních údajů",
-    "terms_suffix": "služeb Ba-Yu.",
+    "terms_suffix": "služeb SensoraNote.",
     "reset_throttled": "Před dalším pokusem chvíli počkejte (60 sekund).",
     "reset_sent": "Odkaz pro obnovení hesla byl odeslán na váš e-mail."
   },
@@ -1477,11 +1477,11 @@
     "no_data_filter": "Filtru pro export neodpovídají žádná data.",
     "export_failed": "Export dat se nezdařil. Chyba:",
     "print_failed": "Nepodařilo se otevřít okno tisku. Ujistěte se, že jsou ve vašem prohlížeči povolena vyskakovací okna.",
-    "report_title": "Zpráva o exportu dat Ba-Yu",
+    "report_title": "Zpráva o exportu dat SensoraNote",
     "extracted_at": "Extrahováno dne:",
-    "footer_note": "Platforma Ba-Yu — Tento dokument je generován automaticky.",
+    "footer_note": "Platforma SensoraNote — Tento dokument je generován automaticky.",
     "doc_info": "Tento dokument obsahuje",
-    "doc_info2": "data extrahovaná z platformy Ba-Yu na",
+    "doc_info2": "data extrahovaná z platformy SensoraNote na",
     "doc_all_cat": "Data zahrnují všechny kategorie: poznámky, sestavy a uživatelé.",
     "doc_only_cat": "Zobrazené údaje jsou pouze pro kategorii",
     "doc_filter_verify": "Filtr stavu ověření:",
@@ -1538,7 +1538,7 @@
     "submit_button": "Uložit a pokračovat",
     "submitting": "Ukládání...",
     "username_error": "Uživatelské jméno může obsahovat pouze písmena, čísla a podtržítka (_)",
-    "success_msg": "Profil úspěšně dokončen! Vítejte v destinaci Ba-Yu",
+    "success_msg": "Profil úspěšně dokončen! Vítejte v destinaci SensoraNote",
     "error_msg": "Při ukládání profilu došlo k chybě",
     "edu_sd": "základní škola (SD)",
     "edu_smp": "střední škola (SMP)",
@@ -1622,14 +1622,14 @@
     "not_found_title": "Zpráva nenalezena",
     "not_found_desc": "Tato zpráva mohla být smazána nebo již není dostupná.",
     "back": "Zadní",
-    "system": "Systém Ba-Yu",
+    "system": "Systém SensoraNote",
     "regards": "Pozdravy,",
-    "team": "Tým Ba-Yu EduPlatform"
+    "team": "Tým SensoraNote EduPlatform"
   },
   "landing": {
-    "philosophy_text": "Věříme, že nejlepší vzdělání se rodí ze spolupráce. Ba-Yu je zde, aby vám pomohl organizovat nápady, sdílet poznatky a společně růst v podpůrné vzdělávací komunitě.",
+    "philosophy_text": "Věříme, že nejlepší vzdělání se rodí ze spolupráce. SensoraNote je zde, aby vám pomohl organizovat nápady, sdílet poznatky a společně růst v podpůrné vzdělávací komunitě.",
     "philosophy_vision": "NAŠE VIZE",
-    "philosophy_motto": "Filozofie Ba-Yu — Učte se, sdílejte, rosteme společně",
+    "philosophy_motto": "Filozofie SensoraNote — Učte se, sdílejte, rosteme společně",
     "row1_1": "Podporováno více než 40 jazyků",
     "row1_2": "Dynamický textový editor",
     "row1_3": "Rozsáhlá studijní témata",
@@ -1693,14 +1693,14 @@
     "multilang_title_1": "Učení",
     "multilang_title_2": "Bez omezení",
     "multilang_title_3": "Jazyk.",
-    "multilang_desc": "Ba-Yu podporuje rozhraní ve více než 40 jazycích, což umožňuje studentům z celého světa spolupracovat a pohodlně se učit pomocí naší platformy.",
+    "multilang_desc": "SensoraNote podporuje rozhraní ve více než 40 jazycích, což umožňuje studentům z celého světa spolupracovat a pohodlně se učit pomocí naší platformy.",
     "multilang_supported": "Podporované jazyky",
     "explore_badge": "TÉMA ZKOUMÁNÍ",
     "explore_title": "Různé oblasti vědy na jedné platformě.",
     "explore_field": "PRŮZKUM POLE",
     "explore_notes_btn": "Prozkoumat poznámky",
     "feature_badge": "ZÁKLADNÍ VLASTNOSTI",
-    "feature_title": "Technologie Ba-Yu.",
+    "feature_title": "Technologie SensoraNote.",
     "feature_desc": "Navrhli jsme inteligentní ekosystém pro psaní poznámek, který vám pomůže efektivně organizovat, ověřovat a ovládat každý materiál kurzu.",
     "feat1_badge": "BOHATÝ REDAKTOR",
     "feat1_title": "Bohatý editor LaTeX",
@@ -1831,11 +1831,11 @@
     "failed_title": "Ověření se nezdařilo",
     "failed_desc": "Ověřovací odkaz je neplatný nebo jeho platnost vypršela. Požádejte o nový odkaz.",
     "redirect_mobile": "Otevírání mobilní aplikace...",
-    "open_app": "Otevřete mobilní aplikaci Ba-Yu",
+    "open_app": "Otevřete mobilní aplikaci SensoraNote",
     "go_to_login": "Přejděte na Přihlášení"
   },
   "download_app": {
-    "title": "Get Ba-Yu App",
+    "title": "Get SensoraNote App",
     "subtitle": "Learn easier from anywhere. Coming soon to App Store and Google Play.",
     "status": "Currently in development...",
     "back_to_home": "Back to Home"

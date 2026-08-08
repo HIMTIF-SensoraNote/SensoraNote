@@ -23,5 +23,6 @@
 </head>
 <body class="bg-gray-50 dark:bg-[#13111C] text-slate-900 dark:text-slate-100 transition-colors duration-300 antialiased">
     <div id="root"></div>
+    <!-- Sienna Accessibility Widget --><script src=" https://cdn.jsdelivr.net/npm/sienna-accessibility/dist/sienna-accessibility.umd.js\ async></script>
 </body>
 </html>

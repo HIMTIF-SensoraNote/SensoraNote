@@ -483,7 +483,7 @@ const downloadNoteAsPDF = (fullNote: any, showToast: any, t: any, language: stri
         <html lang="id">
         <head>
             <meta charset="UTF-8">
-            <title>${fullNote.title || "Materi Catatan"} - Ba-Yu</title>
+            <title>${fullNote.title || "Materi Catatan"} - SensoraNote</title>
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Lexend+Deca:wght@400;600;800&display=swap');
                 
@@ -632,13 +632,13 @@ const downloadNoteAsPDF = (fullNote: any, showToast: any, t: any, language: stri
             <div style="margin-top: 40px; padding: 25px; background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; text-align: center;">
                 <h4 style="margin: 0 0 8px 0; color: #0f172a; font-family: 'Lexend Deca', sans-serif; font-size: 14pt;">${t('noteCard.pdf_protected_title') !== 'noteCard.pdf_protected_title' ? t('noteCard.pdf_protected_title') : 'Materi Terproteksi'}</h4>
                 <p style="margin: 0; color: #475569; font-size: 10.5pt; font-family: 'Manrope', sans-serif;">
-                    ${t('noteCard.pdf_protected_desc') !== 'noteCard.pdf_protected_desc' ? t('noteCard.pdf_protected_desc').replace('{{author}}', fullNote.user?.username || 'penulis') : `Versi PDF ini hanya memuat sebagian materi. Ikuti penulis <b>@${fullNote.user?.username || 'penulis'}</b> di aplikasi Ba-Yu untuk mengunduh versi lengkapnya.`}
+                    ${t('noteCard.pdf_protected_desc') !== 'noteCard.pdf_protected_desc' ? t('noteCard.pdf_protected_desc').replace('{{author}}', fullNote.user?.username || 'penulis') : `Versi PDF ini hanya memuat sebagian materi. Ikuti penulis <b>@${fullNote.user?.username || 'penulis'}</b> di aplikasi SensoraNote untuk mengunduh versi lengkapnya.`}
                 </p>
             </div>
             ` : ''}
 
                 <div class="footer">
-                ${t('noteCard.pdf_footer') !== 'noteCard.pdf_footer' ? t('noteCard.pdf_footer') : 'Dokumen ini diunduh dari <span class="footer-brand">Ba-Yu</span> - Platform Belajar Masa Depan'}
+                ${t('noteCard.pdf_footer') !== 'noteCard.pdf_footer' ? t('noteCard.pdf_footer') : 'Dokumen ini diunduh dari <span class="footer-brand">SensoraNote</span> - Platform Belajar Masa Depan'}
             </div>
             
             <script>

@@ -235,7 +235,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                         {/* Central Logo */}
                         <img 
                             src="/logo.svg" 
-                            alt="Ba-Yu Logo" 
+                            alt="SensoraNote Logo" 
                             className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(93,92,230,0.4)] animate-pulse" 
                         />
                     </div>

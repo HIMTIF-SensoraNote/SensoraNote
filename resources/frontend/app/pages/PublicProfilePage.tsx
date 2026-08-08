@@ -384,7 +384,7 @@ export default function PublicProfilePage() {
             );
             
             showToast(
-                t('public_profile.report_success') || "Laporan berhasil dikirim, terima kasih telah menjaga lingkungan hijau Ba-Yu!",
+                t('public_profile.report_success') || "Laporan berhasil dikirim, terima kasih telah menjaga lingkungan hijau SensoraNote!",
                 "success",
             );
             setShowReportModal(false);
@@ -626,7 +626,7 @@ export default function PublicProfilePage() {
                     </div>
                 </div>
 
-                {/* 3. Sticky Tab Navigation - Ba-Yu Signature Style */}
+                {/* 3. Sticky Tab Navigation - SensoraNote Signature Style */}
                 <div
                     id="profil-tabs"
                     className="sticky top-0 bg-white dark:bg-[#13111C] z-40 border-b border-gray-100 dark:border-white/10 mb-4 pt-2"
@@ -677,7 +677,7 @@ export default function PublicProfilePage() {
                         </p>
                     </div>
                 ) : (
-                    /* 4. Tab Panels - Ba-Yu Classic Card Styles */
+                    /* 4. Tab Panels - SensoraNote Classic Card Styles */
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 min-h-[400px]">
                     {activeTab === "catatan" && (
                         <div className="flex flex-col animate-in fade-in duration-500 w-full">
@@ -966,7 +966,7 @@ export default function PublicProfilePage() {
                                 {t('public_profile.report_modal_title') || "Laporkan Pengguna"}
                             </h3>
                             <p className="font-['Manrope'] text-[14px] text-gray-600 dark:text-gray-400 font-bold px-6">
-                                {t('public_profile.report_modal_desc') || "Bantu kami menjaga ekosistem Ba-Yu tetap edukatif, aman, dan nyaman."}
+                                {t('public_profile.report_modal_desc') || "Bantu kami menjaga ekosistem SensoraNote tetap edukatif, aman, dan nyaman."}
                             </p>
                         </div>
 

@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="./public/logo.svg" width="180" alt="Ba-Yu Logo">
+  <img src="./public/logo.svg" width="180" alt="SensoraNote Logo">
 </p>
 
-<h1 align="center">Ba-Yu (Belajar Yuk) - Web & Mobile Platform</h1>
+<h1 align="center">SensoraNote (Belajar Yuk) - Web & Mobile Platform</h1>
 
 <p align="center">
   <strong>Platform Berbagi Catatan dan Ilmu Pengetahuan</strong><br>
@@ -22,9 +22,9 @@
 
 ## 🌟 Tentang Proyek
 
-**Ba-Yu** adalah platform lintas perangkat (Web dan Android) untuk berbagi catatan pelajaran, berdiskusi, dan membagikan ilmu pengetahuan. Platform ini mempertemukan siswa reguler dengan para pakar tersertifikasi dalam sebuah komunitas yang suportif. 
+**SensoraNote** adalah platform lintas perangkat (Web dan Android) untuk berbagi catatan pelajaran, berdiskusi, dan membagikan ilmu pengetahuan. Platform ini mempertemukan siswa reguler dengan para pakar tersertifikasi dalam sebuah komunitas yang suportif. 
 
-Berawal dari prototipe web sederhana, kini Ba-Yu telah berkembang menjadi aplikasi skala produksi dengan arsitektur modern, didukung dengan i18n (lebih dari 40 bahasa), sistem verifikasi pengguna yang aman, dan dibungkus menjadi aplikasi Android (*Native Mobile App*).
+Berawal dari prototipe web sederhana, kini SensoraNote telah berkembang menjadi aplikasi skala produksi dengan arsitektur modern, didukung dengan i18n (lebih dari 40 bahasa), sistem verifikasi pengguna yang aman, dan dibungkus menjadi aplikasi Android (*Native Mobile App*).
 
 ## 🚀 Fitur Utama
 
@@ -71,8 +71,8 @@ Jika Anda ingin mengembangkan atau menjalankan aplikasi ini secara lokal, ikuti 
 ### Langkah Instalasi
 1. **Clone repository ini**
    ```bash
-   git clone https://github.com/Haitsam06/Ba-Yu.git
-   cd Ba-Yu
+   git clone https://github.com/Haitsam06/SensoraNote.git
+   cd SensoraNote
    ```
 2. **Install dependensi Backend (PHP)**
    ```bash
@@ -97,7 +97,7 @@ Jika Anda ingin mengembangkan atau menjalankan aplikasi ini secara lokal, ikuti 
 
 ## 📱 Build Aplikasi Android (Capacitor) & Panduan Lengkap Mobile
 
-Aplikasi **Ba-Yu** telah dikonfigurasi secara lengkap menggunakan **Capacitor JS** untuk membungkus kode web (Laravel + React) menjadi aplikasi native Android (.APK) yang fungsional.
+Aplikasi **SensoraNote** telah dikonfigurasi secara lengkap menggunakan **Capacitor JS** untuk membungkus kode web (Laravel + React) menjadi aplikasi native Android (.APK) yang fungsional.
 
 Berikut adalah penjelasan lengkap, cara kerja, alur integrasi fitur native, serta panduan pengujian proyek mobile ini agar mudah dipahami:
 
@@ -108,7 +108,7 @@ Berikut adalah penjelasan lengkap, cara kerja, alur integrasi fitur native, sert
 **Capacitor JS** adalah *runtime* modern lintas platform buatan Ionic. Alat ini memungkinkan kita menggunakan teknologi web (HTML, CSS, JavaScript, React) untuk membuat aplikasi native di Android & iOS.
 
 **Konsep Dasar (*The "Magic" of Capacitor*):**
-Aplikasi mobile Ba-Yu pada dasarnya adalah aplikasi native Android biasa, tetapi isi tampilannya dijalankan di dalam sebuah browser bawaan sistem HP yang tersembunyi tanpa kolom alamat (disebut **`WebView`**). 
+Aplikasi mobile SensoraNote pada dasarnya adalah aplikasi native Android biasa, tetapi isi tampilannya dijalankan di dalam sebuah browser bawaan sistem HP yang tersembunyi tanpa kolom alamat (disebut **`WebView`**). 
 
 1. **Pembungkusan Kode Web ke APK:** Saat kita menjalankan perintah build, semua file React kita (HTML, JS, CSS) dikompilasi oleh Vite ke folder `public/build/` Laravel. Perintah sync Capacitor kemudian akan menyalin file-file statis ini ke folder aset proyek Android (`android/app/src/main/assets/public`).
 2. **WebView Membaca File Lokal:** Ketika aplikasi dibuka di HP, WebView akan merender file `index.html` lokal tersebut seolah-olah sedang membuka website biasa, sehingga performanya sangat cepat.
@@ -138,12 +138,12 @@ Karena saat pengembangan server backend kita berjalan di laptop (`localhost`), H
 ### 📂 2. Struktur Proyek & Inisialisasi
 
 Untuk menjaga kerapian kode, proyek ini dipisahkan menjadi dua folder bertetangga:
-*   **`Ba-Yu`**: Folder utama berisi repositori backend Laravel, database, dan frontend React.
-*   **`Ba-Yu-Capacitor`**: Folder khusus berisi instalasi library Capacitor JS dan proyek native Android murni agar dependensi library mobile tidak bertabrakan dengan web.
+*   **`SensoraNote`**: Folder utama berisi repositori backend Laravel, database, dan frontend React.
+*   **`SensoraNote-Capacitor`**: Folder khusus berisi instalasi library Capacitor JS dan proyek native Android murni agar dependensi library mobile tidak bertabrakan dengan web.
 
 **Konfigurasi Utama (`capacitor.config.json`):**
 *   `appId`: **`com.bayu.mobile`** (ID unik aplikasi, harus sama persis dengan yang didaftarkan di Firebase Console).
-*   `appName`: **`Ba-Yu`** (Nama aplikasi saat terinstall di HP).
+*   `appName`: **`SensoraNote`** (Nama aplikasi saat terinstall di HP).
 *   `server.url`: Diarahkan ke URL Ngrok aktif (`https://...ngrok-free.dev`) agar WebView memuat perubahan kodingan kita secara *real-time/live* tanpa perlu install ulang APK setiap ada perubahan CSS/tampilan.
 
 ---
@@ -168,7 +168,7 @@ Login Google di HP menggunakan alur *native pop-up*, bukan pengalihan halaman br
 
 ### 🔔 4. Integrasi Push Notification (Firebase Cloud Messaging - FCM)
 
-Aplikasi Ba-Yu mendukung pengiriman notifikasi instan langsung ke HP pengguna.
+Aplikasi SensoraNote mendukung pengiriman notifikasi instan langsung ke HP pengguna.
 
 1. **Meminta Izin (Permissions):** Menggunakan plugin `@capacitor/push-notifications` untuk memunculkan kotak dialog izin notifikasi (wajib di Android 13+).
 2. **Registrasi FCM Token:** Setelah izin diberikan, HP akan mendaftarkan diri ke server Firebase FCM. Server mengembalikan **FCM Token** unik (alamat tujuan pengiriman notifikasi ke HP tersebut).
@@ -181,11 +181,11 @@ Aplikasi Ba-Yu mendukung pengiriman notifikasi instan langsung ke HP pengguna.
 
 Setiap kali Kakak melakukan perubahan kodingan React/CSS di folder Laravel dan ingin melihat hasilnya di HP Android, ikuti alur kerja berikut:
 
-1. **Kompilasi Ulang Kode Frontend React (di folder `Ba-Yu`):**
+1. **Kompilasi Ulang Kode Frontend React (di folder `SensoraNote`):**
    ```bash
    npm run build
    ```
-2. **Sinkronisasikan Perubahan ke Android (di folder `Ba-Yu-Capacitor`):**
+2. **Sinkronisasikan Perubahan ke Android (di folder `SensoraNote-Capacitor`):**
    ```bash
    npx cap sync android
    ```

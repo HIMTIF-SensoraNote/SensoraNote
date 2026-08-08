@@ -30,13 +30,13 @@ class PresentationSeeder extends Seeder
 
         // 2. Insert Users (Diverse photos)
         $admin = User::create([
-            'name' => 'Admin Ba-Yu',
+            'name' => 'Admin SensoraNote',
             'email' => 'admin@bayu.com',
             'password' => Hash::make('password'),
             'role' => 'admin',
             'jenjang_pendidikan' => 'Universitas',
             'avatar' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop', // Diverse face UI
-            'bio' => 'Administrator resmi platform Ba-Yu.',
+            'bio' => 'Administrator resmi platform SensoraNote.',
             'is_verified' => true,
         ]);
 
@@ -179,7 +179,7 @@ class PresentationSeeder extends Seeder
         $post6 = Post::create([
             'user_id' => $admin->id,
             'title' => 'Panduan Menulis Catatan Berkualitas Tinggi',
-            'content' => '<p><img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=300&fit=crop" alt="Thumbnail" /></p><h1>Selamat Datang di Ba-Yu Content Guide ✨</h1><p>Membuat catatan yang mudah dipahami berarti turut meringankan beban belajar teman yang lain. Berikut cara menulis yang baik:</p><h3>1. Gunakan Heading (Judul Besar)</h3><p>Pisahkan paragraf panjang menjadi poin-poin. Jangan membuat <em>wall of text</em>.</p><h3>2. Berikan Rumus yang Jelas</h3><p>Gunakan format <span class="ql-formula" data-value="E = mc^2"></span> dibanding sekadar "E=mc2".</p><blockquote>Banting tulanglah dalam belajar, jadilah penerang untuk sekitarmu!</blockquote>',
+            'content' => '<p><img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=300&fit=crop" alt="Thumbnail" /></p><h1>Selamat Datang di SensoraNote Content Guide ✨</h1><p>Membuat catatan yang mudah dipahami berarti turut meringankan beban belajar teman yang lain. Berikut cara menulis yang baik:</p><h3>1. Gunakan Heading (Judul Besar)</h3><p>Pisahkan paragraf panjang menjadi poin-poin. Jangan membuat <em>wall of text</em>.</p><h3>2. Berikan Rumus yang Jelas</h3><p>Gunakan format <span class="ql-formula" data-value="E = mc^2"></span> dibanding sekadar "E=mc2".</p><blockquote>Banting tulanglah dalam belajar, jadilah penerang untuk sekitarmu!</blockquote>',
             'mapel' => 'bahasa-indonesia',
             'jenjang' => 'Umum',
             'kelas' => 'Semua Kelas',

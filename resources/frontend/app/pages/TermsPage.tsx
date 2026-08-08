@@ -57,7 +57,7 @@ export default function TermsPage() {
                             {t("terms_page.hero_title") || "Syarat & Ketentuan"}
                         </h2>
                         <p className="font-['Manrope'] text-[15px] leading-relaxed text-gray-500 dark:text-gray-400">
-                            {t("terms_page.hero_desc") || "Terakhir diperbarui: 7 Mei 2026. Aturan main untuk kenyamanan ekosistem belajar Ba-Yu."}
+                            {t("terms_page.hero_desc") || "Terakhir diperbarui: 7 Mei 2026. Aturan main untuk kenyamanan ekosistem belajar SensoraNote."}
                         </p>
                     </div>
 
@@ -69,7 +69,7 @@ export default function TermsPage() {
                                 {t("terms_page.section1_title") || "1. Penerimaan Ketentuan"}
                             </h3>
                             <p className="font-['Manrope'] text-[14px] text-gray-600 dark:text-gray-400 leading-relaxed">
-                                {t("terms_page.section1_desc") || "Dengan mengakses dan menggunakan platform Ba-Yu, Anda dianggap telah membaca, memahami, dan menyetujui untuk terikat oleh Syarat dan Ketentuan ini. Jika Anda tidak setuju, mohon untuk tidak melanjutkan penggunaan layanan kami demi keamanan bersama."}
+                                {t("terms_page.section1_desc") || "Dengan mengakses dan menggunakan platform SensoraNote, Anda dianggap telah membaca, memahami, dan menyetujui untuk terikat oleh Syarat dan Ketentuan ini. Jika Anda tidak setuju, mohon untuk tidak melanjutkan penggunaan layanan kami demi keamanan bersama."}
                             </p>
                         </div>
 
@@ -102,7 +102,7 @@ export default function TermsPage() {
                             </h3>
                             <div className="p-4 bg-indigo-50/50 dark:bg-indigo-500/10 rounded-2xl border border-indigo-100 dark:border-white/5">
                                 <p className="font-['Manrope'] text-[14px] text-gray-700 dark:text-gray-300 leading-relaxed italic">
-                                    {t("terms_page.section3_quote") || '"Setiap catatan yang Anda unggah ke Ba-Yu tetap menjadi milik Anda. Namun, dengan mengunggahnya, Anda memberikan lisensi kepada Ba-Yu untuk menampilkan, mendistribusikan, dan mempromosikan konten tersebut di dalam ekosistem platform kami untuk tujuan pendidikan."'}
+                                    {t("terms_page.section3_quote") || '"Setiap catatan yang Anda unggah ke SensoraNote tetap menjadi milik Anda. Namun, dengan mengunggahnya, Anda memberikan lisensi kepada SensoraNote untuk menampilkan, mendistribusikan, dan mempromosikan konten tersebut di dalam ekosistem platform kami untuk tujuan pendidikan."'}
                                 </p>
                             </div>
                         </div>
@@ -134,8 +134,8 @@ export default function TermsPage() {
                     </div>
                     
                     <div className="text-center pb-8 pt-4">
-                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500 mb-2" dangerouslySetInnerHTML={{ __html: t("terms_page.contact") || 'Ada pertanyaan? Hubungi <a href="mailto:support@ba-yu.id" className="text-indigo-600 dark:text-indigo-400 font-bold">support@ba-yu.id</a>' }} />
-                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500 mt-6" dangerouslySetInnerHTML={{ __html: t("terms_page.footer") || '&copy; 2026 Ba-Yu Platform.<br/>Semua Hak Dilindungi.' }} />
+                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500 mb-2" dangerouslySetInnerHTML={{ __html: t("terms_page.contact") || 'Ada pertanyaan? Hubungi <a href="mailto:support@sensoranote.id" className="text-indigo-600 dark:text-indigo-400 font-bold">support@sensoranote.id</a>' }} />
+                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500 mt-6" dangerouslySetInnerHTML={{ __html: t("terms_page.footer") || '&copy; 2026 SensoraNote Platform.<br/>Semua Hak Dilindungi.' }} />
                     </div>
                 </div>
             </div>

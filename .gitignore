@@ -28,5 +28,5 @@ firebase-credentials.json
 
 # Mobile & Capacitor
 *.apk
-/Ba-Yu-Capacitor/android/app/build
-/Ba-Yu-Capacitor/android/.gradle
+/SensoraNote-Capacitor/android/app/build
+/SensoraNote-Capacitor/android/.gradle

@@ -20,7 +20,7 @@
     "title": "Izilungiselelo",
     "search_placeholder": "Sesha izilungiselelo...",
     "account_center": "Isikhungo Se-akhawunti",
-    "account_desc": "Phatha izilungiselelo ze-akhawunti yakho nolwazi oluxhumekile kunkundla yonkana ye-Ba-Yu.",
+    "account_desc": "Phatha izilungiselelo ze-akhawunti yakho nolwazi oluxhumekile kunkundla yonkana ye-SensoraNote.",
     "personal_details": "Imininingwane ekhombisa wena",
     "profile_details": "Iphrofayela Nemininingwane Yomuntu Siqu",
     "password_security": "Iphasiwedi & Ukuphepha",
@@ -49,7 +49,7 @@
   "theme": {
     "title": "Ukubukeka",
     "subtitle": "Khetha Itimu yohlelo lokusebenza",
-    "description": "Enza ngendlela oyifisayo ukubukeka kohlelo lokusebenza lwe-Ba-Yu ukuze ufunde ngokunethezeka kakhudlwana ukuzizwisa nokufunda.",
+    "description": "Enza ngendlela oyifisayo ukubukeka kohlelo lokusebenza lwe-SensoraNote ukuze ufunde ngokunethezeka kakhudlwana ukuzizwisa nokufunda.",
     "light": "Ukukhanya",
     "light_desc": "Ukubukeka okuhlanzekile nokukhanyayo, okulungele izimo zegumbi elikhanyayo.",
     "dark": "Kumnyama",
@@ -60,7 +60,7 @@
   "language": {
     "title": "Ulimi",
     "subtitle": "Khetha Ulimi Lohlelo Lokusebenza",
-    "description": "Enza ngendlela oyifisayo ulimi lwesibonisi sohlelo lokusebenza lwe-Ba-Yu ngokuya ngokuthanda kwakho.",
+    "description": "Enza ngendlela oyifisayo ulimi lwesibonisi sohlelo lokusebenza lwe-SensoraNote ngokuya ngokuthanda kwakho.",
     "system": "Landela Uhlelo",
     "system_desc": "Ilungisela izilungiselelo zolimi lwedivayisi yakho.",
     "info": "Izinguquko zolimi zizosetshenziswa ngokushesha kuzo zonke izici zesixhumi esibonakalayo sohlelo lokusebenza. Okuqukethwe okudalwe ngabasebenzisi (amanothi, amazwana) kuhlala kungolimi lwakho loqobo."
@@ -74,7 +74,7 @@
     "whatsapp": "Xoxa WhatsApp",
     "email": "Thumela I-imeyili",
     "community_guidelines": "Izinkombandlela Zomphakathi",
-    "community_guidelines_desc": "Funda imithetho nezimiso zokuziphatha zokwabelana ngamanothi ku-Ba-Yu."
+    "community_guidelines_desc": "Funda imithetho nezimiso zokuziphatha zokwabelana ngamanothi ku-SensoraNote."
   },
   "stats": {
     "title": "Izibalo Zokufunda",
@@ -101,7 +101,7 @@
     "notes_created": "Amanothi adaliwe",
     "total_materials": "Ingqikithi Yempahla",
     "completed": "Kuqediwe",
-    "footer_info": "Idatha ibuyekezwa ngokuzenzakalelayo ngemva kokuphela kweseshini ngayinye yokufunda. © 2026 Ba-Yu Education.",
+    "footer_info": "Idatha ibuyekezwa ngokuzenzakalelayo ngemva kokuphela kweseshini ngayinye yokufunda. © 2026 SensoraNote Education.",
     "set_goal_title": "Setha Umgomo Wansuku zonke",
     "set_goal_desc": "Setha umgomo wakho wokufunda wansuku zonke ngokunemba kwedijithali.",
     "hours": "Amahora",
@@ -123,7 +123,7 @@
     "forgot_password": "Ukhohlwe iphasiwedi?",
     "reset_password": "Setha kabusha Iphasiwedi",
     "welcome": "Siyakwamukela",
-    "welcome_desc": "Ngena ngemvume ukuze uqhubekele ku-Ba-Yu.",
+    "welcome_desc": "Ngena ngemvume ukuze uqhubekele ku-SensoraNote.",
     "start_journey": "Qala Uhambo Lwakho",
     "start_journey_desc": "Bhalisa futhi wabelane ngenothi lakho lokuqala.",
     "login_tab": "Ngena ngemvume",
@@ -197,7 +197,7 @@
     "following_count": "Ukulandela",
     "followers_count": "Abalandeli",
     "register_expert": "Iba Uchwepheshe",
-    "register_expert_sub": "Iba ngumnikeli oqinisekisiwe ku-Ba-Yu",
+    "register_expert_sub": "Iba ngumnikeli oqinisekisiwe ku-SensoraNote",
     "register": "Bhalisa",
     "tab_notes": "Amanothi",
     "tab_drafts": "Okusalungiswa",
@@ -545,7 +545,7 @@
     "author_pending": "Kusalindile",
     "author_follow": "Landela",
     "verified_expert": "Isazi Esiqinisekisiwe",
-    "report_help_desc": "Sisize sigcine i-Ba-Yu ecosystem ifundisa, iphephile, futhi inethezekile.",
+    "report_help_desc": "Sisize sigcine i-SensoraNote ecosystem ifundisa, iphephile, futhi inethezekile.",
     "report_main_reason": "Isizathu Esiyinhloko",
     "close_modal": "Vala i-Modal",
     "report_note": "Bika Inothi",
@@ -568,8 +568,8 @@
     "respond_btn": "PHENDULELA",
     "downloaded_at": "Ilandiwe:",
     "pdf_restricted_title": "Impahla Evikelekile",
-    "pdf_restricted_desc": "Le nguqulo ye-PDF iqukethe izinto eziyingxenye kuphela. Landela umbhali <b>@{author}</b> ohlelweni lokusebenza lwe-Ba-Yu ukuze ulande inguqulo egcwele.",
-    "pdf_footer": "Lo mbhalo ulandwe <span class=\"footer-brand\">Ba-Yu</span> - I-Future Learning Platform",
+    "pdf_restricted_desc": "Le nguqulo ye-PDF iqukethe izinto eziyingxenye kuphela. Landela umbhali <b>@{author}</b> ohlelweni lokusebenza lwe-SensoraNote ukuze ulande inguqulo egcwele.",
+    "pdf_footer": "Lo mbhalo ulandwe <span class=\"footer-brand\">SensoraNote</span> - I-Future Learning Platform",
     "sort_newest": "Okusha kakhulu",
     "sort_oldest": "Omdala kunawo wonke",
     "sort_top": "Amazwana aphezulu"
@@ -617,7 +617,7 @@
     "recently": "Khona manje",
     "discussion_label": "INGXOXO",
     "report_modal_title": "Bika Umsebenzisi",
-    "report_modal_desc": "Sisize sigcine i-Ba-Yu ecosystem ifundisa, iphephile, futhi inethezekile.",
+    "report_modal_desc": "Sisize sigcine i-SensoraNote ecosystem ifundisa, iphephile, futhi inethezekile.",
     "report_reason_label": "Isizathu Esiyinhloko",
     "report_reason_spam": "Ugaxekile wokumaketha / Izikhangiso eziphazamisayo",
     "report_reason_false_info": "Ulwazi olungamanga / Ulwazi olungaqondile",
@@ -626,7 +626,7 @@
     "report_reason_copyright": "Ukwephulwa Kwelungelo Lobunikazi / Ukukopela",
     "report_reason_other": "Esinye isizathu...",
     "report_detail_label": "Imininingwane Engeziwe",
-    "report_success": "Umbiko uthunyelwe ngempumelelo. Siyabonga ngokugcina u-Ba-Yu ephephile!",
+    "report_success": "Umbiko uthunyelwe ngempumelelo. Siyabonga ngokugcina u-SensoraNote ephephile!",
     "report_failed": "Yehlulekile ukuthumela umbiko.",
     "btn_reply": "Phendula"
   },
@@ -658,7 +658,7 @@
     "guide_3_title": "Ikhwalithi Ebonakalayo",
     "guide_3_desc": "Ukubhala nezithombe kufanele zifundeke.",
     "quality_priority": "Ikhwalithi Ebalulekile",
-    "quality_desc": "Siyabonga ngokufaka isandla ekugcineni ikhwalithi yezinto ezibonakalayo ku-Ba-Yu.",
+    "quality_desc": "Siyabonga ngokufaka isandla ekugcineni ikhwalithi yezinto ezibonakalayo ku-SensoraNote.",
     "validate": "Qinisekisa Okubalulekile",
     "reject_material": "Yenqaba Izinto",
     "quality": "Ikhwalithi Yento",
@@ -869,7 +869,7 @@
     "prompt_approve_pakar": "Gunyaza Uchwepheshe",
     "prompt_reject_pakar": "Yenqaba Isicelo",
     "prompt_pakar_placeholder": "Inothi lomsebenzisi...",
-    "prompt_approve_default": "Siyakuhalalisela! Manje usuyingcweti esemthethweni ku-Ba-Yu.",
+    "prompt_approve_default": "Siyakuhalalisela! Manje usuyingcweti esemthethweni ku-SensoraNote.",
     "prompt_reject_default": "Uxolo, iphothifoliyo yakho ayihlangabezani nemibandela yethu.",
     "toast_pakar_approved": "Isicelo sochwepheshe sivunyiwe.",
     "toast_pakar_rejected": "Isicelo sochwepheshe sinqatshiwe.",
@@ -1055,8 +1055,8 @@
     "pdf_written_by": "Ibhalwe ngu:",
     "pdf_downloaded": "Ilandwe ngo:",
     "pdf_protected_title": "Impahla Evikelekile",
-    "pdf_protected_desc": "Le PDF iqukethe izinto eziyingxenye kuphela. Landela umbhali <b>@{{author}}</b> ohlelweni lokusebenza lwe-Ba-Yu ukuze ulande inguqulo egcwele.",
-    "pdf_footer": "Lo mbhalo ulandwe <span class=\"footer-brand\">Ba-Yu</span> - I-Future Learning Platform",
+    "pdf_protected_desc": "Le PDF iqukethe izinto eziyingxenye kuphela. Landela umbhali <b>@{{author}}</b> ohlelweni lokusebenza lwe-SensoraNote ukuze ulande inguqulo egcwele.",
+    "pdf_footer": "Lo mbhalo ulandwe <span class=\"footer-brand\">SensoraNote</span> - I-Future Learning Platform",
     "draft_badge": "ISAKHIWO",
     "draft_label": "Okusalungiswa",
     "last_edit": "Ukuhlela kokugcina:",
@@ -1194,7 +1194,7 @@
     "desc_private": "Abalandeli kuphela abangabuka iphrofayela yakho namanothi. Amazwana akho kokuthunyelwe kwabanye asazobonakala esidlangalaleni.",
     "desc_public": "Wonke umuntu angabuka iphrofayela yakho namanothi, futhi ahlanganyele nokuqukethwe owabelana ngakho.",
     "deactivate_title": "Vala i-Akhawunti (Ithule)",
-    "deactivate_desc": "I-akhawunti yakho izofihlwa (ithule) epulatifomu ye-Ba-Yu. Iphrofayela yakho, amanothi, namazwana ngeke kubonakale kwabanye abasebenzisi. <strong>Uma ungangeni futhi phakathi kwezinsuku ezingu-30, yonke idatha yakho izosuswa unomphela.</strong>",
+    "deactivate_desc": "I-akhawunti yakho izofihlwa (ithule) epulatifomu ye-SensoraNote. Iphrofayela yakho, amanothi, namazwana ngeke kubonakale kwabanye abasebenzisi. <strong>Uma ungangeni futhi phakathi kwezinsuku ezingu-30, yonke idatha yakho izosuswa unomphela.</strong>",
     "deactivate_button": "Vala i-akhawunti",
     "dialog_title": "Vala i-Akhawunti?",
     "dialog_desc": "I-akhawunti yakho izofihlwa emphakathini bese ungena esimweni Sokungalali izinsuku ezingu-30. Ungaphinda uyisebenzise ngokungena ngaphambi kokuphelelwa yisikhathi kwezinsuku ezingu-30. Uqinisekile ukuthi ufuna ukuqhubeka?",
@@ -1222,7 +1222,7 @@
   "privacy_page": {
     "title": "Inqubomgomo yobumfihlo",
     "hero_title": "Ubumfihlo Bakho",
-    "hero_desc": "Idatha yakho iphephile nge-Ba-Yu. Sigcina ukubeka izinto obala nokuvikelwa kwedatha njengokubaluleke kakhulu kwethu.",
+    "hero_desc": "Idatha yakho iphephile nge-SensoraNote. Sigcina ukubeka izinto obala nokuvikelwa kwedatha njengokubaluleke kakhulu kwethu.",
     "principles": [
       {
         "label": "Kuvikelekile",
@@ -1259,14 +1259,14 @@
       "Inikeza izaziso ezibalulekile.",
       "Ukuthuthukisa izici zenkundla."
     ],
-    "footer": "© 2026 Ba-Yu Platform. Ubumfihlo Bakho buyisethenjwa Sethu."
+    "footer": "© 2026 SensoraNote Platform. Ubumfihlo Bakho buyisethenjwa Sethu."
   },
   "terms_page": {
     "title": "Imigomo Nemibandela",
     "hero_title": "Imigomo Nemibandela",
-    "hero_desc": "Igcine ukubuyekezwa: May 7, 2026. Imithetho ye-ecosystem yokufunda ye-Ba-Yu enethezekile.",
+    "hero_desc": "Igcine ukubuyekezwa: May 7, 2026. Imithetho ye-ecosystem yokufunda ye-SensoraNote enethezekile.",
     "section1_title": "1. Ukwamukelwa Kwemigomo",
-    "section1_desc": "Ngokufinyelela nokusebenzisa inkundla ye-Ba-Yu, uthathwa njengofundile, waqonda, futhi wavuma ukuboshwa yile Migomo Nemibandela. Uma ungavumelani, sicela ungaqhubeki usebenzise izinsiza zethu ukuze uvikeleke ngokufanayo.",
+    "section1_desc": "Ngokufinyelela nokusebenzisa inkundla ye-SensoraNote, uthathwa njengofundile, waqonda, futhi wavuma ukuboshwa yile Migomo Nemibandela. Uma ungavumelani, sicela ungaqhubeki usebenzise izinsiza zethu ukuze uvikeleke ngokufanayo.",
     "section2_title": "2. Ukubhaliswa Kwe-akhawunti",
     "section2_desc": "Ukuze usebenzise isici sokwabelana ngamanothi, kudingeka ubhalise ngolwazi olunembile. Ubophezelekile ngokugcwele kulokhu:",
     "section2_items": [
@@ -1275,7 +1275,7 @@
       "Ukunikeza ulwazi oluyiqiniso nolunembile."
     ],
     "section3_title": "3. Amalungelo Empahla Yengqondo",
-    "section3_quote": "\"Noma yimaphi amanothi owalayishayo ku-Ba-Yu ahlala engawakho. Nokho, ngokuwalayisha, unikeza u-Ba-Yu ilayisense yokubonisa, ukusabalalisa, nokukhuthaza lokho okuqukethwe ngaphakathi kwengxenyekazi ye-ecosystem yethu ngezinjongo zemfundo.\"",
+    "section3_quote": "\"Noma yimaphi amanothi owalayishayo ku-SensoraNote ahlala engawakho. Nokho, ngokuwalayisha, unikeza u-SensoraNote ilayisense yokubonisa, ukusabalalisa, nokukhuthaza lokho okuqukethwe ngaphakathi kwengxenyekazi ye-ecosystem yethu ngezinjongo zemfundo.\"",
     "section4_title": "4. Imithetho Yokusebenzisa",
     "allowed_title": "Yini Okuvunyelwe",
     "allowed_items": [
@@ -1289,13 +1289,13 @@
       "Ukusabalalisa inkulumo enenzondo.",
       "Ukulimaza isistimu yesikhulumi."
     ],
-    "contact": "Unemibuzo? Xhumana <a href=\"mailto:support@ba-yu.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@ba-yu.id</a>",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Wonke Amalungelo Agodliwe."
+    "contact": "Unemibuzo? Xhumana <a href=\"mailto:support@sensoranote.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@sensoranote.id</a>",
+    "footer": "© 2026 SensoraNote Platform.<br/>Wonke Amalungelo Agodliwe."
   },
   "community_guidelines": {
     "title": "Izinkombandlela Zomphakathi",
     "hero_title": "Izinkombandlela Zomphakathi",
-    "hero_desc": "Masidale indawo yokufunda ephephile, enhle, futhi esekelayo ku-Ba-Yu.",
+    "hero_desc": "Masidale indawo yokufunda ephephile, enhle, futhi esekelayo ku-SensoraNote.",
     "values_title": "Amanani Abalulekile",
     "values": [
       {
@@ -1315,7 +1315,7 @@
       "Ugaxekile, izinyuso ezingekho emthethweni, noma ukukhwabanisa.",
       "Ukwabelana ngolwazi lwabanye abantu (doxxing)."
     ],
-    "footer": "© 2026 Ba-Yu Platform.<br/>Wonke Amalungelo Agodliwe."
+    "footer": "© 2026 SensoraNote Platform.<br/>Wonke Amalungelo Agodliwe."
   },
   "help_page": {
     "title": "Isikhungo Sosizo",
@@ -1326,7 +1326,7 @@
     "faq_title": "Imibuzo Evame Ukubuzwa (FAQ)",
     "faqs": [
       {
-        "q": "Ungaba kanjani Uchwepheshe e-Ba-Yu?",
+        "q": "Ungaba kanjani Uchwepheshe e-SensoraNote?",
         "a": "Ukuze ube Uchwepheshe, kufanele wabelane njalo ngamanothi ekhwalithi. Uma amanothi akho evamise ukuba sesigabeni 'Okudumile' futhi ethola ukuthandwa okuningi, ithimba lethu lomlawuli lizowabuyekeza futhi likunikeze isimo sokuba Ungcweti."
       },
       {
@@ -1362,8 +1362,8 @@
         "a": "Amanothi athunyelwe Kungcweti angase enqatshwe uma ukukopela kutholwa, kunokulungiswa kwesithombe okungalungile, noma kuqukethe amafomula/imibono engalungile. Ungafunda izibuyekezo zempendulo yochwepheshe emininingwaneni yakho yamanothi ukuze uyithuthukise."
       },
       {
-        "q": "Ingabe inkundla ye-Ba-Yu ikhokhelwe?",
-        "a": "Cha, i-Ba-Yu imahhala ngokuphelele kubo bonke abafundi nothisha kulo lonke elase-Indonesia ukuze bayisebenzise ukwabelana ngolwazi namanothi okutadisha ahlelekile!"
+        "q": "Ingabe inkundla ye-SensoraNote ikhokhelwe?",
+        "a": "Cha, i-SensoraNote imahhala ngokuphelele kubo bonke abafundi nothisha kulo lonke elase-Indonesia ukuze bayisebenzise ukwabelana ngolwazi namanothi okutadisha ahlelekile!"
       }
     ],
     "contact_title": "Usadinga Usizo?",
@@ -1372,49 +1372,49 @@
     "contact_email_title": "I-imeyili",
     "contact_email_desc": "Imininingwane nezinanyathiselwa",
     "guidelines_title": "Izinkombandlela Zomphakathi",
-    "guidelines_desc": "Funda imithetho nezimiso zokuziphatha zokwabelana ngamanothi ku-Ba-Yu.",
-    "wa_template": "Sawubona Ithimba Lokusekela u-Ba-Yu, ngingu-{{igama}}. Ngidinga usizo ngenkinga: ... ngo-{{day}}.",
-    "email_subject": "Usizo Lwenkinga Yohlelo Lokusebenza lwe-Ba-Yu - {{name}}",
-    "email_body": "Sawubona Ba-Yu Ithimba Lokusekela,\n\nNgingu-{{igama}}. Ngidinga usizo ngenkinga:\n...\n\nNgibhekane nalesi sithiyo ngo-{{day}}.\n\nNgicela usizo, ngiyabonga!"
+    "guidelines_desc": "Funda imithetho nezimiso zokuziphatha zokwabelana ngamanothi ku-SensoraNote.",
+    "wa_template": "Sawubona Ithimba Lokusekela u-SensoraNote, ngingu-{{igama}}. Ngidinga usizo ngenkinga: ... ngo-{{day}}.",
+    "email_subject": "Usizo Lwenkinga Yohlelo Lokusebenza lwe-SensoraNote - {{name}}",
+    "email_body": "Sawubona SensoraNote Ithimba Lokusekela,\n\nNgingu-{{igama}}. Ngidinga usizo ngenkinga:\n...\n\nNgibhekane nalesi sithiyo ngo-{{day}}.\n\nNgicela usizo, ngiyabonga!"
   },
   "about_page": {
     "title": "Mayelana NATHI",
-    "hero_title": "Yazi u-Ba-Yu",
-    "hero_desc": "Sondela ohambweni, umgomo, kanye nethimba ngemuva kwe-Ba-Yu Platform.",
+    "hero_title": "Yazi u-SensoraNote",
+    "hero_desc": "Sondela ohambweni, umgomo, kanye nethimba ngemuva kwe-SensoraNote Platform.",
     "vision_title": "Umbono & Mission",
-    "vision_desc": "Sikholelwa ukuthi wonke umfundi ufanelwe ukufinyelela okulinganayo ezintweni zekhwalithi. I-Ba-Yu yakhelwe ukwenza lula ukushintshana kwamanothi okulungile, okuphephile, nokufinyeleleka kwabafundi kulo lonke elase-Indonesia.",
+    "vision_desc": "Sikholelwa ukuthi wonke umfundi ufanelwe ukufinyelela okulinganayo ezintweni zekhwalithi. I-SensoraNote yakhelwe ukwenza lula ukushintshana kwamanothi okulungile, okuphephile, nokufinyeleleka kwabafundi kulo lonke elase-Indonesia.",
     "community_title": "Umphakathi wethu",
     "community_desc": "Kungenele izinkulungwane zabafundi nongoti bezikhungo zemfundo ezahlukene. Ngezinhlelo eziqinile zokuqinisekisa kanye nokubika, sigcina lesi simiso sezinto eziphilayo silungile futhi sakha.",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Wonke Amalungelo Agodliwe."
+    "footer": "© 2026 SensoraNote Platform.<br/>Wonke Amalungelo Agodliwe."
   },
   "careers_page": {
     "title": "Imisebenzi",
-    "hero_title": "Imisebenzi e-Ba-Yu",
+    "hero_title": "Imisebenzi e-SensoraNote",
     "hero_desc": "Hlanganyela nathi ekwakheni i-ecosystem yezemfundo yesikhathi esizayo.",
     "no_vacancies_title": "Azikho Izikhala Okwamanje",
     "no_vacancies_desc": "Okwamanje asivuli izikhundla ezintsha, kodwa sihlala sinentshisekelo kubantu abanamakhono.",
     "contact_btn": "Xhumana nathi",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Wonke Amalungelo Agodliwe."
+    "footer": "© 2026 SensoraNote Platform.<br/>Wonke Amalungelo Agodliwe."
   },
   "blog_page": {
     "title": "Ibhulogi Nezibuyekezo",
-    "hero_title": "Ba-Yu Blog",
+    "hero_title": "SensoraNote Blog",
     "hero_desc": "Izindaba, imininingwane, nezibuyekezo zakamuva zesici ezivela ethimbeni labathuthukisi.",
     "coming_soon_title": "Kuyeza maduze",
     "coming_soon_desc": "Sikulungisela ama-athikili anentshisekelo ngemfundo nobuchwepheshe. Hlala ubukele ukwethulwa kokuqala kwethu!",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Wonke Amalungelo Agodliwe."
+    "footer": "© 2026 SensoraNote Platform.<br/>Wonke Amalungelo Agodliwe."
   },
   "status_page": {
     "title": "Isimo Sesistimu",
     "hero_title": "Wonke Amasistimu Ajwayelekile",
     "hero_desc": "Inkundla isebenza ngokujwayelekile.",
     "status_operational": "Iyasebenza",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Wonke Amalungelo Agodliwe."
+    "footer": "© 2026 SensoraNote Platform.<br/>Wonke Amalungelo Agodliwe."
   },
   "auth_modal": {
     "welcome": "Siyakwamukela",
     "create_account": "Dala I-akhawunti Entsha",
-    "login_desc": "Ngena ngemvume ukuze ufinyelele zonke izici ze-Ba-Yu.",
+    "login_desc": "Ngena ngemvume ukuze ufinyelele zonke izici ze-SensoraNote.",
     "register_desc": "Bhalisa futhi uqale ukuphatha amanothi akho manje.",
     "login": "Ngena ngemvume",
     "register": "Bhalisa",
@@ -1449,7 +1449,7 @@
     "terms": "Imigomo Nemibandela",
     "terms_and": "futhi",
     "privacy": "Inqubomgomo yobumfihlo",
-    "terms_suffix": "yezinsizakalo ze-Ba-Yu.",
+    "terms_suffix": "yezinsizakalo ze-SensoraNote.",
     "reset_throttled": "Sicela ulinde isikhashana (imizuzwana engu-60) ngaphambi kokuthi uzame futhi.",
     "reset_sent": "Isixhumanisi sokusetha kabusha iphasiwedi sithunyelwe ku-imeyili yakho."
   },
@@ -1477,11 +1477,11 @@
     "no_data_filter": "Ayikho idatha efana nesihlungi esizothunyelwa.",
     "export_failed": "Yehlulekile ukuthumela idatha. Iphutha:",
     "print_failed": "Yehlulekile ukuvula iwindi lokuphrinta. Sicela uqinisekise ukuthi izigelekeqe zivunyelwe esipheqululini sakho.",
-    "report_title": "Umbiko Wokuthunyelwa Kwedatha ye-Ba-Yu",
+    "report_title": "Umbiko Wokuthunyelwa Kwedatha ye-SensoraNote",
     "extracted_at": "Kukhishwe ngomhla ka-:",
-    "footer_note": "I-Ba-Yu Platform — Lo mbhalo ukhiqizwa ngokuzenzakalelayo.",
+    "footer_note": "I-SensoraNote Platform — Lo mbhalo ukhiqizwa ngokuzenzakalelayo.",
     "doc_info": "Lo mbhalo uqukethe",
-    "doc_info2": "idatha ekhishwe endaweni yesikhulumi se-Ba-Yu ku-",
+    "doc_info2": "idatha ekhishwe endaweni yesikhulumi se-SensoraNote ku-",
     "doc_all_cat": "Idatha ifaka phakathi zonke izigaba: Amanothi, Imibiko, Nabasebenzisi.",
     "doc_only_cat": "Idatha ebonisiwe ingeyesigaba kuphela",
     "doc_filter_verify": "Isihlungi sesimo sokuqinisekisa:",
@@ -1538,7 +1538,7 @@
     "submit_button": "Londoloza & Qhubeka",
     "submitting": "Iyalondoloza...",
     "username_error": "Igama lomsebenzisi lingaqukatha kuphela izinhlamvu, izinombolo, nama-underscore (_)",
-    "success_msg": "Iphrofayela iqedwe ngempumelelo! Siyakwamukela ku-Ba-Yu",
+    "success_msg": "Iphrofayela iqedwe ngempumelelo! Siyakwamukela ku-SensoraNote",
     "error_msg": "Kwenzeke iphutha ngenkathi ilondoloza iphrofayela",
     "edu_sd": "Isikole samabanga aphansi (SD)",
     "edu_smp": "Isikole Samabanga Aphakeme Esincane (SMP)",
@@ -1622,14 +1622,14 @@
     "not_found_title": "Umlayezo Awutholakali",
     "not_found_desc": "Lo mlayezo kungenzeka ukuthi ususiwe noma awusatholakali.",
     "back": "Emuva",
-    "system": "Isistimu ye-Ba-Yu",
+    "system": "Isistimu ye-SensoraNote",
     "regards": "Ngiyanibingelela,",
-    "team": "Ithimba le-Ba-Yu EduPlatform"
+    "team": "Ithimba le-SensoraNote EduPlatform"
   },
   "landing": {
-    "philosophy_text": "Sikholelwa ukuthi imfundo engcono kakhulu izalwa ngokubambisana. U-Ba-Yu ulapha ukuze akusize uhlele imibono, wabelane ngemininingwane, futhi nikhule ndawonye emphakathini ofundayo osekelayo.",
+    "philosophy_text": "Sikholelwa ukuthi imfundo engcono kakhulu izalwa ngokubambisana. U-SensoraNote ulapha ukuze akusize uhlele imibono, wabelane ngemininingwane, futhi nikhule ndawonye emphakathini ofundayo osekelayo.",
     "philosophy_vision": "UMBONO WETHU",
-    "philosophy_motto": "I-Ba-Yu Philosophy - Funda, Yabelana, Khulisani Ndawonye",
+    "philosophy_motto": "I-SensoraNote Philosophy - Funda, Yabelana, Khulisani Ndawonye",
     "row1_1": "Izilimi Ezingu-40+ Zisekelwe",
     "row1_2": "I-Dynamic Text Editor",
     "row1_3": "Izihloko Zokufunda Ezibanzi",
@@ -1693,14 +1693,14 @@
     "multilang_title_1": "Ukufunda",
     "multilang_title_2": "Ngaphandle komkhawulo",
     "multilang_title_3": "Ulimi.",
-    "multilang_desc": "I-Ba-Yu isekela ukuxhumana ngezilimi ezingu-40+, okuvumela abafundi abavela emhlabeni wonke ukuthi basebenzisane futhi bafunde ngokunethezeka besebenzisa inkundla yethu.",
+    "multilang_desc": "I-SensoraNote isekela ukuxhumana ngezilimi ezingu-40+, okuvumela abafundi abavela emhlabeni wonke ukuthi basebenzisane futhi bafunde ngokunethezeka besebenzisa inkundla yethu.",
     "multilang_supported": "Izilimi Zisekelwe",
     "explore_badge": "UKUHLOLA ISIHLOKO",
     "explore_title": "Izinkambu Ezihlukahlukene Zesayensi Ku-One Platform.",
     "explore_field": "UKUHLOLA INSIMU",
     "explore_notes_btn": "Hlola Amanothi",
     "feature_badge": "EZIPHUMA EZINGUNDOQO",
-    "feature_title": "Ubuchwepheshe Be-Ba-Yu.",
+    "feature_title": "Ubuchwepheshe Be-SensoraNote.",
     "feature_desc": "Sidizayine i-ecosystem ehlakaniphile yokuthatha amanothi ukuze ikusize uhlele, uqinisekise, futhi uphathe kahle isifundo ngasinye ngempumelelo.",
     "feat1_badge": "ECEBILE MHLELI",
     "feat1_title": "I-LaTeX Rich Editor",
@@ -1831,11 +1831,11 @@
     "failed_title": "Ukuqinisekisa Kwehlulekile",
     "failed_desc": "Isixhumanisi sokuqinisekisa asivumelekile noma siphelelwe yisikhathi. Sicela ucele isixhumanisi esisha.",
     "redirect_mobile": "Ivula uhlelo lokusebenza lweselula...",
-    "open_app": "Vula i-Ba-Yu Mobile App",
+    "open_app": "Vula i-SensoraNote Mobile App",
     "go_to_login": "Iya kokuthi Ngena"
   },
   "download_app": {
-    "title": "Get Ba-Yu App",
+    "title": "Get SensoraNote App",
     "subtitle": "Learn easier from anywhere. Coming soon to App Store and Google Play.",
     "status": "Currently in development...",
     "back_to_home": "Back to Home"

@@ -383,7 +383,7 @@
 /* =======================================================
    NOTE CONTENT DARK MODE FIX
    Forces content from rich text editors to be readable.
-   Matches specific Ba-Yu content containers.
+   Matches specific SensoraNote content containers.
    ======================================================= */
 .dark .prose,
 .dark .note-content-container,
@@ -429,7 +429,7 @@
   border-radius: 4px;
 }
 
-/* Global Highlight Design (Ba-Yu Signature Style) */
+/* Global Highlight Design (SensoraNote Signature Style) */
 mark.user-highlight,
 .ql-editor span[style*="background-color"],
 .note-content-container span[style*="background-color"],

@@ -64,15 +64,15 @@ Route::get('/storage/sertifikat/{filename}', function ($filename) {
 // Intercept specific routes for Open Graph Metadata
 Route::get('/app/explore/note/{id}', function (Request $request, $id) {
     $meta = [
-        'title' => 'Catatan di Ba-Yu',
-        'description' => 'Baca catatan menarik ini di platform Ba-Yu.',
+        'title' => 'Catatan di SensoraNote',
+        'description' => 'Baca catatan menarik ini di platform SensoraNote.',
         'image' => asset('logo.svg'),
     ];
 
     try {
         $post = Post::find($id);
         if ($post) {
-            $meta['title'] = $post->title . ' - Ba-Yu';
+            $meta['title'] = $post->title . ' - SensoraNote';
             $meta['description'] = $post->description ?? strip_tags(substr($post->plain_content ?? '', 0, 150)) . '...';
             if ($post->thumbnail) {
                 $meta['image'] = $post->thumbnail;
@@ -85,16 +85,16 @@ Route::get('/app/explore/note/{id}', function (Request $request, $id) {
 
 Route::get('/app/profile/{id}', function (Request $request, $id) {
     $meta = [
-        'title' => 'Profil Pengguna - Ba-Yu',
-        'description' => 'Lihat profil pengguna ini di Ba-Yu.',
+        'title' => 'Profil Pengguna - SensoraNote',
+        'description' => 'Lihat profil pengguna ini di SensoraNote.',
         'image' => asset('logo.svg'),
     ];
 
     try {
         $user = User::find($id);
         if ($user) {
-            $meta['title'] = $user->name . ' (@' . $user->username . ') - Ba-Yu';
-            $meta['description'] = $user->bio ?? 'Bergabung dengan Ba-Yu dan bagikan catatan belajarmu!';
+            $meta['title'] = $user->name . ' (@' . $user->username . ') - SensoraNote';
+            $meta['description'] = $user->bio ?? 'Bergabung dengan SensoraNote dan bagikan catatan belajarmu!';
             if ($user->avatar) {
                 $meta['image'] = $user->avatar;
             }

@@ -4,7 +4,7 @@ export function useDocumentTitle(title: string, appendSuffix: boolean = true) {
     useEffect(() => {
         if (!title) return;
         
-        const suffix = ' | Ba-Yu';
+        const suffix = ' | SensoraNote';
         const finalTitle = appendSuffix ? `${title}${suffix}` : title;
         
         document.title = finalTitle;

@@ -569,7 +569,7 @@
     "downloaded_at": "डाउनलोड किया गया:",
     "pdf_restricted_title": "संरक्षित सामग्री",
     "pdf_restricted_desc": "इस पीडीएफ संस्करण में केवल आंशिक सामग्री है। पूर्ण संस्करण डाउनलोड करने के लिए बा-यू ऐप पर लेखक <b>@{author}</b> का अनुसरण करें।",
-    "pdf_footer": "यह दस्तावेज़ <span class=\"footer-brand\">Ba-Yu</span> - द फ्यूचर लर्निंग प्लेटफ़ॉर्म से डाउनलोड किया गया था",
+    "pdf_footer": "यह दस्तावेज़ <span class=\"footer-brand\">SensoraNote</span> - द फ्यूचर लर्निंग प्लेटफ़ॉर्म से डाउनलोड किया गया था",
     "sort_newest": "नवीनतम",
     "sort_oldest": "सबसे पुराने",
     "sort_top": "सबसे ऊपर की टिप्पणी"
@@ -1056,7 +1056,7 @@
     "pdf_downloaded": "यहां डाउनलोड किया गया:",
     "pdf_protected_title": "संरक्षित सामग्री",
     "pdf_protected_desc": "इस पीडीएफ में केवल आंशिक सामग्री है। पूर्ण संस्करण डाउनलोड करने के लिए बा-यू ऐप पर लेखक <b>@{{author}}</b> का अनुसरण करें।",
-    "pdf_footer": "यह दस्तावेज़ <span class=\"footer-brand\">Ba-Yu</span> - द फ्यूचर लर्निंग प्लेटफ़ॉर्म से डाउनलोड किया गया था",
+    "pdf_footer": "यह दस्तावेज़ <span class=\"footer-brand\">SensoraNote</span> - द फ्यूचर लर्निंग प्लेटफ़ॉर्म से डाउनलोड किया गया था",
     "draft_badge": "मसौदा",
     "draft_label": "मसौदा",
     "last_edit": "अंतिम संपादन:",
@@ -1289,7 +1289,7 @@
       "घृणास्पद भाषण फैलाना।",
       "प्लेटफॉर्म सिस्टम को नुकसान पहुंचा रहा है."
     ],
-    "contact": "प्रश्न हैं? संपर्क करें <a href='mailto:support@ba-yu.id' className='text-indigo-600 डार्क:text-indigo-400 फ़ॉन्ट-बोल्ड'>support@ba-yu.id</a>",
+    "contact": "प्रश्न हैं? संपर्क करें <a href='mailto:support@sensoranote.id' className='text-indigo-600 डार्क:text-indigo-400 फ़ॉन्ट-बोल्ड'>support@sensoranote.id</a>",
     "footer": "© 2026 बा-यू प्लेटफार्म।<br/>सर्वाधिकार सुरक्षित।"
   },
   "community_guidelines": {
@@ -1835,7 +1835,7 @@
     "go_to_login": "लॉगइन पर जाएं"
   },
   "download_app": {
-    "title": "Get Ba-Yu App",
+    "title": "Get SensoraNote App",
     "subtitle": "Learn easier from anywhere. Coming soon to App Store and Google Play.",
     "status": "Currently in development...",
     "back_to_home": "Back to Home"

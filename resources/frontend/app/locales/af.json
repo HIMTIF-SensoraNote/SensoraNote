@@ -20,7 +20,7 @@
     "title": "Instellings",
     "search_placeholder": "Soek instellings...",
     "account_center": "Rekeningsentrum",
-    "account_desc": "Bestuur jou rekeninginstellings en gekoppelde ervarings oor die Ba-Yu-platform.",
+    "account_desc": "Bestuur jou rekeninginstellings en gekoppelde ervarings oor die SensoraNote-platform.",
     "personal_details": "Persoonlike Besonderhede",
     "profile_details": "Profiel en persoonlike besonderhede",
     "password_security": "Wagwoord en sekuriteit",
@@ -49,7 +49,7 @@
   "theme": {
     "title": "Voorkoms",
     "subtitle": "Kies App Tema",
-    "description": "Pas die voorkoms van die Ba-Yu-toepassing aan vir 'n gemakliker lees- en leerervaring.",
+    "description": "Pas die voorkoms van die SensoraNote-toepassing aan vir 'n gemakliker lees- en leerervaring.",
     "light": "Lig",
     "light_desc": "Skoon en helder voorkoms, geskik vir helder kamertoestande.",
     "dark": "Donker",
@@ -60,7 +60,7 @@
   "language": {
     "title": "Taal",
     "subtitle": "Kies App Taal",
-    "description": "Pasmaak die Ba-Yu app vertoon taal volgens jou voorkeur.",
+    "description": "Pasmaak die SensoraNote app vertoon taal volgens jou voorkeur.",
     "system": "Volg System",
     "system_desc": "Pas by jou toestel se taalinstellings aan.",
     "info": "Taalveranderinge sal onmiddellik op alle programkoppelvlak-elemente toegepas word. Gebruiker-geskepte inhoud (notas, opmerkings) bly in die oorspronklike taal."
@@ -74,7 +74,7 @@
     "whatsapp": "WhatsApp-klets",
     "email": "Stuur e-pos",
     "community_guidelines": "Gemeenskapsriglyne",
-    "community_guidelines_desc": "Lees die reëls en etiek vir die deel van notas oor Ba-Yu."
+    "community_guidelines_desc": "Lees die reëls en etiek vir die deel van notas oor SensoraNote."
   },
   "stats": {
     "title": "Leer Statistiek",
@@ -101,7 +101,7 @@
     "notes_created": "Notas geskep",
     "total_materials": "Totale materiaal",
     "completed": "Voltooi",
-    "footer_info": "Data word outomaties opgedateer nadat elke leersessie eindig. © 2026 Ba-Yu Education.",
+    "footer_info": "Data word outomaties opgedateer nadat elke leersessie eindig. © 2026 SensoraNote Education.",
     "set_goal_title": "Stel daaglikse doelwit",
     "set_goal_desc": "Stel jou daaglikse leerduurteiken met digitale presisie.",
     "hours": "Ure",
@@ -123,7 +123,7 @@
     "forgot_password": "Wagwoord vergeet?",
     "reset_password": "Stel wagwoord terug",
     "welcome": "Welkom Terug",
-    "welcome_desc": "Meld aan om voort te gaan na Ba-Yu.",
+    "welcome_desc": "Meld aan om voort te gaan na SensoraNote.",
     "start_journey": "Begin jou reis",
     "start_journey_desc": "Registreer en deel jou eerste nota.",
     "login_tab": "Teken in",
@@ -197,7 +197,7 @@
     "following_count": "Volgende",
     "followers_count": "Volgelinge",
     "register_expert": "Word 'n kundige",
-    "register_expert_sub": "Word 'n geverifieerde bydraer op Ba-Yu",
+    "register_expert_sub": "Word 'n geverifieerde bydraer op SensoraNote",
     "register": "Registreer",
     "tab_notes": "Notas",
     "tab_drafts": "Konsepte",
@@ -545,7 +545,7 @@
     "author_pending": "Hangende",
     "author_follow": "Volg",
     "verified_expert": "Geverifieerde deskundige",
-    "report_help_desc": "Help ons om die Ba-Yu-ekosisteem opvoedkundig, veilig en gemaklik te hou.",
+    "report_help_desc": "Help ons om die SensoraNote-ekosisteem opvoedkundig, veilig en gemaklik te hou.",
     "report_main_reason": "Hoofrede",
     "close_modal": "Sluit Modaal",
     "report_note": "Verslag Nota",
@@ -568,8 +568,8 @@
     "respond_btn": "REAGEER",
     "downloaded_at": "Afgelaai:",
     "pdf_restricted_title": "Beskermde materiaal",
-    "pdf_restricted_desc": "Hierdie PDF-weergawe bevat slegs gedeeltelike materiaal. Volg die skrywer <b>@{outeur}</b> op die Ba-Yu-toepassing om die volledige weergawe af te laai.",
-    "pdf_footer": "Hierdie dokument is afgelaai vanaf <span class=\"footer-brand\">Ba-Yu</span> - The Future Learning Platform",
+    "pdf_restricted_desc": "Hierdie PDF-weergawe bevat slegs gedeeltelike materiaal. Volg die skrywer <b>@{outeur}</b> op die SensoraNote-toepassing om die volledige weergawe af te laai.",
+    "pdf_footer": "Hierdie dokument is afgelaai vanaf <span class=\"footer-brand\">SensoraNote</span> - The Future Learning Platform",
     "sort_newest": "Nuutste",
     "sort_oldest": "Oudste",
     "sort_top": "Top opmerkings"
@@ -617,7 +617,7 @@
     "recently": "Netnou",
     "discussion_label": "BESPREKING",
     "report_modal_title": "Rapporteer gebruiker",
-    "report_modal_desc": "Help ons om die Ba-Yu-ekosisteem opvoedkundig, veilig en gemaklik te hou.",
+    "report_modal_desc": "Help ons om die SensoraNote-ekosisteem opvoedkundig, veilig en gemaklik te hou.",
     "report_reason_label": "Hoofrede",
     "report_reason_spam": "Bemarking strooipos / Ontwrigtende advertensies",
     "report_reason_false_info": "Valse inligting / Verkeerde inligting",
@@ -626,7 +626,7 @@
     "report_reason_copyright": "Kopieregskending / Plagiaat",
     "report_reason_other": "Ander rede...",
     "report_detail_label": "Bykomende besonderhede",
-    "report_success": "Verslag suksesvol gestuur. Dankie dat jy Ba-Yu veilig gehou het!",
+    "report_success": "Verslag suksesvol gestuur. Dankie dat jy SensoraNote veilig gehou het!",
     "report_failed": "Kon nie verslag stuur nie.",
     "btn_reply": "Antwoord"
   },
@@ -658,7 +658,7 @@
     "guide_3_title": "Visuele kwaliteit",
     "guide_3_desc": "Skryfwerk en beelde moet leesbaar wees.",
     "quality_priority": "Kwaliteit prioriteit",
-    "quality_desc": "Dankie dat u bygedra het tot die handhawing van materiaalkwaliteit op Ba-Yu.",
+    "quality_desc": "Dankie dat u bygedra het tot die handhawing van materiaalkwaliteit op SensoraNote.",
     "validate": "Valideer materiaal",
     "reject_material": "Verwerp materiaal",
     "quality": "Materiaal kwaliteit",
@@ -869,7 +869,7 @@
     "prompt_approve_pakar": "Keur Expert goed",
     "prompt_reject_pakar": "Verwerp versoek",
     "prompt_pakar_placeholder": "Nota vir gebruiker...",
-    "prompt_approve_default": "Baie geluk! Jy is nou 'n amptelike kenner van Ba-Yu.",
+    "prompt_approve_default": "Baie geluk! Jy is nou 'n amptelike kenner van SensoraNote.",
     "prompt_reject_default": "Jammer, jou portefeulje voldoen nie aan ons kriteria nie.",
     "toast_pakar_approved": "Deskundige versoek goedgekeur.",
     "toast_pakar_rejected": "Deskundige versoek afgekeur.",
@@ -1055,8 +1055,8 @@
     "pdf_written_by": "Geskryf deur:",
     "pdf_downloaded": "Afgelaai op:",
     "pdf_protected_title": "Beskermde materiaal",
-    "pdf_protected_desc": "Hierdie PDF bevat slegs gedeeltelike materiaal. Volg die skrywer <b>@{{author}}</b> op die Ba-Yu-toepassing om die volledige weergawe af te laai.",
-    "pdf_footer": "Hierdie dokument is afgelaai vanaf <span class=\"footer-brand\">Ba-Yu</span> - The Future Learning Platform",
+    "pdf_protected_desc": "Hierdie PDF bevat slegs gedeeltelike materiaal. Volg die skrywer <b>@{{author}}</b> op die SensoraNote-toepassing om die volledige weergawe af te laai.",
+    "pdf_footer": "Hierdie dokument is afgelaai vanaf <span class=\"footer-brand\">SensoraNote</span> - The Future Learning Platform",
     "draft_badge": "KONSEP",
     "draft_label": "Konsep",
     "last_edit": "Laaste wysiging:",
@@ -1194,7 +1194,7 @@
     "desc_private": "Slegs volgelinge kan jou profiel en notas sien. Jou opmerkings oor ander se plasings sal steeds publiek sigbaar wees.",
     "desc_public": "Almal kan jou profiel en notas bekyk en interaksie hê met die inhoud wat jy deel.",
     "deactivate_title": "Deaktiveer rekening (dormant)",
-    "deactivate_desc": "Jou rekening sal weggesteek word (dormant) vanaf die Ba-Yu-platform. Jou profiel, notas en opmerkings sal nie vir ander gebruikers sigbaar wees nie. <strong>As jy nie binne 30 dae weer aanmeld nie, sal al jou data permanent uitgevee word.</strong>",
+    "deactivate_desc": "Jou rekening sal weggesteek word (dormant) vanaf die SensoraNote-platform. Jou profiel, notas en opmerkings sal nie vir ander gebruikers sigbaar wees nie. <strong>As jy nie binne 30 dae weer aanmeld nie, sal al jou data permanent uitgevee word.</strong>",
     "deactivate_button": "Deaktiveer rekening",
     "dialog_title": "Deaktiveer rekening?",
     "dialog_desc": "Jou rekening sal vir die publiek versteek word en vir 30 dae 'n dormante toestand betree. Jy kan dit heraktiveer deur aan te meld voor die 30 dae verstryk. Is jy seker jy wil voortgaan?",
@@ -1222,7 +1222,7 @@
   "privacy_page": {
     "title": "Privaatheidsbeleid",
     "hero_title": "Jou privaatheid",
-    "hero_desc": "Jou data is veilig by Ba-Yu. Ons handhaaf deursigtigheid en databeskerming as ons topprioriteit.",
+    "hero_desc": "Jou data is veilig by SensoraNote. Ons handhaaf deursigtigheid en databeskerming as ons topprioriteit.",
     "principles": [
       {
         "label": "Veilig",
@@ -1259,14 +1259,14 @@
       "Verskaf belangrike kennisgewings.",
       "Verbetering van platformkenmerke."
     ],
-    "footer": "© 2026 Ba-Yu-platform. Jou privaatheid is ons vertroue."
+    "footer": "© 2026 SensoraNote-platform. Jou privaatheid is ons vertroue."
   },
   "terms_page": {
     "title": "Bepalings en voorwaardes",
     "hero_title": "Bepalings en voorwaardes",
-    "hero_desc": "Laas opgedateer: 7 Mei 2026. Reëls vir 'n gemaklike Ba-Yu-leer-ekosisteem.",
+    "hero_desc": "Laas opgedateer: 7 Mei 2026. Reëls vir 'n gemaklike SensoraNote-leer-ekosisteem.",
     "section1_title": "1. Aanvaarding van Bepalings",
-    "section1_desc": "Deur toegang tot en gebruik van die Ba-Yu-platform word geag dat jy gelees het, verstaan ​​en ingestem het om gebind te wees deur hierdie Bepalings en Voorwaardes. As jy nie saamstem nie, moet asseblief nie voortgaan om ons dienste te gebruik vir wedersydse sekuriteit nie.",
+    "section1_desc": "Deur toegang tot en gebruik van die SensoraNote-platform word geag dat jy gelees het, verstaan ​​en ingestem het om gebind te wees deur hierdie Bepalings en Voorwaardes. As jy nie saamstem nie, moet asseblief nie voortgaan om ons dienste te gebruik vir wedersydse sekuriteit nie.",
     "section2_title": "2. Rekeningregistrasie",
     "section2_desc": "Om die nota-deelfunksie te gebruik, moet jy registreer met akkurate inligting. Jy is ten volle verantwoordelik vir:",
     "section2_items": [
@@ -1275,7 +1275,7 @@
       "Die verskaffing van ware en akkurate inligting."
     ],
     "section3_title": "3. Intellektuele Eiendomsregte",
-    "section3_quote": "\"Enige notas wat jy na Ba-Yu oplaai, bly joune. Deur dit op te laai, gee jy egter aan Ba-Yu 'n lisensie om daardie inhoud binne ons platform-ekosisteem vir opvoedkundige doeleindes te vertoon, te versprei en te bevorder.\"",
+    "section3_quote": "\"Enige notas wat jy na SensoraNote oplaai, bly joune. Deur dit op te laai, gee jy egter aan SensoraNote 'n lisensie om daardie inhoud binne ons platform-ekosisteem vir opvoedkundige doeleindes te vertoon, te versprei en te bevorder.\"",
     "section4_title": "4. Gebruiksreëls",
     "allowed_title": "Wat word toegelaat",
     "allowed_items": [
@@ -1289,13 +1289,13 @@
       "Verspreiding van haatspraak.",
       "Beskadig die platformstelsel."
     ],
-    "contact": "Het u vrae? Kontak <a href=\"mailto:support@ba-yu.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@ba-yu.id</a>",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Alle Regte Voorbehou."
+    "contact": "Het u vrae? Kontak <a href=\"mailto:support@sensoranote.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@sensoranote.id</a>",
+    "footer": "© 2026 SensoraNote Platform.<br/>Alle Regte Voorbehou."
   },
   "community_guidelines": {
     "title": "Gemeenskapsriglyne",
     "hero_title": "Gemeenskapsriglyne",
-    "hero_desc": "Kom ons skep 'n veilige, positiewe en ondersteunende leeromgewing op Ba-Yu.",
+    "hero_desc": "Kom ons skep 'n veilige, positiewe en ondersteunende leeromgewing op SensoraNote.",
     "values_title": "Kernwaardes",
     "values": [
       {
@@ -1315,7 +1315,7 @@
       "Strooipos, onwettige promosies of bedrog.",
       "Deel ander mense se persoonlike inligting (doxxing)."
     ],
-    "footer": "© 2026 Ba-Yu Platform.<br/>Alle Regte Voorbehou."
+    "footer": "© 2026 SensoraNote Platform.<br/>Alle Regte Voorbehou."
   },
   "help_page": {
     "title": "Hulpsentrum",
@@ -1326,7 +1326,7 @@
     "faq_title": "Gereelde Vrae (Gereelde Vrae)",
     "faqs": [
       {
-        "q": "Hoe om 'n kenner by Ba-Yu te word?",
+        "q": "Hoe om 'n kenner by SensoraNote te word?",
         "a": "Om 'n Deskundige te word, moet jy gereeld kwaliteit notas deel. As jou notas dikwels in die 'Gewilde'-kategorie is en baie laaiks kry, sal ons Admin-span dit hersien en vir jou Deskundige-status gee."
       },
       {
@@ -1362,8 +1362,8 @@
         "a": "Notas wat aan die Deskundige ingedien word, kan verwerp word indien plagiaat bespeur word, swak beeldresolusie het, of onakkurate formules/teorieë bevat. Jy kan resensies van kundiges in jou notabesonderhede lees om dit te verbeter."
       },
       {
-        "q": "Word die Ba-Yu-platform betaal?",
-        "a": "Nee, Ba-Yu is heeltemal gratis vir alle studente en onderwysers regdeur Indonesië om te gebruik om kennis en gestruktureerde studienotas te deel!"
+        "q": "Word die SensoraNote-platform betaal?",
+        "a": "Nee, SensoraNote is heeltemal gratis vir alle studente en onderwysers regdeur Indonesië om te gebruik om kennis en gestruktureerde studienotas te deel!"
       }
     ],
     "contact_title": "Het jy steeds hulp nodig?",
@@ -1372,49 +1372,49 @@
     "contact_email_title": "E-pos",
     "contact_email_desc": "Besonderhede en aanhangsels",
     "guidelines_title": "Gemeenskapsriglyne",
-    "guidelines_desc": "Lees die reëls en etiek van die deel van notas op Ba-Yu.",
-    "wa_template": "Hallo Ba-Yu Ondersteuningspan, ek is {{name}}. Ek het hulp nodig met die probleem: ... op {{dag}}.",
-    "email_subject": "Ba-Yu-toepassingsprobleemhulp - {{name}}",
-    "email_body": "Hallo Ba-Yu Ondersteuningspan,\n\nEk is {{name}}. Ek het hulp nodig met 'n probleem:\n...\n\nEk het hierdie struikelblok op {{dag}} in die gesig gestaar.\n\nHelp asseblief, dankie!"
+    "guidelines_desc": "Lees die reëls en etiek van die deel van notas op SensoraNote.",
+    "wa_template": "Hallo SensoraNote Ondersteuningspan, ek is {{name}}. Ek het hulp nodig met die probleem: ... op {{dag}}.",
+    "email_subject": "SensoraNote-toepassingsprobleemhulp - {{name}}",
+    "email_body": "Hallo SensoraNote Ondersteuningspan,\n\nEk is {{name}}. Ek het hulp nodig met 'n probleem:\n...\n\nEk het hierdie struikelblok op {{dag}} in die gesig gestaar.\n\nHelp asseblief, dankie!"
   },
   "about_page": {
     "title": "Oor ons",
-    "hero_title": "Leer Ba-Yu ken",
-    "hero_desc": "Kom nader aan die reis, missie en span agter die Ba-Yu-platform.",
+    "hero_title": "Leer SensoraNote ken",
+    "hero_desc": "Kom nader aan die reis, missie en span agter die SensoraNote-platform.",
     "vision_title": "Visie & Missie",
-    "vision_desc": "Ons glo elke student verdien gelyke toegang tot kwaliteit materiaal. Ba-Yu is gebou om billike, veilige en toeganklike nota-uitruiling vir studente regoor Indonesië te fasiliteer.",
+    "vision_desc": "Ons glo elke student verdien gelyke toegang tot kwaliteit materiaal. SensoraNote is gebou om billike, veilige en toeganklike nota-uitruiling vir studente regoor Indonesië te fasiliteer.",
     "community_title": "Ons Gemeenskap",
     "community_desc": "Duisende studente en kundiges van verskeie opvoedkundige instellings het aangesluit. Met streng verifikasie- en verslagdoeningstelsels hou ons hierdie ekosisteem positief en konstruktief.",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Alle Regte Voorbehou."
+    "footer": "© 2026 SensoraNote Platform.<br/>Alle Regte Voorbehou."
   },
   "careers_page": {
     "title": "Loopbane",
-    "hero_title": "Loopbane by Ba-Yu",
+    "hero_title": "Loopbane by SensoraNote",
     "hero_desc": "Sluit by ons aan om die toekomstige onderwys-ekosisteem te bou.",
     "no_vacancies_title": "Nog geen vakatures nie",
     "no_vacancies_desc": "Ons maak nie tans nuwe poste oop nie, maar ons stel altyd belang in talentvolle individue.",
     "contact_btn": "Kontak ons",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Alle Regte Voorbehou."
+    "footer": "© 2026 SensoraNote Platform.<br/>Alle Regte Voorbehou."
   },
   "blog_page": {
     "title": "Blog en opdaterings",
-    "hero_title": "Ba-Yu Blog",
+    "hero_title": "SensoraNote Blog",
     "hero_desc": "Verhale, insigte en die nuutste kenmerkopdaterings van die ontwikkelingspan.",
     "coming_soon_title": "Binnekort",
     "coming_soon_desc": "Ons berei interessante artikels oor onderwys en tegnologie vir jou voor. Bly ingeskakel vir ons première bekendstelling!",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Alle Regte Voorbehou."
+    "footer": "© 2026 SensoraNote Platform.<br/>Alle Regte Voorbehou."
   },
   "status_page": {
     "title": "Stelsel Status",
     "hero_title": "Alle stelsels normaal",
     "hero_desc": "Die platform werk normaalweg.",
     "status_operational": "Operasioneel",
-    "footer": "© 2026 Ba-Yu Platform.<br/>Alle Regte Voorbehou."
+    "footer": "© 2026 SensoraNote Platform.<br/>Alle Regte Voorbehou."
   },
   "auth_modal": {
     "welcome": "Welkom",
     "create_account": "Skep nuwe rekening",
-    "login_desc": "Meld aan om toegang tot alle Ba-Yu-kenmerke te kry.",
+    "login_desc": "Meld aan om toegang tot alle SensoraNote-kenmerke te kry.",
     "register_desc": "Registreer en begin nou jou notas bestuur.",
     "login": "Meld aan",
     "register": "Registreer",
@@ -1449,7 +1449,7 @@
     "terms": "Bepalings en voorwaardes",
     "terms_and": "en",
     "privacy": "Privaatheidsbeleid",
-    "terms_suffix": "van Ba-Yu dienste.",
+    "terms_suffix": "van SensoraNote dienste.",
     "reset_throttled": "Wag asseblief 'n oomblik (60 sekondes) voordat jy weer probeer.",
     "reset_sent": "Wagwoordterugstelskakel is na jou e-pos gestuur."
   },
@@ -1477,11 +1477,11 @@
     "no_data_filter": "Geen data pas by die filter vir uitvoer nie.",
     "export_failed": "Kon nie data uitvoer nie. Fout:",
     "print_failed": "Kon nie drukvenster oopmaak nie. Maak asseblief seker dat opspringers in jou blaaier toegelaat word.",
-    "report_title": "Ba-Yu Data Uitvoer Verslag",
+    "report_title": "SensoraNote Data Uitvoer Verslag",
     "extracted_at": "Onttrek op:",
-    "footer_note": "Ba-Yu Platform — Hierdie dokument word outomaties gegenereer.",
+    "footer_note": "SensoraNote Platform — Hierdie dokument word outomaties gegenereer.",
     "doc_info": "Hierdie dokument bevat",
-    "doc_info2": "data onttrek vanaf die Ba-Yu platform op",
+    "doc_info2": "data onttrek vanaf die SensoraNote platform op",
     "doc_all_cat": "Data sluit alle kategorieë in: Notas, Verslae en Gebruikers.",
     "doc_only_cat": "Data wat vertoon word, is slegs vir die kategorie",
     "doc_filter_verify": "Verifikasiestatusfilter:",
@@ -1538,7 +1538,7 @@
     "submit_button": "Stoor en gaan voort",
     "submitting": "Stoor tans …",
     "username_error": "Gebruikersnaam kan slegs letters, syfers en onderstrepe bevat (_)",
-    "success_msg": "Profiel suksesvol voltooi! Welkom by Ba-Yu",
+    "success_msg": "Profiel suksesvol voltooi! Welkom by SensoraNote",
     "error_msg": "'n Fout het voorgekom tydens die stoor van die profiel",
     "edu_sd": "Laerskool (SD)",
     "edu_smp": "Junior Hoërskool (SMP)",
@@ -1622,14 +1622,14 @@
     "not_found_title": "Boodskap nie gevind nie",
     "not_found_desc": "Hierdie boodskap is dalk uitgevee of is nie meer beskikbaar nie.",
     "back": "Terug",
-    "system": "Ba-Yu-stelsel",
+    "system": "SensoraNote-stelsel",
     "regards": "Groete,",
-    "team": "Ba-Yu EduPlatform-span"
+    "team": "SensoraNote EduPlatform-span"
   },
   "landing": {
-    "philosophy_text": "Ons glo dat die beste opvoeding uit samewerking gebore word. Ba-Yu is hier om jou te help om idees te organiseer, insigte te deel en saam te groei in 'n ondersteunende leergemeenskap.",
+    "philosophy_text": "Ons glo dat die beste opvoeding uit samewerking gebore word. SensoraNote is hier om jou te help om idees te organiseer, insigte te deel en saam te groei in 'n ondersteunende leergemeenskap.",
     "philosophy_vision": "ONS VISIE",
-    "philosophy_motto": "Ba-Yu Filosofie - Leer, deel, groei saam",
+    "philosophy_motto": "SensoraNote Filosofie - Leer, deel, groei saam",
     "row1_1": "40+ tale ondersteun",
     "row1_2": "Dinamiese teksredakteur",
     "row1_3": "Uitgebreide studieonderwerpe",
@@ -1693,14 +1693,14 @@
     "multilang_title_1": "Leer",
     "multilang_title_2": "Sonder beperking",
     "multilang_title_3": "Taal.",
-    "multilang_desc": "Ba-Yu ondersteun koppelvlakke in 40+ tale, wat studente van regoor die wêreld toelaat om saam te werk en gemaklik te leer deur ons platform te gebruik.",
+    "multilang_desc": "SensoraNote ondersteun koppelvlakke in 40+ tale, wat studente van regoor die wêreld toelaat om saam te werk en gemaklik te leer deur ons platform te gebruik.",
     "multilang_supported": "Tale ondersteun",
     "explore_badge": "ONDERWERP VERKENNING",
     "explore_title": "Verskeie wetenskapsvelde op een platform.",
     "explore_field": "VELDVERKENNING",
     "explore_notes_btn": "Verken Notas",
     "feature_badge": "KERNKENMERKE",
-    "feature_title": "Die tegnologie agter Ba-Yu.",
+    "feature_title": "Die tegnologie agter SensoraNote.",
     "feature_desc": "Ons het 'n slim nota-ekosisteem ontwerp om jou te help om elke kursusmateriaal doeltreffend te organiseer, te verifieer en te bemeester.",
     "feat1_badge": "RYK REDAKTEUR",
     "feat1_title": "LaTeX Rich Editor",
@@ -1831,11 +1831,11 @@
     "failed_title": "Verifikasie het misluk",
     "failed_desc": "Die verifikasieskakel is ongeldig of het verval. Versoek asseblief 'n nuwe skakel.",
     "redirect_mobile": "Maak tans mobiele program oop …",
-    "open_app": "Maak Ba-Yu-mobiele toepassing oop",
+    "open_app": "Maak SensoraNote-mobiele toepassing oop",
     "go_to_login": "Gaan na Login"
   },
   "download_app": {
-    "title": "Get Ba-Yu App",
+    "title": "Get SensoraNote App",
     "subtitle": "Learn easier from anywhere. Coming soon to App Store and Google Play.",
     "status": "Currently in development...",
     "back_to_home": "Back to Home"

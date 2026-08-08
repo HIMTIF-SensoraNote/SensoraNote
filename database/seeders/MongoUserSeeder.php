@@ -29,7 +29,7 @@ class MongoUserSeeder extends Seeder
                 'jenjang_pendidikan' => 'Kuliah',
             ],
             [
-                'name' => 'Admin Ba-Yu',
+                'name' => 'Admin SensoraNote',
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('password123'),
                 'role' => 'admin',

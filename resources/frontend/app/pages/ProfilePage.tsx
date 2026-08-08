@@ -630,7 +630,7 @@ export default function ProfilePage() {
                         )}
                 </div>
 
-                {/* 3. Sticky Tab Navigation - Ba-Yu Signature Style */}
+                {/* 3. Sticky Tab Navigation - SensoraNote Signature Style */}
                 <div
                     id="profil-tabs"
                     className="sticky top-0 bg-white dark:bg-[#13111C] z-40 border-b border-gray-100 dark:border-white/10 mb-4 pt-2"
@@ -671,7 +671,7 @@ export default function ProfilePage() {
                     </div>
                 </div>
 
-                {/* 4. Tab Panels - Ba-Yu Classic Card Styles */}
+                {/* 4. Tab Panels - SensoraNote Classic Card Styles */}
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 min-h-[400px]">
                     {activeTab === "catatan" && (
                         <div className="flex flex-col animate-in fade-in duration-500 w-full">

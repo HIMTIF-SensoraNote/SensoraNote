@@ -63,7 +63,7 @@ export default function ThemePage() {
                 {t("theme.subtitle") || "Pilih Tema Aplikasi"}
               </h2>
               <p className="text-[14px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
-                {t("theme.description") || "Sesuaikan tampilan aplikasi Ba-Yu untuk pengalaman membaca dan belajar yang lebih nyaman bagi Anda."}
+                {t("theme.description") || "Sesuaikan tampilan aplikasi SensoraNote untuk pengalaman membaca dan belajar yang lebih nyaman bagi Anda."}
               </p>
             </div>
 

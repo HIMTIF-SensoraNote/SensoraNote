@@ -139,7 +139,7 @@ export default function NoteDetailPage() {
               <html lang="id">
                   <head>
                       <meta charset="UTF-8">
-                      <title>${note?.title || "Materi Catatan"} - Ba-Yu</title>
+                      <title>${note?.title || "Materi Catatan"} - SensoraNote</title>
                       <style>
                           @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Lexend+Deca:wght@400;600;800&display=swap');
                           body { font-family: 'Manrope', sans-serif; line-height: 1.6; color: #1f2937; padding: 2cm; }
@@ -181,7 +181,7 @@ export default function NoteDetailPage() {
             <html lang="id">
                 <head>
                     <meta charset="UTF-8">
-                    <title>${note?.title || "Materi Catatan"} - Ba-Yu</title>
+                    <title>${note?.title || "Materi Catatan"} - SensoraNote</title>
                     <style>
                         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Lexend+Deca:wght@400;600;800&display=swap');
                         
@@ -362,13 +362,13 @@ export default function NoteDetailPage() {
                     <div style="margin-top: 40px; padding: 25px; background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; text-align: center;">
                         <h4 style="margin: 0 0 8px 0; color: #0f172a; font-family: 'Lexend Deca', sans-serif; font-size: 14pt;">${t("note_detail.pdf_restricted_title") || "Materi Terproteksi"}</h4>
                         <p style="margin: 0; color: #475569; font-size: 10.5pt; font-family: 'Manrope', sans-serif;">
-                            ${(t("note_detail.pdf_restricted_desc") || "Versi PDF ini hanya memuat sebagian materi. Ikuti penulis <b>@{author}</b> di aplikasi Ba-Yu untuk mengunduh versi lengkapnya.").replace('{author}', author?.username || 'penulis')}
+                            ${(t("note_detail.pdf_restricted_desc") || "Versi PDF ini hanya memuat sebagian materi. Ikuti penulis <b>@{author}</b> di aplikasi SensoraNote untuk mengunduh versi lengkapnya.").replace('{author}', author?.username || 'penulis')}
                         </p>
                     </div>
                     ` : ''}
 
                     <div class="footer">
-                        ${t("note_detail.pdf_footer") || 'Dokumen ini diunduh dari <span class="footer-brand">Ba-Yu</span> - Platform Belajar Masa Depan'}
+                        ${t("note_detail.pdf_footer") || 'Dokumen ini diunduh dari <span class="footer-brand">SensoraNote</span> - Platform Belajar Masa Depan'}
                     </div>
                     
                     <script>
@@ -590,7 +590,7 @@ export default function NoteDetailPage() {
         if ((window as any).ReactNativeWebView) {
             (window as any).ReactNativeWebView.postMessage(JSON.stringify({
                 type: 'SHARE_URL',
-                title: note?.title || "Catatan Ba-Yu",
+                title: note?.title || "Catatan SensoraNote",
                 url: window.location.href
             }));
             return;
@@ -598,7 +598,7 @@ export default function NoteDetailPage() {
 
         if (navigator.share) {
             navigator.share({
-                title: note?.title || "Catatan Ba-Yu",
+                title: note?.title || "Catatan SensoraNote",
                 url: window.location.href
             }).catch(() => setShowShareModal(true));
         } else {
@@ -754,10 +754,10 @@ export default function NoteDetailPage() {
     useEffect(() => {
         if (!note) return;
 
-        const title = `${note.title} | Ba-Yu`;
+        const title = `${note.title} | SensoraNote`;
         const description =
             note.content?.replace(/<[^>]*>/g, "").substring(0, 160) ||
-            "Baca catatan belajar menarik di Ba-Yu!";
+            "Baca catatan belajar menarik di SensoraNote!";
         const url = window.location.href;
         const image = note.thumbnail || "/logo.png"; // Fallback to logo
 
@@ -970,7 +970,7 @@ export default function NoteDetailPage() {
                     const v = n.verified_by_user || n.validator || {};
                     setValidator({
                         id: v._id || v.id || null,
-                        name: v.name || "Tim Pakar Ba-Yu",
+                        name: v.name || "Tim Pakar SensoraNote",
                         avatar: v.avatar || null,
                     });
                 }
@@ -1340,7 +1340,7 @@ export default function NoteDetailPage() {
                 },
             );
             showToast(
-                "Laporan berhasil dikirim, terima kasih telah menjaga lingkungan hijau Ba-Yu!",
+                "Laporan berhasil dikirim, terima kasih telah menjaga lingkungan hijau SensoraNote!",
                 "success",
             );
             setShowReportModal(false);
@@ -2757,7 +2757,7 @@ export default function NoteDetailPage() {
                                 <button
                                     onClick={() =>
                                         window.open(
-                                            `https://wa.me/?text=${encodeURIComponent(`${note.title} - Baca di Ba-Yu: ${window.location.href}`)}`,
+                                            `https://wa.me/?text=${encodeURIComponent(`${note.title} - Baca di SensoraNote: ${window.location.href}`)}`,
                                             "_blank",
                                         )
                                     }

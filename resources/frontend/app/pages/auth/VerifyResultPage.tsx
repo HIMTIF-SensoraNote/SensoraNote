@@ -70,7 +70,7 @@ const VerifyResultPage: React.FC = () => {
                                 }`}
                             >
                                 <Smartphone className="w-5 h-5" />
-                                <span>{t('verify_email_result.open_app') || 'Buka Aplikasi Ba-Yu Mobile'}</span>
+                                <span>{t('verify_email_result.open_app') || 'Buka Aplikasi SensoraNote Mobile'}</span>
                             </a>
                         )}
 

@@ -20,7 +20,7 @@
     "title": "Ayarlar",
     "search_placeholder": "Arama ayarları...",
     "account_center": "Hesap Merkezi",
-    "account_desc": "Ba-Yu platformunda hesap ayarlarınızı ve bağlantılı deneyimlerinizi yönetin.",
+    "account_desc": "SensoraNote platformunda hesap ayarlarınızı ve bağlantılı deneyimlerinizi yönetin.",
     "personal_details": "Kişisel Detaylar",
     "profile_details": "Profil ve Kişisel Detaylar",
     "password_security": "Şifre ve Güvenlik",
@@ -49,7 +49,7 @@
   "theme": {
     "title": "Dış görünüş",
     "subtitle": "Uygulama Temasını Seçin",
-    "description": "Daha rahat bir okuma ve öğrenme deneyimi için Ba-Yu uygulamasının görünümünü özelleştirin.",
+    "description": "Daha rahat bir okuma ve öğrenme deneyimi için SensoraNote uygulamasının görünümünü özelleştirin.",
     "light": "Işık",
     "light_desc": "Aydınlık oda koşullarına uygun, temiz ve parlak görünüm.",
     "dark": "Karanlık",
@@ -60,7 +60,7 @@
   "language": {
     "title": "Dil",
     "subtitle": "Uygulama Dilini Seçin",
-    "description": "Ba-Yu uygulamasının görüntüleme dilini tercihinize göre özelleştirin.",
+    "description": "SensoraNote uygulamasının görüntüleme dilini tercihinize göre özelleştirin.",
     "system": "Sistemi Takip Et",
     "system_desc": "Cihazınızın dil ayarlarına göre ayarlanır.",
     "info": "Dil değişiklikleri tüm uygulama arayüzü öğelerine anında uygulanacaktır. Kullanıcı tarafından oluşturulan içerik (notlar, yorumlar) orijinal dilinde kalır."
@@ -74,7 +74,7 @@
     "whatsapp": "WhatsApp'ta sohbet edin",
     "email": "E-posta Gönder",
     "community_guidelines": "Topluluk Kuralları",
-    "community_guidelines_desc": "Ba-Yu ile ilgili notları paylaşma kurallarını ve etiğini okuyun."
+    "community_guidelines_desc": "SensoraNote ile ilgili notları paylaşma kurallarını ve etiğini okuyun."
   },
   "stats": {
     "title": "Öğrenme İstatistikleri",
@@ -101,7 +101,7 @@
     "notes_created": "Notlar oluşturuldu",
     "total_materials": "Toplam Malzemeler",
     "completed": "Tamamlanmış",
-    "footer_info": "Her öğrenme oturumu sona erdikten sonra veriler otomatik olarak güncellenir. © 2026 Ba-Yu Eğitim.",
+    "footer_info": "Her öğrenme oturumu sona erdikten sonra veriler otomatik olarak güncellenir. © 2026 SensoraNote Eğitim.",
     "set_goal_title": "Günlük Hedef Belirle",
     "set_goal_desc": "Günlük öğrenme süresi hedefinizi dijital hassasiyetle belirleyin.",
     "hours": "Saat",
@@ -123,7 +123,7 @@
     "forgot_password": "Parolanızı mı unuttunuz?",
     "reset_password": "Şifreyi Sıfırla",
     "welcome": "Tekrar hoşgeldiniz",
-    "welcome_desc": "Ba-Yu'ya devam etmek için oturum açın.",
+    "welcome_desc": "SensoraNote'ya devam etmek için oturum açın.",
     "start_journey": "Yolculuğunuza Başlayın",
     "start_journey_desc": "Kaydolun ve ilk notunuzu paylaşın.",
     "login_tab": "Giriş yapmak",
@@ -197,7 +197,7 @@
     "following_count": "Takip etme",
     "followers_count": "Takipçiler",
     "register_expert": "Uzman Olun",
-    "register_expert_sub": "Ba-Yu'ya doğrulanmış bir katkıda bulunan olun",
+    "register_expert_sub": "SensoraNote'ya doğrulanmış bir katkıda bulunan olun",
     "register": "Kayıt olmak",
     "tab_notes": "Notlar",
     "tab_drafts": "Taslaklar",
@@ -545,7 +545,7 @@
     "author_pending": "Askıda olması",
     "author_follow": "Takip etmek",
     "verified_expert": "Doğrulanmış Uzman",
-    "report_help_desc": "Ba-Yu ekosistemini eğitici, güvenli ve konforlu tutmamıza yardımcı olun.",
+    "report_help_desc": "SensoraNote ekosistemini eğitici, güvenli ve konforlu tutmamıza yardımcı olun.",
     "report_main_reason": "Ana Sebep",
     "close_modal": "Modalı Kapat",
     "report_note": "Rapor Notu",
@@ -568,8 +568,8 @@
     "respond_btn": "YANITLAMAK",
     "downloaded_at": "İndirildi:",
     "pdf_restricted_title": "Korunan Malzeme",
-    "pdf_restricted_desc": "Bu PDF sürümü yalnızca kısmi materyal içermektedir. Tam sürümü indirmek için Ba-Yu uygulamasında yazar <b>@{author</b>'u takip edin.",
-    "pdf_footer": "Bu belge <span class=\"footer-brand\">Ba-Yu</span> - Geleceğin Öğrenim Platformu'ndan indirilmiştir.",
+    "pdf_restricted_desc": "Bu PDF sürümü yalnızca kısmi materyal içermektedir. Tam sürümü indirmek için SensoraNote uygulamasında yazar <b>@{author</b>'u takip edin.",
+    "pdf_footer": "Bu belge <span class=\"footer-brand\">SensoraNote</span> - Geleceğin Öğrenim Platformu'ndan indirilmiştir.",
     "sort_newest": "En yeni",
     "sort_oldest": "En eski",
     "sort_top": "En İyi Yorumlar"
@@ -617,7 +617,7 @@
     "recently": "Şu anda",
     "discussion_label": "TARTIŞMA",
     "report_modal_title": "Kullanıcıyı Bildir",
-    "report_modal_desc": "Ba-Yu ekosistemini eğitici, güvenli ve konforlu tutmamıza yardımcı olun.",
+    "report_modal_desc": "SensoraNote ekosistemini eğitici, güvenli ve konforlu tutmamıza yardımcı olun.",
     "report_reason_label": "Ana Sebep",
     "report_reason_spam": "Pazarlama spam'i / Rahatsız edici reklamlar",
     "report_reason_false_info": "Yanlış bilgi / Yanlış bilgi",
@@ -626,7 +626,7 @@
     "report_reason_copyright": "Telif Hakkı İhlali / İntihal",
     "report_reason_other": "Diğer sebep...",
     "report_detail_label": "Ek Ayrıntılar",
-    "report_success": "Rapor başarıyla gönderildi. Ba-Yu'yu güvende tuttuğunuz için teşekkür ederiz!",
+    "report_success": "Rapor başarıyla gönderildi. SensoraNote'yu güvende tuttuğunuz için teşekkür ederiz!",
     "report_failed": "Rapor gönderilemedi.",
     "btn_reply": "Cevap vermek"
   },
@@ -658,7 +658,7 @@
     "guide_3_title": "Görsel Kalite",
     "guide_3_desc": "Yazı ve resimler okunaklı olmalıdır.",
     "quality_priority": "Kalite Önceliği",
-    "quality_desc": "Ba-Yu'da malzeme kalitesinin korunmasına katkıda bulunduğunuz için teşekkür ederiz.",
+    "quality_desc": "SensoraNote'da malzeme kalitesinin korunmasına katkıda bulunduğunuz için teşekkür ederiz.",
     "validate": "Malzemeyi Doğrula",
     "reject_material": "Malzemeyi Reddet",
     "quality": "Malzeme Kalitesi",
@@ -869,7 +869,7 @@
     "prompt_approve_pakar": "Uzmanı Onayla",
     "prompt_reject_pakar": "İsteği Reddet",
     "prompt_pakar_placeholder": "Kullanıcıya not...",
-    "prompt_approve_default": "Tebrikler! Artık Ba-Yu'nun resmi bir Uzmanısınız.",
+    "prompt_approve_default": "Tebrikler! Artık SensoraNote'nun resmi bir Uzmanısınız.",
     "prompt_reject_default": "Üzgünüz, portföyünüz kriterlerimize uymuyor.",
     "toast_pakar_approved": "Uzman talebi onaylandı.",
     "toast_pakar_rejected": "Uzman talebi reddedildi.",
@@ -1055,8 +1055,8 @@
     "pdf_written_by": "Yazan:",
     "pdf_downloaded": "İndirildiği tarih:",
     "pdf_protected_title": "Korunan Malzeme",
-    "pdf_protected_desc": "Bu PDF yalnızca kısmi materyal içermektedir. Tam sürümü indirmek için Ba-Yu uygulamasında yazarı <b>@{{author}}</b> takip edin.",
-    "pdf_footer": "Bu belge <span class=\"footer-brand\">Ba-Yu</span> - Geleceğin Öğrenim Platformu'ndan indirilmiştir.",
+    "pdf_protected_desc": "Bu PDF yalnızca kısmi materyal içermektedir. Tam sürümü indirmek için SensoraNote uygulamasında yazarı <b>@{{author}}</b> takip edin.",
+    "pdf_footer": "Bu belge <span class=\"footer-brand\">SensoraNote</span> - Geleceğin Öğrenim Platformu'ndan indirilmiştir.",
     "draft_badge": "TASLAK",
     "draft_label": "Taslak",
     "last_edit": "Son düzenleme:",
@@ -1194,7 +1194,7 @@
     "desc_private": "Profilinizi ve notlarınızı yalnızca takipçileriniz görebilir. Başkalarının gönderilerine yaptığınız yorumlar herkese açık olarak görünmeye devam edecek.",
     "desc_public": "Herkes profilinizi ve notlarınızı görüntüleyebilir ve paylaştığınız içerikle etkileşimde bulunabilir.",
     "deactivate_title": "Hesabı Devre Dışı Bırak (Uykuda)",
-    "deactivate_desc": "Hesabınız Ba-Yu platformunda gizlenecek (uykuda kalacak). Profiliniz, notlarınız ve yorumlarınız diğer kullanıcılar tarafından görülmeyecek. <strong>30 gün içinde tekrar giriş yapmazsanız tüm verileriniz kalıcı olarak silinecektir.</strong>",
+    "deactivate_desc": "Hesabınız SensoraNote platformunda gizlenecek (uykuda kalacak). Profiliniz, notlarınız ve yorumlarınız diğer kullanıcılar tarafından görülmeyecek. <strong>30 gün içinde tekrar giriş yapmazsanız tüm verileriniz kalıcı olarak silinecektir.</strong>",
     "deactivate_button": "Hesabı Devre Dışı Bırak",
     "dialog_title": "Hesap Devre Dışı Bırakılsın mı?",
     "dialog_desc": "Hesabınız herkesten gizlenecek ve 30 gün boyunca Hareketsiz durumuna geçecektir. 30 günlük süre dolmadan giriş yaparak tekrar aktif hale getirebilirsiniz. Devam etmek istediğinizden emin misiniz?",
@@ -1222,7 +1222,7 @@
   "privacy_page": {
     "title": "Gizlilik Politikası",
     "hero_title": "Gizliliğiniz",
-    "hero_desc": "Verileriniz Ba-Yu ile güvende. Şeffaflığı ve veri korumayı birinci önceliğimiz olarak sürdürüyoruz.",
+    "hero_desc": "Verileriniz SensoraNote ile güvende. Şeffaflığı ve veri korumayı birinci önceliğimiz olarak sürdürüyoruz.",
     "principles": [
       {
         "label": "Güvenli",
@@ -1259,14 +1259,14 @@
       "Önemli bildirimler sağlama.",
       "Platform özelliklerini geliştirme."
     ],
-    "footer": "© 2026 Ba-Yu Platformu. Gizliliğiniz Bizim Güvenimizdir."
+    "footer": "© 2026 SensoraNote Platformu. Gizliliğiniz Bizim Güvenimizdir."
   },
   "terms_page": {
     "title": "Şartlar ve Koşullar",
     "hero_title": "Şartlar ve Koşullar",
-    "hero_desc": "Son güncelleme: 7 Mayıs 2026. Rahat bir Ba-Yu öğrenme ekosisteminin kuralları.",
+    "hero_desc": "Son güncelleme: 7 Mayıs 2026. Rahat bir SensoraNote öğrenme ekosisteminin kuralları.",
     "section1_title": "1. Şartların Kabulü",
-    "section1_desc": "Ba-Yu platformuna erişerek ve onu kullanarak, bu Hüküm ve Koşulları okumuş, anlamış ve bunlara bağlı kalmayı kabul etmiş sayılırsınız. Kabul etmiyorsanız lütfen karşılıklı güvenlik açısından hizmetlerimizi kullanmaya devam etmeyin.",
+    "section1_desc": "SensoraNote platformuna erişerek ve onu kullanarak, bu Hüküm ve Koşulları okumuş, anlamış ve bunlara bağlı kalmayı kabul etmiş sayılırsınız. Kabul etmiyorsanız lütfen karşılıklı güvenlik açısından hizmetlerimizi kullanmaya devam etmeyin.",
     "section2_title": "2. Hesap Kaydı",
     "section2_desc": "Not paylaşma özelliğini kullanabilmeniz için doğru bilgilerle kayıt olmanız gerekmektedir. Aşağıdakilerden tamamen siz sorumlusunuz:",
     "section2_items": [
@@ -1275,7 +1275,7 @@
       "Doğru ve kesin bilgiler sağlamak."
     ],
     "section3_title": "3. Fikri Mülkiyet Hakları",
-    "section3_quote": "\"Ba-Yu'ya yüklediğiniz tüm notlar sizin kalır. Ancak bunları yükleyerek, Ba-Yu'ya söz konusu içeriği platform ekosistemimizde eğitim amaçlı olarak görüntülemesi, dağıtması ve tanıtması için bir lisans vermiş olursunuz.\"",
+    "section3_quote": "\"SensoraNote'ya yüklediğiniz tüm notlar sizin kalır. Ancak bunları yükleyerek, SensoraNote'ya söz konusu içeriği platform ekosistemimizde eğitim amaçlı olarak görüntülemesi, dağıtması ve tanıtması için bir lisans vermiş olursunuz.\"",
     "section4_title": "4. Kullanım Kuralları",
     "allowed_title": "Nelere İzin Verilir",
     "allowed_items": [
@@ -1289,13 +1289,13 @@
       "Nefret söylemi yaymak.",
       "Platform sistemine zarar vermek."
     ],
-    "contact": "Sorularınız mı var? <a href=\"mailto:support@ba-yu.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@ba-yu.id</a> ile iletişime geçin",
-    "footer": "© 2026 Ba-Yu Platformu.<br/>Tüm Hakları Saklıdır."
+    "contact": "Sorularınız mı var? <a href=\"mailto:support@sensoranote.id\" className=\"text-indigo-600 dark:text-indigo-400 font-bold\">support@sensoranote.id</a> ile iletişime geçin",
+    "footer": "© 2026 SensoraNote Platformu.<br/>Tüm Hakları Saklıdır."
   },
   "community_guidelines": {
     "title": "Topluluk Kuralları",
     "hero_title": "Topluluk Kuralları",
-    "hero_desc": "Ba-Yu'da güvenli, olumlu ve destekleyici bir öğrenme ortamı yaratalım.",
+    "hero_desc": "SensoraNote'da güvenli, olumlu ve destekleyici bir öğrenme ortamı yaratalım.",
     "values_title": "Temel Değerler",
     "values": [
       {
@@ -1315,7 +1315,7 @@
       "Spam, yasa dışı tanıtımlar veya dolandırıcılık.",
       "Başkalarının kişisel bilgilerini paylaşmak (doxxing)."
     ],
-    "footer": "© 2026 Ba-Yu Platformu.<br/>Tüm Hakları Saklıdır."
+    "footer": "© 2026 SensoraNote Platformu.<br/>Tüm Hakları Saklıdır."
   },
   "help_page": {
     "title": "Yardım Merkezi",
@@ -1326,7 +1326,7 @@
     "faq_title": "Sıkça Sorulan Sorular (SSS)",
     "faqs": [
       {
-        "q": "Ba-Yu'da Nasıl Uzman Olunur?",
+        "q": "SensoraNote'da Nasıl Uzman Olunur?",
         "a": "Uzman olmak için sık sık kaliteli notlar paylaşmalısınız. Notlarınız sıklıkla 'Popüler' kategorisindeyse ve çok sayıda beğeni alıyorsa Yönetici ekibimiz bunları inceleyecek ve size Uzman statüsü verecektir."
       },
       {
@@ -1362,8 +1362,8 @@
         "a": "Uzmana gönderilen notlar intihal tespit edilmesi, görüntü çözünürlüğünün düşük olması veya hatalı formül/teoriler içermesi durumunda reddedilebilir. İyileştirmek için not ayrıntılarınızdaki uzman geri bildirim incelemelerini okuyabilirsiniz."
       },
       {
-        "q": "Ba-Yu platformu ücretli mi?",
-        "a": "Hayır, Ba-Yu, Endonezya'daki tüm öğrenci ve öğretmenlerin bilgi ve yapılandırılmış çalışma notlarını paylaşmak için kullanması tamamen ücretsizdir!"
+        "q": "SensoraNote platformu ücretli mi?",
+        "a": "Hayır, SensoraNote, Endonezya'daki tüm öğrenci ve öğretmenlerin bilgi ve yapılandırılmış çalışma notlarını paylaşmak için kullanması tamamen ücretsizdir!"
       }
     ],
     "contact_title": "Hala Yardıma mı İhtiyacınız Var?",
@@ -1372,49 +1372,49 @@
     "contact_email_title": "E-posta",
     "contact_email_desc": "Ayrıntılar ve ekler",
     "guidelines_title": "Topluluk Kuralları",
-    "guidelines_desc": "Ba-Yu ile ilgili notları paylaşmanın kurallarını ve etiğini okuyun.",
-    "wa_template": "Merhaba Ba-Yu Destek Ekibi, ben {{name}}. Sorunla ilgili yardıma ihtiyacım var: ... {{day}} tarihinde.",
-    "email_subject": "Ba-Yu Uygulama Sorunu Yardımı - {{name}}",
-    "email_body": "Merhaba Ba-Yu Destek Ekibi,\n\nBen {{name}}. Bir sorunla ilgili yardıma ihtiyacım var:\n...\n\nBu engelle {{day}} tarihinde karşılaştım.\n\nLütfen yardım edin, teşekkür ederim!"
+    "guidelines_desc": "SensoraNote ile ilgili notları paylaşmanın kurallarını ve etiğini okuyun.",
+    "wa_template": "Merhaba SensoraNote Destek Ekibi, ben {{name}}. Sorunla ilgili yardıma ihtiyacım var: ... {{day}} tarihinde.",
+    "email_subject": "SensoraNote Uygulama Sorunu Yardımı - {{name}}",
+    "email_body": "Merhaba SensoraNote Destek Ekibi,\n\nBen {{name}}. Bir sorunla ilgili yardıma ihtiyacım var:\n...\n\nBu engelle {{day}} tarihinde karşılaştım.\n\nLütfen yardım edin, teşekkür ederim!"
   },
   "about_page": {
     "title": "Hakkımızda",
-    "hero_title": "Ba-Yu'yu Tanıyın",
-    "hero_desc": "Ba-Yu Platformunun arkasındaki yolculuğa, misyona ve ekibe yaklaşın.",
+    "hero_title": "SensoraNote'yu Tanıyın",
+    "hero_desc": "SensoraNote Platformunun arkasındaki yolculuğa, misyona ve ekibe yaklaşın.",
     "vision_title": "Vizyon ve Misyon",
-    "vision_desc": "Her öğrencinin kaliteli materyallere eşit erişimi hak ettiğine inanıyoruz. Ba-Yu, Endonezya genelindeki öğrenciler için adil, güvenli ve erişilebilir not alışverişini kolaylaştırmak için inşa edildi.",
+    "vision_desc": "Her öğrencinin kaliteli materyallere eşit erişimi hak ettiğine inanıyoruz. SensoraNote, Endonezya genelindeki öğrenciler için adil, güvenli ve erişilebilir not alışverişini kolaylaştırmak için inşa edildi.",
     "community_title": "Topluluğumuz",
     "community_desc": "Çeşitli eğitim kurumlarından binlerce öğrenci ve uzman katıldı. Sıkı doğrulama ve raporlama sistemleriyle bu ekosistemi olumlu ve yapıcı tutuyoruz.",
-    "footer": "© 2026 Ba-Yu Platformu.<br/>Tüm Hakları Saklıdır."
+    "footer": "© 2026 SensoraNote Platformu.<br/>Tüm Hakları Saklıdır."
   },
   "careers_page": {
     "title": "Kariyer",
-    "hero_title": "Ba-Yu'da Kariyer",
+    "hero_title": "SensoraNote'da Kariyer",
     "hero_desc": "Geleceğin eğitim ekosistemini inşa etmek için bize katılın.",
     "no_vacancies_title": "Henüz Boş Yer Yok",
     "no_vacancies_desc": "Şu anda yeni pozisyon açmıyoruz ancak yetenekli bireylerle her zaman ilgileniyoruz.",
     "contact_btn": "Bize Ulaşın",
-    "footer": "© 2026 Ba-Yu Platformu.<br/>Tüm Hakları Saklıdır."
+    "footer": "© 2026 SensoraNote Platformu.<br/>Tüm Hakları Saklıdır."
   },
   "blog_page": {
     "title": "Blog ve Güncellemeler",
-    "hero_title": "Ba-Yu Blogu",
+    "hero_title": "SensoraNote Blogu",
     "hero_desc": "Geliştirme ekibinden hikayeler, bilgiler ve en son özellik güncellemeleri.",
     "coming_soon_title": "Yakında gelecek",
     "coming_soon_desc": "Sizler için eğitim ve teknolojiye dair ilgi çekici yazılar hazırlıyoruz. İlk lansmanımız için bizi izlemeye devam edin!",
-    "footer": "© 2026 Ba-Yu Platformu.<br/>Tüm Hakları Saklıdır."
+    "footer": "© 2026 SensoraNote Platformu.<br/>Tüm Hakları Saklıdır."
   },
   "status_page": {
     "title": "Sistem Durumu",
     "hero_title": "Tüm Sistemler Normal",
     "hero_desc": "Platform normal şekilde çalışıyor.",
     "status_operational": "Operasyonel",
-    "footer": "© 2026 Ba-Yu Platformu.<br/>Tüm Hakları Saklıdır."
+    "footer": "© 2026 SensoraNote Platformu.<br/>Tüm Hakları Saklıdır."
   },
   "auth_modal": {
     "welcome": "Hoş geldin",
     "create_account": "Yeni Hesap Oluştur",
-    "login_desc": "Tüm Ba-Yu özelliklerine erişmek için oturum açın.",
+    "login_desc": "Tüm SensoraNote özelliklerine erişmek için oturum açın.",
     "register_desc": "Şimdi kaydolun ve notlarınızı yönetmeye başlayın.",
     "login": "Giriş yapmak",
     "register": "Kayıt olmak",
@@ -1449,7 +1449,7 @@
     "terms": "Şartlar ve Koşullar",
     "terms_and": "Ve",
     "privacy": "Gizlilik Politikası",
-    "terms_suffix": "Ba-Yu hizmetleri.",
+    "terms_suffix": "SensoraNote hizmetleri.",
     "reset_throttled": "Tekrar denemeden önce lütfen bir süre (60 saniye) bekleyin.",
     "reset_sent": "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi."
   },
@@ -1477,11 +1477,11 @@
     "no_data_filter": "Dışa aktarma filtresiyle eşleşen veri yok.",
     "export_failed": "Veriler dışa aktarılamadı. Hata:",
     "print_failed": "Yazdırma penceresi açılamadı. Lütfen tarayıcınızda açılır pencerelere izin verildiğinden emin olun.",
-    "report_title": "Ba-Yu Veri Dışa Aktarma Raporu",
+    "report_title": "SensoraNote Veri Dışa Aktarma Raporu",
     "extracted_at": "Alıntı tarihi:",
-    "footer_note": "Ba-Yu Platformu — Bu belge otomatik olarak oluşturulur.",
+    "footer_note": "SensoraNote Platformu — Bu belge otomatik olarak oluşturulur.",
     "doc_info": "Bu belge şunları içerir:",
-    "doc_info2": "Ba-Yu platformundan elde edilen veriler",
+    "doc_info2": "SensoraNote platformundan elde edilen veriler",
     "doc_all_cat": "Veriler tüm kategorileri içerir: Notlar, Raporlar ve Kullanıcılar.",
     "doc_only_cat": "Görüntülenen veriler yalnızca kategori içindir",
     "doc_filter_verify": "Doğrulama durumu filtresi:",
@@ -1538,7 +1538,7 @@
     "submit_button": "Kaydet ve Devam Et",
     "submitting": "Kaydediliyor...",
     "username_error": "Kullanıcı adı yalnızca harf, sayı ve alt çizgi (_) içerebilir",
-    "success_msg": "Profil başarıyla tamamlandı! Ba-Yu'ya hoş geldiniz",
+    "success_msg": "Profil başarıyla tamamlandı! SensoraNote'ya hoş geldiniz",
     "error_msg": "Profil kaydedilirken bir hata oluştu",
     "edu_sd": "İlköğretim Okulu (SD)",
     "edu_smp": "Ortaokul (SMP)",
@@ -1622,14 +1622,14 @@
     "not_found_title": "Mesaj Bulunamadı",
     "not_found_desc": "Bu mesaj silinmiş veya artık mevcut değil olabilir.",
     "back": "Geri",
-    "system": "Ba-Yu Sistemi",
+    "system": "SensoraNote Sistemi",
     "regards": "Saygılarımızla,",
-    "team": "Ba-Yu EduPlatform Ekibi"
+    "team": "SensoraNote EduPlatform Ekibi"
   },
   "landing": {
-    "philosophy_text": "En iyi eğitimin işbirliğinden doğduğuna inanıyoruz. Ba-Yu, fikirlerinizi organize etmenize, içgörüleri paylaşmanıza ve destekleyici bir öğrenme topluluğunda birlikte büyümenize yardımcı olmak için burada.",
+    "philosophy_text": "En iyi eğitimin işbirliğinden doğduğuna inanıyoruz. SensoraNote, fikirlerinizi organize etmenize, içgörüleri paylaşmanıza ve destekleyici bir öğrenme topluluğunda birlikte büyümenize yardımcı olmak için burada.",
     "philosophy_vision": "VİZYONUMUZ",
-    "philosophy_motto": "Ba-Yu Felsefesi — Öğrenin, Paylaşın, Birlikte Büyüyün",
+    "philosophy_motto": "SensoraNote Felsefesi — Öğrenin, Paylaşın, Birlikte Büyüyün",
     "row1_1": "40+ Dil Desteği",
     "row1_2": "Dinamik Metin Düzenleyici",
     "row1_3": "Kapsamlı Çalışma Konuları",
@@ -1693,14 +1693,14 @@
     "multilang_title_1": "Öğrenme",
     "multilang_title_2": "Sınırsız",
     "multilang_title_3": "Dil.",
-    "multilang_desc": "Ba-Yu, 40'den fazla dilde arayüzleri destekleyerek dünyanın her yerinden öğrencilerin platformumuzu kullanarak rahatça işbirliği yapmasına ve öğrenmesine olanak tanır.",
+    "multilang_desc": "SensoraNote, 40'den fazla dilde arayüzleri destekleyerek dünyanın her yerinden öğrencilerin platformumuzu kullanarak rahatça işbirliği yapmasına ve öğrenmesine olanak tanır.",
     "multilang_supported": "Desteklenen Diller",
     "explore_badge": "KONU İNCELEME",
     "explore_title": "Çeşitli Bilim Alanları Tek Platformda.",
     "explore_field": "SAHA KEŞİFİ",
     "explore_notes_btn": "Notları Keşfedin",
     "feature_badge": "TEMEL ÖZELLİKLER",
-    "feature_title": "Ba-Yu'nun Arkasındaki Teknoloji.",
+    "feature_title": "SensoraNote'nun Arkasındaki Teknoloji.",
     "feature_desc": "Her ders materyalini etkili bir şekilde organize etmenize, doğrulamanıza ve uzmanlaşmanıza yardımcı olmak için akıllı bir not alma ekosistemi tasarladık.",
     "feat1_badge": "ZENGİN EDİTÖR",
     "feat1_title": "LaTeX Zengin Düzenleyici",
@@ -1831,11 +1831,11 @@
     "failed_title": "Doğrulama Başarısız",
     "failed_desc": "Doğrulama bağlantısı geçersiz veya süresi dolmuş. Lütfen yeni bir bağlantı isteyin.",
     "redirect_mobile": "Mobil uygulama açılıyor...",
-    "open_app": "Ba-Yu Mobil Uygulamasını Aç",
+    "open_app": "SensoraNote Mobil Uygulamasını Aç",
     "go_to_login": "Giriş Yap'a git"
   },
   "download_app": {
-    "title": "Get Ba-Yu App",
+    "title": "Get SensoraNote App",
     "subtitle": "Learn easier from anywhere. Coming soon to App Store and Google Play.",
     "status": "Currently in development...",
     "back_to_home": "Back to Home"

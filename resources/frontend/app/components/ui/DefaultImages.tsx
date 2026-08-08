@@ -37,7 +37,7 @@ export function DefaultThumbnail({
         return Math.abs(hash);
     };
 
-    const hash = getHash(subject || title || "Ba-Yu");
+    const hash = getHash(subject || title || "SensoraNote");
     const colorClass = subjectData 
         ? "" // We'll use inline style for custom hex colors
         : fallbackColors[hash % fallbackColors.length];

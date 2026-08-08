@@ -4,7 +4,7 @@ export default function ApplicationLogo(props: ImgHTMLAttributes<HTMLImageElemen
     return (
         <img
             src="/logo.svg"
-            alt="Ba-Yu Logo"
+            alt="SensoraNote Logo"
             {...props}
         />
     );

@@ -36,10 +36,10 @@ export default function AboutPage() {
                             <Users className="w-10 h-10 text-indigo-600 dark:text-indigo-400" />
                         </div>
                         <h2 className="font-['Lexend_Deca'] font-extrabold text-2xl text-gray-900 dark:text-gray-100 mb-3">
-                            {t("about_page.hero_title") || "Mengenal Ba-Yu"}
+                            {t("about_page.hero_title") || "Mengenal SensoraNote"}
                         </h2>
                         <p className="font-['Manrope'] text-[15px] leading-relaxed text-gray-500 dark:text-gray-400">
-                            {t("about_page.hero_desc") || "Mengenal lebih dekat perjalanan, misi, dan tim di balik Ba-Yu Platform."}
+                            {t("about_page.hero_desc") || "Mengenal lebih dekat perjalanan, misi, dan tim di balik SensoraNote Platform."}
                         </p>
                     </div>
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
                                 {t("about_page.vision_title") || "Visi & Misi"}
                             </h3>
                             <p className="font-['Manrope'] text-[14px] text-gray-600 dark:text-gray-400 leading-relaxed">
-                                {t("about_page.vision_desc") || "Kami percaya bahwa setiap pelajar berhak mendapatkan akses yang sama terhadap materi berkualitas. Ba-Yu dibangun untuk memfasilitasi pertukaran catatan secara adil, aman, dan mudah diakses oleh pelajar di seluruh Indonesia."}
+                                {t("about_page.vision_desc") || "Kami percaya bahwa setiap pelajar berhak mendapatkan akses yang sama terhadap materi berkualitas. SensoraNote dibangun untuk memfasilitasi pertukaran catatan secara adil, aman, dan mudah diakses oleh pelajar di seluruh Indonesia."}
                             </p>
                         </div>
 
@@ -68,7 +68,7 @@ export default function AboutPage() {
                     </div>
                     
                     <div className="text-center pb-8 pt-4">
-                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500" dangerouslySetInnerHTML={{ __html: t("about_page.footer") || '&copy; 2026 Ba-Yu Platform.<br/>Semua Hak Dilindungi.' }} />
+                        <p className="font-['Manrope'] text-[13px] text-gray-400 dark:text-gray-500" dangerouslySetInnerHTML={{ __html: t("about_page.footer") || '&copy; 2026 SensoraNote Platform.<br/>Semua Hak Dilindungi.' }} />
                     </div>
                 </div>
             </div>
