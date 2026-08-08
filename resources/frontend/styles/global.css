@@ -1,0 +1,141 @@
+/* Hilangkan scrollbar tapi tetap bisa di-scroll */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE dan Edge lama */
+    scrollbar-width: none;     /* Firefox */
+  }
+}
+
+/* Custom scrollbar styles */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safe area insets for mobile */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Font family defaults */
+body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, button {
+  font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* ==========================================================================
+   PREMIUM DRAFT LOADER (Ba-Yu Design System)
+   ========================================================================== */
+
+.draft-loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.loader-container {
+  --size: 64px;
+  --duration: 1.5s;
+  --primary: #0D9488; /* teal-600 */
+  --secondary: #2DD4BF; /* teal-400 */
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+}
+
+.loader-box-item {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(13, 148, 136, 0.1);
+  animation: box-float var(--duration) infinite ease-in-out;
+}
+
+.loader-box-item:nth-child(1) {
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: white;
+  border: 1.5px solid rgba(13, 148, 136, 0.2);
+  padding: 5px;
+}
+
+.loader-box-item:nth-child(2) {
+  top: 0;
+  left: 34px;
+  background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+  animation-delay: 0.1s;
+}
+
+.loader-box-item:nth-child(3) {
+  top: 34px;
+  left: 0;
+  background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+  animation-delay: 0.2s;
+}
+
+.loader-box-item:nth-child(4) {
+  top: 34px;
+  left: 34px;
+  background: linear-gradient(135deg, #99f6e4, #5eead4);
+  animation-delay: 0.3s;
+}
+
+.loader-box-item:nth-child(5) {
+  /* Ghost box for extra depth */
+  top: 17px;
+  left: 17px;
+  width: 30px;
+  height: 30px;
+  background: var(--primary);
+  opacity: 0.1;
+  filter: blur(8px);
+  z-index: -1;
+  animation: box-pulse var(--duration) infinite ease-in-out;
+}
+
+@keyframes box-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+    box-shadow: 0 12px 25px rgba(13, 148, 136, 0.15);
+  }
+}
+
+@keyframes box-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.4); opacity: 0.2; }
+}
+
+/* Enable automatic RTL/LTR detection based on typed content */
+input, textarea, [contenteditable="true"], .ql-editor {
+  unicode-bidi: plaintext;
+  text-align: start;
+}

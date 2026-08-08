@@ -1,0 +1,130 @@
+/* React Quill Custom Styles */
+.ql-toolbar {
+  border: none !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  background: #fafafa !important;
+  padding: 12px !important;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.ql-container {
+  border: none !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  min-height: 300px;
+}
+
+.ql-editor {
+  min-height: 300px;
+  padding: 16px !important;
+  line-height: 1.7;
+}
+
+.ql-editor.ql-blank::before {
+  color: #9ca3af !important;
+  font-style: normal !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.ql-snow .ql-stroke {
+  stroke: #6b7280 !important;
+}
+
+.ql-snow .ql-fill {
+  fill: #6b7280 !important;
+}
+
+.ql-snow .ql-picker-label {
+  color: #6b7280 !important;
+}
+
+.ql-toolbar button:hover .ql-stroke,
+.ql-toolbar button:focus .ql-stroke,
+.ql-toolbar button.ql-active .ql-stroke {
+  stroke: #5D5CE6 !important;
+}
+
+.ql-toolbar button:hover .ql-fill,
+.ql-toolbar button:focus .ql-fill,
+.ql-toolbar button.ql-active .ql-fill {
+  fill: #5D5CE6 !important;
+}
+
+.ql-snow.ql-toolbar button:hover,
+.ql-snow .ql-toolbar button:hover,
+.ql-snow.ql-toolbar button:focus,
+.ql-snow .ql-toolbar button:focus,
+.ql-snow.ql-toolbar button.ql-active,
+.ql-snow .ql-toolbar button.ql-active {
+  background: #5D5CE6 !important;
+  background-opacity: 0.1 !important;
+  border-radius: 8px;
+}
+
+.ql-snow a {
+  color: #5D5CE6 !important;
+}
+
+/* Quill content styling */
+.ql-editor h1 {
+  font-family: 'Lexend Deca', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  margin-bottom: 12px !important;
+}
+
+.ql-editor h2 {
+  font-family: 'Lexend Deca', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  margin-bottom: 10px !important;
+}
+
+.ql-editor h3 {
+  font-family: 'Lexend Deca', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+  margin-bottom: 8px !important;
+}
+
+.ql-editor p {
+  margin-bottom: 12px !important;
+}
+
+.ql-editor ul,
+.ql-editor ol {
+  padding-left: 24px !important;
+  margin-bottom: 12px !important;
+}
+
+.ql-editor li {
+  margin-bottom: 6px !important;
+}
+
+.ql-editor strong {
+  font-weight: 600 !important;
+}
+
+.ql-editor img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 12px !important;
+  margin: 12px 0 !important;
+}
+
+/* Mobile Responsiveness for Quill */
+@media (max-width: 768px) {
+  .ql-toolbar {
+    position: sticky !important;
+    top: 60px !important; /* Below the 60px mobile header */
+    z-index: 40 !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+    border-radius: 0 !important; /* Remove top border radius on sticky */
+    border-top: none !important;
+  }
+  
+  .ql-editor {
+    padding-bottom: 250px !important; /* Ample space for virtual keyboard to not hide cursor */
+  }
+}

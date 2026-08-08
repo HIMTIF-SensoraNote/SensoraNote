@@ -1,0 +1,50 @@
+# Files & folders that should NOT be copied into the Docker image.
+# (similar to .gitignore but specific to Docker builds)
+
+# Dependencies — these are reinstalled fresh inside the container
+node_modules
+vendor
+
+# Secrets & local config
+.env
+.env.backup
+.env.production
+
+# Git stuff
+.git
+.gitignore
+.gitattributes
+
+# Editor / IDE settings
+.idea
+.vscode
+.editorconfig
+
+# Generated build artifacts (will be rebuilt inside container)
+public/build
+public/hot
+
+# Logs & runtime caches
+*.log
+storage/logs/*.log
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+
+# Test stuff
+tests
+phpunit.xml
+.phpunit.cache
+.phpunit.result.cache
+
+# Docs / misc
+README.md
+*.md
+docker-compose.yml
+
+# Mobile & Capacitor
+Ba-Yu-Capacitor
+*.apk
+
+# Secrets
+firebase-credentials.json
