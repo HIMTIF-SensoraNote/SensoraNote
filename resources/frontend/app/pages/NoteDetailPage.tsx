@@ -66,7 +66,20 @@ export default function NoteDetailPage() {
     
     // Scroll to top whenever the note ID changes
     useEffect(() => {
-        window.scrollTo(0, 0);
+        const resetScroll = () => {
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' } as any);
+            document.documentElement.scrollTo({ top: 0, left: 0, behavior: 'instant' } as any);
+            const mainScroll = document.getElementById('main-scroll-container');
+            if (mainScroll) {
+                mainScroll.scrollTo({ top: 0, left: 0, behavior: 'instant' } as any);
+                mainScroll.scrollTop = 0;
+            }
+        };
+
+        resetScroll();
+        // Also try after a slight delay to ensure DOM is ready and new content is painted
+        setTimeout(resetScroll, 50);
+        setTimeout(resetScroll, 150);
     }, [id]);
 
     const navigate = useNavigate();
