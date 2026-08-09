@@ -63,6 +63,12 @@ export default function NoteDetailPage() {
     const { t, language } = useTranslation();
     useDocumentTitle(t('titles.note_detail'));
     const { id } = useParams();
+    
+    // Scroll to top whenever the note ID changes
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
+
     const navigate = useNavigate();
     const location = useLocation();
     const { isAuthenticated, user } = useAuth();
