@@ -110,7 +110,7 @@ export default function NoteDetailPage() {
         green:  { bg: "var(--hl-green)", darkBg: "var(--hl-green)", label: "Hijau" },
         blue:   { bg: "var(--hl-blue)", darkBg: "var(--hl-blue)", label: "Biru" },
         red:    { bg: "var(--hl-red)", darkBg: "var(--hl-red)", label: "Merah" },
-        blue: { bg: "var(--hl-blue)", darkBg: "var(--hl-blue)", label: "Ungu" },
+        purple: { bg: "var(--hl-purple)", darkBg: "var(--hl-purple)", label: "Ungu" },
     };
 
     const handleDownloadPDF = () => {
