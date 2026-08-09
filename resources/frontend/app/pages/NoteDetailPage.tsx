@@ -819,7 +819,7 @@ export default function NoteDetailPage() {
         try {
             const token = localStorage.getItem("bayu-token") || sessionStorage.getItem("bayu-token");
             const targetLang = language === 'system' ? 'id' : language;
-            const sourceLang = targetLang === 'id' ? null : 'id';
+            const sourceLang = null;
             
             const [titleRes, contentRes] = await Promise.all([
                 axios.post('/api/translate-content', {
@@ -856,7 +856,7 @@ export default function NoteDetailPage() {
         try {
             const token = localStorage.getItem("bayu-token") || sessionStorage.getItem("bayu-token");
             const targetLang = language === 'system' ? 'id' : language;
-            const sourceLang = targetLang === 'id' ? null : 'id';
+            const sourceLang = null;
             
             const res = await axios.post('/api/translate-content', {
                 text: content,
