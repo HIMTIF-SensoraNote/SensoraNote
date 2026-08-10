@@ -1738,11 +1738,18 @@
     "value_instant": "Configuração instantânea",
     "value_community": "Comunidade Ativa",
     "and_many_more": "e muito mais...",
-    "active_language": "Linguagem Ativa"
+    "active_language": "Linguagem Ativa",
+    "gallery_badge": "INKLUSIVITAS 100%",
+    "gallery_title": "Pendidikan Tanpa Batasan.",
+    "row1_7": "AI Vision OCR",
+    "row1_8": "LaTeX Screen Reader",
+    "row2_7": "Braille Converter",
+    "row2_8": "Sienna Audio Podcast",
+    "row2_9": "AI Chatbot & Quiz"
   },
   "loader": {
     "log_1": "ALINHANDO PROTOCOLOS EDUCACIONAIS...",
-    "log_2": "ATIVAR O DECK MULTILINGUE (40+ IDIOMAS)...",
+    "log_2": "ATIVAR O DECK MULTILINGUE (20 IDIOMAS)...",
     "log_3": "COMPILANDO A MÁQUINA DE FÓRMULA DE LÁTEX...",
     "log_4": "SINCRONIZANDO A DINÂMICA DO PORTAL...",
     "log_5": "CONSTRUINDO UM SISTEMA COESO DE BRILHO...",

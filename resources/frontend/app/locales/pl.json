@@ -1738,7 +1738,14 @@
     "value_instant": "Natychmiastowa konfiguracja",
     "value_community": "Aktywna społeczność",
     "and_many_more": "i wiele więcej...",
-    "active_language": "Aktywny język"
+    "active_language": "Aktywny język",
+    "gallery_badge": "INKLUSIVITAS 100%",
+    "gallery_title": "Pendidikan Tanpa Batasan.",
+    "row1_7": "AI Vision OCR",
+    "row1_8": "LaTeX Screen Reader",
+    "row2_7": "Braille Converter",
+    "row2_8": "Sienna Audio Podcast",
+    "row2_9": "AI Chatbot & Quiz"
   },
   "loader": {
     "log_1": "DOPASOWANIE PROTOKOŁÓW EDUKACYJNYCH...",

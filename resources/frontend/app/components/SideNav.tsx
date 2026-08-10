@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Home, Search, Bookmark, User, LayoutDashboard, ChevronLeft, Hash, Star, FileText, Settings, Plus, LogOut } from 'lucide-react';
+import { Home, Search, Bookmark, User, LayoutDashboard, ChevronLeft, Hash, Star, FileText, Settings, Plus, LogOut, PersonStanding } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
@@ -134,6 +134,25 @@ export function SideNav({ isExpanded, toggleSidebar }: SideNavProps) {
 
       {/* Bottom Actions */}
       <div className="mt-auto border-t border-slate-100 dark:border-white/5 p-3 flex flex-col gap-1">
+         {/* Accessibility Widget Button */}
+         <button
+           onClick={() => {
+             const btn = document.querySelector('.asw-menu-btn') as HTMLElement;
+             if (btn) {
+               btn.click();
+             } else {
+               alert('Widget Aksesibilitas Sienna sedang dimuat...');
+             }
+           }}
+           className="flex items-center gap-3 px-3 py-[9px] rounded-xl transition-all duration-200 w-full group text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-gray-200 text-left cursor-pointer"
+           title="Buka Menu Aksesibilitas Sienna"
+         >
+           <PersonStanding className="w-[20px] h-[20px] shrink-0 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform" strokeWidth={2.2} />
+           <span className="font-['Manrope'] text-[14px] truncate mt-[1px] font-medium">
+             Aksesibilitas
+           </span>
+         </button>
+
          <Link
            to="/settings"
            className={`flex items-center gap-3 px-3 py-[9px] rounded-xl transition-all duration-200 w-full group ${

@@ -10,16 +10,7 @@ use App\Models\Post;
 use App\Models\User;
 
 Route::get('/', function () {
-    if (auth()->check()) {
-        return redirect('/app');
-    }
-    
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return redirect('/app');
 });
 
 Route::get('/dashboard', function () {

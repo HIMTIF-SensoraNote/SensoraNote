@@ -1630,7 +1630,7 @@
     "philosophy_text": "We believe that the best education is born from collaboration. SensoraNote is here to help you organize ideas, share insights, and grow together in a supportive learning community.",
     "philosophy_vision": "OUR VISION",
     "philosophy_motto": "SensoraNote Philosophy — Learn, Share, Grow Together",
-    "row1_1": "40+ Languages ​​Supported",
+    "row1_1": "20 Languages ​​Supported",
     "row1_2": "Dynamic Text Editor",
     "row1_3": "Extensive Study Topics",
     "row1_4": "From Elementary School to College",
@@ -1693,7 +1693,7 @@
     "multilang_title_1": "Learning",
     "multilang_title_2": "Without limit",
     "multilang_title_3": "Language.",
-    "multilang_desc": "SensoraNote supports interfaces in 40+ languages, allowing students from all over the world to collaborate and learn comfortably using our platform.",
+    "multilang_desc": "SensoraNote supports interfaces in 20 languages, allowing students from all over the world to collaborate and learn comfortably using our platform.",
     "multilang_supported": "Languages ​​Supported",
     "explore_badge": "TOPIC EXPLORATION",
     "explore_title": "Various Fields of Science on One Platform.",
@@ -1738,7 +1738,14 @@
     "value_instant": "Instant Setup",
     "value_community": "Active Community",
     "and_many_more": "And many more",
-    "active_language": "Active Language"
+    "active_language": "Active Language",
+    "gallery_badge": "100% INCLUSIVITY",
+    "gallery_title": "Education Without Barriers.",
+    "row1_7": "AI Vision OCR",
+    "row1_8": "LaTeX Screen Reader",
+    "row2_7": "Braille Converter",
+    "row2_8": "Sienna Audio Podcast",
+    "row2_9": "AI Chatbot & Quiz"
   },
   "loader": {
     "log_1": "Loading system modules...",

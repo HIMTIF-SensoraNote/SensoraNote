@@ -3,6 +3,7 @@ import { Github, Twitter, Instagram } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useState } from 'react';
 import { AuthModal } from './auth-modal';
+import ApplicationLogo from './ApplicationLogo';
 
 export function Footer() {
   const { t } = useTranslation();
@@ -25,11 +26,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4 group">
-              <div className="w-10 h-10 transition-transform group-hover:scale-105 duration-300">
-                <img src="/logo.png" alt="SensoraNote Logo" className="w-full h-full object-contain" />
-              </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] bg-clip-text text-transparent transition-all duration-300">
+            <Link to="/" className="flex items-center gap-3 mb-4 group">
+              <ApplicationLogo size={40} className="group-hover:scale-105" />
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent transition-all duration-300">
                 SensoraNote
               </span>
             </Link>

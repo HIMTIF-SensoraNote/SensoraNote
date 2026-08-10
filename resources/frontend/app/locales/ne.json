@@ -1630,7 +1630,7 @@
     "philosophy_text": "हामी विश्वास गर्छौं कि उत्कृष्ट शिक्षा सहकार्यबाट जन्मन्छ। तपाईंलाई विचारहरू व्यवस्थित गर्न, अन्तर्दृष्टि साझा गर्न र सहयोगी सिकाइ समुदायमा सँगै बढ्न मद्दत गर्न SensoraNote यहाँ छ।",
     "philosophy_vision": "हाम्रो भिजन",
     "philosophy_motto": "बा-यु दर्शन - सिक्नुहोस्, साझा गर्नुहोस्, सँगै बढ्नुहोस्",
-    "row1_1": "40+ भाषाहरू समर्थित",
+    "row1_1": "20 भाषाहरू समर्थित",
     "row1_2": "गतिशील पाठ सम्पादक",
     "row1_3": "विस्तृत अध्ययन विषयहरू",
     "row1_4": "प्राथमिक विद्यालयदेखि कलेजसम्म",
@@ -1738,7 +1738,14 @@
     "value_instant": "तत्काल सेटअप",
     "value_community": "सक्रिय समुदाय",
     "and_many_more": "र धेरै धेरै ...",
-    "active_language": "सक्रिय भाषा"
+    "active_language": "सक्रिय भाषा",
+    "gallery_badge": "INKLUSIVITAS 100%",
+    "gallery_title": "Pendidikan Tanpa Batasan.",
+    "row1_7": "AI Vision OCR",
+    "row1_8": "LaTeX Screen Reader",
+    "row2_7": "Braille Converter",
+    "row2_8": "Sienna Audio Podcast",
+    "row2_9": "AI Chatbot & Quiz"
   },
   "loader": {
     "log_1": "शैक्षिक प्रोटोकलहरू पङ्क्तिबद्ध गर्दै...",

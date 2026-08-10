@@ -1738,11 +1738,18 @@
     "value_instant": "ตั้งค่าทันที",
     "value_community": "ชุมชนที่ใช้งานอยู่",
     "and_many_more": "และอีกมากมาย...",
-    "active_language": "ภาษาที่ใช้งานอยู่"
+    "active_language": "ภาษาที่ใช้งานอยู่",
+    "gallery_badge": "INKLUSIVITAS 100%",
+    "gallery_title": "Pendidikan Tanpa Batasan.",
+    "row1_7": "AI Vision OCR",
+    "row1_8": "LaTeX Screen Reader",
+    "row2_7": "Braille Converter",
+    "row2_8": "Sienna Audio Podcast",
+    "row2_9": "AI Chatbot & Quiz"
   },
   "loader": {
     "log_1": "การจัดแนวระเบียบปฏิบัติทางการศึกษา...",
-    "log_2": "เปิดใช้งานสำรับหลายภาษา (40+ ภาษา)...",
+    "log_2": "เปิดใช้งานสำรับหลายภาษา (20 ภาษา)...",
     "log_3": "รวบรวมเครื่องสูตรน้ำยาง...",
     "log_4": "กำลังซิงโครไนซ์พอร์ทัลไดนามิกส์...",
     "log_5": "สร้างระบบแห่งความสดใสที่เหนียวแน่น...",

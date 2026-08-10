@@ -7,6 +7,8 @@ interface BrutalistLoaderProps {
   onComplete: () => void;
 }
 
+import ApplicationLogo from './ApplicationLogo';
+
 export function BrutalistLoader({ onComplete }: BrutalistLoaderProps) {
   const { t } = useTranslation();
   
@@ -144,17 +146,18 @@ export function BrutalistLoader({ onComplete }: BrutalistLoaderProps) {
             <span className="text-[10px] tracking-[0.2em] font-mono text-white/60 font-semibold uppercase">{t('loader.sys_load') || 'SYSTEM LOAD IN PROGRESS'}</span>
           </motion.div>
 
-          <motion.h1
-            initial={{ scale: 0.98, opacity: 0 }}
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.0, ease: "easeOut", delay: 0.2 }}
-            className="text-5xl md:text-6xl font-extrabold tracking-tight text-white select-none leading-none mb-2"
-            style={{
-              textShadow: '0 0 30px rgba(93,92,230,0.25)',
-            }}
+            className="flex flex-col items-center gap-6 mb-2"
           >
-            Belajar<span className="text-[#1d4ed8]">Yuk</span>
-          </motion.h1>
+            <ApplicationLogo size={80} className="drop-shadow-[0_0_30px_rgba(37,99,235,0.4)]" />
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white select-none leading-none"
+                style={{ textShadow: '0 0 30px rgba(37,99,235,0.25)' }}>
+              Sensora<span className="text-[#2563eb]">Note</span>
+            </h1>
+          </motion.div>
         </div>
 
         {/* Horizontal Splitting Line Glow */}

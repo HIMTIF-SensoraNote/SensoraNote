@@ -22,7 +22,8 @@ import {
   ExternalLink,
   ShieldCheck,
   AlertTriangle,
-  UserPlus
+  UserPlus,
+  PersonStanding
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router';
 import { useState, useEffect } from 'react';
@@ -257,6 +258,21 @@ export default function SettingsPage() {
                       <ChevronRight size={16} className="text-slate-300 dark:text-slate-600" />
                     </div>
                   } 
+                />
+                <SettingRow 
+                  icon={PersonStanding} 
+                  title="Aksesibilitas & Fitur Inklusif" 
+                  subtitle="Atur kontras, ukuran teks, dan modul pembaca layar Sienna"
+                  color="text-emerald-600 dark:text-emerald-400"
+                  onClick={() => {
+                    const btn = document.querySelector('.asw-menu-btn') as HTMLElement;
+                    if (btn) btn.click();
+                  }}
+                  rightElement={
+                    <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-1 rounded-full">
+                      Buka Widget
+                    </span>
+                  }
                 />
                 <SettingRow icon={Globe} title={t('settings.language')} to="/settings/language" rightElement={
                   <div className="flex items-center gap-3">
