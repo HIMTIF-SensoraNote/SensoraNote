@@ -25,6 +25,7 @@ Thumbs.db
 
 # Secrets
 firebase-credentials.json
+google-credentials.json
 
 # Mobile & Capacitor
 *.apk

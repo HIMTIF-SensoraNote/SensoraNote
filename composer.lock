@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9796a8cb9cf2c7728de8b7308e50ccd4",
+    "content-hash": "edab7a3b529c202f988c97a3976cd791",
     "packages": [
         {
             "name": "beste/clock",
@@ -1412,6 +1412,64 @@
                 "source": "https://github.com/googleapis/google-cloud-php-storage/tree/v1.51.0"
             },
             "time": "2026-04-09T21:01:46+00:00"
+        },
+        {
+            "name": "google/cloud-vision",
+            "version": "v2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-cloud-php-vision.git",
+                "reference": "eb470f36e45eac3bc77e8f65bcc2d74d8d943de1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-vision/zipball/eb470f36e45eac3bc77e8f65bcc2d74d8d943de1",
+                "reference": "eb470f36e45eac3bc77e8f65bcc2d74d8d943de1",
+                "shasum": ""
+            },
+            "require": {
+                "google/cloud-core": "^1.57",
+                "google/gax": "^1.38.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "erusev/parsedown": "^1.6",
+                "google/cloud-storage": "^2.0",
+                "phpdocumentor/reflection": "^5.3.3||^6.0",
+                "phpdocumentor/reflection-docblock": "^5.3.3||^6.0",
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpunit/phpunit": "^9.0",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "suggest": {
+                "ext-grpc": "The gRPC extension enables use of the performant gRPC transport",
+                "ext-protobuf": "Provides a significant increase in throughput over the pure PHP protobuf implementation. See https://cloud.google.com/php/grpc for installation instructions.",
+                "google/cloud-storage": "Annotate images stored in Google Cloud Storage"
+            },
+            "type": "library",
+            "extra": {
+                "component": {
+                    "id": "cloud-vision",
+                    "path": "Vision",
+                    "entry": "src/VisionClient.php",
+                    "target": "googleapis/google-cloud-php-vision.git"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Google\\Cloud\\Vision\\": "src",
+                    "GPBMetadata\\Google\\Cloud\\Vision\\": "metadata"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Cloud Vision Client for PHP",
+            "support": {
+                "source": "https://github.com/googleapis/google-cloud-php-vision/tree/v2.2.2"
+            },
+            "time": "2026-08-07T09:39:23+00:00"
         },
         {
             "name": "google/common-protos",

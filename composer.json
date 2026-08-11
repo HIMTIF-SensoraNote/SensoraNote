@@ -11,6 +11,7 @@
     "require": {
         "php": "^8.2",
         "cloudinary-labs/cloudinary-laravel": "^3.0",
+        "google/cloud-vision": "^2.2",
         "inertiajs/inertia-laravel": "^2.0",
         "kreait/laravel-firebase": "^7.2",
         "laravel/framework": "^12.0",
