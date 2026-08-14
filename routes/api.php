@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\BrailleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowController;
@@ -25,6 +26,8 @@ use Illuminate\Support\Facades\Route;
 // Auto-Translation Endpoints
 Route::get('/translations/{lang}', [TranslationController::class, 'getStaticTranslations']);
 Route::post('/translate-content', [TranslationController::class, 'translateDynamicContent']);
+Route::post('/braille/text-to-braille', [BrailleController::class, 'textToBraille']);
+Route::post('/braille/braille-to-text', [BrailleController::class, 'brailleToText']);
 
 Route::post('/v1/register', [AuthController::class, 'register'])->middleware('throttle:5,1');
 Route::post('/v1/login', [AuthController::class, 'login'])->middleware('throttle:10,1');
@@ -56,6 +59,7 @@ Route::get('/v1/users/{id}/following', [FollowController::class, 'following']);
 Route::middleware('auth:sanctum')->group(function () {
 
     // Cloud Vision API (Aksesibilitas / OCR)
+    Route::post('/vision/detect-corners', [VisionController::class, 'detectCorners']);
     Route::post('/vision/detect-text', [VisionController::class, 'detectText']);
 
     Route::post('/v1/sertifikasi', [SertifikasiController::class, 'ajukan']);

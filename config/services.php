@@ -51,4 +51,9 @@ return [
         'redirect' => env('FACEBOOK_REDIRECT_URI', 'http://localhost:8000/api/auth/facebook/callback'),
     ],
 
+    'doc_scanner' => [
+        'base_url' => env('DOC_SCANNER_SERVICE_URL', 'http://localhost:8010'),
+        'timeout' => env('DOC_SCANNER_SERVICE_TIMEOUT', 30),
+    ],
+
 ];

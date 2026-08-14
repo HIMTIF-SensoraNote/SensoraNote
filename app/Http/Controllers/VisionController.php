@@ -3,59 +3,104 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Google\Cloud\Vision\V1\ImageAnnotatorClient;
+use Illuminate\Support\Facades\Http;
 
 class VisionController extends Controller
 {
-    /**
-     * Menerima gambar dari frontend dan mengekstrak teks menggunakan Google Cloud Vision.
-     */
-    public function detectText(Request $request)
+    public function detectCorners(Request $request)
     {
-        // 1. Validasi file yang diunggah (wajib berupa gambar, maksimal 5MB)
         $request->validate([
             'image' => 'required|image|max:5120',
         ]);
 
         try {
-            // 2. Ambil path kredensial Google dari .env
-            $credentialsPath = base_path(env('GOOGLE_APPLICATION_CREDENTIALS'));
-            
-            // 3. Inisialisasi client Vision API
-            $imageAnnotator = new ImageAnnotatorClient([
-                'credentials' => $credentialsPath
-            ]);
+            $file = $request->file('image');
+            $baseUrl = rtrim(config('services.doc_scanner.base_url'), '/');
 
-            // 4. Baca file gambar yang diunggah
-            $imageContent = file_get_contents($request->file('image')->getPathname());
-            
-            // 5. Lakukan deteksi teks
-            $response = $imageAnnotator->textDetection($imageContent);
-            $texts = $response->getTextAnnotations();
-            
-            // 6. Selalu tutup koneksi client setelah selesai
-            $imageAnnotator->close();
+            $response = Http::timeout(config('services.doc_scanner.timeout'))
+                ->attach('file', file_get_contents($file->getRealPath()), $file->getClientOriginalName())
+                ->post("{$baseUrl}/scanner/detect-corners");
 
-            // 7. Jika ada teks yang berhasil dideteksi, kembalikan response JSON
-            if (count($texts) > 0) {
+            if ($response->failed()) {
                 return response()->json([
-                    'success' => true,
-                    // Index [0] selalu berisi seluruh teks gabungan yang ditemukan pada gambar
-                    'text' => $texts[0]->getDescription()
-                ]);
+                    'success' => false,
+                    'error' => 'DocScanner-Service gagal mendeteksi tepi kertas.',
+                    'detail' => $response->body(),
+                ], $response->status());
             }
 
-            // Jika tidak ada teks di dalam gambar
-            return response()->json([
-                'success' => false, 
-                'text' => null
-            ]);
-
+            return response()->json($response->json());
         } catch (\Exception $e) {
-            // Tangkap dan tampilkan pesan jika terjadi error pada API Google
             return response()->json([
-                'success' => false, 
-                'error' => $e->getMessage()
+                'success' => false,
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    /**
+     * Menerima gambar dari frontend dan memindainya lewat FastAPI DocScanner-Service.
+     */
+    public function detectText(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|max:5120',
+        ]);
+
+        try {
+            $file = $request->file('image');
+            $baseUrl = rtrim(config('services.doc_scanner.base_url'), '/');
+
+            $scanResponse = Http::timeout(config('services.doc_scanner.timeout'))
+                ->attach('file', file_get_contents($file->getRealPath()), $file->getClientOriginalName())
+                ->post("{$baseUrl}/scanner/scan/base64");
+
+            if ($scanResponse->failed()) {
+                return response()->json([
+                    'success' => false,
+                    'error' => 'DocScanner-Service gagal memproses gambar.',
+                    'detail' => $scanResponse->body(),
+                ], $scanResponse->status());
+            }
+
+            $scanPayload = $scanResponse->json();
+            $scannedImage = base64_decode($scanPayload['image_base64'] ?? '', true);
+
+            if ($scannedImage === false) {
+                return response()->json([
+                    'success' => false,
+                    'error' => 'Hasil scan tidak valid.',
+                ], 502);
+            }
+
+            $brailleResponse = Http::timeout(config('services.doc_scanner.timeout'))
+                ->attach('file', $scannedImage, 'scanned-document.png')
+                ->post("{$baseUrl}/braille/image-to-braille");
+
+            if ($brailleResponse->failed()) {
+                return response()->json([
+                    'success' => false,
+                    'error' => 'Braille service gagal membaca teks dari gambar.',
+                    'detail' => $brailleResponse->body(),
+                ], $brailleResponse->status());
+            }
+
+            $braillePayload = $brailleResponse->json();
+
+            return response()->json([
+                'success' => true,
+                'mime_type' => $scanPayload['mime_type'] ?? 'image/png',
+                'image_base64' => $scanPayload['image_base64'] ?? null,
+                'text' => $braillePayload['text'] ?? '',
+                'braille' => $braillePayload['braille'] ?? '',
+                'unsupported' => $braillePayload['unsupported'] ?? [],
+                'pdf_base64' => $braillePayload['pdf_base64'] ?? null,
+                'pdf_mime_type' => $braillePayload['pdf_mime_type'] ?? 'application/pdf',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'error' => $e->getMessage(),
             ], 500);
         }
     }
