@@ -33,12 +33,21 @@ export function Navbar({ variant = 'default', theme = 'light', isLoading = false
     }
   };
 
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', '/');
+    }
+  };
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    const handleScroll = (e: any) => {
+      const scrollTop = window.scrollY || document.documentElement?.scrollTop || document.body?.scrollTop || (e.target as any)?.scrollTop || 0;
+      setIsScrolled(scrollTop > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, true);
+    return () => window.removeEventListener('scroll', handleScroll, true);
   }, []);
 
   if (variant === 'dashboard') {
@@ -84,10 +93,10 @@ export function Navbar({ variant = 'default', theme = 'light', isLoading = false
           className={`w-full flex items-center justify-between overflow-hidden ${getNavContainerClass()}`}
         >
           {/* Brand Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" onClick={handleHomeClick} className="flex items-center gap-3 group outline-none focus:outline-none [-webkit-tap-highlight-color:transparent]">
             <ApplicationLogo
               style={{ transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-              className={`group-hover:scale-105 group-hover:shadow-md transition-transform drop-shadow-sm ${isScrolled ? 'w-8 h-8' : 'w-8 h-8 md:w-10 md:h-10'}`}
+              className={`group-hover:scale-105 transition-transform drop-shadow-sm ${isScrolled ? 'w-8 h-8' : 'w-8 h-8 md:w-10 md:h-10'}`}
             />
             <span 
               style={{ transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)' }} 
@@ -99,7 +108,7 @@ export function Navbar({ variant = 'default', theme = 'light', isLoading = false
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8 lg:gap-10">
-            <Link to="/" className={getLinkClass()}>
+            <Link to="/" onClick={handleHomeClick} className={getLinkClass()}>
               {t("navbar.home") || "Beranda"}
             </Link>
             <a 

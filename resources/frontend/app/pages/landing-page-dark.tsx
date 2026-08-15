@@ -186,7 +186,7 @@ function ScrollRevealText() {
   const words = text.split(" ");
 
   return (
-    <div ref={containerRef} id="visi-misi" className="relative py-16 md:py-40 bg-[#080616] overflow-hidden flex items-center justify-center">
+    <div ref={containerRef} id="visi-misi" className="relative py-16 md:py-40 bg-[#080616] flex items-center justify-center">
       {/* Decorative radial lighting behind text */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full blur-[120px] opacity-[0.05] pointer-events-none"
            style={{ background: 'radial-gradient(circle, #1d4ed8 0%, transparent 60%)' }} />
@@ -796,7 +796,7 @@ export function LandingPageDark() {
       <section 
         ref={heroRef}
         onMouseMove={handleMouseMove}
-        className="relative min-h-[95vh] flex items-center justify-center pt-28 md:pt-48 lg:pt-52 pb-12 md:pb-16 overflow-hidden bg-[#06050e]"
+        className="relative min-h-[95vh] flex items-center justify-center pt-28 md:pt-48 lg:pt-52 pb-12 md:pb-16 bg-gradient-to-b from-[#06050e] to-[#080616]"
       >
         {/* Fine Matrix grid styling in background */}
         <div 
@@ -825,7 +825,7 @@ export function LandingPageDark() {
 
         {/* Interactive Mouse-Tracking Glowing Follower */}
         <motion.div 
-          className="absolute w-[35vw] h-[35vw] rounded-full blur-[100px] bg-gradient-to-tr from-[#1d4ed8] to-[#2563eb] pointer-events-none opacity-[0.18]"
+          className="absolute w-[35vw] h-[35vw] rounded-full blur-[100px] bg-gradient-to-tr from-[#1d4ed8] to-[#2563eb] pointer-events-none opacity-[0.3]"
           style={{
             left: glowX,
             top: glowY,
@@ -903,11 +903,11 @@ export function LandingPageDark() {
             animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-full max-w-6xl mt-10 md:mt-20 py-4 md:py-8 overflow-hidden select-none"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+            }}
           >
-            {/* Side Vignette Fades (Left & Right gradients) */}
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#06050e] to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#06050e] to-transparent z-10 pointer-events-none" />
-
             {/* Straight Marquee wrapper */}
             <div className="flex flex-col gap-4">
               <MarqueeRow items={row1Items} direction="left" speed={28} />

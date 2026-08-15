@@ -1,15 +1,12 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { gsap } from 'gsap';
-import { ScanText, Ear, Eye, Code, BrainCircuit } from 'lucide-react';
-
+import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { ScanText, Ear, Eye, Code, BrainCircuit, ChevronLeft, ChevronRight } from 'lucide-react';
 import './AccordionGallery.css';
 
 interface GalleryItem {
   image?: string;
   content?: React.ReactNode;
   label?: string;
-  link?: string;
-  alt?: string;
 }
 
 const DEFAULT_ITEMS: GalleryItem[] = [
@@ -17,9 +14,9 @@ const DEFAULT_ITEMS: GalleryItem[] = [
     label: 'AI Vision OCR',
     image: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=2070&auto=format&fit=crop',
     content: (
-      <div className="flex flex-col items-center justify-center w-full h-full p-8 text-center bg-slate-950/50">
-        <ScanText className="w-12 h-12 sm:w-16 sm:h-16 text-blue-400 drop-shadow-lg" />
-        <div className="ag-content-text mt-4 sm:mt-6">
+      <div className="flex flex-col items-center justify-center w-full h-full p-8 text-center bg-slate-950/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <ScanText className="w-12 h-12 sm:w-16 sm:h-16 text-blue-400 drop-shadow-lg scale-90 group-hover:scale-100 transition-transform duration-500" />
+        <div className="mt-4 sm:mt-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100">
           <p className="text-xs sm:text-sm text-slate-200 max-w-xs drop-shadow-md font-medium leading-relaxed">Ubah foto catatan tulisan tangan menjadi teks digital instan dengan Computer Vision.</p>
         </div>
       </div>
@@ -29,9 +26,9 @@ const DEFAULT_ITEMS: GalleryItem[] = [
     label: 'Sienna & Audio',
     image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop',
     content: (
-      <div className="flex flex-col items-center justify-center w-full h-full p-8 text-center bg-slate-950/50">
-        <Ear className="w-12 h-12 sm:w-16 sm:h-16 text-indigo-400 drop-shadow-lg" />
-        <div className="ag-content-text mt-4 sm:mt-6">
+      <div className="flex flex-col items-center justify-center w-full h-full p-8 text-center bg-slate-950/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <Ear className="w-12 h-12 sm:w-16 sm:h-16 text-indigo-400 drop-shadow-lg scale-90 group-hover:scale-100 transition-transform duration-500" />
+        <div className="mt-4 sm:mt-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100">
           <p className="text-xs sm:text-sm text-slate-200 max-w-xs drop-shadow-md font-medium leading-relaxed">Dukungan aksesibilitas dan Text-to-Speech untuk materi yang didengarkan layaknya podcast.</p>
         </div>
       </div>
@@ -41,9 +38,9 @@ const DEFAULT_ITEMS: GalleryItem[] = [
     label: 'Braille Converter',
     image: 'https://images.unsplash.com/photo-1588015386001-eb4d57c2c040?q=80&w=2070&auto=format&fit=crop',
     content: (
-      <div className="flex flex-col items-center justify-center w-full h-full p-8 text-center bg-slate-950/50">
-        <Eye className="w-12 h-12 sm:w-16 sm:h-16 text-amber-400 drop-shadow-lg" />
-        <div className="ag-content-text mt-4 sm:mt-6">
+      <div className="flex flex-col items-center justify-center w-full h-full p-8 text-center bg-slate-950/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <Eye className="w-12 h-12 sm:w-16 sm:h-16 text-amber-400 drop-shadow-lg scale-90 group-hover:scale-100 transition-transform duration-500" />
+        <div className="mt-4 sm:mt-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100">
           <p className="text-xs sm:text-sm text-slate-200 max-w-xs drop-shadow-md font-medium leading-relaxed">Ekspor otomatis catatan Anda ke format file fisik untuk dicetak menggunakan printer Braille.</p>
         </div>
       </div>
@@ -53,9 +50,9 @@ const DEFAULT_ITEMS: GalleryItem[] = [
     label: 'LaTeX Screen Reader',
     image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop',
     content: (
-      <div className="flex flex-col items-center justify-center w-full h-full p-8 text-center bg-slate-950/50">
-        <Code className="w-12 h-12 sm:w-16 sm:h-16 text-emerald-400 drop-shadow-lg" />
-        <div className="ag-content-text mt-4 sm:mt-6">
+      <div className="flex flex-col items-center justify-center w-full h-full p-8 text-center bg-slate-950/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <Code className="w-12 h-12 sm:w-16 sm:h-16 text-emerald-400 drop-shadow-lg scale-90 group-hover:scale-100 transition-transform duration-500" />
+        <div className="mt-4 sm:mt-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100">
           <p className="text-xs sm:text-sm text-slate-200 max-w-xs drop-shadow-md font-medium leading-relaxed">Mesin rendering matematika yang dapat diinterpretasikan dengan tepat oleh Screen Reader.</p>
         </div>
       </div>
@@ -65,9 +62,9 @@ const DEFAULT_ITEMS: GalleryItem[] = [
     label: 'AI Chatbot & Quiz',
     image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2070&auto=format&fit=crop',
     content: (
-      <div className="flex flex-col items-center justify-center w-full h-full p-8 text-center bg-slate-950/50">
-        <BrainCircuit className="w-12 h-12 sm:w-16 sm:h-16 text-purple-400 drop-shadow-lg" />
-        <div className="ag-content-text mt-4 sm:mt-6">
+      <div className="flex flex-col items-center justify-center w-full h-full p-8 text-center bg-slate-950/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <BrainCircuit className="w-12 h-12 sm:w-16 sm:h-16 text-purple-400 drop-shadow-lg scale-90 group-hover:scale-100 transition-transform duration-500" />
+        <div className="mt-4 sm:mt-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100">
           <p className="text-xs sm:text-sm text-slate-200 max-w-xs drop-shadow-md font-medium leading-relaxed">Berdiskusi langsung tentang isi catatan dan mengukur pemahaman melalui kuis interaktif.</p>
         </div>
       </div>
@@ -75,250 +72,123 @@ const DEFAULT_ITEMS: GalleryItem[] = [
   }
 ];
 
-interface AccordionGalleryProps {
-  items?: GalleryItem[];
-  defaultIndex?: number;
-  accentColor?: string;
-  overlayColor?: string;
-  textColor?: string;
-  height?: number;
-  gap?: number;
-  radius?: number;
-  expandRatio?: number;
-  orientation?: 'horizontal' | 'vertical';
-  duration?: number;
-  ease?: string;
-  parallax?: number;
-  tilt?: number;
-  stagger?: number;
-  trigger?: 'hover' | 'click';
-  showLabels?: boolean;
-  grayscale?: boolean;
-  className?: string;
-}
+const AccordionGallery: React.FC = () => {
+  const [activeAbsolute, setActiveAbsolute] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const count = DEFAULT_ITEMS.length;
 
-const AccordionGallery: React.FC<AccordionGalleryProps> = ({
-  items = DEFAULT_ITEMS,
-  defaultIndex = 2,
-  accentColor = '#2563eb', // SensoraNote blue
-  overlayColor = '#06050e', // SensoraNote dark background
-  textColor = '#ffffff',
-  height = 460,
-  gap = 10,
-  radius = 24, // Matches SensoraNote rounded-3xl slightly
-  expandRatio = 0.52,
-  orientation = 'horizontal',
-  duration = 0.6,
-  ease = 'power3.out',
-  parallax = 0.5,
-  tilt = 8,
-  stagger = 0.06,
-  trigger = 'hover',
-  showLabels = true,
-  grayscale = true,
-  className = ''
-}) => {
-  const rootRef = useRef<HTMLDivElement>(null);
-  const panelRefs = useRef<(HTMLElement | null)[]>([]);
-  const mediaRefs = useRef<(HTMLElement | null)[]>([]);
-  const barRefs = useRef<(HTMLElement | null)[]>([]);
-  const textRefs = useRef<(HTMLElement | null)[]>([]);
-  const tlRef = useRef<gsap.core.Timeline | null>(null);
-  const firstRunRef = useRef(true);
-  const mediaSizeRef = useRef(320);
+  const handleNext = () => setActiveAbsolute((prev) => prev + 1);
+  const handlePrev = () => setActiveAbsolute((prev) => prev - 1);
 
-  const vertical = orientation === 'vertical';
-  const count = items.length;
-  const [active, setActive] = useState(Math.min(Math.max(defaultIndex, 0), count - 1));
-
-  const prefersReduced =
-    typeof window !== 'undefined' && window.matchMedia
-      ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      : false;
-
-  const applyLayout = useCallback(
-    (animate: boolean) => {
-      const panels = panelRefs.current;
-      if (!panels.length) return;
-
-      const r = Math.min(Math.max(expandRatio, 0.2), 0.9);
-      const grow = count > 1 ? (r * (count - 1)) / (1 - r) : 1;
-      const mediaSize = mediaSizeRef.current;
-
-      tlRef.current?.kill();
-      const dur = animate && !prefersReduced ? duration : 0;
-      const tl = gsap.timeline();
-
-      panels.forEach((panel, i) => {
-        if (!panel) return;
-        const isActive = i === active;
-        const media = mediaRefs.current[i];
-        const bar = barRefs.current[i];
-        const text = textRefs.current[i];
-
-        const rot = isActive ? 0 : i < active ? tilt : -tilt;
-        const rotProp = vertical ? { rotateX: -rot } : { rotateY: rot };
-
-        tl.to(panel, { flexGrow: isActive ? grow : 1, ...rotProp, duration: dur, ease }, 0);
-
-        if (media) {
-          const drift = Math.max(-1.5, Math.min(1.5, active - i));
-          const shift = drift * parallax * mediaSize * 0.06;
-          const gray = grayscale ? (isActive ? 0 : 1) : 0;
-          tl.to(
-            media,
-            {
-              xPercent: -50,
-              yPercent: -50,
-              x: vertical ? 0 : isActive ? 0 : shift,
-              y: vertical ? (isActive ? 0 : shift) : 0,
-              '--ag-gray': gray,
-              '--ag-dim': isActive ? 0 : 0.45,
-              duration: dur,
-              ease
-            },
-            0
-          );
-        }
-
-        if (showLabels && bar && text) {
-          if (isActive) {
-            tl.to([bar, text], { opacity: 1, x: 0, duration: dur, ease, stagger: prefersReduced ? 0 : stagger }, 0);
-          } else {
-            tl.to([bar, text], { opacity: 0, x: -14, duration: dur * 0.6, ease }, 0);
-          }
-        }
+  const displayItems = useMemo(() => {
+    const items = [];
+    for (let i = 0; i < count; i++) {
+      const itemIndex = ((activeAbsolute + i) % count + count) % count;
+      items.push({
+        item: DEFAULT_ITEMS[itemIndex],
+        originalIndex: itemIndex,
+        visualIndex: i,
+        key: activeAbsolute + i
       });
-
-      tlRef.current = tl;
-    },
-    [
-      active,
-      count,
-      expandRatio,
-      duration,
-      ease,
-      vertical,
-      tilt,
-      parallax,
-      grayscale,
-      showLabels,
-      stagger,
-      prefersReduced
-    ]
-  );
-
-  useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-
-    const measure = () => {
-      const rect = el.getBoundingClientRect();
-      const total = vertical ? rect.height : rect.width;
-      const usable = Math.max(total - gap * (count - 1), 120);
-      const size = Math.max(140, usable * Math.min(Math.max(expandRatio, 0.2), 0.9) * 1.22);
-      mediaSizeRef.current = size;
-      el.style.setProperty('--ag-media-size', `${size}px`);
-      applyLayout(!firstRunRef.current);
-    };
-
-    measure();
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, [applyLayout, gap, count, expandRatio, vertical]);
-
-  useEffect(() => {
-    applyLayout(!firstRunRef.current);
-    firstRunRef.current = false;
-  }, [applyLayout]);
-
-  useEffect(
-    () => () => {
-      tlRef.current?.kill();
-    },
-    []
-  );
-
-  const handleEnter = (i: number) => {
-    if (trigger === 'hover') setActive(i);
-  };
-
-  const handleClick = (i: number, e: React.MouseEvent) => {
-    if (i !== active) {
-      e.preventDefault();
-      setActive(i);
     }
-  };
+    return items;
+  }, [activeAbsolute, count]);
 
-  const handleKeyDown = (i: number, e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-      e.preventDefault();
-      setActive((i + 1) % count);
-    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-      e.preventDefault();
-      setActive((i - 1 + count) % count);
+  const getFlex = (visualIndex: number, originalIndex: number) => {
+    if (visualIndex === 0) {
+      if (hoveredIndex !== null && hoveredIndex !== originalIndex) return 55;
+      return 65;
     }
+    if (hoveredIndex === originalIndex) {
+      if (visualIndex === 1) return 20;
+      if (visualIndex === 2) return 15;
+      if (visualIndex === 3) return 10;
+      if (visualIndex >= 4) return 8;
+    }
+    
+    if (visualIndex === 1) return 15;
+    if (visualIndex === 2) return 10;
+    if (visualIndex === 3) return 6;
+    if (visualIndex >= 4) return 4;
+    return 0;
   };
 
   return (
-    <div
-      ref={rootRef}
-      className={`accordion-gallery${vertical ? ' accordion-gallery--vertical' : ''}${className ? ` ${className}` : ''}`}
-      style={{
-        '--ag-accent': accentColor,
-        '--ag-overlay': overlayColor,
-        '--ag-text': textColor,
-        '--ag-gap': `${gap}px`,
-        '--ag-radius': `${radius}px`,
-        height: vertical ? `${Math.round(height * 1.6)}px` : `${height}px`
-      } as React.CSSProperties}
-      role="list"
-      aria-label="Image accordion gallery"
-    >
-      {items.map((item, i) => {
-        const isActive = i === active;
-        const Tag = item.link ? 'a' : 'div';
-        return (
-          <Tag
-            key={i}
-            ref={(el: any) => (panelRefs.current[i] = el)}
-            className={`ag-panel${isActive ? ' ag-panel--active' : ''}`}
-            style={{ borderRadius: `${radius}px` }}
-            href={item.link || undefined}
-            onClick={(e: any) => handleClick(i, e)}
-            onMouseEnter={() => handleEnter(i)}
-            onFocus={() => setActive(i)}
-            onKeyDown={(e: any) => handleKeyDown(i, e)}
-            role="listitem"
-            tabIndex={0}
-            aria-current={isActive ? 'true' : undefined}
-            aria-label={item.label}
-          >
-            <span className="ag-panel__frame">
-              <span className="ag-panel__media" ref={(el) => (mediaRefs.current[i] = el)}>
-                {item.image && (
-                  <img src={item.image} alt={item.alt || item.label || ''} draggable="false" />
-                )}
-                {item.content && (
-                  <div className="absolute inset-0 z-10 pointer-events-none w-full h-full flex items-center justify-center">
+    <div className="w-full">
+      {/* Header with Navigation Controls */}
+      <div className="flex justify-end gap-3 mb-6">
+        <button 
+          onClick={handlePrev}
+          className="w-10 h-10 rounded-full bg-blue-100 dark:bg-[#1d4ed8]/20 text-blue-600 dark:text-[#38bdf8] hover:bg-blue-200 dark:hover:bg-[#1d4ed8]/40 flex items-center justify-center transition-colors border border-blue-200/50 dark:border-white/10"
+          aria-label="Previous Feature"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button 
+          onClick={handleNext}
+          className="w-10 h-10 rounded-full bg-blue-100 dark:bg-[#1d4ed8]/20 text-blue-600 dark:text-[#38bdf8] hover:bg-blue-200 dark:hover:bg-[#1d4ed8]/40 flex items-center justify-center transition-colors border border-blue-200/50 dark:border-white/10"
+          aria-label="Next Feature"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Squeezy Carousel Container */}
+      <div className="flex flex-row w-full h-[380px] sm:h-[460px] max-w-full overflow-hidden">
+        <AnimatePresence initial={false}>
+          {displayItems.map(({ item, originalIndex, visualIndex, key }) => {
+            const isActive = visualIndex === 0;
+            const flexValue = getFlex(visualIndex, originalIndex);
+            const targetMargin = visualIndex === count - 1 ? 0 : 16; // 16px gap
+
+            return (
+              <motion.div
+                layout
+                key={key}
+                initial={{ flex: 0, opacity: 0, marginRight: 0 }}
+                animate={{ flex: flexValue, opacity: 1, marginRight: targetMargin }}
+                exit={{ flex: 0, opacity: 0, marginRight: 0 }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 250, 
+                  damping: 25, 
+                  mass: 0.8 
+                }}
+                onClick={() => setActiveAbsolute((prev) => prev + visualIndex)}
+                onMouseEnter={() => setHoveredIndex(originalIndex)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className={`relative h-full overflow-hidden rounded-[24px] cursor-pointer group ${isActive ? 'is-active shadow-2xl ring-2 ring-white/10' : 'hover:ring-1 hover:ring-white/20 opacity-80 hover:opacity-100'}`}
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0 w-full h-full">
+                  <img 
+                    src={item.image} 
+                    alt={item.label} 
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  {/* Overlay Dimmer yang sangat tipis agar gambar utamanya cerah */}
+                  <div className={`absolute inset-0 transition-colors duration-500 ${isActive ? 'bg-transparent' : 'bg-black/10'}`} />
+                </div>
+
+                {/* Content Overlay */}
+                <div className="relative z-10 w-full h-full flex flex-col justify-end">
+                  <div className="absolute inset-0 z-0">
                     {item.content}
                   </div>
-                )}
-              </span>
-              <span className="ag-panel__overlay" aria-hidden="true" />
-            </span>
-            {showLabels && (
-              <span className="ag-panel__label" aria-hidden="true">
-                <span className="ag-panel__bar" ref={(el) => (barRefs.current[i] = el)} />
-                <span className="ag-panel__text" ref={(el) => (textRefs.current[i] = el)}>
-                  {item.label}
-                </span>
-              </span>
-            )}
-          </Tag>
-        );
-      })}
+                  
+                  {/* Label Bar */}
+                  <div className="absolute bottom-5 left-5 right-5 z-20 flex items-center gap-3">
+                    <div className="w-1 h-6 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
+                    <span className="font-display font-bold text-white text-lg drop-shadow-md truncate">
+                      {item.label}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
