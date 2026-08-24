@@ -36,13 +36,13 @@ export function LandingPage() {
       </AnimatePresence>
 
       {/* Floating Controls Bar on Bottom-Left with GlassSurface */}
-      <div className="fixed bottom-6 left-6 z-50 flex items-center gap-3">
+      <div className="fixed bottom-6 left-6 z-50 flex items-center gap-3 transition-opacity duration-300 opacity-100 [.auth-modal-open_&]:opacity-0 [.auth-modal-open_&]:pointer-events-none">
         {/* Sienna Accessibility Widget Button wrapped in GlassSurface */}
         <GlassSurface
           width={54}
           height={54}
           borderRadius={27}
-          className="shadow-2xl border border-white/60 cursor-pointer hover:scale-110 transition-transform"
+          className={`shadow-2xl cursor-pointer hover:scale-110 transition-transform ${resolvedTheme === 'light' ? 'glass-surface--clear' : 'border border-white/60'}`}
         >
           <button
             onClick={() => {
@@ -56,7 +56,7 @@ export function LandingPage() {
             className="w-full h-full flex items-center justify-center text-slate-800 dark:text-white"
             title="Buka Widget Aksesibilitas Sienna"
           >
-            <PersonStanding className="w-6 h-6 text-emerald-500 font-bold" />
+            <PersonStanding className="w-6 h-6 font-bold text-emerald-500" />
           </button>
         </GlassSurface>
 
@@ -65,7 +65,7 @@ export function LandingPage() {
           width={54}
           height={54}
           borderRadius={27}
-          className="shadow-2xl border border-white/60 cursor-pointer hover:scale-110 transition-transform"
+          className={`shadow-2xl cursor-pointer hover:scale-110 transition-transform ${resolvedTheme === 'light' ? 'glass-surface--clear' : 'border border-white/60'}`}
         >
           <button
             onClick={toggleTheme}

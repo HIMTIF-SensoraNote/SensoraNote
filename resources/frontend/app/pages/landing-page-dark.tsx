@@ -27,44 +27,6 @@ import 'katex/dist/katex.min.css';
    DATA: Multilingual "Education" words
    =================================================== */
 const MULTI_LANG_TEXTS = [
-  { code: 'AF', flag: '🇿🇦', lang: 'Afrikaans', text: `Hallo,\nDeel jou notas\nHier!`, badge: 'MEERTALIGE AKTIEF', glyphs: ["a","b","c","d"] },
-  { code: 'AM', flag: '🇪🇹', lang: 'Amharic', text: `ሰላም\nማስታወሻዎችዎን ያጋሩ\nእዚህ!`, badge: 'ባለብዙ ቋንቋ ንቁ', glyphs: ["ሀ","ሁ","ሂ","ሃ"] },
-  { code: 'AR', flag: '🇸🇦', lang: 'العربية', text: `مرحبًا،\nشارك ملاحظاتك\nهنا!`, badge: 'متعدد اللغات نشط', glyphs: ["أ","ب","ت","ث"] },
-  { code: 'BN', flag: '🇧🇩', lang: 'Bengali', text: `হ্যালো,\nআপনার নোট শেয়ার করুন\nএখানে!`, badge: 'বহু-ভাষা সক্রিয়', glyphs: ["a","b","c","d"] },
-  { code: 'CS', flag: '🇨🇿', lang: 'Čeština', text: `Dobrý den,\nSdílejte své poznámky\nTady!`, badge: 'VÍCE JAZYKŮ AKTIVNÍ', glyphs: ["a","b","c","d"] },
-  { code: 'DA', flag: '🇩🇰', lang: 'Dansk', text: `Hej\nDel dine noter\nHer!`, badge: 'FLERE SPROG AKTIV', glyphs: ["a","b","c","d"] },
-  { code: 'DE', flag: '🇩🇪', lang: 'Deutsch', text: `Hallo,\nTeilen Sie Ihre Notizen\nHier!`, badge: 'MEHRSPRACHIG AKTIV', glyphs: ["a","b","c","d"] },
-  { code: 'EL', flag: '🇬🇷', lang: 'Ελληνικά', text: `Γεια σας,\nΜοιραστείτε τις σημειώσεις σας\nΕδώ!`, badge: 'ΠΟΛΥΓΛΩΣΣΟ ΕΝΕΡΓΟ', glyphs: ["α","β","γ","δ"] },
-  { code: 'EN', flag: '🇬🇧', lang: 'English', text: `Hello, \nShare your notes \nHere!`, badge: 'MULTI-LANGUAGE ACTIVE', glyphs: ["a","b","c","d"] },
-  { code: 'ES', flag: '🇪🇸', lang: 'Español', text: `Hola,\nComparte tus notas\n¡Aquí!`, badge: 'ACTIVO MULTIIDIOMA', glyphs: ["a","b","c","d"] },
-  { code: 'FA', flag: '🇮🇷', lang: 'فارسی', text: `سلام\nیادداشت های خود را به اشتراک بگذارید\nاینجا!`, badge: 'چند زبانه فعال', glyphs: ["أ","ب","ت","ث"] },
-  { code: 'FI', flag: '🇫🇮', lang: 'Suomi', text: `Hei,\nJaa muistiinpanosi\nTäällä!`, badge: 'MONIKIELINEN AKTIIVINEN', glyphs: ["a","b","c","d"] },
-  { code: 'FR', flag: '🇫🇷', lang: 'Français', text: `Bonjour,\nPartagez vos notes\nIci !`, badge: 'ACTIF MULTILANGUE', glyphs: ["a","b","c","d"] },
-  { code: 'HE', flag: '🇮🇱', lang: 'עברית', text: `שלום,\nשתף את ההערות שלך\nהנה!`, badge: 'ריבוי שפות פעיל', glyphs: ["א","ב","ג","ד"] },
-  { code: 'HI', flag: '🇮🇳', lang: 'हिन्दी', text: `नमस्कार,\nअपने नोट्स साझा करें\nयहाँ!`, badge: 'बहुभाषी सक्रिय', glyphs: ["अ","आ","इ","ई"] },
-  { code: 'HU', flag: '🇭🇺', lang: 'Magyar', text: `Hello!\nOssza meg jegyzeteit\nTessék!`, badge: 'TÖBBNYELVŰ AKTÍV', glyphs: ["a","b","c","d"] },
-  { code: 'ID', flag: '🇮🇩', lang: 'Indonesia', text: `Halo,\nBagikan catatanmu\ndi Sini!`, badge: 'AKTIF MULTI-BAHASA', glyphs: ["a","b","c","d"] },
-  { code: 'IT', flag: '🇮🇹', lang: 'Italiano', text: `Ciao,\nCondividi i tuoi appunti\nEcco!`, badge: 'MULTILINGUA ATTIVA', glyphs: ["a","b","c","d"] },
-  { code: 'JA', flag: '🇯🇵', lang: '日本語', text: `こんにちは。\nメモを共有する\nここです！`, badge: '多言語で活躍中', glyphs: ["文","字","书","学"] },
-  { code: 'KM', flag: '🇰🇭', lang: 'Khmer', text: `សួស្តី\nចែករំលែកកំណត់ចំណាំរបស់អ្នក។\nនៅទីនេះ!`, badge: 'សកម្មពហុភាសា', glyphs: ["ក","ខ","គ","ឃ"] },
-  { code: 'KO', flag: '🇰🇷', lang: '한국어', text: `안녕하세요.\n메모를 공유하세요\n여기!`, badge: '다중 언어 활성', glyphs: ["文","字","书","学"] },
-  { code: 'LO', flag: '🇱🇦', lang: 'Lao', text: `ສະບາຍດີ,\nແບ່ງປັນບັນທຶກຂອງທ່ານ\nທີ່ນີ້!`, badge: 'ນຳໃຊ້ຫຼາຍພາສາ', glyphs: ["ก","ข","ค","ง"] },
-  { code: 'MS', flag: '🇲🇾', lang: 'Melayu', text: `helo,\nKongsi nota anda\nDi sini!`, badge: 'AKTIF PELBAGAI BAHASA', glyphs: ["a","b","c","d"] },
-  { code: 'MY', flag: '🇲🇲', lang: 'Burmese', text: `ဟဲလို၊\nသင်၏မှတ်စုများကိုမျှဝေပါ။\nဒီမှာ!`, badge: 'ဘာသာစကားမျိုးစုံ တက်ကြွနေပါသည်။', glyphs: ["က","ခ","ဂ","ဃ"] },
-  { code: 'NE', flag: '🇳🇵', lang: 'Nepali', text: `नमस्ते,\nआफ्नो टिप्पणी साझा गर्नुहोस्\nयहाँ!`, badge: 'बहु-भाषा सक्रिय', glyphs: ["अ","आ","इ","ई"] },
-  { code: 'NL', flag: '🇳🇱', lang: 'Nederlands', text: `Hallo,\nDeel uw aantekeningen\nHier!`, badge: 'MEERTALEN ACTIEF', glyphs: ["a","b","c","d"] },
-  { code: 'PA', flag: '🇮🇳', lang: 'Punjabi', text: `ਹੈਲੋ,\nਆਪਣੇ ਨੋਟ ਸਾਂਝੇ ਕਰੋ\nਇੱਥੇ!`, badge: 'ਮਲਟੀ-ਲੈਂਗਵੇਜ ਐਕਟਿਵ', glyphs: ["अ","आ","इ","ई"] },
-  { code: 'PL', flag: '🇵🇱', lang: 'Polski', text: `Witam,\nPodziel się swoimi notatkami\nTutaj!`, badge: 'AKTYWNY W WIELU JĘZYKACH', glyphs: ["a","b","c","d"] },
-  { code: 'PT', flag: '🇵🇹', lang: 'Português', text: `Olá,\nCompartilhe suas anotações\nAqui!`, badge: 'ATIVO MULTI-LÍNGUA', glyphs: ["a","b","c","d"] },
-  { code: 'RO', flag: '🇷🇴', lang: 'Română', text: `buna ziua,\nDistribuiți-vă notele\nAici!`, badge: 'ACTIV MULTI-LIMBĂ', glyphs: ["a","b","c","d"] },
-  { code: 'RU', flag: '🇷🇺', lang: 'Русский', text: `Привет,\nПоделитесь своими заметками\nЗдесь!`, badge: 'МНОГОЯЗЫЧНЫЙ АКТИВ', glyphs: ["А","Б","В","Г"] },
-  { code: 'SI', flag: '🇱🇰', lang: 'Sinhala', text: `ආයුබෝවන්,\nඔබේ සටහන් බෙදා ගන්න\nමෙන්න!`, badge: 'බහු භාෂා ක්‍රියාකාරී', glyphs: ["අ","ආ","ඇ","ඈ"] },
-  { code: 'SV', flag: '🇸🇪', lang: 'Svenska', text: `Hej!\nDela dina anteckningar\nHär!`, badge: 'AKTIVT FLERSPRÅK', glyphs: ["a","b","c","d"] },
-  { code: 'SW', flag: '🇰🇪', lang: 'Swahili', text: `Habari,\nShiriki madokezo yako\nHapa!`, badge: 'LUGHA NYINGI TENDAJI', glyphs: ["a","b","c","d"] },
-  { code: 'TH', flag: '🇹🇭', lang: 'ไทย', text: `สวัสดี\nแบ่งปันบันทึกย่อของคุณ\nนี่!`, badge: 'ใช้งานหลายภาษา', glyphs: ["ก","ข","ค","ง"] },
-  { code: 'TL', flag: '🇵🇭', lang: 'Tagalog', text: `hello,\nIbahagi ang iyong mga tala\nDito!`, badge: 'MULTI-LANGUAGE ACTIVE', glyphs: ["a","b","c","d"] },
-  { code: 'TR', flag: '🇹🇷', lang: 'Türkçe', text: `Merhaba,\nNotlarınızı paylaşın\nİşte!`, badge: 'ÇOKLU DİL AKTİF', glyphs: ["a","b","c","d"] },
-  { code: 'UK', flag: '🇺🇦', lang: 'Українська', text: `привіт\nПоділіться своїми нотатками\nтут!`, badge: 'БАГАТОМОВНА АКТИВНІСТЬ', glyphs: ["А","Б","В","Г"] },
   { code: 'UR', flag: '🇵🇰', lang: 'Urdu', text: `ہیلو،\nاپنے نوٹ شیئر کریں۔\nیہاں!`, badge: 'ملٹی لینگویج ایکٹو', glyphs: ["أ","ب","ت","ث"] },
   { code: 'VI', flag: '🇻🇳', lang: 'Tiếng Việt', text: `Xin chào,\nChia sẻ ghi chú của bạn\nĐây!`, badge: 'ĐA NGÔN NGỮ HOẠT ĐỘNG', glyphs: ["a","b","c","d"] },
   { code: 'ZH', flag: '🇨🇳', lang: '简体中文', text: `你好，\n分享你的笔记\n在这里！`, badge: '多语言活跃', glyphs: ["文","字","书","学"] },
@@ -160,13 +122,13 @@ function GrainNoise() {
    COMPONENT: Text Scroll Highlight Reveal (Motto Style)
    =================================================== */
 function Word({ word, progress, range }: { word: string; progress: any; range: [number, number] }) {
-  const opacity = useTransform(progress, range, [0.15, 1]);
-  const color = useTransform(progress, range, ['rgba(255,255,255,0.15)', '#ffffff']);
+  const opacity = useTransform(progress, range, [0.25, 1]);
+  const color = useTransform(progress, range, ['rgba(255,255,255,0.2)', '#ffffff']);
   const scale = useTransform(progress, range, [0.98, 1]);
 
   return (
     <motion.span 
-      className="inline-block mr-3 md:mr-4 mb-2 origin-left transition-all"
+      className="inline-block mr-3 md:mr-4 mb-2 origin-left transition-all font-display font-black"
       style={{ opacity, color, scale }}
     >
       {word}
@@ -186,23 +148,34 @@ function ScrollRevealText() {
   const words = text.split(" ");
 
   return (
-    <div ref={containerRef} id="visi-misi" className="relative py-16 md:py-40 bg-[#080616] overflow-hidden flex items-center justify-center">
+    <div ref={containerRef} id="visi-misi" className="relative py-20 md:py-36 bg-[#181424] flex items-center justify-center border-t-2 border-dashed border-white/10 overflow-hidden">
+      {/* Dot Grid Paper Background */}
+      <div 
+        className="absolute inset-0 opacity-15 pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(#64748B 1.5px, transparent 1.5px)',
+          backgroundSize: '24px 24px'
+        }}
+      />
+
       {/* Decorative radial lighting behind text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full blur-[120px] opacity-[0.05] pointer-events-none"
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full blur-[120px] opacity-[0.08] pointer-events-none"
            style={{ background: 'radial-gradient(circle, #1d4ed8 0%, transparent 60%)' }} />
       <GrainNoise />
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-        <p className="text-xs md:text-sm font-semibold text-[#2563eb] tracking-[0.2em] uppercase mb-4 flex items-center justify-center gap-2">
-          <Sparkles className="w-4 h-4 animate-spin-slow" /> {t('landing.philosophy_vision') || 'VISI KAMI'}
-        </p>
+      <div className="max-w-4xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+        {/* Notebook Sticker Badge Tag */}
+        <div className="block mb-6">
+          <span className="inline-block px-3.5 py-1.5 bg-[#171424] border border-blue-500/50 shadow-[2px_2px_0px_#2563eb] rounded-md -rotate-1 text-xs font-mono font-extrabold text-blue-400 uppercase tracking-widest">
+            ✏️ {t('landing.philosophy_vision') || 'VISI KAMI'}
+          </span>
+        </div>
 
-        <h3 className="font-display font-bold tracking-tight leading-[1.3] text-center" style={{ fontSize: 'clamp(1.5rem, 2.8vw, 2.5rem)' }}>
+        <h3 className="font-display font-black tracking-tight leading-[1.35] text-center" style={{ fontSize: 'clamp(1.5rem, 2.8vw, 2.5rem)' }}>
           {words.map((word: string, i: number) => {
             const start = i / words.length;
             const end = (i + 1) / words.length;
             
-            // Highly responsive color highlight transition based on scroll position (completes at viewport center)
             const rangeStart = start * 0.22 + 0.18;
             const rangeEnd = end * 0.22 + 0.22;
 
@@ -217,14 +190,18 @@ function ScrollRevealText() {
           })}
         </h3>
 
+        {/* Notebook Paper Motto Card Tag */}
         <motion.div 
-          className="mt-8 md:mt-12 inline-flex items-center gap-3 text-[10px] md:text-sm font-semibold text-[#2563eb] border border-[#2563eb]/20 bg-[#2563eb]/5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full"
+          className="mt-8 md:mt-12 inline-flex items-center gap-3 text-xs md:text-sm font-mono font-extrabold text-white bg-[#171424] border-2 border-white/10 shadow-[4px_4px_0px_#2563eb] px-5 py-3 rounded-2xl relative"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <CornerDownRight className="w-4 h-4" />
+          {/* Corner Washi Tape Pin Accent */}
+          <div className="absolute -top-1.5 left-6 w-8 h-3.5 bg-[#2D2640] border-x border-blue-400/30 rotate-[-3deg] pointer-events-none" />
+
+          <CornerDownRight className="w-4 h-4 text-blue-400 shrink-0" />
           <span>{t('landing.philosophy_motto') || 'Filosofi SensoraNote — Belajar, Berbagi, Tumbuh Bersama'}</span>
         </motion.div>
       </div>
@@ -307,233 +284,85 @@ function CountUp({ to, duration = 1.5 }: { to: number; duration?: number }) {
 }
 
 /* ===================================================
-   COMPONENT: Interactive Holographic Topic Warp Section
+   COMPONENT: Interactive GPU Marquee Section
    =================================================== */
 function TopicWarpSection({ openAuthModal }: { openAuthModal: (tab: 'login' | 'register') => void }) {
   const { t } = useTranslation();
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  // Golden ratio hash for evenly-distributed horizontal positions
-  const GOLDEN_RATIO = 0.618033988749895;
-  
-  // Beautifully curated diverse translations of academic & learning keywords in 52+ languages
-  const MULTILINGUAL_WARP_TOPICS = [
-    // English (Latin)
-    "Calculus", "Quantum Mechanics", "Data Structures", "Organic Chemistry", "Microbiology", "Machine Learning", "Astrophysics", "Genetics", "Geometry", "Linguistics", "World History", "Sociology", "Thermodynamics",
-    // Japanese (Kanji/Kana)
-    "数学", "量子力学", "アルゴリズム", "有機化学", "微生物学", "機械学習", "宇宙科学", "古典文学", "線形代数", "日本史",
-    // Korean (Hangul)
-    "대수학", "생물학", "화학", "데이터 구조", "분석화학", "딥러닝", "인공지능", "천체물리", "국어국문", "세계사",
-    // Spanish (Latin with Accents)
-    "Álgebra", "Biología Celular", "Termodinámica", "Bioquímica", "Sociología", "Robótica", "Historia", "Geografía", "Filosofía", "Cálculo",
-    // Arabic (Arabic Script)
-    "الخوارزميات", "علم الاحياء", "الهندسة", "الذكاء الاصطناعي", "الفلسفة", "الرياضيات", "الفيزياء", "الكيمياء", "علم الفلك", "الأدب",
-    // French (French Accents)
-    "Physique", "Astronomie", "Génétique", "Chimie", "Linguistique", "Algèbre", "Poésie", "Géométrie", "Philosophie", "Thermodynamique",
-    // German (Umlauts & Eszett)
-    "Relativität", "Weltraum", "Künstliche Intelligenz", "Elektrotechnik", "Neuroinformatik", "Linguistik", "Mathe", "Biologie", "Kryptografie", "Soziologie",
-    // Russian (Cyrillic Script)
-    "Геометрия", "Тригонометрия", "Астрофизика", "Анатомия", "Кибербезопасность", "Информатика", "Алгеbra", "Молекулярная биология",
-    // Hindi (Devanagari Script)
-    "रसायन विज्ञान", "इतिहास", "भूगोल", "जीव विज्ञान", "व्याकरण",
-    // Indonesian (Cultural & Regional Diversity)
-    "Algoritma", "Filsafat", "Kriptografi", "Struktur Data", "Anatomi", "Fisiologi", "Tata Krama", "Sastra", "Matematika", "Fisika", "Demografi", "Ekologi"
-  ];
-  
-  const WARP_TOPICS = MULTILINGUAL_WARP_TOPICS.map((topic, idx) => {
-    // Golden ratio hashing for beautifully-spaced horizontal distribution (3%–97%)
-    const hash = ((idx * GOLDEN_RATIO) % 1);
-    const left = `${(hash * 94) + 3}%`;
-    
-    // Staggered delay to make the entrance loop uniform and natural
-    const delay = idx * 0.7;
-    
-    // Variable speeds between 16s–26s for natural parallax depth feel
-    const speed = 16 + ((idx * 7) % 11);
-    
-    // 3 depth layers: small (far), medium, large (near) — for parallax illusion
-    const depthLayer = idx % 3;
-    
-    // Sizes mapped to depth layers for real 3D depth feeling
-    const fontSize = depthLayer === 0 
-      ? 'text-[10px] md:text-[12px]' 
-      : depthLayer === 1 
-      ? 'text-[12px] md:text-sm' 
-      : 'text-xs md:text-base lg:text-lg font-bold';
-      
-    const maxOpacity = depthLayer === 0 ? 0.32 : depthLayer === 1 ? 0.55 : 0.85;
-    const glowIntensity = depthLayer === 0 ? 3 : depthLayer === 1 ? 6 : 12;
-    
-    // Sandwiching parallax effect:
-    // We want only a few foreground elements to pass IN FRONT of the card (z-30)
-    // The rest (medium and far elements, and some near elements) pass BEHIND (z-10)
-    // We achieve this by letting near elements (depthLayer === 2) at every 4th index pass in front.
-    const isForeground = depthLayer === 2 && idx % 4 === 0;
-    const zIndex = isForeground ? 30 : 10;
-    
-    // Foreground elements get scaled up slightly to create strong volumetric focus depth
-    const scale = isForeground ? 1.12 : 1.0;
-    
-    return {
-      text: topic,
-      left,
-      delay,
-      speed,
-      fontSize,
-      maxOpacity,
-      glowIntensity,
-      zIndex,
-      scale,
-      sway: Math.sin(idx * 5.7) * (14 + depthLayer * 10)
-    };
-  });
 
-  // Portal Sparkles - tiny glowing dots emerging from the bottom and fading out within the first 1/4 section
-  const PORTAL_SPARKLES = [...Array(25)].map((_, idx) => {
-    const hash1 = ((idx * 0.718) % 1); // pseudo-random left position (4% to 96%)
-    const left = `${(hash1 * 92) + 4}%`;
-    
-    const hash2 = ((idx * 0.382) % 1); // pseudo-random speed (2.5s to 5.5s)
-    const speed = 2.5 + hash2 * 3.0;
-    
-    const hash3 = ((idx * 0.912) % 1); // pseudo-random delay
-    const delay = hash3 * 6.5; 
-    
-    // Slightly larger size for stronger visual impact: 2px to 5px
-    const size = 2.0 + ((idx % 3) * 1.5);
-    
-    // Staggered premium gradient colors: white, deep blue, and neon blue/blue
-    const colors = ["#ffffff", "#1d4ed8", "#2563eb", "#c084fc", "#ffffff"];
-    const color = colors[idx % colors.length];
-    
-    // Sway offset
-    const sway = Math.sin(idx * 4.3) * (8 + (idx % 3) * 6);
-    
-    // 20% of sparkles float all the way up to the centered card (-52vh), while 80% fade out at 1/3 section height (-38vh)
-    const isHigh = idx % 5 === 0;
-    const targetY = isHigh ? "-52vh" : "-38vh";
-    
-    return {
-      left,
-      speed: isHigh ? speed * 1.2 : speed, // slightly longer speed for higher travel to keep pace uniform
-      delay,
-      size,
-      color,
-      sway,
-      targetY
-    };
-  });
+  const TOPIC_CHIPS_1 = [
+    "📐 Calculus", "🔬 Quantum Mechanics", "💻 Data Structures", "🧪 Organic Chemistry",
+    "🧫 Microbiology", "🤖 Machine Learning", "🌌 Astrophysics", "🧬 Genetics",
+    "📐 Geometry", "📚 Linguistics", "🏛️ World History", "🌍 Sociology", "🔥 Thermodynamics",
+    "数学", "量子力学", "アルゴリズム", "有機化学", "微生物学"
+  ];
+
+  const TOPIC_CHIPS_2 = [
+    "대수학", "생물학", "화학", "데이터 구조", "Álgebra", "Biología Celular",
+    "الخوارزميات", "الهندسة", "Physique", "Astronomie", "Relativität", "Künstliche Intelligenz",
+    "Геометрия", "Анатомия", "रसायन विज्ञान", "Algoritma", "Filsafat", "Kriptografi", "Struktur Data"
+  ];
 
   return (
-    <div ref={containerRef} className="relative min-h-[60vh] md:min-h-[110vh] lg:min-h-[120vh] w-full bg-transparent flex items-center justify-center overflow-hidden">
-      
-      {/* Background Starfield — more dots for cosmic depth */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-white animate-pulse"
-            style={{
-              width: `${1 + (i % 3) * 0.5}px`,
-              height: `${1 + (i % 3) * 0.5}px`,
-              top: `${((i * 37) % 90) + 5}%`,
-              left: `${((i * 53) % 90) + 5}%`,
-              opacity: 0.1 + (i % 4) * 0.05,
-              animationDelay: `${i * 0.6}s`,
-              animationDuration: `${2.5 + (i % 3)}s`
-            }}
-          />
-        ))}
+    <div className="relative py-16 md:py-24 w-full bg-[#0a0814] border-t-2 border-b-2 border-dashed border-white/10 overflow-hidden select-none">
+      {/* Hand-drawn dark notebook dot grid pattern */}
+      <div 
+        className="absolute inset-0 opacity-20 pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(#64748B 1.5px, transparent 1.5px)',
+          backgroundSize: '24px 24px'
+        }}
+      />
+
+      {/* Ambient color aura */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[25vw] bg-gradient-to-r from-blue-600/20 via-indigo-600/20 to-purple-600/20 blur-3xl pointer-events-none" />
+
+      {/* Floating Notebook Doodle Accents */}
+      <motion.div
+        animate={{ y: [0, -8, 0], rotate: [0, 5, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-8 left-10 text-blue-400/40 text-2xl font-mono pointer-events-none hidden md:block"
+      >
+        ✦ ⚛️
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, 8, 0], rotate: [0, -5, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-8 right-12 text-cyan-400/40 text-2xl font-mono pointer-events-none hidden md:block"
+      >
+        💡 ∫ f(x)
+      </motion.div>
+
+      {/* Hand-Drawn Taped Notebook Scribble Card Header */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 mb-12 text-center flex flex-col items-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 15 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="relative inline-block group"
+        >
+          {/* Decorative Dark Washi Tape Pins at Top Corners */}
+          <div className="absolute -top-3 left-4 w-12 h-5 bg-[#2D2640]/90 border-x border-blue-400/40 rotate-[-5deg] z-20 shadow-2xs pointer-events-none" />
+          <div className="absolute -top-3 right-4 w-12 h-5 bg-[#2D2640]/90 border-x border-blue-400/40 rotate-[5deg] z-20 shadow-2xs pointer-events-none" />
+
+          {/* Dark Notebook Sticky Note Card */}
+          <div className="relative px-8 py-4 rounded-2xl bg-[#171424] border-2 border-blue-500/60 shadow-[5px_5px_0px_#2563eb] -rotate-1 group-hover:rotate-0 transition-transform duration-300 flex items-center justify-center">
+            <h3 className="font-serif italic text-white text-xl md:text-3xl font-extrabold tracking-wide">
+              {t('landing.and_many_more') || 'dan masih banyak lagi topik lainnya...'}
+            </h3>
+
+            {/* Hand-Drawn Scribble Underline SVG Path */}
+            <svg className="absolute -bottom-3 left-6 right-6 w-[88%] h-3.5 text-cyan-400/80 pointer-events-none" viewBox="0 0 200 12" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+              <path d="M 3 6 Q 50 1, 100 8 T 197 4" />
+            </svg>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Subtle radial glow behind center text */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-5">
-        <div className="w-[60vw] h-[60vw] max-w-[550px] max-h-[550px] rounded-full bg-[#1d4ed8]/[0.02] blur-[120px]" />
-      </div>
-
-      {/* Volumetric Dual-Layer Portal Glow at the bottom boundary */}
-      {/* Layer 1: Wide, ambient blue glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90vw] h-16 bg-gradient-to-t from-white/[0.08] via-[#1d4ed8]/[0.03] to-transparent blur-2xl pointer-events-none rounded-[100%] z-5" />
-      {/* Layer 2: Center, intense white core glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[55vw] h-8 bg-gradient-to-t from-white/[0.22] via-[#2563eb]/[0.08] to-transparent blur-xl pointer-events-none rounded-[100%] z-5" />
-      {/* Glowing horizontal portal boundary beam line */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/30 via-[#2563eb]/35 to-transparent pointer-events-none z-10 filter drop-shadow(0 0 5px rgba(255,255,255,0.45))" />
-
-      {/* Portal Sparkles - tiny glowing dots emerging from the bottom portal boundary and fading out quickly within 1/3 height or rising higher */}
-      {PORTAL_SPARKLES.map((sparkle, idx) => (
-        <motion.div
-          key={`sparkle-${idx}`}
-          initial={{ y: "0vh", x: 0, opacity: 0 }}
-          animate={{
-            y: ["0vh", sparkle.targetY], 
-            x: [0, sparkle.sway, -sparkle.sway / 2, 0],
-            opacity: [0, 0.95, 0.4, 0]
-          }}
-          transition={{
-            y: { duration: sparkle.speed, repeat: Infinity, ease: "easeOut", delay: sparkle.delay },
-            x: { duration: sparkle.speed * 0.9, repeat: Infinity, ease: "easeInOut", delay: sparkle.delay },
-            opacity: { duration: sparkle.speed, repeat: Infinity, ease: "linear", delay: sparkle.delay, times: [0, 0.15, 0.5, 1] }
-          }}
-          style={{
-            left: sparkle.left,
-            bottom: '-4%',
-            width: `${sparkle.size}px`,
-            height: `${sparkle.size}px`,
-            backgroundColor: sparkle.color,
-            borderRadius: '50%',
-            // Stacked drop-shadows create highly intense, bright glowing light bulbs
-            filter: `blur(0.2px) drop-shadow(0 0 5px ${sparkle.color}) drop-shadow(0 0 10px ${sparkle.color}) drop-shadow(0 0 15px ${sparkle.color})`,
-            zIndex: 8,
-          }}
-          className="absolute pointer-events-none"
-        />
-      ))}
-
-      {/* Floating Sparkling Subjects — Dreamy White, Volumetric Depth (Rendered directly under container to respect zIndex) */}
-      {WARP_TOPICS.map((item, idx) => (
-        <motion.div
-          key={idx}
-          initial={{ y: "15vh", x: 0, opacity: 0 }}
-          animate={{
-            y: ["15vh", "-130vh"],
-            x: [0, item.sway, 0, -item.sway, 0],
-            opacity: [0, item.maxOpacity * 0.6, item.maxOpacity, item.maxOpacity * 0.8, 0]
-          }}
-          transition={{
-            y: { duration: item.speed, repeat: Infinity, ease: "linear", delay: item.delay },
-            x: { duration: item.speed * 0.85, repeat: Infinity, ease: "easeInOut", delay: item.delay },
-            opacity: { duration: item.speed, repeat: Infinity, ease: "linear", delay: item.delay, times: [0, 0.12, 0.45, 0.85, 1] }
-          }}
-          style={{
-            left: item.left,
-            bottom: '-10%',
-            zIndex: item.zIndex,
-            scale: item.scale,
-            filter: `drop-shadow(0 0 ${item.glowIntensity}px rgba(255,255,255,0.4))`
-          }}
-          className={`absolute font-sans font-medium text-white/90 ${item.fontSize} tracking-[0.18em] uppercase select-none pointer-events-none whitespace-nowrap`}
-        >
-          {item.text}
-        </motion.div>
-      ))}
-
-      {/* Centered Cinematic Title — Elegant italic serif with soft glow & masked backdrop blur */}
-      <div className="relative z-20 max-w-2xl px-6 text-center py-20 pointer-events-none flex flex-col items-center justify-center">
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="relative z-20 px-8 py-4 md:px-12 md:py-6 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-2xl flex items-center justify-center"
-        >
-          <h3
-            className="font-serif italic font-light text-white text-2xl md:text-3xl lg:text-4xl tracking-wider select-none leading-none"
-            style={{ textShadow: '0 0 25px rgba(255,255,255,0.2), 0 0 50px rgba(255,255,255,0.1)' }}
-          >
-            {t('landing.and_many_more') || 'dan masih banyak lagi...'}
-          </h3>
-        </motion.div>
+      {/* GPU Accelerated Smooth Tickers */}
+      <div className="relative w-full overflow-hidden flex flex-col gap-5">
+        <MarqueeRow items={TOPIC_CHIPS_1} direction="left" speed={35} />
+        <MarqueeRow items={TOPIC_CHIPS_2} direction="right" speed={40} />
       </div>
     </div>
   );
@@ -775,10 +604,10 @@ export function LandingPageDark() {
   const activeCockpit = COCKPIT_FEATURES.find(f => f.id === activeCockpitTab) || COCKPIT_FEATURES[0];
 
   return (
-    <div className="font-sans text-gray-100 bg-[#06050e] min-h-screen overflow-x-clip selection:bg-[#1d4ed8]/30 selection:text-white">
+    <div className="font-sans text-gray-100 bg-[#181424] min-h-screen overflow-x-clip selection:bg-[#1d4ed8]/30 selection:text-white">
       <AnimatePresence>
         {isLoading && (
-          <BrutalistLoader key="loader" onComplete={() => setIsLoading(false)} />
+          <BrutalistLoader theme="dark" key="loader" onComplete={() => setIsLoading(false)} />
         )}
       </AnimatePresence>
 
@@ -796,36 +625,145 @@ export function LandingPageDark() {
       <section 
         ref={heroRef}
         onMouseMove={handleMouseMove}
-        className="relative min-h-[95vh] flex items-center justify-center pt-28 md:pt-48 lg:pt-52 pb-12 md:pb-16 overflow-hidden bg-[#06050e]"
+        className="relative min-h-[95vh] flex items-center justify-center pt-28 md:pt-48 lg:pt-52 pb-12 md:pb-16 bg-[#181424] overflow-hidden"
       >
-        {/* Fine Matrix grid styling in background */}
-        <div 
-          className="absolute inset-0 opacity-[0.035] pointer-events-none"
-          style={{
-            backgroundImage: 'linear-gradient(#1d4ed8 1px, transparent 1px), linear-gradient(90deg, #1d4ed8 1px, transparent 1px)',
-            backgroundSize: '50px 50px',
-          }}
-        />
-        <GrainNoise />
+        {/* Playful Animated Educational Scrapbook Hook Backdrop (Dark Mode) */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
+          {/* 1. Lined Blueprint & Dot Grid Canvas */}
+          <div 
+            className="absolute inset-0 opacity-15"
+            style={{
+              backgroundImage: 'radial-gradient(#64748B 1.5px, transparent 1.5px)',
+              backgroundSize: '28px 28px',
+            }}
+          />
 
-        {/* Ambient background light orbs */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={!isLoading ? { opacity: 0.15 } : { opacity: 0 }}
-          transition={{ duration: 1.5, delay: 0.2 }}
-          className="absolute top-1/4 left-1/6 w-80 h-80 rounded-full blur-[120px] bg-[#1d4ed8] pointer-events-none animate-pulse-slow" 
-        />
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={!isLoading ? { opacity: 0.12 } : { opacity: 0 }}
-          transition={{ duration: 1.5, delay: 0.4 }}
-          className="absolute bottom-1/4 right-1/6 w-[400px] h-[400px] rounded-full blur-[140px] bg-[#2563eb] pointer-events-none animate-pulse-slow" 
-          style={{ animationDelay: '2s' }} 
-        />
+          {/* 2. Playful Brand Blue Gradient Aura Beams */}
+          <div className="absolute bottom-0 left-10 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full animate-pulse-slow" />
+          <div className="absolute bottom-0 right-10 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full animate-pulse-slow" />
+
+          {/* 3. Delicate Animated Scribble Lines & Dashed Educational Motifs */}
+          <svg className="absolute inset-0 w-full h-full text-cyan-400/30" xmlns="http://www.w3.org/2000/svg" fill="none">
+            {/* Upper Delicate Scribble Wave */}
+            <motion.path 
+              d="M 1600 140 C 1200 40, 900 260, 500 120 C 200 -20, -100 220, -300 140" 
+              stroke="currentColor" 
+              strokeWidth="1.5" 
+              strokeDasharray="8 8"
+              strokeLinecap="round"
+              animate={{ 
+                strokeDashoffset: [0, -160],
+                opacity: [0.15, 0.5, 0.5, 0.15]
+              }}
+              transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
+            />
+            
+            {/* Center Delicate Loop Scribble */}
+            <motion.path 
+              d="M -200 400 C 100 300, 400 600, 700 420 C 1000 240, 1300 480, 1700 360" 
+              stroke="currentColor" 
+              strokeWidth="1.5" 
+              strokeDasharray="10 6"
+              strokeLinecap="round"
+              animate={{ 
+                strokeDashoffset: [0, -160],
+                opacity: [0.15, 0.45, 0.45, 0.15]
+              }}
+              transition={{ repeat: Infinity, duration: 8, ease: "linear", delay: 1 }}
+            />
+
+            {/* Lower Delicate Scribble Stream */}
+            <motion.path 
+              d="M 1650 580 C 1250 680, 850 480, 450 640 C 150 780, -50 520, -350 600" 
+              stroke="currentColor" 
+              strokeWidth="1.5" 
+              strokeDasharray="8 8"
+              strokeLinecap="round"
+              animate={{ 
+                strokeDashoffset: [0, -160],
+                opacity: [0.15, 0.5, 0.5, 0.15]
+              }}
+              transition={{ repeat: Infinity, duration: 7, ease: "linear", delay: 2 }}
+            />
+
+          </svg>
+
+          {/* 4. Flowing Educational Motifs */}
+          <div className="absolute top-24 md:top-28 left-0 right-0 w-full overflow-hidden pointer-events-none select-none h-10">
+            <motion.div
+              initial={{ x: '100vw' }}
+              animate={{ x: '-400px' }}
+              transition={{ repeat: Infinity, duration: 70, ease: "linear", delay: 0 }}
+              className="absolute left-0 text-cyan-400/40 font-serif text-sm md:text-base font-bold whitespace-nowrap"
+            >
+              ∫ f(x)dx = F(b) - F(a)
+            </motion.div>
+
+            <motion.div
+              initial={{ x: '100vw' }}
+              animate={{ x: '-300px' }}
+              transition={{ repeat: Infinity, duration: 70, ease: "linear", delay: 35 }}
+              className="absolute left-0 text-blue-400/40 font-mono text-sm md:text-base font-bold whitespace-nowrap"
+            >
+              E = m · c²
+            </motion.div>
+          </div>
+
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 w-full overflow-hidden pointer-events-none select-none h-12">
+            <motion.div
+              initial={{ x: '-200px' }}
+              animate={{ x: '100vw' }}
+              transition={{ repeat: Infinity, duration: 65, ease: "linear", delay: 0 }}
+              className="absolute left-0 text-cyan-400/35 flex items-center"
+            >
+              <svg className="w-10 h-10 md:w-12 md:h-12" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <ellipse cx="24" cy="24" rx="20" ry="7" transform="rotate(30 24 24)" />
+                <ellipse cx="24" cy="24" rx="20" ry="7" transform="rotate(-30 24 24)" />
+                <circle cx="24" cy="24" r="3" fill="currentColor" />
+              </svg>
+            </motion.div>
+
+            <motion.div
+              initial={{ x: '-250px' }}
+              animate={{ x: '100vw' }}
+              transition={{ repeat: Infinity, duration: 65, ease: "linear", delay: 32.5 }}
+              className="absolute left-0 text-cyan-400/35 flex items-center"
+            >
+              <svg className="w-12 h-8 md:w-14 md:h-9" viewBox="0 0 80 50" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M 0 10 Q 20 0, 40 10 L 40 40 Q 20 30, 0 40 Z M 40 10 Q 60 0, 80 10 L 80 40 Q 60 30, 40 40 Z" />
+              </svg>
+            </motion.div>
+          </div>
+
+          <div className="absolute bottom-20 md:bottom-24 left-0 right-0 w-full overflow-hidden pointer-events-none select-none h-10">
+            <motion.div
+              initial={{ x: '100vw' }}
+              animate={{ x: '-300px' }}
+              transition={{ repeat: Infinity, duration: 60, ease: "linear", delay: 0 }}
+              className="absolute left-0 text-cyan-400/35 flex items-center"
+            >
+              <svg className="w-12 h-9 md:w-14 md:h-10" viewBox="0 0 56 38" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="0" y="0" width="56" height="38" rx="8" />
+                <path d="M 16 12 L 8 19 L 16 26 M 40 12 L 48 19 L 40 26 M 26 28 L 32 10" />
+              </svg>
+            </motion.div>
+
+            <motion.div
+              initial={{ x: '100vw' }}
+              animate={{ x: '-300px' }}
+              transition={{ repeat: Infinity, duration: 60, ease: "linear", delay: 30 }}
+              className="absolute left-0 text-blue-400/40 font-serif text-sm md:text-base font-bold whitespace-nowrap"
+            >
+              ∑_(i=1)^n a_i
+            </motion.div>
+          </div>
+        </div>
+
+        <GrainNoise />
 
         {/* Interactive Mouse-Tracking Glowing Follower */}
         <motion.div 
-          className="absolute w-[35vw] h-[35vw] rounded-full blur-[100px] bg-gradient-to-tr from-[#1d4ed8] to-[#2563eb] pointer-events-none opacity-[0.18]"
+          className="absolute w-[35vw] h-[35vw] rounded-full blur-[100px] bg-gradient-to-tr from-blue-600/20 to-cyan-500/20 pointer-events-none opacity-40"
           style={{
             left: glowX,
             top: glowY,
@@ -835,36 +773,36 @@ export function LandingPageDark() {
         />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 w-full flex flex-col items-center text-center">
-          {/* Majestic Typography Title */}
-          <h1 className="font-display font-extrabold tracking-tight leading-[1.2] flex flex-col items-center">
+          {/* Punchy Clean Title */}
+          <h1 className="font-display font-extrabold tracking-tight leading-[1.15] flex flex-col items-center max-w-4xl">
             <motion.span 
               initial={{ opacity: 0, y: 40 }}
               animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-600 drop-shadow-[0_3px_0px_rgba(255,255,255,0.2)] drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]"
-              style={{ fontSize: 'clamp(2rem, 8vw, 5rem)' }}
+              className="block text-white font-black"
+              style={{ fontSize: 'clamp(2.25rem, 6.5vw, 4.75rem)' }}
             >
-              {t('landing.hero_title_1') || 'Belajar. Berbagi.'}
+              {t('landing.hero_title_1') || 'Transform Your Notes'}
             </motion.span>
             
             <motion.span 
               initial={{ opacity: 0, y: 40 }}
               animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="block text-transparent bg-clip-text bg-gradient-to-b from-[#d8b4fe] via-[#2563eb] to-[#4f46e5] drop-shadow-[0_3px_0px_#3730a3] drop-shadow-[0_4px_6px_rgba(93,92,230,0.5)]"
-              style={{ fontSize: 'clamp(2rem, 8vw, 5rem)' }}
+              className="block text-blue-500 font-black drop-shadow-[0_3px_0px_#1d4ed8] mt-1"
+              style={{ fontSize: 'clamp(2.25rem, 6.5vw, 4.75rem)' }}
             >
-              {t('landing.hero_title_2') || 'Berkembang.'}
+              {t('landing.hero_title_2') || 'With AI Intelligence'}
             </motion.span>
 
             <motion.span 
               initial={{ opacity: 0, y: 40 }}
               animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="block tracking-normal font-medium text-gray-300 mt-6 max-w-3xl px-4 leading-relaxed"
-              style={{ fontSize: 'clamp(0.95rem, 1.6vw, 1.2rem)' }}
+              className="block tracking-normal font-serif text-gray-300 mt-6 max-w-2xl px-4 leading-relaxed font-medium"
+              style={{ fontSize: 'clamp(1rem, 1.6vw, 1.25rem)' }}
             >
-              {t('landing.hero_desc') || 'Ubah catatan belajarmu dari jenjang sekolah dasar hingga kuliah menjadi portofolio wawasan terstruktur dengan editor LaTeX yang mudah.'}
+              {t('landing.hero_desc') || 'Ubah rekaman suara, PDF, dan dokumen belajarmu menjadi ringkasan AI terstruktur, mindmap visual, flashcard, dan audio podcast'}
             </motion.span>
           </h1>
 
@@ -877,13 +815,9 @@ export function LandingPageDark() {
           >
             <button
               onClick={() => openAuthModal('register')}
-              className="w-full sm:w-auto cursor-pointer relative inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-extrabold text-sm sm:text-base text-white overflow-hidden group transition-all"
-              style={{ 
-                background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',
-                boxShadow: 'inset 0 1.5px 2px rgba(255,255,255,0.4), inset 0 -4px 10px rgba(0,0,0,0.25), 0 10px 25px -4px rgba(93,92,230,0.7)'
-              }}
+              className="w-full sm:w-auto cursor-pointer relative inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:px-10 sm:py-4 rounded-2xl font-mono font-extrabold text-sm uppercase text-white bg-blue-600 hover:bg-blue-700 border-2 border-blue-400/40 shadow-[4px_4px_0px_#1e3a8a] active:translate-y-0.5 transition-all group overflow-hidden"
             >
-              <span className="relative z-10 flex items-center gap-2 drop-shadow-md">
+              <span className="relative z-10 flex items-center gap-2">
                 {t('landing.hero_btn_start') || 'Mulai Belajar'} <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out" />
@@ -891,9 +825,9 @@ export function LandingPageDark() {
 
             <button
               onClick={() => openAuthModal('login')}
-              className="w-full sm:w-auto cursor-pointer inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:px-10 sm:py-5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md font-bold text-sm sm:text-base hover:bg-white/10 hover:border-white/20 transition-all text-gray-300"
+              className="w-full sm:w-auto cursor-pointer inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:px-10 sm:py-4 rounded-2xl font-mono font-bold text-sm uppercase text-white bg-[#171424] border-2 border-white/10 shadow-[4px_4px_0px_rgba(0,0,0,0.6)] hover:bg-[#100D1A] active:translate-y-0.5 transition-all"
             >
-              <span className="group-hover:text-white transition-colors">{t('landing.hero_btn_explore') || 'Telusuri Catatan'}</span>
+              <span>{t('landing.hero_btn_explore') || 'Telusuri Catatan'}</span>
             </button>
           </motion.div>
 
@@ -903,11 +837,11 @@ export function LandingPageDark() {
             animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-full max-w-6xl mt-10 md:mt-20 py-4 md:py-8 overflow-hidden select-none"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+            }}
           >
-            {/* Side Vignette Fades (Left & Right gradients) */}
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#06050e] to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#06050e] to-transparent z-10 pointer-events-none" />
-
             {/* Straight Marquee wrapper */}
             <div className="flex flex-col gap-4">
               <MarqueeRow items={row1Items} direction="left" speed={28} />
@@ -915,7 +849,7 @@ export function LandingPageDark() {
             </div>
             
             {/* Ambient subtle glow beneath */}
-            <div className="absolute inset-x-24 top-1/2 -translate-y-1/2 h-16 bg-gradient-to-r from-[#1d4ed8]/10 to-[#2563eb]/10 blur-3xl -z-10" />
+            <div className="absolute inset-x-24 top-1/2 -translate-y-1/2 h-16 bg-gradient-to-r from-blue-600/10 to-cyan-500/10 blur-3xl -z-10" />
           </motion.div>
         </div>
       </section>
@@ -926,219 +860,6 @@ export function LandingPageDark() {
       <ScrollRevealText />
 
       {/* =============================================
-          3. MULTILINGUAL "MADE FOR LEARNING" SHOWCASE
-          ============================================= */}
-      <section className="relative py-12 md:py-24 bg-[#06050e] overflow-hidden">
-        <GrainNoise />
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row items-stretch gap-12">
-            
-            {/* Left Box: Title and Language Cloud */}
-            <div className="flex-1 flex flex-col justify-between">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                <p className="text-xs md:text-sm font-semibold text-gray-500 tracking-[0.2em] uppercase mb-4">
-                  {t('landing.multilang_badge') || 'AKSESIBILITAS GLOBAL'}
-                </p>
-                <h2 className="font-display font-extrabold tracking-tight leading-[1.1] text-white" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}>
-                  {t('landing.multilang_title_1') || 'Pembelajaran'}<br />
-                  <span className="text-[#1d4ed8]">{t('landing.multilang_title_2') || 'Tanpa Batas'}</span><br />
-                  {t('landing.multilang_title_3') || 'Bahasa.'}
-                </h2>
-                <p className="text-gray-400 mt-6 max-w-md text-sm md:text-base leading-relaxed">
-                  {t('landing.multilang_desc') || 'SensoraNote mendukung tampilan antarmuka dalam 40+ bahasa, memungkinkan pelajar dari berbagai belahan dunia untuk berkolaborasi dan belajar dengan nyaman menggunakan platform kami.'}
-                </p>
-              </motion.div>
-
-              {/* Premium mechanical horizontal gaming console for active language and acak bahasa */}
-              <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-4 sm:p-5 rounded-3xl bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-2xl max-w-md shadow-2xl relative group/slot overflow-hidden">
-                {/* Ambient glow behind slot */}
-                <div className="absolute -inset-10 bg-[#1d4ed8]/8 rounded-full blur-3xl opacity-0 group-hover/slot:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                
-                {/* Reels Chamber on the Left */}
-                <div className="relative p-3.5 bg-black/45 border border-white/10 rounded-2xl shadow-[inset_0_4px_20px_rgba(0,0,0,0.85)] flex gap-2">
-                  <Reel activeIndex={activeWord} delay={0} />
-                  <Reel activeIndex={activeWord} delay={0.12} />
-                  <Reel activeIndex={activeWord} delay={0.24} />
-                  
-                  {/* Laser target cursor line on the left/right sides of reels */}
-                  <div className="absolute inset-y-0 left-0 w-[2.5px] bg-gradient-to-b from-transparent via-[#1d4ed8]/50 to-transparent pointer-events-none" />
-                  <div className="absolute inset-y-0 right-0 w-[2.5px] bg-gradient-to-b from-transparent via-[#1d4ed8]/50 to-transparent pointer-events-none" />
-                </div>
-
-                {/* Info Panel & Premium SPIN Button on the Right */}
-                <div className="flex flex-col gap-3 justify-center items-center sm:items-start z-10 flex-1">
-                  <div>
-                    <span className="text-[9px] text-white font-bold uppercase tracking-wider block mb-0.5 text-center sm:text-left">{t('landing.active_language') || 'Bahasa Aktif'}</span>
-                    <p className="text-base font-bold text-white leading-tight font-display">
-                      {MULTI_LANG_TEXTS[activeWord].lang}
-                    </p>
-                  </div>
-                  
-                  {/* Premium Pill AI Scrambler Button (No text, sleek pill shape, glowing, Shuffle icon) */}
-                  <div className="relative mt-2">
-                    {/* Pulsing outer glow invitation */}
-                    <div className="absolute inset-0 rounded-full bg-[#1d4ed8]/15 border border-[#1d4ed8]/20 animate-pulse pointer-events-none scale-105" />
-                    
-                    <motion.button
-                      onClick={() => {
-                        const randomIdx = Math.floor(Math.random() * MULTI_LANG_TEXTS.length);
-                        setActiveWord(randomIdx);
-                      }}
-                      whileHover={{ 
-                        scale: 1.05, 
-                        boxShadow: '0 0 20px rgba(93,92,230,0.5)'
-                      }}
-                      whileTap={{ scale: 0.96 }}
-                      className="cursor-pointer h-10 w-28 rounded-full bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] flex items-center justify-center text-white shadow-lg shadow-[#1d4ed8]/25 border border-white/20 hover:brightness-110 transition-all duration-300 relative overflow-hidden group"
-                      title="Acak Bahasa"
-                    >
-                      {/* Subtly animated shuffle icon */}
-                      <Shuffle className="w-4.5 h-4.5 text-white filter drop-shadow-[0_0_4px_rgba(255,255,255,0.6)] group-hover:rotate-12 transition-transform duration-300" />
-                      
-                      {/* Moving light sheen effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-                    </motion.button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Box: Big Interactive 3D Parallax Card */}
-            <div className="flex-1 flex justify-center items-stretch" style={{ perspective: 1000 }}>
-              <motion.div
-                ref={cardRef}
-                onMouseMove={handleCardMouseMove}
-                onMouseLeave={handleCardMouseLeave}
-                className="w-full min-h-[300px] md:min-h-[380px] bg-gradient-to-br from-[#120F2D] via-[#0E0C23] to-[#0A0917] rounded-3xl p-5 md:p-8 border border-white/10 shadow-2xl relative overflow-hidden flex flex-col justify-between cursor-default origin-center select-none"
-                style={{
-                  rotateX: springRotateX,
-                  rotateY: springRotateY,
-                  transformStyle: "preserve-3d",
-                }}
-              >
-                {/* Glowing border outline effect */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1d4ed8]/30 via-transparent to-[#2563eb]/30 opacity-60 pointer-events-none blur-[0.5px]" />
-                
-                {/* Dynamic sheet glare overlay reflection */}
-                <motion.div
-                  className="absolute w-[150%] h-[150%] pointer-events-none rounded-full blur-3xl opacity-[0.09] bg-white -z-10"
-                  style={{
-                    left: springGlareLeft,
-                    top: springGlareTop,
-                    x: "-50%",
-                    y: "-50%"
-                  }}
-                />
-
-                {/* Ambient breathing back-glow */}
-                <motion.div 
-                  className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] opacity-[0.12] blur-md -z-20 pointer-events-none"
-                  animate={{
-                    opacity: [0.1, 0.2, 0.1]
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-
-                {/* Dynamic light accent */}
-                <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#2563eb]/15 rounded-full blur-3xl pointer-events-none" />
-                
-                {/* Floating Translucent Background Glyphs */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-3xl z-0">
-                  <AnimatePresence>
-                    {(MULTI_LANG_TEXTS[activeWord].glyphs || ['A', 'B', 'C', 'D']).map((glyph, gIdx) => {
-                      const positions = [
-                        { top: '12%', left: '15%' },
-                        { top: '20%', right: '18%' },
-                        { bottom: '25%', left: '25%' },
-                        { bottom: '15%', right: '15%' }
-                      ];
-                      const pos = positions[gIdx % positions.length];
-                      return (
-                        <motion.span
-                          key={`${activeWord}-glyph-${gIdx}`}
-                          initial={{ opacity: 0, scale: 0.6, rotate: -20, filter: 'blur(2px)' }}
-                          animate={{ 
-                            opacity: 0.08, 
-                            scale: 1, 
-                            rotate: 0, 
-                            filter: 'blur(1px)',
-                            y: [0, -15, 0],
-                          }}
-                          exit={{ opacity: 0, scale: 0.6, rotate: 20, filter: 'blur(3px)' }}
-                          transition={{
-                            opacity: { duration: 0.6 },
-                            scale: { duration: 0.6 },
-                            rotate: { duration: 0.6 },
-                            y: {
-                              duration: 5 + gIdx * 1.5,
-                              repeat: Infinity,
-                              ease: "easeInOut"
-                            }
-                          }}
-                          className="absolute text-6xl font-black text-white pointer-events-none select-none font-display"
-                          style={{
-                            ...pos,
-                            transform: "translateZ(15px)"
-                          }}
-                        >
-                          {glyph}
-                        </motion.span>
-                      );
-                    })}
-                  </AnimatePresence>
-                </div>
-
-                <div className="flex items-center justify-between relative z-10" style={{ transform: "translateZ(30px)" }}>
-                  <Globe className="w-8 h-8 text-[#1d4ed8] animate-pulse" />
-                  
-                  {/* Dynamic scrolling matrix cyber code */}
-                  <div className="flex items-center gap-1.5">
-                    <span className="h-2 w-2 rounded-full bg-[#1d4ed8] animate-pulse" />
-                    <span className="text-[10px] text-gray-500 font-bold tracking-widest font-mono uppercase">
-                      LOCALE: <MorphingText text={`BAYU_${MULTI_LANG_TEXTS[activeWord].code}`} />
-                    </span>
-                  </div>
-                </div>
-
-                {/* Huge dynamic text display */}
-                <div className="my-4 md:my-8 relative z-10 overflow-hidden h-[120px] md:h-[180px] flex items-center" style={{ transform: "translateZ(45px)" }}>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeWord}
-                      initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
-                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, y: -15, filter: "blur(4px)" }}
-                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                      className="w-full text-left"
-                    >
-                      <h3 className="font-display font-bold text-white tracking-tight leading-snug whitespace-pre-line" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
-                        {MULTI_LANG_TEXTS[activeWord].text}
-                      </h3>
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-
-                <div className="border-t border-white/5 pt-4 md:pt-6 flex flex-col md:flex-row items-center gap-3 md:gap-0 md:justify-between text-[10px] sm:text-xs text-gray-500 font-semibold relative z-10 w-full" style={{ transform: "translateZ(30px)" }}>
-                  {/* Dynamic scrolling badge */}
-                  <span className="tracking-wider text-gray-400 font-bold uppercase transition-all duration-300">
-                    <MorphingText text={(MULTI_LANG_TEXTS[activeWord].badge || 'AKTIF MULTI-BAHASA').toUpperCase()} />
-                  </span>
-                  
-                  {/* Dynamic interactive count-up supported languages */}
-                  <span className="flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors duration-300">
-                    <Users className="w-4 h-4 text-[#1d4ed8]" /> 
-                    <span>
-                      <CountUp to={40} />+ {t('landing.multilang_supported') || 'Bahasa Didukung'}
-                    </span>
                   </span>
                 </div>
               </motion.div>
@@ -1161,8 +882,8 @@ export function LandingPageDark() {
                style={{ background: 'radial-gradient(circle, #2563eb 0%, transparent 60%)' }} />
 
           <div className="max-w-6xl mx-auto px-6 relative z-10">
-            <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16">
-              <p className="text-xs md:text-sm font-semibold text-[#1d4ed8] tracking-[0.2em] uppercase mb-4">
+            <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12">
+              <p className="text-xs md:text-sm font-semibold text-blue-400 tracking-[0.2em] uppercase mb-4">
                 {t('landing.explore_badge') || 'EKSPLORASI TOPIK'}
               </p>
               <h2 className="font-display font-extrabold tracking-tight text-white text-3xl md:text-4xl leading-tight">
@@ -1170,147 +891,313 @@ export function LandingPageDark() {
               </h2>
             </div>
 
-            {/* Subject Navigation Ribbon */}
-            <div className="flex overflow-x-auto pb-4 gap-3 no-scrollbar scroll-smooth justify-start md:justify-center p-2">
-              {SUBJECTS.map((sub, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveSubject(i)}
-                  className={`cursor-pointer relative flex items-center gap-2.5 px-4 py-3 md:px-6 md:py-4 rounded-2xl border text-xs md:text-sm font-bold tracking-wide whitespace-nowrap transition-all duration-500 overflow-hidden ${
-                    i === activeSubject
-                      ? 'border-transparent text-white scale-[1.02] z-10'
-                      : 'bg-white/5 border-white/5 text-gray-400 hover:bg-white/10 hover:text-white z-0'
-                  }`}
-                >
-                  {i === activeSubject && (
-                    <motion.div
-                      layoutId="activeSubjectPill"
-                      className="absolute inset-0 bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] -z-10 shadow-lg shadow-[#1d4ed8]/20"
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    />
-                  )}
-                  <span className="text-lg relative z-10">{sub.icon}</span>
-                  <span className="relative z-10 hidden sm:block">{sub.name}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* Interactive 3D Showcase Card */}
-            <div className="mt-10 max-w-4xl mx-auto overflow-hidden rounded-3xl" style={{ perspective: 1000 }}>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeSubject}
-                  ref={subCardRef}
-                  onMouseMove={handleSubCardMouseMove}
-                  onMouseLeave={handleSubCardMouseLeave}
-                  initial={{ opacity: 0, x: 80, scale: 0.98, filter: "blur(4px)" }}
-                  animate={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, x: -80, scale: 0.98, filter: "blur(4px)" }}
-                  transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                  style={{
-                    rotateX: springSubRotateX,
-                    rotateY: springSubRotateY,
-                    transformStyle: "preserve-3d"
-                  }}
-                  className="bg-gradient-to-br from-white/[0.04] to-white/[0.01] rounded-3xl p-5 md:p-12 border border-white/10 shadow-2xl backdrop-blur-xl relative overflow-hidden flex flex-col md:flex-row items-center gap-6 md:gap-10 cursor-default select-none group/subcard"
-                >
-                  {/* Dynamic light sheet glare reflection */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1d4ed8]/15 via-transparent to-[#2563eb]/15 opacity-50 pointer-events-none blur-[0.5px]" />
-                  <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#1d4ed8]/10 rounded-full blur-3xl pointer-events-none" />
-
-                  {/* Left Side: Illustration Box with Dynamic SVGs vector background */}
-                  <div 
-                    className="w-24 h-24 md:w-1/3 md:h-auto md:aspect-square rounded-2xl bg-[#0d0b1a] border border-white/5 flex items-center justify-center text-4xl md:text-8xl shadow-inner relative overflow-hidden shrink-0"
-                    style={{ transform: "translateZ(30px)" }}
-                  >
-                    {/* Decorative dynamic vector outlines behind icon based on activeSubject */}
-                    <svg className="absolute inset-0 w-full h-full stroke-white/5 fill-none stroke-[1.5] pointer-events-none opacity-40 z-0 scale-95" viewBox="0 0 100 100">
-                      {activeSubject === 0 && ( // Matematika: Cartesian grids
-                        <g>
-                          <line x1="0" y1="50" x2="100" y2="50" />
-                          <line x1="50" y1="0" x2="50" y2="100" />
-                          <circle cx="50" cy="50" r="25" />
-                          <circle cx="50" cy="50" r="40" strokeDasharray="3,3" />
-                        </g>
-                      )}
-                      {activeSubject === 1 && ( // Sains: Orbiting loops
-                        <g>
-                          <ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(30 50 50)" />
-                          <ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(-30 50 50)" />
-                          <circle cx="50" cy="50" r="10" />
-                        </g>
-                      )}
-                      {activeSubject === 2 && ( // Bahasa: Book margin text lines
-                        <g>
-                          <line x1="15" y1="20" x2="85" y2="20" />
-                          <line x1="15" y1="35" x2="85" y2="35" />
-                          <line x1="15" y1="50" x2="70" y2="50" />
-                          <line x1="15" y1="65" x2="80" y2="65" />
-                          <line x1="15" y1="80" x2="55" y2="80" />
-                        </g>
-                      )}
-                      {activeSubject === 3 && ( // Sosial: Globe lines
-                        <g>
-                          <circle cx="50" cy="50" r="42" />
-                          <ellipse cx="50" cy="50" rx="42" ry="18" />
-                          <ellipse cx="50" cy="50" rx="18" ry="42" />
-                          <line x1="8" y1="50" x2="92" y2="50" />
-                        </g>
-                      )}
-                      {activeSubject === 4 && ( // Coding: Brackets & syntax tree
-                        <g>
-                          <path d="M 25,25 L 45,50 L 25,75" />
-                          <path d="M 75,25 L 55,50 L 75,75" />
-                          <line x1="45" y1="70" x2="55" y2="30" />
-                        </g>
-                      )}
-                      {activeSubject === 5 && ( // Sejarah: Concentric rings
-                        <g>
-                          <circle cx="50" cy="50" r="12" />
-                          <circle cx="50" cy="50" r="28" strokeDasharray="4,2" />
-                          <circle cx="50" cy="50" r="44" />
-                          <line x1="50" y1="8" x2="50" y2="92" />
-                        </g>
-                      )}
-                    </svg>
-                    
-                    {/* Floating glow behind emoji */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-[#1d4ed8]/10 to-[#2563eb]/10 opacity-0 group-hover/subcard:opacity-100 transition-opacity duration-700" />
-                    
-                    <span className="relative z-10 transform group-hover/subcard:scale-110 group-hover/subcard:rotate-6 transition-transform duration-500 select-none">
-                      {currentSubject.icon}
-                    </span>
-                  </div>
-
-                  {/* Right Side: Description content */}
-                  <div className="flex-1 text-center md:text-left" style={{ transform: "translateZ(45px)" }}>
-                    <span className="text-[10px] font-bold text-[#2563eb] tracking-widest uppercase font-mono block">{t('landing.explore_field') || 'EKSPLORASI BIDANG'}</span>
-                    <h3 className="font-display font-black text-2xl md:text-4xl text-white tracking-tight mt-2.5 leading-none">
-                      {currentSubject.name}
-                    </h3>
-                    <p className="text-gray-400 mt-5 text-sm leading-relaxed">
-                      {currentSubject.desc}
-                    </p>
-                    
-                    {/* Floating feature pills inside subject */}
-                    <div className="mt-4 md:mt-8 flex flex-wrap gap-2 justify-center md:justify-start">
-                      {currentSubject.tags?.map((tag, tIdx) => (
-                        <span key={tIdx} className="text-xs font-bold text-gray-300 bg-white/5 border border-white/10 px-4 py-2 rounded-full hover:border-[#1d4ed8]/35 hover:bg-white/10 transition-all duration-300">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
+            {/* Interactive 3D Open Textbook Showcase Container */}
+            <div className="mt-8 max-w-5xl mx-auto relative select-none" style={{ perspective: 1400 }}>
+              
+              {/* Textbook Binder Top Index Tabs */}
+              <div className="flex items-center justify-start md:justify-center gap-1.5 md:gap-3 px-4 overflow-x-auto no-scrollbar relative z-20 -mb-2">
+                {SUBJECTS.map((sub, i) => {
+                  const isActive = i === activeSubject;
+                  const tabColors = [
+                    'from-blue-600 to-blue-800 text-white shadow-blue-900/40 border-blue-400/40',
+                    'from-[#047857] to-[#064E3B] text-emerald-50 shadow-emerald-900/40 border-emerald-400/40',
+                    'from-[#7E22CE] to-[#581C87] text-purple-50 shadow-purple-900/40 border-purple-400/40',
+                    'from-[#0284C7] to-[#0369A1] text-cyan-50 shadow-cyan-900/40 border-cyan-400/40',
+                    'from-[#0284C7] to-[#0369A1] text-cyan-50 shadow-cyan-900/40 border-cyan-400/40',
+                    'from-[#BE123C] to-[#881337] text-rose-50 shadow-rose-900/40 border-rose-400/40'
+                  ];
+                  return (
                     <button
-                      onClick={() => openAuthModal('register')}
-                      className="cursor-pointer mt-6 md:mt-8 inline-flex items-center gap-2.5 text-sm font-bold text-white hover:text-[#1d4ed8] transition-colors group justify-center md:justify-start w-full md:w-auto"
+                      key={i}
+                      onClick={() => setActiveSubject(i)}
+                      className={`cursor-pointer relative px-3 py-2 md:px-5 md:py-2.5 rounded-t-2xl font-display font-bold text-xs md:text-sm tracking-wide transition-all duration-300 flex items-center gap-2 border-t border-l border-r ${
+                        isActive
+                          ? `bg-gradient-to-r ${tabColors[i % tabColors.length]} -translate-y-1 shadow-lg border-blue-300/50 z-30`
+                          : 'bg-white/10 hover:bg-white/15 text-gray-300 border-white/10 z-10'
+                      }`}
                     >
-                      <span>{t('landing.explore_notes_btn') || 'Jelajahi Catatan'} {currentSubject.name}</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      <span className="text-sm md:text-base">{sub.icon}</span>
+                      <span className="whitespace-nowrap">{sub.name}</span>
                     </button>
+                  );
+                })}
+              </div>
+
+              {/* Open Hardcover Cover Shell */}
+              <div className="w-full bg-gradient-to-b from-[#1E192E] via-[#171424] to-[#100D1A] rounded-3xl p-3 md:p-6 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.9)] border-2 border-blue-500/30 relative overflow-hidden group/book">
+                
+                {/* Gold/Silver Stitched Corner Trim */}
+                <div className="absolute top-2.5 left-2.5 w-8 h-8 border-t-2 border-l-2 border-blue-400/60 rounded-tl-xl pointer-events-none" />
+                <div className="absolute top-2.5 right-2.5 w-8 h-8 border-t-2 border-r-2 border-blue-400/60 rounded-tr-xl pointer-events-none" />
+                <div className="absolute bottom-2.5 left-2.5 w-8 h-8 border-b-2 border-l-2 border-blue-400/60 rounded-bl-xl pointer-events-none" />
+                <div className="absolute bottom-2.5 right-2.5 w-8 h-8 border-b-2 border-r-2 border-blue-400/60 rounded-br-xl pointer-events-none" />
+
+                {/* Inner Line Trim */}
+                <div className="absolute inset-4 rounded-2xl border border-blue-400/20 pointer-events-none" />
+
+                {/* Satin Bookmark Ribbon Tag */}
+                <div className="absolute top-0 right-16 md:right-24 w-5 md:w-6 h-16 md:h-20 z-30 pointer-events-none flex flex-col items-center group-hover/book:translate-y-1 transition-transform duration-500 filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
+                  <div className="w-full flex-1 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-800 relative flex flex-col items-center justify-start pt-2 border-x border-blue-300/30 shadow-inner">
+                    <div className="w-3 h-0.5 bg-gradient-to-r from-blue-300 via-white to-blue-300 rounded-full shadow-xs opacity-90" />
                   </div>
-                </motion.div>
-              </AnimatePresence>
+                  <svg className="w-5 md:w-6 h-3 md:h-3.5 text-blue-800 -mt-[0.5px] shrink-0" viewBox="0 0 32 20" fill="currentColor">
+                    <path d="M 0 0 L 16 12 L 32 0 L 32 20 L 0 20 Z" transform="rotate(180 16 10)" />
+                  </svg>
+                </div>
+
+                {/* Open Book Double-Page Dark Parchment Canvas */}
+                <div className="w-full bg-[#181424] rounded-2xl border border-white/10 p-5 md:p-10 relative min-h-[420px] md:min-h-[460px] flex flex-col md:flex-row items-stretch gap-8 md:gap-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)] overflow-hidden">
+                  
+                  {/* Center Book Binding Spine & Drop Shadow Trough */}
+                  <div className="hidden md:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-12 bg-gradient-to-r from-black/40 via-black/80 to-black/40 pointer-events-none z-20" />
+                  <div className="hidden md:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-[2px] bg-white/15 pointer-events-none z-20" />
+
+                  {/* LEFT PAGE: Chapter Stamp, Title, Description, Tags */}
+                  <div className="w-full md:w-1/2 md:pr-10 relative min-h-[240px] md:min-h-full flex flex-col justify-between z-10">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeSubject}
+                        initial={{ opacity: 0, x: 25 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -25 }}
+                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                        className="w-full h-full flex flex-col justify-between"
+                      >
+                        <div>
+                          {/* Chapter Stamp & Archive Seal */}
+                          <div className="flex items-center justify-between mb-5 border-b border-white/10 pb-3">
+                            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-md bg-blue-950/40 border border-blue-700/40 text-blue-300 font-mono text-[11px] font-bold uppercase tracking-wider shadow-2xs">
+                              <span>BAB 0{activeSubject + 1}</span>
+                              <span className="text-blue-400">•</span>
+                              <span>{currentSubject.name}</span>
+                            </div>
+                            <span className="text-[10px] text-gray-500 font-mono font-semibold uppercase tracking-widest">
+                              SensoraNote Archival
+                            </span>
+                          </div>
+
+                          {/* Title with Embossed Icon Badge */}
+                          <div className="flex items-center gap-4">
+                            <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-3xl shadow-inner shrink-0">
+                              {currentSubject.icon}
+                            </div>
+                            <div>
+                              <span className="text-[10px] font-bold text-blue-400 font-mono uppercase tracking-widest block mb-0.5">MODUL SUBJEK</span>
+                              <h3 className="font-display font-black text-2xl md:text-4xl text-white tracking-tight leading-none">
+                                {currentSubject.name}
+                              </h3>
+                            </div>
+                          </div>
+
+                          <p className="text-gray-300 mt-5 text-xs md:text-sm leading-relaxed font-serif text-justify">
+                            {currentSubject.desc}
+                          </p>
+                        </div>
+
+                        <div className="mt-6 md:mt-8">
+                          {/* Topic Tags */}
+                          <div className="flex flex-wrap gap-2 mb-6">
+                            {currentSubject.tags?.map((tag, tIdx) => (
+                              <span key={tIdx} className="text-xs font-bold text-gray-300 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-lg shadow-2xs hover:border-blue-400/40 hover:bg-white/10 transition-all">
+                                #{tag}
+                              </span>
+                            ))}
+                          </div>
+
+                          {/* Primary CTA Button & Left Page Number */}
+                          <div className="flex items-center justify-between border-t border-white/10 pt-4">
+                            <button
+                              onClick={() => openAuthModal('register')}
+                              className="cursor-pointer w-full md:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-mono font-extrabold text-xs shadow-lg shadow-blue-900/40 transition-all group border border-blue-400/40"
+                            >
+                              <span>{t('landing.explore_notes_btn') || 'Buka Catatan'} {currentSubject.name}</span>
+                              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </button>
+
+                            <span className="hidden md:inline-block font-serif text-xs font-bold text-gray-400 italic">
+                              - Hal. {activeSubject * 2 + 1} -
+                            </span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+
+                  {/* RIGHT PAGE WITH REALISTIC 3D PAGE FLIP TRANSITION */}
+                  <div className="w-full md:w-1/2 md:pl-10 relative min-h-[240px] md:min-h-full flex flex-col justify-between z-10 border-t md:border-t-0 md:border-l border-white/10 pt-6 md:pt-0">
+                    {/* Red Margin Line on Left */}
+                    <div className="hidden md:block absolute top-0 bottom-0 left-6 w-[1.5px] bg-red-500/20 pointer-events-none z-10" />
+
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeSubject}
+                        initial={{ rotateY: -105, opacity: 0 }}
+                        animate={{ rotateY: 0, opacity: 1 }}
+                        exit={{ rotateY: 105, opacity: 0 }}
+                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                        style={{ transformOrigin: "left center", transformStyle: "preserve-3d" }}
+                        className="w-full h-full flex flex-col justify-between bg-[#211C33] rounded-xl p-5 md:p-6 border border-white/10 shadow-xl font-mono relative overflow-hidden"
+                      >
+                        {/* Dynamic 3D Page Turn Light Reflection & Shading Overlay */}
+                        <motion.div 
+                          key={`sheen-${activeSubject}`}
+                          initial={{ opacity: 0.75, x: "-100%" }}
+                          animate={{ opacity: 0, x: "100%" }}
+                          transition={{ duration: 0.6, ease: "easeOut" }}
+                          className="absolute inset-0 bg-gradient-to-r from-black/50 via-white/20 to-transparent pointer-events-none z-30"
+                        />
+                        {/* Paper Lined Texture Background */}
+                        <div 
+                          className="absolute inset-0 opacity-15 pointer-events-none"
+                          style={{
+                            backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px)',
+                            backgroundSize: '100% 26px'
+                          }}
+                        />
+
+                        {/* Top Header info */}
+                        <div className="flex items-center justify-between border-b border-white/10 pb-3 text-[10px] text-gray-400 font-bold uppercase tracking-wider relative z-10">
+                          <span className="flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                            <span>VERIFIED CATATAN AKADEMIK</span>
+                          </span>
+                          <span className="text-blue-400 font-mono">FORMULA KA-TEX ENGINE</span>
+                        </div>
+
+                        {/* Rich Dynamic Notebook Preview Content */}
+                        <div className="my-4 relative z-10 font-sans">
+                          {activeSubject === 0 && ( // Matematika
+                            <div className="space-y-3">
+                              <div className="flex items-center justify-between text-xs font-bold text-gray-200">
+                                <span>// Teorema Kalkulus Integral</span>
+                                <span className="text-[10px] text-blue-400 font-mono">MAT-101</span>
+                              </div>
+                              <div 
+                                className="p-4 rounded-xl bg-black/40 border border-white/10 text-white font-mono text-xs overflow-x-auto flex justify-center shadow-2xs"
+                                dangerouslySetInnerHTML={{
+                                  __html: katex.renderToString("\\int_{a}^{b} f(x) \\, dx = F(b) - F(a)", { throwOnError: false, displayMode: true })
+                                }}
+                              />
+                              <div className="p-3 rounded-lg bg-blue-950/40 border border-blue-700/40 text-[11px] text-blue-200 leading-relaxed font-medium">
+                                💡 <b>Catatan Penting:</b> Luas daerah di bawah kurva fungsi \(f(x)\) dari batas selang \(a\) sampai \(b\).
+                              </div>
+                            </div>
+                          )}
+
+                          {activeSubject === 1 && ( // Sains
+                            <div className="space-y-3">
+                              <div className="flex items-center justify-between text-xs font-bold text-gray-200">
+                                <span>// Hukum Kuantum & Kesetaraan Energi</span>
+                                <span className="text-[10px] text-emerald-400 font-mono">PHY-202</span>
+                              </div>
+                              <div 
+                                className="p-4 rounded-xl bg-black/40 border border-white/10 text-white font-mono text-xs overflow-x-auto flex justify-center shadow-2xs"
+                                dangerouslySetInnerHTML={{
+                                  __html: katex.renderToString("E = m \\cdot c^2 \\quad \\text{dan} \\quad \\hat{H}\\Psi = E\\Psi", { throwOnError: false, displayMode: true })
+                                }}
+                              />
+                              <div className="p-3 rounded-lg bg-emerald-950/40 border border-emerald-700/40 text-[11px] text-emerald-200 leading-relaxed font-medium">
+                                ⚛️ <b>Persamaan Schrödinger:</b> Menggambarkan sifat gelombang elektron dalam medan potensial atom.
+                              </div>
+                            </div>
+                          )}
+
+                          {activeSubject === 2 && ( // Bahasa
+                            <div className="space-y-3">
+                              <div className="flex items-center justify-between text-xs font-bold text-gray-200">
+                                <span>// Analisis Semantik & Hermeneutika</span>
+                                <span className="text-[10px] text-purple-400 font-mono">LING-301</span>
+                              </div>
+                              <div className="p-4 rounded-xl bg-purple-950/40 border border-purple-800/40 text-gray-200 text-xs leading-relaxed font-serif shadow-2xs">
+                                <span className="float-left text-3xl font-bold font-serif leading-none mr-2 text-purple-400">"</span>
+                                Bahasa adalah cermin kebudayaan dan pintu gerbang pemikiran kritis manusia dalam memahami struktur realitas.
+                              </div>
+                              <div className="p-3 rounded-lg bg-black/40 border border-white/10 text-[11px] text-gray-300 leading-relaxed font-mono">
+                                📚 <b>Kosa Kata Kunci:</b> Sintaksis, Fonologi, Morfologi, Pragmatik.
+                              </div>
+                            </div>
+                          )}
+
+                          {activeSubject === 3 && ( // Sosial
+                            <div className="space-y-3">
+                              <div className="flex items-center justify-between text-xs font-bold text-gray-200">
+                                <span>// Makroekonomi & Model GDP</span>
+                                <span className="text-[10px] text-cyan-400 font-mono">ECON-102</span>
+                              </div>
+                              <div 
+                                className="p-4 rounded-xl bg-black/40 border border-white/10 text-white font-mono text-xs overflow-x-auto flex justify-center shadow-2xs"
+                                dangerouslySetInnerHTML={{
+                                  __html: katex.renderToString("\\text{GDP} = C + I + G + (X - M)", { throwOnError: false, displayMode: true })
+                                }}
+                              />
+                              <div className="p-3 rounded-lg bg-cyan-950/40 border border-cyan-700/40 text-[11px] text-cyan-200 leading-relaxed font-medium">
+                                📊 <b>Variabel Utama:</b> Konsumsi ($C$), Investasi ($I$), Pengeluaran Negara ($G$), Ekspor Netto ($X-M$).
+                              </div>
+                            </div>
+                          )}
+
+                          {activeSubject === 4 && ( // Coding
+                            <div className="space-y-3">
+                              <div className="flex items-center justify-between text-xs font-bold text-gray-200">
+                                <span>// Algoritma Pencarian Biner</span>
+                                <span className="text-[10px] text-cyan-400 font-mono">CS-404</span>
+                              </div>
+                              <div className="p-3.5 rounded-xl bg-black/70 border border-white/10 text-emerald-400 font-mono text-[11px] overflow-x-auto shadow-md">
+                                <div className="flex items-center justify-between border-b border-white/10 pb-1.5 mb-2 text-[9px] text-gray-400">
+                                  <span>binary_search.ts</span>
+                                  <span className="text-cyan-400">O(log N)</span>
+                                </div>
+                                <code>{`function binarySearch(arr: number[], target: number) {\n  let left = 0, right = arr.length - 1;\n  while (left <= right) {\n    let mid = Math.floor((left + right) / 2);\n    if (arr[mid] === target) return mid;\n  }\n}`}</code>
+                              </div>
+                            </div>
+                          )}
+
+                          {activeSubject === 5 && ( // Sejarah
+                            <div className="space-y-3">
+                              <div className="flex items-center justify-between text-xs font-bold text-gray-200">
+                                <span>// Garis Waktu Sejarah Nusantara</span>
+                                <span className="text-[10px] text-rose-400 font-mono">HIST-501</span>
+                              </div>
+                              <div className="p-4 rounded-xl bg-rose-950/30 border border-rose-800/30 text-gray-200 text-xs leading-relaxed font-serif shadow-2xs">
+                                🏛️ <b>Linimasa Peradaban:</b><br />
+                                1293 M: Berdirinya Kerajaan Majapahit<br />
+                                1928 M: Sumpah Pemuda<br />
+                                1945 M: Proklamasi Kemerdekaan Indonesia
+                              </div>
+                              <div className="p-2.5 rounded-lg bg-black/40 border border-white/10 text-[11px] text-gray-400 font-mono">
+                                📜 Arsip Digital Tersimpan & Terverifikasi
+                              </div>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Page Bottom Footer Navigation Controls */}
+                        <div className="border-t border-white/10 pt-3 flex items-center justify-between text-[10px] text-gray-400 font-bold font-mono relative z-10">
+                          <span className="font-serif font-bold italic text-gray-400">- Hal. {activeSubject * 2 + 2} -</span>
+                          <button
+                            onClick={() => setActiveSubject((prev) => (prev > 0 ? prev - 1 : SUBJECTS.length - 1))}
+                            className="cursor-pointer hover:text-blue-400 transition-colors flex items-center gap-1"
+                          >
+                            <span>‹ Prev</span>
+                          </button>
+
+                          <span>HALAMAN {activeSubject + 1} DARI 6</span>
+
+                          <button
+                            onClick={() => setActiveSubject((prev) => (prev < SUBJECTS.length - 1 ? prev + 1 : 0))}
+                            className="cursor-pointer hover:text-blue-400 transition-colors flex items-center gap-1"
+                          >
+                            <span>Next ›</span>
+                          </button>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+
+                </div>
+
+              </div>
+
             </div>
           </div>
         </section>
@@ -1319,68 +1206,219 @@ export function LandingPageDark() {
         <TopicWarpSection openAuthModal={openAuthModal} />
       </div>
 
+        {/* =============================================
+            5.1. MULTILINGUAL NOTEBOOK SHOWCASE (Moved below TopicWarp)
+            ============================================= */}
+        <section className="relative py-12 md:py-24 bg-[#181424] overflow-hidden">
+          <GrainNoise />
+          <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <div className="flex flex-col lg:flex-row items-stretch gap-12">
+              
+              {/* Left Box: Title and Language Cloud */}
+              <div className="flex-1 flex flex-col justify-between">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <div className="block mb-3">
+                    <span className="inline-block px-3 py-1 bg-[#171424] border border-blue-500/50 shadow-[2px_2px_0px_#2563eb] rounded-md -rotate-1 text-xs font-mono font-extrabold text-blue-400 uppercase tracking-widest">
+                      🌐 {t('landing.multilang_badge') || 'AKSESIBILITAS GLOBAL'}
+                    </span>
+                  </div>
+                  <div className="relative inline-block">
+                    <h2 className="font-display font-extrabold tracking-tight leading-[1.1] text-white text-3xl md:text-5xl">
+                      {t('landing.multilang_title_1') || 'Pembelajaran'}<br />
+                      <span className="text-[#3B82F6]">{t('landing.multilang_title_2') || 'Tanpa Batas'}</span><br />
+                      {t('landing.multilang_title_3') || 'Bahasa.'}
+                    </h2>
+                    {/* Hand-Drawn Scribble Underline SVG */}
+                    <svg className="absolute -bottom-3 left-0 w-full h-3.5 text-cyan-400/80 pointer-events-none" viewBox="0 0 200 12" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round">
+                      <path d="M 3 6 Q 50 1, 100 8 T 197 4" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-300 mt-6 max-w-md text-sm md:text-base leading-relaxed font-serif">
+                    {t('landing.multilang_desc') || 'SensoraNote mendukung tampilan antarmuka dalam 20 pilihan bahasa yang dapat disesuaikan di pengaturan, memungkinkan pelajar dari berbagai belahan dunia untuk berkolaborasi dan belajar dengan nyaman.'}
+                  </p>
+                </motion.div>
+
+                {/* Dark Notebook Gaming Console for Active Language */}
+                <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-3xl bg-[#171424] border-2 border-white/10 shadow-[5px_5px_0px_rgba(0,0,0,0.6)] max-w-md relative group/slot overflow-hidden">
+                  {/* Corner Washi Tape Pin */}
+                  <div className="absolute -top-1 left-8 w-10 h-4 bg-[#2D2640]/90 border-x border-blue-400/40 rotate-[-3deg] z-20 pointer-events-none" />
+
+                  {/* Reels Chamber on the Left */}
+                  <div className="relative p-3.5 bg-black/50 border-2 border-white/10 rounded-2xl shadow-inner flex gap-2">
+                    <Reel activeIndex={activeWord} delay={0} />
+                    <Reel activeIndex={activeWord} delay={0.12} />
+                    <Reel activeIndex={activeWord} delay={0.24} />
+                  </div>
+
+                  {/* Info Panel & Notebook Stamp Spin Button */}
+                  <div className="flex flex-col gap-3 justify-center items-center sm:items-start z-10 flex-1">
+                    <div>
+                      <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider block mb-0.5 text-center sm:text-left font-mono">{t('landing.active_language') || 'Bahasa Aktif'}</span>
+                      <p className="text-base font-bold text-white leading-tight font-display">
+                        {MULTI_LANG_TEXTS[activeWord].lang}
+                      </p>
+                    </div>
+                    
+                    {/* Notebook Stamp ACAK BAHASA Button */}
+                    <motion.button
+                      onClick={() => {
+                        const randomIdx = Math.floor(Math.random() * MULTI_LANG_TEXTS.length);
+                        setActiveWord(randomIdx);
+                      }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="cursor-pointer px-4 py-2 rounded-xl bg-blue-600 text-white font-mono font-black text-xs shadow-[3px_3px_0px_#1e3a8a] border-2 border-blue-400/40 hover:bg-blue-700 transition-all flex items-center gap-2"
+                      title="Acak Bahasa"
+                    >
+                      <Shuffle className="w-3.5 h-3.5 text-white" />
+                      <span className="whitespace-nowrap font-mono font-bold text-xs">Acak Bahasa</span>
+                    </motion.button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Box: Big Interactive 3D Dark Notebook Language Card */}
+              <div className="flex-1 flex justify-center items-stretch" style={{ perspective: 1000 }}>
+                <motion.div
+                  ref={cardRef}
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                  className="w-full min-h-[300px] md:min-h-[380px] bg-[#171424] rounded-3xl p-6 md:p-8 border-2 border-white/10 shadow-[8px_8px_0px_rgba(0,0,0,0.6)] relative overflow-hidden flex flex-col justify-between cursor-default origin-center select-none"
+                  style={{
+                    rotateX: springRotateX,
+                    rotateY: springRotateY,
+                    transformStyle: "preserve-3d",
+                  }}
+                >
+                  {/* Washi Tape Accent Top Right */}
+                  <div className="absolute -top-1 right-8 w-12 h-4 bg-[#2D2640]/90 border-x border-blue-400/40 rotate-[4deg] z-20 pointer-events-none" />
+
+                  {/* Dot Grid Paper Background */}
+                  <div 
+                    className="absolute inset-0 opacity-15 pointer-events-none"
+                    style={{
+                      backgroundImage: 'radial-gradient(#64748B 1.5px, transparent 1.5px)',
+                      backgroundSize: '20px 20px'
+                    }}
+                  />
+
+                  <div className="flex items-center justify-between relative z-10" style={{ transform: "translateZ(30px)" }}>
+                    <Globe className="w-8 h-8 text-[#3B82F6] animate-pulse" />
+                    
+                    {/* Notebook Code Tag */}
+                    <div className="flex items-center gap-1.5 px-3 py-1 bg-white/5 border border-white/10 rounded-lg">
+                      <span className="h-2 w-2 rounded-full bg-[#3B82F6] animate-pulse" />
+                      <span className="text-[10px] text-cyan-400 font-extrabold tracking-widest font-mono uppercase">
+                        LOCALE: {MULTI_LANG_TEXTS[activeWord].code}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Huge dynamic text display */}
+                  <div className="my-4 md:my-8 relative z-10 overflow-hidden h-[120px] md:h-[180px] flex items-center" style={{ transform: "translateZ(45px)" }}>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeWord}
+                        initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, y: -15, filter: "blur(4px)" }}
+                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                        className="w-full text-left"
+                      >
+                        <h3 className="font-display font-black text-white tracking-tight leading-snug whitespace-pre-line" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
+                          {MULTI_LANG_TEXTS[activeWord].text}
+                        </h3>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+
+                  <div className="border-t border-white/10 pt-4 md:pt-6 flex flex-col md:flex-row items-center gap-3 md:gap-0 md:justify-between text-[10px] sm:text-xs text-gray-400 font-semibold relative z-10 w-full font-mono" style={{ transform: "translateZ(30px)" }}>
+                    {/* Dynamic scrolling badge */}
+                    <span className="tracking-wider text-blue-400 font-bold uppercase transition-all duration-300">
+                      {(MULTI_LANG_TEXTS[activeWord].badge || 'AKTIF MULTI-BAHASA').toUpperCase()}
+                    </span>
+                    
+                    {/* Dynamic interactive count-up supported languages */}
+                    <span className="flex items-center gap-1.5 text-cyan-400 font-extrabold">
+                      <Users className="w-4 h-4 text-[#3B82F6]" /> 
+                      <span>
+                        <CountUp to={20} /> Pilihan Bahasa Didukung
+                      </span>
+                    </span>
+                  </div>
+                </motion.div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
       {/* =============================================
           6. CORE FEATURES BENTO GRID (Unifies Core features & Mockups)
           ============================================= */}
-      <section className="relative py-12 md:py-24 bg-[#080615] overflow-hidden border-t border-white/5">
+      <section className="relative py-12 md:py-24 bg-[#181424] overflow-hidden">
         <GrainNoise />
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           
           {/* =============================================
               5.5. VISUAL SHOWCASE GALLERY
               ============================================= */}
-          <div className="mb-24 mt-8 md:mt-24 max-w-6xl mx-auto w-full">
-            <div className="text-left mb-10">
-              <p className="text-xs md:text-sm font-semibold text-[#38bdf8] tracking-[0.2em] uppercase mb-3">
-                {t('landing.gallery_badge') || 'INKLUSIVITAS 100%'}
-              </p>
-              <h2 className="font-display font-extrabold tracking-tight text-white text-3xl md:text-4xl leading-tight">
-                {t('landing.gallery_title') || 'Pendidikan Tanpa Batasan.'}
-              </h2>
-            </div>
-            <div className="w-full">
-              <AccordionGallery />
-            </div>
+          <div className="mb-16 md:mb-24 mt-2 md:mt-6 max-w-6xl mx-auto w-full">
+            <AccordionGallery 
+              badge={t('landing.gallery_badge') || 'INKLUSIVITAS 100%'}
+              title={t('landing.gallery_title') || 'Pendidikan Tanpa Batasan.'}
+            />
           </div>
 
-          {/* Header */}
+          {/* Header with Notebook Scribble Style */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 md:mb-16">
             <div className="text-left">
-              <p className="text-xs md:text-sm font-semibold text-[#2563eb] tracking-[0.2em] uppercase mb-3">
-                {t('landing.feature_badge') || 'FITUR INTI'}
-              </p>
-              <h2 className="font-display font-extrabold tracking-tight text-white text-3xl md:text-4xl leading-tight">
+              <span className="inline-block px-3 py-1 bg-[#171424] border border-blue-500/50 shadow-[2px_2px_0px_#2563eb] rounded-md -rotate-1 text-xs font-mono font-extrabold text-blue-400 uppercase tracking-widest mb-3">
+                ✏️ {t('landing.feature_badge') || 'FITUR INTI'}
+              </span>
+              <h2 className="font-display font-extrabold tracking-tight text-white text-3xl md:text-5xl leading-tight relative inline-block">
                 {t('landing.feature_title') || 'Teknologi Di Balik SensoraNote.'}
+                {/* Hand-Drawn Scribble Underline */}
+                <svg className="absolute -bottom-3 left-0 w-full h-3 text-cyan-400/80 pointer-events-none" viewBox="0 0 200 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                  <path d="M 3 6 Q 50 1, 100 8 T 197 4" />
+                </svg>
               </h2>
             </div>
-            <p className="text-gray-400 text-sm md:text-base max-w-sm text-left leading-relaxed">
+            <p className="text-gray-300 text-sm md:text-base max-w-sm text-left leading-relaxed font-serif">
               {t('landing.feature_desc') || 'Kami merancang ekosistem mencatat yang cerdas untuk membantumu menyusun, memverifikasi, dan menguasai setiap materi pelajaran dengan efektif.'}
             </p>
           </div>
 
-          {/* Bento Grid */}
+          {/* Bento Grid with Notebook Sticker Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Cell 1: LaTeX Rich Editor (Double Width) */}
             <BorderGlow className="md:col-span-2 min-h-[340px] md:min-h-[380px]" backgroundColor="#0c0a1a" glowColor="226 71% 45%">
-              <div className="bg-gradient-to-br from-white/[0.04] to-white/[0.01] h-full rounded-[28px] p-5 sm:p-8 flex flex-col justify-between relative group overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#2563eb]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="bg-gradient-to-br from-[#171424] via-[#13101f] to-[#0c0a1a] h-full rounded-[28px] p-5 sm:p-8 flex flex-col justify-between relative group overflow-hidden border-2 border-white/10 shadow-[5px_5px_0px_rgba(0,0,0,0.6)] hover:shadow-[6px_6px_0px_#3b82f6] transition-shadow duration-300">
+                {/* Corner Washi Tape Pin */}
+                <div className="absolute -top-1 left-8 w-10 h-4 bg-[#2D2640]/90 border-x border-blue-400/40 rotate-[-3deg] z-20 pointer-events-none" />
+
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#2563eb]">
+                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#3B82F6]">
                       <Code className="w-5 h-5" />
                     </div>
-                    <span className="text-[9px] text-gray-500 font-bold uppercase tracking-widest font-mono">01 / {t('landing.feat1_badge') || 'RICH EDITOR'}</span>
+                    <span className="text-[9px] text-gray-400 font-bold uppercase tracking-widest font-mono">01 / {t('landing.feat1_badge') || 'RICH EDITOR'} 📝</span>
                   </div>
                   <h3 className="text-xl md:text-2xl font-display font-black text-white tracking-tight leading-tight">{t('landing.feat1_title') || 'LaTeX Rich Editor'}</h3>
-                  <p className="text-gray-400 mt-2 text-sm leading-relaxed max-w-md font-medium">{t('landing.feat1_desc') || 'Tulis rumus matematika, kalkulus, dan sains seindah jurnal akademis profesional menggunakan render engine KaTeX berkecepatan tinggi.'}</p>
+                  <p className="text-gray-300 mt-2 text-sm leading-relaxed max-w-md font-medium">{t('landing.feat1_desc') || 'Tulis rumus matematika, kalkulus, dan sains seindah jurnal akademis profesional menggunakan render engine KaTeX berkecepatan tinggi.'}</p>
                 </div>
 
                 {/* LaTeX Mockup Widget */}
                 <div className="mt-8 bg-[#0c0a1a]/80 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/5 font-mono text-[11px] w-full shadow-inner relative z-10">
                   <div className="flex items-center justify-between border-b border-white/5 pb-2.5 mb-3 text-[9px] text-gray-500 font-bold">
                     <span>{t('landing.mockup_latex_title') || 'LaTeX EDITOR ENGINE'}</span>
-                    <span className="text-[#2563eb] animate-pulse">{t('landing.mockup_latex_status') || 'ACTIVE RENDERING'}</span>
+                    <span className="text-[#3B82F6] animate-pulse">{t('landing.mockup_latex_status') || 'ACTIVE RENDERING'}</span>
                   </div>
                   <p className="text-emerald-400 font-bold">// {t('landing.mockup_latex_input') || 'Input KaTeX:'}</p>
                   <p className="text-gray-300 mt-0.5 font-semibold">{"$$\\int_{-\\infty}^{\\infty} e^{-x^2} \\, dx = \\sqrt{\\pi}$$"}</p>
@@ -1401,17 +1439,17 @@ export function LandingPageDark() {
 
             {/* Cell 2: Verified Pakar (Standard Width) */}
             <BorderGlow className="md:col-span-1 min-h-[340px] md:min-h-[380px]" backgroundColor="#1d4ed8" glowColor="226 71% 60%">
-              <div className="bg-gradient-to-br from-[#1d4ed8]/40 to-[#2563eb]/40 h-full rounded-[28px] p-5 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+              <div className="bg-gradient-to-br from-[#1d4ed8]/50 to-[#2563eb]/50 h-full rounded-[28px] p-5 sm:p-8 flex flex-col justify-between relative overflow-hidden group border-2 border-blue-400/50 shadow-[5px_5px_0px_#1e3a8a]">
                 <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center text-white">
                       <Award className="w-5 h-5" />
                     </div>
-                    <span className="text-[9px] text-white/70 font-bold uppercase tracking-widest font-mono">02 / {t('landing.feat2_badge') || 'VERIFIED ACCURACY'}</span>
+                    <span className="text-[9px] text-white/80 font-bold uppercase tracking-widest font-mono">02 / {t('landing.feat2_badge') || 'VERIFIED ACCURACY'} 🎓</span>
                   </div>
                   <h3 className="text-xl md:text-2xl font-display font-black text-white tracking-tight leading-tight">{t('landing.feat2_title') || 'Ditinjau Guru & Pakar'}</h3>
-                  <p className="text-white/80 mt-2 text-sm leading-relaxed">
+                  <p className="text-white/90 mt-2 text-sm leading-relaxed font-serif">
                     {t('landing.feat2_desc') || 'Tidak ada lagi keraguan materi salah. Belajar dengan tenang dari catatan tepercaya yang disetujui reviewer ahli.'}
                   </p>
                 </div>
@@ -1429,17 +1467,19 @@ export function LandingPageDark() {
 
             {/* Cell 3: Streak Tracker (Standard Width) */}
             <BorderGlow className="md:col-span-1 min-h-[340px] md:min-h-[380px]" backgroundColor="#0c0a1a" glowColor="0 84% 60%">
-              <div className="h-full bg-white/[0.01] rounded-[28px] p-5 sm:p-8 flex flex-col justify-between relative group overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#EF4444]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="h-full bg-[#171424] rounded-[28px] p-5 sm:p-8 flex flex-col justify-between relative group overflow-hidden border-2 border-white/10 shadow-[5px_5px_0px_rgba(0,0,0,0.6)] hover:shadow-[6px_6px_0px_#ef4444] transition-shadow duration-300">
+                {/* Corner Washi Tape Pin */}
+                <div className="absolute -top-1 right-8 w-10 h-4 bg-[#2D2640]/90 border-x border-blue-400/40 rotate-[4deg] z-20 pointer-events-none" />
+
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#EF4444]">
                       <Flame className="w-5 h-5" />
                     </div>
-                    <span className="text-[9px] text-gray-500 font-bold uppercase tracking-widest font-mono">03 / {t('landing.feat3_badge') || 'HABIT & STREAK'}</span>
+                    <span className="text-[9px] text-gray-400 font-bold uppercase tracking-widest font-mono">03 / {t('landing.feat3_badge') || 'HABIT & STREAK'} 🔥</span>
                   </div>
                   <h3 className="text-xl md:text-2xl font-display font-black text-white tracking-tight leading-tight">{t('landing.feat3_title') || 'Streak Konsistensi'}</h3>
-                  <p className="text-gray-400 mt-2 text-sm leading-relaxed">
+                  <p className="text-gray-300 mt-2 text-sm leading-relaxed font-serif">
                     {t('landing.feat3_desc') || 'Bangun kebiasaan belajar harian yang solid bersama ribuan pelajar lain dengan sistem streak harian interaktif.'}
                   </p>
                 </div>
@@ -1459,17 +1499,16 @@ export function LandingPageDark() {
 
             {/* Cell 4: Sub-second Search Index (Double Width) */}
             <BorderGlow className="md:col-span-2 min-h-[340px] md:min-h-[380px]" backgroundColor="#0c0a1a" glowColor="217 91% 60%">
-              <div className="bg-gradient-to-br from-white/[0.04] to-white/[0.01] h-full rounded-[28px] p-5 sm:p-8 flex flex-col justify-between relative group overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#3B82F6]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="bg-gradient-to-br from-[#171424] via-[#13101f] to-[#0c0a1a] h-full rounded-[28px] p-5 sm:p-8 flex flex-col justify-between relative group overflow-hidden border-2 border-white/10 shadow-[5px_5px_0px_rgba(0,0,0,0.6)] hover:shadow-[6px_6px_0px_#0284c7] transition-shadow duration-300">
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#3B82F6]">
                       <Search className="w-5 h-5" />
                     </div>
-                    <span className="text-[9px] text-gray-500 font-bold uppercase tracking-widest font-mono">04 / {t('landing.feat4_badge') || 'INSTANT ACCESS'}</span>
+                    <span className="text-[9px] text-gray-400 font-bold uppercase tracking-widest font-mono">04 / {t('landing.feat4_badge') || 'INSTANT ACCESS'} 🔍</span>
                   </div>
                   <h3 className="text-xl md:text-2xl font-display font-black text-white tracking-tight leading-tight">{t('landing.feat4_title') || 'Pencarian Instan'}</h3>
-                  <p className="text-gray-400 mt-2 text-sm leading-relaxed max-w-md font-medium">{t('landing.feat4_desc') || 'Cari rumus LaTeX spesifik, teori fisika, atau snippet pemrograman di seluruh catatan publik komunitas secara instan dalam hitungan milidetik.'}</p>
+                  <p className="text-gray-300 mt-2 text-sm leading-relaxed max-w-md font-serif font-medium">{t('landing.feat4_desc') || 'Cari rumus LaTeX spesifik, teori fisika, atau snippet pemrograman di seluruh catatan publik komunitas secara instan dalam hitungan milidetik.'}</p>
                 </div>
 
                 {/* Search Mockup Widget */}
@@ -1491,9 +1530,7 @@ export function LandingPageDark() {
 
             {/* Cell 5: Student Community (Full Width Banner) */}
             <BorderGlow className="md:col-span-3 min-h-[220px]" backgroundColor="#0c0a1a" glowColor="252 87% 65%">
-              <div className="bg-gradient-to-br from-[#0c0a1a] via-[#100c25] to-[#150f38] h-full rounded-[28px] p-5 sm:p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 relative group overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#2563eb]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+              <div className="bg-gradient-to-br from-[#171424] via-[#100c25] to-[#150f38] h-full rounded-[28px] p-5 sm:p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 relative group overflow-hidden border-2 border-white/10 shadow-[5px_5px_0px_rgba(0,0,0,0.6)] hover:shadow-[6px_6px_0px_#6366f1] transition-shadow duration-300">
                 {/* Left: Icon + Avatars */}
                 <div className="flex flex-col items-center gap-4 relative z-10 shrink-0">
                   <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#2563eb]">
@@ -1510,12 +1547,12 @@ export function LandingPageDark() {
 
                 {/* Right: Content */}
                 <div className="flex-1 relative z-10">
-                  <span className="text-[9px] text-gray-500 font-bold uppercase tracking-widest font-mono">05 / {t('landing.feat5_badge') || 'SOCIAL LEARNING'}</span>
+                  <span className="text-[9px] text-gray-400 font-bold uppercase tracking-widest font-mono">05 / {t('landing.feat5_badge') || 'SOCIAL LEARNING'} 🌍</span>
                   <h3 className="text-xl md:text-2xl font-display font-black text-white tracking-tight leading-tight mt-2">{t('landing.feat5_title') || 'Belajar Bersama'}</h3>
-                  <p className="text-gray-400 mt-2 text-sm leading-relaxed max-w-xl">
+                  <p className="text-gray-300 mt-2 text-sm leading-relaxed max-w-xl font-serif">
                     {t('landing.feat5_desc') || 'Bagikan catatanmu dan diskusikan rumus-rumus sains serta kode pemrograman bersama ribuan pelajar berdedikasi tinggi lainnya.'}
                   </p>
-                  <span className="inline-flex items-center gap-1.5 mt-4 text-[10px] text-[#2563eb] font-black tracking-wider uppercase">
+                  <span className="inline-flex items-center gap-1.5 mt-4 text-[10px] text-[#2563eb] font-black tracking-wider uppercase font-mono">
                     <Users className="w-3.5 h-3.5" /> {t('landing.feat5_active') || 'KOMUNITAS AKTIF'}
                   </span>
                 </div>
@@ -1527,50 +1564,73 @@ export function LandingPageDark() {
       </section>
 
       {/* =============================================
-          7. CINEMATIC GRADIENT CTA SECTION (Gravity / Magnetic Hover style)
+          7. REFINED NOTEBOOK CTA SECTION
           ============================================= */}
-      <section className="relative py-16 md:py-32 bg-[#06050e] overflow-hidden border-t border-white/5">
-        <GrainNoise />
+      <section className="relative py-20 md:py-32 bg-[#181424] overflow-hidden border-t-2 border-dashed border-white/10">
+        {/* Hand-drawn dark notebook dot grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-20 pointer-events-none"
+          style={{
+            backgroundImage: 'radial-gradient(#64748B 1.5px, transparent 1.5px)',
+            backgroundSize: '24px 24px'
+          }}
+        />
 
-        {/* Massive atmospheric background glowing flow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[35vw] rounded-full blur-[140px] opacity-[0.22] pointer-events-none bg-gradient-to-r from-[#1d4ed8] via-[#7B6BF5] to-[#2563eb]" />
+        {/* Ambient color glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[25vw] bg-gradient-to-r from-blue-600/15 via-indigo-600/15 to-cyan-600/15 blur-3xl pointer-events-none" />
         
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <p className="text-xs md:text-sm font-semibold text-gray-400 tracking-[0.2em] uppercase mb-4 sm:mb-6">
-            {t('landing.cta_badge') || 'MULAI SEKARANG'}
-          </p>
-          
-          <h2 className="font-display font-extrabold text-white tracking-tight leading-[1.1] mb-6" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
-            {t('landing.cta_title_1') || 'Mulai Perjalanan'}<br />
-            {t('landing.cta_title_2') || 'Belajarmu Hari Ini.'}
-          </h2>
+        <div className="relative z-10 max-w-4xl mx-auto px-6">
+          {/* Main Card Shell */}
+          <div className="bg-[#171424] rounded-3xl p-8 sm:p-12 md:p-16 border-2 border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.6)] relative overflow-hidden flex flex-col items-center text-center">
+            
+            {/* Washi Tape Accent at Top Spine */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#2D2640]/90 border-x border-blue-400/40 rotate-[-1deg] shadow-2xs pointer-events-none" />
 
-          <p className="text-gray-400 text-sm md:text-base max-w-md mx-auto mb-10 sm:mb-12 leading-relaxed">
-            {t('landing.cta_desc') || 'Bergabunglah secara gratis dan temukan cara yang lebih terstruktur untuk mengatur catatan serta wawasan belajarmu.'}
-          </p>
+            {/* Sticky Tag Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-950/60 border border-blue-500/40 text-blue-300 shadow-2xs mb-6">
+              <Sparkles className="w-4 h-4 text-blue-400" />
+              <span className="text-xs font-bold uppercase tracking-widest font-mono">
+                {t('landing.cta_badge') || 'MULAI SEKARANG'}
+              </span>
+            </div>
+            
+            {/* Title with Scribble Underline */}
+            <div className="relative mb-6 max-w-2xl">
+              <h2 className="font-display font-black text-white tracking-tight leading-[1.15] text-3xl sm:text-4xl md:text-5xl">
+                {t('landing.cta_title_1') || 'Mulai Perjalanan'} <br className="hidden sm:inline" />
+                {t('landing.cta_title_2') || 'Belajarmu Hari Ini.'}
+              </h2>
+              {/* Hand-Drawn Scribble Underline SVG */}
+              <svg className="w-full h-3.5 text-cyan-400/80 mt-2 pointer-events-none" viewBox="0 0 200 12" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round">
+                <path d="M 5 6 Q 50 1, 100 8 T 195 5" />
+              </svg>
+            </div>
 
-          {/* Magnetic CTA Button */}
-          <motion.button
-            onClick={() => openAuthModal('register')}
-            className="cursor-pointer relative inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-14 sm:py-6 rounded-full font-bold text-sm sm:text-base md:text-lg text-white overflow-hidden shadow-2xl shadow-[#1d4ed8]/30 group w-full sm:w-auto"
-            style={{ background: 'linear-gradient(135deg, #1d4ed8, #2563eb)' }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.96 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-          >
-            <span className="relative z-10 flex items-center gap-2 tracking-wide">
-              {t('landing.cta_btn') || 'Mulai Belajar Sekarang'} <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-            {/* Shimmer effect */}
-            <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-          </motion.button>
+            <p className="text-gray-300 text-sm md:text-base max-w-lg mx-auto mb-10 leading-relaxed font-serif">
+              {t('landing.cta_desc') || 'Bergabunglah secara gratis dan temukan cara yang lebih terstruktur untuk mengatur catatan serta wawasan belajarmu.'}
+            </p>
 
-          {/* Value indicators */}
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-8 sm:mt-10 text-[10px] sm:text-xs text-gray-500 font-bold uppercase tracking-widest">
-            <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-[#1d4ed8]" /> {t('landing.value_free') || 'Gratis Selamanya'}</span>
-            <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-[#1d4ed8]" /> {t('landing.value_instant') || 'Setup Instan'}</span>
-            <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-[#1d4ed8]" /> {t('landing.value_community') || 'Komunitas Aktif'}</span>
+            {/* Primary Action Button */}
+            <motion.button
+              onClick={() => openAuthModal('register')}
+              className="cursor-pointer relative inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-12 sm:py-5 rounded-2xl font-bold text-sm sm:text-base text-white overflow-hidden shadow-xl shadow-blue-600/30 group border border-blue-400/40"
+              style={{ background: 'linear-gradient(135deg, #2563eb, #1d4ed8)' }}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+            >
+              <span className="relative z-10 flex items-center gap-2.5 tracking-wide font-mono">
+                {t('landing.cta_btn') || 'Mulai Belajar Sekarang'} <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+              <div className="absolute inset-0 bg-white/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </motion.button>
+
+            {/* Value Indicators */}
+            <div className="flex flex-wrap items-center justify-center gap-6 mt-10 text-xs text-gray-400 font-bold font-mono uppercase tracking-widest border-t border-white/10 pt-6 w-full max-w-md">
+              <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-blue-400" /> {t('landing.value_free') || 'Gratis Selamanya'}</span>
+              <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-blue-400" /> {t('landing.value_instant') || 'Setup Instan'}</span>
+              <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-blue-400" /> {t('landing.value_community') || 'Komunitas Aktif'}</span>
+            </div>
           </div>
         </div>
       </section>

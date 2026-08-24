@@ -102,3 +102,29 @@
   position: relative;
   z-index: 2;
 }
+
+/* Clear Glassmorphism Light Theme :D */
+.glass-surface--clear {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 100%) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.06),
+    inset 0 2px 4px rgba(255, 255, 255, 1),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.02) !important;
+}
+
+.glass-surface--clear::before,
+.glass-surface--clear::after {
+  display: none !important;
+}
+
+.glass-surface--clear:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.25) 100%) !important;
+  border-color: rgba(255, 255, 255, 1) !important;
+  box-shadow:
+    0 18px 45px rgba(37, 99, 235, 0.25),
+    0 4px 12px rgba(37, 99, 235, 0.15),
+    inset 0 2.5px 4px rgba(255, 255, 255, 1) !important;
+}

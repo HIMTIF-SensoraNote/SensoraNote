@@ -7,6 +7,7 @@ interface BorderGlowProps {
   edgeSensitivity?: number;
   glowColor?: string;
   backgroundColor?: string;
+  borderColor?: string;
   borderRadius?: number;
   glowRadius?: number;
   glowIntensity?: number;
@@ -17,8 +18,8 @@ interface BorderGlowProps {
 }
 
 function parseHSL(hslStr: string) {
-  const match = hslStr.match(/([\d.]+)\s*([\d.]+)%?\s*([\d.]+)%?/);
-  if (!match) return { h: 40, s: 80, l: 80 };
+  const match = hslStr.match(/([\d.]+)\s*,?\s*([\d.]+)%?\s*,?\s*([\d.]+)%?/);
+  if (!match) return { h: 221, s: 83, l: 53 };
   return { h: parseFloat(match[1]), s: parseFloat(match[2]), l: parseFloat(match[3]) };
 }
 
@@ -31,6 +32,7 @@ function buildGlowVars(glowColor: string, intensity: number) {
   for (let i = 0; i < opacities.length; i++) {
     vars[`--glow-color${keys[i]}`] = `hsl(${base} / ${Math.min(opacities[i] * intensity, 100)}%)`;
   }
+  vars['--glow-hsl-raw'] = `${h} ${s}% ${l}%`;
   return vars;
 }
 
@@ -84,8 +86,9 @@ export function BorderGlow({
   children,
   className = '',
   edgeSensitivity = 30,
-  glowColor = '226 71% 45%', // SensoraBlue HSL approx (#1d4ed8)
+  glowColor = '221 83% 53%', // SensoraBlue HSL approx (#2563eb)
   backgroundColor = '#120F17',
+  borderColor,
   borderRadius = 28,
   glowRadius = 40,
   glowIntensity = 1.0,
@@ -160,10 +163,14 @@ export function BorderGlow({
   }, [animated]);
 
   const glowVars = buildGlowVars(glowColor, glowIntensity);
+  const defaultBorder = (backgroundColor.toLowerCase() === '#ffffff' || backgroundColor.toLowerCase() === '#f8fafc')
+    ? 'rgba(226, 232, 240, 0.9)'
+    : 'rgba(255, 255, 255, 0.15)';
   
   // Custom cast to support CSS Custom Properties in style object
   const customStyles = {
     '--card-bg': backgroundColor,
+    '--card-border': borderColor || defaultBorder,
     '--edge-sensitivity': edgeSensitivity,
     '--border-radius': `${borderRadius}px`,
     '--glow-padding': `${glowRadius}px`,

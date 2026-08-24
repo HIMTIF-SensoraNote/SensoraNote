@@ -55,7 +55,8 @@ export function TopNav({ isSidebarExpanded, toggleSidebar }: TopNavProps) {
           <Menu className="w-[22px] h-[22px]" strokeWidth={1.5} />
         </button>
 
-        <Link to="/home" className="flex items-center gap-2 mr-6 shrink-0 group">
+        {/* SensoraNote Logo */}
+        <Link to="/home" className="flex items-center gap-2 mr-6 shrink-0 group outline-none focus:outline-none [-webkit-tap-highlight-color:transparent]">
            <ApplicationLogo className="w-8 h-8" />
            <span className="font-['Lexend_Deca'] font-extrabold text-[22px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-800 dark:from-[#60a5fa] dark:to-[#93c5fd] hidden sm:block">
               SensoraNote
