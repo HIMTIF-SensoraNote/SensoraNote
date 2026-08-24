@@ -62,18 +62,18 @@ export function Navbar({ variant = 'default', theme = 'light', isLoading = false
   const getNavContainerClass = () => {
     if (isScrolled) {
       if (theme === 'dark') {
-        return 'max-w-5xl bg-[#0c0a1b]/70 border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.4)] rounded-2xl h-[56px] md:h-[68px] px-3.5 sm:px-10 border backdrop-blur-xl';
+        return 'max-w-5xl bg-[#171424]/90 backdrop-blur-xl border-2 border-white/10 shadow-[4px_4px_0px_rgba(0,0,0,0.6)] rounded-2xl h-[56px] md:h-[64px] px-4 sm:px-8';
       }
-      return 'max-w-5xl bg-white/70 dark:bg-[#161423]/70 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] rounded-2xl h-[56px] md:h-[68px] px-3.5 sm:px-10';
+      return 'max-w-5xl bg-[#FFFDF7]/95 backdrop-blur-xl border-2 border-[#4A2E1B]/30 shadow-[4px_4px_0px_#4A2E1B] rounded-2xl h-[56px] md:h-[64px] px-4 sm:px-8';
     }
     return 'max-w-7xl bg-transparent border-transparent h-16 md:h-24 px-4 sm:px-10';
   };
 
   const getLinkClass = () => {
     if (theme === 'dark') {
-      return 'text-white/80 hover:text-white transition-colors font-semibold text-[15px] hover:-translate-y-0.5 transform duration-200';
+      return 'text-gray-300 hover:text-amber-400 transition-colors font-mono font-bold text-xs uppercase tracking-wider hover:-translate-y-0.5 transform duration-200';
     }
-    return 'text-gray-600 dark:text-gray-400 hover:text-primary transition-colors font-semibold text-[15px] hover:-translate-y-0.5 transform duration-200';
+    return 'text-[#593118] hover:text-blue-600 transition-colors font-mono font-bold text-xs uppercase tracking-wider hover:-translate-y-0.5 transform duration-200';
   };
 
   return (
@@ -84,25 +84,30 @@ export function Navbar({ variant = 'default', theme = 'light', isLoading = false
         animate={!isLoading ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
         transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
         style={{ transition: 'top 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), padding 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-        className={`fixed left-0 right-0 z-50 flex justify-center transition-all duration-300 ${isScrolled ? 'top-3 px-3 sm:top-5 sm:px-5 lg:px-8' : 'top-0 px-0'
+        className={`fixed left-0 right-0 z-50 flex justify-center transition-all duration-300 ${isScrolled ? 'top-3 px-3 sm:top-4 sm:px-5 lg:px-8' : 'top-0 px-0'
           }`}
       >
         {/* Dynamic Inner Container */}
         <div
           style={{ transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-          className={`w-full flex items-center justify-between overflow-hidden ${getNavContainerClass()}`}
+          className={`w-full flex items-center justify-between relative overflow-hidden ${getNavContainerClass()}`}
         >
+          {/* Top Washi Tape Accent when scrolled */}
+          {isScrolled && (
+            <div className="absolute -top-1.5 left-12 w-12 h-3.5 bg-[#E8DCC4] dark:bg-[#2D2640] border-x border-[#C5B39B] dark:border-amber-400/30 rotate-[-2deg] pointer-events-none z-20" />
+          )}
+
           {/* Brand Logo */}
           <Link to="/" onClick={handleHomeClick} className="flex items-center gap-3 group outline-none focus:outline-none [-webkit-tap-highlight-color:transparent]">
             <ApplicationLogo
               style={{ transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-              className={`group-hover:scale-105 transition-transform drop-shadow-sm ${isScrolled ? 'w-8 h-8' : 'w-8 h-8 md:w-10 md:h-10'}`}
+              className={`group-hover:scale-105 transition-transform drop-shadow-xs ${isScrolled ? 'w-7 h-7' : 'w-8 h-8 md:w-9 md:h-9'}`}
             />
             <span 
               style={{ transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)' }} 
-              className={`font-extrabold tracking-tight bg-gradient-to-r ${theme === 'dark' ? 'from-[#1d4ed8] to-[#2563eb]' : 'from-primary to-[#2563eb]'} bg-clip-text text-transparent ${isScrolled ? 'text-lg' : 'text-2xl'}`}
+              className={`font-display font-black tracking-tight ${theme === 'dark' ? 'text-white' : 'text-[#3D2314]'} ${isScrolled ? 'text-base sm:text-lg' : 'text-xl md:text-2xl'}`}
             >
-              SensoraNote
+              SensoraNote<span className="text-blue-600 dark:text-amber-400">.</span>
             </span>
           </Link>
 
@@ -135,32 +140,27 @@ export function Navbar({ variant = 'default', theme = 'light', isLoading = false
                   src={user.avatar}
                   alt={user.name}
                   size={isScrolled ? 32 : 40}
-                  className={`shadow-sm group-hover:ring-2 group-hover:ring-primary/20 transition-all`}
+                  className={`shadow-xs group-hover:ring-2 group-hover:ring-blue-600/20 transition-all`}
                 />
               </Link>
             ) : (
               <>
                 <button
-                  className={`hidden md:block font-bold px-3 sm:px-4 py-2 rounded-full transition-colors text-sm ${
+                  className={`hidden md:block font-mono font-extrabold text-xs uppercase px-4 py-2 rounded-xl transition-all ${
                     theme === 'dark'
-                      ? 'text-white/80 hover:text-white hover:bg-white/5'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-50/50 dark:hover:bg-white/5'
+                      ? 'text-gray-300 hover:text-white hover:bg-white/10'
+                      : 'text-[#593118] hover:text-blue-600 hover:bg-[#FAF6EE] border border-transparent hover:border-[#4A2E1B]/20'
                   }`}
                   onClick={() => openAuthModal('login')}
                 >
                   {t("navbar.login") || "Masuk"}
                 </button>
                 <button
-                  className={`rounded-full font-bold transition-all hover:-translate-y-0.5 hover:opacity-95 ${
-                    theme === 'dark'
-                      ? 'shadow-lg shadow-white/5'
-                      : 'bg-primary hover:bg-blue-700 text-white shadow-md hover:shadow-lg hover:shadow-primary/30'
-                  } ${
+                  className={`cursor-pointer font-mono font-extrabold text-xs uppercase rounded-xl transition-all flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white border-2 border-blue-400/40 shadow-[3px_3px_0px_#1e3a8a] active:translate-y-0.5 ${
                     isScrolled 
-                      ? 'px-4 py-1.5 text-xs md:text-sm' 
-                      : 'px-5 md:px-7 py-2 md:py-3 text-xs md:text-[15px]'
+                      ? 'px-4 py-1.5' 
+                      : 'px-5 py-2.5'
                   }`}
-                  style={theme === 'dark' ? { backgroundColor: '#ffffff', color: '#0c0a1a' } : undefined}
                   onClick={() => openAuthModal('register')}
                 >
                   {t("navbar.register_free") || "Daftar Gratis"}

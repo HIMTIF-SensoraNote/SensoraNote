@@ -22,7 +22,7 @@ export function Footer({ theme = 'dark' }: FooterProps) {
   };
 
   return (
-    <footer className={`${isLight ? 'bg-slate-50 border-t border-slate-200/60' : 'bg-[#06050e] border-t border-white/5'} mt-32 relative overflow-hidden`}>
+    <footer className={`${isLight ? 'bg-[#FAF6EE] border-t-2 border-dashed border-[#D4C3AC]' : 'bg-[#181424] border-t-2 border-dashed border-white/10'} mt-0 relative overflow-hidden`}>
       {/* Background glow accents */}
       <div className={`absolute -bottom-24 -right-24 w-80 h-80 ${isLight ? 'bg-blue-200/40' : 'bg-[#1d4ed8]/10'} rounded-full blur-[80px] pointer-events-none`} />
       <div className={`absolute -top-24 -left-24 w-80 h-80 ${isLight ? 'bg-indigo-100/40' : 'bg-[#2563eb]/10'} rounded-full blur-[80px] pointer-events-none`} />
