@@ -8,7 +8,7 @@ interface VisionOcrProps {
     onClose: () => void;
 }
 
-type Point = { x: number; y: number }; // fraksi 0..1 relatif terhadap gambar
+type Point = { x: number; y: number };
 type Corners = { tl: Point; tr: Point; br: Point; bl: Point };
 type Edge = 'top' | 'right' | 'bottom' | 'left';
 type DragTarget = { type: 'corner'; corner: keyof Corners } | { type: 'edge'; edge: Edge };
@@ -31,7 +31,7 @@ const clampPoint = (p: Point): Point => ({
 
 export default function VisionOcr({ onClose }: VisionOcrProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
-    const canvasRef = useRef<HTMLCanvasElement>(null); // menyimpan foto full-res mentah (belum di-crop)
+    const canvasRef = useRef<HTMLCanvasElement>(null);
     const streamRef = useRef<MediaStream | null>(null);
     const adjustContainerRef = useRef<HTMLDivElement>(null);
     const dragTargetRef = useRef<DragTarget | null>(null);
@@ -39,11 +39,15 @@ export default function VisionOcr({ onClose }: VisionOcrProps) {
     const [appState, setAppState] = useState<AppState>('camera');
     const [stream, setStream] = useState<MediaStream | null>(null);
 
-    const [rawImageUrl, setRawImageUrl] = useState<string | null>(null); // foto mentah untuk layar adjust
+    const [rawImageUrl, setRawImageUrl] = useState<string | null>(null);
     const [cropCorners, setCropCorners] = useState<Corners>(DEFAULT_CORNERS);
 
-    const [capturedBlob, setCapturedBlob] = useState<Blob | null>(null); // hasil setelah warp
+    const [capturedBlob, setCapturedBlob] = useState<Blob | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+    
+    // STATE BARU: Mode Scan
+    const [scanMode, setScanMode] = useState<'abjad' | 'braille'>('abjad');
+    
     const [extractedText, setExtractedText] = useState<string>('');
     const [brailleText, setBrailleText] = useState<string>('');
     const [pdfUrl, setPdfUrl] = useState<string | null>(null);
@@ -60,7 +64,6 @@ export default function VisionOcr({ onClose }: VisionOcrProps) {
         left: midpoint(cropCorners.tl, cropCorners.bl),
     };
 
-    // 1. MEMUAT OPENCV.JS (dipakai untuk tebakan awal sudut kertas + perspective warp)
     useEffect(() => {
         const loadOpenCV = () => {
             if ((window as any).cv && (window as any).cv.Mat) {
@@ -89,7 +92,6 @@ export default function VisionOcr({ onClose }: VisionOcrProps) {
         loadOpenCV();
     }, []);
 
-    // 2. KONTROL KAMERA
     const startCamera = async () => {
         setError(null);
         setCapturedBlob(null);
@@ -128,10 +130,6 @@ export default function VisionOcr({ onClose }: VisionOcrProps) {
         return () => stopCamera();
     }, [stopCamera]);
 
-    // =========================================================================
-    // 3. TEBAKAN AWAL SUDUT KERTAS (one-shot, dijalankan sekali setelah jepret,
-    //    BUKAN live loop) - hasilnya cuma titik awal, user tetap bisa geser manual
-    // =========================================================================
     const detectCorners = (sourceCanvas: HTMLCanvasElement): Corners | null => {
         const cv = (window as any).cv;
         if (!cv || !cv.Mat) return null;
@@ -336,9 +334,6 @@ export default function VisionOcr({ onClose }: VisionOcrProps) {
         }
     };
 
-    // =========================================================================
-    // 4. JEPRET FOTO -> tampilkan layar adjust dengan tebakan sudut awal
-    // =========================================================================
     const captureImage = () => {
         if (!videoRef.current || !canvasRef.current) return;
         const video = videoRef.current;
@@ -361,9 +356,6 @@ export default function VisionOcr({ onClose }: VisionOcrProps) {
         setAppState('adjust');
     };
 
-    // =========================================================================
-    // 5. DRAG HANDLE DI LAYAR ADJUST
-    // =========================================================================
     const handleCornerPointerDown = (corner: keyof Corners) => (e: React.PointerEvent) => {
         e.preventDefault();
         dragTargetRef.current = { type: 'corner', corner };
@@ -420,9 +412,6 @@ export default function VisionOcr({ onClose }: VisionOcrProps) {
         });
     };
 
-    // =========================================================================
-    // 6. KONFIRMASI CROP -> PERSPECTIVE TRANSFORM sesuai posisi 4 titik final
-    // =========================================================================
     const confirmCrop = () => {
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -503,42 +492,47 @@ export default function VisionOcr({ onClose }: VisionOcrProps) {
         }
     };
 
+    // =========================================================================
+    // 7. HANDLE EXTRACT TEXT (ABJAD / BRAILLE) - Diperbarui sesuai rute API
+    // =========================================================================
     const handleExtract = async () => {
         if (!capturedBlob) return;
         setIsLoading(true);
         setError(null);
 
         const formData = new FormData();
-        formData.append('image', capturedBlob, 'capture.jpg');
+        formData.append('file', capturedBlob, 'capture.jpg'); // Backend baru mengharapkan nama parameter 'file'
 
         try {
-            const response = await axios.post('/api/vision/detect-text', formData, {
+            // Pilih rute Laravel berdasarkan mode yang dipilih user
+            const endpoint = scanMode === 'abjad' ? '/api/scanner/ocr' : '/api/scanner/braille-ocr';
+            
+            const response = await axios.post(endpoint, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
 
-            if (response.data.success) {
-                const text = response.data.text || '';
-                const braille = response.data.braille || '';
+            if (response.data.status === 'success' || response.data.text !== undefined) {
+                const textResult = response.data.text || '';
+                setExtractedText(textResult);
 
-                if (response.data.image_base64) {
-                    setPreviewUrl(`data:${response.data.mime_type || 'image/png'};base64,${response.data.image_base64}`);
+                if (!textResult) {
+                    setError(`Tidak ada ${scanMode === 'abjad' ? 'teks alfabet' : 'titik braille'} yang terbaca.`);
                 }
 
-                if (response.data.pdf_base64) {
-                    setPdfUrl(`data:${response.data.pdf_mime_type || 'application/pdf'};base64,${response.data.pdf_base64}`);
-                }
-
-                setExtractedText(text);
-                setBrailleText(braille);
-
-                if (!text && !braille) {
-                    setError('Tidak ada teks alfabet yang terbaca pada gambar ini.');
+                // Terjemahkan otomatis ke Unicode Braille (titik-titik) jika berhasil ekstrak teks
+                if (textResult) {
+                    try {
+                        const brailleRes = await axios.post('/api/braille/text-to-braille', { text: textResult });
+                        setBrailleText(brailleRes.data.braille || '');
+                    } catch (e) {
+                        console.warn("Gagal konversi braille");
+                    }
                 }
             } else {
                 setError('Tidak ada teks yang terdeteksi pada gambar ini.');
             }
         } catch (err: any) {
-            setError(err.response?.data?.error || err.response?.data?.message || 'Gagal terhubung ke DocScanner-Service.');
+            setError(err.response?.data?.error || err.response?.data?.message || 'Gagal terhubung ke AI Service.');
         } finally {
             setIsLoading(false);
         }
@@ -576,7 +570,6 @@ export default function VisionOcr({ onClose }: VisionOcrProps) {
                 ) : appState === 'camera' ? (
                     <video ref={videoRef} autoPlay playsInline className="object-cover w-full h-full" />
                 ) : appState === 'adjust' && rawImageUrl ? (
-                    // ===== LAYAR ADJUST: geser 4 titik sudut manual (ala CamScanner) =====
                     <div className="flex items-center justify-center w-full h-full px-2 pt-14 pb-24 bg-black">
                         <div
                             ref={adjustContainerRef}
@@ -699,15 +692,37 @@ export default function VisionOcr({ onClose }: VisionOcrProps) {
                 )}
 
                 {appState === 'preview' && (
-                    <div className="flex items-center justify-center w-full max-w-md gap-3">
-                        <button onClick={startCamera} disabled={isLoading} className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white bg-black/55 rounded-xl active:scale-95 transition-transform disabled:opacity-50 border border-white/10">
-                            <RefreshCw className="w-4 h-4" /> Ulangi
-                        </button>
-                        <button onClick={handleExtract} disabled={isLoading} className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-bold text-white bg-blue-600 rounded-xl active:scale-95 transition-transform disabled:opacity-50 shadow-[0_4px_20px_rgba(37,99,235,0.4)] relative overflow-hidden">
-                            {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <ScanText className="w-5 h-5" />}
-                            {isLoading ? 'Memproses...' : 'Scan Braille'}
-                            {isLoading && <div className="absolute inset-0 bg-white/20 animate-pulse"></div>}
-                        </button>
+                    <div className="flex flex-col items-center justify-center w-full max-w-md gap-4">
+                        {/* TOGGLE BUTTON */}
+                        <div className="bg-black/60 backdrop-blur-md p-1.5 rounded-full flex items-center gap-2 border border-white/20 shadow-2xl mb-2">
+                            <button
+                                onClick={() => setScanMode('abjad')}
+                                className={`px-6 py-2.5 rounded-full text-sm font-extrabold transition-all duration-300 ${
+                                    scanMode === 'abjad' ? 'bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)] scale-105' : 'text-gray-400 hover:text-white'
+                                }`}
+                            >
+                                Teks Abjad
+                            </button>
+                            <button
+                                onClick={() => setScanMode('braille')}
+                                className={`px-6 py-2.5 rounded-full text-sm font-extrabold transition-all duration-300 ${
+                                    scanMode === 'braille' ? 'bg-green-500 text-white shadow-[0_0_15px_rgba(34,197,94,0.5)] scale-105' : 'text-gray-400 hover:text-white'
+                                }`}
+                            >
+                                Titik Braille
+                            </button>
+                        </div>
+                        {/* ACTION BUTTONS */}
+                        <div className="flex items-center w-full gap-3">
+                            <button onClick={startCamera} disabled={isLoading} className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white bg-black/55 rounded-xl active:scale-95 transition-transform disabled:opacity-50 border border-white/10">
+                                <RefreshCw className="w-4 h-4" /> Ulangi
+                            </button>
+                            <button onClick={handleExtract} disabled={isLoading} className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-bold text-white bg-blue-600 rounded-xl active:scale-95 transition-transform disabled:opacity-50 shadow-[0_4px_20px_rgba(37,99,235,0.4)] relative overflow-hidden">
+                                {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <ScanText className="w-5 h-5" />}
+                                {isLoading ? 'Memproses...' : `Scan ${scanMode === 'abjad' ? 'Abjad' : 'Braille'}`}
+                                {isLoading && <div className="absolute inset-0 bg-white/20 animate-pulse"></div>}
+                            </button>
+                        </div>
                     </div>
                 )}
             </div>
@@ -717,22 +732,17 @@ export default function VisionOcr({ onClose }: VisionOcrProps) {
                     <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} transition={{ type: "spring", damping: 25, stiffness: 220 }} className="absolute bottom-0 left-0 right-0 z-50 p-6 bg-white dark:bg-[#1C1A29] rounded-t-[32px] shadow-[0_-10px_40px_rgba(0,0,0,0.5)] h-[65vh] flex flex-col">
                         <div className="w-12 h-1.5 mx-auto mb-6 bg-gray-300 rounded-full dark:bg-gray-700"></div>
                         <div className="flex items-center justify-between mb-5">
-                            <h3 className="text-xl font-bold text-gray-900 dark:text-white">Hasil Braille</h3>
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white">Hasil {scanMode === 'abjad' ? 'Abjad' : 'Braille'}</h3>
                             <div className="flex items-center gap-2">
-                                {pdfUrl && (
-                                    <a href={pdfUrl} download="sensoranote-braille-scan.pdf" className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-emerald-700 bg-emerald-50 rounded-full dark:bg-emerald-500/15 dark:text-emerald-300 transition-colors hover:bg-emerald-100 dark:hover:bg-emerald-500/25">
-                                        <Download className="w-[18px] h-[18px]" /> PDF
-                                    </a>
-                                )}
                                 <button onClick={copyToClipboard} className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-blue-600 bg-blue-50 rounded-full dark:bg-primary/20 dark:text-primary transition-colors hover:bg-blue-100 dark:hover:bg-primary/30">
-                                    {isCopied ? <><Check className="w-[18px] h-[18px]"/> Disalin</> : <><Copy className="w-[18px] h-[18px]"/> Salin</>}
+                                    {isCopied ? <><Check className="w-[18px] h-[18px]" /> Disalin</> : <><Copy className="w-[18px] h-[18px]" /> Salin</>}
                                 </button>
                             </div>
                         </div>
                         <div className="flex-1 space-y-4 overflow-y-auto overscroll-contain">
                             <div className="p-5 text-gray-800 bg-gray-50 border border-gray-200/60 rounded-2xl dark:bg-black/20 dark:border-white/5 dark:text-gray-200 shadow-inner">
                                 <p className="mb-2 text-xs font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400">Teks terbaca</p>
-                                <p className="whitespace-pre-wrap leading-relaxed text-[15px] font-medium">{extractedText || 'Tidak ada teks alfabet yang terbaca.'}</p>
+                                <p className="whitespace-pre-wrap leading-relaxed text-[15px] font-medium">{extractedText || 'Tidak ada teks yang terbaca.'}</p>
                             </div>
                             <div className="p-5 text-gray-900 bg-yellow-50 border border-yellow-200/70 rounded-2xl dark:bg-yellow-500/10 dark:border-yellow-400/20 dark:text-yellow-50 shadow-inner">
                                 <p className="mb-2 text-xs font-bold uppercase tracking-wide text-yellow-700 dark:text-yellow-300">Braille</p>

@@ -3,12 +3,11 @@ import { Menu, Search, Edit3, Bell, Settings, HelpCircle, LogOut, Camera } from 
 import { useAuth } from '../contexts/AuthContext';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import axios from 'axios';
 import AvatarNotifications from './ui/avatar-notifications';
 import ApplicationLogo from './ApplicationLogo';
 import { AvatarImage } from './ui/DefaultImages';
 import { useTranslation } from '../hooks/useTranslation';
-import VisionOcr from './VisionOcr';
+import CameraScanner from './CameraScanner';
 
 interface TopNavProps {
   isSidebarExpanded: boolean;
@@ -21,7 +20,9 @@ export function TopNav({ isSidebarExpanded, toggleSidebar }: TopNavProps) {
   const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isOcrOpen, setIsOcrOpen] = useState(false);
+  
+  // Mengganti isOcrOpen menjadi isScannerOpen
+  const [isScannerOpen, setIsScannerOpen] = useState(false); 
   const profileRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -78,13 +79,13 @@ export function TopNav({ isSidebarExpanded, toggleSidebar }: TopNavProps) {
       {/* RIGHT SECTION */}
       <div className="flex items-center gap-4 sm:gap-5 shrink-0 relative">
         
-        {/* === TOMBOL OCR HANYA UNTUK DESKTOP === */}
+        {/* === TOMBOL CAMERA SCANNER === */}
         <button 
-          onClick={() => setIsOcrOpen(true)}
+          onClick={() => setIsScannerOpen(true)}
           className="hidden lg:flex items-center justify-center gap-2 h-[36px] px-[18px] rounded-full bg-primary text-white text-[13.5px] font-['Manrope'] font-semibold shadow-[0_4px_10px_rgb(93,92,230,0.15)] hover:bg-primary/90 hover:shadow-[0_6px_14px_rgb(93,92,230,0.25)] hover:-translate-y-0.5 transition-all"
         >
           <Camera className="w-[16px] h-[16px]" strokeWidth={2} />
-          <span>Ekstrak Teks</span>
+          <span>Scan Dokumen</span>
         </button>
         
         <Link 
@@ -174,9 +175,9 @@ export function TopNav({ isSidebarExpanded, toggleSidebar }: TopNavProps) {
         </div>
       </div>
 
-      {/* Modal Overlay OCR (Untuk Desktop) */}
+      {/* Modal Overlay Kamera Scanner */}
       <AnimatePresence>
-        {isOcrOpen && <VisionOcr onClose={() => setIsOcrOpen(false)} />}
+        {isScannerOpen && <CameraScanner onClose={() => setIsScannerOpen(false)} />}
       </AnimatePresence>
     </header>
   );

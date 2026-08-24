@@ -22,12 +22,11 @@ use App\Http\Controllers\VisionController;
 use App\Models\Follow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http; 
 
 // Auto-Translation Endpoints
 Route::get('/translations/{lang}', [TranslationController::class, 'getStaticTranslations']);
 Route::post('/translate-content', [TranslationController::class, 'translateDynamicContent']);
-Route::post('/braille/text-to-braille', [BrailleController::class, 'textToBraille']);
-Route::post('/braille/braille-to-text', [BrailleController::class, 'brailleToText']);
 
 Route::post('/v1/register', [AuthController::class, 'register'])->middleware('throttle:5,1');
 Route::post('/v1/login', [AuthController::class, 'login'])->middleware('throttle:10,1');
@@ -58,9 +57,16 @@ Route::get('/v1/users/{id}/following', [FollowController::class, 'following']);
 
 Route::middleware('auth:sanctum')->group(function () {
 
-    // Cloud Vision API (Aksesibilitas / OCR)
-    Route::post('/vision/detect-corners', [VisionController::class, 'detectCorners']);
-    Route::post('/vision/detect-text', [VisionController::class, 'detectText']);
+    // ==========================================
+    // RUTE INTEGRASI DOCSCANNER & BRAILLE AI
+    // Menggunakan VisionController sebagai jembatan ke API Gateway Python
+    // ==========================================
+    Route::post('/scanner/detect', [VisionController::class, 'detectCorners']);
+    Route::post('/scanner/crop', [VisionController::class, 'cropImage']);
+    Route::post('/scanner/ocr', [VisionController::class, 'ocrStandard']);
+    Route::post('/scanner/braille-ocr', [VisionController::class, 'brailleOcr']);
+    Route::post('/braille/text-to-braille', [VisionController::class, 'textToBraille']);
+
 
     Route::post('/v1/sertifikasi', [SertifikasiController::class, 'ajukan']);
     Route::get('/v1/sertifikasi/pending', [SertifikasiController::class, 'getPending']);
@@ -70,44 +76,32 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/v1/notifikasi/read-all', [NotificationController::class, 'markAllAsRead']);
     Route::put('/v1/notifikasi/{id}/read', [NotificationController::class, 'markAsRead']);
 
-    // Posts
     Route::get('/v1/drafts', [PostController::class, 'drafts']);
     Route::post('/v1/posts', [PostController::class, 'store']);
     Route::put('/v1/posts/{id}', [PostController::class, 'update']);
     Route::delete('/v1/posts/{id}', [PostController::class, 'destroy']);
-
-    // Verify
     Route::put('/v1/posts/{id}/verify', [PostController::class, 'verify']);
     Route::put('/v1/posts/{id}/unverify', [PostController::class, 'unverify']);
     Route::put('/v1/posts/{id}/reject', [PostController::class, 'reject']);
     Route::post('/v1/posts/{id}/ajukan', [PostController::class, 'ajukanVerifikasi']);
 
-    // Comments
     Route::post('/v1/posts/{postId}/comments', [CommentController::class, 'store']);
     Route::put('/v1/comments/{id}', [CommentController::class, 'update']);
     Route::delete('/v1/comments/{id}', [CommentController::class, 'destroy']);
-
-    // Likes
     Route::post('/v1/posts/{postId}/like', [LikeController::class, 'toggle']);
     Route::post('/v1/comments/{commentId}/like', [LikeController::class, 'toggleCommentLike']);
-
-    // Bookmarks
     Route::post('/v1/posts/{postId}/bookmark', [BookmarkController::class, 'toggle']);
     Route::get('/v1/bookmarks', [BookmarkController::class, 'index']);
-
-    // Highlights (personal)
     Route::get('/v1/posts/{postId}/highlights', [HighlightController::class, 'index']);
     Route::post('/v1/posts/{postId}/highlights', [HighlightController::class, 'store']);
     Route::delete('/v1/highlights/{id}', [HighlightController::class, 'destroy']);
 
-    // Reports
     Route::post('/v1/posts/{postId}/report', [ReportController::class, 'store']);
     Route::post('/v1/comments/{commentId}/report', [ReportController::class, 'storeCommentReport']);
     Route::post('/v1/users/{userId}/report', [ReportController::class, 'storeUserReport']);
-    Route::get('/v1/reports', [ReportController::class, 'index']); // Admin only
-    Route::put('/v1/reports/{id}', [ReportController::class, 'update']); // Admin only
+    Route::get('/v1/reports', [ReportController::class, 'index']); 
+    Route::put('/v1/reports/{id}', [ReportController::class, 'update']); 
 
-    // Users
     Route::get('/v1/users', [UserController::class, 'index']);
     Route::put('/v1/users/fcm-token', [UserController::class, 'updateFcmToken']);
     Route::put('/v1/users/{id}/demote', [UserController::class, 'demote']);
@@ -117,36 +111,25 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/v1/users/deactivate', [UserController::class, 'deactivate']);
     Route::post('/v1/users/change-password', [UserController::class, 'changePassword']);
 
-    // Following
     Route::post('/v1/users/{id}/follow', [FollowController::class, 'toggleFollow']);
     Route::get('/v1/follow-requests', [FollowController::class, 'getPendingRequests']);
     Route::post('/v1/follow-requests/{id}/respond', [FollowController::class, 'respondToRequest']);
 
-    // Categories & Topics
     Route::get('/v1/categories', [CategoryController::class, 'index']);
     Route::get('/v1/topics', [TopicController::class, 'index']);
-
-    // Activities
     Route::get('/profile/activities', [ProfileController::class, 'myActivities']);
-
-    // History
     Route::post('/v1/learn/history', [LearningHistoryController::class, 'logAktivitas']);
-
-    // Statistik Belajar
     Route::get('/v1/learn/statistics', [LearningHistoryController::class, 'getStatistics']);
     Route::post('/v1/user/target', [UserController::class, 'updateTarget']);
 
     Route::get('/user', function (Request $request) {
         $user = clone $request->user();
         if ($user) {
-            // Ngitung langsung dari tabel Follow tempat kita nyimpen datanya!
             $followers = Follow::where('following_id', (string) $user->id)->count();
             $following = Follow::where('follower_id', (string) $user->id)->count();
-
             $user->setAttribute('followers_count', $followers);
             $user->setAttribute('following_count', $following);
         }
-
         return $user;
     });
 });

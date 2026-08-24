@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from '../hooks/useTranslation';
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import VisionOcr from './VisionOcr';
+import CameraScanner from './CameraScanner'; // Mengganti VisionOcr menjadi CameraScanner
 
 export function BottomNav() {
   const location = useLocation();
@@ -13,7 +13,7 @@ export function BottomNav() {
   const { t } = useTranslation();
   
   const [isActionMenuOpen, setIsActionMenuOpen] = useState(false);
-  const [isOcrOpen, setIsOcrOpen] = useState(false);
+  const [isScannerOpen, setIsScannerOpen] = useState(false); // Mengubah state menjadi isScannerOpen
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -65,9 +65,9 @@ export function BottomNav() {
                      <div className="flex items-center justify-center w-8 h-8 text-blue-600 bg-blue-100 rounded-full dark:bg-blue-500/20 dark:text-blue-400 shrink-0"><Edit3 className="w-[18px] h-[18px]" /></div>
                      <span className="text-[13px] font-semibold font-['Manrope'] whitespace-nowrap">Tulis Catatan</span>
                    </button>
-                   <button onClick={() => { setIsActionMenuOpen(false); setIsOcrOpen(true); }} className="flex items-center gap-3 p-3 w-full text-gray-700 transition-colors rounded-xl dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5">
+                   <button onClick={() => { setIsActionMenuOpen(false); setIsScannerOpen(true); }} className="flex items-center gap-3 p-3 w-full text-gray-700 transition-colors rounded-xl dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5">
                      <div className="flex items-center justify-center w-8 h-8 text-emerald-600 bg-emerald-100 rounded-full dark:bg-emerald-500/20 dark:text-emerald-400 shrink-0"><Camera className="w-[18px] h-[18px]" /></div>
-                     <span className="text-[13px] font-semibold font-['Manrope'] whitespace-nowrap">Scanner Teks</span>
+                     <span className="text-[13px] font-semibold font-['Manrope'] whitespace-nowrap">Scan Dokumen</span>
                    </button>
                  </motion.div>
                )}
@@ -102,7 +102,7 @@ export function BottomNav() {
         </div>
       </div>
       <AnimatePresence>
-        {isOcrOpen && <VisionOcr onClose={() => setIsOcrOpen(false)} />}
+        {isScannerOpen && <CameraScanner onClose={() => setIsScannerOpen(false)} />}
       </AnimatePresence>
     </>
   );
