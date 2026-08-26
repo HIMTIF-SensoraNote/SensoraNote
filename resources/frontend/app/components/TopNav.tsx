@@ -43,57 +43,60 @@ export function TopNav({ isSidebarExpanded, toggleSidebar }: TopNavProps) {
   };
 
   return (
-    <header className="h-[60px] px-6 lg:px-8 flex items-center justify-between w-full bg-transparent">
+    <header className="h-[60px] px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full bg-transparent">
       
       {/* LEFT SECTION */}
-      <div className="flex items-center flex-1 min-w-0">
+      <div className="flex items-center flex-1 min-w-0 mr-3">
         <button 
           onClick={toggleSidebar}
-          className="mr-4 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors focus:outline-none p-1.5 -ml-1.5 rounded-full hover:bg-primary/5"
+          className="mr-3 sm:mr-4 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors focus:outline-none p-1.5 -ml-1.5 rounded-full hover:bg-primary/5 shrink-0"
           aria-label="Buka Menu"
         >
           <Menu className="w-[22px] h-[22px]" strokeWidth={1.5} />
         </button>
 
         {/* SensoraNote Logo */}
-        <Link to="/home" className="flex items-center gap-2 mr-6 shrink-0 group outline-none focus:outline-none [-webkit-tap-highlight-color:transparent]">
+        <Link to="/home" className="flex items-center gap-2 mr-3 sm:mr-6 shrink-0 group outline-none focus:outline-none [-webkit-tap-highlight-color:transparent]">
            <ApplicationLogo className="w-8 h-8" />
-           <span className="font-['Lexend_Deca'] font-extrabold text-[22px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-800 dark:from-[#60a5fa] dark:to-[#93c5fd] hidden sm:block">
+           <span className="font-['Lexend_Deca'] font-extrabold text-[20px] lg:text-[22px] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-800 dark:from-[#60a5fa] dark:to-[#93c5fd] hidden sm:block">
               SensoraNote
            </span>
         </Link>
 
-        <form onSubmit={handleSearch} className="hidden sm:flex items-center w-full max-w-[280px]">
+        <form onSubmit={handleSearch} className="hidden md:flex items-center w-full max-w-[180px] lg:max-w-[280px]">
            <div className="relative w-full group">
-             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors" strokeWidth={2} />
+             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors" strokeWidth={2} />
              <input
                type="text"
                value={searchQuery}
                onChange={(e) => setSearchQuery(e.target.value)}
                placeholder={t('topnav.search_placeholder')}
-               className="w-full h-[38px] pl-[38px] pr-4 text-[13.5px] font-['Manrope'] font-medium bg-gray-50 dark:bg-white/5 hover:bg-gray-100/80 dark:hover:bg-white/10 focus:bg-white dark:focus:bg-white/10 border border-transparent focus:border-primary/30 dark:focus:border-primary/40 focus:shadow-[0_0_0_4px_rgba(93,92,230,0.08)] rounded-[12px] transition-all outline-none text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500"
+               className="w-full h-[36px] pl-[34px] pr-3 text-[13px] font-['Manrope'] font-medium bg-gray-50 dark:bg-white/5 hover:bg-gray-100/80 dark:hover:bg-white/10 focus:bg-white dark:focus:bg-white/10 border border-transparent focus:border-primary/30 dark:focus:border-primary/40 focus:shadow-[0_0_0_3px_rgba(93,92,230,0.08)] rounded-[12px] transition-all outline-none text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500"
              />
            </div>
         </form>
       </div>
 
       {/* RIGHT SECTION */}
-      <div className="flex items-center gap-4 sm:gap-5 shrink-0 relative">
+      <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 shrink-0 relative">
         
-        {/* === TOMBOL CAMERA SCANNER === */}
+        {/* === TOMBOL CAMERA SCANNER (TABLET & DESKTOP) === */}
         <button 
           onClick={() => setIsScannerOpen(true)}
-          className="hidden lg:flex items-center justify-center gap-2 h-[36px] px-[18px] rounded-full bg-primary text-white text-[13.5px] font-['Manrope'] font-semibold shadow-[0_4px_10px_rgb(93,92,230,0.15)] hover:bg-primary/90 hover:shadow-[0_6px_14px_rgb(93,92,230,0.25)] hover:-translate-y-0.5 transition-all"
+          className="hidden md:flex items-center justify-center gap-1.5 sm:gap-2 h-[36px] px-3 sm:px-4 rounded-full bg-primary text-white text-[13px] sm:text-[13.5px] font-['Manrope'] font-semibold shadow-[0_4px_10px_rgb(93,92,230,0.15)] hover:bg-primary/90 hover:shadow-[0_6px_14px_rgb(93,92,230,0.25)] hover:-translate-y-0.5 transition-all cursor-pointer shrink-0"
+          title="Scan Dokumen"
         >
           <Camera className="w-[16px] h-[16px]" strokeWidth={2} />
           <span>Scan Dokumen</span>
         </button>
         
+        {/* === TOMBOL TULIS CATATAN (TABLET & DESKTOP) === */}
         <Link 
           to="/upload"
-          className="hidden md:flex items-center gap-2 h-[36px] px-2 text-gray-500 dark:text-gray-400 hover:text-primary text-[14px] font-['Manrope'] transition-colors"
+          className="hidden md:flex items-center gap-1.5 sm:gap-2 h-[36px] px-3 sm:px-3.5 rounded-full border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:text-primary hover:border-primary/40 dark:hover:border-primary/40 text-[13px] sm:text-[13.5px] font-['Manrope'] font-semibold transition-all hover:-translate-y-0.5 shrink-0"
+          title="Tulis Catatan"
         >
-          <Edit3 className="w-[18px] h-[18px]" strokeWidth={1.5} />
+          <Edit3 className="w-[16px] h-[16px]" strokeWidth={2} />
           <span>{t('topnav.write')}</span>
         </Link>
 
@@ -101,7 +104,7 @@ export function TopNav({ isSidebarExpanded, toggleSidebar }: TopNavProps) {
           <Search className="w-5 h-5" strokeWidth={2} />
         </button>
 
-        <div className="mr-1">
+        <div className="mr-0.5 sm:mr-1">
           <AvatarNotifications />
         </div>
 

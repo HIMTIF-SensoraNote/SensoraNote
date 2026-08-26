@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Home, Search, Bookmark, User, LayoutDashboard, ChevronLeft, Hash, Star, FileText, Settings, Plus, LogOut, PersonStanding, Sparkles } from 'lucide-react';
+import { Home, Search, Bookmark, User, LayoutDashboard, ChevronLeft, Hash, Star, FileText, Settings, Plus, LogOut, PersonStanding, Sparkles, Camera } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
 import { useTranslation } from '../hooks/useTranslation';
+import CameraScanner from './CameraScanner';
+import { AnimatePresence } from 'motion/react';
 
 interface SideNavProps {
   isExpanded: boolean;
@@ -14,6 +16,7 @@ export function SideNav({ isExpanded, toggleSidebar }: SideNavProps) {
   const location = useLocation();
   const { user, logout } = useAuth();
   const { t } = useTranslation();
+  const [isScannerOpen, setIsScannerOpen] = useState(false);
   
   const isActive = (path: string) => location.pathname === path;
 
@@ -44,34 +47,48 @@ export function SideNav({ isExpanded, toggleSidebar }: SideNavProps) {
   ];
 
   return (
-    <aside className="w-60 h-full flex flex-col bg-transparent overflow-hidden whitespace-nowrap">
-      
-      {/* Main Links */}
-      <div className="flex-1 overflow-y-auto overflow-x-hidden pt-4 pb-6 scrollbar-hide">
-         
-         <div className="px-3 space-y-1">
-            {mainNavItems.map((item) => {
-              const isProfileBase = item.path === '/profile' && location.pathname === '/profile' && !location.search;
-              const isBookmarksTab = item.path === '/profile?tab=bookmarks' && location.pathname === '/profile' && location.search.includes('tab=bookmarks');
-              const active = item.path === '/profile' ? isProfileBase : (item.path === '/profile?tab=bookmarks' ? isBookmarksTab : isActive(item.path));
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`flex items-center gap-3 px-3 py-[7px] rounded-[8px] transition-all duration-200 w-full group ${
-                    active 
-                      ? 'bg-primary/10 text-primary' 
-                      : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-gray-200 active:bg-gray-200/60 dark:active:bg-white/10'
-                  }`}
-                >
-                  <item.icon className={`shrink-0 transition-all duration-200 ${active ? 'w-[18px] h-[18px] text-primary scale-105' : 'w-[18px] h-[18px] text-gray-700 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200'}`} strokeWidth={active ? 2.5 : 2} />
-                  <span className={`font-['Manrope'] text-[14px] truncate mt-[1px] ${active ? 'font-bold' : 'font-medium'}`}>
-                    {item.label}
-                  </span>
-                </Link>
-              );
-            })}
-         </div>
+    <>
+      <aside className="w-60 h-full flex flex-col bg-transparent overflow-hidden whitespace-nowrap">
+        
+        {/* Main Links */}
+        <div className="flex-1 overflow-y-auto overflow-x-hidden pt-4 pb-6 scrollbar-hide">
+           
+           <div className="px-3 space-y-1">
+              {mainNavItems.map((item) => {
+                const isProfileBase = item.path === '/profile' && location.pathname === '/profile' && !location.search;
+                const isBookmarksTab = item.path === '/profile?tab=bookmarks' && location.pathname === '/profile' && location.search.includes('tab=bookmarks');
+                const active = item.path === '/profile' ? isProfileBase : (item.path === '/profile?tab=bookmarks' ? isBookmarksTab : isActive(item.path));
+                return (
+                  <div key={item.path}>
+                    <Link
+                      to={item.path}
+                      className={`flex items-center gap-3 px-3 py-[7px] rounded-[8px] transition-all duration-200 w-full group ${
+                        active 
+                          ? 'bg-primary/10 text-primary' 
+                          : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-gray-200 active:bg-gray-200/60 dark:active:bg-white/10'
+                      }`}
+                    >
+                      <item.icon className={`shrink-0 transition-all duration-200 ${active ? 'w-[18px] h-[18px] text-primary scale-105' : 'w-[18px] h-[18px] text-gray-700 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200'}`} strokeWidth={active ? 2.5 : 2} />
+                      <span className={`font-['Manrope'] text-[14px] truncate mt-[1px] ${active ? 'font-bold' : 'font-medium'}`}>
+                        {item.label}
+                      </span>
+                    </Link>
+                    {item.path === '/upload' && (
+                      <button
+                        type="button"
+                        onClick={() => setIsScannerOpen(true)}
+                        className="flex items-center gap-3 px-3 py-[7px] rounded-[8px] transition-all duration-200 w-full group text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-gray-200 active:bg-gray-200/60 dark:active:bg-white/10 text-left cursor-pointer"
+                      >
+                        <Camera className="w-[18px] h-[18px] text-emerald-600 dark:text-emerald-400 shrink-0 transition-all duration-200 group-hover:scale-105" strokeWidth={2} />
+                        <span className="font-['Manrope'] text-[14px] truncate mt-[1px] font-medium">
+                          Scan Dokumen
+                        </span>
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+           </div>
 
          {/* Stats / Dashboard Section */}
          <div className="mt-8 mb-2 px-6 text-[11px] font-['Lexend_Deca'] font-black text-gray-600 dark:text-gray-500 tracking-wider">
@@ -198,7 +215,11 @@ export function SideNav({ isExpanded, toggleSidebar }: SideNavProps) {
            </span>
          </button>
       </div>
+     </aside>
 
-    </aside>
+      <AnimatePresence>
+        {isScannerOpen && <CameraScanner onClose={() => setIsScannerOpen(false)} />}
+      </AnimatePresence>
+    </>
   );
 }
