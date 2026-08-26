@@ -84,6 +84,14 @@ class FollowController extends Controller
 
         $followerIds = $follows->pluck('follower_id')->map(fn($id) => (string) $id)->toArray();
         $followers = User::whereIn('_id', $followerIds)->get();
+        $validIds = $followers->map(fn($u) => (string) ($u->_id ?? $u->id))->toArray();
+
+        // Delete orphan follows
+        foreach ($follows as $f) {
+            if (!in_array((string) $f->follower_id, $validIds)) {
+                $f->delete();
+            }
+        }
 
         if ($meId) {
             $meIdStr = (string) $meId;
@@ -138,6 +146,14 @@ class FollowController extends Controller
 
         $followingIds = $follows->pluck('following_id')->map(fn($id) => (string) $id)->toArray();
         $following = User::whereIn('_id', $followingIds)->get();
+        $validIds = $following->map(fn($u) => (string) ($u->_id ?? $u->id))->toArray();
+
+        // Delete orphan follows
+        foreach ($follows as $f) {
+            if (!in_array((string) $f->following_id, $validIds)) {
+                $f->delete();
+            }
+        }
 
         if ($meId) {
             $meIdStr = (string) $meId;

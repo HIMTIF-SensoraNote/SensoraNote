@@ -70,6 +70,8 @@ export default function ProfilePage() {
     const [followingList, setFollowingList] = useState<any[]>([]);
     const [pendingRequests, setPendingRequests] = useState<any[]>([]);
     const [isLoadingFollows, setIsLoadingFollows] = useState(false);
+    const [liveFollowersCount, setLiveFollowersCount] = useState<number | null>(null);
+    const [liveFollowingCount, setLiveFollowingCount] = useState<number | null>(null);
 
     const { user } = useAuth();
 
@@ -86,15 +88,23 @@ export default function ProfilePage() {
                 axios.get(`/api/v1/users/${userId}/following`, { headers }),
                 axios.get(`/api/v1/follow-requests`, { headers })
             ]);
-            setFollowersList(followersRes.data);
-            setFollowingList(followingRes.data);
-            setPendingRequests(pendingRes.data);
+            const fList = Array.isArray(followersRes.data) ? followersRes.data : [];
+            const flList = Array.isArray(followingRes.data) ? followingRes.data : [];
+            setFollowersList(fList);
+            setFollowingList(flList);
+            setLiveFollowersCount(fList.length);
+            setLiveFollowingCount(flList.length);
+            setPendingRequests(Array.isArray(pendingRes.data) ? pendingRes.data : []);
         } catch (error) {
             console.error("Gagal mengambil data followers/following", error);
         } finally {
             setIsLoadingFollows(false);
         }
     };
+
+    useEffect(() => {
+        fetchFollowsData();
+    }, [user?.id, user?._id]);
 
     useEffect(() => {
         if (showFollowers || showFollowing) {
@@ -303,8 +313,8 @@ export default function ProfilePage() {
         jenjang: user?.jenjang_pendidikan || "",
         profesi: user?.profesi || "Pelajar",
         school: user?.school || "",
-        followers: user?.followers_count || 0,
-        following: user?.following_count || 0,
+        followers: liveFollowersCount !== null ? liveFollowersCount : (user?.followers_count || 0),
+        following: liveFollowingCount !== null ? liveFollowingCount : (user?.following_count || 0),
         created_at: user?.created_at || null,
         bio: user?.bio || "",
         username: user?.username || "",
