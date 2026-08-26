@@ -266,32 +266,9 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
                             className="w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/20">
                             <X className="w-5 h-5 text-white" />
                         </button>
-                        <div className="relative">
-                            <button onClick={() => setShowModeMenu(v => !v)}
-                                className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white text-xs font-bold">
-                                <span className="w-2 h-2 rounded-full" style={{ background: cm.accent }} />
-                                {cm.short}
-                                <ChevronDown className={`w-3 h-3 transition-transform ${showModeMenu ? 'rotate-180' : ''}`} />
-                            </button>
-                            <AnimatePresence>
-                                {showModeMenu && (
-                                    <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-                                        transition={{ duration: 0.15 }}
-                                        className="absolute top-full mt-2 right-0 w-52 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden z-60">
-                                        {(Object.entries(MODE_LABELS) as [ScanMode, typeof cm][]).map(([key, val]) => (
-                                            <button key={key} onClick={() => { setScanMode(key); setShowModeMenu(false); }}
-                                                className={`w-full flex items-center gap-3 px-4 py-3 text-left ${scanMode === key ? 'bg-white/10' : 'hover:bg-white/5'}`}>
-                                                <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: val.accent }} />
-                                                <div className="flex-1">
-                                                    <p className="text-sm font-bold text-white">{val.short}</p>
-                                                    <p className="text-[10px] text-white/40">{val.model}</p>
-                                                </div>
-                                                {scanMode === key && <Check className="w-4 h-4 text-green-400" />}
-                                            </button>
-                                        ))}
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
+                        <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white text-xs font-bold shadow-sm">
+                            <span className="w-2 h-2 rounded-full bg-blue-500" />
+                            <span>Teks → Braille</span>
                         </div>
                         <div className="w-10" />
                     </div>
@@ -371,8 +348,8 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
                     </div>
                     <div className="px-5 pb-12 pt-2 space-y-3">
                         <div className="flex items-center justify-center gap-2">
-                            <span className="w-2 h-2 rounded-full" style={{ background: cm.accent }} />
-                            <span className="text-white/50 text-xs">{cm.short} · {cm.model}</span>
+                            <span className="w-2 h-2 rounded-full bg-blue-500" />
+                            <span className="text-white/70 text-xs font-medium">Teks → Braille</span>
                         </div>
                         <div className="flex gap-3">
                             <button onClick={() => setShowRetakeConfirm(true)}
@@ -381,10 +358,10 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
                             </button>
                             <button onClick={handleOcr} disabled={isOcrLoading}
                                 className="flex-1 py-3.5 rounded-2xl text-white text-sm font-bold flex items-center justify-center gap-2 disabled:opacity-60 active:scale-95 transition-transform"
-                                style={{ background: `linear-gradient(135deg,${cm.accent},${cm.accent}cc)` }}>
+                                style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)' }}>
                                 {isOcrLoading
                                     ? <><Loader2 className="w-4 h-4 animate-spin" /> Memproses...</>
-                                    : <><Zap className="w-4 h-4" /> Scan {scanMode === 'abjad' ? 'Abjad' : 'Braille'}</>
+                                    : <><Zap className="w-4 h-4" /> Scan Gambar</>
                                 }
                             </button>
                         </div>
