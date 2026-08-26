@@ -62,4 +62,7 @@ return [
         'timeout' => (int) env('GEMINI_TIMEOUT', 60),
     ],
 
+    'cloudinary' => [
+        'url' => env('CLOUDINARY_URL'),
+    ],
 ];

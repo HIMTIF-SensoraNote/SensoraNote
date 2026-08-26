@@ -28,7 +28,8 @@ class SertifikasiController extends Controller
             ], 400);
         }
 
-        $cloudinary = new Cloudinary(env('CLOUDINARY_URL'));
+        $cloudinaryUrl = config('services.cloudinary.url') ?: env('CLOUDINARY_URL');
+        $cloudinary = new Cloudinary($cloudinaryUrl);
         $upload = $cloudinary->uploadApi()->upload($request->file('file_sertifikat')->getRealPath(), [
             'folder' => 'bayu_sertifikat',
             'resource_type' => 'auto',

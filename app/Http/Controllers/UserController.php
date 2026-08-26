@@ -132,19 +132,29 @@ class UserController extends Controller
             'profesi' => 'nullable|string|in:Pelajar,Mahasiswa,Pengajar,Umum',
             'school' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:20',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'avatar' => 'nullable',
         ]);
 
-        if ($request->hasFile('avatar')) {
-            $cloudinary = new Cloudinary(env('CLOUDINARY_URL'));
+        $user = Auth::user();
+
+        // 1. Handle avatar removal
+        if ($request->boolean('remove_avatar') || $request->input('remove_avatar') === 'true' || $request->input('avatar') === 'null' || $request->input('avatar') === '') {
+            $user->avatar = null;
+            $validated['avatar'] = null;
+        } elseif ($request->hasFile('avatar')) {
+            $cloudinaryUrl = config('services.cloudinary.url') ?: env('CLOUDINARY_URL');
+            if (!$cloudinaryUrl) {
+                return response()->json(['message' => 'Konfigurasi CLOUDINARY_URL belum tersedia pada server.'], 500);
+            }
+            $cloudinary = new Cloudinary($cloudinaryUrl);
 
             $upload = $cloudinary->uploadApi()->upload($request->file('avatar')->getRealPath(), [
                 'folder' => 'sensoranote-avatars',
             ]);
 
             $validated['avatar'] = $upload['secure_url'];
+            $user->avatar = $upload['secure_url'];
         }
-        $user = Auth::user();
 
         if (isset($validated['username']) && $validated['username'] !== $user->username) {
             $validated['username'] = strtolower($validated['username']);

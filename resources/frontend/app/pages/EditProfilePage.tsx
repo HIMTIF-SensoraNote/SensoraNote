@@ -16,6 +16,7 @@ import {
     Check,
     X,
     Image as ImageIcon,
+    Trash2,
 } from "lucide-react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
@@ -47,6 +48,7 @@ export default function EditProfilePage() {
 
     const [avatarFile, setAvatarFile] = useState<File | null>(null);
     const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
+    const [removeAvatar, setRemoveAvatar] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [showSourceSelector, setShowSourceSelector] = useState(false);
 
@@ -217,6 +219,7 @@ export default function EditProfilePage() {
                     });
                     setAvatarFile(file);
                     setAvatarPreview(URL.createObjectURL(blob));
+                    setRemoveAvatar(false);
                     setShowCropEditor(false);
                     if (rawImageUrl) URL.revokeObjectURL(rawImageUrl);
                 }
@@ -300,7 +303,9 @@ export default function EditProfilePage() {
             submitData.append("profesi", formData.profesi);
             submitData.append("school", formData.school);
             submitData.append("phone", formData.phone);
-            if (avatarFile) {
+            if (removeAvatar) {
+                submitData.append("remove_avatar", "true");
+            } else if (avatarFile) {
                 submitData.append("avatar", avatarFile);
             }
 
@@ -317,7 +322,10 @@ export default function EditProfilePage() {
                 updateUserSession(response.data.user);
             } else {
                 // Fallback manual update if response format is unexpected
-                updateUserSession(formData);
+                updateUserSession({
+                    ...formData,
+                    ...(removeAvatar ? { avatar: null } : {}),
+                });
             }
 
             showToast(t('edit_profile.save_success') || "Profil berhasil diperbarui!", "success");
@@ -395,8 +403,9 @@ export default function EditProfilePage() {
                             onClick={() => setShowSourceSelector(true)}
                         >
                             <AvatarImage
-                                src={avatarPreview || user?.avatar}
-                                alt={user?.name}
+                                src={removeAvatar ? null : (avatarPreview || user?.avatar)}
+                                alt={formData.name || user?.name}
+                                name={formData.name || user?.name}
                                 size={112}
                                 className="sm:!w-28 sm:!h-28 !w-24 !h-24 border-4 border-gray-50 shadow-sm transition-transform group-hover:scale-105"
                             />
@@ -407,12 +416,32 @@ export default function EditProfilePage() {
                                 <Camera className="w-4 h-4" />
                             </button>
                         </div>
-                        <p
-                            onClick={() => setShowSourceSelector(true)}
-                            className="font-['Manrope'] text-sm font-semibold text-primary cursor-pointer hover:underline"
-                        >
-                            {t('edit_profile.change_photo') || 'Ganti Foto'}
-                        </p>
+                        <div className="flex items-center gap-3">
+                            <button
+                                type="button"
+                                onClick={() => setShowSourceSelector(true)}
+                                className="font-['Manrope'] text-sm font-semibold text-primary cursor-pointer hover:underline"
+                            >
+                                {t('edit_profile.change_photo') || 'Ganti Foto'}
+                            </button>
+                            {(avatarPreview || (user?.avatar && !removeAvatar)) && (
+                                <>
+                                    <span className="text-gray-300 dark:text-gray-600">•</span>
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setAvatarFile(null);
+                                            setAvatarPreview(null);
+                                            setRemoveAvatar(true);
+                                        }}
+                                        className="font-['Manrope'] text-sm font-semibold text-rose-500 hover:text-rose-600 cursor-pointer hover:underline flex items-center gap-1"
+                                    >
+                                        <Trash2 className="w-3.5 h-3.5" />
+                                        <span>{t('edit_profile.delete_photo') || 'Hapus Foto'}</span>
+                                    </button>
+                                </>
+                            )}
+                        </div>
                     </div>
 
                     <div className="space-y-6 mb-10">
@@ -679,6 +708,30 @@ export default function EditProfilePage() {
                                     </p>
                                 </div>
                             </button>
+
+                            {(avatarPreview || (user?.avatar && !removeAvatar)) && (
+                                <button
+                                    onClick={() => {
+                                        setShowSourceSelector(false);
+                                        setAvatarFile(null);
+                                        setAvatarPreview(null);
+                                        setRemoveAvatar(true);
+                                    }}
+                                    className="w-full flex items-center gap-4 p-4 rounded-2xl hover:bg-rose-50 dark:hover:bg-rose-500/10 transition-colors text-left group"
+                                >
+                                    <div className="w-12 h-12 rounded-full bg-rose-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <Trash2 className="w-6 h-6 text-rose-500" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-['Manrope'] font-bold text-rose-600 dark:text-rose-400 leading-tight">
+                                            {t('edit_profile.delete_photo_title') || 'Hapus Foto Profil'}
+                                        </h4>
+                                        <p className="font-['Manrope'] text-sm text-gray-500">
+                                            {t('edit_profile.delete_photo_desc') || 'Gunakan inisial nama kapital (seperti Google)'}
+                                        </p>
+                                    </div>
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>

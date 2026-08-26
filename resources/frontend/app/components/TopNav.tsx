@@ -113,7 +113,8 @@ export function TopNav({ isSidebarExpanded, toggleSidebar }: TopNavProps) {
            >
               <AvatarImage 
                 src={user?.avatar} 
-                alt="Profile" 
+                alt={user?.name || "Profile"} 
+                name={user?.name}
                 size={34}
                 className="bg-gray-50 dark:bg-white/10 border border-gray-100 dark:border-white/10"
               />
@@ -129,7 +130,7 @@ export function TopNav({ isSidebarExpanded, toggleSidebar }: TopNavProps) {
                  className="absolute right-0 top-[48px] w-[260px] bg-white dark:bg-[#1C1A29] rounded-xl shadow-[0_12px_40px_rgba(0,0,0,0.12)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.4)] border border-gray-100 dark:border-white/5 py-3 z-50"
                >
                   <Link to="/profile" className="flex items-center gap-3 px-5 py-2 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors mb-2 group">
-                     <AvatarImage src={user?.avatar} alt="Profile" size={40} className="shadow-sm group-hover:scale-105 transition-transform" />
+                     <AvatarImage src={user?.avatar} alt={user?.name || "Profile"} name={user?.name} size={40} className="shadow-sm group-hover:scale-105 transition-transform" />
                      <div className="flex flex-col overflow-hidden">
                         <span className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 text-[15px] truncate">{user?.name}</span>
                         <span className="text-[13px] font-['Manrope'] text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors">{t('topnav.view_profile')}</span>

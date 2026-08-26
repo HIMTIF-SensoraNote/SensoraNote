@@ -65,11 +65,51 @@ export function DefaultThumbnail({
     );
 }
 
+const AVATAR_BG_COLORS = [
+    'bg-gradient-to-tr from-blue-600 to-indigo-600 text-white',
+    'bg-gradient-to-tr from-emerald-600 to-teal-600 text-white',
+    'bg-gradient-to-tr from-violet-600 to-purple-600 text-white',
+    'bg-gradient-to-tr from-rose-600 to-pink-600 text-white',
+    'bg-gradient-to-tr from-amber-500 to-orange-600 text-white',
+    'bg-gradient-to-tr from-cyan-600 to-blue-600 text-white',
+    'bg-gradient-to-tr from-fuchsia-600 to-pink-600 text-white',
+];
+
+const getAvatarBgColor = (name: string) => {
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+        hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return AVATAR_BG_COLORS[Math.abs(hash) % AVATAR_BG_COLORS.length];
+};
+
 /**
  * Default avatar placeholder for users without profile pictures.
- * Shows a soft gray circle with a person silhouette.
+ * Shows a Google-style vibrant circle with the user's capitalized first initial.
  */
-export function DefaultAvatar({ size = 20, className = "" }: { size?: number; className?: string }) {
+export function DefaultAvatar({ 
+    name, 
+    size = 20, 
+    className = "" 
+}: { 
+    name?: string; 
+    size?: number; 
+    className?: string;
+}) {
+    const initial = name ? name.trim().charAt(0).toUpperCase() : '';
+    const bgClass = name ? getAvatarBgColor(name) : 'bg-gradient-to-tr from-blue-600 to-indigo-600 text-white';
+
+    if (initial) {
+        return (
+            <div 
+                className={`flex items-center justify-center rounded-full font-['Lexend_Deca'] font-black uppercase tracking-wider shrink-0 select-none shadow-sm ${bgClass} ${className}`}
+                style={{ width: size, height: size, fontSize: Math.max(11, Math.round(size * 0.44)) }}
+            >
+                {initial}
+            </div>
+        );
+    }
+
     return (
         <div 
             className={`flex items-center justify-center rounded-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 shrink-0 ${className} border border-slate-300/20 dark:border-white/5 shadow-inner`}
@@ -81,17 +121,19 @@ export function DefaultAvatar({ size = 20, className = "" }: { size?: number; cl
 }
 
 /**
- * Avatar image with automatic fallback to DefaultAvatar.
+ * Avatar image with automatic fallback to DefaultAvatar (Google-style initial).
  * Use this as a drop-in replacement for <img> tags showing user avatars.
  */
 export function AvatarImage({ 
     src, 
     alt, 
+    name,
     size = 20, 
     className = "" 
 }: { 
     src?: string | null; 
     alt?: string; 
+    name?: string;
     size?: number; 
     className?: string;
 }) {
@@ -102,14 +144,14 @@ export function AvatarImage({
     }, [src]);
 
     if (!src || hasError) {
-        return <DefaultAvatar size={size} className={className} />;
+        return <DefaultAvatar name={name || alt} size={size} className={className} />;
     }
 
     return (
         <img
             src={src}
-            alt={alt || "User"}
-            className={`rounded-full object-cover ${className}`}
+            alt={alt || name || "User"}
+            className={`rounded-full object-cover shrink-0 ${className}`}
             style={{ width: size, height: size }}
             onError={() => setHasError(true)}
         />
