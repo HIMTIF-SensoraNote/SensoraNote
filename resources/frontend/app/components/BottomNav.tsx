@@ -59,15 +59,23 @@ export function BottomNav() {
                    initial={{ opacity: 0, y: 15, scale: 0.9 }}
                    animate={{ opacity: 1, y: 0, scale: 1 }}
                    exit={{ opacity: 0, y: 15, scale: 0.9 }}
-                   className="absolute bottom-[70px] left-1/2 transform -translate-x-1/2 flex flex-col gap-2 p-2 bg-white dark:bg-[#1C1A29] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-white/10 w-[170px] z-50 origin-bottom"
+                   className="absolute bottom-[72px] left-1/2 -translate-x-1/2 flex flex-col gap-1.5 p-2 bg-white dark:bg-[#1C1A29] rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,0.25)] border border-gray-100 dark:border-white/10 w-[184px] z-50 origin-bottom"
                  >
-                   <button onClick={() => { setIsActionMenuOpen(false); navigate('/upload'); }} className="flex items-center gap-3 p-3 w-full text-gray-700 transition-colors rounded-xl dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5">
-                     <div className="flex items-center justify-center w-8 h-8 text-blue-600 bg-blue-100 rounded-full dark:bg-blue-500/20 dark:text-blue-400 shrink-0"><Edit3 className="w-[18px] h-[18px]" /></div>
-                     <span className="text-[13px] font-semibold font-['Manrope'] whitespace-nowrap">Tulis Catatan</span>
+                   <button 
+                     type="button"
+                     onClick={() => { setIsActionMenuOpen(false); navigate('/upload'); }} 
+                     className="flex items-center gap-3 px-3.5 py-2.5 w-full text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/70 dark:hover:bg-blue-500/10 transition-all rounded-xl cursor-pointer text-left group"
+                   >
+                     <div className="flex items-center justify-center w-8 h-8 text-blue-600 bg-blue-100 rounded-full dark:bg-blue-500/20 dark:text-blue-400 shrink-0 group-hover:scale-105 transition-transform"><Edit3 className="w-[17px] h-[17px]" /></div>
+                     <span className="text-[13px] font-semibold font-['Manrope'] whitespace-nowrap flex-1">Tulis Catatan</span>
                    </button>
-                   <button onClick={() => { setIsActionMenuOpen(false); setIsScannerOpen(true); }} className="flex items-center gap-3 p-3 w-full text-gray-700 transition-colors rounded-xl dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5">
-                     <div className="flex items-center justify-center w-8 h-8 text-emerald-600 bg-emerald-100 rounded-full dark:bg-emerald-500/20 dark:text-emerald-400 shrink-0"><Camera className="w-[18px] h-[18px]" /></div>
-                     <span className="text-[13px] font-semibold font-['Manrope'] whitespace-nowrap">Scan Dokumen</span>
+                   <button 
+                     type="button"
+                     onClick={() => { setIsActionMenuOpen(false); setIsScannerOpen(true); }} 
+                     className="flex items-center gap-3 px-3.5 py-2.5 w-full text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/70 dark:hover:bg-emerald-500/10 transition-all rounded-xl cursor-pointer text-left group"
+                   >
+                     <div className="flex items-center justify-center w-8 h-8 text-emerald-600 bg-emerald-100 rounded-full dark:bg-emerald-500/20 dark:text-emerald-400 shrink-0 group-hover:scale-105 transition-transform"><Camera className="w-[17px] h-[17px]" /></div>
+                     <span className="text-[13px] font-semibold font-['Manrope'] whitespace-nowrap flex-1">Scan Dokumen</span>
                    </button>
                  </motion.div>
                )}
