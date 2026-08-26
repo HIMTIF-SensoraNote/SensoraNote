@@ -18,7 +18,7 @@ export interface User {
     role: UserRole;
     jenjang_pendidikan?: string;
     profesi?: string;
-    avatar?: string;
+    avatar?: string | null;
     bio?: string;
     school?: string;
     phone?: string;
