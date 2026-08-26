@@ -182,8 +182,13 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
         try {
             const fd = new FormData(); fd.append('file', originalFile, 'scan.jpg'); fd.append('corners', JSON.stringify(corners));
             const r = await axios.post('/api/scanner/crop', fd, { headers: { 'Content-Type': 'multipart/form-data' }, withCredentials: true });
-            if (r.data?.image_base64) { setScanResult(`data:${r.data.mime_type || 'image/jpeg'};base64,${r.data.image_base64}`); setStep('result'); }
-            else throw new Error();
+            const imgSrc = r.data?.image || (r.data?.image_base64 ? `data:${r.data.mime_type || 'image/jpeg'};base64,${r.data.image_base64}` : null);
+            if (imgSrc) {
+                setScanResult(imgSrc);
+                setStep('result');
+            } else {
+                throw new Error(r.data?.message || 'Gagal memproses crop.');
+            }
         } catch { alert('Gagal memotong gambar. Coba lagi.'); }
         finally { setIsLoading(false); }
     };
