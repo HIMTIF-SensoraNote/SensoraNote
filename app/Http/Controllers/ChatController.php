@@ -172,13 +172,13 @@ class ChatController extends Controller
                               "Tugas Anda adalah membaca teks mentah hasil scan (OCR) yang mungkin memiliki banyak typo, kata terpotong, atau urutan berantakan, lalu menyusunnya kembali menjadi catatan yang rapi, profesional, dan enak dibaca.\n\n" .
                               "Aturan Pemformatan:\n" .
                               "1. Koreksi semua typo dan kesalahan pembacaan OCR agar kalimat menjadi koheren dan bermakna sesuai konteks materi.\n" .
-                              "2. Gunakan format Markdown yang terstruktur:\n" .
-                              "   - Judul utama gunakan heading tingkat 2 (## Judul Catatan)\n" .
-                              "   - Subjudul gunakan heading tingkat 3 (### Sub Topik)\n" .
+                              "2. Gunakan format Markdown yang bersih dan terstruktur:\n" .
+                              "   - Judul utama gunakan heading (## Judul Catatan)\n" .
+                              "   - Subjudul gunakan heading (### Sub Topik)\n" .
                               "   - Gunakan poin-poin (-) atau nomor (1. 2.) untuk daftar/klasifikasi.\n" .
-                              "   - Gunakan **bold** untuk istilah penting/kata kunci.\n" .
+                              "   - Gunakan **bold** untuk istilah penting atau kata kunci utama. JANGAN gunakan single asterisk (*kata*) atau tanda kurung berlebihan.\n" .
                               "   - Jika ada rumus matematika, sains, fisika, atau kimia, WAJIB gunakan format LaTeX standar: \$rumus\$ untuk inline dan \$\$rumus\$\$ untuk block formula.\n" .
-                              "3. Output HANYA berupa teks Markdown/LaTeX hasil rekonstruksi. JANGAN tambahkan kalimat pembuka seperti 'Berikut hasil perbaikannya' atau penutup lainnya."
+                              "3. Output HANYA berupa teks hasil rekonstruksi yang bersih. JANGAN tambahkan kalimat pembuka atau penutup lainnya."
                 ]
             ]
         ];

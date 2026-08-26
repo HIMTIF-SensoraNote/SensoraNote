@@ -48,6 +48,23 @@ export default function ScanResultPage() {
 
     const isSpeakingRef = useRef(false);
 
+// Helper to strip markdown symbols (#, *, _, `, ~, >) before converting to Braille
+function cleanTextForBraille(text: string): string {
+    if (!text) return '';
+    return text
+        .replace(/\$\$([\s\S]*?)\$\$/g, '$1')
+        .replace(/\$([^$]+)\$/g, '$1')
+        .replace(/^#{1,6}\s+/gm, '')
+        .replace(/\*\*([^*]+)\*\*/g, '$1')
+        .replace(/\*([^*]+)\*/g, '$1')
+        .replace(/__([^_]+)__/g, '$1')
+        .replace(/_([^_]+)_/g, '$1')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/^[-*]\s+/gm, '')
+        .replace(/\s*#+$/gm, '')
+        .trim();
+}
+
     // Auto-polish with AI on initial load if text is available
     useEffect(() => {
         if (rawExtractedText && !polishedText && !isPolishing) {
@@ -58,7 +75,8 @@ export default function ScanResultPage() {
     // Translate to braille if not provided initially
     useEffect(() => {
         if (!currentBraille && rawExtractedText) {
-            axios.post('/api/braille/text-to-braille', { text: rawExtractedText }, { withCredentials: true })
+            const cleanText = cleanTextForBraille(rawExtractedText);
+            axios.post('/api/braille/text-to-braille', { text: cleanText }, { withCredentials: true })
                 .then(res => {
                     if (res.data?.braille) {
                         setCurrentBraille(res.data.braille);
@@ -101,9 +119,10 @@ export default function ScanResultPage() {
                 if (res.data.title) {
                     setPolishedTitle(res.data.title);
                 }
-                // Update braille translation with polished text
+                // Update braille translation with clean text (without raw # or * markdown)
                 try {
-                    const brailleRes = await axios.post('/api/braille/text-to-braille', { text: res.data.polished_text }, { withCredentials: true });
+                    const cleanForBraille = cleanTextForBraille(res.data.polished_text);
+                    const brailleRes = await axios.post('/api/braille/text-to-braille', { text: cleanForBraille }, { withCredentials: true });
                     if (brailleRes.data?.braille) {
                         setCurrentBraille(brailleRes.data.braille);
                     }
@@ -321,11 +340,16 @@ export default function ScanResultPage() {
         );
     };
 
-    // Helper for inline styles (bold, code, inline LaTeX $...$)
+    // Helper for inline styles (bold, italic, code, strikethrough, inline LaTeX $...$)
     const renderInlineFormatting = (text: string) => {
-        const parts = text.split(/(\$\$.*?\$\$|\$.*?\$|\*\*.*?\*\*|`.*?`)/g);
+        if (!text) return null;
+
+        // Split text by tokens: $$formula$$, $formula$, **bold**, *italic*, __bold__, _italic_, `code`, ~~strike~~
+        const parts = text.split(/(\$\$[\s\S]*?\$\$|\$[^$]+\$|\*\*[^*]+\*\*|(?<!\*)\*[^*]+\*(?!\*)|__[^_]+__|(?<!_)_[^_]+_(?!_)|`[^`]+`|~~[^~]+~~)/g);
 
         return parts.map((part, index) => {
+            if (!part) return null;
+
             // Inline LaTeX $...$
             if (part.startsWith('$') && part.endsWith('$') && !part.startsWith('$$') && part.length > 2) {
                 const formula = part.slice(1, -1);
@@ -337,9 +361,19 @@ export default function ScanResultPage() {
                 }
             }
 
-            // Bold **...**
-            if (part.startsWith('**') && part.endsWith('**')) {
+            // Bold **...** or __...__
+            if ((part.startsWith('**') && part.endsWith('**')) || (part.startsWith('__') && part.endsWith('__'))) {
                 return <strong key={index} className="font-bold text-gray-900 dark:text-white">{part.slice(2, -2)}</strong>;
+            }
+
+            // Italic *...* or _..._
+            if ((part.startsWith('*') && part.endsWith('*')) || (part.startsWith('_') && part.endsWith('_'))) {
+                return <em key={index} className="italic text-gray-800 dark:text-gray-200">{part.slice(1, -1)}</em>;
+            }
+
+            // Strikethrough ~~...~~
+            if (part.startsWith('~~') && part.endsWith('~~')) {
+                return <del key={index} className="line-through text-gray-500">{part.slice(2, -2)}</del>;
             }
 
             // Inline Code `...`
