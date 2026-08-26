@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Home, Search, Bookmark, User, LayoutDashboard, ChevronLeft, Hash, Star, FileText, Settings, Plus, LogOut, PersonStanding } from 'lucide-react';
+import { Home, Search, Bookmark, User, LayoutDashboard, ChevronLeft, Hash, Star, FileText, Settings, Plus, LogOut, PersonStanding, Sparkles } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
@@ -134,6 +134,28 @@ export function SideNav({ isExpanded, toggleSidebar }: SideNavProps) {
 
       {/* Bottom Actions */}
       <div className="mt-auto border-t border-slate-100 dark:border-white/5 p-3 flex flex-col gap-1">
+         {/* Sensora AI Chatbot Button */}
+         <Link
+           to="/chatbot"
+           className={`flex items-center gap-3 px-3 py-[9px] rounded-xl transition-all duration-200 w-full group relative overflow-hidden ${
+             isActive('/chatbot')
+               ? 'bg-gradient-to-r from-blue-600/15 via-indigo-600/15 to-purple-600/15 text-blue-600 dark:text-blue-400 font-bold border border-blue-500/20 shadow-sm'
+               : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-gray-200'
+           }`}
+           title={t('nav.chatbot')}
+         >
+           <div className={`p-1 rounded-lg transition-all duration-200 shrink-0 ${
+             isActive('/chatbot')
+               ? 'bg-gradient-to-tr from-blue-600 to-purple-600 text-white shadow-sm shadow-blue-500/30'
+               : 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition-colors'
+           }`}>
+             <Sparkles className="w-[15px] h-[15px]" strokeWidth={2.2} />
+           </div>
+           <span className={`font-['Manrope'] text-[14px] truncate mt-[1px] ${isActive('/chatbot') ? 'font-bold' : 'font-medium'}`}>
+             {t('nav.chatbot')}
+           </span>
+         </Link>
+
          {/* Accessibility Widget Button */}
          <button
            onClick={() => {

@@ -12,6 +12,8 @@ interface ConfirmDialogProps {
   confirmText?: string;
   cancelText?: string;
   variant?: 'danger' | 'primary';
+  className?: string;
+  overlayClassName?: string;
 }
 
 export function ConfirmDialog({
@@ -22,11 +24,13 @@ export function ConfirmDialog({
   onConfirm,
   confirmText = 'Ya, Lanjutkan',
   cancelText = 'Batal',
-  variant = 'primary'
+  variant = 'primary',
+  className,
+  overlayClassName
 }: ConfirmDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[400px] bg-white dark:bg-[#1C1A29] border-slate-200 dark:border-white/10 rounded-[32px] overflow-hidden p-0 gap-0 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+      <DialogContent className={`sm:max-w-[400px] bg-white dark:bg-[#1C1A29] border-slate-200 dark:border-white/10 rounded-[32px] overflow-hidden p-0 gap-0 shadow-2xl animate-in fade-in zoom-in-95 duration-200 ${className || ''}`} overlayClassName={overlayClassName}>
         <div className="p-8 flex flex-col items-center text-center">
           <div className={`w-16 h-16 rounded-3xl flex items-center justify-center mb-6 ${variant === 'danger' ? 'bg-rose-50 dark:bg-rose-500/10 text-rose-500' : 'bg-blue-50 dark:bg-blue-500/10 text-blue-600'}`}>
             <AlertTriangle className="w-8 h-8" />

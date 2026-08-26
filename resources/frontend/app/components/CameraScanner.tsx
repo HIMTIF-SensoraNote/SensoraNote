@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Crop, Image as ImageIcon, ScanText, Copy, Check, Loader2, ChevronDown, RefreshCw, Zap, Download } from 'lucide-react';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
+import { ConfirmDialog } from './ui/ConfirmDialog';
 
 interface CameraScannerProps {
     onClose: () => void;
@@ -18,6 +20,7 @@ const MODE_LABELS: Record<ScanMode, { short: string; model: string; accent: stri
 };
 
 const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
+    const navigate = useNavigate();
     const videoRef        = useRef<HTMLVideoElement>(null);
     const canvasRef       = useRef<HTMLCanvasElement>(null);
     const galleryInputRef = useRef<HTMLInputElement>(null);
@@ -36,7 +39,9 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
     const [brailleText, setBrailleText]     = useState('');
     const [ocrError, setOcrError]           = useState<string | null>(null);
     const [isCopied, setIsCopied]           = useState(false);
-    const [showOcrSheet, setShowOcrSheet]   = useState(false);
+    const [showOcrSheet, setShowOcrSheet] = useState(false);
+    const [showExitConfirm, setShowExitConfirm] = useState(false);
+    const [showRetakeConfirm, setShowRetakeConfirm] = useState(false);
 
     useEffect(() => {
         if (step === 'camera') startCamera();
@@ -192,13 +197,33 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
             const ep = scanMode === 'abjad' ? '/api/scanner/ocr' : '/api/scanner/braille-ocr';
             const r = await axios.post(ep, fd, { headers: { 'Content-Type': 'multipart/form-data' }, withCredentials: true });
             const text = r.data?.text ?? '';
+            let braille = '';
             setExtractedText(text);
             if (!text) setOcrError(`Tidak ada ${scanMode === 'abjad' ? 'teks alfabet' : 'titik braille'} yang terbaca.`);
+            
             if (text && scanMode === 'abjad') {
-                try { const rb = await axios.post('/api/braille/text-to-braille', { text }, { withCredentials: true }); setBrailleText(rb.data?.braille ?? ''); } catch {}
+                try { 
+                    const rb = await axios.post('/api/braille/text-to-braille', { text }, { withCredentials: true }); 
+                    braille = rb.data?.braille ?? '';
+                    setBrailleText(braille); 
+                } catch {}
             }
-            setShowOcrSheet(true);
-        } catch (err: any) { setOcrError(err.response?.data?.message || 'Gagal terhubung ke AI Service.'); setShowOcrSheet(true); }
+            
+            // Navigate ke halaman baru dan bawa hasil teks, braille, serta foto crop
+            onClose(); // Tutup modal kamera
+            navigate('/scan-result', { 
+                state: { 
+                    extractedText: text, 
+                    brailleText: braille, 
+                    scanMode, 
+                    imageSrc: scanResult 
+                } 
+            });
+            
+        } catch (err: any) { 
+            setOcrError(err.response?.data?.message || 'Gagal terhubung ke AI Service.'); 
+            setShowOcrSheet(true); // Biarkan error sheet muncul jika gagal
+        }
         finally { setIsOcrLoading(false); }
     };
 
@@ -232,7 +257,7 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
 
                     {/* Top bar */}
                     <div className="relative z-10 flex items-center justify-between px-5 pt-12 pb-2">
-                        <button onClick={onClose}
+                        <button onClick={() => setShowExitConfirm(true)}
                             className="w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/20">
                             <X className="w-5 h-5 text-white" />
                         </button>
@@ -300,7 +325,7 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
             {step === 'adjust' && (
                 <div className="absolute inset-0 flex flex-col bg-black">
                     <div className="flex items-center justify-between px-5 pt-12 pb-3 z-10 relative">
-                        <button onClick={retake} className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                        <button onClick={() => setShowExitConfirm(true)} className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                             <X className="w-5 h-5 text-white" />
                         </button>
                         <span className="text-white text-sm font-bold">Sesuaikan Sudut</span>
@@ -313,7 +338,7 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
                             className="absolute inset-0 w-full h-full object-contain touch-none" />
                     </div>
                     <div className="px-5 pb-12 pt-4 flex gap-3 z-10 relative">
-                        <button onClick={retake}
+                        <button onClick={() => setShowRetakeConfirm(true)}
                             className="flex-1 py-3.5 rounded-2xl bg-white/10 text-white text-sm font-bold border border-white/10 active:scale-95 transition-transform">
                             Ulangi
                         </button>
@@ -330,7 +355,7 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
             {step === 'result' && scanResult && (
                 <div className="absolute inset-0 flex flex-col bg-[#0a0a0a]">
                     <div className="flex items-center justify-between px-5 pt-12 pb-3 z-10 relative">
-                        <button onClick={retake} className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                        <button onClick={() => setShowExitConfirm(true)} className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                             <X className="w-5 h-5 text-white" />
                         </button>
                         <span className="text-white text-sm font-bold">Hasil Scan</span>
@@ -345,7 +370,7 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
                             <span className="text-white/50 text-xs">{cm.short} · {cm.model}</span>
                         </div>
                         <div className="flex gap-3">
-                            <button onClick={retake}
+                            <button onClick={() => setShowRetakeConfirm(true)}
                                 className="flex-1 py-3.5 rounded-2xl bg-white/10 text-white text-sm font-bold border border-white/10 active:scale-95 transition-transform">
                                 Ulangi
                             </button>
@@ -405,7 +430,7 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
                             ) : !ocrError && <p className="text-center text-gray-400 dark:text-gray-500 py-8 text-sm">Tidak ada teks yang terdeteksi.</p>}
                         </div>
                         <div className="px-5 pb-10 pt-3">
-                            <button onClick={onClose}
+                            <button onClick={() => setShowOcrSheet(false)}
                                 className="w-full py-3.5 rounded-2xl text-white font-bold text-sm active:scale-95 transition-transform"
                                 style={{ background: 'linear-gradient(135deg,#22c55e,#16a34a)' }}>
                                 Selesai
@@ -414,6 +439,34 @@ const CameraScanner: React.FC<CameraScannerProps> = ({ onClose }) => {
                     </motion.div>
                 )}
             </AnimatePresence>
+            <ConfirmDialog
+                isOpen={showExitConfirm}
+                onOpenChange={setShowExitConfirm}
+                className="!z-[10000]"
+                overlayClassName="!z-[10000]"
+                title="Keluar dari Kamera?"
+                description="Anda belum menyimpan hasil scan ini. Jika Anda keluar, gambar yang telah diambil akan hilang."
+                onConfirm={onClose}
+                confirmText="Ya, Keluar"
+                cancelText="Batal"
+                variant="danger"
+            />
+
+            <ConfirmDialog
+                isOpen={showRetakeConfirm}
+                onOpenChange={setShowRetakeConfirm}
+                className="!z-[10000]"
+                overlayClassName="!z-[10000]"
+                title="Ulangi Pengambilan Gambar?"
+                description="Gambar yang sudah Anda ambil akan dihapus. Anda yakin ingin memotret ulang?"
+                onConfirm={() => {
+                    setShowRetakeConfirm(false);
+                    retake();
+                }}
+                confirmText="Ya, Ulangi"
+                cancelText="Batal"
+                variant="danger"
+            />
         </div>,
         document.body
     );

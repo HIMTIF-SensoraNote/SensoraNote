@@ -2,7 +2,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { MobileLayout } from '../components/MobileLayout';
 import { useNavigate, useSearchParams, useLocation } from 'react-router';
-import { ArrowLeft, ChevronDown, Tag, Send, Calculator, Plus, X, Image, Film, Code, Terminal, Minus, Quote, Bold, Italic, Underline, Strikethrough, Highlighter, Link as LinkIcon, Heading1, Heading2, Loader2, Clock, FileText, Trash2, ToggleLeft, ToggleRight, Type } from 'lucide-react';
+import { ArrowLeft, ChevronDown, Tag, Send, Calculator, Plus, X, Image, Film, Code, Terminal, Minus, Quote, Bold, Italic, Underline, Strikethrough, Highlighter, Link as LinkIcon, Heading1, Heading2, Loader2, Clock, FileText, Trash2 } from 'lucide-react';
 import { mataPelajaran } from '../data/mockData';
 import ReactQuill, { Quill } from 'react-quill';
 // @ts-ignore
@@ -10,15 +10,6 @@ import 'react-quill/dist/quill.snow.css';
 import axios from 'axios';
 import Cropper from 'react-easy-crop';
 import { useToast } from '../contexts/ToastContext';
-import { registerQuillExtensions } from '../components/editor/editor.config';
-import { HIGHLIGHT_COLORS, jenjangOptions } from '../components/editor/editor.constants';
-import { FloatingBlockToolbar } from '../components/editor/FloatingBlockToolbar';
-import { SideToolbar } from '../components/editor/SideToolbar';
-import { FormulaModal } from '../components/editor/FormulaModal';
-import { AltTextModal } from '../components/editor/AltTextModal';
-import { PublishPreviewModal } from '../components/editor/PublishPreviewModal';
-import { useTranslation } from '../hooks/useTranslation';
-import { useLanguage } from '../contexts/LanguageContext';
 
 async function getCroppedImg(imageSrc: string, pixelCrop: any): Promise<string> {
   const image = await new Promise<HTMLImageElement>((resolve, reject) => {
@@ -122,16 +113,200 @@ async function getFullViewImg(imageSrc: string): Promise<string> {
   return canvas.toDataURL('image/jpeg', 0.85);
 }
 
+import { registerQuillExtensions } from '../components/editor/editor.config';
+import { HIGHLIGHT_COLORS, jenjangOptions } from '../components/editor/editor.constants';
+import { FloatingBlockToolbar } from '../components/editor/FloatingBlockToolbar';
+import { SideToolbar } from '../components/editor/SideToolbar';
+import { FormulaModal } from '../components/editor/FormulaModal';
+import { AltTextModal } from '../components/editor/AltTextModal';
+import { PublishPreviewModal } from '../components/editor/PublishPreviewModal';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLanguage } from '../contexts/LanguageContext';
+
+
+
+import katex from 'katex';
+import 'katex/dist/katex.min.css';
+
+// Helper function to convert Markdown & LaTeX from Scan Result to rich Quill HTML
+function convertMarkdownToQuillHtml(raw: string): string {
+  if (!raw) return '';
+
+  const lines = raw.split('\n');
+  let result = '';
+  let i = 0;
+
+  // Helper for inline formatting (bold, italic, inline code, inline LaTeX)
+  const formatInline = (text: string): string => {
+    // 1. Process inline LaTeX: $...$
+    let formatted = text.replace(/\$([^\$]+?)\$/g, (_match, formula) => {
+      const trimmedFormula = formula.trim();
+      let renderedKatex = '';
+      try {
+        renderedKatex = katex.renderToString(trimmedFormula, { throwOnError: false, displayMode: false });
+      } catch {
+        renderedKatex = trimmedFormula;
+      }
+      return `<span class="ql-formula" data-value="${trimmedFormula}">&#xfeff;${renderedKatex}&#xfeff;</span>`;
+    });
+
+    // 2. Process bold: **...**
+    formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+    // 3. Process inline code: `...`
+    formatted = formatted.replace(/`([^`]+?)`/g, '<code>$1</code>');
+
+    // 4. Process italic: *...*
+    formatted = formatted.replace(/\*([^*]+?)\*/g, '<em>$1</em>');
+
+    return formatted;
+  };
+
+  while (i < lines.length) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // Empty lines
+    if (!trimmed) {
+      i++;
+      continue;
+    }
+
+    // 1. Code block: ```language
+    if (trimmed.startsWith('```')) {
+      const codeLines: string[] = [];
+      i++;
+      while (i < lines.length && !lines[i].trim().startsWith('```')) {
+        codeLines.push(lines[i]);
+        i++;
+      }
+      i++; // Skip closing ```
+      const escapedCode = codeLines
+        .join('\n')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      result += `<pre class="ql-syntax" spellcheck="false">${escapedCode}</pre>`;
+      continue;
+    }
+
+    // 2. Block LaTeX Formula: $$ formula $$
+    if (trimmed.startsWith('$$')) {
+      let formula = '';
+      if (trimmed.endsWith('$$') && trimmed.length > 2) {
+        formula = trimmed.slice(2, -2).trim();
+        i++;
+      } else {
+        const formulaLines: string[] = [];
+        i++;
+        while (i < lines.length && !lines[i].trim().endsWith('$$')) {
+          formulaLines.push(lines[i]);
+          i++;
+        }
+        if (i < lines.length) {
+          formulaLines.push(lines[i].replace(/\$\$$/, ''));
+          i++;
+        }
+        formula = formulaLines.join('\n').trim();
+      }
+
+      let renderedBlock = '';
+      try {
+        renderedBlock = katex.renderToString(formula, { throwOnError: false, displayMode: true });
+      } catch {
+        renderedBlock = formula;
+      }
+      result += `<p><span class="ql-formula" data-value="${formula}">&#xfeff;${renderedBlock}&#xfeff;</span></p>`;
+      continue;
+    }
+
+    // 3. Horizontal Divider: --- or ***
+    if (trimmed === '---' || trimmed === '***' || trimmed === '___') {
+      result += `<hr>`;
+      i++;
+      continue;
+    }
+
+    // 4. Blockquote / Kutipan: > ...
+    if (trimmed.startsWith('>')) {
+      const quoteLines: string[] = [];
+      while (i < lines.length && lines[i].trim().startsWith('>')) {
+        quoteLines.push(lines[i].trim().replace(/^>\s?/, ''));
+        i++;
+      }
+      const quoteHtml = quoteLines.map(q => `<p>${formatInline(q)}</p>`).join('');
+      result += `<blockquote>${quoteHtml}</blockquote>`;
+      continue;
+    }
+
+    // 5. Headings: #, ##, ###, ####, #####, ######
+    const headingMatch = trimmed.match(/^(#{1,6})\s+(.*)$/);
+    if (headingMatch) {
+      const level = headingMatch[1].length;
+      const text = headingMatch[2].replace(/\s*#+$/, '');
+      const formatted = formatInline(text);
+      if (level === 1) {
+        result += `<h1>${formatted}</h1>`;
+      } else if (level === 2) {
+        result += `<h2>${formatted}</h2>`;
+      } else {
+        result += `<h3>${formatted}</h3>`;
+      }
+      i++;
+      continue;
+    }
+
+    // 6. Unordered lists: - or *
+    if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+      const listItems: string[] = [];
+      while (i < lines.length && (lines[i].trim().startsWith('- ') || lines[i].trim().startsWith('* '))) {
+        listItems.push(`<li>${formatInline(lines[i].trim().substring(2))}</li>`);
+        i++;
+      }
+      result += `<ul>${listItems.join('')}</ul>`;
+      continue;
+    }
+
+    // 7. Numbered lists: 1. 2.
+    const numberedMatch = trimmed.match(/^(\d+)\.\s+(.*)$/);
+    if (numberedMatch) {
+      const listItems: string[] = [];
+      while (i < lines.length) {
+        const numMatch = lines[i].trim().match(/^(\d+)\.\s+(.*)$/);
+        if (numMatch) {
+          listItems.push(`<li>${formatInline(numMatch[2])}</li>`);
+          i++;
+        } else {
+          break;
+        }
+      }
+      result += `<ol>${listItems.join('')}</ol>`;
+      continue;
+    }
+
+    // 8. Regular paragraph
+    result += `<p>${formatInline(trimmed)}</p>`;
+    i++;
+  }
+
+  return result;
+}
+
+// Register Quill extensions (Blots, Image handling, etc.)
 registerQuillExtensions(Quill);
 
+// ========== MAIN UPLOAD PAGE ==========
 export default function UploadPage() {
-  const { t } = useTranslation();
-  useDocumentTitle(t('titles.write_note'));
+    const { t } = useTranslation();
+    useDocumentTitle(t('titles.write_note'));
   const navigate = useNavigate();
+  const location = useLocation();
+  const prefillState = location.state as { prefillTitle?: string; prefillContent?: string } | null;
   const [searchParams] = useSearchParams();
   const initialDraftId = searchParams.get('id');
   const [draftId, setDraftId] = useState<string | null>(initialDraftId);
   const { showToast } = useToast();
+
   const { resolvedLanguage } = useLanguage();
   
   const quillRef = useRef<ReactQuill>(null);
@@ -139,6 +314,20 @@ export default function UploadPage() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Handle prefill from ScanResultPage
+  useEffect(() => {
+    if (prefillState) {
+      if (prefillState.prefillTitle && !title) {
+        setTitle(prefillState.prefillTitle);
+      }
+      if (prefillState.prefillContent && !content) {
+        const richHtml = convertMarkdownToQuillHtml(prefillState.prefillContent);
+        setContent(richHtml || `<p>${prefillState.prefillContent}</p>`);
+        showToast('Konten dari hasil scan berhasil dimuat ke editor!', 'success');
+      }
+    }
+  }, [prefillState]);
   const [isSavingDraft, setIsSavingDraft] = useState(false);
   const [isLoadingDraft, setIsLoadingDraft] = useState(false);
   const [showPreviewModal, setShowPreviewModal] = useState(false);
@@ -172,78 +361,6 @@ export default function UploadPage() {
   const [isMapelDropdownOpen, setIsMapelDropdownOpen] = useState(false);
   const mapelDropdownRef = useRef<HTMLDivElement>(null);
 
-  // ==========================================
-  // SMART SCANNER & OCR STATE
-  // ==========================================
-  const location = useLocation();
-  const scannedImage = location.state?.scannedImage || null;
-  const [scanMode, setScanMode] = useState<'abjad' | 'braille'>('abjad');
-  const [isLoadingText, setIsLoadingText] = useState(false);
-  const [isLoadingBraille, setIsLoadingBraille] = useState(false);
-  const [extractedText, setExtractedText] = useState<string>('');
-  const [brailleText, setBrailleText] = useState<string>('');
-
-  useEffect(() => {
-    if (scannedImage) {
-      if (scanMode === 'abjad') {
-        processStandardOCR(scannedImage);
-      } else {
-        processBrailleOCR(scannedImage);
-      }
-    }
-  }, [scannedImage, scanMode]);
-
-  const processStandardOCR = async (base64Img: string) => {
-    setIsLoadingText(true);
-    try {
-      const res = await fetch(base64Img);
-      const formData = new FormData();
-      formData.append("file", await res.blob(), "doc.jpg");
-
-      const response = await axios.post('/api/scanner/ocr', formData, { withCredentials: true });
-      const textResult = response.data.text || "";
-      setExtractedText(textResult);
-
-      if (textResult) processBrailleTranslation(textResult);
-    } catch (error) {
-      showToast("Gagal membaca teks abjad dari gambar.", "error");
-    } finally {
-      setIsLoadingText(false);
-    }
-  };
-
-  const processBrailleOCR = async (base64Img: string) => {
-    setIsLoadingBraille(true);
-    try {
-      const res = await fetch(base64Img);
-      const formData = new FormData();
-      formData.append("file", await res.blob(), "braille.jpg");
-
-      const response = await axios.post('/api/scanner/braille-ocr', formData, { withCredentials: true });
-      const textResult = response.data.text || "";
-      setExtractedText(textResult);
-      
-      if (textResult) processBrailleTranslation(textResult);
-    } catch (error) {
-      showToast("Gagal membaca titik Braille.", "error");
-    } finally {
-      setIsLoadingBraille(false);
-    }
-  };
-
-  const processBrailleTranslation = async (text: string) => {
-    setIsLoadingBraille(true);
-    try {
-      const response = await axios.post('/api/braille/text-to-braille', { text }, { withCredentials: true });
-      setBrailleText(response.data.braille || "");
-    } catch (error) {
-      console.warn("Gagal konversi ke Braille", error);
-    } finally {
-      setIsLoadingBraille(false);
-    }
-  };
-  // ==========================================
-
   useEffect(() => {
     if (draftId) {
       const fetchDraft = async () => {
@@ -267,6 +384,7 @@ export default function UploadPage() {
             setThumbnailFit(data.thumbnail_fit || 'cover');
           }
         } catch (error) {
+          console.error('Failed to load draft:', error);
           showToast(t('upload.error_load_draft'), 'error');
         } finally {
           setIsLoadingDraft(false);
@@ -288,7 +406,11 @@ export default function UploadPage() {
 
   const filteredMapel = mataPelajaran.filter(m => m.name.toLowerCase().includes(mapelSearch.toLowerCase()));
 
-  const modules = { toolbar: false as const, formula: true };
+  const modules = {
+    toolbar: false as const,
+    formula: true,
+  };
+
   const formats = [
     'header', 'bold', 'italic', 'underline', 'strike', 'background',
     'list', 'bullet', 'link', 'image', 'video', 'formula',
@@ -296,6 +418,9 @@ export default function UploadPage() {
   ];
 
   const currentJenjang = jenjangOptions.find(j => j.id === meta.jenjang);
+  const kelasOptions = currentJenjang?.kelas || [];
+  const maxSemester = currentJenjang?.maxSemester || 2;
+  const kelasLabel = currentJenjang?.kelasLabel || 'Kelas';
 
   const handleAddTag = () => {
     const tag = tagInput.trim();
@@ -320,6 +445,7 @@ export default function UploadPage() {
   }, []);
 
   const hasContent = content.replace(/<[^>]*>/g, '').trim().length > 0;
+  // We allow clicking the first publish to open modal regardless of metadata
   const canOpenPreview = !!(title.trim() && hasContent);
   const canPublishFinal = !!(title.trim() && hasContent && meta.mataPelajaran);
 
@@ -335,13 +461,16 @@ export default function UploadPage() {
 
   const handleOpenPreview = () => {
     if (!canOpenPreview) return;
+    
     const urls: string[] = [];
     const imgRegex = /<img[^>]+src="([^">]+)"/g;
     let match;
     while ((match = imgRegex.exec(content)) !== null) {
       urls.push(match[1]);
     }
+    
     setAvailableImages(urls);
+    
     if (urls.length > 0) {
         if (!extractedThumbnail || !urls.includes(extractedThumbnail)) {
             setExtractedThumbnail(urls[0]);
@@ -374,6 +503,7 @@ export default function UploadPage() {
         setIsFullViewMode(false);
         setIsCropping(false);
       } catch (e) {
+        console.error('Failed to crop image', e);
         showToast(t('upload.error_crop'), 'error');
       }
     }
@@ -388,6 +518,7 @@ export default function UploadPage() {
       setThumbnailFit('cover');
       setIsFullViewMode(true);
     } catch (e) {
+      console.error('Failed to generate full view', e);
       showToast(t('upload.error_crop'), 'error');
     } finally {
       setIsGeneratingFullView(false);
@@ -397,6 +528,7 @@ export default function UploadPage() {
   const handleSubmit = async () => {
     if (!canPublishFinal) return;
     setIsSubmitting(true);
+
     try {
       const payload = {
         title: title.trim(),
@@ -415,18 +547,19 @@ export default function UploadPage() {
       if (draftId) {
         await axios.put(`/api/v1/posts/${draftId}`, payload);
         if (meta.ajukanPakar) {
-          try { await axios.post(`/api/v1/posts/${draftId}/ajukan`); } catch (e) {}
+          try { await axios.post(`/api/v1/posts/${draftId}/ajukan`); } catch (e) { /* silent */ }
         }
       } else {
         const res = await axios.post('/api/v1/posts', payload);
         const newPostId = res.data.data._id || res.data.data.id;
         if (meta.ajukanPakar && newPostId) {
-          try { await axios.post(`/api/v1/posts/${newPostId}/ajukan`); } catch (e) {}
+          try { await axios.post(`/api/v1/posts/${newPostId}/ajukan`); } catch (e) { /* silent */ }
         }
       }
       showToast(meta.ajukanPakar ? (t('upload.success_publish_expert') || 'Catatan berhasil dipublikasikan dan diajukan ke pakar') : (t('upload.success_publish') || 'Catatan berhasil dipublikasikan'), 'success');
       navigate(-1);
     } catch (error) {
+      console.error('Gagal mempublikasikan catatan:', error);
       showToast(t('upload.error_save') || 'Gagal menyimpan catatan', 'error');
     } finally {
       setIsSubmitting(false);
@@ -439,6 +572,7 @@ export default function UploadPage() {
       return;
     }
     setIsSavingDraft(true);
+
     try {
       const payload = {
         title: title.trim(),
@@ -466,6 +600,7 @@ export default function UploadPage() {
       setShowPreviewModal(false);
       navigate('/home');
     } catch (error) {
+      console.error('Gagal menyimpan draf:', error);
       showToast(t('upload.draft_error') || 'Gagal menyimpan draf', 'error');
     } finally {
       setIsSavingDraft(false);
@@ -492,13 +627,18 @@ export default function UploadPage() {
           </p>
         </div>
       )}
-      
       <div className="min-h-screen bg-white dark:bg-[#13111C]">
+
+        {/* ─── Sticky Header: Top Bar + Formatting Toolbar ─── */}
         <div className="sticky top-0 z-30">
+          {/* Top Bar */}
           <div className="bg-white/95 dark:bg-[#13111C]/95 backdrop-blur-md border-b border-gray-100/60 dark:border-white/5 transition-all duration-300 shadow-[0_2px_10px_rgb(0,0,0,0.02)] dark:shadow-none">
             <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
               <div className="flex items-center gap-3 min-w-0">
-                <button onClick={() => navigate(-1)} className="p-2 -ml-2 hover:bg-gray-100 dark:hover:bg-white/10 active:bg-gray-200 dark:active:bg-white/15 rounded-full transition-all duration-200 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 shrink-0">
+                <button
+                  onClick={() => navigate(-1)}
+                  className="p-2 -ml-2 hover:bg-gray-100 dark:hover:bg-white/10 active:bg-gray-200 dark:active:bg-white/15 rounded-full transition-all duration-200 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 shrink-0"
+                >
                   <ArrowLeft className="w-5 h-5" strokeWidth={2.5} />
                 </button>
                 <div className="hidden sm:flex items-center gap-2.5 min-w-0">
@@ -509,101 +649,83 @@ export default function UploadPage() {
                 </div>
               </div>
 
-              {/* TAMPILAN TOGGLE SMART SCANNER JIKA ADA GAMBAR SCANNED */}
-              {scannedImage && (
-                  <button 
-                      onClick={() => setScanMode(scanMode === 'abjad' ? 'braille' : 'abjad')}
-                      className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-black/30 rounded-lg text-sm font-bold text-primary"
-                  >
-                      {scanMode === 'abjad' ? <ToggleLeft className="w-5 h-5"/> : <ToggleRight className="w-5 h-5 text-green-500"/>}
-                      {scanMode === 'abjad' ? 'Scan Abjad' : 'Scan Braille'}
-                  </button>
-              )}
-
               <div className="flex items-center gap-2.5 shrink-0">
-                <button onClick={handleOpenPreview} disabled={!canOpenPreview} className="flex items-center gap-1.5 bg-primary text-white px-5 py-2.5 rounded-full text-[13px] font-['Lexend_Deca'] font-extrabold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-primary/90 hover:shadow-[0_4px_12px_rgba(79,70,229,0.3)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200">
+                <button
+                  onClick={handleOpenPreview}
+                  disabled={!canOpenPreview}
+                  className="flex items-center gap-1.5 bg-primary text-white px-5 py-2.5 rounded-full text-[13px] font-['Lexend_Deca'] font-extrabold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-primary/90 hover:shadow-[0_4px_12px_rgba(79,70,229,0.3)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200"
+                >
                   {t('upload.publish')}
                 </button>
               </div>
             </div>
           </div>
+
+          {/* ─── Formatting Toolbar ─── */}
           <SideToolbar quillRef={quillRef} onFormulaClick={() => setShowFormulaModal(true)} />
         </div>
 
         <PublishPreviewModal
-          isOpen={showPreviewModal} onClose={() => setShowPreviewModal(false)} title={title} setTitle={setTitle} content={content} previewDescription={previewDescription} setPreviewDescription={setPreviewDescription} descriptionEdited={descriptionEdited} setDescriptionEdited={setDescriptionEdited} isCropping={isCropping} setIsCropping={setIsCropping} crop={crop} setCrop={setCrop} zoom={zoom} setZoom={setZoom} setCroppedAreaPixels={setCroppedAreaPixels} handleApplyCrop={handleApplyCrop} finalThumbnail={finalThumbnail} extractedThumbnail={extractedThumbnail} setFinalThumbnail={setFinalThumbnail} thumbnailFit={thumbnailFit} setThumbnailFit={setThumbnailFit} availableImages={availableImages} selectedImageIndex={selectedImageIndex} handleSelectImage={handleSelectImage} meta={meta} setMeta={setMeta} tagInput={tagInput} setTagInput={setTagInput} handleAddTag={handleAddTag} handleRemoveTag={handleRemoveTag} mapelSearch={mapelSearch} setMapelSearch={setMapelSearch} isMapelDropdownOpen={isMapelDropdownOpen} setIsMapelDropdownOpen={setIsMapelDropdownOpen} filteredMapel={filteredMapel} handleSubmit={handleSubmit} handleSaveDraft={handleSaveDraft} isSubmitting={isSubmitting} isSavingDraft={isSavingDraft} canPublishFinal={canPublishFinal} mapelDropdownRef={mapelDropdownRef} onFullView={handleFullView} isGeneratingFullView={isGeneratingFullView} isFullViewMode={isFullViewMode}
+          isOpen={showPreviewModal}
+          onClose={() => setShowPreviewModal(false)}
+          title={title}
+          setTitle={setTitle}
+          content={content}
+          previewDescription={previewDescription}
+          setPreviewDescription={setPreviewDescription}
+          descriptionEdited={descriptionEdited}
+          setDescriptionEdited={setDescriptionEdited}
+          isCropping={isCropping}
+          setIsCropping={setIsCropping}
+          crop={crop}
+          setCrop={setCrop}
+          zoom={zoom}
+          setZoom={setZoom}
+          setCroppedAreaPixels={setCroppedAreaPixels}
+          handleApplyCrop={handleApplyCrop}
+          finalThumbnail={finalThumbnail}
+          extractedThumbnail={extractedThumbnail}
+          setFinalThumbnail={setFinalThumbnail}
+          thumbnailFit={thumbnailFit}
+          setThumbnailFit={setThumbnailFit}
+          availableImages={availableImages}
+          selectedImageIndex={selectedImageIndex}
+          handleSelectImage={handleSelectImage}
+          meta={meta}
+          setMeta={setMeta}
+          tagInput={tagInput}
+          setTagInput={setTagInput}
+          handleAddTag={handleAddTag}
+          handleRemoveTag={handleRemoveTag}
+          mapelSearch={mapelSearch}
+          setMapelSearch={setMapelSearch}
+          isMapelDropdownOpen={isMapelDropdownOpen}
+          setIsMapelDropdownOpen={setIsMapelDropdownOpen}
+          filteredMapel={filteredMapel}
+          handleSubmit={handleSubmit}
+          handleSaveDraft={handleSaveDraft}
+          isSubmitting={isSubmitting}
+          isSavingDraft={isSavingDraft}
+          canPublishFinal={canPublishFinal}
+          mapelDropdownRef={mapelDropdownRef}
+          onFullView={handleFullView}
+          isGeneratingFullView={isGeneratingFullView}
+          isFullViewMode={isFullViewMode}
         />
 
+
+        {/* Writing Area */}
         <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 relative">
-          
-          {/* TAMPILAN KHUSUS SMART SCANNER */}
-          {scannedImage && (
-             <div className="mt-8 flex flex-col gap-6">
-                <div className="bg-white dark:bg-[#2A2837] rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-white/5">
-                    <h2 className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
-                        <FileText className="w-4 h-4" /> Dokumen Asli
-                    </h2>
-                    <div className="w-full bg-gray-100 dark:bg-black/20 rounded-xl overflow-hidden flex justify-center max-h-[250px]">
-                        <img src={scannedImage} alt="Scanned" className="object-contain h-full" />
-                    </div>
-                </div>
 
-                <div className="bg-white dark:bg-[#2A2837] rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-white/5">
-                    <h2 className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
-                        <Type className="w-4 h-4 text-blue-500" /> Hasil Ekstraksi Teks (Abjad)
-                    </h2>
-                    
-                    {isLoadingText ? (
-                        <div className="flex flex-col items-center justify-center py-8 text-gray-500">
-                            <Loader2 className="w-8 h-8 animate-spin mb-2 text-blue-500" />
-                            <p className="text-sm">AI sedang membaca teks...</p>
-                        </div>
-                    ) : (
-                        <textarea
-                            value={extractedText}
-                            onChange={(e) => setExtractedText(e.target.value)}
-                            placeholder={scannedImage ? "Teks akan muncul di sini..." : "Ketik teks secara manual atau scan dokumen..."}
-                            className="w-full h-40 p-3 bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-xl text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 outline-none resize-y text-sm"
-                        />
-                    )}
-                    
-                    {!isLoadingText && extractedText && (
-                        <button 
-                            onClick={() => processBrailleTranslation(extractedText)}
-                            disabled={isLoadingBraille}
-                            className="mt-3 text-sm px-4 py-2 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-200 transition-colors"
-                        >
-                            {isLoadingBraille ? 'Mengonversi...' : 'Konversi ke Braille Ulang'}
-                        </button>
-                    )}
-                </div>
-
-                <div className="bg-white dark:bg-[#2A2837] rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-white/5 border-l-4 border-l-primary">
-                    <h2 className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
-                        <span className="w-4 h-4 flex items-center justify-center bg-primary text-white rounded-full text-[10px] font-bold">B</span>
-                        Teks Braille
-                    </h2>
-                    
-                    {isLoadingBraille ? (
-                        <div className="flex flex-col items-center justify-center py-8 text-gray-500">
-                            <Loader2 className="w-8 h-8 animate-spin mb-2 text-primary" />
-                            <p className="text-sm">Mengonversi ke Braille...</p>
-                        </div>
-                    ) : (
-                        <div className="w-full min-h-[160px] p-4 bg-primary/5 border border-primary/20 rounded-xl text-gray-800 dark:text-gray-200 text-lg md:text-xl font-['Lexend_Deca'] whitespace-pre-wrap break-words">
-                            {brailleText || (
-                                <span className="text-gray-400 dark:text-gray-500 text-sm">
-                                    Hasil konversi braille akan muncul di sini.
-                                </span>
-                            )}
-                        </div>
-                    )}
-                </div>
-             </div>
-          )}
-
-          {/* EDITOR UTAMA */}
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder={t('upload.title_placeholder')} className="w-full text-[40px] md:text-[48px] font-['Lexend_Deca'] font-extrabold text-gray-900 dark:text-gray-100 placeholder:text-gray-300 dark:placeholder:text-gray-600 focus:outline-none mt-12 mb-2 leading-[1.1] tracking-[-0.03em] transition-all bg-transparent" maxLength={200} />
+          {/* Title */}
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder={t('upload.title_placeholder')}
+            className="w-full text-[40px] md:text-[48px] font-['Lexend_Deca'] font-extrabold text-gray-900 dark:text-gray-100 placeholder:text-gray-300 dark:placeholder:text-gray-600 focus:outline-none mt-12 mb-2 leading-[1.1] tracking-[-0.03em] transition-all bg-transparent"
+            maxLength={200}
+          />
           <div className="flex items-center gap-3 mb-8">
             <div className="h-1 w-12 bg-primary/20 rounded-full overflow-hidden">
                <div className="h-full bg-primary transition-all duration-300" style={{ width: `${(title.length / 200) * 100}%` }}></div>
@@ -611,6 +733,7 @@ export default function UploadPage() {
             <p className="text-[11px] font-['Lexend_Deca'] font-extrabold text-gray-600 uppercase tracking-widest">({title.length}/200 {t('upload.characters')})</p>
           </div>
 
+          {/* Editor */}
           <div className="notion-editor pb-32" dir={/[\u0590-\u05FF\u0600-\u06FF\u0750-\u077F]/.test(content) ? 'rtl' : 'ltr'}>
             <style dangerouslySetInnerHTML={{ __html: `
               .notion-editor .ql-container.ql-snow { border: none !important; font-family: 'Manrope', sans-serif; font-size: 17px; }
@@ -622,10 +745,34 @@ export default function UploadPage() {
               .notion-editor .ql-editor h2 { font-family: 'Lexend Deca', sans-serif; font-size: 1.35em; font-weight: 700; margin: 0.8em 0 0.3em; color: #1f2937; }
               .notion-editor .ql-editor h3 { font-family: 'Lexend Deca', sans-serif; font-size: 1.15em; font-weight: 600; margin: 0.6em 0 0.3em; color: #374151; }
               .notion-editor .ql-editor p { margin-bottom: 0.5em; position: relative; }
-              .notion-editor .ql-editor img, .notion-editor .ql-editor .ql-video { border-radius: 12px; display: block !important; margin-left: auto !important; margin-right: auto !important; margin-top: 2em !important; margin-bottom: 0.5em !important; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-              .notion-editor .ql-editor img[data-layout="inline"] { max-width: 70%; }
-              .notion-editor .ql-editor img[data-layout="wide"] { max-width: 100%; width: 100%; }
-              .notion-editor .ql-editor img[data-layout="fullBleed"] { max-width: none; width: 100vw !important; margin-left: 50% !important; transform: translateX(-50%); border-radius: 0; height: auto; object-fit: contain; max-height: 85vh; }
+              .notion-editor .ql-editor img, .notion-editor .ql-editor .ql-video { 
+                  border-radius: 12px; 
+                  display: block !important; 
+                  margin-left: auto !important; 
+                  margin-right: auto !important; 
+                  margin-top: 2em !important; 
+                  margin-bottom: 0.5em !important; 
+                  cursor: pointer; 
+                  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+              }
+              /* Layout Modifications */
+              .notion-editor .ql-editor img[data-layout="inline"] {
+                  max-width: 70%;
+              }
+              .notion-editor .ql-editor img[data-layout="wide"] {
+                  max-width: 100%;
+                  width: 100%;
+              }
+              .notion-editor .ql-editor img[data-layout="fullBleed"] {
+                  max-width: none;
+                  width: 100vw !important;
+                  margin-left: 50% !important;
+                  transform: translateX(-50%);
+                  border-radius: 0;
+                  height: auto;
+                  object-fit: contain;
+                  max-height: 85vh;
+              }
               .notion-editor .ql-editor ul, .notion-editor .ql-editor ol { padding-left: 1.5em; }
               .notion-editor .ql-editor li { margin-bottom: 0.3em; }
               .notion-editor .ql-editor ol.ql-alpha-list > li::before { content: counter(list-0, lower-alpha) ". " !important; }
@@ -642,24 +789,56 @@ export default function UploadPage() {
               .notion-editor .ql-snow .ql-tooltip a.ql-action::after { content: 'Edit'; border-right: 1px solid #e5e7eb; padding-right: 8px; margin-left: 8px; color: #6366f1; font-weight: 600; }
               .notion-editor .ql-snow .ql-tooltip a.ql-remove::before { content: 'Hapus'; margin-left: 8px; color: #ef4444; font-weight: 600; }
               .notion-editor .ql-snow .ql-tooltip input[type=text] { border-radius: 8px; border: 1px solid #d1d5db; padding: 6px 10px; font-family: 'Manrope', sans-serif; font-size: 13px; }
+              /* RTL Overrides for Editor */
               .notion-editor[dir="rtl"] .ql-editor { text-align: right; }
-              .notion-editor[dir="rtl"] .ql-editor p, .notion-editor[dir="rtl"] .ql-editor h1, .notion-editor[dir="rtl"] .ql-editor h2, .notion-editor[dir="rtl"] .ql-editor h3 { text-align: right; }
-              .notion-editor[dir="rtl"] .ql-editor ul, .notion-editor[dir="rtl"] .ql-editor ol { padding-left: 0 !important; padding-right: 1.5em !important; }
+              .notion-editor[dir="rtl"] .ql-editor p, 
+              .notion-editor[dir="rtl"] .ql-editor h1, 
+              .notion-editor[dir="rtl"] .ql-editor h2, 
+              .notion-editor[dir="rtl"] .ql-editor h3 { text-align: right; }
+              .notion-editor[dir="rtl"] .ql-editor ul, 
+              .notion-editor[dir="rtl"] .ql-editor ol { padding-left: 0 !important; padding-right: 1.5em !important; }
               .notion-editor[dir="rtl"] .ql-editor li::before { margin-left: 0.3em !important; margin-right: -1.5em !important; text-align: left !important; }
               .notion-editor[dir="rtl"] .ql-editor blockquote { border-left: none !important; border-right: 4px solid #4f46e5 !important; border-radius: 12px 0 0 12px !important; }
+              
+              /* Always LTR for Code Blocks */
               pre.ql-syntax, code { direction: ltr !important; text-align: left !important; }
               .notion-editor[dir="rtl"] pre.ql-syntax { text-align: left !important; }
             `}} />
-            <ReactQuill ref={quillRef} theme="snow" value={content} onChange={setContent} modules={modules} formats={formats} placeholder={t('upload.write_placeholder')} />
+            <ReactQuill
+              ref={quillRef}
+              theme="snow"
+              value={content}
+              onChange={setContent}
+              modules={modules}
+              formats={formats}
+              placeholder={t('upload.write_placeholder')}
+            />
           </div>
 
+          {/* Floating Block Toolbar (Image controls + Delete action) */}
           <FloatingBlockToolbar quillRef={quillRef} onEditAlt={(index, text) => setAltModalParams({ index, text })} />
         </div>
 
-        <FormulaModal isOpen={showFormulaModal} onClose={() => setShowFormulaModal(false)} onInsertFormula={insertFormula} />
+        <FormulaModal
+          isOpen={showFormulaModal}
+          onClose={() => setShowFormulaModal(false)}
+          onInsertFormula={insertFormula}
+        />
 
-        <AltTextModal isOpen={!!altModalParams} initialText={altModalParams?.text || ''} onClose={() => setAltModalParams(null)} onSave={(text) => { const quill = quillRef.current?.getEditor(); if (quill && altModalParams) quill.formatText(altModalParams.index, 1, 'alt', text); setAltModalParams(null); }} />
 
+        <AltTextModal
+          isOpen={!!altModalParams}
+          initialText={altModalParams?.text || ''}
+          onClose={() => setAltModalParams(null)}
+          onSave={(text) => {
+            const quill = quillRef.current?.getEditor();
+            if (quill && altModalParams) quill.formatText(altModalParams.index, 1, 'alt', text);
+            setAltModalParams(null);
+          }}
+        />
+
+
+        {/* Bottom hint — sticky so it respects sidebar layout */}
         {!canOpenPreview && (
           <div className="sticky bottom-0 bg-white/90 dark:bg-[#13111C]/90 backdrop-blur-md border-t border-gray-100 dark:border-white/5 py-3 z-10 animate-in fade-in slide-in-from-bottom-2 duration-300">
             <p className="text-sm font-['Manrope'] text-gray-600 font-bold text-center px-4">
@@ -667,6 +846,7 @@ export default function UploadPage() {
             </p>
           </div>
         )}
+
       </div>
     </MobileLayout>
   );

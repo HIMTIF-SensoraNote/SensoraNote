@@ -19,6 +19,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\TranslationController;
 use App\Http\Controllers\VisionController;
+use App\Http\Controllers\ChatController;
 use App\Models\Follow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -66,6 +67,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/scanner/ocr', [VisionController::class, 'ocrStandard']);
     Route::post('/scanner/braille-ocr', [VisionController::class, 'brailleOcr']);
     Route::post('/braille/text-to-braille', [VisionController::class, 'textToBraille']);
+
+    // ==========================================
+    // RUTE SENSORA AI CHATBOT & POLISHER (GEMINI API)
+    // ==========================================
+    Route::post('/v1/chat/message', [ChatController::class, 'sendMessage']);
+    Route::post('/v1/scanner/polish', [ChatController::class, 'polishText']);
 
 
     Route::post('/v1/sertifikasi', [SertifikasiController::class, 'ajukan']);
