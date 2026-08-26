@@ -407,9 +407,6 @@ function cleanTextForBraille(text: string): string {
                             <h1 className="text-xl sm:text-2xl font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
                                 Hasil Scan Dokumen
                             </h1>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                                Didukung AI Text Restructuring & KaTeX LaTeX
-                            </p>
                         </div>
                     </div>
 
@@ -451,44 +448,18 @@ function cleanTextForBraille(text: string): string {
                 {/* Results Split View */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1 min-h-0">
                     
-                    {/* LEFT COLUMN: RESTRUCTURED TEXT (MARKDOWN & LATEX) */}
+                    {/* LEFT COLUMN: RESTRUCTURED TEXT */}
                     <div className="flex flex-col bg-white dark:bg-[#161424] rounded-2xl border border-gray-200/70 dark:border-white/5 shadow-sm p-5 sm:p-6 overflow-hidden">
                         
                         {/* Column Header */}
                         <div className="flex items-center justify-between gap-3 mb-4 shrink-0">
                             <h2 className="text-[15px] font-bold text-gray-900 dark:text-gray-100 font-['Lexend_Deca'] flex items-center gap-2">
                                 <span>Teks Terbaca (Abjad)</span>
-                                <span className="flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
-                                    <Sparkles className="w-3 h-3" /> Markdown & LaTeX
-                                </span>
                             </h2>
                         </div>
 
                         {/* Actions Toolbar */}
-                        <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 dark:border-white/5 shrink-0">
-                            <button
-                                onClick={handlePolishText}
-                                disabled={isPolishing || !rawExtractedText}
-                                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
-                                    isPolishing
-                                        ? 'bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400'
-                                        : 'bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-purple-600/10 hover:from-blue-600/20 hover:to-purple-600/20 text-blue-600 dark:text-blue-400 border border-blue-500/20'
-                                }`}
-                                title="Rapikan ulang dengan Gemini AI"
-                            >
-                                {isPolishing ? (
-                                    <>
-                                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                                        <span>AI sedang merapikan...</span>
-                                    </>
-                                ) : (
-                                    <>
-                                        <Sparkles className="w-3.5 h-3.5" />
-                                        <span>Rapikan Ulang AI</span>
-                                    </>
-                                )}
-                            </button>
-
+                        <div className="flex items-center justify-end pb-3 mb-3 border-b border-gray-100 dark:border-white/5 shrink-0">
                             <div className="flex items-center gap-2">
                                 <button 
                                     onClick={playText} 
@@ -517,7 +488,7 @@ function cleanTextForBraille(text: string): string {
                                         Sensora AI sedang merapikan teks...
                                     </p>
                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 max-w-xs">
-                                        Memperbaiki typo OCR, menyusun heading, dan memformat rumus LaTeX.
+                                        Memperbaiki typo OCR dan menyusun struktur kalimat yang rapi.
                                     </p>
                                 </div>
                             ) : activeText ? (
@@ -543,9 +514,6 @@ function cleanTextForBraille(text: string): string {
                         <div className="flex items-center justify-between mb-4 shrink-0 flex-wrap gap-2">
                             <h2 className="text-[15px] font-bold text-gray-900 dark:text-gray-100 font-['Lexend_Deca'] flex items-center gap-2">
                                 <span>Terjemahan Huruf Braille</span>
-                                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                                    Siap Cetak A4
-                                </span>
                             </h2>
                             {currentBraille && (
                                 <div className="flex items-center gap-2">
