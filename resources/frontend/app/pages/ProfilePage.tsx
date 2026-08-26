@@ -82,8 +82,8 @@ export default function ProfilePage() {
             const headers = { Authorization: `Bearer ${tk}` };
             
             const [followersRes, followingRes, pendingRes] = await Promise.all([
-                axios.get(`/api/v1/users/${userId}/followers`),
-                axios.get(`/api/v1/users/${userId}/following`),
+                axios.get(`/api/v1/users/${userId}/followers`, { headers }),
+                axios.get(`/api/v1/users/${userId}/following`, { headers }),
                 axios.get(`/api/v1/follow-requests`, { headers })
             ]);
             setFollowersList(followersRes.data);

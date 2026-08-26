@@ -222,12 +222,12 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = Cache::remember("user_profile_{$id}", now()->addMinutes(5), function () use ($id) {
-            $u = User::find($id);
+        $user = Cache::remember("user_profile_{$id}", now()->addSeconds(10), function () use ($id) {
+            $u = User::find($id) ?? User::where('_id', $id)->first();
             if ($u) {
-                // 🔥 SULAP 2: Ngitung dari tabel Follows buat Halaman Profil
-                $u->setAttribute('followers_count', $u->followers()->count());
-                $u->setAttribute('following_count', $u->followings()->count());
+                $uIdStr = (string) ($u->_id ?? $u->id);
+                $u->setAttribute('followers_count', Follow::where('following_id', $uIdStr)->where('status', Follow::STATUS_ACCEPTED)->count());
+                $u->setAttribute('following_count', Follow::where('follower_id', $uIdStr)->where('status', Follow::STATUS_ACCEPTED)->count());
             }
 
             return $u;

@@ -59,36 +59,50 @@ class FollowController extends Controller
 
     public function followers($userId)
     {
-        $targetUser = User::findOrFail($userId);
-        $meId = auth('sanctum')->id();
+        $targetUser = User::find($userId) ?? User::where('_id', $userId)->first();
+        if (!$targetUser) {
+            return response()->json(['message' => 'users.user_not_found'], 404);
+        }
+        $targetIdStr = (string) ($targetUser->_id ?? $targetUser->id);
+
+        $meId = null;
+        try {
+            $meId = auth('sanctum')->id() ?: auth('api')->id() ?: auth()->id();
+        } catch (\Exception $e) {}
 
         // Privacy check: If target is private and I am not the target and I don't follow target
-        if ($targetUser->is_private && (string) $meId !== (string) $userId) {
+        if ($targetUser->is_private && (string) $meId !== $targetIdStr) {
             $loggedInUser = $meId ? User::find((string) $meId) : null;
-            if (! $loggedInUser || ! $loggedInUser->isFollowing($userId)) {
+            if (! $loggedInUser || ! $loggedInUser->isFollowing($targetIdStr)) {
                 return response()->json(['message' => 'Akun ini privat'], 403);
             }
         }
 
-        $followers = Follow::where('following_id', (string) $userId)
+        $follows = Follow::where('following_id', $targetIdStr)
             ->where('status', Follow::STATUS_ACCEPTED)
-            ->with('followerUser')
-            ->get()
-            ->pluck('followerUser')
-            ->filter();
+            ->get();
+
+        $followerIds = $follows->pluck('follower_id')->map(fn($id) => (string) $id)->toArray();
+        $followers = User::whereIn('_id', $followerIds)->get();
 
         if ($meId) {
-            $me = User::find((string) $meId);
-            $myFollowingIds = Follow::where('follower_id', (string) $meId)->where('status', Follow::STATUS_ACCEPTED)->pluck('following_id')->toArray();
+            $meIdStr = (string) $meId;
+            $myFollowingIds = Follow::where('follower_id', $meIdStr)
+                ->where('status', Follow::STATUS_ACCEPTED)
+                ->pluck('following_id')
+                ->map(fn($id) => (string) $id)
+                ->toArray();
 
-            $followers = $followers->map(function ($user) use ($myFollowingIds, $meId) {
-                $user->is_followed_by_me = in_array((string) $user->id, $myFollowingIds);
+            $myPendingIds = Follow::where('follower_id', $meIdStr)
+                ->where('status', Follow::STATUS_PENDING)
+                ->pluck('following_id')
+                ->map(fn($id) => (string) $id)
+                ->toArray();
 
-                $isPending = Follow::where('follower_id', (string) $meId)
-                    ->where('following_id', (string) $user->id)
-                    ->where('status', Follow::STATUS_PENDING)
-                    ->exists();
-                $user->is_follow_pending = $isPending;
+            $followers = $followers->map(function ($user) use ($myFollowingIds, $myPendingIds) {
+                $uid = (string) ($user->_id ?? $user->id);
+                $user->is_followed_by_me = in_array($uid, $myFollowingIds);
+                $user->is_follow_pending = in_array($uid, $myPendingIds);
 
                 return $user;
             });
@@ -99,29 +113,50 @@ class FollowController extends Controller
 
     public function following($userId)
     {
-        $targetUser = User::findOrFail($userId);
-        $meId = auth('sanctum')->id();
+        $targetUser = User::find($userId) ?? User::where('_id', $userId)->first();
+        if (!$targetUser) {
+            return response()->json(['message' => 'users.user_not_found'], 404);
+        }
+        $targetIdStr = (string) ($targetUser->_id ?? $targetUser->id);
+
+        $meId = null;
+        try {
+            $meId = auth('sanctum')->id() ?: auth('api')->id() ?: auth()->id();
+        } catch (\Exception $e) {}
 
         // Privacy check
-        if ($targetUser->is_private && (string) $meId !== (string) $userId) {
+        if ($targetUser->is_private && (string) $meId !== $targetIdStr) {
             $loggedInUser = $meId ? User::find((string) $meId) : null;
-            if (! $loggedInUser || ! $loggedInUser->isFollowing($userId)) {
+            if (! $loggedInUser || ! $loggedInUser->isFollowing($targetIdStr)) {
                 return response()->json(['message' => 'Akun ini privat'], 403);
             }
         }
 
-        $following = Follow::where('follower_id', (string) $userId)
+        $follows = Follow::where('follower_id', $targetIdStr)
             ->where('status', Follow::STATUS_ACCEPTED)
-            ->with('followingUser')
-            ->get()
-            ->pluck('followingUser')
-            ->filter();
+            ->get();
+
+        $followingIds = $follows->pluck('following_id')->map(fn($id) => (string) $id)->toArray();
+        $following = User::whereIn('_id', $followingIds)->get();
 
         if ($meId) {
-            $myFollowingIds = Follow::where('follower_id', (string) $meId)->where('status', Follow::STATUS_ACCEPTED)->pluck('following_id')->toArray();
+            $meIdStr = (string) $meId;
+            $myFollowingIds = Follow::where('follower_id', $meIdStr)
+                ->where('status', Follow::STATUS_ACCEPTED)
+                ->pluck('following_id')
+                ->map(fn($id) => (string) $id)
+                ->toArray();
 
-            $following = $following->map(function ($user) use ($myFollowingIds) {
-                $user->is_followed_by_me = in_array((string) $user->id, $myFollowingIds);
+            $myPendingIds = Follow::where('follower_id', $meIdStr)
+                ->where('status', Follow::STATUS_PENDING)
+                ->pluck('following_id')
+                ->map(fn($id) => (string) $id)
+                ->toArray();
+
+            $following = $following->map(function ($user) use ($myFollowingIds, $myPendingIds) {
+                $uid = (string) ($user->_id ?? $user->id);
+                $user->is_followed_by_me = in_array($uid, $myFollowingIds);
+                $user->is_follow_pending = in_array($uid, $myPendingIds);
 
                 return $user;
             });

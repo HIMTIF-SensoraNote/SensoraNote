@@ -398,48 +398,46 @@ export default function EditProfilePage() {
                             accept="image/*"
                             className="hidden"
                         />
-                        <div
-                            className="relative mb-4 cursor-pointer group"
-                            onClick={() => setShowSourceSelector(true)}
-                        >
-                            <AvatarImage
-                                src={removeAvatar ? null : (avatarPreview || user?.avatar)}
-                                alt={formData.name || user?.name}
-                                name={formData.name || user?.name}
-                                size={112}
-                                className="sm:!w-28 sm:!h-28 !w-24 !h-24 border-4 border-gray-50 shadow-sm transition-transform group-hover:scale-105"
-                            />
-                            <button
-                                type="button"
-                                className="absolute bottom-0 right-0 bg-primary text-white p-2.5 rounded-full shadow-md transition-transform border-2 border-white pointer-events-none group-hover:scale-110"
+                        <div className="relative mb-2">
+                            <div
+                                className="relative cursor-pointer group"
+                                onClick={() => setShowSourceSelector(true)}
                             >
-                                <Camera className="w-4 h-4" />
-                            </button>
+                                <AvatarImage
+                                    src={removeAvatar ? null : (avatarPreview || user?.avatar)}
+                                    alt={formData.name || user?.name}
+                                    name={formData.name || user?.name}
+                                    size={112}
+                                    className="sm:!w-28 sm:!h-28 !w-24 !h-24 border-4 border-gray-50 dark:border-white/10 shadow-sm transition-transform group-hover:scale-105"
+                                />
+                            </div>
                         </div>
-                        <div className="flex items-center gap-3">
+
+                        {/* Action buttons (Icon Only) */}
+                        <div className="flex items-center gap-2.5 mt-1">
                             <button
                                 type="button"
                                 onClick={() => setShowSourceSelector(true)}
-                                className="font-['Manrope'] text-sm font-semibold text-primary cursor-pointer hover:underline"
+                                className="p-2.5 rounded-full bg-blue-50 dark:bg-blue-500/10 text-primary hover:bg-blue-100 dark:hover:bg-blue-500/20 border border-blue-200/80 dark:border-blue-500/30 shadow-xs hover:scale-110 active:scale-95 transition-all cursor-pointer"
+                                title="Ganti Foto Profil"
+                                aria-label="Ganti Foto Profil"
                             >
-                                {t('edit_profile.change_photo') || 'Ganti Foto'}
+                                <Camera className="w-4 h-4" />
                             </button>
                             {(avatarPreview || (user?.avatar && !removeAvatar)) && (
-                                <>
-                                    <span className="text-gray-300 dark:text-gray-600">•</span>
-                                    <button
-                                        type="button"
-                                        onClick={() => {
-                                            setAvatarFile(null);
-                                            setAvatarPreview(null);
-                                            setRemoveAvatar(true);
-                                        }}
-                                        className="font-['Manrope'] text-sm font-semibold text-rose-500 hover:text-rose-600 cursor-pointer hover:underline flex items-center gap-1"
-                                    >
-                                        <Trash2 className="w-3.5 h-3.5" />
-                                        <span>{t('edit_profile.delete_photo') || 'Hapus Foto'}</span>
-                                    </button>
-                                </>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setAvatarFile(null);
+                                        setAvatarPreview(null);
+                                        setRemoveAvatar(true);
+                                    }}
+                                    className="p-2.5 rounded-full bg-rose-50 dark:bg-rose-500/10 text-rose-500 hover:bg-rose-100 dark:hover:bg-rose-500/20 border border-rose-200/80 dark:border-rose-500/30 shadow-xs hover:scale-110 active:scale-95 transition-all cursor-pointer"
+                                    title="Hapus Foto Profil"
+                                    aria-label="Hapus Foto Profil"
+                                >
+                                    <Trash2 className="w-4 h-4" />
+                                </button>
                             )}
                         </div>
                     </div>
