@@ -161,25 +161,19 @@ export default function ProfilePage() {
             
             const status = res.data.status;
             
-            const updateList = (list: any[]) => list.map(u => {
-                if ((u._id || u.id) === targetUserId) {
-                    if (status === 'unfollowed') {
-                        return { ...u, is_followed_by_me: false, is_follow_pending: false };
-                    } else if (status === 'pending') {
-                        return { ...u, is_followed_by_me: false, is_follow_pending: true };
-                    } else {
-                        return { ...u, is_followed_by_me: true, is_follow_pending: false };
-                    }
-                }
-                return u;
-            });
-
-            setFollowersList(prev => updateList(prev));
-            setFollowingList(prev => updateList(prev));
-            
-            if (status === 'unfollowed') showToast("Berhenti mengikuti", "info");
-            else if (status === 'pending') showToast("Permintaan mengikuti dikirim", "success");
-            else showToast("Berhasil mengikuti", "success");
+            if (status === 'unfollowed') {
+                setFollowingList(prev => prev.filter(u => (u._id || u.id) !== targetUserId));
+                setLiveFollowingCount(prev => Math.max(0, (prev ?? 1) - 1));
+                setFollowersList(prev => prev.map(u => (u._id || u.id) === targetUserId ? { ...u, is_followed_by_me: false, is_follow_pending: false } : u));
+                showToast("Berhasil berhenti mengikuti", "info");
+            } else if (status === 'pending') {
+                setFollowingList(prev => prev.map(u => (u._id || u.id) === targetUserId ? { ...u, is_followed_by_me: false, is_follow_pending: true } : u));
+                showToast("Permintaan mengikuti dikirim", "success");
+            } else {
+                setFollowingList(prev => prev.map(u => (u._id || u.id) === targetUserId ? { ...u, is_followed_by_me: true, is_follow_pending: false } : u));
+                setLiveFollowingCount(prev => (prev ?? 0) + 1);
+                showToast("Berhasil mengikuti", "success");
+            }
 
             setShowUnfollowDialog(false);
             setUnfollowTarget(null);
@@ -1050,25 +1044,46 @@ export default function ProfilePage() {
                                                 </div>
                                             </div>
                                             {f._id !== user?.id && f.id !== user?.id && (
-                                                <button 
-                                                    className={`px-4 py-1.5 rounded-full text-[12px] font-bold font-['Manrope'] transition-all ${
-                                                        f.is_followed_by_me 
-                                                            ? 'bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/15' 
-                                                            : f.is_follow_pending
-                                                                ? 'bg-gray-50 dark:bg-white/5 text-gray-400 dark:text-gray-500 cursor-default'
-                                                                : 'bg-primary text-white hover:bg-primary/90 shadow-sm'
-                                                    }`}
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        if (f.is_followed_by_me) {
-                                                            handleFollowToggle(f._id || f.id, f.name, f.is_private);
-                                                        } else if (!f.is_follow_pending) {
-                                                            handleFollowAction(f._id || f.id);
-                                                        }
-                                                    }}
-                                                >
-                                                    {f.is_followed_by_me ? t('profile.following') : f.is_follow_pending ? t('profile.requested') : t('profile.follow')}
-                                                </button>
+                                                <div className="flex items-center gap-1.5 shrink-0">
+                                                    <button 
+                                                        className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold font-['Manrope'] transition-all ${
+                                                            f.is_followed_by_me 
+                                                                ? 'bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/15' 
+                                                                : f.is_follow_pending
+                                                                    ? 'bg-gray-50 dark:bg-white/5 text-gray-400 dark:text-gray-500 cursor-default'
+                                                                    : 'bg-primary text-white hover:bg-primary/90 shadow-sm'
+                                                        }`}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            if (f.is_followed_by_me) {
+                                                                handleFollowToggle(f._id || f.id, f.name, f.is_private);
+                                                            } else if (!f.is_follow_pending) {
+                                                                handleFollowAction(f._id || f.id);
+                                                            }
+                                                        }}
+                                                    >
+                                                        {f.is_followed_by_me ? t('profile.following') : f.is_follow_pending ? t('profile.requested') : t('profile.follow')}
+                                                    </button>
+
+                                                    {f.is_followed_by_me && (
+                                                        <button
+                                                            type="button"
+                                                            title="Hapus dari Daftar Mengikuti"
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                setUnfollowTarget({
+                                                                    id: f._id || f.id,
+                                                                    name: f.name || "Pengguna",
+                                                                    is_private: f.is_private ?? false
+                                                                });
+                                                                setShowUnfollowDialog(true);
+                                                            }}
+                                                            className="p-1.5 rounded-xl text-gray-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 transition-colors cursor-pointer"
+                                                        >
+                                                            <Trash2 className="w-4 h-4 text-rose-500" />
+                                                        </button>
+                                                    )}
+                                                </div>
                                             )}
                                         </div>
                                     ))}
@@ -1095,13 +1110,15 @@ export default function ProfilePage() {
                     if (!open) setUnfollowTarget(null);
                 }}
                 onConfirm={() => handleFollowToggle(unfollowTarget?.id!)}
-                title={`${t('profile.unfollow_title')} ${unfollowTarget?.name}?`}
+                title={`Berhenti Mengikuti ${unfollowTarget?.name || 'Pengguna'}?`}
                 description={unfollowTarget?.is_private 
                     ? t('profile.unfollow_private_desc')
-                    : `${t('profile.unfollow_public_desc')} ${unfollowTarget?.name} ${t('profile.unfollow_public_desc_end')}`}
-                confirmText={isTogglingFollow ? t('profile.processing') : t('profile.confirm_unfollow')}
+                    : `Apakah Anda yakin ingin menghapus ${unfollowTarget?.name || 'akun ini'} dari daftar mengikuti Anda?`}
+                confirmText={isTogglingFollow ? t('profile.processing') : "Ya, Hapus"}
                 cancelText={t('profile.cancel')}
                 variant="danger"
+                className="!z-[130]"
+                overlayClassName="!z-[125]"
             />
 
             <ApplyPakarModal
