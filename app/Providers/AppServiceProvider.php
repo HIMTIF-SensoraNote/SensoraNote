@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Sanctum;
 
- // <-- INI IMPORT BARUNYA
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -25,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (config('app.env') !== 'local' || request()->header('x-forwarded-proto') === 'https') {
+        if (request()->header('x-forwarded-proto') === 'https' || (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')) {
             \Illuminate\Support\Facades\URL::forceScheme('https');
         }
 
