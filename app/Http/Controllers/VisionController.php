@@ -14,8 +14,8 @@ class VisionController extends Controller
 
     public function __construct()
     {
-        $this->gatewayUrl = rtrim(env('DOC_SCANNER_SERVICE_URL', 'http://localhost:8010'), '/');
-        $this->timeout    = (int) env('DOC_SCANNER_SERVICE_TIMEOUT', 30);
+        $this->gatewayUrl = rtrim(config('services.doc_scanner.base_url', 'http://127.0.0.1:8010'), '/');
+        $this->timeout    = (int) config('services.doc_scanner.timeout', 60);
     }
 
     // =========================================================
