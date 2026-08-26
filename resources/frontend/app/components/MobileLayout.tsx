@@ -56,8 +56,8 @@ export function MobileLayout({ children, showBottomNav = true, hideTopNav = fals
   const isAdmin = user?.role === 'admin';
 
   return (
-    // Base layout: Full column structure.
-    <div className="h-screen w-full flex flex-col bg-white dark:bg-[#13111C] text-slate-900 dark:text-[#E8E6F0] overflow-hidden selection:bg-blue-600/20 selection:text-blue-600">
+    // Base layout: Full column structure with dynamic mobile viewport support (100dvh).
+    <div className="h-screen h-[100dvh] w-full flex flex-col bg-white dark:bg-[#13111C] text-slate-900 dark:text-[#E8E6F0] overflow-hidden selection:bg-blue-600/20 selection:text-blue-600">
       
       {/* 1. DESKTOP & TABLET TOP REGION */}
       {!hideTopNav && (

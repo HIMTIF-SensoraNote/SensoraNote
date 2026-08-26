@@ -679,10 +679,10 @@ export default function ChatbotPage() {
   return (
     <MobileLayout hideSidebar={true} hideTopNav={true} hideMobileTopNav={true} showBottomNav={false}>
       {/* 
-        'fixed inset-0 h-screen w-full max-w-full overflow-hidden' ensures zero horizontal page leak.
+        'fixed inset-0 h-[100dvh] w-full max-w-full overflow-hidden' ensures perfect mobile viewport alignment without bottom cutoff.
         Only the internal chat area & sidebar scroll independently.
       */}
-      <div className="fixed inset-0 h-screen w-full max-w-full flex bg-white dark:bg-[#0E0C17] text-gray-900 dark:text-gray-100 overflow-hidden font-['Manrope'] z-50 select-none md:select-auto">
+      <div className="fixed inset-0 h-[100dvh] w-full max-w-full flex bg-white dark:bg-[#0E0C17] text-gray-900 dark:text-gray-100 overflow-hidden font-['Manrope'] z-50 select-none md:select-auto">
         
         {/* ========================================================= */}
         {/* MOBILE BACKDROP OVERLAY */}
@@ -866,19 +866,19 @@ export default function ChatbotPage() {
             isSidebarOpen ? 'max-w-4xl' : 'max-w-6xl 2xl:max-w-7xl'
           }`}>
             {messages.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center text-center p-3 sm:p-8 max-w-full">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl sm:rounded-3xl bg-gradient-to-tr from-blue-500/10 via-purple-500/10 to-pink-500/10 border border-blue-500/20 flex items-center justify-center text-primary mb-3 sm:mb-4 shadow-sm">
-                  <Bot className="w-7 h-7 sm:w-8 sm:h-8 text-blue-600 dark:text-blue-400" />
+              <div className="min-h-full my-auto flex flex-col items-center justify-center text-center p-2 sm:p-8 max-w-full">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl sm:rounded-3xl bg-gradient-to-tr from-blue-500/10 via-purple-500/10 to-pink-500/10 border border-blue-500/20 flex items-center justify-center text-primary mb-2.5 sm:mb-4 shadow-sm shrink-0">
+                  <Bot className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 dark:text-blue-400" />
                 </div>
-                <h1 className="text-xl sm:text-2xl font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 mb-1.5 sm:mb-2">
+                <h1 className="text-lg sm:text-2xl font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 mb-1 sm:mb-2">
                   {t('chatbot.welcome_title')}
                 </h1>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 max-w-md mb-6 sm:mb-8 font-['Manrope'] px-2">
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 max-w-md mb-4 sm:mb-8 font-['Manrope'] px-2">
                   {t('chatbot.welcome_subtitle')}
                 </p>
 
                 {/* Starter Prompts Grid */}
-                <div className={`grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 w-full text-left transition-all ${
+                <div className={`grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 w-full text-left transition-all ${
                   isSidebarOpen ? 'max-w-2xl' : 'max-w-4xl'
                 }`}>
                   {starterPrompts.map((item, index) => (
@@ -892,16 +892,16 @@ export default function ChatbotPage() {
                           handleSendMessage(item.prompt);
                         }
                       }}
-                      className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-gray-50 dark:bg-[#161424] border border-gray-200/60 dark:border-white/5 hover:border-blue-400 dark:hover:border-blue-500/40 hover:shadow-md transition-all group flex items-start gap-3 text-left cursor-pointer max-w-full"
+                      className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-gray-50 dark:bg-[#161424] border border-gray-200/60 dark:border-white/5 hover:border-blue-400 dark:hover:border-blue-500/40 hover:shadow-md transition-all group flex items-start gap-2.5 sm:gap-3 text-left cursor-pointer max-w-full"
                     >
-                      <div className={`p-2 sm:p-2.5 rounded-xl bg-gradient-to-br ${item.color} shrink-0`}>
+                      <div className={`p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl bg-gradient-to-br ${item.color} shrink-0 mt-0.5`}>
                         <item.icon className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
                       </div>
                       <div className="min-w-0 flex-1">
                         <h3 className="text-xs sm:text-[13px] font-bold text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors font-['Lexend_Deca'] truncate">
                           {item.title}
                         </h3>
-                        <p className="text-[11px] sm:text-[11.5px] text-gray-500 dark:text-gray-400 line-clamp-2 mt-0.5 leading-relaxed">
+                        <p className="text-[10.5px] sm:text-[11.5px] text-gray-500 dark:text-gray-400 line-clamp-2 mt-0.5 leading-relaxed">
                           {item.prompt}
                         </p>
                       </div>
@@ -1035,7 +1035,7 @@ export default function ChatbotPage() {
           </div>
 
           {/* Bottom Chat Input Bar */}
-          <footer className="p-2.5 sm:p-4 border-t border-gray-100 dark:border-white/5 bg-white/90 dark:bg-[#0E0C17]/90 backdrop-blur-md shrink-0 w-full max-w-full">
+          <footer className="p-2 sm:p-4 border-t border-gray-100 dark:border-white/5 bg-white/95 dark:bg-[#0E0C17]/95 backdrop-blur-md shrink-0 w-full max-w-full z-20 pb-[max(0.6rem,env(safe-area-inset-bottom))]">
             <div className={`mx-auto transition-all duration-300 w-full max-w-full ${
               isSidebarOpen ? 'max-w-4xl' : 'max-w-6xl 2xl:max-w-7xl'
             }`}>
@@ -1048,7 +1048,7 @@ export default function ChatbotPage() {
                   placeholder={t('chatbot.input_placeholder')}
                   rows={1}
                   disabled={isLoading}
-                  className="w-full bg-transparent border-0 resize-none px-2.5 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-800 dark:text-gray-100 focus:outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500 custom-scrollbar max-h-28 sm:max-h-36 select-text"
+                  className="w-full bg-transparent border-0 resize-none px-2.5 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm text-gray-800 dark:text-gray-100 focus:outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500 custom-scrollbar max-h-24 sm:max-h-36 select-text"
                 />
                 <button
                   onClick={() => handleSendMessage()}
@@ -1063,7 +1063,7 @@ export default function ChatbotPage() {
                   {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                 </button>
               </div>
-              <p className="text-center text-[10px] sm:text-[11px] text-gray-500 dark:text-gray-400 mt-1.5 sm:mt-2 font-['Manrope'] font-medium truncate px-2">
+              <p className="text-center text-[9.5px] sm:text-[11px] text-gray-500 dark:text-gray-400 mt-1 sm:mt-2 font-['Manrope'] font-medium truncate px-2">
                 {t('chatbot.powered_by')} • Percakapan tersimpan di perangkat Anda.
               </p>
             </div>
