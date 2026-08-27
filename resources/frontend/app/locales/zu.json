@@ -14,7 +14,11 @@
     "pakar_choice": "UKUKHETHA UCHWEPHESHE",
     "no_pakar_choice": "Akekho ochwepheshe abakhethayo okwamanje",
     "dashboard": "IDESHIbhodi",
-    "insights": "IMIBONO"
+    "insights": "IMIBONO",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Izilungiselelo",
@@ -44,7 +48,10 @@
     "version": "Inguqulo",
     "theme_light": "Ukukhanya",
     "theme_dark": "Kumnyama",
-    "theme_system": "Uhlelo"
+    "theme_system": "Uhlelo",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Ukubukeka",
@@ -252,7 +259,8 @@
     "about": "Mayelana NATHI",
     "blog": "Ibhulogi",
     "terms": "Imigomo",
-    "privacy": "Ubumfihlo"
+    "privacy": "Ubumfihlo",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Faka Isixhumanisi",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Sicela ungene kuqala ukuze uthande okuthunyelwe.",
     "no_description": "Ayikho incazelo",
-    "for_you": "✨ Okwakho",
+    "for_you": "Okwakho",
     "main_focus": "Ukugxila Okuyinhloko",
     "notes": "Amanothi",
     "view_all": "Buka Konke",
     "all_caught_up": "Ubone wonke amanothi akamuva.",
     "trending": "Okuthrendayo",
-    "explore_topics": "Hlola Izihloko Zokufunda"
+    "explore_topics": "Hlola Izihloko Zokufunda",
+    "following": "Ukulandela",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Hlola",

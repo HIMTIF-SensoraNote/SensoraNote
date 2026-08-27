@@ -14,7 +14,11 @@
     "pakar_choice": "ການຄັດເລືອກຜູ້ຊ່ຽວຊານ",
     "no_pakar_choice": "ຍັງບໍ່ມີຜູ້ຊ່ຽວຊານເລືອກ",
     "dashboard": "ແຜງໜ້າປັດ",
-    "insights": "ຄວາມເຂົ້າໃຈ"
+    "insights": "ຄວາມເຂົ້າໃຈ",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "ການຕັ້ງຄ່າ",
@@ -44,7 +48,10 @@
     "version": "ຮຸ່ນ",
     "theme_light": "ແສງສະຫວ່າງ",
     "theme_dark": "ມືດ",
-    "theme_system": "ລະບົບ"
+    "theme_system": "ລະບົບ",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "ຮູບລັກສະນະ",
@@ -252,7 +259,8 @@
     "about": "ກ່ຽວກັບພວກເຮົາ",
     "blog": "ບລັອກ",
     "terms": "ເງື່ອນໄຂ",
-    "privacy": "ຄວາມເປັນສ່ວນຕົວ"
+    "privacy": "ຄວາມເປັນສ່ວນຕົວ",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "ໃສ່ລິ້ງ",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "ກະລຸນາເຂົ້າສູ່ລະບົບກ່ອນເພື່ອມັກໂພສ.",
     "no_description": "ບໍ່ມີຄໍາອະທິບາຍ",
-    "for_you": "✨ສຳລັບທ່ານ",
+    "for_you": "ສຳລັບທ່ານ",
     "main_focus": "ຈຸດສຸມຕົ້ນຕໍ",
     "notes": "ບັນທຶກ",
     "view_all": "ເບິ່ງທັງໝົດ",
     "all_caught_up": "ເຈົ້າໄດ້ເຫັນບັນທຶກຫຼ້າສຸດທັງໝົດແລ້ວ.",
     "trending": "ແນວໂນ້ມ",
-    "explore_topics": "ສຳຫຼວດຫົວຂໍ້ການຮຽນຮູ້"
+    "explore_topics": "ສຳຫຼວດຫົວຂໍ້ການຮຽນຮູ້",
+    "following": "ຕິດຕາມ",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "ສຳຫຼວດ",

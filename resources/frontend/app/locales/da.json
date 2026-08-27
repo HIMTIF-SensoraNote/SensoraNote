@@ -14,7 +14,11 @@
     "pakar_choice": "EKSPERTUDVALG",
     "no_pakar_choice": "Ingen ekspertudvalg endnu",
     "dashboard": "DASHBOARD",
-    "insights": "INDSIGT"
+    "insights": "INDSIGT",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Indstillinger",
@@ -44,7 +48,10 @@
     "version": "Version",
     "theme_light": "Lys",
     "theme_dark": "Mørk",
-    "theme_system": "System"
+    "theme_system": "System",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Udseende",
@@ -252,7 +259,8 @@
     "about": "Om os",
     "blog": "Blogs",
     "terms": "Vilkår",
-    "privacy": "Privatliv"
+    "privacy": "Privatliv",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Indsæt link",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Log venligst ind først for at like indlæg.",
     "no_description": "Ingen beskrivelse",
-    "for_you": "✨ Til dig",
+    "for_you": "Til dig",
     "main_focus": "Hovedfokus",
     "notes": "Noter",
     "view_all": "Se alle",
     "all_caught_up": "Du har set alle de seneste noter.",
     "trending": "Trending",
-    "explore_topics": "Udforsk læringsemner"
+    "explore_topics": "Udforsk læringsemner",
+    "following": "Følge",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Udforske",

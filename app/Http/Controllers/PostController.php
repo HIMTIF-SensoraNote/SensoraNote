@@ -37,17 +37,36 @@ class PostController extends Controller
 
         $followingIds = [];
         if ($userId) {
-            $followingIds = Follow::where('follower_id', (string) $userId)->pluck('following_id')->toArray();
+            $followingIds = Follow::where('follower_id', (string) $userId)
+                ->where('status', Follow::STATUS_ACCEPTED)
+                ->pluck('following_id')
+                ->map(fn($id) => (string) $id)
+                ->toArray();
         }
 
         // Exclude dormant users
-        $dormantUserIds = User::where('is_dormant', true)->pluck('_id')->toArray();
-
-        // Exclude dormant users
-        $dormantUserIds = User::where('is_dormant', true)->pluck('_id')->toArray();
-
+        $dormantUserIds = User::where('is_dormant', true)->pluck('_id')->map(fn($id) => (string) $id)->toArray();
         if (! empty($dormantUserIds)) {
             $query->whereNotIn('user_id', $dormantUserIds);
+        }
+
+        // Privacy check: Do not show posts by private users unless viewer is owner, accepted follower, or admin
+        $viewer = $userId ? User::find((string) $userId) : null;
+        $isAdmin = $viewer && $viewer->role === 'admin';
+
+        if (! $isAdmin) {
+            $privateUserIds = User::where('is_private', true)->pluck('_id')->map(fn($id) => (string) $id)->toArray();
+            if (! empty($privateUserIds)) {
+                $allowedIds = [];
+                if ($userId) {
+                    $allowedIds[] = (string) $userId;
+                    $allowedIds = array_merge($allowedIds, $followingIds);
+                }
+                $disallowedPrivateIds = array_values(array_diff($privateUserIds, $allowedIds));
+                if (! empty($disallowedPrivateIds)) {
+                    $query->whereNotIn('user_id', $disallowedPrivateIds);
+                }
+            }
         }
 
         if ($request->filled('is_verified')) {
@@ -61,7 +80,55 @@ class PostController extends Controller
         }
 
         if ($request->filled('user_id')) {
-            $query->where('user_id', $request->query('user_id'));
+            $targetUserId = (string) $request->query('user_id');
+            $targetUser = User::find($targetUserId) ?? User::where('_id', $targetUserId)->first();
+
+            if ($targetUser && $targetUser->is_private && ! $isAdmin && (string) $userId !== (string) ($targetUser->_id ?? $targetUser->id)) {
+                $isFollower = in_array((string) ($targetUser->_id ?? $targetUser->id), $followingIds);
+                if (! $isFollower) {
+                    // Target is private and viewer is not an accepted follower -> return no posts
+                    $query->whereRaw('1 = 0');
+                }
+            }
+
+            $query->where('user_id', $targetUserId);
+        }
+
+        // Filter by subject/mapel
+        if ($request->filled('mapel') || $request->filled('subject')) {
+            $subjectInput = trim((string) ($request->query('mapel') ?: $request->query('subject')));
+            $subjectWithSpaces = str_replace('-', ' ', $subjectInput);
+            
+            $query->where(function ($q) use ($subjectInput, $subjectWithSpaces) {
+                $q->where('mapel', $subjectInput)
+                  ->orWhere('mapel', 'like', '%' . $subjectInput . '%')
+                  ->orWhere('mapel', 'like', '%' . $subjectWithSpaces . '%')
+                  ->orWhere('tags', 'like', '%' . $subjectInput . '%')
+                  ->orWhere('tags', 'like', '%' . $subjectWithSpaces . '%');
+            });
+        }
+
+        // Filter by jenjang
+        if ($request->filled('jenjang') && $request->query('jenjang') !== 'Semua') {
+            $query->where('jenjang', $request->query('jenjang'));
+        }
+
+        // Filter by kelas
+        if ($request->filled('kelas') && $request->query('kelas') !== 'Semua') {
+            $query->where('kelas', $request->query('kelas'));
+        }
+
+        // Filter by tags
+        if ($request->filled('tags')) {
+            $tags = explode(',', (string) $request->query('tags'));
+            $query->where(function ($q) use ($tags) {
+                foreach ($tags as $tag) {
+                    $cleanTag = trim($tag);
+                    if (!empty($cleanTag)) {
+                        $q->orWhere('tags', 'like', '%' . $cleanTag . '%');
+                    }
+                }
+            });
         }
 
         // Filter by specific post IDs (used for bookmarks)
@@ -81,15 +148,23 @@ class PostController extends Controller
 
         $isRandom = false;
         $sort = $request->query('sort', 'untuk_anda');
+        $feed = $request->query('feed');
 
         $limit = $request->query('limit', 12);
 
-        if ($sort === 'populer') {
+        if ($sort === 'following' || $sort === 'mengikuti' || $feed === 'following' || $feed === 'mengikuti') {
+            if ($userId && !empty($followingIds)) {
+                $query->whereIn('user_id', $followingIds);
+            } else {
+                // If not authenticated or not following anyone, return empty results
+                $query->whereRaw('1 = 0');
+            }
+            $query->orderBy('created_at', 'desc');
+            $isRandom = false;
+        } elseif ($sort === 'populer') {
             $query->orderBy('likes_count', 'desc')->orderBy('comments_count', 'desc');
-
         } elseif ($sort === 'terbaru') {
             $query->orderBy('created_at', 'desc');
-
         } else {
             if ($userId && ! $isSearch) {
                 $user = User::find((string) $userId);

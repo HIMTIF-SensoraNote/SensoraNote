@@ -14,7 +14,11 @@
     "pakar_choice": "בחירות מומחים",
     "no_pakar_choice": "אין עדיין בחירות מומחים",
     "dashboard": "לוּחַ מַחווָנִים",
-    "insights": "תובנות"
+    "insights": "תובנות",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "הגדרות",
@@ -44,7 +48,10 @@
     "version": "גִרְסָה",
     "theme_light": "אוֹר",
     "theme_dark": "כֵּהֶה",
-    "theme_system": "מַעֲרֶכֶת"
+    "theme_system": "מַעֲרֶכֶת",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "הוֹפָעָה",
@@ -252,7 +259,8 @@
     "about": "אודותינו",
     "blog": "בלוג",
     "terms": "תנאים",
-    "privacy": "פְּרָטִיוּת"
+    "privacy": "פְּרָטִיוּת",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "הכנס קישור",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "אנא היכנס תחילה כדי לעשות לייק לפוסטים.",
     "no_description": "אין תיאור",
-    "for_you": "✨ בשבילך",
+    "for_you": "בשבילך",
     "main_focus": "מוקד עיקרי",
     "notes": "הערות",
     "view_all": "הצג הכל",
     "all_caught_up": "ראית את כל ההערות האחרונות.",
     "trending": "מגמות",
-    "explore_topics": "חקור נושאי למידה"
+    "explore_topics": "חקור נושאי למידה",
+    "following": "הַבָּא",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "לַחקוֹר",

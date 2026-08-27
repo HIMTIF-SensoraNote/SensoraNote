@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Follow;
+use App\Models\Post;
 use App\Models\User;
 use Cloudinary\Cloudinary;
 use Illuminate\Http\Request;
@@ -275,16 +276,33 @@ class UserController extends Controller
                 $isPending = $follow && $follow->status === Follow::STATUS_PENDING;
             }
             if (! $isFollower) {
+                $followersCount = Follow::where('following_id', $userIdStr)->where('status', Follow::STATUS_ACCEPTED)->count();
+                $followingCount = Follow::where('follower_id', $userIdStr)->where('status', Follow::STATUS_ACCEPTED)->count();
+                $postsCount = Post::where('user_id', $userIdStr)->where('visibility', 'public')->count();
+
                 return response()->json([
                     'message' => 'users.user_private',
                     'is_private_restricted' => true,
                     'is_follow_pending' => $isPending,
                     'data' => [
+                        '_id' => (string) ($user->_id ?? $user->id),
+                        'id' => (string) ($user->_id ?? $user->id),
                         'name' => $user->name,
                         'username' => $user->username,
                         'avatar' => $user->avatar,
                         'role' => $user->role,
                         'is_private' => true,
+                        'bio' => $user->bio,
+                        'jenjang_pendidikan' => $user->jenjang_pendidikan,
+                        'profesi' => $user->profesi,
+                        'school' => $user->school,
+                        'created_at' => $user->created_at,
+                        'followers_count' => $followersCount,
+                        'following_count' => $followingCount,
+                        'posts_count' => $postsCount,
+                        'is_followed_by_me' => false,
+                        'is_follow_pending' => $isPending,
+                        'follows_me' => $viewerIdStr ? $user->isFollowing($viewerIdStr) : false,
                     ],
                 ], 403);
             }

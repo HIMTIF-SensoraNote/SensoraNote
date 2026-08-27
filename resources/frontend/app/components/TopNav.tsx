@@ -84,10 +84,10 @@ export function TopNav({ isSidebarExpanded, toggleSidebar }: TopNavProps) {
         <button 
           onClick={() => setIsScannerOpen(true)}
           className="hidden md:flex items-center justify-center gap-1.5 sm:gap-2 h-[36px] px-3 sm:px-4 rounded-full bg-primary text-white text-[13px] sm:text-[13.5px] font-['Manrope'] font-semibold shadow-[0_4px_10px_rgb(93,92,230,0.15)] hover:bg-primary/90 hover:shadow-[0_6px_14px_rgb(93,92,230,0.25)] hover:-translate-y-0.5 transition-all cursor-pointer shrink-0"
-          title="Scan Dokumen"
+          title={t('topnav.scan_image') !== 'topnav.scan_image' ? t('topnav.scan_image') : 'Scan Gambar'}
         >
           <Camera className="w-[16px] h-[16px]" strokeWidth={2} />
-          <span>Scan Dokumen</span>
+          <span>{t('topnav.scan_image') !== 'topnav.scan_image' ? t('topnav.scan_image') : 'Scan Gambar'}</span>
         </button>
         
         {/* === TOMBOL TULIS CATATAN (TABLET & DESKTOP) === */}

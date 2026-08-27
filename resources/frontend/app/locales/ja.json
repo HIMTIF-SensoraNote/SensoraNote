@@ -14,7 +14,11 @@
     "pakar_choice": "専門家のおすすめ",
     "no_pakar_choice": "まだおすすめはありません",
     "dashboard": "ダッシュボード",
-    "insights": "インサイト"
+    "insights": "インサイト",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "設定",
@@ -44,7 +48,10 @@
     "version": "バージョン",
     "theme_light": "ライト",
     "theme_dark": "ダーク",
-    "theme_system": "システム"
+    "theme_system": "システム",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "外観",
@@ -252,7 +259,8 @@
     "about": "私たちについて",
     "blog": "ブログ",
     "terms": "利用規約",
-    "privacy": "プライバシー"
+    "privacy": "プライバシー",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "リンクを挿入",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "投稿に「いいね」するにはログインしてください。",
     "no_description": "説明なし",
-    "for_you": "✨ あなたへ",
+    "for_you": "あなたへ",
     "main_focus": "注目の記事",
     "notes": "ノート",
     "view_all": "すべて見る",
     "all_caught_up": "最新のノートをすべて見ました。",
     "trending": "トレンド",
-    "explore_topics": "学習トピックを探索"
+    "explore_topics": "学習トピックを探索",
+    "following": "フォロー中",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "探索",

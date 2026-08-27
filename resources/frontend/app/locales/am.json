@@ -14,7 +14,11 @@
     "pakar_choice": "የባለሙያዎች ምርጫዎች",
     "no_pakar_choice": "እስካሁን ምንም ባለሙያ አልመረጠም።",
     "dashboard": "ዳሽቦርድ",
-    "insights": "ግንዛቤዎች"
+    "insights": "ግንዛቤዎች",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "ቅንብሮች",
@@ -44,7 +48,10 @@
     "version": "ሥሪት",
     "theme_light": "ብርሃን",
     "theme_dark": "ጨለማ",
-    "theme_system": "ስርዓት"
+    "theme_system": "ስርዓት",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "መልክ",
@@ -252,7 +259,8 @@
     "about": "ስለ እኛ",
     "blog": "ብሎግ",
     "terms": "ውሎች",
-    "privacy": "ግላዊነት"
+    "privacy": "ግላዊነት",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "አገናኝ አስገባ",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "እባክዎ መጀመሪያ ልጥፎችን ለመውደድ ይግቡ።",
     "no_description": "መግለጫ የለም።",
-    "for_you": "✨ ላንተ",
+    "for_you": "ላንተ",
     "main_focus": "ዋና ትኩረት",
     "notes": "ማስታወሻዎች",
     "view_all": "ሁሉንም ይመልከቱ",
     "all_caught_up": "ሁሉንም የቅርብ ጊዜ ማስታወሻዎች አይተሃል።",
     "trending": "በመታየት ላይ ያለ",
-    "explore_topics": "የመማሪያ ርዕሶችን ያስሱ"
+    "explore_topics": "የመማሪያ ርዕሶችን ያስሱ",
+    "following": "በመከተል ላይ",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "ያስሱ",

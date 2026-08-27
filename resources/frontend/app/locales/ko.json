@@ -14,7 +14,11 @@
     "pakar_choice": "전문가 추천",
     "no_pakar_choice": "아직 추천이 없습니다",
     "dashboard": "대시보드",
-    "insights": "인사이트"
+    "insights": "인사이트",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "설정",
@@ -44,7 +48,10 @@
     "version": "버전",
     "theme_light": "라이트",
     "theme_dark": "다크",
-    "theme_system": "시스템"
+    "theme_system": "시스템",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "모양",
@@ -252,7 +259,8 @@
     "about": "회사 소개",
     "blog": "블로그",
     "terms": "이용약관",
-    "privacy": "개인정보처리방침"
+    "privacy": "개인정보처리방침",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "링크 삽입",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "게시물에 좋아요를 누르려면 먼저 로그인하세요.",
     "no_description": "설명 없음",
-    "for_you": "✨ 추천",
+    "for_you": "추천",
     "main_focus": "주요 기사",
     "notes": "노트",
     "view_all": "모두 보기",
     "all_caught_up": "모든 최신 노트를 확인했습니다.",
     "trending": "인기",
-    "explore_topics": "학습 주제 탐색"
+    "explore_topics": "학습 주제 탐색",
+    "following": "팔로잉",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "탐색",

@@ -1,4 +1,4 @@
-import { Home, Search, BarChart2, User, LayoutGrid, Edit3, Camera, Grid } from 'lucide-react';
+import { Home, Search, BarChart2, User, LayoutGrid, Edit3, Camera, Grid, Calendar } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from '../hooks/useTranslation';
@@ -43,7 +43,7 @@ export function BottomNav() {
           ? { path: '/admin', icon: LayoutGrid, label: t('nav.workspace') }
           : isPakar
             ? { path: '/pakar', icon: LayoutGrid, label: t('nav.workspace') }
-            : { path: '/stats', icon: BarChart2, label: 'Statistik' },
+            : { path: '/stats', icon: BarChart2, label: t('nav.statistics_short') !== 'nav.statistics_short' ? t('nav.statistics_short') : 'Statistik' },
       { path: '/profile', icon: User, label: t('nav.profile_short') },
     ].filter(Boolean) as any[];
 
@@ -67,7 +67,7 @@ export function BottomNav() {
                      className="flex items-center gap-3 px-3.5 py-2.5 w-full text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/70 dark:hover:bg-blue-500/10 transition-all rounded-xl cursor-pointer text-left group"
                    >
                      <div className="flex items-center justify-center w-8 h-8 text-blue-600 bg-blue-100 rounded-full dark:bg-blue-500/20 dark:text-blue-400 shrink-0 group-hover:scale-105 transition-transform"><Edit3 className="w-[17px] h-[17px]" /></div>
-                     <span className="text-[13px] font-semibold font-['Manrope'] whitespace-nowrap flex-1">Tulis Catatan</span>
+                     <span className="text-[13px] font-semibold font-['Manrope'] whitespace-nowrap flex-1">{t('nav.upload') !== 'nav.upload' ? t('nav.upload') : 'Tulis Catatan'}</span>
                    </button>
                    <button 
                      type="button"
@@ -75,7 +75,7 @@ export function BottomNav() {
                      className="flex items-center gap-3 px-3.5 py-2.5 w-full text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/70 dark:hover:bg-emerald-500/10 transition-all rounded-xl cursor-pointer text-left group"
                    >
                      <div className="flex items-center justify-center w-8 h-8 text-emerald-600 bg-emerald-100 rounded-full dark:bg-emerald-500/20 dark:text-emerald-400 shrink-0 group-hover:scale-105 transition-transform"><Camera className="w-[17px] h-[17px]" /></div>
-                     <span className="text-[13px] font-semibold font-['Manrope'] whitespace-nowrap flex-1">Scan Dokumen</span>
+                     <span className="text-[13px] font-semibold font-['Manrope'] whitespace-nowrap flex-1">{t('nav.scan_image') !== 'nav.scan_image' ? t('nav.scan_image') : 'Scan Gambar'}</span>
                    </button>
                  </motion.div>
                )}

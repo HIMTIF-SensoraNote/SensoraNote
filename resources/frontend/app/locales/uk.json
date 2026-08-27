@@ -14,7 +14,11 @@
     "pakar_choice": "ВИБІР ЕКСПЕРТА",
     "no_pakar_choice": "Експертів ще немає",
     "dashboard": "ПРИЛАДОВА ПАНЕЛЬ",
-    "insights": "ІНСАЙТИ"
+    "insights": "ІНСАЙТИ",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Налаштування",
@@ -44,7 +48,10 @@
     "version": "Версія",
     "theme_light": "світло",
     "theme_dark": "Темний",
-    "theme_system": "система"
+    "theme_system": "система",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Зовнішній вигляд",
@@ -252,7 +259,8 @@
     "about": "Про нас",
     "blog": "Блог",
     "terms": "Умови",
-    "privacy": "Конфіденційність"
+    "privacy": "Конфіденційність",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Вставити посилання",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Будь ласка, спочатку увійдіть, щоб лайкати публікації.",
     "no_description": "Без опису",
-    "for_you": "✨ Для вас",
+    "for_you": "Для вас",
     "main_focus": "Основний фокус",
     "notes": "Примітки",
     "view_all": "Переглянути всі",
     "all_caught_up": "Ви бачили всі останні нотатки.",
     "trending": "В тренді",
-    "explore_topics": "Ознайомтеся з навчальними темами"
+    "explore_topics": "Ознайомтеся з навчальними темами",
+    "following": "Слідую",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Досліджуйте",

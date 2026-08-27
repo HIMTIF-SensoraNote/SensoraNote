@@ -261,8 +261,8 @@ export default function SettingsPage() {
                 />
                 <SettingRow 
                   icon={PersonStanding} 
-                  title="Aksesibilitas & Fitur Inklusif" 
-                  subtitle="Atur kontras, ukuran teks, dan modul pembaca layar Sienna"
+                  title={t('settings.accessibility_title') !== 'settings.accessibility_title' ? t('settings.accessibility_title') : "Aksesibilitas & Fitur Inklusif"} 
+                  subtitle={t('settings.accessibility_desc') !== 'settings.accessibility_desc' ? t('settings.accessibility_desc') : "Atur kontras, ukuran teks, dan modul pembaca layar Sienna"}
                   color="text-emerald-600 dark:text-emerald-400"
                   onClick={() => {
                     const btn = document.querySelector('.asw-menu-btn') as HTMLElement;
@@ -270,7 +270,7 @@ export default function SettingsPage() {
                   }}
                   rightElement={
                     <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-1 rounded-full">
-                      Buka Widget
+                      {t('settings.open_widget') !== 'settings.open_widget' ? t('settings.open_widget') : "Buka Widget"}
                     </span>
                   }
                 />

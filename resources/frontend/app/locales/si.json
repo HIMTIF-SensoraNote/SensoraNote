@@ -14,7 +14,11 @@
     "pakar_choice": "විශේෂඥ තේරීම්",
     "no_pakar_choice": "තවමත් විශේෂඥ තේරීම් නොමැත",
     "dashboard": "උපකරණ පුවරුව",
-    "insights": "තීක්ෂ්ණ බුද්ධිය"
+    "insights": "තීක්ෂ්ණ බුද්ධිය",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "සැකසීම්",
@@ -44,7 +48,10 @@
     "version": "අනුවාදය",
     "theme_light": "ආලෝකය",
     "theme_dark": "අඳුරු",
-    "theme_system": "පද්ධතිය"
+    "theme_system": "පද්ධතිය",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "පෙනුම",
@@ -252,7 +259,8 @@
     "about": "අපි ගැන",
     "blog": "බ්ලොග්",
     "terms": "කොන්දේසි",
-    "privacy": "පෞද්ගලිකත්වය"
+    "privacy": "පෞද්ගලිකත්වය",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "සබැඳිය ඇතුළු කරන්න",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "පළ කිරීම් වලට කැමති වීමට කරුණාකර පළමුව ලොග් වන්න.",
     "no_description": "විස්තරයක් නැත",
-    "for_you": "✨ ඔබ වෙනුවෙන්",
+    "for_you": "ඔබ වෙනුවෙන්",
     "main_focus": "ප්රධාන අවධානය",
     "notes": "සටහන්",
     "view_all": "සියල්ල බලන්න",
     "all_caught_up": "ඔබ නවතම සටහන් සියල්ල දැක ඇත.",
     "trending": "ප්රවණතා",
-    "explore_topics": "ඉගෙනුම් මාතෘකා ගවේෂණය කරන්න"
+    "explore_topics": "ඉගෙනුම් මාතෘකා ගවේෂණය කරන්න",
+    "following": "අනුගමනය",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "ගවේෂණය කරන්න",

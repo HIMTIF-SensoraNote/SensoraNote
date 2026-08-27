@@ -1,4 +1,19 @@
 {
+  "home": {
+    "login_to_like": "Silakan masuk (login) terlebih dahulu untuk menyukai tulisan.",
+    "no_description": "Tidak ada deskripsi",
+    "for_you": "Untuk Anda",
+    "following": "Mengikuti",
+    "main_focus": "Fokus Utama",
+    "notes": "Catatan",
+    "view_all": "Lihat Semua",
+    "all_caught_up": "Anda sudah melihat semua catatan terbaru.",
+    "trending": "Sedang Populer",
+    "explore_topics": "Jelajahi Topik Belajar",
+    "trending_this_week": "Trending Minggu Ini",
+    "clear_filter": "Hapus Filter",
+    "showing_topic": "Menampilkan catatan topik:"
+  },
   "nav": {
     "home": "Beranda",
     "explore": "Eksplorasi",
@@ -15,7 +30,11 @@
     "pakar_choice": "PAKAR CHOICE",
     "no_pakar_choice": "Belum ada pilihan pakar",
     "dashboard": "Panel Instrumen",
-    "insights": "WAWASAN"
+    "insights": "WAWASAN",
+    "scan_image": "Scan Gambar",
+    "schedule_planner": "Perencana Jadwal",
+    "accessibility": "Aksesibilitas",
+    "statistics_short": "Statistik"
   },
   "chatbot": {
     "title": "Sensora AI",
@@ -67,7 +86,10 @@
     "version": "Versi",
     "theme_light": "Terang",
     "theme_dark": "Gelap",
-    "theme_system": "Sistem"
+    "theme_system": "Sistem",
+    "accessibility_title": "Aksesibilitas & Fitur Inklusif",
+    "accessibility_desc": "Atur kontras, ukuran teks, dan modul pembaca layar Sienna",
+    "open_widget": "Buka Widget"
   },
   "theme": {
     "title": "Tampilan",
@@ -275,7 +297,8 @@
     "about": "Tentang Kami",
     "blog": "Blog",
     "terms": "Ketentuan",
-    "privacy": "Privasi"
+    "privacy": "Privasi",
+    "scan_image": "Scan Gambar"
   },
   "editor": {
     "insert_link": "Sisipkan Link",
@@ -309,17 +332,6 @@
     "view": "Lihat",
     "cancel": "Batal",
     "read_time_badge": "m"
-  },
-  "home": {
-    "login_to_like": "Silakan masuk (login) terlebih dahulu untuk menyukai tulisan.",
-    "no_description": "Tidak ada deskripsi",
-    "for_you": "✨ Untuk Anda",
-    "main_focus": "Fokus Utama",
-    "notes": "Catatan",
-    "view_all": "Lihat Semua",
-    "all_caught_up": "Anda sudah melihat semua catatan terbaru.",
-    "trending": "Sedang Populer",
-    "explore_topics": "Jelajahi Topik Belajar"
   },
   "explore": {
     "title": "Eksplorasi",

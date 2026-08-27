@@ -14,7 +14,11 @@
     "pakar_choice": "EXPERTENWAHL",
     "no_pakar_choice": "Noch keine Expertenwahl",
     "dashboard": "ARMATURENBRETT",
-    "insights": "EINBLICKE"
+    "insights": "EINBLICKE",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Einstellungen",
@@ -44,7 +48,10 @@
     "version": "Version",
     "theme_light": "Hell",
     "theme_dark": "Dunkel",
-    "theme_system": "System"
+    "theme_system": "System",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Erscheinungsbild",
@@ -252,7 +259,8 @@
     "about": "Über uns",
     "blog": "Blogs",
     "terms": "Bedingungen",
-    "privacy": "Datenschutz"
+    "privacy": "Datenschutz",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Link einfügen",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Bitte melden Sie sich zuerst an, um zu liken.",
     "no_description": "Keine Beschreibung",
-    "for_you": "✨ Für dich",
+    "for_you": "Für dich",
     "main_focus": "Im Fokus",
     "notes": "Notizen",
     "view_all": "Alle ansehen",
     "all_caught_up": "Sie haben alle neuesten Notizen gesehen.",
     "trending": "Im Trend",
-    "explore_topics": "Lern-Themen Entdecken"
+    "explore_topics": "Lern-Themen Entdecken",
+    "following": "Folge ich",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Erkunden",

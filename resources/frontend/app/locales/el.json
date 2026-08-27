@@ -14,7 +14,11 @@
     "pakar_choice": "ΕΙΔΙΚΟΙ ΕΠΙΛΟΓΕΣ",
     "no_pakar_choice": "Δεν υπάρχουν ακόμη επιλογές ειδικών",
     "dashboard": "ΤΑΜΠΛΟ",
-    "insights": "ΕΝΝΟΗΣΕΙΣ"
+    "insights": "ΕΝΝΟΗΣΕΙΣ",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Ρυθμίσεις",
@@ -44,7 +48,10 @@
     "version": "Εκδοχή",
     "theme_light": "Φως",
     "theme_dark": "Σκοτάδι",
-    "theme_system": "Σύστημα"
+    "theme_system": "Σύστημα",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Εμφάνιση",
@@ -252,7 +259,8 @@
     "about": "Σχετικά με εμάς",
     "blog": "Ιστολόγιο",
     "terms": "Οροι",
-    "privacy": "Μυστικότητα"
+    "privacy": "Μυστικότητα",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Εισαγωγή συνδέσμου",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Παρακαλώ συνδεθείτε πρώτα για να κάνετε like στις δημοσιεύσεις.",
     "no_description": "Καμία περιγραφή",
-    "for_you": "✨ Για εσάς",
+    "for_you": "Για εσάς",
     "main_focus": "Κύρια εστίαση",
     "notes": "Σημειώσεις",
     "view_all": "Προβολή όλων",
     "all_caught_up": "Έχετε δει όλες τις τελευταίες σημειώσεις.",
     "trending": "Τάσεις",
-    "explore_topics": "Εξερευνήστε Μαθησιακά Θέματα"
+    "explore_topics": "Εξερευνήστε Μαθησιακά Θέματα",
+    "following": "Εξής",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Εξερευνώ",

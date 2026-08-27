@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Home, Search, Bookmark, User, LayoutDashboard, ChevronLeft, Hash, Star, FileText, Settings, Plus, LogOut, PersonStanding, Sparkles, Camera } from 'lucide-react';
+import { Home, Search, Bookmark, User, LayoutDashboard, ChevronLeft, Hash, Star, FileText, Settings, Plus, LogOut, PersonStanding, Sparkles, Camera, Calendar } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
@@ -79,9 +79,9 @@ export function SideNav({ isExpanded, toggleSidebar }: SideNavProps) {
                         onClick={() => setIsScannerOpen(true)}
                         className="flex items-center gap-3 px-3 py-[7px] rounded-[8px] transition-all duration-200 w-full group text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-gray-200 active:bg-gray-200/60 dark:active:bg-white/10 text-left cursor-pointer"
                       >
-                        <Camera className="w-[18px] h-[18px] text-emerald-600 dark:text-emerald-400 shrink-0 transition-all duration-200 group-hover:scale-105" strokeWidth={2} />
+                        <Camera className="w-[18px] h-[18px] text-gray-700 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200 shrink-0 transition-all duration-200 group-hover:scale-105" strokeWidth={2} />
                         <span className="font-['Manrope'] text-[14px] truncate mt-[1px] font-medium">
-                          Scan Dokumen
+                          {t('nav.scan_image') !== 'nav.scan_image' ? t('nav.scan_image') : 'Scan Gambar'}
                         </span>
                       </button>
                     )}
@@ -151,6 +151,28 @@ export function SideNav({ isExpanded, toggleSidebar }: SideNavProps) {
 
       {/* Bottom Actions */}
       <div className="mt-auto border-t border-slate-100 dark:border-white/5 p-3 flex flex-col gap-1">
+         {/* Jadwal Belajar Cerdas (Diletakkan tepat di atas Sensora AI Chat) */}
+         <Link
+           to="/schedule"
+           className={`flex items-center gap-3 px-3 py-[9px] rounded-xl transition-all duration-200 w-full group relative overflow-hidden ${
+             isActive('/schedule')
+               ? 'bg-gradient-to-r from-purple-600/15 via-indigo-600/15 to-blue-600/15 text-purple-600 dark:text-purple-400 font-bold border border-purple-500/20 shadow-sm'
+               : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-gray-200'
+           }`}
+           title={t('nav.schedule_planner') !== 'nav.schedule_planner' ? t('nav.schedule_planner') : 'Perencana Jadwal'}
+         >
+           <div className={`p-1 rounded-lg transition-all duration-200 shrink-0 ${
+             isActive('/schedule')
+               ? 'bg-gradient-to-tr from-purple-600 to-indigo-600 text-white shadow-sm shadow-purple-500/30'
+               : 'bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 group-hover:bg-gradient-to-tr group-hover:from-purple-600 group-hover:to-indigo-600 group-hover:text-white transition-colors'
+           }`}>
+             <Calendar className="w-[15px] h-[15px]" strokeWidth={2.2} />
+           </div>
+           <span className={`font-['Manrope'] text-[14px] truncate mt-[1px] ${isActive('/schedule') ? 'font-bold' : 'font-medium'}`}>
+             {t('nav.schedule_planner') !== 'nav.schedule_planner' ? t('nav.schedule_planner') : 'Perencana Jadwal'}
+           </span>
+         </Link>
+
          {/* Sensora AI Chatbot Button */}
          <Link
            to="/chatbot"
@@ -188,7 +210,7 @@ export function SideNav({ isExpanded, toggleSidebar }: SideNavProps) {
          >
            <PersonStanding className="w-[20px] h-[20px] shrink-0 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform" strokeWidth={2.2} />
            <span className="font-['Manrope'] text-[14px] truncate mt-[1px] font-medium">
-             Aksesibilitas
+             {t('nav.accessibility') !== 'nav.accessibility' ? t('nav.accessibility') : 'Aksesibilitas'}
            </span>
          </button>
 

@@ -14,7 +14,11 @@
     "pakar_choice": "SZAKÉRTŐI VÁLASZTÁSOK",
     "no_pakar_choice": "Szakértői választás még nincs",
     "dashboard": "MŰSZERFAL",
-    "insights": "BELÉPÉSEK"
+    "insights": "BELÉPÉSEK",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Beállítások elemre",
@@ -44,7 +48,10 @@
     "version": "Változat",
     "theme_light": "Fény",
     "theme_dark": "Sötét",
-    "theme_system": "Rendszer"
+    "theme_system": "Rendszer",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Megjelenés",
@@ -252,7 +259,8 @@
     "about": "Rólunk",
     "blog": "Blogok",
     "terms": "Feltételek",
-    "privacy": "Magánélet"
+    "privacy": "Magánélet",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Hivatkozás beszúrása",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Kérjük, először jelentkezzen be a bejegyzések kedveléséhez.",
     "no_description": "Nincs leírás",
-    "for_you": "✨ Neked",
+    "for_you": "Neked",
     "main_focus": "Fő fókusz",
     "notes": "Megjegyzések",
     "view_all": "Összes megtekintése",
     "all_caught_up": "Láttad az összes legújabb jegyzetet.",
     "trending": "Felkapott",
-    "explore_topics": "Fedezze fel a tanulási témákat"
+    "explore_topics": "Fedezze fel a tanulási témákat",
+    "following": "Következő",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Fedezze fel",

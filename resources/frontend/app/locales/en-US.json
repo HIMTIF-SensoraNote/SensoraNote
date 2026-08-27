@@ -14,7 +14,11 @@
     "pakar_choice": "EXPERT PICKS",
     "no_pakar_choice": "No expert picks yet",
     "dashboard": "DASHBOARD",
-    "insights": "INSIGHTS"
+    "insights": "INSIGHTS",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Settings",
@@ -44,7 +48,10 @@
     "version": "Version",
     "theme_light": "Light",
     "theme_dark": "Dark",
-    "theme_system": "System"
+    "theme_system": "System",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Appearance",
@@ -252,7 +259,8 @@
     "about": "About Us",
     "blog": "Blogs",
     "terms": "Terms",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Insert Link",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Please log in first to like posts.",
     "no_description": "No description",
-    "for_you": "✨ For You",
+    "for_you": "For You",
     "main_focus": "Main Focus",
     "notes": "Notes",
     "view_all": "View All",
     "all_caught_up": "You've seen all the latest notes.",
     "trending": "Trending",
-    "explore_topics": "Explore Learning Topics"
+    "explore_topics": "Explore Learning Topics",
+    "following": "Following",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Explore",

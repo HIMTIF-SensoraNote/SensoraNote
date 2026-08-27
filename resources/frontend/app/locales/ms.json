@@ -14,7 +14,11 @@
     "pakar_choice": "PILIHAN PAKAR",
     "no_pakar_choice": "Tiada pilihan pakar lagi",
     "dashboard": "PAPAN PEmuka",
-    "insights": "PANDANGAN"
+    "insights": "PANDANGAN",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "tetapan",
@@ -44,7 +48,10 @@
     "version": "Versi",
     "theme_light": "Cahaya",
     "theme_dark": "Gelap",
-    "theme_system": "Sistem"
+    "theme_system": "Sistem",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Penampilan",
@@ -252,7 +259,8 @@
     "about": "Tentang Kami",
     "blog": "Blog",
     "terms": "Syarat",
-    "privacy": "Privasi"
+    "privacy": "Privasi",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Sisipkan Pautan",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Sila log masuk dahulu untuk menyukai siaran.",
     "no_description": "Tiada penerangan",
-    "for_you": "✨ Untuk anda",
+    "for_you": "Untuk anda",
     "main_focus": "Fokus Utama",
     "notes": "Nota",
     "view_all": "Lihat Semua",
     "all_caught_up": "Anda telah melihat semua nota terkini.",
     "trending": "Trending",
-    "explore_topics": "Terokai Topik Pembelajaran"
+    "explore_topics": "Terokai Topik Pembelajaran",
+    "following": "Ikut",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Teroka",

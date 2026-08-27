@@ -14,7 +14,11 @@
     "pakar_choice": "UZMAN SEÇİMLERİ",
     "no_pakar_choice": "Henüz uzman seçimi yok",
     "dashboard": "Kontrol Paneli",
-    "insights": "ANALİZLER"
+    "insights": "ANALİZLER",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Ayarlar",
@@ -44,7 +48,10 @@
     "version": "Sürüm",
     "theme_light": "Işık",
     "theme_dark": "Karanlık",
-    "theme_system": "Sistem"
+    "theme_system": "Sistem",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Dış görünüş",
@@ -252,7 +259,8 @@
     "about": "Hakkımızda",
     "blog": "Bloglar",
     "terms": "Şartlar",
-    "privacy": "Mahremiyet"
+    "privacy": "Mahremiyet",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Bağlantı Ekle",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Gönderileri beğenebilmek için lütfen önce giriş yapınız.",
     "no_description": "Açıklama yok",
-    "for_you": "✨ Sizin İçin",
+    "for_you": "Sizin İçin",
     "main_focus": "Ana Odak",
     "notes": "Notlar",
     "view_all": "Tümünü Görüntüle",
     "all_caught_up": "En son notların hepsini gördünüz.",
     "trending": "Trend olan",
-    "explore_topics": "Öğrenme Konularını Keşfedin"
+    "explore_topics": "Öğrenme Konularını Keşfedin",
+    "following": "Takip etme",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Keşfetmek",

@@ -14,7 +14,11 @@
     "pakar_choice": "LỰA CHỌN TRẢI NGHIỆM",
     "no_pakar_choice": "Chưa có chuyên gia nào chọn",
     "dashboard": "BẢNG ĐIỀU KHIỂN",
-    "insights": "cái nhìn sâu sắc"
+    "insights": "cái nhìn sâu sắc",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Cài đặt",
@@ -44,7 +48,10 @@
     "version": "Phiên bản",
     "theme_light": "Ánh sáng",
     "theme_dark": "Tối tăm",
-    "theme_system": "Hệ thống"
+    "theme_system": "Hệ thống",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Vẻ bề ngoài",
@@ -252,7 +259,8 @@
     "about": "Về chúng tôi",
     "blog": "Blog",
     "terms": "Điều khoản",
-    "privacy": "Sự riêng tư"
+    "privacy": "Sự riêng tư",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Chèn liên kết",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Vui lòng đăng nhập trước để thích bài viết.",
     "no_description": "Không có mô tả",
-    "for_you": "✨ Dành cho bạn",
+    "for_you": "Dành cho bạn",
     "main_focus": "Trọng tâm chính",
     "notes": "Ghi chú",
     "view_all": "Xem tất cả",
     "all_caught_up": "Bạn đã xem tất cả các ghi chú mới nhất.",
     "trending": "Xu hướng",
-    "explore_topics": "Khám phá chủ đề học tập"
+    "explore_topics": "Khám phá chủ đề học tập",
+    "following": "Tiếp theo",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Khám phá",

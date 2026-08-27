@@ -4,6 +4,7 @@ import { BookmarkProvider } from '../contexts/BookmarkContext';
 import { ToastProvider } from '../contexts/ToastContext';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import { LanguageProvider } from '../contexts/LanguageContext';
+import { DeviceNotificationProvider } from '../contexts/DeviceNotificationContext';
 
 export function RootLayout() {
   return (
@@ -12,7 +13,9 @@ export function RootLayout() {
         <AuthProvider>
           <BookmarkProvider>
             <ToastProvider>
-              <Outlet />
+              <DeviceNotificationProvider>
+                <Outlet />
+              </DeviceNotificationProvider>
             </ToastProvider>
           </BookmarkProvider>
         </AuthProvider>

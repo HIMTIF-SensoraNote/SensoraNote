@@ -14,7 +14,11 @@
     "pakar_choice": "विशेषज्ञ छनौटहरू",
     "no_pakar_choice": "अझै कुनै विशेषज्ञ छनोट छैन",
     "dashboard": "ड्यासबोर्ड",
-    "insights": "अन्तर्दृष्टिहरू"
+    "insights": "अन्तर्दृष्टिहरू",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "सेटिङहरू",
@@ -44,7 +48,10 @@
     "version": "संस्करण",
     "theme_light": "उज्यालो",
     "theme_dark": "अँध्यारो",
-    "theme_system": "प्रणाली"
+    "theme_system": "प्रणाली",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "उपस्थिति",
@@ -252,7 +259,8 @@
     "about": "हाम्रो बारेमा",
     "blog": "ब्लग",
     "terms": "सर्तहरू",
-    "privacy": "गोपनीयता"
+    "privacy": "गोपनीयता",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "लिङ्क घुसाउनुहोस्",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "पोस्ट लाइक गर्न पहिले लग इन गर्नुहोस्।",
     "no_description": "कुनै विवरण छैन",
-    "for_you": "✨ तिम्रो लागि",
+    "for_you": "तिम्रो लागि",
     "main_focus": "मुख्य फोकस",
     "notes": "नोटहरू",
     "view_all": "सबै हेर्नुहोस्",
     "all_caught_up": "तपाईंले सबै नवीनतम नोटहरू हेर्नुभयो।",
     "trending": "ट्रेन्डिङ",
-    "explore_topics": "सिक्ने विषयहरू अन्वेषण गर्नुहोस्"
+    "explore_topics": "सिक्ने विषयहरू अन्वेषण गर्नुहोस्",
+    "following": "पछ्याउँदै",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "अन्वेषण गर्नुहोस्",

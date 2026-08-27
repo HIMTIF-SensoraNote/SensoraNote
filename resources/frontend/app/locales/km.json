@@ -14,7 +14,11 @@
     "pakar_choice": "ការជ្រើសរើសអ្នកជំនាញ",
     "no_pakar_choice": "មិនទាន់មានអ្នកជំនាញជ្រើសរើសនៅឡើយទេ",
     "dashboard": "ផ្ទាំងគ្រប់គ្រង",
-    "insights": "ការយល់ដឹង"
+    "insights": "ការយល់ដឹង",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "ការកំណត់",
@@ -44,7 +48,10 @@
     "version": "កំណែ",
     "theme_light": "ពន្លឺ",
     "theme_dark": "ងងឹត",
-    "theme_system": "ប្រព័ន្ធ"
+    "theme_system": "ប្រព័ន្ធ",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "រូបរាង",
@@ -252,7 +259,8 @@
     "about": "អំពីពួកយើង",
     "blog": "ប្លុក",
     "terms": "លក្ខខណ្ឌ",
-    "privacy": "ឯកជនភាព"
+    "privacy": "ឯកជនភាព",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "បញ្ចូលតំណ",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "សូម​ចូល​ជា​មុន​ដើម្បី​ចូល​ចិត្ត​ការ​បង្ហោះ។",
     "no_description": "គ្មានការពិពណ៌នាទេ។",
-    "for_you": "✨សម្រាប់អ្នក",
+    "for_you": "សម្រាប់អ្នក",
     "main_focus": "ការផ្តោតសំខាន់",
     "notes": "កំណត់ចំណាំ",
     "view_all": "មើលទាំងអស់។",
     "all_caught_up": "អ្នកបានឃើញកំណត់ត្រាចុងក្រោយបង្អស់ទាំងអស់។",
     "trending": "និន្នាការ",
-    "explore_topics": "ស្វែងរកប្រធានបទសិក្សា"
+    "explore_topics": "ស្វែងរកប្រធានបទសិក្សា",
+    "following": "កំពុងតាម",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "រុករក",

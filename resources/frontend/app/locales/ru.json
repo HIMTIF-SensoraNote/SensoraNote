@@ -14,7 +14,11 @@
     "pakar_choice": "ВЫБОР ЭКСПЕРТА",
     "no_pakar_choice": "Пока нет выбора эксперта",
     "dashboard": "ПАНЕЛЬ",
-    "insights": "АНАЛИТИКА"
+    "insights": "АНАЛИТИКА",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Настройки",
@@ -44,7 +48,10 @@
     "version": "Версия",
     "theme_light": "Светлая",
     "theme_dark": "Тёмная",
-    "theme_system": "Системная"
+    "theme_system": "Системная",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Внешний вид",
@@ -252,7 +259,8 @@
     "about": "О нас",
     "blog": "Блог",
     "terms": "Условия",
-    "privacy": "Конфиденциальность"
+    "privacy": "Конфиденциальность",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Вставить ссылку",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Пожалуйста, войдите, чтобы поставить лайк.",
     "no_description": "Нет описания",
-    "for_you": "✨ Для вас",
+    "for_you": "Для вас",
     "main_focus": "В центре внимания",
     "notes": "Заметки",
     "view_all": "Смотреть все",
     "all_caught_up": "Вы просмотрели все новые заметки.",
     "trending": "В тренде",
-    "explore_topics": "Исследовать темы для изучения"
+    "explore_topics": "Исследовать темы для изучения",
+    "following": "Читаю",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Обзор",

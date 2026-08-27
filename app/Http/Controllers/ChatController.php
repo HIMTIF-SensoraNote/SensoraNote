@@ -14,7 +14,12 @@ class ChatController extends Controller
     public function sendMessage(Request $request)
     {
         $request->validate([
-            'message' => 'required|string|max:4000',
+            'message' => 'nullable|string|max:4000',
+            'file' => 'nullable|array',
+            'file.data' => 'nullable|string',
+            'file.mime_type' => 'nullable|string',
+            'file.name' => 'nullable|string',
+            'file.text_content' => 'nullable|string',
             'history' => 'nullable|array',
             'history.*.role' => 'required_with:history|string|in:user,model,assistant',
             'history.*.parts' => 'nullable|array',
@@ -32,17 +37,26 @@ class ChatController extends Controller
             ], 500);
         }
 
-        $userMessage = $request->input('message');
+        $userMessage = trim((string) $request->input('message'));
+        $fileInput = $request->input('file');
         $history = $request->input('history', []);
+
+        if (empty($userMessage) && empty($fileInput)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Pesan atau lampiran file tidak boleh kosong.',
+            ], 422);
+        }
 
         // System Instruction tailored for SensoraNote
         $systemInstruction = [
             'parts' => [
                 [
                     'text' => "Anda adalah Sensora AI, asisten belajar cerdas, ramah, dan inklusif di platform SensoraNote.\n" .
-                              "SensoraNote adalah platform berbagi catatan belajar inklusif yang mendukung aksesibilitas, translasi huruf Braille, dan ringkasan materi.\n\n" .
+                              "SensoraNote adalah platform berbagi catatan belajar inklusif yang mendukung aksesibilitas, translasi huruf Braille, ringkasan materi, dan analisis dokumen multi-modal.\n\n" .
                               "Panduan Pemformatan & Struktur Jawaban:\n" .
-                              "1. Gunakan format Markdown yang kaya, terstruktur, dan elegan:\n" .
+                              "1. Jika pengguna melampirkan gambar, foto dokumen, grafik, atau file teks/PDF, analisis materi tersebut secara detail, akurat, dan jelaskan langkah demi langkah.\n" .
+                              "2. Gunakan format Markdown yang kaya, terstruktur, dan elegan:\n" .
                               "   - Gunakan heading (## dan ###) untuk membagi topik dan subtopik.\n" .
                               "   - Gunakan blok kode (```bahasa ... ```) dan inline code (`kode`) untuk contoh kode, perintah terminal, atau skrip.\n" .
                               "   - Gunakan notasi LaTeX untuk SEMUA rumus matematika, fisika, atau kimia: \$rumus\$ untuk inline dan \$\$rumus\$\$ untuk rumus terpusat (block).\n" .
@@ -50,7 +64,7 @@ class ChatController extends Controller
                               "   - Gunakan kutipan/blockquote (> Teks) untuk definisi penting, hukum/teori, catatan khusus, atau tips belajar.\n" .
                               "   - Gunakan daftar berpoin (-) atau nomor (1. 2.) untuk rincian langkah atau poin-poin penjelasan.\n" .
                               "   - Gunakan **bold** untuk istilah penting/istilah kunci.\n" .
-                              "2. Berikan jawaban yang akurat, terstruktur, mudah dipahami, dan berbahasa Indonesia yang baik."
+                              "3. Berikan jawaban yang akurat, terstruktur, mudah dipahami, dan berbahasa Indonesia yang baik."
                 ]
             ]
         ];
@@ -78,12 +92,87 @@ class ChatController extends Controller
             }
         }
 
-        // Add the latest user message
+        // Build current user message parts (supporting multimodal inlineData and text documents)
+        $userParts = [];
+
+        if (!empty($fileInput)) {
+            $fileData = $fileInput['data'] ?? '';
+            $mimeType = $fileInput['mime_type'] ?? '';
+            $fileName = $fileInput['name'] ?? 'lampiran';
+            $textContent = $fileInput['text_content'] ?? '';
+
+            // Clean Base64 prefix if exists
+            $rawBase64 = $fileData;
+            if (preg_match('/^data:([^;]+);base64,(.*)$/', $fileData, $matches)) {
+                if (empty($mimeType)) {
+                    $mimeType = $matches[1];
+                }
+                $rawBase64 = $matches[2];
+            }
+
+            $extension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+            // 1. Image formats or PDF -> Gemini inlineData
+            $isImage = str_starts_with($mimeType, 'image/') || in_array($extension, ['jpg', 'jpeg', 'png', 'webp', 'gif', 'bmp', 'svg', 'avif', 'tiff', 'heic', 'heif', 'ico']);
+            $isPdf = $mimeType === 'application/pdf' || $extension === 'pdf';
+
+            if (!empty($rawBase64) && ($isImage || $isPdf)) {
+                $actualMime = $isPdf ? 'application/pdf' : ($mimeType ?: 'image/jpeg');
+                $userParts[] = [
+                    'inlineData' => [
+                        'mimeType' => $actualMime,
+                        'data' => $rawBase64,
+                    ]
+                ];
+            }
+            // 2. Word documents (.docx)
+            elseif ($extension === 'docx' || str_contains($mimeType, 'wordprocessingml.document')) {
+                $extractedDocx = !empty($rawBase64) ? $this->extractTextFromDocx($rawBase64) : '';
+                $finalDocxText = !empty($extractedDocx) ? $extractedDocx : $textContent;
+                if (!empty($finalDocxText)) {
+                    $userParts[] = [
+                        'text' => "[Isi Dokumen Microsoft Word ({$fileName})]:\n\n" . $finalDocxText
+                    ];
+                }
+            }
+            // 3. HTML, Text, Markdown, CSV, Code, JSON, RTF
+            elseif (!empty($textContent)) {
+                $docTypeLabel = match ($extension) {
+                    'html', 'htm' => 'Halaman Web / Dokumen HTML',
+                    'doc' => 'Dokumen Word (DOC)',
+                    'csv' => 'Tabel Data CSV',
+                    'json' => 'Data JSON',
+                    'md' => 'Dokumen Markdown',
+                    'rtf' => 'Dokumen Rich Text (RTF)',
+                    'xml' => 'Dokumen XML',
+                    default => 'Dokumen Teks'
+                };
+                $userParts[] = [
+                    'text' => "[Isi {$docTypeLabel} ({$fileName})]:\n\n" . $textContent
+                ];
+            }
+            // 4. Fallback base64 decoded text
+            elseif (!empty($rawBase64)) {
+                $decodedText = base64_decode($rawBase64);
+                if ($decodedText && mb_check_encoding($decodedText, 'UTF-8')) {
+                    $userParts[] = [
+                        'text' => "[Isi Berkas ({$fileName})]:\n\n" . $decodedText
+                    ];
+                }
+            }
+        }
+
+        $promptText = !empty($userMessage) 
+            ? $userMessage 
+            : 'Tolong analisis, jelaskan, dan rangkum informasi penting dari file dokumen/gambar yang saya lampirkan ini.';
+
+        $userParts[] = [
+            'text' => $promptText
+        ];
+
         $contents[] = [
             'role' => 'user',
-            'parts' => [
-                ['text' => $userMessage]
-            ]
+            'parts' => $userParts
         ];
 
         $payload = [
@@ -245,5 +334,33 @@ class ChatController extends Controller
             'status' => 'error',
             'message' => $lastError ?: 'Gagal merapikan teks dengan AI.',
         ], 500);
+    }
+
+    /**
+     * Extract clean text from a Base64 encoded DOCX file using ZipArchive.
+     */
+    private function extractTextFromDocx(string $base64Data): string
+    {
+        $raw = base64_decode($base64Data);
+        if (!$raw) return '';
+
+        $tempFile = tempnam(sys_get_temp_dir(), 'docx_');
+        file_put_contents($tempFile, $raw);
+
+        $text = '';
+        if (class_exists(\ZipArchive::class)) {
+            $zip = new \ZipArchive();
+            if ($zip->open($tempFile) === true) {
+                if (($xml = $zip->getFromName('word/document.xml')) !== false) {
+                    $xml = preg_replace('/<\/w:p>/', "\n", $xml);
+                    $xml = preg_replace('/<\/w:br>/', "\n", $xml);
+                    $text = trim(strip_tags($xml));
+                    $text = html_entity_decode($text, ENT_QUOTES | ENT_XML1, 'UTF-8');
+                }
+                $zip->close();
+            }
+        }
+        @unlink($tempFile);
+        return $text;
     }
 }

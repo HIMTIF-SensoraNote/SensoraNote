@@ -14,7 +14,11 @@
     "pakar_choice": "বিশেষজ্ঞের পছন্দ",
     "no_pakar_choice": "এখনও কোন বিশেষজ্ঞ বাছাই",
     "dashboard": "ড্যাশবোর্ড",
-    "insights": "অন্তর্দৃষ্টি"
+    "insights": "অন্তর্দৃষ্টি",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "সেটিংস",
@@ -44,7 +48,10 @@
     "version": "সংস্করণ",
     "theme_light": "আলো",
     "theme_dark": "অন্ধকার",
-    "theme_system": "সিস্টেম"
+    "theme_system": "সিস্টেম",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "চেহারা",
@@ -252,7 +259,8 @@
     "about": "আমাদের সম্পর্কে",
     "blog": "ব্লগ",
     "terms": "শর্তাবলী",
-    "privacy": "গোপনীয়তা"
+    "privacy": "গোপনীয়তা",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "লিঙ্ক ঢোকান",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "পোস্ট পছন্দ করতে প্রথমে লগ ইন করুন.",
     "no_description": "কোন বর্ণনা নেই",
-    "for_you": "✨ তোমার জন্য",
+    "for_you": "তোমার জন্য",
     "main_focus": "প্রধান ফোকাস",
     "notes": "নোট",
     "view_all": "সব দেখুন",
     "all_caught_up": "আপনি সব সাম্প্রতিক নোট দেখেছেন.",
     "trending": "প্রবণতা",
-    "explore_topics": "শেখার বিষয়গুলি অন্বেষণ করুন"
+    "explore_topics": "শেখার বিষয়গুলি অন্বেষণ করুন",
+    "following": "অনুসরণ করছে",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "অন্বেষণ",

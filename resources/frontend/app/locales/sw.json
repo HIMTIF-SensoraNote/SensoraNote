@@ -14,7 +14,11 @@
     "pakar_choice": "CHAGUO ZA MTAALAM",
     "no_pakar_choice": "Bado hakuna mtaalam anayechagua",
     "dashboard": "DASHBODI",
-    "insights": "MAARIFA"
+    "insights": "MAARIFA",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Mipangilio",
@@ -44,7 +48,10 @@
     "version": "Toleo",
     "theme_light": "Mwanga",
     "theme_dark": "Giza",
-    "theme_system": "Mfumo"
+    "theme_system": "Mfumo",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Muonekano",
@@ -252,7 +259,8 @@
     "about": "Kuhusu Sisi",
     "blog": "Blogu",
     "terms": "Masharti",
-    "privacy": "Faragha"
+    "privacy": "Faragha",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Weka Kiungo",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Tafadhali ingia kwanza ili kupenda machapisho.",
     "no_description": "Hakuna maelezo",
-    "for_you": "✨ Kwa ajili yako",
+    "for_you": "Kwa ajili yako",
     "main_focus": "Mtazamo Mkuu",
     "notes": "Vidokezo",
     "view_all": "Tazama Zote",
     "all_caught_up": "Umeona madokezo yote ya hivi punde.",
     "trending": "Zinazovuma",
-    "explore_topics": "Chunguza Mada za Kujifunza"
+    "explore_topics": "Chunguza Mada za Kujifunza",
+    "following": "Kufuatia",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Chunguza",

@@ -14,7 +14,11 @@
     "pakar_choice": "WYBÓR EKSPERTÓW",
     "no_pakar_choice": "Nie ma jeszcze żadnych wyborów ekspertów",
     "dashboard": "PANEL",
-    "insights": "WGLĄDY"
+    "insights": "WGLĄDY",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Ustawienia",
@@ -44,7 +48,10 @@
     "version": "Wersja",
     "theme_light": "Światło",
     "theme_dark": "Ciemny",
-    "theme_system": "System"
+    "theme_system": "System",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Wygląd",
@@ -252,7 +259,8 @@
     "about": "O nas",
     "blog": "Blogi",
     "terms": "Warunki",
-    "privacy": "Prywatność"
+    "privacy": "Prywatność",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Wstaw link",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Aby polubić posty, zaloguj się najpierw.",
     "no_description": "Brak opisu",
-    "for_you": "✨ Dla Ciebie",
+    "for_you": "Dla Ciebie",
     "main_focus": "Główny nacisk",
     "notes": "Notatki",
     "view_all": "Zobacz wszystko",
     "all_caught_up": "Widziałeś wszystkie najnowsze notatki.",
     "trending": "Trendy",
-    "explore_topics": "Przeglądaj tematy edukacyjne"
+    "explore_topics": "Przeglądaj tematy edukacyjne",
+    "following": "Następny",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Badać",

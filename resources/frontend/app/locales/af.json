@@ -14,7 +14,11 @@
     "pakar_choice": "DESKUNDIGE KEUSE",
     "no_pakar_choice": "Nog geen kundige keuses nie",
     "dashboard": "DASHBOARD",
-    "insights": "INSIGTE"
+    "insights": "INSIGTE",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Instellings",
@@ -44,7 +48,10 @@
     "version": "Weergawe",
     "theme_light": "Lig",
     "theme_dark": "Donker",
-    "theme_system": "Stelsel"
+    "theme_system": "Stelsel",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Voorkoms",
@@ -252,7 +259,8 @@
     "about": "Oor ons",
     "blog": "Blogs",
     "terms": "Bepalings",
-    "privacy": "Privaatheid"
+    "privacy": "Privaatheid",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Voeg skakel in",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Meld asseblief eers aan om plasings te like.",
     "no_description": "Geen beskrywing nie",
-    "for_you": "✨ Vir jou",
+    "for_you": "Vir jou",
     "main_focus": "Hooffokus",
     "notes": "Notas",
     "view_all": "Bekyk alles",
     "all_caught_up": "Jy het al die nuutste notas gesien.",
     "trending": "Trending",
-    "explore_topics": "Verken leeronderwerpe"
+    "explore_topics": "Verken leeronderwerpe",
+    "following": "Volgende",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Verken",

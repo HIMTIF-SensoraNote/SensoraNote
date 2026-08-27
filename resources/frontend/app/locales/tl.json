@@ -14,7 +14,11 @@
     "pakar_choice": "EXPERT PICKS",
     "no_pakar_choice": "Wala pang napiling eksperto",
     "dashboard": "DASHBOARD",
-    "insights": "MGA INSIGHT"
+    "insights": "MGA INSIGHT",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Mga setting",
@@ -44,7 +48,10 @@
     "version": "Bersyon",
     "theme_light": "Liwanag",
     "theme_dark": "Madilim",
-    "theme_system": "Sistema"
+    "theme_system": "Sistema",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Hitsura",
@@ -252,7 +259,8 @@
     "about": "Tungkol sa Amin",
     "blog": "Mga Blog",
     "terms": "Mga tuntunin",
-    "privacy": "Pagkapribado"
+    "privacy": "Pagkapribado",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Ipasok ang Link",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Mangyaring mag-log in muna upang i-like ang mga post.",
     "no_description": "Walang paglalarawan",
-    "for_you": "✨ Para sa Iyo",
+    "for_you": "Para sa Iyo",
     "main_focus": "Pangunahing Pokus",
     "notes": "Mga Tala",
     "view_all": "Tingnan Lahat",
     "all_caught_up": "Nakita mo na ang lahat ng pinakabagong tala.",
     "trending": "Trending",
-    "explore_topics": "Galugarin ang Mga Paksa sa Pag-aaral"
+    "explore_topics": "Galugarin ang Mga Paksa sa Pag-aaral",
+    "following": "Sumusunod",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Galugarin",

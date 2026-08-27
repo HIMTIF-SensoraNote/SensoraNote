@@ -14,7 +14,11 @@
     "pakar_choice": "EXPERT VAL",
     "no_pakar_choice": "Inga expertval ännu",
     "dashboard": "Dashboard",
-    "insights": "INSIKTER"
+    "insights": "INSIKTER",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Inställningar",
@@ -44,7 +48,10 @@
     "version": "Version",
     "theme_light": "Ljus",
     "theme_dark": "Mörk",
-    "theme_system": "System"
+    "theme_system": "System",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Utseende",
@@ -252,7 +259,8 @@
     "about": "Om oss",
     "blog": "Blogg",
     "terms": "Villkor",
-    "privacy": "Privatliv"
+    "privacy": "Privatliv",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Infoga länk",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Logga in först för att gilla inlägg.",
     "no_description": "Ingen beskrivning",
-    "for_you": "✨ För dig",
+    "for_you": "För dig",
     "main_focus": "Huvudfokus",
     "notes": "Anteckningar",
     "view_all": "Visa alla",
     "all_caught_up": "Du har sett alla de senaste anteckningarna.",
     "trending": "Trendigt",
-    "explore_topics": "Utforska lärande ämnen"
+    "explore_topics": "Utforska lärande ämnen",
+    "following": "Följande",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Utforska",

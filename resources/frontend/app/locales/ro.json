@@ -14,7 +14,11 @@
     "pakar_choice": "ALEGERILE EXPERȚII",
     "no_pakar_choice": "Nicio selecție de experți încă",
     "dashboard": "BORD",
-    "insights": "PERSPECTIVE"
+    "insights": "PERSPECTIVE",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Setări",
@@ -44,7 +48,10 @@
     "version": "Versiune",
     "theme_light": "Aprinde",
     "theme_dark": "Întuneric",
-    "theme_system": "Sistem"
+    "theme_system": "Sistem",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Aspect",
@@ -252,7 +259,8 @@
     "about": "Despre noi",
     "blog": "Bloguri",
     "terms": "Termeni",
-    "privacy": "Confidențialitate"
+    "privacy": "Confidențialitate",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Inserați linkul",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Vă rugăm să vă conectați mai întâi pentru a aprecia postările.",
     "no_description": "Fără descriere",
-    "for_you": "✨ Pentru tine",
+    "for_you": "Pentru tine",
     "main_focus": "Focus principal",
     "notes": "Note",
     "view_all": "Vezi toate",
     "all_caught_up": "Ați văzut toate cele mai recente note.",
     "trending": "Trending",
-    "explore_topics": "Explorați subiectele de învățare"
+    "explore_topics": "Explorați subiectele de învățare",
+    "following": "Urmând",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Explora",

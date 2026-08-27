@@ -77,6 +77,14 @@ export default function ExplorePage() {
     const [searchQuery, setSearchQuery] = useState(searchTermFromUrl);
     const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchTermFromUrl);
 
+    const subjectFromUrl = queryParams.get("subject") || queryParams.get("mapel") || "";
+    const [selectedSubject, setSelectedSubject] = useState<string>(subjectFromUrl);
+
+    useEffect(() => {
+        const s = queryParams.get("subject") || queryParams.get("mapel") || "";
+        setSelectedSubject(s);
+    }, [location.search]);
+
     useEffect(() => {
         setSearchQuery(searchTermFromUrl);
         setDebouncedSearchQuery(searchTermFromUrl);
@@ -464,6 +472,13 @@ export default function ExplorePage() {
                 queryParamsAPI.tags = selectedTags.join(',');
             }
 
+            if (selectedSubject) {
+                const matchSubject = mataPelajaran.find(
+                    (m) => m.id.toLowerCase() === selectedSubject.toLowerCase() || m.name.toLowerCase() === selectedSubject.toLowerCase()
+                );
+                queryParamsAPI.mapel = matchSubject ? matchSubject.name : selectedSubject;
+            }
+
             if (contentTypeFilter === 'catatan_terverifikasi') {
                 queryParamsAPI.is_verified = true;
             }
@@ -496,7 +511,7 @@ export default function ExplorePage() {
     useEffect(() => {
         setPage(1);
         fetchPosts(1, true);
-    }, [debouncedSearchQuery, activeSegment, sortOrder, selectedJenjang, selectedKelas, selectedTags, contentTypeFilter]);
+    }, [debouncedSearchQuery, activeSegment, sortOrder, selectedJenjang, selectedKelas, selectedTags, contentTypeFilter, selectedSubject]);
 
     // Fetch users when Pengguna tab is active and search query changes
     const fetchUsers = async (pageNum: number, isReset: boolean = false) => {

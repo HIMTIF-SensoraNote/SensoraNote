@@ -14,7 +14,11 @@
     "pakar_choice": "ผู้เชี่ยวชาญคัดสรร",
     "no_pakar_choice": "ยังไม่มีผู้เชี่ยวชาญเลือกเลย",
     "dashboard": "แดชบอร์ด",
-    "insights": "ข้อมูลเชิงลึก"
+    "insights": "ข้อมูลเชิงลึก",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "การตั้งค่า",
@@ -44,7 +48,10 @@
     "version": "เวอร์ชัน",
     "theme_light": "แสงสว่าง",
     "theme_dark": "มืด",
-    "theme_system": "ระบบ"
+    "theme_system": "ระบบ",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "รูปร่าง",
@@ -252,7 +259,8 @@
     "about": "เกี่ยวกับเรา",
     "blog": "บล็อก",
     "terms": "เงื่อนไข",
-    "privacy": "ความเป็นส่วนตัว"
+    "privacy": "ความเป็นส่วนตัว",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "ใส่ลิงค์",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "กรุณาเข้าสู่ระบบก่อนเพื่อชอบโพสต์",
     "no_description": "ไม่มีคำอธิบาย",
-    "for_you": "✨สำหรับคุณ",
+    "for_you": "สำหรับคุณ",
     "main_focus": "โฟกัสหลัก",
     "notes": "หมายเหตุ",
     "view_all": "ดูทั้งหมด",
     "all_caught_up": "คุณได้เห็นบันทึกล่าสุดทั้งหมดแล้ว",
     "trending": "กำลังมาแรง",
-    "explore_topics": "สำรวจหัวข้อการเรียนรู้"
+    "explore_topics": "สำรวจหัวข้อการเรียนรู้",
+    "following": "กำลังติดตาม",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "สำรวจ",

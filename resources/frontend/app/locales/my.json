@@ -14,7 +14,11 @@
     "pakar_choice": "ကျွမ်းကျင်ရွေးချယ်မှုများ",
     "no_pakar_choice": "ပညာရှင်မရွေးသေးဘူး။",
     "dashboard": "ဒိုင်ခွက်",
-    "insights": "အသိအမြင်များ"
+    "insights": "အသိအမြင်များ",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "ဆက်တင်များ",
@@ -44,7 +48,10 @@
     "version": "ဗားရှင်း",
     "theme_light": "အလင်း",
     "theme_dark": "အမှောင်",
-    "theme_system": "စနစ်"
+    "theme_system": "စနစ်",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "အသွင်အပြင်",
@@ -252,7 +259,8 @@
     "about": "ကြှနျုပျတို့အကွောငျး",
     "blog": "ဘလော့",
     "terms": "စည်းမျဥ်း",
-    "privacy": "ကိုယ်ရေးကိုယ်တာ"
+    "privacy": "ကိုယ်ရေးကိုယ်တာ",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Link ထည့်ပါ။",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "ပို့စ်များကို ကြိုက်နှစ်သက်ရန် ဦးစွာဝင်ရောက်ပါ။",
     "no_description": "ဖော်ပြချက်မရှိပါ။",
-    "for_you": "✨ သင့်အတွက်",
+    "for_you": "သင့်အတွက်",
     "main_focus": "အဓိကအာရုံစိုက်",
     "notes": "မှတ်စုများ",
     "view_all": "အားလုံးကြည့်ရန်",
     "all_caught_up": "နောက်ဆုံးထွက်မှတ်စုအားလုံးကို သင်မြင်ပြီးပါပြီ။",
     "trending": "ခေတ်စားနေသည်။",
-    "explore_topics": "သင်ယူမှုအကြောင်းအရာများကို စူးစမ်းလေ့လာပါ။"
+    "explore_topics": "သင်ယူမှုအကြောင်းအရာများကို စူးစမ်းလေ့လာပါ။",
+    "following": "လိုက်နေသည်။",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "စူးစမ်းပါ။",

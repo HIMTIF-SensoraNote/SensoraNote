@@ -14,7 +14,11 @@
     "pakar_choice": "ELECCIÓN EXPERTA",
     "no_pakar_choice": "Aún no hay selección experta",
     "dashboard": "PANEL",
-    "insights": "PERSPECTIVAS"
+    "insights": "PERSPECTIVAS",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Ajustes",
@@ -44,7 +48,10 @@
     "version": "Versión",
     "theme_light": "Claro",
     "theme_dark": "Oscuro",
-    "theme_system": "Sistema"
+    "theme_system": "Sistema",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Apariencia",
@@ -252,7 +259,8 @@
     "about": "Sobre nosotros",
     "blog": "Blogs",
     "terms": "Términos",
-    "privacy": "Privacidad"
+    "privacy": "Privacidad",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Insertar enlace",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Inicie sesión primero para dar me gusta.",
     "no_description": "Sin descripción",
-    "for_you": "✨ Para ti",
+    "for_you": "Para ti",
     "main_focus": "Enfoque principal",
     "notes": "Notas",
     "view_all": "Ver todo",
     "all_caught_up": "Has visto todas las notas más recientes.",
     "trending": "Tendencias",
-    "explore_topics": "Explorar Temas de Aprendizaje"
+    "explore_topics": "Explorar Temas de Aprendizaje",
+    "following": "Siguiendo",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Explorar",

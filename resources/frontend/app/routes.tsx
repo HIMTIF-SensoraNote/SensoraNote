@@ -46,6 +46,7 @@ const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const LearningStatisticsPage = lazy(() => import('./pages/LearningStatisticsPage'));
 const ScanResultPage = lazy(() => import('./pages/ScanResultPage'));
 const ChatbotPage = lazy(() => import('./pages/ChatbotPage'));
+const SchedulePage = lazy(() => import('./pages/SchedulePage'));
 
 // Page-level fallback shown while a route chunk downloads (theme-aware).
 function PageFallback() {
@@ -163,6 +164,10 @@ export const router = createBrowserRouter([
           {
             path: 'notifications/:id',
             element: s(NotificationDetailPage),
+          },
+          {
+            path: 'schedule',
+            element: s(SchedulePage),
           },
           {
             path: 'profile',

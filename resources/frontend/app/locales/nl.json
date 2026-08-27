@@ -14,7 +14,11 @@
     "pakar_choice": "DESKUNDIGE KEUZES",
     "no_pakar_choice": "Nog geen expertkeuze",
     "dashboard": "DASHBOARD",
-    "insights": "INZICHTEN"
+    "insights": "INZICHTEN",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Instellingen",
@@ -44,7 +48,10 @@
     "version": "Versie",
     "theme_light": "Licht",
     "theme_dark": "Donker",
-    "theme_system": "Systeem"
+    "theme_system": "Systeem",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Verschijning",
@@ -252,7 +259,8 @@
     "about": "Over ons",
     "blog": "Bloggen",
     "terms": "Voorwaarden",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Link invoegen",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Log eerst in om berichten leuk te vinden.",
     "no_description": "Geen beschrijving",
-    "for_you": "✨Voor jou",
+    "for_you": "Voor jou",
     "main_focus": "Hoofdfocus",
     "notes": "Opmerkingen",
     "view_all": "Bekijk alles",
     "all_caught_up": "Je hebt de laatste notities gezien.",
     "trending": "Populair",
-    "explore_topics": "Ontdek leeronderwerpen"
+    "explore_topics": "Ontdek leeronderwerpen",
+    "following": "Volgende",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Ontdekken",

@@ -14,7 +14,11 @@
     "pakar_choice": "ASIANTUNTIJAN VALITUKSET",
     "no_pakar_choice": "Ei vielä asiantuntijavalintoja",
     "dashboard": "Kojelauta",
-    "insights": "TIEDOT"
+    "insights": "TIEDOT",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Asetukset",
@@ -44,7 +48,10 @@
     "version": "Versio",
     "theme_light": "Kevyt",
     "theme_dark": "Tumma",
-    "theme_system": "Järjestelmä"
+    "theme_system": "Järjestelmä",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Ulkonäkö",
@@ -252,7 +259,8 @@
     "about": "Tietoja meistä",
     "blog": "Blogi",
     "terms": "Ehdot",
-    "privacy": "Yksityisyys"
+    "privacy": "Yksityisyys",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Lisää linkki",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Kirjaudu ensin sisään, jos haluat tykätä viesteistä.",
     "no_description": "Ei kuvausta",
-    "for_you": "✨ Sinulle",
+    "for_you": "Sinulle",
     "main_focus": "Pääpainopiste",
     "notes": "Huomautuksia",
     "view_all": "Näytä kaikki",
     "all_caught_up": "Olet nähnyt kaikki uusimmat muistiinpanot.",
     "trending": "Trendaavat",
-    "explore_topics": "Tutustu oppimisaiheisiin"
+    "explore_topics": "Tutustu oppimisaiheisiin",
+    "following": "Jälkeen",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Tutkia",

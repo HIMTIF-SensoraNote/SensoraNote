@@ -14,7 +14,11 @@
     "pakar_choice": "ماہر انتخاب",
     "no_pakar_choice": "ابھی تک کوئی ماہر منتخب نہیں ہے۔",
     "dashboard": "ڈیش بورڈ",
-    "insights": "بصیرتیں"
+    "insights": "بصیرتیں",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "ترتیبات",
@@ -44,7 +48,10 @@
     "version": "ورژن",
     "theme_light": "روشنی",
     "theme_dark": "اندھیرا",
-    "theme_system": "سسٹم"
+    "theme_system": "سسٹم",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "ظاہری شکل",
@@ -252,7 +259,8 @@
     "about": "ہمارے بارے میں",
     "blog": "بلاگ",
     "terms": "شرائط",
-    "privacy": "رازداری"
+    "privacy": "رازداری",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "لنک داخل کریں۔",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "پوسٹس کو پسند کرنے کے لیے پہلے لاگ ان کریں۔",
     "no_description": "کوئی تفصیل نہیں۔",
-    "for_you": "✨ آپ کے لیے",
+    "for_you": "آپ کے لیے",
     "main_focus": "مین فوکس",
     "notes": "نوٹس",
     "view_all": "سبھی دیکھیں",
     "all_caught_up": "آپ نے تمام تازہ ترین نوٹس دیکھ لیے ہیں۔",
     "trending": "ٹرینڈنگ",
-    "explore_topics": "سیکھنے کے موضوعات کو دریافت کریں۔"
+    "explore_topics": "سیکھنے کے موضوعات کو دریافت کریں۔",
+    "following": "پیروی کرنا",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "دریافت کریں۔",

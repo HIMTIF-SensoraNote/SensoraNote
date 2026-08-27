@@ -14,7 +14,11 @@
     "pakar_choice": "EXPERTNÍ VÝBĚRY",
     "no_pakar_choice": "Zatím žádný expertní výběr",
     "dashboard": "PALUBNÍ DESKA",
-    "insights": "POHLEDY"
+    "insights": "POHLEDY",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Nastavení",
@@ -44,7 +48,10 @@
     "version": "Verze",
     "theme_light": "Světlo",
     "theme_dark": "Tmavý",
-    "theme_system": "Systém"
+    "theme_system": "Systém",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Vzhled",
@@ -252,7 +259,8 @@
     "about": "O nás",
     "blog": "Blogy",
     "terms": "Podmínky",
-    "privacy": "Soukromí"
+    "privacy": "Soukromí",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Vložit odkaz",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Pro lajkování příspěvků se prosím nejprve přihlaste.",
     "no_description": "Bez popisu",
-    "for_you": "✨ Pro vás",
+    "for_you": "Pro vás",
     "main_focus": "Hlavní zaměření",
     "notes": "Poznámky",
     "view_all": "Zobrazit vše",
     "all_caught_up": "Viděli jste všechny nejnovější poznámky.",
     "trending": "Trendy",
-    "explore_topics": "Prozkoumejte výuková témata"
+    "explore_topics": "Prozkoumejte výuková témata",
+    "following": "Následující",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Prozkoumat",

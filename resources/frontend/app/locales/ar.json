@@ -14,7 +14,11 @@
     "pakar_choice": "اختيارات الخبراء",
     "no_pakar_choice": "لم يختار أي خبير حتى الآن",
     "dashboard": "لوحة القيادة",
-    "insights": "رؤى"
+    "insights": "رؤى",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "إعدادات",
@@ -44,7 +48,10 @@
     "version": "إصدار",
     "theme_light": "ضوء",
     "theme_dark": "مظلم",
-    "theme_system": "نظام"
+    "theme_system": "نظام",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "مظهر",
@@ -252,7 +259,8 @@
     "about": "معلومات عنا",
     "blog": "مدونة",
     "terms": "شروط",
-    "privacy": "خصوصية"
+    "privacy": "خصوصية",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "أدخل الرابط",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "الرجاء تسجيل الدخول أولا للإعجاب بالمشاركات.",
     "no_description": "لا يوجد وصف",
-    "for_you": "✨ من أجلك",
+    "for_you": "من أجلك",
     "main_focus": "التركيز الرئيسي",
     "notes": "ملحوظات",
     "view_all": "عرض الكل",
     "all_caught_up": "لقد رأيت جميع الملاحظات الأخيرة.",
     "trending": "تتجه",
-    "explore_topics": "استكشاف موضوعات التعلم"
+    "explore_topics": "استكشاف موضوعات التعلم",
+    "following": "التالي",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "يستكشف",

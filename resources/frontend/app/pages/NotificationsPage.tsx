@@ -12,11 +12,15 @@ import {
     MessageCircle,
     UserPlus,
     ChevronRight,
+    Clock,
+    Smartphone,
+    Sparkles,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import * as React from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
+import { useDeviceNotification } from "../contexts/DeviceNotificationContext";
 import axios from "axios";
 import { cn } from "../lib/utils";
 import { useTranslation } from "../hooks/useTranslation";
@@ -42,6 +46,8 @@ interface Notification {
 
 const getNotificationIcon = (type: string) => {
     switch (type) {
+        case "schedule":
+            return <Clock className="w-5 h-5 text-amber-500" />;
         case "sertifikasi":
             return <Shield className="w-5 h-5 text-blue-500" />;
         case "report":
@@ -51,6 +57,7 @@ const getNotificationIcon = (type: string) => {
         case "like":
             return <Heart className="w-5 h-5 text-pink-500" />;
         case "comment":
+        case "respond":
             return <MessageCircle className="w-5 h-5 text-blue-500" />;
         case "follow":
             return <UserPlus className="w-5 h-5 text-blue-500" />;
@@ -61,20 +68,23 @@ const getNotificationIcon = (type: string) => {
 
 const getNotificationBg = (type: string) => {
     switch (type) {
+        case "schedule":
+            return "bg-amber-50 border-amber-100 dark:bg-amber-500/10 dark:border-amber-500/20";
         case "sertifikasi":
-            return "bg-blue-50 border-blue-100";
+            return "bg-blue-50 border-blue-100 dark:bg-blue-500/10 dark:border-blue-500/20";
         case "report":
-            return "bg-rose-50 border-rose-100";
+            return "bg-rose-50 border-rose-100 dark:bg-rose-500/10 dark:border-rose-500/20";
         case "verifikasi":
-            return "bg-emerald-50 border-emerald-100";
+            return "bg-emerald-50 border-emerald-100 dark:bg-emerald-500/10 dark:border-emerald-500/20";
         case "like":
-            return "bg-pink-50 border-pink-100";
+            return "bg-pink-50 border-pink-100 dark:bg-pink-500/10 dark:border-pink-500/20";
         case "comment":
-            return "bg-blue-50 border-blue-100";
+        case "respond":
+            return "bg-blue-50 border-blue-100 dark:bg-blue-500/10 dark:border-blue-500/20";
         case "follow":
-            return "bg-blue-50 border-blue-100";
+            return "bg-blue-50 border-blue-100 dark:bg-blue-500/10 dark:border-blue-500/20";
         default:
-            return "bg-gray-50 border-gray-100";
+            return "bg-gray-50 border-gray-100 dark:bg-white/5 dark:border-white/10";
     }
 };
 
@@ -101,6 +111,7 @@ export default function NotificationsPage() {
     const { t, language } = useTranslation();
     useDocumentTitle(t('titles.notifications'));
     const { user } = useAuth();
+    const { permission, requestDevicePermission, isSupported } = useDeviceNotification();
     const navigate = useNavigate();
 
     const { translateNotification } = useNotificationTranslator();
@@ -236,6 +247,32 @@ export default function NotificationsPage() {
                 </div>
 
                 <div className="max-w-3xl mx-auto w-full">
+                    {/* Device Notification Activation Banner */}
+                    {isSupported && permission !== 'granted' && (
+                        <div className="mx-6 mt-6 p-4 rounded-2xl bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-primary/10 border border-blue-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div className="flex items-start gap-3">
+                                <div className="p-2.5 rounded-xl bg-primary text-white shrink-0 mt-0.5 sm:mt-0 shadow-sm">
+                                    <Smartphone className="w-5 h-5" />
+                                </div>
+                                <div>
+                                    <h4 className="font-['Lexend_Deca'] font-bold text-sm text-gray-900 dark:text-gray-100 flex items-center gap-1.5">
+                                        <span>Aktifkan Notifikasi Laptop & HP</span>
+                                        <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+                                    </h4>
+                                    <p className="font-['Manrope'] text-xs text-gray-600 dark:text-gray-400 mt-0.5">
+                                        Dapatkan notifikasi langsung di layar perangkat saat ada pengikut baru, komentar, like, dan pengingat jadwal belajar.
+                                    </p>
+                                </div>
+                            </div>
+                            <button
+                                onClick={requestDevicePermission}
+                                className="w-full sm:w-auto px-4 py-2 bg-primary hover:bg-blue-600 text-white text-xs font-['Lexend_Deca'] font-bold rounded-xl shadow-sm transition-all shrink-0 cursor-pointer text-center"
+                            >
+                                Aktifkan Notifikasi
+                            </button>
+                        </div>
+                    )}
+
                     {/* Filters */}
                     <div className="px-6 pt-6 pb-2">
                     <div className="flex gap-2">

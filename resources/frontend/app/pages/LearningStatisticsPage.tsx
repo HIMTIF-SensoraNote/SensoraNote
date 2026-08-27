@@ -382,9 +382,19 @@ const LearningStatisticsPage = () => {
 
               {/* ACTIVITY CHART SECTION */}
               <section>
-                 <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-xl font-['Lexend_Deca'] font-bold text-slate-800 dark:text-slate-100">{t('stats.activity_analysis')}</h2>
-                    <div className="flex bg-slate-100 dark:bg-white/5 rounded-xl p-1">
+                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+                    <div>
+                      <h2 className="text-xl font-['Lexend_Deca'] font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                        {t('stats.activity_analysis')}
+                        <span className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10 px-2.5 py-0.5 rounded-full font-['Manrope']">
+                          Durasi dalam Menit
+                        </span>
+                      </h2>
+                      <p className="text-[12px] text-slate-500 dark:text-slate-400 font-medium">
+                        Total waktu yang dihabiskan untuk belajar
+                      </p>
+                    </div>
+                    <div className="flex bg-slate-100 dark:bg-white/5 rounded-xl p-1 self-start sm:self-auto">
                        <button 
                          onClick={() => setChartView('weekly')}
                          className={`px-4 py-1.5 rounded-lg text-[12px] font-bold transition-all ${chartView === 'weekly' ? 'bg-white dark:bg-[#1C1A29] shadow-sm text-slate-800 dark:text-slate-100' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}

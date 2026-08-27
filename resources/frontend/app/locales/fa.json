@@ -14,7 +14,11 @@
     "pakar_choice": "انتخاب های متخصص",
     "no_pakar_choice": "هنوز انتخاب تخصصی وجود ندارد",
     "dashboard": "داشبورد",
-    "insights": "بینش"
+    "insights": "بینش",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "تنظیمات",
@@ -44,7 +48,10 @@
     "version": "نسخه",
     "theme_light": "نور",
     "theme_dark": "تاریک",
-    "theme_system": "سیستم"
+    "theme_system": "سیستم",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "ظاهر",
@@ -252,7 +259,8 @@
     "about": "درباره ما",
     "blog": "وبلاگ",
     "terms": "شرایط",
-    "privacy": "حریم خصوصی"
+    "privacy": "حریم خصوصی",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "درج لینک",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "لطفا برای لایک کردن پست ها ابتدا وارد شوید.",
     "no_description": "بدون شرح",
-    "for_you": "✨ برای شما",
+    "for_you": "برای شما",
     "main_focus": "تمرکز اصلی",
     "notes": "یادداشت ها",
     "view_all": "مشاهده همه",
     "all_caught_up": "شما همه آخرین یادداشت ها را دیده اید.",
     "trending": "پرطرفدار",
-    "explore_topics": "موضوعات آموزشی را کاوش کنید"
+    "explore_topics": "موضوعات آموزشی را کاوش کنید",
+    "following": "دنبال کردن",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "کاوش کنید",

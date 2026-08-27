@@ -14,7 +14,11 @@
     "pakar_choice": "ਮਾਹਿਰਾਂ ਦੀਆਂ ਚੋਣਾਂ",
     "no_pakar_choice": "ਅਜੇ ਤੱਕ ਕੋਈ ਮਾਹਰ ਨਹੀਂ ਚੁਣਿਆ",
     "dashboard": "ਡੈਸ਼ਬੋਰਡ",
-    "insights": "ਇਨਸਾਈਟਸ"
+    "insights": "ਇਨਸਾਈਟਸ",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "ਸੈਟਿੰਗਾਂ",
@@ -44,7 +48,10 @@
     "version": "ਸੰਸਕਰਣ",
     "theme_light": "ਚਾਨਣ",
     "theme_dark": "ਹਨੇਰਾ",
-    "theme_system": "ਸਿਸਟਮ"
+    "theme_system": "ਸਿਸਟਮ",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "ਦਿੱਖ",
@@ -252,7 +259,8 @@
     "about": "ਸਾਡੇ ਬਾਰੇ",
     "blog": "ਬਲੌਗ",
     "terms": "ਸ਼ਰਤਾਂ",
-    "privacy": "ਗੋਪਨੀਯਤਾ"
+    "privacy": "ਗੋਪਨੀਯਤਾ",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "ਲਿੰਕ ਸ਼ਾਮਲ ਕਰੋ",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "ਕਿਰਪਾ ਕਰਕੇ ਪੋਸਟਾਂ ਨੂੰ ਪਸੰਦ ਕਰਨ ਲਈ ਪਹਿਲਾਂ ਲੌਗਇਨ ਕਰੋ।",
     "no_description": "ਕੋਈ ਵੇਰਵਾ ਨਹੀਂ",
-    "for_you": "✨ ਤੁਹਾਡੇ ਲਈ",
+    "for_you": "ਤੁਹਾਡੇ ਲਈ",
     "main_focus": "ਮੁੱਖ ਫੋਕਸ",
     "notes": "ਨੋਟਸ",
     "view_all": "ਸਭ ਦੇਖੋ",
     "all_caught_up": "ਤੁਸੀਂ ਸਾਰੇ ਨਵੀਨਤਮ ਨੋਟ ਵੇਖ ਚੁੱਕੇ ਹੋ।",
     "trending": "ਪ੍ਰਚਲਿਤ",
-    "explore_topics": "ਸਿੱਖਣ ਦੇ ਵਿਸ਼ਿਆਂ ਦੀ ਪੜਚੋਲ ਕਰੋ"
+    "explore_topics": "ਸਿੱਖਣ ਦੇ ਵਿਸ਼ਿਆਂ ਦੀ ਪੜਚੋਲ ਕਰੋ",
+    "following": "ਅਨੁਸਰਣ ਕਰ ਰਹੇ ਹਨ",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "ਪੜਚੋਲ ਕਰੋ",

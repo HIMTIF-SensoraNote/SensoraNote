@@ -20,6 +20,7 @@ use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\TranslationController;
 use App\Http\Controllers\VisionController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ScheduleController;
 use App\Models\Follow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -128,6 +129,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/v1/learn/history', [LearningHistoryController::class, 'logAktivitas']);
     Route::get('/v1/learn/statistics', [LearningHistoryController::class, 'getStatistics']);
     Route::post('/v1/user/target', [UserController::class, 'updateTarget']);
+    
+    // Smart Study Schedule Routes
+    Route::post('/v1/schedule/parse-voice', [ScheduleController::class, 'parseVoiceSchedule']);
+    Route::post('/v1/schedule/confirm', [ScheduleController::class, 'saveConfirmedSchedule']);
+    Route::get('/v1/schedules', [ScheduleController::class, 'index']);
+    Route::post('/v1/schedules', [ScheduleController::class, 'store']);
+    Route::put('/v1/schedules/{id}/items/{itemId}/toggle', [ScheduleController::class, 'toggleItem']);
+    Route::delete('/v1/schedules/{id}/items/{itemId}', [ScheduleController::class, 'destroyItem']);
+    Route::post('/v1/schedules/{id}/publish', [ScheduleController::class, 'publishAsNote']);
 
     Route::get('/user', function (Request $request) {
         $user = clone $request->user();

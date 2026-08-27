@@ -405,7 +405,7 @@ function cleanTextForBraille(text: string): string {
                         </button>
                         <div>
                             <h1 className="text-xl sm:text-2xl font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
-                                Hasil Scan Dokumen
+                                Hasil Scan Gambar
                             </h1>
                         </div>
                     </div>

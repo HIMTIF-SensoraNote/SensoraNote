@@ -13,16 +13,22 @@ interface LanguageContextType {
   loading: boolean;
 }
 
-const SUPPORTED_LANGUAGES: LanguageCode[] = ['id', 'en', 'zh', 'hi', 'es', 'fr', 'ar', 'bn', 'ru', 'pt', 'ur', 'de', 'ja', 'tr', 'vi', 'ko', 'it', 'th', 'nl', 'pl'];
+const SUPPORTED_LANGUAGES: LanguageCode[] = [
+  'id', 'en', 'en-US', 'en-GB', 'zh', 'zh-TW', 'ja', 'ko', 'es', 'fr',
+  'de', 'it', 'pt', 'ru', 'ar', 'hi', 'bn', 'ur', 'tr', 'vi',
+  'th', 'nl', 'pl', 'ms', 'af', 'am', 'cs', 'da', 'el', 'fa',
+  'fi', 'he', 'hu', 'km', 'lo', 'my', 'ne', 'pa', 'ro', 'si',
+  'sv', 'sw', 'tl', 'uk', 'zu'
+];
 
 function detectSystemLanguage(): LanguageCode {
   const browserLang = navigator.language?.toLowerCase() || 'id';
   
-  // Exact match first (e.g. 'ja', 'ko')
-  const exact = SUPPORTED_LANGUAGES.find(l => browserLang === l);
+  // Exact match first (e.g. 'en-US', 'zh-TW', 'ja', 'ko')
+  const exact = SUPPORTED_LANGUAGES.find(l => browserLang === l.toLowerCase());
   if (exact) return exact;
 
-  // Prefix match (e.g. 'en-US' -> 'en', 'zh-CN' -> 'zh', 'pt-BR' -> 'pt')
+  // Prefix match (e.g. 'en-AU' -> 'en', 'zh-CN' -> 'zh', 'pt-BR' -> 'pt')
   const prefix = browserLang.split('-')[0] as LanguageCode;
   if (SUPPORTED_LANGUAGES.includes(prefix)) return prefix;
 

@@ -75,15 +75,28 @@ export default function PublicProfilePage() {
 
     const fetchFollowsData = async () => {
         if (!id) return;
+        if (profileUser?.is_private_restricted) {
+            showToast("Daftar pengikut dan mengikuti disembunyikan karena akun ini bersifat privat.", "info");
+            setShowFollowers(false);
+            setShowFollowing(false);
+            return;
+        }
         setIsLoadingFollows(true);
         try {
+            const token = localStorage.getItem("bayu-token") || sessionStorage.getItem("bayu-token");
+            const headers = token ? { Authorization: `Bearer ${token}` } : {};
             const [followersRes, followingRes] = await Promise.all([
-                axios.get(`/api/v1/users/${id}/followers`),
-                axios.get(`/api/v1/users/${id}/following`)
+                axios.get(`/api/v1/users/${id}/followers`, { headers }),
+                axios.get(`/api/v1/users/${id}/following`, { headers })
             ]);
-            setFollowersList(followersRes.data);
-            setFollowingList(followingRes.data);
-        } catch (error) {
+            setFollowersList(followersRes.data || []);
+            setFollowingList(followingRes.data || []);
+        } catch (error: any) {
+            if (error.response?.status === 403) {
+                showToast("Daftar pengikut dan mengikuti disembunyikan karena akun ini bersifat privat.", "info");
+                setShowFollowers(false);
+                setShowFollowing(false);
+            }
             console.error("Gagal mengambil data followers/following", error);
         } finally {
             setIsLoadingFollows(false);
@@ -190,7 +203,10 @@ export default function PublicProfilePage() {
         const fetchApiNotes = async () => {
             setIsLoadingNotes(true);
             try {
-                const response = await axios.get(`/api/v1/posts?user_id=${id}&sort=terbaru`);
+                const token = localStorage.getItem("bayu-token") || sessionStorage.getItem("bayu-token");
+                const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+                const response = await axios.get(`/api/v1/posts?user_id=${id}&sort=terbaru`, { headers });
                 const mappedNotes = (response.data.data || response.data || []).map((note: any) => ({
                     ...note,
                     id: note._id || note.id,
@@ -221,7 +237,7 @@ export default function PublicProfilePage() {
             }
         };
 
-        if (id) fetchApiNotes();
+        if (id && !profileUser?.is_private_restricted) fetchApiNotes();
     }, [id, profileUser]);
 
     // 3. Fetch Aktivitas User
@@ -232,7 +248,10 @@ export default function PublicProfilePage() {
         const fetchActivities = async () => {
             setIsLoadingActivities(true);
             try {
-                const res = await axios.get(`/api/v1/users/${id}/activities`);
+                const token = localStorage.getItem("bayu-token") || sessionStorage.getItem("bayu-token");
+                const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+                const res = await axios.get(`/api/v1/users/${id}/activities`, { headers });
                 setActivities(res.data.data || res.data || []);
             } catch (error) {
                 console.error("Gagal ngambil aktivitas", error);
@@ -240,8 +259,8 @@ export default function PublicProfilePage() {
                 setIsLoadingActivities(false);
             }
         };
-        if (id) fetchActivities();
-    }, [id]);
+        if (id && !profileUser?.is_private_restricted) fetchActivities();
+    }, [id, profileUser]);
 
     const handleLikePost = async (postId: string) => {
         if (!currentUser)
@@ -612,13 +631,28 @@ export default function PublicProfilePage() {
 
                         {/* Stats - Horizontal Twitter Style */}
                         <div className="flex items-center gap-5 mt-4 text-[14px] font-['Manrope']">
-                            <button onClick={() => setShowFollowing(true)} className="flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+                            <button 
+                                onClick={() => {
+                                    if (profileUser?.is_private_restricted) {
+                                        showToast("Daftar mengikuti disembunyikan karena akun ini bersifat privat.", "info");
+                                        return;
+                                    }
+                                    setShowFollowing(true);
+                                }} 
+                                className="flex items-center gap-1.5 hover:opacity-80 transition-opacity cursor-pointer"
+                            >
                                 <strong className="text-gray-900 dark:text-gray-100 font-bold">{profileUser?.following_count ?? profileUser?.following ?? 0}</strong> {t('public_profile.following')}
                             </button>
                             
                             <button 
-                                onClick={() => setShowFollowers(true)}
-                                className="hover:underline outline-none text-gray-500 transition-colors"
+                                onClick={() => {
+                                    if (profileUser?.is_private_restricted) {
+                                        showToast("Daftar pengikut disembunyikan karena akun ini bersifat privat.", "info");
+                                        return;
+                                    }
+                                    setShowFollowers(true);
+                                }}
+                                className="hover:underline outline-none text-gray-500 transition-colors cursor-pointer"
                             >
                                 <strong className="text-gray-900 dark:text-gray-100 font-bold">{profileUser?.followers_count ?? profileUser?.followers ?? 0}</strong> {t('public_profile.followers')}
                             </button>

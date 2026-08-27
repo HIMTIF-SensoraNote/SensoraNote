@@ -14,7 +14,11 @@
     "pakar_choice": "专家推荐",
     "no_pakar_choice": "暂无专家推荐",
     "dashboard": "仪表板",
-    "insights": "见解"
+    "insights": "见解",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "设置",
@@ -44,7 +48,10 @@
     "version": "版本",
     "theme_light": "浅色",
     "theme_dark": "深色",
-    "theme_system": "系统"
+    "theme_system": "系统",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "外观",
@@ -252,7 +259,8 @@
     "about": "关于我们",
     "blog": "博客",
     "terms": "条款",
-    "privacy": "隐私"
+    "privacy": "隐私",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "插入链接",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "请先登录才能点赞。",
     "no_description": "暂无描述",
-    "for_you": "✨ 为您推荐",
+    "for_you": "为您推荐",
     "main_focus": "焦点",
     "notes": "笔记",
     "view_all": "查看全部",
     "all_caught_up": "您已看完所有最新笔记。",
     "trending": "热门",
-    "explore_topics": "探索学习主题"
+    "explore_topics": "探索学习主题",
+    "following": "关注中",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "探索",

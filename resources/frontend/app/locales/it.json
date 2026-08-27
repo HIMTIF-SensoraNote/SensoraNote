@@ -14,7 +14,11 @@
     "pakar_choice": "SCELTE DEGLI ESPERTI",
     "no_pakar_choice": "Nessuna scelta degli esperti ancora",
     "dashboard": "PANNELLO DI CONTROLLO",
-    "insights": "APPROFONDIMENTI"
+    "insights": "APPROFONDIMENTI",
+    "scan_image": "Scan Image",
+    "schedule_planner": "Schedule Planner",
+    "accessibility": "Accessibility",
+    "statistics_short": "Statistics"
   },
   "settings": {
     "title": "Impostazioni",
@@ -44,7 +48,10 @@
     "version": "Versione",
     "theme_light": "Leggero",
     "theme_dark": "Buio",
-    "theme_system": "Sistema"
+    "theme_system": "Sistema",
+    "accessibility_title": "Accessibility & Inclusive Features",
+    "accessibility_desc": "Adjust contrast, text size, and Sienna screen reader module",
+    "open_widget": "Open Widget"
   },
   "theme": {
     "title": "Aspetto",
@@ -252,7 +259,8 @@
     "about": "Chi siamo",
     "blog": "Blog",
     "terms": "Termini",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "scan_image": "Scan Image"
   },
   "editor": {
     "insert_link": "Inserisci collegamento",
@@ -290,13 +298,17 @@
   "home": {
     "login_to_like": "Per favore accedi prima per mettere mi piace ai post.",
     "no_description": "Nessuna descrizione",
-    "for_you": "✨Per te",
+    "for_you": "Per te",
     "main_focus": "Obiettivo principale",
     "notes": "Note",
     "view_all": "Visualizza tutto",
     "all_caught_up": "Hai visto tutte le ultime note.",
     "trending": "Tendenza",
-    "explore_topics": "Esplora argomenti di apprendimento"
+    "explore_topics": "Esplora argomenti di apprendimento",
+    "following": "Seguente",
+    "trending_this_week": "Trending This Week",
+    "clear_filter": "Clear Filter",
+    "showing_topic": "Showing topic notes:"
   },
   "explore": {
     "title": "Esplorare",
