@@ -65,27 +65,43 @@ export function mergeWithoutOverlap(base: string, incoming: string): string {
   if (!base) return incoming;
   if (!incoming) return base;
 
-  const lowerBase = base.toLowerCase();
-  const lowerIncoming = incoming.toLowerCase();
+  // Clean strings for comparison (strip punctuation and normalize whitespace)
+  const normalize = (str: string) =>
+    str
+      .toLowerCase()
+      .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
 
-  // If exact match or base already ends with incoming
-  if (lowerBase === lowerIncoming || lowerBase.endsWith(lowerIncoming)) {
+  const normBase = normalize(base);
+  const normIncoming = normalize(incoming);
+
+  // Exact duplicate or substring checks
+  if (normBase === normIncoming || normBase.endsWith(normIncoming)) {
     return base;
   }
 
-  // If incoming contains base from start (e.g. base="tolong", incoming="tolong buat saya")
-  if (lowerIncoming.startsWith(lowerBase)) {
+  // If incoming contains base from start (e.g. base="Buatkan", incoming="Buatkan saya jadwal")
+  if (normIncoming.startsWith(normBase)) {
     return incoming;
+  }
+
+  // If base already contains incoming from start
+  if (normBase.startsWith(normIncoming)) {
+    return base;
   }
 
   const baseWords = base.split(/\s+/);
   const incomingWords = incoming.split(/\s+/);
 
+  const normBaseWords = baseWords.map((w) => normalize(w)).filter(Boolean);
+  const normIncomingWords = incomingWords.map((w) => normalize(w)).filter(Boolean);
+
   // Check word-level overlap from largest possible down to 1 word
-  const maxOverlap = Math.min(baseWords.length, incomingWords.length);
+  const maxOverlap = Math.min(normBaseWords.length, normIncomingWords.length);
   for (let len = maxOverlap; len > 0; len--) {
-    const baseTail = baseWords.slice(baseWords.length - len).join(' ').toLowerCase();
-    const incomingHead = incomingWords.slice(0, len).join(' ').toLowerCase();
+    const baseTail = normBaseWords.slice(normBaseWords.length - len).join(' ');
+    const incomingHead = normIncomingWords.slice(0, len).join(' ');
     if (baseTail === incomingHead) {
       const nonOverlapping = incomingWords.slice(len).join(' ');
       return nonOverlapping ? `${base} ${nonOverlapping}` : base;
@@ -137,32 +153,23 @@ export function useVoiceRecognition() {
       recognition.maxAlternatives = 1;
 
       recognition.onresult = (event: any) => {
-        let sessionFinal = '';
-        let currentInterim = '';
+        let sessionAggregated = '';
 
-        // Iterate through all results in the current session
+        // Iterate through all results in the current session using mergeWithoutOverlap
         for (let i = 0; i < event.results.length; i++) {
-          const result = event.results[i];
-          if (result.isFinal) {
-            sessionFinal += result[0].transcript + ' ';
-          } else {
-            currentInterim += result[0].transcript;
+          const piece = (event.results[i][0]?.transcript || '').trim();
+          if (piece) {
+            sessionAggregated = mergeWithoutOverlap(sessionAggregated, piece);
           }
         }
 
-        sessionFinal = sessionFinal.trim();
-        currentInterim = currentInterim.trim();
+        const base = baseTranscriptRef.current ? baseTranscriptRef.current.trim() : '';
+        const total = sessionAggregated
+          ? mergeWithoutOverlap(base, sessionAggregated)
+          : base;
 
-        // Use sessionFinal if available, otherwise combine with interim
-        const currentActiveText = sessionFinal || currentInterim;
-
-        // Merge with base without ANY duplication
-        const mergedText = currentActiveText
-          ? mergeWithoutOverlap(baseTranscriptRef.current, currentActiveText)
-          : baseTranscriptRef.current;
-
-        setTranscript(mergedText.trim());
-        setInterimTranscript(sessionFinal && currentInterim ? currentInterim : '');
+        setTranscript(total.trim());
+        setInterimTranscript('');
       };
 
       recognition.onerror = (event: any) => {
