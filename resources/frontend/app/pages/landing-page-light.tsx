@@ -802,7 +802,7 @@ export function LandingPageLight() {
               className="block tracking-normal font-serif text-[#594429] mt-6 max-w-2xl px-4 leading-relaxed font-medium"
               style={{ fontSize: 'clamp(1rem, 1.6vw, 1.25rem)' }}
             >
-              {t('landing.hero_desc') || 'Ubah rekaman suara, PDF, dan dokumen belajarmu menjadi ringkasan AI terstruktur, mindmap visual, flashcard, dan audio podcast'}
+              {t('landing.hero_desc') || 'Pindai dokumen & catatan dengan AI OCR cerdas, konversi instan ke huruf Braille (.BRF & PDF), dengarkan audio text-to-speech, dan jelajahi materi dalam 50+ bahasa.'}
             </motion.span>
           </h1>
 
