@@ -21,6 +21,7 @@
         "resources/js/**/*.tsx",
         "resources/js/**/*.d.ts",
         "resources/frontend/**/*.ts",
-        "resources/frontend/**/*.tsx"
+        "resources/frontend/**/*.tsx",
+        "resources/frontend/**/*.d.ts"
     ]
 }
