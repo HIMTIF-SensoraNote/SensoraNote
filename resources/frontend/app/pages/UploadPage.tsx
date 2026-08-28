@@ -689,6 +689,7 @@ export default function UploadPage() {
           finalThumbnail={finalThumbnail}
           extractedThumbnail={extractedThumbnail}
           setFinalThumbnail={setFinalThumbnail}
+          setExtractedThumbnail={setExtractedThumbnail}
           thumbnailFit={thumbnailFit}
           setThumbnailFit={setThumbnailFit}
           availableImages={availableImages}
