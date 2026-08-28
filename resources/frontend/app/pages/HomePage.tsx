@@ -1,5 +1,5 @@
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { MobileLayout } from "../components/MobileLayout";
 import {
@@ -108,11 +108,14 @@ export default function HomePage() {
         }
     };
 
+    const activeRequestIdRef = useRef(0);
+
     const fetchPosts = async (
         pageNum: number, 
         currentFeedTab: 'for_you' | 'following' = feedTab,
         subjectFilter: string | null = selectedSubject
     ) => {
+        const requestId = ++activeRequestIdRef.current;
         try {
             const token = localStorage.getItem("bayu-token") || sessionStorage.getItem("bayu-token");
             const headers: Record<string, string> = {};
@@ -132,6 +135,10 @@ export default function HomePage() {
             }
 
             const response = await axios.get(url, { headers });
+            
+            // If another request was dispatched while this was in-flight, discard this result
+            if (requestId !== activeRequestIdRef.current) return;
+
             const newData = response.data.data || [];
             
             if (pageNum === 1) {
@@ -146,16 +153,22 @@ export default function HomePage() {
                 setHasMore(newData.length === 12);
             }
         } catch (error) {
-            console.error("Error fetching posts:", error);
+            if (requestId === activeRequestIdRef.current) {
+                console.error("Error fetching posts:", error);
+            }
         } finally {
-            setIsLoading(false);
-            setIsLoadingMore(false);
+            if (requestId === activeRequestIdRef.current) {
+                setIsLoading(false);
+                setIsLoadingMore(false);
+            }
         }
     };
 
     // Tab change handler ("Untuk Anda" vs "Mengikuti")
     const handleSelectFeedTab = (tab: 'for_you' | 'following') => {
+        if (tab === feedTab && !selectedSubject) return;
         setIsLoading(true);
+        setNotes([]);
         setFeedTab(tab);
         setSelectedSubject(null);
         setPage(1);
@@ -166,13 +179,13 @@ export default function HomePage() {
         } else {
             setSearchParams({});
         }
-
-        fetchPosts(1, tab, null);
     };
 
     // Filter selection handler from sidebar
     const handleSelectSubject = (subjectId: string | null) => {
+        if (subjectId === selectedSubject && feedTab === 'for_you') return;
         setIsLoading(true);
+        setNotes([]);
         setFeedTab('for_you');
         setSelectedSubject(subjectId);
         setPage(1);
@@ -183,8 +196,6 @@ export default function HomePage() {
         } else {
             setSearchParams({});
         }
-
-        fetchPosts(1, 'for_you', subjectId);
     };
 
     useEffect(() => {

@@ -301,8 +301,8 @@ export default function PublicProfilePage() {
             return;
         }
 
-        const isMainProfile = !targetUserId;
         const targetId = targetUserId || id;
+        const isMainProfile = !targetUserId || targetId === id || targetId === (profileUser?._id || profileUser?.id);
         const currentIsFollowing = isMainProfile ? isFollowing : (
             followersList.find(u => (u._id || u.id) === targetId)?.is_followed_by_me || 
             followingList.find(u => (u._id || u.id) === targetId)?.is_followed_by_me || false

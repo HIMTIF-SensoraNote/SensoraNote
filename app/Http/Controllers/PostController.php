@@ -22,17 +22,26 @@ class PostController extends Controller
 
         $userId = null;
         try {
-            $userId = Auth::guard('sanctum')->id();
+            $user = $request->user('sanctum');
+            if ($user) {
+                $userId = (string) ($user->_id ?? $user->id);
+            }
         } catch (\Exception $e) {
         }
-        if (! $userId) {
+        if (! $userId && $request->bearerToken()) {
             try {
-                $userId = Auth::guard('api')->id();
+                $tokenRecord = \App\Models\PersonalAccessToken::findToken($request->bearerToken());
+                if ($tokenRecord && $tokenRecord->tokenable_id) {
+                    $userId = (string) $tokenRecord->tokenable_id;
+                }
             } catch (\Exception $e) {
             }
         }
         if (! $userId) {
-            $userId = Auth::id();
+            try {
+                $userId = (string) (Auth::id() ?: Auth::guard('api')->id());
+            } catch (\Exception $e) {
+            }
         }
 
         $followingIds = [];

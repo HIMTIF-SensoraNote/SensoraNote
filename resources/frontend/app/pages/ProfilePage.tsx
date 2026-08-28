@@ -177,9 +177,15 @@ export default function ProfilePage() {
             setFollowersList(prev => updateList(prev));
             setFollowingList(prev => updateList(prev));
             
-            if (status === 'unfollowed') showToast("Berhenti mengikuti", "info");
-            else if (status === 'pending') showToast("Permintaan mengikuti dikirim", "success");
-            else showToast("Berhasil mengikuti", "success");
+            if (status === 'unfollowed') {
+                setLiveFollowingCount(prev => (prev !== null ? Math.max(0, prev - 1) : null));
+                showToast("Berhenti mengikuti", "info");
+            } else if (status === 'pending') {
+                showToast("Permintaan mengikuti dikirim", "success");
+            } else {
+                setLiveFollowingCount(prev => (prev !== null ? prev + 1 : null));
+                showToast("Berhasil mengikuti", "success");
+            }
 
             setShowUnfollowDialog(false);
             setUnfollowTarget(null);
