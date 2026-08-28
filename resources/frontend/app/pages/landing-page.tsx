@@ -5,8 +5,7 @@ import { LandingPageDark } from './landing-page-dark';
 import { motion, AnimatePresence } from 'motion/react';
 import { Moon, Sun, PersonStanding } from 'lucide-react';
 import GlassSurface from '../components/ui/GlassSurface';
-import Lenis from 'lenis';
-import 'lenis/dist/lenis.css';
+import Lenis from '../utils/lenis';
 
 export function LandingPage() {
   const { resolvedTheme, toggleTheme } = useTheme();
