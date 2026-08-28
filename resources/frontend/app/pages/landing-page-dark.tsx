@@ -801,7 +801,7 @@ export function LandingPageDark() {
               className="block tracking-normal font-serif text-gray-300 mt-6 max-w-2xl px-4 leading-relaxed font-medium"
               style={{ fontSize: 'clamp(1rem, 1.6vw, 1.25rem)' }}
             >
-              {t('landing.hero_desc') || 'Pindai dokumen & catatan dengan AI OCR cerdas, konversi instan ke huruf Braille (.BRF & PDF), dengarkan audio text-to-speech, dan jelajahi materi dalam 50+ bahasa.'}
+              {t('landing.hero_desc') || 'Pindai catatan dengan AI OCR cerdas, konversi instan ke huruf Braille (.BRF & PDF), atur jadwal belajar dengan AI Planner, dan pelajari materi dalam 50+ bahasa.'}
             </motion.span>
           </h1>
 

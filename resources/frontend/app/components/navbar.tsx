@@ -121,7 +121,7 @@ export function Navbar({ variant = 'default', theme = 'light', isLoading = false
               style={{ transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)' }} 
               className={`font-display font-black tracking-tight ${theme === 'dark' ? 'text-white' : 'text-[#3D2314]'} ${isScrolled ? 'text-base sm:text-lg' : 'text-xl md:text-2xl'}`}
             >
-              SensoraNote<span className="text-blue-600 dark:text-amber-400">.</span>
+              SensoraNote
             </span>
           </Link>
 
