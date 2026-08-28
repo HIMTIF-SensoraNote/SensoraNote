@@ -1,10 +1,59 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // Declaration for Web Speech API types
 interface IWindow extends Window {
   SpeechRecognition?: any;
   webkitSpeechRecognition?: any;
 }
+
+const SPEECH_LANG_MAP: Record<string, string> = {
+  id: 'id-ID',
+  en: 'en-US',
+  'en-GB': 'en-GB',
+  'en-US': 'en-US',
+  ja: 'ja-JP',
+  ko: 'ko-KR',
+  zh: 'zh-CN',
+  'zh-TW': 'zh-TW',
+  es: 'es-ES',
+  fr: 'fr-FR',
+  de: 'de-DE',
+  it: 'it-IT',
+  pt: 'pt-BR',
+  ru: 'ru-RU',
+  ar: 'ar-SA',
+  hi: 'hi-IN',
+  bn: 'bn-BD',
+  ur: 'ur-PK',
+  tr: 'tr-TR',
+  vi: 'vi-VN',
+  th: 'th-TH',
+  nl: 'nl-NL',
+  pl: 'pl-PL',
+  ms: 'ms-MY',
+  af: 'af-ZA',
+  am: 'am-ET',
+  cs: 'cs-CZ',
+  da: 'da-DK',
+  el: 'el-GR',
+  fa: 'fa-IR',
+  fi: 'fi-FI',
+  he: 'he-IL',
+  hu: 'hu-HU',
+  km: 'km-KH',
+  lo: 'lo-LA',
+  my: 'my-MM',
+  ne: 'ne-NP',
+  pa: 'pa-IN',
+  ro: 'ro-RO',
+  si: 'si-LK',
+  sv: 'sv-SE',
+  sw: 'sw-KE',
+  tl: 'fil-PH',
+  uk: 'uk-UA',
+  zu: 'zu-ZA',
+};
 
 export function useVoiceRecognition() {
   const [isListening, setIsListening] = useState(false);
@@ -13,87 +62,96 @@ export function useVoiceRecognition() {
   const [error, setError] = useState<string | null>(null);
   const [isSupported, setIsSupported] = useState(true);
 
+  const { resolvedLanguage } = useLanguage();
   const recognitionRef = useRef<any>(null);
-  const mediaStreamRef = useRef<MediaStream | null>(null);
   const shouldKeepListeningRef = useRef(false);
 
-  useEffect(() => {
-    const windowWithSpeech = window as unknown as IWindow;
-    const SpeechRecognition = windowWithSpeech.SpeechRecognition || windowWithSpeech.webkitSpeechRecognition;
+  // Initialize SpeechRecognition instance
+  const initRecognition = useCallback(() => {
+    if (typeof window === 'undefined') return null;
 
-    if (!SpeechRecognition) {
+    const windowWithSpeech = window as unknown as IWindow;
+    const SpeechRecognitionClass = windowWithSpeech.SpeechRecognition || windowWithSpeech.webkitSpeechRecognition;
+
+    if (!SpeechRecognitionClass) {
       setIsSupported(false);
       setError('Browser ini belum mendukung Web Speech Recognition. Gunakan Google Chrome, Edge, atau Safari.');
-      return;
+      return null;
     }
 
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'id-ID';
-    recognition.continuous = true;
-    recognition.interimResults = true;
-    recognition.maxAlternatives = 1;
+    try {
+      const recognition = new SpeechRecognitionClass();
+      const speechLang = SPEECH_LANG_MAP[resolvedLanguage] || 'id-ID';
+      recognition.lang = speechLang;
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.maxAlternatives = 1;
 
-    recognition.onresult = (event: any) => {
-      let finalStr = '';
-      let interimStr = '';
+      recognition.onresult = (event: any) => {
+        let finalStr = '';
+        let interimStr = '';
 
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        const result = event.results[i];
-        if (result.isFinal) {
-          finalStr += result[0].transcript + ' ';
-        } else {
-          interimStr += result[0].transcript;
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const result = event.results[i];
+          if (result.isFinal) {
+            finalStr += result[0].transcript + ' ';
+          } else {
+            interimStr += result[0].transcript;
+          }
         }
-      }
 
-      if (finalStr) {
-        setTranscript((prev) => (prev ? prev.trim() + ' ' + finalStr.trim() : finalStr.trim()));
-      }
-      setInterimTranscript(interimStr);
-    };
+        if (finalStr) {
+          setTranscript((prev) => (prev ? prev.trim() + ' ' + finalStr.trim() : finalStr.trim()));
+        }
+        setInterimTranscript(interimStr);
+      };
 
-    recognition.onerror = (event: any) => {
-      console.warn('Speech recognition event error:', event.error);
-      if (event.error === 'not-allowed') {
-        shouldKeepListeningRef.current = false;
-        setError('Izin mikrofon ditolak. Mohon izinkan akses mikrofon di pengaturan browser Anda.');
-        setIsListening(false);
-      } else if (event.error === 'no-speech') {
-        // Just a brief silence, auto-keep listening if active
+      recognition.onerror = (event: any) => {
+        console.warn('Speech recognition event error:', event.error);
+        if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+          shouldKeepListeningRef.current = false;
+          setError('Izin mikrofon tidak diizinkan. Mohon izinkan akses mikrofon di pengaturan browser Anda.');
+          setIsListening(false);
+        } else if (event.error === 'no-speech') {
+          // Normal brief silence, keep active if user hasn't stopped
+        } else if (event.error === 'network') {
+          console.warn('Speech recognition network warning');
+        } else if (event.error !== 'aborted') {
+          setError(`Info suara: ${event.error}`);
+        }
+      };
+
+      recognition.onend = () => {
         if (shouldKeepListeningRef.current) {
           try {
             recognition.start();
-          } catch (e) {}
+            setIsListening(true);
+          } catch (e) {
+            setTimeout(() => {
+              if (shouldKeepListeningRef.current) {
+                try {
+                  recognition.start();
+                  setIsListening(true);
+                } catch (err) {}
+              }
+            }, 300);
+          }
+        } else {
+          setIsListening(false);
+          setInterimTranscript('');
         }
-      } else if (event.error !== 'aborted') {
-        setError(`Info suara: ${event.error}`);
-      }
-    };
+      };
 
-    recognition.onend = () => {
-      // If user has not clicked stop, auto-restart to allow unlimited long duration!
-      if (shouldKeepListeningRef.current) {
-        try {
-          recognition.start();
-          setIsListening(true);
-        } catch (e) {
-          // May throw if restarting too rapidly
-          setTimeout(() => {
-            if (shouldKeepListeningRef.current) {
-              try {
-                recognition.start();
-                setIsListening(true);
-              } catch (err) {}
-            }
-          }, 300);
-        }
-      } else {
-        setIsListening(false);
-        setInterimTranscript('');
-      }
-    };
+      recognitionRef.current = recognition;
+      return recognition;
+    } catch (e: any) {
+      console.error('Error creating SpeechRecognition:', e);
+      return null;
+    }
+  }, [resolvedLanguage]);
 
-    recognitionRef.current = recognition;
+  useEffect(() => {
+    initRecognition();
 
     return () => {
       shouldKeepListeningRef.current = false;
@@ -102,47 +160,61 @@ export function useVoiceRecognition() {
           recognitionRef.current.abort();
         } catch (e) {}
       }
-      if (mediaStreamRef.current) {
-        mediaStreamRef.current.getTracks().forEach((track) => track.stop());
-      }
     };
-  }, []);
+  }, [initRecognition]);
 
   const startListening = useCallback(async () => {
     setError(null);
-    if (!recognitionRef.current) return;
-
     shouldKeepListeningRef.current = true;
 
-    try {
-      // Trigger noise suppression & echo cancellation hardware filters
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: {
-            echoCancellation: true,
-            noiseSuppression: true,
-            autoGainControl: true,
-          },
-        });
-        mediaStreamRef.current = stream;
-      }
+    // Check secure context
+    if (typeof window !== 'undefined' && !window.isSecureContext && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      setError('Pengenalan suara membutuhkan koneksi aman HTTPS.');
+    }
 
-      recognitionRef.current.start();
-      setIsListening(true);
-    } catch (err: any) {
-      console.error('Failed to start speech recognition:', err);
-      if (err.name === 'NotAllowedError') {
-        shouldKeepListeningRef.current = false;
-        setError('Akses mikrofon ditolak. Izinkan browser mengakses mikrofon Anda.');
-      } else {
-        // Recognition might already be running, set state to true
-        try {
-          recognitionRef.current.start();
-        } catch (e) {}
-        setIsListening(true);
+    // Request and immediately RELEASE mic stream so SpeechRecognition has sole access to the microphone
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        stream.getTracks().forEach((track) => track.stop());
+      } catch (permErr: any) {
+        if (permErr.name === 'NotAllowedError' || permErr.name === 'PermissionDeniedError') {
+          shouldKeepListeningRef.current = false;
+          setError('Akses mikrofon ditolak. Izinkan browser mengakses mikrofon Anda.');
+          setIsListening(false);
+          return;
+        }
       }
     }
-  }, []);
+
+    let rec = recognitionRef.current;
+    if (!rec) {
+      rec = initRecognition();
+    }
+
+    if (!rec) return;
+
+    try {
+      rec.start();
+      setIsListening(true);
+    } catch (err: any) {
+      if (err.name === 'InvalidStateError') {
+        // Already running
+        setIsListening(true);
+      } else {
+        console.warn('Failed to start speech recognition, retrying:', err);
+        try {
+          rec.abort();
+          setTimeout(() => {
+            if (shouldKeepListeningRef.current) {
+              rec.start();
+              setIsListening(true);
+            }
+          }, 150);
+        } catch (e) {}
+      }
+    }
+  }, [initRecognition]);
 
   const stopListening = useCallback(() => {
     shouldKeepListeningRef.current = false;
@@ -150,10 +222,6 @@ export function useVoiceRecognition() {
       try {
         recognitionRef.current.stop();
       } catch (e) {}
-    }
-    if (mediaStreamRef.current) {
-      mediaStreamRef.current.getTracks().forEach((track) => track.stop());
-      mediaStreamRef.current = null;
     }
     setIsListening(false);
     setInterimTranscript('');
