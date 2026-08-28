@@ -42,7 +42,7 @@ import { MobileLayout } from '../components/MobileLayout';
 import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from '../hooks/useTranslation';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
-import { useVoiceRecognition } from '../hooks/useVoiceRecognition';
+import { useVoiceRecognition, mergeWithoutOverlap } from '../hooks/useVoiceRecognition';
 import { useToast } from '../contexts/ToastContext';
 import { AvatarImage } from '../components/ui/DefaultImages';
 import { ConfirmDialog } from '../components/ui/ConfirmDialog';
@@ -223,14 +223,19 @@ export default function ChatbotPage() {
 
   // Sync speech transcript into input message
   useEffect(() => {
-    if (isListening && transcript) {
-      setInputMessage(transcript);
-      if (textareaRef.current) {
-        textareaRef.current.style.height = 'auto';
-        textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 140)}px`;
+    if (isListening) {
+      const fullText = interimTranscript
+        ? mergeWithoutOverlap(transcript, interimTranscript).trim()
+        : transcript.trim();
+      if (fullText) {
+        setInputMessage(fullText);
+        if (textareaRef.current) {
+          textareaRef.current.style.height = 'auto';
+          textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 140)}px`;
+        }
       }
     }
-  }, [transcript, isListening]);
+  }, [transcript, interimTranscript, isListening]);
 
   // Handle voice errors
   useEffect(() => {

@@ -17,7 +17,7 @@ import {
   Flame,
   Check,
 } from 'lucide-react';
-import { useVoiceRecognition } from '../hooks/useVoiceRecognition';
+import { useVoiceRecognition, mergeWithoutOverlap } from '../hooks/useVoiceRecognition';
 import axios from 'axios';
 import { useToast } from '../contexts/ToastContext';
 
@@ -109,7 +109,10 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
 
   // Step 1: Parse and show preview for confirmation
   const handleParseAndPreview = async () => {
-    const fullText = (transcript + ' ' + interimTranscript).trim();
+    const fullText = interimTranscript
+      ? mergeWithoutOverlap(transcript, interimTranscript).trim()
+      : transcript.trim();
+
     if (!fullText) {
       showToast('Silakan bicara terlebih dahulu atau ketik jadwal Anda.', 'warning');
       return;
@@ -312,7 +315,11 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
 
                 <div className="relative">
                   <textarea
-                    value={transcript + (interimTranscript ? ' ' + interimTranscript : '')}
+                    value={
+                      interimTranscript
+                        ? mergeWithoutOverlap(transcript, interimTranscript)
+                        : transcript
+                    }
                     onChange={(e) => setTranscript(e.target.value)}
                     placeholder="Contoh: 'Besok jam 8 pagi belajar matematika matriks, siang jam 1 lanjut koding React, sore jam 4 bikin tugas biologi'..."
                     rows={4}

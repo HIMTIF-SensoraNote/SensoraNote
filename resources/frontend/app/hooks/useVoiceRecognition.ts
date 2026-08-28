@@ -55,6 +55,34 @@ const SPEECH_LANG_MAP: Record<string, string> = {
   zu: 'zu-ZA',
 };
 
+export function mergeWithoutOverlap(base: string, incoming: string): string {
+  base = (base || '').trim();
+  incoming = (incoming || '').trim();
+  if (!base) return incoming;
+  if (!incoming) return base;
+
+  // Exact duplicate or substring checks
+  if (base.toLowerCase() === incoming.toLowerCase()) return base;
+  if (incoming.toLowerCase().startsWith(base.toLowerCase())) return incoming;
+  if (base.toLowerCase().endsWith(incoming.toLowerCase())) return base;
+
+  const baseWords = base.split(/\s+/);
+  const incomingWords = incoming.split(/\s+/);
+
+  // Check overlap from longest possible down to 1 word
+  const maxOverlap = Math.min(baseWords.length, incomingWords.length);
+  for (let len = maxOverlap; len > 0; len--) {
+    const baseTail = baseWords.slice(baseWords.length - len).join(' ').toLowerCase();
+    const incomingHead = incomingWords.slice(0, len).join(' ').toLowerCase();
+    if (baseTail === incomingHead) {
+      const nonOverlapping = incomingWords.slice(len).join(' ');
+      return nonOverlapping ? `${base} ${nonOverlapping}` : base;
+    }
+  }
+
+  return `${base} ${incoming}`;
+}
+
 export function useVoiceRecognition() {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
@@ -110,11 +138,16 @@ export function useVoiceRecognition() {
           }
         }
 
-        const base = baseTranscriptRef.current ? baseTranscriptRef.current.trim() : '';
-        const combinedFinal = (base ? base + ' ' : '') + sessionFinal.trim();
+        sessionFinal = sessionFinal.trim();
+        currentInterim = currentInterim.trim();
 
-        setTranscript(combinedFinal.trim());
-        setInterimTranscript(currentInterim.trim());
+        // Merge sessionFinal with baseTranscriptRef without duplicating overlapping words
+        const mergedFinal = sessionFinal
+          ? mergeWithoutOverlap(baseTranscriptRef.current, sessionFinal)
+          : baseTranscriptRef.current;
+
+        setTranscript(mergedFinal.trim());
+        setInterimTranscript(currentInterim);
       };
 
       recognition.onerror = (event: any) => {
