@@ -46,30 +46,94 @@ class TranslationController extends Controller
     {
         $request->validate([
             'text' => 'required|string',
-            'target_lang' => 'required|string|max:5',
-            'source_lang' => 'nullable|string|max:5',
+            'target_lang' => 'required|string|max:10',
+            'source_lang' => 'nullable|string|max:10',
         ]);
 
-        $text = $request->input('text');
-        $lang = $request->input('target_lang');
+        $text = trim($request->input('text'));
+        $lang = strtolower(trim($request->input('target_lang')));
         $source = $request->input('source_lang', null);
 
-        // Cache based on the MD5 hash of the text + target language + source language
-        $hash = md5($text . ($source ?? 'auto'));
-        $cacheKey = "translations_dynamic_{$lang}_{$hash}";
+        // Normalize language codes (e.g., 'en-US' -> 'en', 'zh-TW' -> 'zh-TW')
+        $langCode = match ($lang) {
+            'en-us', 'en-gb' => 'en',
+            'zh-tw' => 'zh-TW',
+            'zh-cn' => 'zh',
+            default => $lang,
+        };
 
-        $translatedText = Cache::rememberForever($cacheKey, function () use ($text, $lang, $source) {
-            $tr = new GoogleTranslate($lang);
-            if ($source) {
-                $tr->setSource($source);
+        // Cache based on the MD5 hash of the text + target language
+        $hash = md5($text . '_' . $langCode);
+        $cacheKey = "translations_dynamic_{$langCode}_{$hash}";
+
+        $translatedText = Cache::rememberForever($cacheKey, function () use ($text, $langCode, $source) {
+            // 1. Try Google Gemini AI Translation
+            $apiKey = config('services.gemini.api_key') ?: env('GEMINI_API_KEY');
+            if (!empty($apiKey)) {
+                $modelsToTry = ['gemini-2.0-flash', 'gemini-3.5-flash-lite', 'gemini-3.7-flash'];
+                $prompt = "You are a professional multilingual translator for educational content.\n" .
+                    "Translate the following text accurately, fluently, and naturally into target language '{$langCode}'.\n" .
+                    "Output ONLY the translated text without explanations, greetings, quotes, or markdown formatting.\n\n" .
+                    "Text to translate:\n" . $text;
+
+                $payload = [
+                    'contents' => [
+                        [
+                            'role' => 'user',
+                            'parts' => [['text' => $prompt]]
+                        ]
+                    ],
+                    'generationConfig' => [
+                        'temperature' => 0.2,
+                        'maxOutputTokens' => 2048,
+                    ]
+                ];
+
+                foreach ($modelsToTry as $model) {
+                    try {
+                        $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key={$apiKey}";
+                        $response = \Illuminate\Support\Facades\Http::timeout(15)
+                            ->withHeaders([
+                                'Content-Type' => 'application/json',
+                                'x-goog-api-key' => $apiKey,
+                            ])
+                            ->post($endpoint, $payload);
+
+                        if ($response->successful()) {
+                            $data = $response->json();
+                            $result = trim($data['candidates'][0]['content']['parts'][0]['text'] ?? '');
+                            if (!empty($result)) {
+                                return $result;
+                            }
+                        }
+                    } catch (\Exception $e) {
+                        \Illuminate\Support\Facades\Log::warning("Gemini translation error ({$model}): " . $e->getMessage());
+                    }
+                }
             }
-            return $tr->translate($text);
+
+            // 2. Fallback to GoogleTranslate scraper
+            try {
+                $tr = new GoogleTranslate($langCode);
+                if ($source) {
+                    $tr->setSource($source);
+                }
+                $res = $tr->translate($text);
+                if (!empty($res)) {
+                    return $res;
+                }
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::warning("GoogleTranslate scraper error: " . $e->getMessage());
+            }
+
+            // 3. Ultimate Fallback to original text
+            return $text;
         });
 
         return response()->json([
             'original' => $text,
             'translated' => $translatedText,
-            'target_lang' => $lang,
+            'target_lang' => $langCode,
         ]);
     }
 

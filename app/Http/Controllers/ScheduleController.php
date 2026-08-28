@@ -37,46 +37,61 @@ class ScheduleController extends Controller
             ], 500);
         }
 
+        $tomorrowDate = date('Y-m-d', strtotime('+1 day', strtotime($targetDate)));
+        $lusaDate = date('Y-m-d', strtotime('+2 days', strtotime($targetDate)));
+
         $systemInstruction = "Anda adalah AI Smart Schedule Assistant di platform SensoraNote.\n" .
             "Tugas Anda: Menganalisis ucapan/teks jadwal harian pengguna (dalam bahasa Indonesia) dan mengekstraknya menjadi array JSON jadwal yang terstruktur, kronologis, realistis, dan MENGGUNAKAN STANDAR FORMAT WAKTU 24 JAM (00:00 - 23:59).\n\n" .
-            "KONTEKS WAKTU REAL-TIME SAAT INI:\n" .
-            "- Waktu saat ini ketika ucapan dibuat: {$currentTime} (Format 24 Jam)\n" .
-            "- Tanggal target jadwal: {$targetDate}\n\n" .
-            "ATURAN KONVERSI FORMAT WAKTU 24 JAM (SANGAT PENTING & MUTLAK):\n" .
-            "1. JANGAN PERNAH menyamakan waktu malam/sore/siang dengan waktu pagi! Selalu gunakan standar waktu 24 jam:\n" .
-            "   - Jam 8 malam = '20:00' (Bukan 08:00)\n" .
-            "   - Jam 1 siang = '13:00' (Bukan 01:00)\n" .
-            "   - Jam 2 siang = '14:00' (Bukan 02:00)\n" .
-            "   - Jam 3 sore = '15:00' (Bukan 03:00)\n" .
-            "   - Jam 4 sore = '16:00' (Bukan 04:00)\n" .
-            "   - Jam 5 sore = '17:00' (Bukan 05:00)\n" .
-            "   - Jam 6 sore / maghrib = '18:00' (Bukan 06:00)\n" .
-            "   - Jam 7 malam = '19:00' (Bukan 07:00)\n" .
-            "   - Jam 9 malam = '21:00' (Bukan 09:00)\n" .
-            "   - Jam 10 malam = '22:00' (Bukan 10:00)\n" .
-            "   - Jam 11 malam = '23:00' (Bukan 11:00)\n" .
-            "   - Jam 12 siang = '12:00', Jam 12 malam = '00:00' / '23:59'\n\n" .
-            "2. RESOLUSI AMBIGUITAS WAKTU RELATIF ('DARI SEKARANG SAMPAI JAM X'):\n" .
-            "   - Kasus: Pengguna berkata 'buatkan jadwal dari sekarang sampai jam 8' (atau jam 1..11 lainnya).\n" .
-            "   - Jika waktu saat ini ({$currentTime}) sudah melewati jam pagi tersebut (misal waktu sekarang 14:00), maka batas waktu sampai 'jam 8' tersebut PASTI maksudnya adalah JAM 8 MALAM ('20:00') pada hari ini!\n" .
-            "   - Kegiatan pertama WAJIB dimulai dari waktu saat ini ({$currentTime}) dan kegiatan terakhir berakhir tepat pada waktu target (misal '20:00').\n" .
-            "   - Buat beberapa slot kegiatan belajar dan istirahat yang realistis, proporsional, dan teratur di antara rentang waktu tersebut (misal dari {$currentTime} sampai 20:00).\n\n" .
-            "3. ATURAN LAINNYA:\n" .
-            "   - Setiap kegiatan harus memiliki 'time_start' dan 'time_end' berurutan maju tanpa bentrok.\n" .
-            "   - Format waktu harus 2 digit jam dan 2 digit menit: HH:mm (contoh: '08:00', '13:30', '20:00').\n\n" .
+            "KONTEKS TANGGAL & WAKTU SAAT INI:\n" .
+            "- Waktu saat ini: {$currentTime} (Format 24 Jam)\n" .
+            "- Tanggal acuan (Hari Ini): {$targetDate}\n" .
+            "- Besok: {$tomorrowDate}\n" .
+            "- Lusa: {$lusaDate}\n\n" .
+            "ATURAN DETEKSI TANGGAL TARGET DARI UCAPAN (SANGAT PENTING):\n" .
+            "1. Jika pengguna menyebut 'besok' / 'esok': 'target_date' WAJIB diisi tanggal besok: '{$tomorrowDate}'.\n" .
+            "2. Jika pengguna menyebut 'lusa': 'target_date' WAJIB diisi tanggal lusa: '{$lusaDate}'.\n" .
+            "3. Jika pengguna menyebut hari/tanggal spesifik (contoh: 'tanggal 29 Agustus', 'hari Senin'): hitung dan tentukan tanggal target yang sesuai (format 'YYYY-MM-DD').\n" .
+            "4. Jika pengguna TIDAK menyebut hari/tanggal atau menyebut 'hari ini': 'target_date' adalah '{$targetDate}'.\n\n" .
+            "ATURAN FORMAT WAKTU 24 JAM & KATA KETERANGAN WAKTU (SANGAT MUTLAK):\n" .
+            "1. KATA 'PAGI' HARUS SELALU WAKTU PAGI (00:00 - 11:59):\n" .
+            "   - 'jam 7 pagi' = '07:00' (JANGAN PERNAH jadi 19:00 atau malam!)\n" .
+            "   - 'jam 6 pagi' = '06:00'\n" .
+            "   - 'jam 8 pagi' = '08:00'\n" .
+            "   - 'jam 9 pagi' = '09:00'\n" .
+            "   - 'jam 10 pagi' = '10:00'\n" .
+            "   - 'jam 11 pagi' = '11:00'\n\n" .
+            "2. KATA 'SIANG' (12:00 - 14:59):\n" .
+            "   - 'jam 12 siang' = '12:00'\n" .
+            "   - 'jam 1 siang' = '13:00'\n" .
+            "   - 'jam 2 siang' = '14:00'\n\n" .
+            "3. KATA 'SORE' (15:00 - 18:30):\n" .
+            "   - 'jam 3 sore' = '15:00'\n" .
+            "   - 'jam 4 sore' = '16:00'\n" .
+            "   - 'jam 5 sore' = '17:00'\n" .
+            "   - 'jam 6 sore' = '18:00'\n\n" .
+            "4. KATA 'MALAM' (18:30 - 23:59):\n" .
+            "   - 'jam 7 malam' = '19:00'\n" .
+            "   - 'jam 8 malam' = '20:00'\n" .
+            "   - 'jam 9 malam' = '21:00'\n" .
+            "   - 'jam 10 malam' = '22:00'\n" .
+            "   - 'jam 11 malam' = '23:00'\n\n" .
+            "5. RESOLUSI AMBIGU ('DARI SEKARANG SAMPAI JAM X'):\n" .
+            "   - HANYA berlaku jika jadwal untuk HARI INI dan pengguna TIDAK menyebut 'pagi'.\n" .
+            "   - Jika pengguna berkata 'besok jam 7 pagi ada acara...', jadwal dimulai BESOK pukul 07:00!\n\n" .
             "ATURAN OUTPUT JSON:\n" .
             "1. HANYA kembalikan JSON valid murni tanpa markdown.\n" .
             "2. Format JSON:\n" .
-            "   - 'summary': Ringkasan tema/fokus hari ini (1-2 kalimat bahasa Indonesia).\n" .
+            "   - 'target_date': Format 'YYYY-MM-DD' (Hasil deteksi tanggal dari ucapan)\n" .
+            "   - 'summary': Ringkasan tema/fokus jadwal (1-2 kalimat bahasa Indonesia)\n" .
             "   - 'items': Array objek jadwal:\n" .
-            "       - 'time_start': Format 24 jam HH:mm\n" .
-            "       - 'time_end': Format 24 jam HH:mm\n" .
+            "       - 'time_start': Format 24 jam HH:mm (contoh: '07:00')\n" .
+            "       - 'time_end': Format 24 jam HH:mm (contoh: '08:30')\n" .
             "       - 'title': Nama aktivitas yang jelas dan spesifik\n" .
             "       - 'category': Kategori ('Matematika', 'Informatika', 'Bahasa', 'Sains', 'Sosial', 'Istirahat', 'Olahraga', 'Umum')\n" .
             "       - 'priority': 'tinggi', 'sedang', atau 'rendah'\n" .
             "       - 'color': 'blue', 'emerald', 'amber', 'purple', 'rose', atau 'indigo'";
 
-        $userPrompt = "Waktu sekarang: {$currentTime}. Tanggal target: {$targetDate}.\n" .
+        $userPrompt = "Waktu sekarang: {$currentTime}. Tanggal acuan: {$targetDate}.\n" .
             "Ubah transkripsi ucapan jadwal berikut menjadi format JSON jadwal harian yang akurat:\n\n\"{$prompt}\"";
 
         $payload = [
@@ -151,26 +166,24 @@ class ScheduleController extends Controller
             ], 422);
         }
 
+        // Target Date Resolution
+        $finalTargetDate = !empty($parsed['target_date']) ? trim($parsed['target_date']) : $targetDate;
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $finalTargetDate)) {
+            $finalTargetDate = $targetDate;
+        }
+
         // Add UUID, normalized 24h times, and is_completed to each item
         $newItems = [];
-        $lastEnd = $currentTime;
+        $lastEnd = '08:00';
         foreach ($parsed['items'] as $item) {
             $start = $this->normalizeTime24h($item['time_start'] ?? null, $lastEnd);
             $end = $this->normalizeTime24h($item['time_end'] ?? null, $start);
 
             // Ensure end time is strictly after start time
             if (strcmp($end, $start) <= 0) {
-                $endParts = explode(':', $end);
-                $endH = (int) ($endParts[0] ?? 0);
-                if ($endH < 12) {
-                    $endH += 12;
-                    $end = sprintf('%02d:%02d', min(23, $endH), (int) ($endParts[1] ?? 0));
-                }
-                if (strcmp($end, $start) <= 0) {
-                    $startParts = explode(':', $start);
-                    $newEndH = min(23, ((int) ($startParts[0] ?? 0)) + 1);
-                    $end = sprintf('%02d:%02d', $newEndH, (int) ($startParts[1] ?? 0));
-                }
+                $startParts = explode(':', $start);
+                $newEndH = min(23, ((int) ($startParts[0] ?? 0)) + 1);
+                $end = sprintf('%02d:%02d', $newEndH, (int) ($startParts[1] ?? 0));
             }
 
             $lastEnd = $end;
@@ -200,7 +213,8 @@ class ScheduleController extends Controller
                 'preview' => true,
                 'message' => 'Jadwal berhasil dianalisis oleh AI! Silakan konfirmasi.',
                 'data' => [
-                    'date' => $targetDate,
+                    'date' => $finalTargetDate,
+                    'target_date' => $finalTargetDate,
                     'summary' => $parsed['summary'] ?? 'Fokus belajar hari ini',
                     'items' => $newItems,
                     'raw_prompt' => $prompt,
@@ -210,7 +224,7 @@ class ScheduleController extends Controller
 
         // Find or create schedule for this user and date
         $schedule = Schedule::where('user_id', $userId)
-            ->where('date', $targetDate)
+            ->where('date', $finalTargetDate)
             ->first();
 
         if ($schedule) {
@@ -226,7 +240,7 @@ class ScheduleController extends Controller
 
             $schedule = Schedule::create([
                 'user_id' => $userId,
-                'date' => $targetDate,
+                'date' => $finalTargetDate,
                 'items' => $newItems,
                 'raw_prompt' => $prompt,
                 'summary' => $parsed['summary'] ?? 'Jadwal belajar harian SensoraNote',
@@ -526,10 +540,10 @@ class ScheduleController extends Controller
     /**
      * Normalize time strings to clean 24-hour HH:mm format
      */
-    private function normalizeTime24h(?string $timeStr, ?string $referenceTime = null): string
+    private function normalizeTime24h(?string $timeStr, ?string $fallback = '08:00'): string
     {
         if (empty($timeStr)) {
-            return $referenceTime ?: '08:00';
+            return $fallback ?: '08:00';
         }
 
         $timeStr = trim($timeStr);
@@ -539,17 +553,6 @@ class ScheduleController extends Controller
         $parts = explode(':', $timeStr);
         $hours = isset($parts[0]) ? (int) $parts[0] : 8;
         $minutes = isset($parts[1]) ? (int) $parts[1] : 0;
-
-        // If reference time is in the afternoon (>= 12:00) and this hour is 1..11, convert to PM (+12)
-        if ($referenceTime) {
-            $refParts = explode(':', str_replace('.', ':', $referenceTime));
-            $refHours = (int) ($refParts[0] ?? 0);
-            if ($refHours >= 12 && $hours < 12 && $hours > 0) {
-                if ($hours + 12 >= $refHours) {
-                    $hours += 12;
-                }
-            }
-        }
 
         $hours = max(0, min(23, $hours));
         $minutes = max(0, min(59, $minutes));

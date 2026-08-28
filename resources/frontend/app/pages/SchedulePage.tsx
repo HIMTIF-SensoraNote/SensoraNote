@@ -614,6 +614,9 @@ export default function SchedulePage() {
         isOpen={isVoiceModalOpen}
         onClose={() => setIsVoiceModalOpen(false)}
         onSuccess={(newSchedule) => {
+          if (newSchedule?.date) {
+            setSelectedDate(newSchedule.date);
+          }
           setScheduleData(newSchedule);
           setItems(newSchedule.items || []);
         }}

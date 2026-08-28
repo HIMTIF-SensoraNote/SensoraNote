@@ -433,6 +433,8 @@
     "submit_expert": "Submit for Expert Validation",
     "submit_expert_desc": "Your note will be reviewed by an expert to get a verified badge.",
     "publish_now": "Publish Now",
+    "success_publish": "Note published successfully!",
+    "success_publish_expert": "Note published and submitted for expert review!",
     "preview_title": "Publish Preview",
     "category_title": "Subject",
     "category_desc": "Choose the subject that best fits your note.",

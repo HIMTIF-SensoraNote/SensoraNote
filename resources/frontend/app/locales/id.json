@@ -433,6 +433,8 @@
     "submit_expert": "Ajukan Validasi Pakar",
     "submit_expert_desc": "Catatanmu akan ditinjau oleh ahli untuk mendapatkan lencana terverifikasi.",
     "publish_now": "Publikasikan Sekarang",
+    "success_publish": "Catatan berhasil dipublikasikan!",
+    "success_publish_expert": "Catatan berhasil dipublikasikan dan diajukan ke pakar!",
     "preview_title": "Pratinjau Publikasi",
     "category_title": "Mata Pelajaran",
     "category_desc": "Pilih mata pelajaran yang paling sesuai dengan catatanmu.",

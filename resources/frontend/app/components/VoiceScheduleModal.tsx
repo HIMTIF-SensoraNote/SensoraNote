@@ -60,6 +60,8 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
     summary: string;
     items: any[];
     raw_prompt?: string;
+    target_date?: string;
+    date?: string;
   } | null>(null);
 
   useEffect(() => {
@@ -142,6 +144,9 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
       );
 
       if (res.data.status === 'success' && res.data.data) {
+        if (res.data.data.target_date || res.data.data.date) {
+          setTargetDate(res.data.data.target_date || res.data.data.date);
+        }
         setPreviewData(res.data.data);
         setStep('confirm');
       }
@@ -160,11 +165,12 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
 
     setIsSavingConfirmation(true);
     try {
+      const finalDate = previewData.target_date || previewData.date || targetDate;
       const token = localStorage.getItem('bayu-token') || sessionStorage.getItem('bayu-token');
       const res = await axios.post(
         '/api/v1/schedule/confirm',
         {
-          date: targetDate,
+          date: finalDate,
           items: previewData.items,
           summary: previewData.summary,
           raw_prompt: previewData.raw_prompt || transcript,
@@ -176,7 +182,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
 
       if (res.data.status === 'success') {
         showToast('Jadwal berhasil dikonfirmasi dan disimpan! 🎉', 'success');
-        onSuccess(res.data.data);
+        onSuccess({ ...res.data.data, date: finalDate, target_date: finalDate });
         onClose();
       }
     } catch (err: any) {
@@ -317,6 +323,12 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
           ) : (
             /* STEP 2: CONFIRMATION / PREVIEW */
             <div className="space-y-4">
+              {/* Target Date Badge */}
+              <div className="flex items-center justify-between px-3.5 py-2.5 rounded-2xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-[12.5px] font-['Manrope'] font-bold text-primary">
+                <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4 text-primary" /> Target Tanggal:</span>
+                <span className="font-extrabold">{new Date(targetDate + 'T00:00:00').toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</span>
+              </div>
+
               {/* Focus Summary Card */}
               {previewData?.summary && (
                 <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-white/5 dark:to-transparent border border-blue-100 dark:border-white/10 space-y-1">
