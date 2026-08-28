@@ -65,6 +65,15 @@ export function useVoiceRecognition() {
   const { resolvedLanguage } = useLanguage();
   const recognitionRef = useRef<any>(null);
   const shouldKeepListeningRef = useRef(false);
+  
+  // Base transcript accumulated from previous sessions before auto-restarts
+  const baseTranscriptRef = useRef('');
+  const transcriptRef = useRef('');
+
+  // Keep transcriptRef synced
+  useEffect(() => {
+    transcriptRef.current = transcript;
+  }, [transcript]);
 
   // Initialize SpeechRecognition instance
   const initRecognition = useCallback(() => {
@@ -88,22 +97,24 @@ export function useVoiceRecognition() {
       recognition.maxAlternatives = 1;
 
       recognition.onresult = (event: any) => {
-        let finalStr = '';
-        let interimStr = '';
+        let sessionFinal = '';
+        let currentInterim = '';
 
-        for (let i = event.resultIndex; i < event.results.length; i++) {
+        // Iterate through all results in the current session without double appending
+        for (let i = 0; i < event.results.length; i++) {
           const result = event.results[i];
           if (result.isFinal) {
-            finalStr += result[0].transcript + ' ';
+            sessionFinal += result[0].transcript + ' ';
           } else {
-            interimStr += result[0].transcript;
+            currentInterim += result[0].transcript;
           }
         }
 
-        if (finalStr) {
-          setTranscript((prev) => (prev ? prev.trim() + ' ' + finalStr.trim() : finalStr.trim()));
-        }
-        setInterimTranscript(interimStr);
+        const base = baseTranscriptRef.current ? baseTranscriptRef.current.trim() : '';
+        const combinedFinal = (base ? base + ' ' : '') + sessionFinal.trim();
+
+        setTranscript(combinedFinal.trim());
+        setInterimTranscript(currentInterim.trim());
       };
 
       recognition.onerror = (event: any) => {
@@ -122,6 +133,11 @@ export function useVoiceRecognition() {
       };
 
       recognition.onend = () => {
+        // Store the current accumulated text into baseTranscriptRef so next auto-restart continues cleanly
+        if (transcriptRef.current) {
+          baseTranscriptRef.current = transcriptRef.current.trim();
+        }
+
         if (shouldKeepListeningRef.current) {
           try {
             recognition.start();
@@ -134,7 +150,7 @@ export function useVoiceRecognition() {
                   setIsListening(true);
                 } catch (err) {}
               }
-            }, 300);
+            }, 250);
           }
         } else {
           setIsListening(false);
@@ -227,7 +243,18 @@ export function useVoiceRecognition() {
     setInterimTranscript('');
   }, []);
 
+  const handleSetTranscript = useCallback((textOrUpdater: string | ((prev: string) => string)) => {
+    setTranscript((prev) => {
+      const updated = typeof textOrUpdater === 'function' ? textOrUpdater(prev) : textOrUpdater;
+      baseTranscriptRef.current = updated;
+      transcriptRef.current = updated;
+      return updated;
+    });
+  }, []);
+
   const resetTranscript = useCallback(() => {
+    baseTranscriptRef.current = '';
+    transcriptRef.current = '';
     setTranscript('');
     setInterimTranscript('');
     setError(null);
@@ -237,7 +264,7 @@ export function useVoiceRecognition() {
     isListening,
     transcript,
     interimTranscript,
-    setTranscript,
+    setTranscript: handleSetTranscript,
     startListening,
     stopListening,
     resetTranscript,
