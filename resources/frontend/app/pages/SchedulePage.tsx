@@ -129,6 +129,13 @@ export default function SchedulePage() {
     year: 'numeric',
   });
 
+  const formattedDateTitleShort = dateObj.toLocaleDateString('id-ID', {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+
   // Helper to determine if an activity is checkable based on time_end
   const isActivityCheckable = (item: ScheduleItem): boolean => {
     const now = new Date();
@@ -290,20 +297,29 @@ export default function SchedulePage() {
         </div>
 
         {/* Date Selector & View Switcher Bar */}
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4 bg-white dark:bg-[#1C1A29] p-3 sm:p-3.5 rounded-2xl border border-gray-100 dark:border-white/5 shadow-xs">
+        <div className="bg-white dark:bg-[#1C1A29] p-3 sm:p-4 rounded-2xl border border-gray-100 dark:border-white/5 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4">
           
           {/* Date Navigator Controls */}
-          <div className="flex items-center justify-between sm:justify-start gap-2 w-full md:w-auto">
+          <div className="flex items-center justify-between gap-2 w-full md:w-auto">
             <button
+              type="button"
               onClick={() => handleDateChange(-1)}
-              className="p-2 sm:p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 transition-colors shrink-0 cursor-pointer"
-              title="Hari Sebelumnya (Scroll Mundur)"
+              className="p-2 sm:p-2.5 rounded-xl bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300 transition-colors shrink-0 cursor-pointer"
+              title="Hari Sebelumnya"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
-            <div className="flex items-center gap-2 flex-1 sm:flex-initial justify-center">
-              <div className="relative flex items-center">
+            {/* Styled Custom Date Picker */}
+            <div className="relative flex items-center justify-center flex-1 sm:flex-initial max-w-[260px]">
+              <label className="w-full flex items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200/80 dark:border-white/10 text-[12.5px] sm:text-[13.5px] font-['Lexend_Deca'] font-bold text-gray-800 dark:text-gray-200 hover:border-primary/50 transition-all cursor-pointer select-none">
+                <CalendarIcon className="w-4 h-4 text-primary shrink-0" />
+                <span className="truncate">{formattedDateTitleShort}</span>
+                {isToday && (
+                  <span className="px-1.5 py-0.5 rounded-md bg-blue-100/70 dark:bg-blue-500/20 text-primary text-[10px] font-extrabold uppercase shrink-0">
+                    Hari Ini
+                  </span>
+                )}
                 <input
                   type="date"
                   value={selectedDate}
@@ -312,28 +328,40 @@ export default function SchedulePage() {
                       setSelectedDate(e.target.value);
                     }
                   }}
-                  className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 px-3.5 py-1.5 rounded-xl text-[13px] font-['Manrope'] font-bold text-gray-800 dark:text-gray-200 focus:outline-none focus:border-primary text-center sm:text-left cursor-pointer"
+                  className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
                 />
-              </div>
+              </label>
             </div>
 
             <button
+              type="button"
               onClick={() => handleDateChange(1)}
-              className="p-2 sm:p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 transition-colors shrink-0 cursor-pointer"
-              title="Hari Berikutnya (Scroll Maju)"
+              className="p-2 sm:p-2.5 rounded-xl bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300 transition-colors shrink-0 cursor-pointer"
+              title="Hari Berikutnya"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
+
+            {!isToday && (
+              <button
+                type="button"
+                onClick={handleSetToday}
+                className="hidden sm:inline-flex px-2.5 py-2 rounded-xl bg-blue-50 dark:bg-blue-500/10 text-primary text-[11.5px] font-['Manrope'] font-bold hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-colors shrink-0 cursor-pointer"
+                title="Kembali ke Hari Ini"
+              >
+                Hari Ini
+              </button>
+            )}
           </div>
 
           {/* View Mode Tabs & Notification Permission Toggle */}
-          <div className="flex flex-wrap items-center gap-2 w-full md:w-auto justify-between md:justify-end">
+          <div className="flex flex-wrap items-center gap-2 w-full md:w-auto justify-between md:justify-end pt-2 md:pt-0 border-t md:border-t-0 border-gray-100 dark:border-white/5">
             
             {/* Notification Reminder Toggle (ON/OFF) */}
             <button
               type="button"
               onClick={toggleReminder}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[12px] font-['Manrope'] font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-[12px] font-['Manrope'] font-bold transition-all cursor-pointer ${
                 isReminderEnabled && notificationPermission === 'granted'
                   ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 hover:bg-emerald-100/80 dark:hover:bg-emerald-500/20'
                   : isReminderEnabled
@@ -472,26 +500,18 @@ export default function SchedulePage() {
               </div>
 
               {items.length === 0 ? (
-                <div className="py-12 flex flex-col items-center justify-center text-center space-y-4 px-4">
-                  <div className="w-16 h-16 rounded-3xl bg-blue-50 dark:bg-blue-500/10 text-primary flex items-center justify-center shadow-xs">
-                    <CalendarCheck className="w-8 h-8" />
+                <div className="py-12 sm:py-14 flex flex-col items-center justify-center text-center space-y-3 px-4">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-3xl bg-blue-50 dark:bg-blue-500/10 text-primary flex items-center justify-center shadow-xs">
+                    <CalendarCheck className="w-7 h-7 sm:w-8 sm:h-8" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-['Lexend_Deca'] font-bold text-[16px] text-gray-800 dark:text-gray-200">
+                    <h4 className="font-['Lexend_Deca'] font-bold text-[15px] sm:text-[16px] text-gray-800 dark:text-gray-200">
                       Belum Ada Jadwal untuk {formattedDateTitle}
                     </h4>
-                    <p className="font-['Manrope'] text-[13px] text-gray-500 dark:text-gray-400 max-w-sm">
-                      Gunakan suara Anda untuk membuat jadwal belajar instan dengan AI dalam hitungan detik!
+                    <p className="font-['Manrope'] text-[12.5px] sm:text-[13px] text-gray-500 dark:text-gray-400 max-w-sm">
+                      Gunakan tombol "Rencanakan Sekarang!" di bagian atas untuk menyusun rencana aktivitas belajar Anda.
                     </p>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setIsVoiceModalOpen(true)}
-                    className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-white font-['Manrope'] font-bold text-[13.5px] shadow-md shadow-primary/20 hover:bg-primary/90 transition-all cursor-pointer active:scale-95"
-                  >
-                    <Mic className="w-4 h-4" />
-                    <span>Rencanakan Sekarang!</span>
-                  </button>
                 </div>
               ) : (
                 <div className="space-y-3">
@@ -588,16 +608,6 @@ export default function SchedulePage() {
           </div>
         )}
       </div>
-
-      {/* Floating Action Button (Mobile Voice Mic FAB) */}
-      <button
-        type="button"
-        onClick={() => setIsVoiceModalOpen(true)}
-        className="md:hidden fixed bottom-20 right-4 z-40 w-13 h-13 rounded-full bg-gradient-to-tr from-primary to-indigo-600 text-white flex items-center justify-center shadow-xl shadow-primary/35 active:scale-95 transition-all cursor-pointer"
-        title="Rencanakan Sekarang!"
-      >
-        <Mic className="w-6 h-6" />
-      </button>
 
       {/* Voice Schedule Modal (With 2-step confirmation) */}
       <VoiceScheduleModal
