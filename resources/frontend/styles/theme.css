@@ -361,22 +361,23 @@
    Fixes the "white screen" issue where hardcoded bg-white
    is used. Mapping it to the design system's card color.
    ======================================================= */
-.dark .bg-white {
+.dark :not(.poster-standalone):not(.poster-standalone *) > .bg-white,
+.dark .bg-white:not(.poster-standalone):not(.poster-standalone *) {
   background-color: var(--card) !important;
 }
 
-.dark .bg-gray-50,
-.dark .bg-slate-50,
-.dark .bg-slate-100,
-.dark .bg-gray-100 {
+.dark .bg-gray-50:not(.poster-standalone):not(.poster-standalone *),
+.dark .bg-slate-50:not(.poster-standalone):not(.poster-standalone *),
+.dark .bg-slate-100:not(.poster-standalone):not(.poster-standalone *),
+.dark .bg-gray-100:not(.poster-standalone):not(.poster-standalone *) {
   background-color: var(--background) !important;
 }
 
-.dark .border-gray-100,
-.dark .border-gray-200,
-.dark .border-slate-100,
-.dark .border-slate-200,
-.dark .border-blue-50 {
+.dark .border-gray-100:not(.poster-standalone):not(.poster-standalone *),
+.dark .border-gray-200:not(.poster-standalone):not(.poster-standalone *),
+.dark .border-slate-100:not(.poster-standalone):not(.poster-standalone *),
+.dark .border-slate-200:not(.poster-standalone):not(.poster-standalone *),
+.dark .border-blue-50:not(.poster-standalone):not(.poster-standalone *) {
   border-color: var(--border) !important;
 }
 

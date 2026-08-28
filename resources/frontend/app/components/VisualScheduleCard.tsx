@@ -41,6 +41,263 @@ type PosterTheme =
   | 'sakura-blossom'
   | 'obsidian-minimal';
 
+interface ThemeStyles {
+  id: PosterTheme;
+  isLight: boolean;
+  bgHex: string;
+  containerClass: string;
+  glowTop?: string;
+  glowBottom?: string;
+  headerLogoBg: string;
+  studyPlanBadge: string;
+  profileChipClass: string;
+  profileTextClass: string;
+  dateNumberBoxClass: string;
+  dateNumberTextClass: string;
+  dateMonthTextClass: string;
+  dayTitleClass: string;
+  dateSubtitleClass: string;
+  targetBadgeClass: string;
+  targetBadgeLabelClass: string;
+  targetBadgeCountClass: string;
+  quoteBoxClass: string;
+  quoteIconBg: string;
+  quoteIconColor: string;
+  quoteTitleClass: string;
+  quoteTextClass: string;
+  sectionHeaderClass: string;
+  sectionCountClass: string;
+  cardBaseClass: string;
+  cardCompletedClass: string;
+  timeSlotClass: string;
+  timeStartClass: string;
+  timeEndClass: string;
+  itemTitleClass: string;
+  itemTitleCompletedClass: string;
+  categoryBadgeClass: string;
+  checkboxBorderClass: string;
+  footerClass: string;
+}
+
+const THEME_DEFINITIONS: Record<PosterTheme, ThemeStyles> = {
+  'pastel-studygram': {
+    id: 'pastel-studygram',
+    isLight: true,
+    bgHex: '#FAF7F2',
+    containerClass: 'bg-[#FAF7F2] text-[#2D2A26] border-2 border-[#E3D9CC]',
+    headerLogoBg: 'bg-[#3D342A] text-white',
+    studyPlanBadge: 'bg-[#EADECE] text-[#3D342A]',
+    profileChipClass: 'bg-[#F4ECE1] border border-[#E3D9CC] shadow-xs',
+    profileTextClass: 'text-[#3D342A]',
+    dateNumberBoxClass: 'bg-[#F0E6D8] border border-[#DFCFC0]',
+    dateNumberTextClass: 'text-[#3D342A]',
+    dateMonthTextClass: 'text-[#6A5D50]',
+    dayTitleClass: 'text-[#2C251E]',
+    dateSubtitleClass: 'text-[#6A5D50]',
+    targetBadgeClass: 'bg-[#E8F3EB] border border-[#C6E2CD]',
+    targetBadgeLabelClass: 'text-[#245E35]',
+    targetBadgeCountClass: 'text-[#1D4F2C]',
+    quoteBoxClass: 'bg-[#F4ECE1] border border-[#E3D9CC] shadow-xs',
+    quoteIconBg: 'bg-[#EADECE]',
+    quoteIconColor: 'text-[#8A5A2B]',
+    quoteTitleClass: 'text-[#8A5A2B]',
+    quoteTextClass: 'text-[#3D342A]',
+    sectionHeaderClass: 'text-[#6A5D50]',
+    sectionCountClass: 'text-[#6A5D50]',
+    cardBaseClass: 'bg-[#FFFFFF] border border-[#E3D9CC] shadow-xs',
+    cardCompletedClass: 'bg-[#EFE9DF] border border-[#DDD3C4] opacity-75',
+    timeSlotClass: 'bg-[#3D342A] text-white border border-[#3D342A]',
+    timeStartClass: 'text-white',
+    timeEndClass: 'text-[#EADECE]',
+    itemTitleClass: 'text-[#2C251E]',
+    itemTitleCompletedClass: 'text-[#8A8177] line-through',
+    categoryBadgeClass: 'bg-[#F0E6D8] text-[#524436] border border-[#DFCFC0]',
+    checkboxBorderClass: 'border-[#B8A896]',
+    footerClass: 'border-[#E3D9CC] text-[#7A6C5D]',
+  },
+  'sakura-blossom': {
+    id: 'sakura-blossom',
+    isLight: true,
+    bgHex: '#FFF5F8',
+    containerClass: 'bg-gradient-to-b from-[#FFF5F8] via-[#FDF0F4] to-[#FCE8F0] text-[#4A1527] border-2 border-[#F8CCD8]',
+    headerLogoBg: 'bg-[#D9386E] text-white',
+    studyPlanBadge: 'bg-[#FCD8E3] text-[#8C143F]',
+    profileChipClass: 'bg-[#FFF0F5] border border-[#F8CCD8] shadow-xs',
+    profileTextClass: 'text-[#59142E]',
+    dateNumberBoxClass: 'bg-[#FCE8F0] border border-[#F8CCD8]',
+    dateNumberTextClass: 'text-[#8C143F]',
+    dateMonthTextClass: 'text-[#8C143F]',
+    dayTitleClass: 'text-[#59142E]',
+    dateSubtitleClass: 'text-[#8C405B]',
+    targetBadgeClass: 'bg-[#FDE8EF] border border-[#F8CCD8]',
+    targetBadgeLabelClass: 'text-[#8C143F]',
+    targetBadgeCountClass: 'text-[#6E0C30]',
+    quoteBoxClass: 'bg-[#FFF0F5] border border-[#F8CCD8] shadow-xs',
+    quoteIconBg: 'bg-[#FCD8E3]',
+    quoteIconColor: 'text-[#D9386E]',
+    quoteTitleClass: 'text-[#D9386E]',
+    quoteTextClass: 'text-[#4A1527]',
+    sectionHeaderClass: 'text-[#8C405B]',
+    sectionCountClass: 'text-[#8C405B]',
+    cardBaseClass: 'bg-[#FFFFFF] border border-[#F8CCD8] shadow-xs',
+    cardCompletedClass: 'bg-[#FDE8EF]/80 border border-[#F8CCD8] opacity-75',
+    timeSlotClass: 'bg-[#8C143F] text-white border border-[#8C143F]',
+    timeStartClass: 'text-white',
+    timeEndClass: 'text-[#FFD4E2]',
+    itemTitleClass: 'text-[#4A1527]',
+    itemTitleCompletedClass: 'text-[#A87B8A] line-through',
+    categoryBadgeClass: 'bg-[#FCD8E3] text-[#8C143F] border border-[#F8CCD8]',
+    checkboxBorderClass: 'border-[#F8CCD8]',
+    footerClass: 'border-[#F8CCD8] text-[#A05D75]',
+  },
+  'neon-midnight': {
+    id: 'neon-midnight',
+    isLight: false,
+    bgHex: '#0B0914',
+    containerClass: 'bg-gradient-to-b from-[#110E24] via-[#0D0A1C] to-[#070510] text-white border border-purple-500/30',
+    glowTop: 'bg-purple-600/35',
+    glowBottom: 'bg-blue-600/30',
+    headerLogoBg: 'bg-gradient-to-tr from-primary to-purple-600 text-white',
+    studyPlanBadge: 'bg-primary/30 text-blue-300 border border-primary/40',
+    profileChipClass: 'bg-white/5 border border-white/10 backdrop-blur-md',
+    profileTextClass: 'text-white',
+    dateNumberBoxClass: 'bg-white/10 border border-white/15 backdrop-blur-md',
+    dateNumberTextClass: 'text-white',
+    dateMonthTextClass: 'text-gray-300',
+    dayTitleClass: 'text-white',
+    dateSubtitleClass: 'text-gray-300',
+    targetBadgeClass: 'bg-emerald-500/15 border border-emerald-500/30 backdrop-blur-md',
+    targetBadgeLabelClass: 'text-emerald-300',
+    targetBadgeCountClass: 'text-emerald-200',
+    quoteBoxClass: 'bg-gradient-to-r from-white/[0.07] to-white/[0.02] border border-white/10 backdrop-blur-md',
+    quoteIconBg: 'bg-primary/20',
+    quoteIconColor: 'text-blue-300',
+    quoteTitleClass: 'text-blue-400',
+    quoteTextClass: 'text-gray-200',
+    sectionHeaderClass: 'text-gray-300',
+    sectionCountClass: 'text-gray-300',
+    cardBaseClass: 'bg-white/[0.06] border border-white/12 backdrop-blur-md hover:bg-white/[0.09]',
+    cardCompletedClass: 'bg-white/[0.02] border border-white/5 opacity-50',
+    timeSlotClass: 'bg-black/60 text-white border border-white/15',
+    timeStartClass: 'text-white',
+    timeEndClass: 'text-gray-300',
+    itemTitleClass: 'text-white drop-shadow-xs',
+    itemTitleCompletedClass: 'text-gray-400 line-through',
+    categoryBadgeClass: 'bg-primary/25 text-blue-200 border border-primary/30',
+    checkboxBorderClass: 'border-white/40',
+    footerClass: 'border-white/10 text-gray-400',
+  },
+  'aurora-glass': {
+    id: 'aurora-glass',
+    isLight: false,
+    bgHex: '#030B12',
+    containerClass: 'bg-gradient-to-b from-[#071924] via-[#06151E] to-[#030B12] text-white border border-cyan-500/30',
+    glowTop: 'bg-cyan-500/35',
+    glowBottom: 'bg-emerald-500/30',
+    headerLogoBg: 'bg-gradient-to-tr from-cyan-600 to-emerald-600 text-white',
+    studyPlanBadge: 'bg-cyan-500/30 text-cyan-200 border border-cyan-500/40',
+    profileChipClass: 'bg-white/5 border border-white/10 backdrop-blur-md',
+    profileTextClass: 'text-white',
+    dateNumberBoxClass: 'bg-cyan-950/70 border border-cyan-500/30 backdrop-blur-md',
+    dateNumberTextClass: 'text-cyan-200',
+    dateMonthTextClass: 'text-cyan-300',
+    dayTitleClass: 'text-white',
+    dateSubtitleClass: 'text-cyan-100/80',
+    targetBadgeClass: 'bg-cyan-500/20 border border-cyan-500/35 backdrop-blur-md',
+    targetBadgeLabelClass: 'text-cyan-300',
+    targetBadgeCountClass: 'text-cyan-100',
+    quoteBoxClass: 'bg-cyan-950/30 border border-cyan-500/20 backdrop-blur-md',
+    quoteIconBg: 'bg-cyan-500/20',
+    quoteIconColor: 'text-cyan-300',
+    quoteTitleClass: 'text-cyan-300',
+    quoteTextClass: 'text-cyan-50',
+    sectionHeaderClass: 'text-cyan-200',
+    sectionCountClass: 'text-cyan-200',
+    cardBaseClass: 'bg-cyan-950/40 border border-cyan-500/20 backdrop-blur-md hover:bg-cyan-950/60',
+    cardCompletedClass: 'bg-cyan-950/20 border border-cyan-500/10 opacity-50',
+    timeSlotClass: 'bg-cyan-950/90 text-cyan-200 border border-cyan-500/30',
+    timeStartClass: 'text-cyan-100',
+    timeEndClass: 'text-cyan-300',
+    itemTitleClass: 'text-white drop-shadow-xs',
+    itemTitleCompletedClass: 'text-gray-400 line-through',
+    categoryBadgeClass: 'bg-cyan-500/20 text-cyan-200 border border-cyan-500/30',
+    checkboxBorderClass: 'border-cyan-400/40',
+    footerClass: 'border-cyan-500/20 text-cyan-200/60',
+  },
+  'sunset-glow': {
+    id: 'sunset-glow',
+    isLight: false,
+    bgHex: '#100517',
+    containerClass: 'bg-gradient-to-b from-[#1C0D26] via-[#1A0B1E] to-[#100517] text-white border border-amber-500/30',
+    glowTop: 'bg-amber-500/35',
+    glowBottom: 'bg-rose-500/30',
+    headerLogoBg: 'bg-gradient-to-tr from-amber-500 to-rose-600 text-white',
+    studyPlanBadge: 'bg-amber-500/30 text-amber-200 border border-amber-500/40',
+    profileChipClass: 'bg-white/5 border border-white/10 backdrop-blur-md',
+    profileTextClass: 'text-white',
+    dateNumberBoxClass: 'bg-amber-950/70 border border-amber-500/30 backdrop-blur-md',
+    dateNumberTextClass: 'text-amber-200',
+    dateMonthTextClass: 'text-amber-300',
+    dayTitleClass: 'text-white',
+    dateSubtitleClass: 'text-amber-100/80',
+    targetBadgeClass: 'bg-amber-500/20 border border-amber-500/35 backdrop-blur-md',
+    targetBadgeLabelClass: 'text-amber-300',
+    targetBadgeCountClass: 'text-amber-100',
+    quoteBoxClass: 'bg-amber-950/30 border border-amber-500/20 backdrop-blur-md',
+    quoteIconBg: 'bg-amber-500/20',
+    quoteIconColor: 'text-amber-300',
+    quoteTitleClass: 'text-amber-300',
+    quoteTextClass: 'text-amber-50',
+    sectionHeaderClass: 'text-amber-200',
+    sectionCountClass: 'text-amber-200',
+    cardBaseClass: 'bg-amber-950/40 border border-amber-500/20 backdrop-blur-md hover:bg-amber-950/60',
+    cardCompletedClass: 'bg-amber-950/20 border border-amber-500/10 opacity-50',
+    timeSlotClass: 'bg-amber-950/90 text-amber-200 border border-amber-500/30',
+    timeStartClass: 'text-amber-100',
+    timeEndClass: 'text-amber-300',
+    itemTitleClass: 'text-white drop-shadow-xs',
+    itemTitleCompletedClass: 'text-gray-400 line-through',
+    categoryBadgeClass: 'bg-amber-500/20 text-amber-200 border border-amber-500/30',
+    checkboxBorderClass: 'border-amber-400/40',
+    footerClass: 'border-amber-500/20 text-amber-200/60',
+  },
+  'obsidian-minimal': {
+    id: 'obsidian-minimal',
+    isLight: false,
+    bgHex: '#0B0B0E',
+    containerClass: 'bg-[#0B0B0E] text-white border border-white/20',
+    headerLogoBg: 'bg-white text-black',
+    studyPlanBadge: 'bg-white/20 text-white border border-white/30',
+    profileChipClass: 'bg-white/5 border border-white/10',
+    profileTextClass: 'text-white',
+    dateNumberBoxClass: 'bg-white/10 border border-white/20',
+    dateNumberTextClass: 'text-white',
+    dateMonthTextClass: 'text-gray-300',
+    dayTitleClass: 'text-white',
+    dateSubtitleClass: 'text-gray-300',
+    targetBadgeClass: 'bg-white/10 border border-white/20',
+    targetBadgeLabelClass: 'text-gray-300',
+    targetBadgeCountClass: 'text-white',
+    quoteBoxClass: 'bg-white/[0.04] border border-white/15',
+    quoteIconBg: 'bg-white/15',
+    quoteIconColor: 'text-white',
+    quoteTitleClass: 'text-gray-300',
+    quoteTextClass: 'text-gray-200',
+    sectionHeaderClass: 'text-gray-400',
+    sectionCountClass: 'text-gray-400',
+    cardBaseClass: 'bg-white/[0.05] border border-white/15 hover:bg-white/[0.08]',
+    cardCompletedClass: 'bg-white/[0.02] border border-white/10 opacity-50',
+    timeSlotClass: 'bg-white/10 text-white border border-white/20',
+    timeStartClass: 'text-white',
+    timeEndClass: 'text-gray-300',
+    itemTitleClass: 'text-white',
+    itemTitleCompletedClass: 'text-gray-500 line-through',
+    categoryBadgeClass: 'bg-white/15 text-white border border-white/20',
+    checkboxBorderClass: 'border-white/40',
+    footerClass: 'border-white/15 text-gray-400',
+  },
+};
+
 export function VisualScheduleCard({
   date,
   items,
@@ -48,7 +305,10 @@ export function VisualScheduleCard({
 }: VisualScheduleCardProps) {
   const { user } = useAuth();
   const { showToast } = useToast();
-  const cardRef = useRef<HTMLDivElement>(null);
+  
+  // Interactive on-screen card ref & Hidden fixed desktop export ref
+  const interactiveCardRef = useRef<HTMLDivElement>(null);
+  const exportTargetRef = useRef<HTMLDivElement>(null);
 
   const [theme, setTheme] = useState<PosterTheme>('neon-midnight');
   const [isDownloading, setIsDownloading] = useState(false);
@@ -70,34 +330,19 @@ export function VisualScheduleCard({
   const completedCount = items.filter((i) => i.is_completed).length;
   const progressPercent = items.length > 0 ? Math.round((completedCount / items.length) * 100) : 0;
 
-  const getThemeBgColor = (th: PosterTheme) => {
-    switch (th) {
-      case 'neon-midnight':
-        return '#0B0914';
-      case 'aurora-glass':
-        return '#030B12';
-      case 'sunset-glow':
-        return '#100517';
-      case 'pastel-studygram':
-        return '#FAF8F5';
-      case 'sakura-blossom':
-        return '#FFF5F8';
-      case 'obsidian-minimal':
-        return '#0B0B0E';
-      default:
-        return '#0B0914';
-    }
-  };
+  const currentThemeConfig = THEME_DEFINITIONS[theme];
 
   const handleDownloadImage = async () => {
-    if (!cardRef.current) return;
+    // Target the fixed 800px desktop-proportioned node for universal crisp export
+    const targetEl = exportTargetRef.current || interactiveCardRef.current;
+    if (!targetEl) return;
     setIsDownloading(true);
 
     try {
-      const dataUrl = await toPng(cardRef.current, {
+      const dataUrl = await toPng(targetEl, {
         quality: 1.0,
-        pixelRatio: 2, // High resolution HD
-        backgroundColor: getThemeBgColor(theme),
+        pixelRatio: 2, // 2x ultra HD (1600px width output)
+        backgroundColor: currentThemeConfig.bgHex,
         cacheBust: true,
       });
 
@@ -110,11 +355,11 @@ export function VisualScheduleCard({
 
       showToast('Poster visual jadwal berhasil di-download! 🎨📸', 'success');
     } catch (error: any) {
-      console.error('html-to-image download failed, attempting blob fallback:', error);
+      console.error('html-to-image export failed, using blob fallback:', error);
       try {
-        const blob = await toBlob(cardRef.current, {
+        const blob = await toBlob(targetEl, {
           pixelRatio: 1.5,
-          backgroundColor: getThemeBgColor(theme),
+          backgroundColor: currentThemeConfig.bgHex,
         });
         if (blob) {
           const url = URL.createObjectURL(blob);
@@ -138,25 +383,211 @@ export function VisualScheduleCard({
     }
   };
 
-  const isLightTheme = theme === 'pastel-studygram' || theme === 'sakura-blossom';
+  /**
+   * Shared Poster Visual Layout Generator
+   * Rendered in both the interactive responsive card and the fixed-width desktop export container
+   */
+  const renderPosterInner = (isExport: boolean) => {
+    const cfg = currentThemeConfig;
 
-  return (
-    <div className="space-y-5 w-full">
-      {/* Top Action & Theme Picker Bar */}
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3.5 p-3.5 sm:p-4 bg-white dark:bg-[#1C1A29] rounded-2xl border border-gray-100 dark:border-white/5 shadow-xs">
-        
-        {/* Theme Picker Dropdown */}
-        <div className="flex items-center gap-2.5">
-          <div className="flex items-center gap-1.5 text-[13px] font-['Manrope'] font-bold text-gray-700 dark:text-gray-300 shrink-0">
-            <Palette className="w-4 h-4 text-primary" />
-            <span>Pilih Tema:</span>
+    return (
+      <div
+        className={`poster-standalone rounded-[32px] sm:rounded-[36px] shadow-2xl relative overflow-hidden font-sans ${cfg.containerClass} ${
+          isExport ? 'p-10 w-[800px]' : 'p-5 sm:p-8 md:p-10 w-full max-w-4xl'
+        }`}
+      >
+        {/* Ambient Glows for Dark Themes */}
+        {cfg.glowTop && (
+          <div className={`absolute -top-24 -right-24 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-40 ${cfg.glowTop}`} />
+        )}
+        {cfg.glowBottom && (
+          <div className={`absolute -bottom-24 -left-24 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-30 ${cfg.glowBottom}`} />
+        )}
+
+        {/* 1. Header: Branding & User Profile */}
+        <div className="flex items-center justify-between border-b pb-5 relative z-10 gap-3 border-current/10">
+          <div className="flex items-center gap-3">
+            <div className={`flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-2xl shadow-md ${cfg.headerLogoBg}`}>
+              <ApplicationLogo className="w-5 h-5 sm:w-6 sm:h-6" />
+            </div>
+            <div>
+              <h3 className="font-['Lexend_Deca'] font-black text-[17px] sm:text-[20px] tracking-tight flex items-center gap-2">
+                <span>SensoraNote</span>
+                <span className={`text-[10px] sm:text-[10.5px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${cfg.studyPlanBadge}`}>
+                  Study Plan
+                </span>
+              </h3>
+              <p className={`text-[11.5px] sm:text-[12px] font-['Manrope'] font-medium flex items-center gap-1 mt-0.5 ${cfg.dateSubtitleClass}`}>
+                <Calendar className="w-3.5 h-3.5 text-primary" /> {dateObj.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
+              </p>
+            </div>
           </div>
 
-          <div className="relative flex-1 sm:flex-initial min-w-[220px]">
+          {/* User Profile Chip */}
+          <div className={`flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full shrink-0 ${cfg.profileChipClass}`}>
+            <AvatarImage src={user?.avatar} alt={user?.name} name={user?.name} size={26} className="rounded-full shrink-0" />
+            <span className={`text-[12px] sm:text-[12.5px] font-['Manrope'] font-bold max-w-[85px] sm:max-w-[150px] truncate ${cfg.profileTextClass}`}>
+              {user?.name || 'Pelajar'}
+            </span>
+          </div>
+        </div>
+
+        {/* 2. Hero Date & Target Banner */}
+        <div className="mt-5 sm:mt-6 relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3.5 sm:gap-4">
+          <div className="flex items-center gap-3.5 sm:gap-4">
+            <div className={`w-15 h-15 sm:w-18 sm:h-18 rounded-2xl flex flex-col items-center justify-center font-['Lexend_Deca'] shadow-sm shrink-0 ${cfg.dateNumberBoxClass}`}>
+              <span className={`text-[22px] sm:text-[28px] font-black leading-none ${cfg.dateNumberTextClass}`}>
+                {dayNumber}
+              </span>
+              <span className={`text-[10px] sm:text-[10.5px] uppercase font-bold tracking-wider mt-0.5 ${cfg.dateMonthTextClass}`}>
+                {dayName.slice(0, 3)}
+              </span>
+            </div>
+            <div>
+              <h4 className={`font-['Lexend_Deca'] font-extrabold text-[18px] sm:text-[22px] leading-tight ${cfg.dayTitleClass}`}>
+                {dayName}
+              </h4>
+              <p className={`text-[12.5px] sm:text-[14px] font-['Manrope'] font-semibold ${cfg.dateSubtitleClass}`}>
+                {monthYear}
+              </p>
+            </div>
+          </div>
+
+          {/* Target Belajar Pill */}
+          <div className={`flex items-center gap-2.5 sm:gap-3 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl shrink-0 ${cfg.targetBadgeClass}`}>
+            <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-emerald-500" />
+            <div className="text-left sm:text-right">
+              <p className={`text-[9.5px] sm:text-[10px] uppercase font-['Manrope'] font-bold tracking-wider ${cfg.targetBadgeLabelClass}`}>
+                Target Belajar
+              </p>
+              <p className={`text-[12.5px] sm:text-[13.5px] font-['Lexend_Deca'] font-black ${cfg.targetBadgeCountClass}`}>
+                {completedCount}/{items.length} Selesai ({progressPercent}%)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 3. AI Quote / Motivation Box */}
+        {summary && (
+          <div className={`mt-5 sm:mt-6 p-4 sm:p-5 rounded-2xl relative z-10 ${cfg.quoteBoxClass}`}>
+            <div className="flex items-start gap-3 sm:gap-3.5">
+              <div className={`p-2 sm:p-2.5 rounded-xl shrink-0 ${cfg.quoteIconBg} ${cfg.quoteIconColor}`}>
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
+              </div>
+              <div className="space-y-1 min-w-0">
+                <p className={`text-[11px] sm:text-[11.5px] font-['Lexend_Deca'] font-extrabold uppercase tracking-wider ${cfg.quoteTitleClass}`}>
+                  Fokus & Motivasi Belajar
+                </p>
+                <p className={`text-[12.5px] sm:text-[13.5px] font-['Manrope'] font-medium leading-relaxed italic ${cfg.quoteTextClass}`}>
+                  "{summary}"
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 4. Susunan Jadwal Harian */}
+        <div className="mt-6 sm:mt-7 space-y-3 relative z-10">
+          <div className="flex items-center justify-between px-1">
+            <span className={`text-[11.5px] sm:text-[12.5px] font-['Lexend_Deca'] font-bold uppercase tracking-wider flex items-center gap-1.5 sm:gap-2 ${cfg.sectionHeaderClass}`}>
+              <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" /> Susunan Jadwal Harian:
+            </span>
+            <span className={`text-[11.5px] sm:text-[12px] font-['Manrope'] font-bold ${cfg.sectionCountClass}`}>
+              {completedCount}/{items.length} Selesai ({progressPercent}%)
+            </span>
+          </div>
+
+          {items.length === 0 ? (
+            <div className="text-center py-10 opacity-60 text-[13.5px] font-['Manrope']">
+              Belum ada jadwal untuk tanggal ini.
+            </div>
+          ) : (
+            <div className="space-y-2.5 sm:space-y-3">
+              {items.map((item, idx) => (
+                <div
+                  key={item.id || idx}
+                  className={`flex items-center justify-between p-3.5 sm:p-4.5 rounded-2xl transition-all relative overflow-hidden ${
+                    item.is_completed ? cfg.cardCompletedClass : cfg.cardBaseClass
+                  }`}
+                >
+                  {/* Left: Time & Information */}
+                  <div className="flex items-center gap-3 sm:gap-5 min-w-0 flex-1">
+                    
+                    {/* Time Slot Pill */}
+                    <div className={`flex flex-col items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shrink-0 min-w-[75px] sm:min-w-[90px] shadow-xs ${cfg.timeSlotClass}`}>
+                      <span className={`text-[13px] sm:text-[15px] font-['Lexend_Deca'] font-black tracking-tight leading-none ${cfg.timeStartClass}`}>
+                        {item.time_start}
+                      </span>
+                      <span className={`text-[9.5px] sm:text-[10px] font-['Manrope'] font-bold mt-1 leading-none ${cfg.timeEndClass}`}>
+                        s/d {item.time_end}
+                      </span>
+                    </div>
+
+                    {/* Title & Category */}
+                    <div className="min-w-0 flex-1 space-y-1">
+                      <h4 className={`font-['Lexend_Deca'] font-extrabold text-[13.5px] sm:text-[16px] leading-snug break-words ${
+                        item.is_completed ? cfg.itemTitleCompletedClass : cfg.itemTitleClass
+                      }`}>
+                        {item.title}
+                      </h4>
+
+                      <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                        <span className={`px-2 sm:px-2.5 py-0.5 rounded-md text-[10.5px] sm:text-[11px] font-['Manrope'] font-extrabold ${cfg.categoryBadgeClass}`}>
+                          {item.category}
+                        </span>
+
+                        {item.priority === 'tinggi' && (
+                          <span className="text-[10px] sm:text-[10.5px] font-bold font-['Manrope'] text-rose-600 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded">
+                            🔥 Prioritas Tinggi
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right: Check Status */}
+                  <div className="shrink-0 pl-3 sm:pl-4">
+                    {item.is_completed ? (
+                      <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-500" />
+                    ) : (
+                      <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 ${cfg.checkboxBorderClass}`} />
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* 5. Footer Watermark */}
+        <div className={`mt-6 sm:mt-8 pt-4 border-t relative z-10 flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-2 text-[11px] sm:text-[11.5px] font-['Manrope'] ${cfg.footerClass}`}>
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="font-bold">SensoraNote Smart Schedule Engine</span>
+          </div>
+          <span className="font-extrabold tracking-wide">#BelajarLebihInklusif • sensoranote.site</span>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="space-y-4 sm:space-y-5 w-full">
+      {/* Top Action & Theme Picker Bar */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3.5 sm:p-4 bg-white dark:bg-[#1C1A29] rounded-2xl border border-gray-100 dark:border-white/5 shadow-xs">
+        
+        {/* Theme Picker Dropdown */}
+        <div className="flex items-center gap-2.5 flex-1 min-w-0">
+          <div className="flex items-center gap-1.5 text-[12.5px] sm:text-[13px] font-['Manrope'] font-bold text-gray-700 dark:text-gray-300 shrink-0">
+            <Palette className="w-4 h-4 text-primary" />
+            <span className="hidden sm:inline">Pilih Tema:</span>
+          </div>
+
+          <div className="relative flex-1 min-w-0">
             <select
               value={theme}
               onChange={(e) => setTheme(e.target.value as PosterTheme)}
-              className="w-full appearance-none bg-gray-50 dark:bg-[#13111C] border border-gray-200 dark:border-white/10 pl-3.5 pr-9 py-2 rounded-xl text-[13px] font-['Manrope'] font-bold text-gray-900 dark:text-gray-100 focus:outline-none focus:border-primary cursor-pointer transition-colors shadow-xs"
+              className="w-full appearance-none bg-gray-50 dark:bg-[#13111C] border border-gray-200 dark:border-white/10 pl-3.5 pr-8 py-2 rounded-xl text-[12px] sm:text-[13px] font-['Manrope'] font-bold text-gray-900 dark:text-gray-100 focus:outline-none focus:border-primary cursor-pointer transition-colors shadow-xs truncate"
             >
               <option value="neon-midnight">✨ Cyber Midnight (Ungu Neon)</option>
               <option value="aurora-glass">🌌 Aurora Glass (Cyan Kosmik)</option>
@@ -165,7 +596,7 @@ export function VisualScheduleCard({
               <option value="sakura-blossom">🌸 Sakura Blossom (Pink Lembut)</option>
               <option value="obsidian-minimal">🌑 Obsidian Minimal (Monokrom Gelap)</option>
             </select>
-            <ChevronDown className="w-4 h-4 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <ChevronDown className="w-4 h-4 text-gray-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           </div>
         </div>
 
@@ -174,350 +605,33 @@ export function VisualScheduleCard({
           type="button"
           onClick={handleDownloadImage}
           disabled={isDownloading || items.length === 0}
-          className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white font-['Manrope'] font-bold text-[13px] shadow-md shadow-primary/20 hover:bg-primary/90 transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
+          className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white font-['Manrope'] font-bold text-[12.5px] sm:text-[13px] shadow-md shadow-primary/20 hover:bg-primary/90 transition-all active:scale-95 disabled:opacity-50 cursor-pointer shrink-0"
         >
           {isDownloading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4 shrink-0" />}
           <span>Download Poster (PNG)</span>
         </button>
       </div>
 
-      {/* Visual Canvas Target (Rendered to PNG via html-to-image) */}
-      <div className="flex justify-center w-full">
-        <div
-          ref={cardRef}
-          className={`w-full max-w-4xl rounded-[32px] sm:rounded-[36px] p-6 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden transition-all duration-300 font-sans ${
-            theme === 'pastel-studygram'
-              ? 'bg-[#FAF8F5] text-[#2D2A26] border-2 border-[#E8E2D9]'
-              : theme === 'sakura-blossom'
-              ? 'bg-gradient-to-b from-[#FFF5F8] via-[#FDF0F4] to-[#FCE8F0] text-[#4A1D2F] border-2 border-rose-200'
-              : theme === 'aurora-glass'
-              ? 'bg-gradient-to-b from-[#071924] via-[#06151E] to-[#030B12] text-white border border-cyan-500/30'
-              : theme === 'sunset-glow'
-              ? 'bg-gradient-to-b from-[#1C0D26] via-[#1A0B1E] to-[#100517] text-white border border-amber-500/30'
-              : theme === 'obsidian-minimal'
-              ? 'bg-[#0B0B0E] text-white border border-white/20'
-              : 'bg-gradient-to-b from-[#110E24] via-[#0D0A1C] to-[#070510] text-white border border-purple-500/20'
-          }`}
-        >
-          {/* Subtle Ambient Glows for Dark Gradients */}
-          {theme === 'neon-midnight' && (
-            <>
-              <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-40 bg-purple-600/35" />
-              <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-30 bg-blue-600/30" />
-            </>
-          )}
+      {/* 1. Interactive Responsive Preview Canvas */}
+      <div className="flex justify-center w-full" ref={interactiveCardRef}>
+        {renderPosterInner(false)}
+      </div>
 
-          {theme === 'aurora-glass' && (
-            <>
-              <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-40 bg-cyan-500/35" />
-              <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-30 bg-emerald-500/30" />
-            </>
-          )}
-
-          {theme === 'sunset-glow' && (
-            <>
-              <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-40 bg-amber-500/35" />
-              <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-30 bg-rose-500/30" />
-            </>
-          )}
-
-          {/* 1. Header: Branding & User Profile */}
-          <div className="flex items-center justify-between border-b pb-5 relative z-10 gap-4 border-current/10">
-            <div className="flex items-center gap-3.5">
-              <div className={`flex items-center justify-center w-11 h-11 rounded-2xl shadow-md ${
-                theme === 'pastel-studygram'
-                  ? 'bg-[#2D2A26] text-white'
-                  : theme === 'sakura-blossom'
-                  ? 'bg-rose-500 text-white'
-                  : theme === 'aurora-glass'
-                  ? 'bg-gradient-to-tr from-cyan-600 to-emerald-600 text-white'
-                  : theme === 'sunset-glow'
-                  ? 'bg-gradient-to-tr from-amber-500 to-rose-600 text-white'
-                  : theme === 'obsidian-minimal'
-                  ? 'bg-white text-black'
-                  : 'bg-gradient-to-tr from-primary to-purple-600 text-white'
-              }`}>
-                <ApplicationLogo className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-['Lexend_Deca'] font-black text-[18px] sm:text-[20px] tracking-tight flex items-center gap-2.5">
-                  <span>SensoraNote</span>
-                  <span className={`text-[10.5px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${
-                    theme === 'pastel-studygram'
-                      ? 'bg-[#E8E2D9] text-[#2D2A26]'
-                      : theme === 'sakura-blossom'
-                      ? 'bg-rose-200 text-rose-900'
-                      : theme === 'aurora-glass'
-                      ? 'bg-cyan-500/30 text-cyan-200'
-                      : theme === 'sunset-glow'
-                      ? 'bg-amber-500/30 text-amber-200'
-                      : theme === 'obsidian-minimal'
-                      ? 'bg-white/20 text-white'
-                      : 'bg-primary/30 text-blue-300'
-                  }`}>
-                    Study Plan
-                  </span>
-                </h3>
-                <p className={`text-[12px] font-['Manrope'] font-medium flex items-center gap-1 mt-0.5 ${
-                  isLightTheme ? 'text-gray-500' : 'text-gray-400'
-                }`}>
-                  <Calendar className="w-3.5 h-3.5 text-primary" /> {dateObj.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
-                </p>
-              </div>
-            </div>
-
-            {/* User Profile Chip */}
-            <div className={`flex items-center gap-2.5 px-3.5 py-2 rounded-full border ${
-              theme === 'pastel-studygram'
-                ? 'bg-white border-[#E8E2D9] shadow-xs'
-                : theme === 'sakura-blossom'
-                ? 'bg-white/80 border-rose-200 shadow-xs'
-                : 'bg-white/5 border-white/10 backdrop-blur-md'
-            }`}>
-              <AvatarImage src={user?.avatar} alt={user?.name} name={user?.name} size={28} className="rounded-full" />
-              <span className={`text-[12.5px] font-['Manrope'] font-bold max-w-[100px] sm:max-w-[150px] truncate ${
-                isLightTheme ? 'text-current' : 'text-white'
-              }`}>
-                {user?.name || 'Pelajar'}
-              </span>
-            </div>
-          </div>
-
-          {/* 2. Hero Date & Target Banner */}
-          <div className="mt-6 relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <div className={`w-16 h-16 sm:w-18 sm:h-18 rounded-2xl flex flex-col items-center justify-center font-['Lexend_Deca'] shadow-sm shrink-0 ${
-                theme === 'pastel-studygram'
-                  ? 'bg-amber-100/70 border border-amber-200 text-amber-900'
-                  : theme === 'sakura-blossom'
-                  ? 'bg-rose-100/80 border border-rose-300 text-rose-900'
-                  : theme === 'aurora-glass'
-                  ? 'bg-cyan-950/70 border border-cyan-500/30 text-cyan-200 backdrop-blur-md'
-                  : theme === 'sunset-glow'
-                  ? 'bg-amber-950/70 border border-amber-500/30 text-amber-200 backdrop-blur-md'
-                  : theme === 'obsidian-minimal'
-                  ? 'bg-white/10 border border-white/20 text-white'
-                  : 'bg-white/10 border border-white/15 text-white backdrop-blur-md'
-              }`}>
-                <span className="text-[24px] sm:text-[28px] font-black leading-none text-white">{dayNumber}</span>
-                <span className="text-[10.5px] uppercase font-bold tracking-wider opacity-80 mt-1">{dayName.slice(0, 3)}</span>
-              </div>
-              <div>
-                <h4 className="font-['Lexend_Deca'] font-extrabold text-[19px] sm:text-[22px] leading-tight">
-                  {dayName}
-                </h4>
-                <p className={`text-[13px] sm:text-[14px] font-['Manrope'] font-medium ${
-                  isLightTheme ? 'text-gray-600' : 'text-gray-300'
-                }`}>
-                  {monthYear}
-                </p>
-              </div>
-            </div>
-
-            {/* Target Belajar Pill */}
-            <div className={`flex items-center gap-3 px-4 py-2.5 rounded-2xl border shrink-0 ${
-              theme === 'pastel-studygram'
-                ? 'bg-emerald-50 border-emerald-200 text-emerald-800 shadow-xs'
-                : theme === 'sakura-blossom'
-                ? 'bg-rose-100 border-rose-200 text-rose-800 shadow-xs'
-                : theme === 'aurora-glass'
-                ? 'bg-cyan-500/15 border-cyan-500/30 text-cyan-300 backdrop-blur-md'
-                : theme === 'sunset-glow'
-                ? 'bg-amber-500/15 border-amber-500/30 text-amber-300 backdrop-blur-md'
-                : theme === 'obsidian-minimal'
-                ? 'bg-white/10 border-white/20 text-white'
-                : 'bg-emerald-500/10 border-emerald-500/25 text-emerald-300 backdrop-blur-md'
-            }`}>
-              <CheckCircle2 className="w-5 h-5 shrink-0" />
-              <div className="text-right">
-                <p className="text-[10px] uppercase font-['Manrope'] font-bold tracking-wider opacity-75">Target Belajar</p>
-                <p className="text-[13.5px] font-['Lexend_Deca'] font-black text-white">{completedCount}/{items.length} Selesai ({progressPercent}%)</p>
-              </div>
-            </div>
-          </div>
-
-          {/* 3. AI Quote / Motivation Box */}
-          {summary && (
-            <div className={`mt-6 p-4 sm:p-5 rounded-2xl border relative z-10 ${
-              theme === 'pastel-studygram'
-                ? 'bg-white border-[#E8E2D9] shadow-xs'
-                : theme === 'sakura-blossom'
-                ? 'bg-white/80 border-rose-200 shadow-xs'
-                : theme === 'aurora-glass'
-                ? 'bg-cyan-950/30 border-cyan-500/20 backdrop-blur-md'
-                : theme === 'sunset-glow'
-                ? 'bg-amber-950/30 border-amber-500/20 backdrop-blur-md'
-                : theme === 'obsidian-minimal'
-                ? 'bg-white/[0.04] border-white/15'
-                : 'bg-gradient-to-r from-white/[0.07] to-white/[0.02] border-white/10 backdrop-blur-md'
-            }`}>
-              <div className="flex items-start gap-3.5">
-                <div className={`p-2.5 rounded-xl shrink-0 ${
-                  theme === 'pastel-studygram'
-                    ? 'bg-amber-100 text-amber-800'
-                    : theme === 'sakura-blossom'
-                    ? 'bg-rose-100 text-rose-700'
-                    : theme === 'aurora-glass'
-                    ? 'bg-cyan-500/20 text-cyan-300'
-                    : theme === 'sunset-glow'
-                    ? 'bg-amber-500/20 text-amber-300'
-                    : theme === 'obsidian-minimal'
-                    ? 'bg-white/15 text-white'
-                    : 'bg-primary/20 text-blue-300'
-                }`}>
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <div className="space-y-1 min-w-0">
-                  <p className="text-[11.5px] font-['Lexend_Deca'] font-extrabold uppercase tracking-wider text-primary dark:text-blue-400">
-                    Fokus & Motivasi Belajar
-                  </p>
-                  <p className={`text-[13px] sm:text-[13.5px] font-['Manrope'] leading-relaxed italic ${
-                    isLightTheme ? 'text-[#3E3A35]' : 'text-gray-200'
-                  }`}>
-                    "{summary}"
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* 4. Susunan Jadwal Harian */}
-          <div className="mt-7 space-y-3.5 relative z-10">
-            <div className="flex items-center justify-between px-1">
-              <span className={`text-[12.5px] font-['Lexend_Deca'] font-bold uppercase tracking-wider flex items-center gap-2 ${
-                isLightTheme ? 'text-gray-500' : 'text-gray-400'
-              }`}>
-                <Clock className="w-4 h-4 text-primary" /> Susunan Jadwal Harian:
-              </span>
-              <span className={`text-[12px] font-['Manrope'] font-bold ${
-                isLightTheme ? 'text-gray-500' : 'text-gray-400'
-              }`}>
-                {completedCount}/{items.length} Selesai ({progressPercent}%)
-              </span>
-            </div>
-
-            {items.length === 0 ? (
-              <div className="text-center py-12 opacity-60 text-[14px] font-['Manrope']">
-                Belum ada jadwal untuk tanggal ini.
-              </div>
-            ) : (
-              <div className="space-y-3">
-                {items.map((item, idx) => (
-                  <div
-                    key={item.id || idx}
-                    className={`group flex items-center justify-between p-4 sm:p-4.5 rounded-2xl border transition-all relative overflow-hidden ${
-                      theme === 'pastel-studygram'
-                        ? item.is_completed
-                          ? 'bg-gray-100/80 border-gray-200 opacity-60'
-                          : 'bg-white border-[#E8E2D9] shadow-xs hover:shadow-md'
-                        : theme === 'sakura-blossom'
-                        ? item.is_completed
-                          ? 'bg-rose-50/60 border-rose-200 opacity-60'
-                          : 'bg-white/90 border-rose-200 shadow-xs hover:shadow-md'
-                        : theme === 'aurora-glass'
-                        ? item.is_completed
-                          ? 'bg-cyan-950/20 border-cyan-500/10 opacity-50'
-                          : 'bg-cyan-950/40 border-cyan-500/20 backdrop-blur-md hover:bg-cyan-950/60'
-                        : theme === 'sunset-glow'
-                        ? item.is_completed
-                          ? 'bg-amber-950/20 border-amber-500/10 opacity-50'
-                          : 'bg-amber-950/40 border-amber-500/20 backdrop-blur-md hover:bg-amber-950/60'
-                        : theme === 'obsidian-minimal'
-                        ? item.is_completed
-                          ? 'bg-white/[0.02] border-white/10 opacity-50'
-                          : 'bg-white/[0.05] border-white/15 hover:bg-white/[0.08]'
-                        : item.is_completed
-                        ? 'bg-white/[0.02] border-white/5 opacity-50'
-                        : 'bg-white/[0.06] border-white/12 backdrop-blur-md hover:bg-white/[0.09] hover:border-white/20'
-                    }`}
-                  >
-                    {/* Left: Time & Information */}
-                    <div className="flex items-center gap-3.5 sm:gap-5 min-w-0 flex-1">
-                      
-                      {/* Time Slot Pill */}
-                      <div className={`flex flex-col items-center justify-center px-3.5 sm:px-4 py-2 rounded-xl shrink-0 min-w-[80px] sm:min-w-[90px] shadow-xs border ${
-                        theme === 'pastel-studygram'
-                          ? 'bg-[#2D2A26] text-white border-[#2D2A26]'
-                          : theme === 'sakura-blossom'
-                          ? 'bg-rose-900 text-white border-rose-900'
-                          : theme === 'aurora-glass'
-                          ? 'bg-cyan-950/90 text-cyan-200 border-cyan-500/30'
-                          : theme === 'sunset-glow'
-                          ? 'bg-amber-950/90 text-amber-200 border-amber-500/30'
-                          : theme === 'obsidian-minimal'
-                          ? 'bg-white/10 text-white border-white/20'
-                          : 'bg-black/50 text-white border-white/15'
-                      }`}>
-                        <span className="text-[14px] sm:text-[15px] font-['Lexend_Deca'] font-black tracking-tight leading-none text-white">
-                          {item.time_start}
-                        </span>
-                        <span className="text-[10px] font-['Manrope'] font-bold mt-1 leading-none text-white/80">
-                          s/d {item.time_end}
-                        </span>
-                      </div>
-
-                      {/* Title & Category */}
-                      <div className="min-w-0 flex-1 space-y-1.5">
-                        <h4 className={`font-['Lexend_Deca'] font-extrabold text-[14.5px] sm:text-[16px] leading-snug break-words ${
-                          isLightTheme
-                            ? item.is_completed ? 'line-through text-gray-400' : 'text-[#1F1D1A]'
-                            : item.is_completed ? 'line-through text-gray-400' : 'text-white drop-shadow-xs'
-                        }`}>
-                          {item.title}
-                        </h4>
-
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className={`px-2.5 py-0.5 rounded-md text-[11px] font-['Manrope'] font-extrabold ${
-                            theme === 'pastel-studygram'
-                              ? 'bg-amber-100 text-amber-900'
-                              : theme === 'sakura-blossom'
-                              ? 'bg-rose-100 text-rose-800'
-                              : theme === 'aurora-glass'
-                              ? 'bg-cyan-500/20 text-cyan-200 border border-cyan-500/30'
-                              : theme === 'sunset-glow'
-                              ? 'bg-amber-500/20 text-amber-200 border border-amber-500/30'
-                              : theme === 'obsidian-minimal'
-                              ? 'bg-white/15 text-white border border-white/20'
-                              : 'bg-primary/25 text-blue-200 border border-primary/30'
-                          }`}>
-                            {item.category}
-                          </span>
-
-                          {item.priority === 'tinggi' && (
-                            <span className="text-[10.5px] font-bold font-['Manrope'] text-rose-500 bg-rose-500/10 px-2 py-0.5 rounded">
-                              🔥 Prioritas Tinggi
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Right: Check Status */}
-                    <div className="shrink-0 pl-4">
-                      {item.is_completed ? (
-                        <CheckCircle2 className="w-6 h-6 text-emerald-400" />
-                      ) : (
-                        <div className={`w-5 h-5 rounded-full border-2 ${
-                          isLightTheme ? 'border-gray-300' : 'border-white/40'
-                        }`} />
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* 5. Footer Watermark */}
-          <div className={`mt-8 pt-4 border-t relative z-10 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11.5px] font-['Manrope'] ${
-            isLightTheme ? 'border-current/10 text-gray-500' : 'border-white/10 text-gray-400'
-          }`}>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="font-bold">SensoraNote Smart Schedule Engine</span>
-            </div>
-            <span className="font-extrabold tracking-wide">#BelajarLebihInklusif • sensoranote.site</span>
-          </div>
+      {/* 2. Hidden Fixed-Width (800px) Universal Desktop-Quality Export Target */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          left: '-9999px',
+          top: 0,
+          width: '800px',
+          pointerEvents: 'none',
+          zIndex: -9999,
+          opacity: 0,
+        }}
+      >
+        <div ref={exportTargetRef} style={{ width: '800px', minWidth: '800px', maxWidth: '800px' }}>
+          {renderPosterInner(true)}
         </div>
       </div>
     </div>
