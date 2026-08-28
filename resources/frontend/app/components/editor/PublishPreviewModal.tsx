@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { X, ChevronDown, Trash2, Crop, Maximize, Check, Loader2 } from 'lucide-react';
+import { X, ChevronDown, Trash2, Crop, Maximize, Check, Loader2, Upload, ImagePlus, ZoomIn } from 'lucide-react';
 import Cropper from 'react-easy-crop';
 import { jenjangOptions } from './editor.constants';
 import { useTranslation } from '../../hooks/useTranslation';
@@ -29,6 +29,7 @@ interface PublishPreviewModalProps {
   finalThumbnail: string | null;
   extractedThumbnail: string | null;
   setFinalThumbnail: (val: string | null) => void;
+  setExtractedThumbnail: (val: string | null) => void;
   thumbnailFit: 'cover' | 'contain';
   setThumbnailFit: (val: 'cover' | 'contain') => void;
   availableImages: string[];
@@ -54,6 +55,8 @@ interface PublishPreviewModalProps {
   onFullView: () => void;
   isGeneratingFullView: boolean;
   isFullViewMode: boolean;
+  onUploadCustomThumbnail?: (dataUrl: string) => void;
+  onRemoveThumbnail?: () => void;
 }
 
 export function PublishPreviewModal(props: PublishPreviewModalProps) {
@@ -61,16 +64,19 @@ export function PublishPreviewModal(props: PublishPreviewModalProps) {
     isOpen, onClose, title, setTitle, previewDescription, setPreviewDescription,
     setDescriptionEdited, isCropping, setIsCropping, crop, setCrop, zoom, setZoom,
     setCroppedAreaPixels, handleApplyCrop, finalThumbnail, extractedThumbnail,
-    setFinalThumbnail, thumbnailFit, setThumbnailFit, availableImages,
+    setFinalThumbnail, setExtractedThumbnail, thumbnailFit, setThumbnailFit, availableImages,
     selectedImageIndex, handleSelectImage, meta, setMeta, tagInput, setTagInput,
     handleAddTag, handleRemoveTag, mapelSearch, setMapelSearch, isMapelDropdownOpen,
     setIsMapelDropdownOpen, filteredMapel, handleSubmit, handleSaveDraft,
     isSubmitting, isSavingDraft, canPublishFinal, mapelDropdownRef,
-    onFullView, isGeneratingFullView, isFullViewMode
+    onFullView, isGeneratingFullView, isFullViewMode,
+    onUploadCustomThumbnail, onRemoveThumbnail
   } = props;
 
   const [isKelasDropdownOpen, setIsKelasDropdownOpen] = useState(false);
   const [isSemesterDropdownOpen, setIsSemesterDropdownOpen] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const kelasDropdownRef = useRef<HTMLDivElement>(null);
   const semesterDropdownRef = useRef<HTMLDivElement>(null);
 
@@ -86,6 +92,49 @@ export function PublishPreviewModal(props: PublishPreviewModalProps) {
     document.addEventListener('mousedown', handleOutsideClick);
     return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, []);
+
+  const processImageFile = (file: File) => {
+    if (!file.type.startsWith('image/')) {
+      return;
+    }
+    if (file.size > 15 * 1024 * 1024) {
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const dataUrl = e.target?.result as string;
+      if (dataUrl) {
+        if (onUploadCustomThumbnail) {
+          onUploadCustomThumbnail(dataUrl);
+        } else {
+          setFinalThumbnail(dataUrl);
+          setCrop({ x: 0, y: 0 });
+          setZoom(1);
+          setIsCropping(true);
+        }
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      processImageFile(file);
+    }
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) {
+      processImageFile(file);
+    }
+  };
 
   const { t, language } = useTranslation();
 
@@ -115,11 +164,30 @@ export function PublishPreviewModal(props: PublishPreviewModalProps) {
           
           {/* Left Side: Thumbnail Preview */}
           <div className="flex-1 max-w-xl">
-            <div className={`w-full aspect-video bg-gray-50 dark:bg-[#1C1A29] rounded-2xl mb-4 flex flex-col items-center justify-center text-center p-8 border border-gray-200/50 dark:border-white/5 relative overflow-hidden group ${isCropping ? 'ring-4 ring-primary' : ''}`}>
-              {isCropping && extractedThumbnail ? (
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleFileInputChange}
+            />
+
+            <div
+              onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
+              onDragLeave={() => setIsDragging(false)}
+              onDrop={handleDrop}
+              className={`w-full aspect-video bg-gray-50 dark:bg-[#1C1A29] rounded-2xl mb-4 flex flex-col items-center justify-center text-center p-6 border-2 relative overflow-hidden group transition-all ${
+                isCropping
+                  ? 'ring-4 ring-primary border-primary'
+                  : isDragging
+                  ? 'border-primary bg-primary/5 dark:bg-primary/10'
+                  : 'border-gray-200/70 dark:border-white/10'
+              }`}
+            >
+              {isCropping && (extractedThumbnail || finalThumbnail) ? (
                 <div className="absolute inset-0 z-20 bg-black">
                   <Cropper
-                    image={extractedThumbnail}
+                    image={extractedThumbnail || finalThumbnail!}
                     crop={crop}
                     zoom={zoom}
                     aspect={16 / 9}
@@ -127,34 +195,126 @@ export function PublishPreviewModal(props: PublishPreviewModalProps) {
                     onCropComplete={(_, pixels) => setCroppedAreaPixels(pixels)}
                     onZoomChange={setZoom}
                   />
-                  <div className="absolute bottom-4 left-4 right-4 z-30 flex justify-between pointer-events-none">
-                     <button onClick={() => setIsCropping(false)} className="pointer-events-auto w-12 h-12 flex items-center justify-center bg-black/60 backdrop-blur-md text-white rounded-full hover:bg-black/80 border border-white/10 transition-all shadow-xl" title={t('upload.cancel')}>
-                         <X className="w-6 h-6" strokeWidth={2.5} />
-                     </button>
-                     <button onClick={handleApplyCrop} className="pointer-events-auto w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-xl hover:bg-primary/90 transition-all border border-primary/50" title={t('upload.apply')}>
-                         <Check className="w-6 h-6" strokeWidth={2.5} />
-                     </button>
+                  <div className="absolute bottom-4 left-4 right-4 z-30 flex items-center justify-between gap-2 pointer-events-none">
+                    <button
+                      type="button"
+                      onClick={() => setIsCropping(false)}
+                      className="pointer-events-auto px-4 py-2 flex items-center gap-1.5 bg-black/70 backdrop-blur-md text-white text-xs font-['Manrope'] font-bold rounded-full hover:bg-black/90 border border-white/15 transition-all shadow-xl cursor-pointer"
+                      title={t('upload.cancel')}
+                    >
+                      <X className="w-4 h-4" strokeWidth={2.5} />
+                      <span>{t('upload.cancel')}</span>
+                    </button>
+
+                    <div className="pointer-events-auto flex items-center gap-2 px-3 py-1.5 bg-black/70 backdrop-blur-md rounded-full border border-white/15 text-white text-xs">
+                      <ZoomIn className="w-3.5 h-3.5 text-gray-300 shrink-0" />
+                      <input
+                        type="range"
+                        min={1}
+                        max={3}
+                        step={0.05}
+                        value={zoom}
+                        onChange={(e) => setZoom(Number(e.target.value))}
+                        className="w-16 sm:w-28 accent-primary h-1.5 rounded-lg cursor-pointer"
+                      />
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={handleApplyCrop}
+                      className="pointer-events-auto px-4 py-2 flex items-center gap-1.5 bg-primary text-white text-xs font-['Manrope'] font-bold rounded-full shadow-xl hover:bg-primary/90 transition-all border border-primary/50 cursor-pointer"
+                      title={t('upload.apply')}
+                    >
+                      <Check className="w-4 h-4" strokeWidth={2.5} />
+                      <span>{t('upload.apply')}</span>
+                    </button>
                   </div>
                 </div>
               ) : finalThumbnail || extractedThumbnail ? (
-                <img src={finalThumbnail || extractedThumbnail!} alt="Thumbnail" className="absolute inset-0 w-full h-full object-cover" />
-              ) : (
                 <>
-                  <h4 className="font-['Manrope'] font-bold text-gray-600 mb-2">{t('upload.no_image_title')}</h4>
-                  <p className="text-xs text-gray-500 font-['Manrope'] font-medium">{t('upload.no_image_desc')}</p>
+                  <img
+                    src={finalThumbnail || extractedThumbnail!}
+                    alt="Thumbnail"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute top-3 right-3 z-10">
+                    <div className="bg-white/95 dark:bg-[#1C1A29]/95 backdrop-blur-md rounded-full shadow-md border border-gray-200/80 dark:border-white/10 p-1.5 flex items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 transition-all cursor-pointer"
+                        title="Unggah / Ganti Gambar"
+                      >
+                        <Upload className="w-4 h-4" strokeWidth={2.2} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setIsCropping(true)}
+                        className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-all cursor-pointer"
+                        title={t('upload.crop_photo')}
+                      >
+                        <Crop className="w-4 h-4" strokeWidth={2.2} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={onFullView}
+                        disabled={isGeneratingFullView}
+                        className={`w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full transition-all cursor-pointer ${
+                          isFullViewMode
+                            ? 'bg-primary text-white'
+                            : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10'
+                        } ${isGeneratingFullView ? 'opacity-50 cursor-wait' : ''}`}
+                        title={t('upload.full_view')}
+                      >
+                        {isGeneratingFullView ? (
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                        ) : (
+                          <Maximize className="w-4 h-4" strokeWidth={2.2} />
+                        )}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (onRemoveThumbnail) {
+                            onRemoveThumbnail();
+                          } else {
+                            setExtractedThumbnail(null);
+                            setFinalThumbnail(null);
+                            setIsCropping(false);
+                          }
+                        }}
+                        className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition-all cursor-pointer"
+                        title="Hapus Gambar Sampul"
+                      >
+                        <Trash2 className="w-4 h-4" strokeWidth={2.2} />
+                      </button>
+                    </div>
+                  </div>
                 </>
-              )}
-
-              {!isCropping && extractedThumbnail && (
-                <div className="absolute top-3 right-3 z-10">
-                   <div className="bg-white/95 dark:bg-[#1C1A29]/95 backdrop-blur-md rounded-full shadow-md border border-gray-200/80 dark:border-white/10 p-1.5 flex gap-1.5">
-                      <button onClick={onFullView} disabled={isGeneratingFullView} className={`w-9 h-9 flex items-center justify-center rounded-full transition-all ${isFullViewMode ? 'bg-primary/10 text-primary' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5'} ${isGeneratingFullView ? 'opacity-50 cursor-wait' : ''}`} title={t('upload.full_view')}>
-                          {isGeneratingFullView ? <Loader2 className="w-4 h-4 animate-spin" /> : <Maximize className="w-4 h-4" strokeWidth={2.5} />}
-                      </button>
-                      <button onClick={() => setIsCropping(true)} className="w-9 h-9 flex items-center justify-center rounded-full bg-white dark:bg-[#252336] text-gray-950 dark:text-gray-100 border border-gray-200 dark:border-white/10 shadow-sm hover:bg-gray-50 dark:hover:bg-white/10 transition-all" title={t('upload.crop_photo')}>
-                          <Crop className="w-4 h-4" strokeWidth={2.5} />
-                      </button>
-                   </div>
+              ) : (
+                <div
+                  onClick={() => fileInputRef.current?.click()}
+                  className="flex flex-col items-center justify-center cursor-pointer p-4 w-full h-full"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all shadow-xs">
+                    <ImagePlus className="w-6 h-6" strokeWidth={2.2} />
+                  </div>
+                  <h4 className="font-['Lexend_Deca'] font-extrabold text-sm sm:text-base text-gray-800 dark:text-gray-200 mb-1">
+                    Unggah Gambar Sampul
+                  </h4>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 font-['Manrope'] font-medium max-w-xs mb-3.5">
+                    Klik untuk memilih foto dari perangkat atau seret file gambar ke sini (PNG, JPG, WebP)
+                  </p>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      fileInputRef.current?.click();
+                    }}
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-white text-xs font-['Manrope'] font-bold hover:bg-primary/90 shadow-md shadow-primary/20 active:scale-95 transition-all cursor-pointer"
+                  >
+                    <Upload className="w-3.5 h-3.5" /> Pilih dari Perangkat
+                  </button>
                 </div>
               )}
             </div>

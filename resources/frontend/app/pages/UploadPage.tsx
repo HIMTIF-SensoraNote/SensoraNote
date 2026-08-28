@@ -455,8 +455,27 @@ export default function UploadPage() {
     setExtractedThumbnail(newThumb);
     setFinalThumbnail(newThumb);
     setThumbnailFit('cover');
+  };
+
+  const handleUploadCustomThumbnail = (dataUrl: string) => {
+    setExtractedThumbnail(dataUrl);
+    setFinalThumbnail(dataUrl);
+    setThumbnailFit('cover');
     setIsFullViewMode(false);
+    setAvailableImages((prev) => (prev.includes(dataUrl) ? prev : [dataUrl, ...prev]));
+    setSelectedImageIndex(0);
+    setCrop({ x: 0, y: 0 });
+    setZoom(1);
+    setIsCropping(true);
+    showToast('Gambar berhasil diunggah! Silakan sesuaikan dan potong (crop) gambar.', 'info');
+  };
+
+  const handleRemoveThumbnail = () => {
+    setExtractedThumbnail(null);
+    setFinalThumbnail(null);
     setIsCropping(false);
+    setIsFullViewMode(false);
+    showToast('Gambar sampul telah dihapus.', 'info');
   };
 
   const handleOpenPreview = () => {
@@ -686,6 +705,7 @@ export default function UploadPage() {
           finalThumbnail={finalThumbnail}
           extractedThumbnail={extractedThumbnail}
           setFinalThumbnail={setFinalThumbnail}
+          setExtractedThumbnail={setExtractedThumbnail}
           thumbnailFit={thumbnailFit}
           setThumbnailFit={setThumbnailFit}
           availableImages={availableImages}
@@ -711,6 +731,8 @@ export default function UploadPage() {
           onFullView={handleFullView}
           isGeneratingFullView={isGeneratingFullView}
           isFullViewMode={isFullViewMode}
+          onUploadCustomThumbnail={handleUploadCustomThumbnail}
+          onRemoveThumbnail={handleRemoveThumbnail}
         />
 
 
