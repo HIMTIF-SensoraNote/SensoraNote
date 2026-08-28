@@ -56,8 +56,8 @@ export function MobileLayout({ children, showBottomNav = true, hideTopNav = fals
   const isAdmin = user?.role === 'admin';
 
   return (
-    // Base layout: Full column structure with dynamic mobile viewport support (100dvh).
-    <div className="h-screen h-[100dvh] w-full flex flex-col bg-white dark:bg-[#13111C] text-slate-900 dark:text-[#E8E6F0] overflow-hidden selection:bg-blue-600/20 selection:text-blue-600">
+    // Base layout: Fixed full-screen container with dynamic mobile viewport support (100dvh).
+    <div className="fixed inset-0 w-full h-full h-[100dvh] flex flex-col bg-white dark:bg-[#13111C] text-slate-900 dark:text-[#E8E6F0] overflow-hidden selection:bg-blue-600/20 selection:text-blue-600">
       
       {/* 1. DESKTOP & TABLET TOP REGION */}
       {!hideTopNav && (
@@ -65,7 +65,7 @@ export function MobileLayout({ children, showBottomNav = true, hideTopNav = fals
           initial={shouldAnimate ? { y: -60, opacity: 0 } : false}
           animate={{ y: 0, opacity: 1 }}
           transition={shouldAnimate ? { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 } : { duration: 0 }}
-          className="hidden md:block w-full border-b border-slate-100/60 dark:border-white/5 z-50 bg-white dark:bg-[#13111C] shrink-0 shadow-[0_2px_10px_rgb(0,0,0,0.02)] dark:shadow-none relative"
+          className="hidden md:block w-full border-b border-slate-100/60 dark:border-white/5 z-50 bg-white dark:bg-[#13111C] shrink-0 shadow-[0_2px_10px_rgb(0,0,0,0.02)] dark:shadow-none sticky top-0"
         >
            <TopNav 
              isSidebarExpanded={isSidebarExpanded} 
@@ -80,7 +80,7 @@ export function MobileLayout({ children, showBottomNav = true, hideTopNav = fals
           initial={shouldAnimate ? { y: -60, opacity: 0 } : false}
           animate={{ y: 0, opacity: 1 }}
           transition={shouldAnimate ? { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 } : { duration: 0 }}
-          className="md:hidden w-full bg-white/90 dark:bg-[#13111C]/90 backdrop-blur-md pt-[env(safe-area-inset-top)] border-b border-slate-100 dark:border-white/5 z-40 shadow-sm dark:shadow-none shrink-0"
+          className="md:hidden w-full bg-white/95 dark:bg-[#13111C]/95 backdrop-blur-md pt-[env(safe-area-inset-top)] border-b border-slate-100 dark:border-white/5 z-40 shadow-sm dark:shadow-none shrink-0 sticky top-0"
         >
            <div className="flex items-center justify-between px-5 h-[60px]">
                <div className="flex items-center">

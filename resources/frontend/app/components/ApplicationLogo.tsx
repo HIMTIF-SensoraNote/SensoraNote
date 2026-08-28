@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 export type PremiumLogoVariant = 'spectrum-pages';
 
@@ -11,12 +11,6 @@ interface ApplicationLogoProps extends React.SVGProps<SVGSVGElement> {
 /**
  * Clean, Solid Abstract Logo for SensoraNote
  * "The Spectrum Pages" (Lembaran Spektrum)
- * Resolves all previous issues:
- * 1. NO anatomical/skeletal shapes (pure solid rectangles).
- * 2. NO medical EKG lines.
- * 3. Clearly reads as an Open Book (Note).
- * 4. Vibrant fanned color spectrum represents Diversity & Inclusivity.
- * 5. Golden Spark represents Sensora / AI.
  */
 export default function ApplicationLogo({
   size = 36,
@@ -24,11 +18,13 @@ export default function ApplicationLogo({
   className = '',
   ...props
 }: ApplicationLogoProps) {
-  // Variant: The Spectrum Pages
-  // Three solid, perfectly proportioned document pages fanning out.
-  // Back Left: Warm Spectrum (Violet/Pink) - Humanity/Touch
-  // Back Right: Earth Spectrum (Teal/Emerald) - Environment/Sound
-  // Front Center: Core Spectrum (Blue/Cyan) - Note/Structure
+  const rawId = useId();
+  const uid = rawId.replace(/[^a-zA-Z0-9_-]/g, '');
+
+  const leftGradId = `page-left-${uid}`;
+  const rightGradId = `page-right-${uid}`;
+  const centerGradId = `page-center-${uid}`;
+
   return (
     <svg
       width={size}
@@ -40,60 +36,57 @@ export default function ApplicationLogo({
       {...props}
     >
       <defs>
-        <linearGradient id="page-left" x1="13" y1="12" x2="27" y2="34" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#a855f7" /> {/* Purple */}
-          <stop offset="1" stopColor="#ec4899" /> {/* Pink */}
+        <linearGradient id={leftGradId} x1="13" y1="12" x2="27" y2="34" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#a855f7" />
+          <stop offset="1" stopColor="#ec4899" />
         </linearGradient>
         
-        <linearGradient id="page-right" x1="13" y1="12" x2="27" y2="34" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#14b8a6" /> {/* Teal */}
-          <stop offset="1" stopColor="#10b981" /> {/* Emerald */}
+        <linearGradient id={rightGradId} x1="13" y1="12" x2="27" y2="34" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#14b8a6" />
+          <stop offset="1" stopColor="#10b981" />
         </linearGradient>
 
-        <linearGradient id="page-center" x1="13" y1="12" x2="27" y2="34" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#3b82f6" /> {/* Royal Blue */}
-          <stop offset="1" stopColor="#0ea5e9" /> {/* Sky Blue */}
+        <linearGradient id={centerGradId} x1="13" y1="12" x2="27" y2="34" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#3b82f6" />
+          <stop offset="1" stopColor="#0ea5e9" />
         </linearGradient>
       </defs>
 
-      {/* Back Left Page (Warm Spectrum - Inclusivity/Humanity) */}
+      {/* Back Left Page */}
       <rect
         x="13"
         y="12"
         width="14"
         height="24"
         rx="3"
-        fill="url(#page-left)"
+        fill={`url(#${leftGradId})`}
         transform="rotate(-30 20 36)"
-        className="shadow-sm"
       />
 
-      {/* Back Right Page (Nature Spectrum - Senses/Sound) */}
+      {/* Back Right Page */}
       <rect
         x="13"
         y="12"
         width="14"
         height="24"
         rx="3"
-        fill="url(#page-right)"
+        fill={`url(#${rightGradId})`}
         transform="rotate(30 20 36)"
-        className="shadow-sm"
       />
 
-      {/* Front Center Page (Core Platform - Note) */}
-      {/* Acts as the spine/cover binding them together */}
+      {/* Front Center Page */}
       <rect
         x="13"
         y="12"
         width="14"
         height="24"
         rx="3"
-        fill="url(#page-center)"
+        fill={`url(#${centerGradId})`}
         stroke="rgba(0,0,0,0.05)"
         strokeWidth="1"
       />
 
-      {/* Sensora AI / Accessibility Sparkle */}
+      {/* Sensora AI Golden Sparkle */}
       <path
         d="M20 2 L21.5 6.5 L26 8 L21.5 9.5 L20 14 L18.5 9.5 L14 8 L18.5 6.5 L20 2 Z"
         fill="#f59e0b"

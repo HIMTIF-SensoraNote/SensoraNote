@@ -408,13 +408,13 @@ export function VisualScheduleCard({
         <div className="flex items-center justify-between border-b pb-4 sm:pb-5 relative z-10 gap-2 sm:gap-3 border-current/10">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
             <div className={`flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 rounded-2xl shadow-md shrink-0 ${cfg.headerLogoBg}`}>
-              <ApplicationLogo className="w-5 h-5 sm:w-6 sm:h-6" />
+              <ApplicationLogo size={24} className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
             </div>
             <div className="min-w-0">
               <h3 className="font-['Lexend_Deca'] font-black text-[15px] sm:text-[20px] tracking-tight flex items-center gap-1.5 sm:gap-2 flex-wrap">
                 <span>SensoraNote</span>
                 <span className={`text-[9px] sm:text-[10.5px] px-2 sm:px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${cfg.studyPlanBadge}`}>
-                  Study Plan
+                  Schedule Plan
                 </span>
               </h3>
               <p className={`text-[11px] sm:text-[12px] font-['Manrope'] font-medium flex items-center gap-1 mt-0.5 ${cfg.dateSubtitleClass}`}>
