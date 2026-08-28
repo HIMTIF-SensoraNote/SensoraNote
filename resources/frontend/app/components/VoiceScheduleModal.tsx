@@ -17,7 +17,7 @@ import {
   Flame,
   Check,
 } from 'lucide-react';
-import { useVoiceRecognition, mergeWithoutOverlap } from '../hooks/useVoiceRecognition';
+import { useVoiceRecognition } from '../hooks/useVoiceRecognition';
 import axios from 'axios';
 import { useToast } from '../contexts/ToastContext';
 
@@ -90,13 +90,18 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
 
   useEffect(() => {
     if (isOpen) {
+      document.body.style.overflow = 'hidden';
       resetTranscript();
       setRecordingSeconds(0);
       setStep('record');
       setPreviewData(null);
     } else {
+      document.body.style.overflow = '';
       stopListening();
     }
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isOpen]);
 
   const handleToggleListening = () => {
@@ -109,10 +114,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
 
   // Step 1: Parse and show preview for confirmation
   const handleParseAndPreview = async () => {
-    const fullText = interimTranscript
-      ? mergeWithoutOverlap(transcript, interimTranscript).trim()
-      : transcript.trim();
-
+    const fullText = (transcript + ' ' + interimTranscript).trim();
     if (!fullText) {
       showToast('Silakan bicara terlebih dahulu atau ketik jadwal Anda.', 'warning');
       return;
@@ -240,7 +242,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
               </div>
 
               {/* Interactive Mic Recorder */}
-              <div className="flex flex-col items-center justify-center py-5 sm:py-6 bg-gradient-to-b from-blue-50/50 to-transparent dark:from-white/[0.02] dark:to-transparent rounded-3xl border border-blue-50 dark:border-white/5 space-y-3">
+              <div className="flex flex-col items-center justify-center py-6 sm:py-7 bg-gradient-to-b from-blue-50/50 to-transparent dark:from-white/[0.02] dark:to-transparent rounded-3xl border border-blue-50 dark:border-white/5 space-y-2">
                 <div className="relative flex items-center justify-center">
                   {/* Outer Pulsing Waves */}
                   {isListening && (
@@ -259,32 +261,20 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
                         ? 'bg-rose-500 text-white hover:bg-rose-600 scale-105 shadow-rose-500/30'
                         : 'bg-gradient-to-tr from-primary to-indigo-500 text-white hover:scale-105 active:scale-95 shadow-primary/30'
                     } ${(!isSupported || isProcessingAI) ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    title={isListening ? 'Hentikan Rekaman' : 'Mulai Bicara'}
                   >
                     <Mic className={`w-8 h-8 ${isListening ? 'animate-pulse' : ''}`} />
                   </button>
                 </div>
 
-                <div className="text-center space-y-1">
-                  <span className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[12.5px] font-bold font-['Manrope'] ${
-                    isListening
-                      ? 'bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-500/20'
-                      : 'bg-blue-50 dark:bg-blue-500/10 text-primary border border-blue-200 dark:border-blue-500/20'
-                  }`}>
-                    {isListening ? (
-                      <>
-                        <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping shrink-0" />
-                        <span>Merekam ({formatTimer(recordingSeconds)}) — Durasi Bebas</span>
-                      </>
-                    ) : (
-                      '👉 Tekan Mikrofon & Mulai Bicara'
-                    )}
-                  </span>
-                  {isListening && (
-                    <p className="text-[11px] text-gray-500 dark:text-gray-400 font-medium">
-                      Bicara santai & panjang tanpa terputus. Tekan tombol mic lagi jika sudah selesai.
-                    </p>
-                  )}
-                </div>
+                {isListening && (
+                  <div className="text-center pt-1">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-bold font-['Manrope'] bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-500/20">
+                      <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping shrink-0" />
+                      <span>Merekam {formatTimer(recordingSeconds)}</span>
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Voice Error Notice */}
@@ -315,11 +305,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
 
                 <div className="relative">
                   <textarea
-                    value={
-                      interimTranscript
-                        ? mergeWithoutOverlap(transcript, interimTranscript)
-                        : transcript
-                    }
+                    value={transcript + (interimTranscript ? ' ' + interimTranscript : '')}
                     onChange={(e) => setTranscript(e.target.value)}
                     placeholder="Contoh: 'Besok jam 8 pagi belajar matematika matriks, siang jam 1 lanjut koding React, sore jam 4 bikin tugas biologi'..."
                     rows={4}
