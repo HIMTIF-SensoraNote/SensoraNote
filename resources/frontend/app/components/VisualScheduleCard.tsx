@@ -405,28 +405,28 @@ export function VisualScheduleCard({
         )}
 
         {/* 1. Header: Branding & User Profile */}
-        <div className="flex items-center justify-between border-b pb-5 relative z-10 gap-3 border-current/10">
-          <div className="flex items-center gap-3">
-            <div className={`flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-2xl shadow-md ${cfg.headerLogoBg}`}>
+        <div className="flex items-center justify-between border-b pb-4 sm:pb-5 relative z-10 gap-2 sm:gap-3 border-current/10">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+            <div className={`flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 rounded-2xl shadow-md shrink-0 ${cfg.headerLogoBg}`}>
               <ApplicationLogo className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
-            <div>
-              <h3 className="font-['Lexend_Deca'] font-black text-[17px] sm:text-[20px] tracking-tight flex items-center gap-2">
+            <div className="min-w-0">
+              <h3 className="font-['Lexend_Deca'] font-black text-[15px] sm:text-[20px] tracking-tight flex items-center gap-1.5 sm:gap-2 flex-wrap">
                 <span>SensoraNote</span>
-                <span className={`text-[10px] sm:text-[10.5px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${cfg.studyPlanBadge}`}>
+                <span className={`text-[9px] sm:text-[10.5px] px-2 sm:px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${cfg.studyPlanBadge}`}>
                   Study Plan
                 </span>
               </h3>
-              <p className={`text-[11.5px] sm:text-[12px] font-['Manrope'] font-medium flex items-center gap-1 mt-0.5 ${cfg.dateSubtitleClass}`}>
-                <Calendar className="w-3.5 h-3.5 text-primary" /> {dateObj.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
+              <p className={`text-[11px] sm:text-[12px] font-['Manrope'] font-medium flex items-center gap-1 mt-0.5 ${cfg.dateSubtitleClass}`}>
+                <Calendar className="w-3.5 h-3.5 text-primary shrink-0" /> {dateObj.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
               </p>
             </div>
           </div>
 
-          {/* User Profile Chip */}
-          <div className={`flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full shrink-0 ${cfg.profileChipClass}`}>
-            <AvatarImage src={user?.avatar} alt={user?.name} name={user?.name} size={26} className="rounded-full shrink-0" />
-            <span className={`text-[12px] sm:text-[12.5px] font-['Manrope'] font-bold max-w-[85px] sm:max-w-[150px] truncate ${cfg.profileTextClass}`}>
+          {/* User Profile Chip - Full Name Without Truncation */}
+          <div className={`flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full shrink-0 shadow-xs ${cfg.profileChipClass}`}>
+            <AvatarImage src={user?.avatar} alt={user?.name} name={user?.name} size={24} className="rounded-full shrink-0" />
+            <span className={`text-[11.5px] sm:text-[12.5px] font-['Manrope'] font-bold whitespace-nowrap ${cfg.profileTextClass}`}>
               {user?.name || 'Pelajar'}
             </span>
           </div>

@@ -42,7 +42,7 @@ import { MobileLayout } from '../components/MobileLayout';
 import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from '../hooks/useTranslation';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
-import { useVoiceRecognition, mergeWithoutOverlap } from '../hooks/useVoiceRecognition';
+import { useVoiceRecognition } from '../hooks/useVoiceRecognition';
 import { useToast } from '../contexts/ToastContext';
 import { AvatarImage } from '../components/ui/DefaultImages';
 import { ConfirmDialog } from '../components/ui/ConfirmDialog';
@@ -162,19 +162,61 @@ export default function ChatbotPage() {
     error: voiceError,
   } = useVoiceRecognition();
 
-  // Sessions state (persisted in localStorage)
-  const [sessions, setSessions] = useState<ChatSession[]>(() => {
+  // Multi-key resilient session loader
+  const loadSavedSessions = (userId?: string): ChatSession[] => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      return saved ? JSON.parse(saved) : [];
+      const keysToTry = [
+        userId ? `sensoranote_chat_sessions_${userId}` : null,
+        STORAGE_KEY,
+        'sensoranote_chat_sessions',
+        'bayu_chat_sessions',
+        'sensora_chat_sessions',
+      ].filter(Boolean) as string[];
+
+      for (const k of keysToTry) {
+        const raw = localStorage.getItem(k);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            return parsed;
+          }
+        }
+      }
+      return [];
     } catch {
       return [];
     }
+  };
+
+  // Sessions state (persisted reliably in localStorage)
+  const [sessions, setSessions] = useState<ChatSession[]>(() => {
+    return loadSavedSessions();
   });
 
   const [activeSessionId, setActiveSessionId] = useState<string | null>(() => {
-    return localStorage.getItem(ACTIVE_SESSION_KEY) || null;
+    const savedActive = localStorage.getItem(ACTIVE_SESSION_KEY);
+    return savedActive || null;
   });
+
+  // Reload sessions if user logs in
+  useEffect(() => {
+    if (user?.id) {
+      const userSessions = loadSavedSessions(user.id);
+      if (userSessions.length > 0) {
+        setSessions(userSessions);
+        if (!activeSessionId || !userSessions.some((s) => s.id === activeSessionId)) {
+          setActiveSessionId(userSessions[0].id);
+        }
+      }
+    }
+  }, [user?.id]);
+
+  // Ensure active session is selected if available
+  useEffect(() => {
+    if (!activeSessionId && sessions.length > 0) {
+      setActiveSessionId(sessions[0].id);
+    }
+  }, [sessions, activeSessionId]);
 
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -203,14 +245,36 @@ export default function ChatbotPage() {
   const currentSession = sessions.find((s) => s.id === activeSessionId) || null;
   const messages = currentSession ? currentSession.messages : [];
 
-  // Persist sessions to localStorage
+  // Persist sessions safely (stripping massive base64 payload to prevent 5MB quota exhaustion)
   useEffect(() => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(sessions));
+      const lightweightSessions = sessions.map((s) => ({
+        ...s,
+        messages: s.messages.map((m) => ({
+          ...m,
+          file: m.file
+            ? {
+                name: m.file.name,
+                type: m.file.type,
+                size: m.file.size,
+                previewUrl:
+                  m.file.type?.startsWith('image/') && m.file.previewUrl && m.file.previewUrl.length < 40000
+                    ? m.file.previewUrl
+                    : undefined,
+              }
+            : undefined,
+        })),
+      }));
+
+      const serialized = JSON.stringify(lightweightSessions);
+      if (user?.id) {
+        localStorage.setItem(`sensoranote_chat_sessions_${user.id}`, serialized);
+      }
+      localStorage.setItem(STORAGE_KEY, serialized);
     } catch (e) {
-      console.error('Failed to save sessions', e);
+      console.error('Failed to save sessions to localStorage:', e);
     }
-  }, [sessions]);
+  }, [sessions, user?.id]);
 
   // Persist active session ID
   useEffect(() => {
@@ -223,19 +287,14 @@ export default function ChatbotPage() {
 
   // Sync speech transcript into input message
   useEffect(() => {
-    if (isListening) {
-      const fullText = interimTranscript
-        ? mergeWithoutOverlap(transcript, interimTranscript).trim()
-        : transcript.trim();
-      if (fullText) {
-        setInputMessage(fullText);
-        if (textareaRef.current) {
-          textareaRef.current.style.height = 'auto';
-          textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 140)}px`;
-        }
+    if (isListening && transcript) {
+      setInputMessage(transcript);
+      if (textareaRef.current) {
+        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 140)}px`;
       }
     }
-  }, [transcript, interimTranscript, isListening]);
+  }, [transcript, isListening]);
 
   // Handle voice errors
   useEffect(() => {

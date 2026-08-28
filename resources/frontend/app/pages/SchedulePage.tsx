@@ -262,7 +262,7 @@ export default function SchedulePage() {
 
   return (
     <MobileLayout>
-      <div className="w-full max-w-5xl mx-auto px-3.5 sm:px-6 md:px-8 py-4 sm:py-6 space-y-5 sm:space-y-6">
+      <div className="w-full max-w-5xl mx-auto px-3.5 sm:px-6 md:px-8 pt-3 sm:pt-6 pb-32 sm:pb-16 space-y-5 sm:space-y-6">
         
         {/* Top Header Card */}
         <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 rounded-[24px] sm:rounded-[30px] p-5 sm:p-7 md:p-8 text-white shadow-xl relative overflow-hidden">
