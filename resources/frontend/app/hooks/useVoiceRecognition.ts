@@ -55,21 +55,33 @@ const SPEECH_LANG_MAP: Record<string, string> = {
   zu: 'zu-ZA',
 };
 
+/**
+ * Merges two speech transcript chunks without duplicate words or overlapping phrases.
+ * Handles Android Google Speech Services re-emission & pause loops cleanly.
+ */
 export function mergeWithoutOverlap(base: string, incoming: string): string {
   base = (base || '').trim();
   incoming = (incoming || '').trim();
   if (!base) return incoming;
   if (!incoming) return base;
 
-  // Exact duplicate or substring checks
-  if (base.toLowerCase() === incoming.toLowerCase()) return base;
-  if (incoming.toLowerCase().startsWith(base.toLowerCase())) return incoming;
-  if (base.toLowerCase().endsWith(incoming.toLowerCase())) return base;
+  const lowerBase = base.toLowerCase();
+  const lowerIncoming = incoming.toLowerCase();
+
+  // If exact match or base already ends with incoming
+  if (lowerBase === lowerIncoming || lowerBase.endsWith(lowerIncoming)) {
+    return base;
+  }
+
+  // If incoming contains base from start (e.g. base="tolong", incoming="tolong buat saya")
+  if (lowerIncoming.startsWith(lowerBase)) {
+    return incoming;
+  }
 
   const baseWords = base.split(/\s+/);
   const incomingWords = incoming.split(/\s+/);
 
-  // Check overlap from longest possible down to 1 word
+  // Check word-level overlap from largest possible down to 1 word
   const maxOverlap = Math.min(baseWords.length, incomingWords.length);
   for (let len = maxOverlap; len > 0; len--) {
     const baseTail = baseWords.slice(baseWords.length - len).join(' ').toLowerCase();
@@ -128,7 +140,7 @@ export function useVoiceRecognition() {
         let sessionFinal = '';
         let currentInterim = '';
 
-        // Iterate through all results in the current session without double appending
+        // Iterate through all results in the current session
         for (let i = 0; i < event.results.length; i++) {
           const result = event.results[i];
           if (result.isFinal) {
@@ -141,13 +153,16 @@ export function useVoiceRecognition() {
         sessionFinal = sessionFinal.trim();
         currentInterim = currentInterim.trim();
 
-        // Merge sessionFinal with baseTranscriptRef without duplicating overlapping words
-        const mergedFinal = sessionFinal
-          ? mergeWithoutOverlap(baseTranscriptRef.current, sessionFinal)
+        // Use sessionFinal if available, otherwise combine with interim
+        const currentActiveText = sessionFinal || currentInterim;
+
+        // Merge with base without ANY duplication
+        const mergedText = currentActiveText
+          ? mergeWithoutOverlap(baseTranscriptRef.current, currentActiveText)
           : baseTranscriptRef.current;
 
-        setTranscript(mergedFinal.trim());
-        setInterimTranscript(currentInterim);
+        setTranscript(mergedText.trim());
+        setInterimTranscript(sessionFinal && currentInterim ? currentInterim : '');
       };
 
       recognition.onerror = (event: any) => {
