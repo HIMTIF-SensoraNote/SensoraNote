@@ -1,10 +1,10 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ScanText, Ear, Eye, Code, BrainCircuit, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import { ScanText, Ear, Code, CalendarClock, ShieldCheck, ChevronLeft, ChevronRight, Bot, PersonStanding, Printer } from 'lucide-react';
 import './AccordionGallery.css';
 
 interface GalleryItem {
-  image?: string;
+  image: string;
   icon: React.ReactNode;
   label: string;
   badgeText: string;
@@ -13,39 +13,53 @@ interface GalleryItem {
 
 const DEFAULT_ITEMS: GalleryItem[] = [
   { 
-    label: 'AI Vision OCR',
-    badgeText: 'COMPUTER VISION',
+    label: 'AI Vision OCR & Braille',
+    badgeText: 'OCR & BRAILLE CONVERTER ⠃⠗',
     icon: <ScanText className="w-6 h-6 text-blue-400" />,
-    image: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=2070&auto=format&fit=crop',
-    desc: 'Ubah foto catatan tulisan tangan menjadi teks digital instan dengan teknologi Computer Vision.'
+    image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2070&auto=format&fit=crop',
+    desc: 'Ubah foto tulisan tangan & buku cetak menjadi teks digital instan serta konversi otomatis ke file cetak printer Braille untuk pelajar tunanetra.'
   },
   { 
-    label: 'Sienna & Audio Podcast',
-    badgeText: 'TEXT-TO-SPEECH',
+    label: 'Perencana Jadwal AI',
+    badgeText: 'VOICE STT & POSTER HD 📅',
+    icon: <CalendarClock className="w-6 h-6 text-cyan-400" />,
+    image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=2068&auto=format&fit=crop',
+    desc: 'Atur agenda belajarmu secara instan lewat perintah suara alami (Speech-to-Text) dan unduh poster jadwal belajar visual HD yang siap cetak.'
+  },
+  { 
+    label: 'Sensora AI Chatbot',
+    badgeText: 'SMART AI TUTOR 🤖',
+    icon: <Bot className="w-6 h-6 text-purple-400" />,
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop',
+    desc: 'Tanya jawab konsep materi pelajaran sulit, rangkum poin penting catatan, dan bedah rumus kalkulus bersama tutor AI interaktif.'
+  },
+  { 
+    label: 'TTS Audio Podcast & STT',
+    badgeText: 'TEXT-TO-SPEECH & AUDIO 🎧',
     icon: <Ear className="w-6 h-6 text-indigo-400" />,
     image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop',
-    desc: 'Dukungan aksesibilitas dan Text-to-Speech untuk mendengarkan materi pelajaran layaknya podcast.'
+    desc: 'Dengarkan seluruh materi catatan dalam format podcast audio interaktif dengan pengatur kecepatan fleksibel dan input suara alami.'
   },
   { 
-    label: 'Braille Converter',
-    badgeText: 'HARDWARE EXPORT',
-    icon: <Eye className="w-6 h-6 text-amber-400" />,
-    image: 'https://images.unsplash.com/photo-1588015386001-eb4d57c2c040?q=80&w=2070&auto=format&fit=crop',
-    desc: 'Ekspor otomatis catatan Anda ke format file fisik khusus untuk dicetak menggunakan printer Braille.'
+    label: 'Menu Aksesibilitas Sienna',
+    badgeText: 'INCLUSION SUITE ♿',
+    icon: <PersonStanding className="w-6 h-6 text-emerald-400" />,
+    image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=2080&auto=format&fit=crop',
+    desc: 'Dukungan font disleksia (OpenDyslexic), tema kontras tinggi, pembaca layar otomatis, perbesaran kursor, dan penggaris fokus membaca.'
   },
   { 
-    label: 'LaTeX Screen Reader',
-    badgeText: 'ACCESSIBLE MATH',
-    icon: <Code className="w-6 h-6 text-emerald-400" />,
+    label: 'LaTeX Rich Editor',
+    badgeText: 'KATEX & COVER STUDIO 📝',
+    icon: <Code className="w-6 h-6 text-amber-400" />,
     image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop',
-    desc: 'Engine rendering rumus matematika yang dapat diinterpretasikan dengan tepat oleh pembaca layar.'
+    desc: 'Tulis rumus kalkulus standar jurnal, blok kode pemrograman, dan atur sampul custom dengan pemotong rasio 16:9 yang estetik.'
   },
   { 
-    label: 'AI Tutor & Kuis',
-    badgeText: 'INTERACTIVE QUIZ',
-    icon: <BrainCircuit className="w-6 h-6 text-purple-400" />,
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2070&auto=format&fit=crop',
-    desc: 'Berdiskusilah langsung tentang isi materi catatan dan ukur tingkat pemahamanmu via kuis interaktif.'
+    label: 'Validasi Guru & Pakar',
+    badgeText: 'VERIFIED ACCURACY 🎓',
+    icon: <ShieldCheck className="w-6 h-6 text-rose-400" />,
+    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=2073&auto=format&fit=crop',
+    desc: 'Kurasi materi terpercaya oleh guru dan reviewer ahli dengan sistem rating bintang, review komprehensif, dan lencana terverifikasi.'
   }
 ];
 
@@ -179,13 +193,14 @@ const AccordionGallery: React.FC<AccordionGalleryProps> = ({ badge, title }) => 
       <div 
         onMouseEnter={() => setIsAutoScrollPaused(true)}
         onMouseLeave={() => setIsAutoScrollPaused(false)}
-        className="flex flex-row w-full h-[380px] sm:h-[460px] max-w-full overflow-hidden mt-3"
+        className="flex flex-row w-full h-[320px] sm:h-[400px] md:h-[460px] max-w-full overflow-hidden mt-3"
       >
         <AnimatePresence initial={false}>
           {displayItems.map(({ item, originalIndex, visualIndex, key }) => {
             const isActive = visualIndex === 0;
             const flexValue = getFlex(visualIndex, originalIndex);
-            const targetMargin = visualIndex === count - 1 ? 0 : 16; // 16px gap
+            const targetMargin = visualIndex === count - 1 ? 0 : 12; // 12px responsive gap
+            const isHiddenOnMobile = visualIndex > 2; // on small mobile screens, show active + 2 preview peek cards
 
             return (
               <motion.div
@@ -203,10 +218,12 @@ const AccordionGallery: React.FC<AccordionGalleryProps> = ({ badge, title }) => 
                 onClick={() => setActiveAbsolute((prev) => prev + visualIndex)}
                 onMouseEnter={() => setHoveredIndex(originalIndex)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className={`relative h-full overflow-hidden rounded-[24px] cursor-pointer group border-2 border-slate-200 dark:border-white/10 ${isActive ? 'is-active shadow-2xl ring-2 ring-blue-500/40' : 'hover:ring-1 hover:ring-white/20 opacity-85 hover:opacity-100'}`}
+                className={`relative h-full overflow-hidden rounded-[20px] sm:rounded-[24px] cursor-pointer group border-2 border-slate-200 dark:border-white/10 ${
+                  isHiddenOnMobile ? 'hidden sm:block' : ''
+                } ${isActive ? 'is-active shadow-2xl ring-2 ring-blue-500/40' : 'hover:ring-1 hover:ring-white/20 opacity-85 hover:opacity-100'}`}
               >
                 {/* Decorative Washi Tape Pin at Top */}
-                <div className="absolute top-2 left-6 w-10 h-3.5 bg-[#E8DCC4]/90 dark:bg-[#2D2640]/90 border-x border-[#C5B39B] dark:border-amber-400/40 rotate-[-4deg] z-30 pointer-events-none" />
+                <div className="absolute top-2 left-4 sm:left-6 w-8 sm:w-10 h-3 sm:h-3.5 bg-[#E8DCC4]/90 dark:bg-[#2D2640]/90 border-x border-[#C5B39B] dark:border-amber-400/40 rotate-[-4deg] z-30 pointer-events-none" />
                 
                 {/* Background Image */}
                 <div className="absolute inset-0 w-full h-full">
@@ -216,11 +233,11 @@ const AccordionGallery: React.FC<AccordionGalleryProps> = ({ badge, title }) => 
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   {/* Darkening gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent z-10" />
                 </div>
 
                 {/* Content Overlay - NOTEBOOK SCRIBBLE STICKY CARD OVERLAY */}
-                <div className="relative z-20 w-full h-full flex flex-col justify-end p-4 sm:p-5">
+                <div className="relative z-20 w-full h-full flex flex-col justify-end p-2.5 sm:p-4 md:p-5">
                   <AnimatePresence mode="wait">
                     {isActive ? (
                       <motion.div 
@@ -228,36 +245,33 @@ const AccordionGallery: React.FC<AccordionGalleryProps> = ({ badge, title }) => 
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 5 }}
                         transition={{ duration: 0.3 }}
-                        className="bg-[#FFFDF7] dark:bg-[#171424] border-2 border-[#4A2E1B]/30 dark:border-amber-400/40 shadow-[4px_4px_0px_#4A2E1B] dark:shadow-[4px_4px_0px_#f59e0b] p-4 sm:p-5 rounded-2xl text-left relative overflow-hidden"
+                        className="bg-[#FFFDF7] dark:bg-[#171424] border-2 border-[#4A2E1B]/30 dark:border-amber-400/40 shadow-[4px_4px_0px_#4A2E1B] dark:shadow-[4px_4px_0px_#f59e0b] p-3 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl text-left relative overflow-hidden"
                       >
                         {/* Washi Tape Corner Pin on Card */}
-                        <div className="absolute -top-1 right-6 w-8 h-3 bg-[#E8DCC4] dark:bg-[#2D2640] border-x border-[#C5B39B] dark:border-amber-400/30 rotate-[3deg] z-10 pointer-events-none" />
+                        <div className="absolute -top-1 right-4 sm:right-6 w-6 sm:w-8 h-2.5 sm:h-3 bg-[#E8DCC4] dark:bg-[#2D2640] border-x border-[#C5B39B] dark:border-amber-400/30 rotate-[3deg] z-10 pointer-events-none" />
 
-                        <div className="flex items-center gap-2.5 mb-2">
-                          <div className="p-2 rounded-xl bg-blue-50 dark:bg-white/10 border border-blue-200 dark:border-white/20 shrink-0">
+                        <div className="flex items-center gap-2 sm:gap-2.5 mb-1.5 sm:mb-2">
+                          <div className="p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-blue-50 dark:bg-white/10 border border-blue-200 dark:border-white/20 shrink-0">
                             {item.icon}
                           </div>
                           <div>
-                            <span className="text-[9px] font-mono font-extrabold text-blue-700 dark:text-amber-400 uppercase tracking-widest block">
+                            <span className="text-[8px] sm:text-[9px] font-mono font-extrabold text-blue-700 dark:text-amber-400 uppercase tracking-widest block">
                               {item.badgeText}
                             </span>
-                            <h3 className="font-display font-black text-slate-900 dark:text-white text-base sm:text-lg leading-tight">
+                            <h3 className="font-display font-black text-slate-900 dark:text-white text-sm sm:text-base md:text-lg leading-tight">
                               {item.label}
                             </h3>
                           </div>
                         </div>
-                        <p className="text-slate-700 dark:text-slate-200 text-xs sm:text-sm font-medium leading-relaxed font-serif">
+                        <p className="text-slate-700 dark:text-slate-200 text-[11px] sm:text-xs md:text-sm font-medium leading-relaxed font-serif line-clamp-3 sm:line-clamp-none">
                           {item.desc}
                         </p>
                       </motion.div>
                     ) : (
-                      <div className="flex items-center gap-2.5 bg-[#FFFDF7]/90 dark:bg-[#171424]/90 backdrop-blur-sm p-3 rounded-xl border border-[#4A2E1B]/20 dark:border-white/10 shadow-md">
-                        <div className="p-1.5 rounded-lg bg-blue-50 dark:bg-white/10 shrink-0">
+                      <div className="flex items-center justify-center bg-[#FFFDF7]/90 dark:bg-[#171424]/90 backdrop-blur-sm p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-[#4A2E1B]/20 dark:border-white/10 shadow-md group-hover:scale-110 transition-transform">
+                        <div className="p-0.5 sm:p-1 rounded-lg shrink-0">
                           {item.icon}
                         </div>
-                        <span className="font-display font-bold text-slate-900 dark:text-white text-xs sm:text-sm truncate">
-                          {item.label}
-                        </span>
                       </div>
                     )}
                   </AnimatePresence>

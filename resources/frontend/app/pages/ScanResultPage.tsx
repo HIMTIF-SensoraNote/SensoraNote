@@ -13,7 +13,8 @@ import {
   FileText, 
   ArrowRight,
   Download,
-  Printer
+  Printer,
+  FileCode
 } from 'lucide-react';
 import axios from 'axios';
 import katex from 'katex';
@@ -21,7 +22,7 @@ import 'katex/dist/katex.min.css';
 import { MobileLayout } from '../components/MobileLayout';
 import { useTranslation } from '../hooks/useTranslation';
 import { ConfirmDialog } from '../components/ui/ConfirmDialog';
-import { downloadBraillePdf } from '../utils/braillePdf';
+import { downloadBraillePdf, downloadBrailleBrf } from '../utils/braillePdf';
 
 export default function ScanResultPage() {
     const { t } = useTranslation();
@@ -43,6 +44,7 @@ export default function ScanResultPage() {
     const [isCopiedText, setIsCopiedText] = useState(false);
     const [isCopiedBraille, setIsCopiedBraille] = useState(false);
     const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
+    const [isDownloadingBrf, setIsDownloadingBrf] = useState(false);
     const [showExitConfirm, setShowExitConfirm] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -192,6 +194,23 @@ function cleanTextForBraille(text: string): string {
             alert(err?.message || 'Gagal membuat file PDF Braille.');
         } finally {
             setIsDownloadingPdf(false);
+        }
+    };
+
+    const handleDownloadBrailleBrf = async () => {
+        if (!currentBraille || isDownloadingBrf) return;
+        setIsDownloadingBrf(true);
+        try {
+            await downloadBrailleBrf({
+                title: polishedTitle || 'Catatan Hasil Scan',
+                brailleText: currentBraille,
+                originalText: activeText,
+            });
+        } catch (err: any) {
+            console.error('Gagal unduh Braille .BRF:', err);
+            alert(err?.message || 'Gagal membuat file .BRF Braille.');
+        } finally {
+            setIsDownloadingBrf(false);
         }
     };
 
@@ -511,41 +530,65 @@ function cleanTextForBraille(text: string): string {
 
                     {/* RIGHT COLUMN: BRAILLE TRANSLATION */}
                     <div className="flex flex-col bg-white dark:bg-[#161424] rounded-2xl border border-gray-200/70 dark:border-white/5 shadow-sm p-5 sm:p-6 overflow-hidden">
-                        <div className="flex items-center justify-between mb-4 shrink-0 flex-wrap gap-2">
+                        {/* Column Header */}
+                        <div className="flex items-center justify-between gap-3 mb-3 shrink-0">
                             <h2 className="text-[15px] font-bold text-gray-900 dark:text-gray-100 font-['Lexend_Deca'] flex items-center gap-2">
                                 <span>Terjemahan Huruf Braille</span>
                             </h2>
-                            {currentBraille && (
-                                <div className="flex items-center gap-2">
+                        </div>
+
+                        {/* Actions Toolbar */}
+                        {currentBraille && (
+                            <div className="flex items-center pb-3 mb-3 border-b border-gray-100 dark:border-white/5 shrink-0">
+                                <div className="grid grid-cols-3 gap-1.5 sm:flex sm:items-center sm:gap-2 w-full sm:w-auto sm:ml-auto">
                                     <button 
                                         onClick={handleDownloadBraillePdf}
                                         disabled={isDownloadingPdf}
-                                        className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl border border-emerald-500/30 text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-sm shadow-emerald-500/20 transition-all cursor-pointer hover:scale-105 active:scale-95 disabled:opacity-50"
+                                        className="flex items-center justify-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-2 text-[11px] sm:text-xs font-bold rounded-xl border border-emerald-500/30 text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-sm shadow-emerald-500/20 transition-all cursor-pointer hover:scale-[1.02] active:scale-95 disabled:opacity-50"
                                         title="Unduh dokumen Braille PDF A4 siap print/emboss"
                                     >
                                         {isDownloadingPdf ? (
                                             <>
-                                                <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                                                <span>Menyiapkan PDF...</span>
+                                                <Loader2 className="w-3.5 h-3.5 animate-spin shrink-0" />
+                                                <span className="truncate">Menyiapkan...</span>
                                             </>
                                         ) : (
                                             <>
-                                                <Printer className="w-3.5 h-3.5" />
-                                                <span>Unduh PDF Braille</span>
+                                                <Printer className="w-3.5 h-3.5 shrink-0" />
+                                                <span className="truncate">Unduh PDF</span>
+                                            </>
+                                        )}
+                                    </button>
+
+                                    <button 
+                                        onClick={handleDownloadBrailleBrf}
+                                        disabled={isDownloadingBrf}
+                                        className="flex items-center justify-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-2 text-[11px] sm:text-xs font-bold rounded-xl border border-blue-500/30 text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-sm shadow-blue-500/20 transition-all cursor-pointer hover:scale-[1.02] active:scale-95 disabled:opacity-50"
+                                        title="Unduh file .BRF (Braille Ready Format) untuk display & printer embosser Braille"
+                                    >
+                                        {isDownloadingBrf ? (
+                                            <>
+                                                <Loader2 className="w-3.5 h-3.5 animate-spin shrink-0" />
+                                                <span className="truncate">Menyiapkan...</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <FileCode className="w-3.5 h-3.5 shrink-0" />
+                                                <span className="truncate">Unduh .BRF</span>
                                             </>
                                         )}
                                     </button>
 
                                     <button 
                                         onClick={copyBraille} 
-                                        className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl border border-emerald-400/30 text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 transition-colors cursor-pointer"
+                                        className="flex items-center justify-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-2 text-[11px] sm:text-xs font-bold rounded-xl border border-emerald-400/30 text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 transition-colors cursor-pointer"
                                         title="Salin simbol Braille"
                                     >
-                                        {isCopiedBraille ? <><Check className="w-3.5 h-3.5 text-emerald-500" /> Disalin</> : <><Copy className="w-3.5 h-3.5" /> Salin</>}
+                                        {isCopiedBraille ? <><Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" /> <span className="truncate">Disalin</span></> : <><Copy className="w-3.5 h-3.5 shrink-0" /> <span className="truncate">Salin</span></>}
                                     </button>
                                 </div>
-                            )}
-                        </div>
+                            </div>
+                        )}
 
                         <div className="flex-1 bg-gray-50/80 dark:bg-black/20 rounded-2xl p-4 sm:p-5 overflow-y-auto border border-gray-200/60 dark:border-white/5 custom-scrollbar min-h-0">
                             {currentBraille ? (

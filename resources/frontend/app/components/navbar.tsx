@@ -27,7 +27,11 @@ export function Navbar({ variant = 'default', theme = 'light', isLoading = false
       e.preventDefault();
       const element = document.getElementById(targetId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if ((window as any).lenis) {
+          (window as any).lenis.scrollTo(element, { offset: -40, duration: 1.2 });
+        } else {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
         window.history.pushState(null, '', `#${targetId}`);
       }
     }
@@ -36,18 +40,28 @@ export function Navbar({ variant = 'default', theme = 'light', isLoading = false
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (location.pathname === '/') {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if ((window as any).lenis) {
+        (window as any).lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
       window.history.pushState(null, '', '/');
     }
   };
 
   useEffect(() => {
-    const handleScroll = (e: any) => {
-      const scrollTop = window.scrollY || document.documentElement?.scrollTop || document.body?.scrollTop || (e.target as any)?.scrollTop || 0;
-      setIsScrolled(scrollTop > 20);
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled((window.scrollY || document.documentElement?.scrollTop || 0) > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll, true);
-    return () => window.removeEventListener('scroll', handleScroll, true);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   if (variant === 'dashboard') {

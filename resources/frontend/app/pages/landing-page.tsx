@@ -1,13 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { LandingPageLight } from './landing-page-light';
 import { LandingPageDark } from './landing-page-dark';
 import { motion, AnimatePresence } from 'motion/react';
 import { Moon, Sun, PersonStanding } from 'lucide-react';
 import GlassSurface from '../components/ui/GlassSurface';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 
 export function LandingPage() {
   const { resolvedTheme, toggleTheme } = useTheme();
+
+  // Initialize Lenis Smooth Scrolling on Landing Page
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
+      infinite: false,
+    });
+
+    // Expose lenis globally so other components/navbars can trigger scrollTo if needed
+    (window as any).lenis = lenis;
+
+    let rafId: number;
+    function raf(time: number) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+      delete (window as any).lenis;
+    };
+  }, []);
 
   return (
     <div className="relative min-h-screen">

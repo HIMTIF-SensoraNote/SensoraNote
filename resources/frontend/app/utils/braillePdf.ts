@@ -227,10 +227,93 @@ export async function downloadBraillePdf({
     pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297, undefined, 'FAST');
   }
 
-  // Generate filename
-  const cleanTitle = title.replace(/[^a-zA-Z0-9_-]/g, '_').substring(0, 30);
-  const finalFilename = filename || `Braille_${cleanTitle || 'Dokumen'}_${Date.now()}.pdf`;
+  // Generate filename with SensoraNote branding
+  const cleanTitle = title.trim().replace(/[^a-zA-Z0-9_-]/g, '_').replace(/_+/g, '_').substring(0, 40);
+  const finalFilename = filename || `SensoraNote_Braille_${cleanTitle || 'Dokumen'}_${Date.now()}.pdf`;
 
   pdf.save(finalFilename);
 }
+
+/**
+ * Generates and downloads a standard .BRF (Braille Ready Format) file for refreshable braille displays & embossers.
+ */
+export async function downloadBrailleBrf({
+  title = 'Dokumen Hasil Scan',
+  brailleText,
+  originalText,
+  filename,
+}: BraillePdfOptions): Promise<void> {
+  if (!brailleText || !brailleText.trim()) {
+    throw new Error('Tidak ada teks Braille untuk diunduh.');
+  }
+
+  const LINE_WIDTH = 40; // Standard 40 cells per line
+  const LINES_PER_PAGE = 25; // Standard 25 lines per embosser page
+
+  // Break braille text into wrapped lines of max LINE_WIDTH
+  const paragraphs = brailleText.split('\n');
+  const wrappedLines: string[] = [];
+
+  for (const para of paragraphs) {
+    if (!para.trim()) {
+      wrappedLines.push('');
+      continue;
+    }
+
+    const words = para.split(' ');
+    let currentLine = '';
+
+    for (const word of words) {
+      if (!currentLine) {
+        currentLine = word;
+      } else if (currentLine.length + 1 + word.length <= LINE_WIDTH) {
+        currentLine += ' ' + word;
+      } else {
+        wrappedLines.push(currentLine);
+        let remaining = word;
+        while (remaining.length > LINE_WIDTH) {
+          wrappedLines.push(remaining.slice(0, LINE_WIDTH));
+          remaining = remaining.slice(LINE_WIDTH);
+        }
+        currentLine = remaining;
+      }
+    }
+    if (currentLine) {
+      wrappedLines.push(currentLine);
+    }
+  }
+
+  // Chunk lines into pages separated by Form Feed (\x0C)
+  const pages: string[] = [];
+  let pageLines: string[] = [];
+
+  for (const line of wrappedLines) {
+    if (pageLines.length >= LINES_PER_PAGE) {
+      pages.push(pageLines.join('\r\n'));
+      pageLines = [];
+    }
+    pageLines.push(line);
+  }
+  if (pageLines.length > 0) {
+    pages.push(pageLines.join('\r\n'));
+  }
+
+  // Join pages with Form Feed separator (\x0C) standard in .BRF files
+  const brfContent = pages.join('\r\n\x0C\r\n');
+
+  // Trigger browser download with SensoraNote branding in filename
+  const blob = new Blob([brfContent], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const cleanTitle = title.trim().replace(/[^a-zA-Z0-9_-]/g, '_').replace(/_+/g, '_').substring(0, 40);
+  const finalFilename = filename || `SensoraNote_Braille_${cleanTitle || 'Dokumen'}_${Date.now()}.brf`;
+
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = finalFilename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
 
