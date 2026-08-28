@@ -48,11 +48,49 @@ export default function HomePage() {
     const [selectedSubject, setSelectedSubject] = useState<string | null>(initialSubject);
 
     const [notes, setNotes] = useState<any[]>([]);
+    const [globalTrendingNotes, setGlobalTrendingNotes] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
     const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+
+    // Fetch persistent global trending notes for the right sidebar (never changes when switching tabs)
+    useEffect(() => {
+        const fetchGlobalTrending = async () => {
+            try {
+                const res = await axios.get('/api/v1/posts?sort=populer&limit=5');
+                const rawData = res.data.data || [];
+                const formatted = rawData.map((note: any) => ({
+                    ...note,
+                    id: note._id || note.id,
+                    author: note.user
+                        ? {
+                              ...note.user,
+                              avatar: note.user.avatar || null,
+                          }
+                        : {
+                              name: "Anonim",
+                              avatar: null,
+                          },
+                    createdAt: note.created_at,
+                    thumbnail: note.thumbnail || null,
+                    views: note.views || 0,
+                    rating: note.rating || 5,
+                    description: note.description || (note.plain_content ? note.plain_content.substring(0, 150) + "..." : 'Tidak ada deskripsi.'),
+                    mataPelajaran: note.mapel || "Lainnya",
+                    jenjang: note.jenjang || "-",
+                    kelas: note.kelas || "-",
+                    likes: note.likes_count || 0,
+                    comments: note.comments_count || 0,
+                }));
+                setGlobalTrendingNotes(formatted);
+            } catch (e) {
+                console.error("Gagal mengambil global trending:", e);
+            }
+        };
+        fetchGlobalTrending();
+    }, []);
 
     // Sync state with URL search params
     useEffect(() => {
@@ -278,9 +316,9 @@ export default function HomePage() {
     const heroNotesCount = Math.min(formattedNotes.length, 3);
     const heroNote = formattedNotes[currentHeroIndex] || formattedNotes[0];
     const feedNotes = formattedNotes.slice(heroNotesCount);
-    const trendingNotes = [...formattedNotes]
-        .sort((a, b) => (b.likes_count || 0) - (a.likes_count || 0))
-        .slice(0, 5);
+    const trendingNotes = globalTrendingNotes.length > 0 
+        ? globalTrendingNotes 
+        : [...formattedNotes].sort((a, b) => (b.likes_count || 0) - (a.likes_count || 0)).slice(0, 5);
 
     // Active subject display label
     const activeSubjectObj = selectedSubject
