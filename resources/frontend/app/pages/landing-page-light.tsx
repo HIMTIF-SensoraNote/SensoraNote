@@ -1386,7 +1386,7 @@ export function LandingPageLight() {
                       <span className="flex items-center gap-1.5 text-blue-700 font-extrabold">
                         <Users className="w-4 h-4 text-blue-600" /> 
                         <span>
-                          <CountUp to={20} /> Pilihan Bahasa Didukung
+                          <CountUp to={45} /> Pilihan Bahasa Didukung
                         </span>
                       </span>
                     </div>

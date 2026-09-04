@@ -1397,7 +1397,7 @@ export function LandingPageDark() {
                       <span className="flex items-center gap-1.5 text-cyan-400 font-extrabold">
                         <Users className="w-4 h-4 text-[#3B82F6]" /> 
                         <span>
-                          <CountUp to={20} /> Pilihan Bahasa Didukung
+                          <CountUp to={45} /> Pilihan Bahasa Didukung
                         </span>
                       </span>
                     </div>
