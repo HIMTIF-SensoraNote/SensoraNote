@@ -8,13 +8,38 @@ export function useIsMobile() {
   );
 
   React.useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+    let mql: MediaQueryList | null = null;
+    try {
+      if (typeof window !== 'undefined' && window.matchMedia) {
+        mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+      }
+    } catch (e) {
+      mql = null;
+    }
+
     const onChange = () => {
       setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     };
-    mql.addEventListener("change", onChange);
-    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-    return () => mql.removeEventListener("change", onChange);
+
+    if (mql) {
+      if (typeof mql.addEventListener === "function") {
+        mql.addEventListener("change", onChange);
+      } else if (typeof (mql as any).addListener === "function") {
+        (mql as any).addListener(onChange);
+      }
+    }
+
+    setIsMobile(typeof window !== 'undefined' ? window.innerWidth < MOBILE_BREAKPOINT : false);
+
+    return () => {
+      if (mql) {
+        if (typeof mql.removeEventListener === "function") {
+          mql.removeEventListener("change", onChange);
+        } else if (typeof (mql as any).removeListener === "function") {
+          (mql as any).removeListener(onChange);
+        }
+      }
+    };
   }, []);
 
   return !!isMobile;

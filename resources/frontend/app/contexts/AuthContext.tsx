@@ -6,6 +6,7 @@ import {
     useEffect,
 } from "react";
 import axios from "axios";
+import { safeLocalStorage, safeSessionStorage } from "../utils/safeStorage";
 
 export type UserRole = "user" | "pakar" | "admin";
 
@@ -71,8 +72,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const refreshUser = async (): Promise<User | null> => {
         const token =
-            sessionStorage.getItem("bayu-token") ||
-            localStorage.getItem("bayu-token");
+            safeSessionStorage.getItem("bayu-token") ||
+            safeLocalStorage.getItem("bayu-token");
 
         if (token) {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -116,9 +117,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const { access_token, user: userData } = response.data;
 
             if (rememberMe) {
-                localStorage.setItem("bayu-token", access_token);
+                safeLocalStorage.setItem("bayu-token", access_token);
             } else {
-                sessionStorage.setItem("bayu-token", access_token);
+                safeSessionStorage.setItem("bayu-token", access_token);
             }
             axios.defaults.headers.common["Authorization"] =
                 `Bearer ${access_token}`;
@@ -135,7 +136,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     const socialLogin = async (token: string) => {
-        localStorage.setItem("bayu-token", token);
+        safeLocalStorage.setItem("bayu-token", token);
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         await loadUser(); // Muat ulang data user dengan token baru dan tunggu sampai selesai
     };
@@ -178,7 +179,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
             const { access_token, data: userData } = response.data;
 
-            localStorage.setItem("bayu-token", access_token);
+            safeLocalStorage.setItem("bayu-token", access_token);
             axios.defaults.headers.common["Authorization"] =
                 `Bearer ${access_token}`;
 
@@ -205,8 +206,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const logout = () => {
         setUser(null);
-        localStorage.removeItem("bayu-token");
-        sessionStorage.removeItem("bayu-token");
+        safeLocalStorage.removeItem("bayu-token");
+        safeSessionStorage.removeItem("bayu-token");
         delete axios.defaults.headers.common["Authorization"];
         // Let the App Router handle the redirect to '/' when `user` becomes null inside a ProtectedRoute
     };

@@ -16,7 +16,7 @@ export function BrutalistLoader({ onComplete, theme = 'light' }: BrutalistLoader
 
   const SYSTEM_LOGS = [
     t('loader.log_1') || 'MENYUSUN LEMBARAN CATATAN...',
-    t('loader.log_2') || 'MENGAKTIFKAN MODUL 40+ BAHASA...',
+    t('loader.log_2') || 'MENGAKTIFKAN MODUL 45+ BAHASA...',
     t('loader.log_3') || 'MEMPROSES FORMULA AI LATEX...',
     t('loader.log_4') || 'SINKRONISASI MINDMAP VISUAL...',
     t('loader.log_5') || 'MENGATUR TEMA NOTEBOOK HARMONIS...',
@@ -27,37 +27,95 @@ export function BrutalistLoader({ onComplete, theme = 'light' }: BrutalistLoader
   const [logIndex, setLogIndex] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
 
+  // Time-based progress tracking: completely immune to Safari timer throttling or dropped ticks
   useEffect(() => {
     if (isExiting) return;
 
-    const totalDuration = 3800;
-    const intervalTime = 30;
-    const steps = totalDuration / intervalTime;
-    const increment = 100 / steps;
+    const totalDuration = 2800; // Snappy 2.8s duration
+    const startTime = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+    let animFrameId: number | null = null;
+    let fallbackInterval: any = null;
+    let completed = false;
 
-    const timer = setInterval(() => {
-      setCounter((prev) => {
-        const next = prev + increment + Math.random() * 0.5;
-        if (next >= 100) {
-          clearInterval(timer);
+    const tick = () => {
+      if (completed) return;
+      const now = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+      const elapsed = Math.max(0, now - startTime);
+      const progress = Math.min(100, (elapsed / totalDuration) * 100);
+
+      setCounter(progress);
+
+      if (progress >= 100) {
+        completed = true;
+        if (animFrameId) cancelAnimationFrame(animFrameId);
+        if (fallbackInterval) clearInterval(fallbackInterval);
+        setTimeout(() => {
+          setIsExiting(true);
+        }, 150);
+        return;
+      }
+
+      animFrameId = requestAnimationFrame(tick);
+    };
+
+    // Primary driver: requestAnimationFrame (native display refresh, silky-smooth on iOS Safari & macOS)
+    animFrameId = requestAnimationFrame(tick);
+
+    // Secondary driver: backup setInterval in case Safari pauses rAF in background tab or low-power mode
+    fallbackInterval = setInterval(() => {
+      if (!completed) {
+        const now = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+        const elapsed = Math.max(0, now - startTime);
+        const progress = Math.min(100, (elapsed / totalDuration) * 100);
+        setCounter(progress);
+        if (progress >= 100) {
+          completed = true;
+          if (animFrameId) cancelAnimationFrame(animFrameId);
+          clearInterval(fallbackInterval);
           setTimeout(() => {
             setIsExiting(true);
-          }, 200);
-          return 100;
+          }, 150);
         }
-        return next;
-      });
-    }, intervalTime);
+      }
+    }, 50);
 
-    return () => clearInterval(timer);
+    return () => {
+      completed = true;
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+      if (fallbackInterval) clearInterval(fallbackInterval);
+    };
   }, [isExiting]);
+
+  // Master fail-safe: Force dismiss after 3.5 seconds under ANY circumstance (never permanently block user)
+  useEffect(() => {
+    const masterTimeout = setTimeout(() => {
+      setCounter(100);
+      setIsExiting(true);
+      const exitTimeout = setTimeout(() => {
+        onComplete();
+      }, 500);
+      return () => clearTimeout(exitTimeout);
+    }, 3500);
+
+    return () => clearTimeout(masterTimeout);
+  }, [onComplete]);
+
+  // Exit fallback: Ensure onComplete triggers even if Framer Motion skips onAnimationComplete (e.g. prefers-reduced-motion)
+  useEffect(() => {
+    if (isExiting) {
+      const exitTimer = setTimeout(() => {
+        onComplete();
+      }, 1000);
+      return () => clearTimeout(exitTimer);
+    }
+  }, [isExiting, onComplete]);
 
   useEffect(() => {
     const totalLogs = SYSTEM_LOGS.length;
     const logInterval = Math.floor(100 / totalLogs);
     const currentLogIdx = Math.min(Math.floor(counter / logInterval), totalLogs - 1);
     setLogIndex(currentLogIdx);
-  }, [counter]);
+  }, [counter, SYSTEM_LOGS.length]);
 
   const handleAnimationComplete = () => {
     if (isExiting) {
@@ -78,15 +136,24 @@ export function BrutalistLoader({ onComplete, theme = 'light' }: BrutalistLoader
   const subtitleText = isDark ? "text-gray-400" : "text-[#8C7355]";
 
   return (
-    <div className={`fixed inset-0 z-[9999] overflow-hidden flex flex-col pointer-events-auto select-none font-sans ${bgMain}`}>
+    <div 
+      onClick={() => {
+        setCounter(100);
+        setIsExiting(true);
+        setTimeout(onComplete, 300);
+      }}
+      className={`fixed inset-0 z-[9999] overflow-hidden flex flex-col pointer-events-auto select-none font-sans cursor-pointer ${bgMain}`}
+      title="Klik untuk membuka langsung"
+    >
       
       {/* UPPER PAPER SHUTTER */}
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: isExiting ? '-100%' : '0%' }}
-        transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         onAnimationComplete={handleAnimationComplete}
-        className={`h-1/2 w-full ${bgMain} flex flex-col justify-end items-center relative overflow-hidden pb-8 px-6 border-b-2 ${borderDashed}`}
+        style={{ willChange: 'transform', WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}
+        className={`h-1/2 min-h-[50dvh] w-full ${bgMain} flex flex-col justify-end items-center relative overflow-hidden pb-8 px-6 border-b-2 ${borderDashed}`}
       >
         {/* Dot Grid Paper Background */}
         <div 
@@ -144,8 +211,9 @@ export function BrutalistLoader({ onComplete, theme = 'light' }: BrutalistLoader
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: isExiting ? '100%' : '0%' }}
-        transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-        className={`h-1/2 w-full ${bgMain} flex flex-col justify-start items-center relative overflow-hidden pt-8 px-6 border-t-2 ${borderDashed}`}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        style={{ willChange: 'transform', WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}
+        className={`h-1/2 min-h-[50dvh] w-full ${bgMain} flex flex-col justify-start items-center relative overflow-hidden pt-8 px-6 border-t-2 ${borderDashed}`}
       >
         {/* Dot Grid Paper Background */}
         <div 

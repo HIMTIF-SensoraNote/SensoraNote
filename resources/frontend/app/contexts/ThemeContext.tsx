@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { safeLocalStorage } from '../utils/safeStorage';
 
 type Theme = 'light' | 'dark' | 'system';
 
@@ -11,14 +12,28 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+function getInitialResolvedTheme(initialTheme: Theme): 'light' | 'dark' {
+  if (typeof window === 'undefined') return 'light';
+  if (initialTheme === 'dark') return 'dark';
+  if (initialTheme === 'light') return 'light';
+  try {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+  } catch (e) {}
+  return 'light';
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {
     if (typeof window === 'undefined') return 'system';
-    const stored = localStorage.getItem('bayu-theme') as Theme | null;
+    const stored = safeLocalStorage.getItem('bayu-theme') as Theme | null;
     return stored || 'system';
   });
 
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
+  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>(() => {
+    return getInitialResolvedTheme(theme);
+  });
 
   useEffect(() => {
     const root = document.documentElement;
@@ -26,7 +41,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const applyTheme = (currentTheme: Theme) => {
       let isDark = false;
       if (currentTheme === 'system') {
-        isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        try {
+          isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        } catch (e) {
+          isDark = false;
+        }
       } else {
         isDark = currentTheme === 'dark';
       }
@@ -41,18 +60,41 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     };
 
     applyTheme(theme);
-    localStorage.setItem('bayu-theme', theme);
+    safeLocalStorage.setItem('bayu-theme', theme);
 
     // Listen for system theme changes if set to 'system'
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    let mediaQuery: MediaQueryList | null = null;
+    try {
+      if (typeof window !== 'undefined' && window.matchMedia) {
+        mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      }
+    } catch (e) {
+      mediaQuery = null;
+    }
+
     const handleChange = () => {
       if (theme === 'system') {
         applyTheme('system');
       }
     };
 
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
+    if (mediaQuery) {
+      if (typeof mediaQuery.addEventListener === 'function') {
+        mediaQuery.addEventListener('change', handleChange);
+      } else if (typeof (mediaQuery as any).addListener === 'function') {
+        (mediaQuery as any).addListener(handleChange);
+      }
+    }
+
+    return () => {
+      if (mediaQuery) {
+        if (typeof mediaQuery.removeEventListener === 'function') {
+          mediaQuery.removeEventListener('change', handleChange);
+        } else if (typeof (mediaQuery as any).removeListener === 'function') {
+          (mediaQuery as any).removeListener(handleChange);
+        }
+      }
+    };
   }, [theme]);
 
   const toggleTheme = () => {

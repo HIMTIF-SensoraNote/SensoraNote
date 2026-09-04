@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import idTranslations from '../locales/id.json';
+import { safeLocalStorage } from '../utils/safeStorage';
 
 // Top 20 Most Spoken Languages
 export type LanguageCode = string;
@@ -25,16 +26,24 @@ function detectSystemLanguage(): LanguageCode {
   if (typeof window === 'undefined' || typeof navigator === 'undefined') return 'id';
 
   const candidates: string[] = [];
-  if (Array.isArray(navigator.languages) && navigator.languages.length > 0) {
-    candidates.push(...navigator.languages);
-  }
-  if (navigator.language) {
-    candidates.push(navigator.language);
-  }
+  try {
+    if (Array.isArray(navigator.languages) && navigator.languages.length > 0) {
+      candidates.push(...navigator.languages);
+    }
+    if (navigator.language) {
+      candidates.push(navigator.language);
+    }
+    if ((navigator as any).userLanguage) {
+      candidates.push((navigator as any).userLanguage);
+    }
+    if ((navigator as any).browserLanguage) {
+      candidates.push((navigator as any).browserLanguage);
+    }
+  } catch (e) {}
 
   for (const cand of candidates) {
-    if (!cand) continue;
-    const clean = cand.trim().toLowerCase();
+    if (!cand || typeof cand !== 'string') continue;
+    const clean = cand.trim().toLowerCase().replace(/_/g, '-');
 
     // 1. Exact match (case-insensitive, e.g. 'en-US', 'zh-TW', 'en-GB', 'id')
     const exact = SUPPORTED_LANGUAGES.find(l => l.toLowerCase() === clean);
@@ -55,13 +64,13 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<LanguagePreference>(() => {
     if (typeof window === 'undefined') return 'system';
-    const stored = localStorage.getItem('bayu-lang') as LanguagePreference | null;
+    const stored = safeLocalStorage.getItem('bayu-lang') as LanguagePreference | null;
     return stored || 'system';
   });
 
   const [resolvedLanguage, setResolvedLanguage] = useState<LanguageCode>(() => {
     if (typeof window === 'undefined') return 'id';
-    const stored = localStorage.getItem('bayu-lang') as LanguagePreference | null;
+    const stored = safeLocalStorage.getItem('bayu-lang') as LanguagePreference | null;
     if (!stored || stored === 'system') {
       return detectSystemLanguage();
     }
@@ -78,9 +87,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       resolved = language;
     }
     setResolvedLanguage(resolved);
-    localStorage.setItem('bayu-lang', language);
-    document.documentElement.setAttribute('lang', resolved);
-    document.documentElement.dir = 'ltr';
+    safeLocalStorage.setItem('bayu-lang', language);
+    if (typeof document !== 'undefined' && document.documentElement) {
+      document.documentElement.setAttribute('lang', resolved);
+      document.documentElement.dir = 'ltr';
+    }
   }, [language]);
 
   // Load translations from Backend Translation API

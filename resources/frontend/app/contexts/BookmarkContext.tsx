@@ -8,6 +8,7 @@ import {
 } from "react";
 import axios from "axios";
 import { useAuth } from "./AuthContext";
+import { safeLocalStorage, safeSessionStorage } from "../utils/safeStorage";
 
 interface BookmarkContextType {
     bookmarkedIds: Set<string>;
@@ -36,8 +37,8 @@ export function BookmarkProvider({ children }: { children: ReactNode }) {
             setIsLoading(true);
             try {
                 const token =
-                    localStorage.getItem("bayu-token") ||
-                    sessionStorage.getItem("bayu-token");
+                    safeLocalStorage.getItem("bayu-token") ||
+                    safeSessionStorage.getItem("bayu-token");
                 const res = await axios.get("/api/v1/bookmarks", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
@@ -61,10 +62,12 @@ export function BookmarkProvider({ children }: { children: ReactNode }) {
     );
 
     const toggleBookmark = useCallback(async (postId: string) => {
-        // Optimistic update — flip immediately for zero-lag UX
+        const currentlyBookmarked = bookmarkedIds.has(postId);
+
+        // Optimistic UI update
         setBookmarkedIds((prev) => {
             const next = new Set(prev);
-            if (next.has(postId)) {
+            if (currentlyBookmarked) {
                 next.delete(postId);
             } else {
                 next.add(postId);
@@ -75,8 +78,8 @@ export function BookmarkProvider({ children }: { children: ReactNode }) {
         // Fire the API call in the background
         try {
             const token =
-                localStorage.getItem("bayu-token") ||
-                sessionStorage.getItem("bayu-token");
+                safeLocalStorage.getItem("bayu-token") ||
+                safeSessionStorage.getItem("bayu-token");
             await axios.post(
                 `/api/v1/posts/${postId}/bookmark`,
                 {},

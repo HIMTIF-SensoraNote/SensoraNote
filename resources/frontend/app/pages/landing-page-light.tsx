@@ -13,6 +13,7 @@ import BorderGlow from '../components/BorderGlow';
 import { AiAccuracySection } from '../components/AiAccuracySection';
 import { useTranslation } from '../hooks/useTranslation';
 import { useAuth } from '../contexts/AuthContext';
+import { safeSessionStorage } from '../utils/safeStorage';
 import { Navigate } from 'react-router';
 import {
   BookOpen, Search, Shield, Zap, ArrowRight,
@@ -424,7 +425,7 @@ export function LandingPageLight() {
 
   // Clear layout entrance animation flag when landing page mounts to reset session entry animation state
   useEffect(() => {
-    sessionStorage.removeItem('has_animated_session_entry');
+    safeSessionStorage.removeItem('has_animated_session_entry');
   }, []);
 
   // Smooth scroll to hash on load or redirection
