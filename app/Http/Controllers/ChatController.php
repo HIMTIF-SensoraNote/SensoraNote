@@ -27,8 +27,8 @@ class ChatController extends Controller
         ]);
 
         $apiKey = config('services.gemini.api_key') ?: env('GEMINI_API_KEY');
-        $primaryModel = config('services.gemini.model') ?: env('GEMINI_MODEL', 'gemini-3.5-flash-lite');
-        $timeout = (int) (config('services.gemini.timeout') ?: env('GEMINI_TIMEOUT', 60));
+        $primaryModel = config('services.gemini.model') ?: env('GEMINI_MODEL', 'gemini-3-flash-preview');
+        $timeout = (int) (config('services.gemini.timeout') ?: env('GEMINI_TIMEOUT', 15));
 
         if (empty($apiKey)) {
             return response()->json([
@@ -187,7 +187,7 @@ class ChatController extends Controller
         ];
 
         // Model fallback queue
-        $modelsToTry = array_unique([$primaryModel, 'gemini-3.6-flash', 'gemini-3.5-flash-lite', 'gemini-3.7-flash', 'gemini-2.5-pro']);
+        $modelsToTry = array_unique([$primaryModel, 'gemini-3-flash-preview', 'gemini-3.7-flash', 'gemini-3.1-flash-lite-preview', 'gemini-3.8-flash', 'gemma-4-31b-it']);
         $lastError = null;
 
         foreach ($modelsToTry as $model) {
@@ -195,6 +195,11 @@ class ChatController extends Controller
 
             try {
                 $response = Http::timeout($timeout)
+                    ->withOptions([
+                        'curl' => [
+                            CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
+                        ],
+                    ])
                     ->withHeaders([
                         'Content-Type' => 'application/json',
                         'x-goog-api-key' => $apiKey,
@@ -242,8 +247,8 @@ class ChatController extends Controller
         ]);
 
         $apiKey = config('services.gemini.api_key') ?: env('GEMINI_API_KEY');
-        $primaryModel = config('services.gemini.model') ?: env('GEMINI_MODEL', 'gemini-3.5-flash-lite');
-        $timeout = (int) (config('services.gemini.timeout') ?: env('GEMINI_TIMEOUT', 60));
+        $primaryModel = config('services.gemini.model') ?: env('GEMINI_MODEL', 'gemini-3-flash-preview');
+        $timeout = (int) (config('services.gemini.timeout') ?: env('GEMINI_TIMEOUT', 15));
 
         if (empty($apiKey)) {
             return response()->json([
@@ -290,7 +295,7 @@ class ChatController extends Controller
             ]
         ];
 
-        $modelsToTry = array_unique([$primaryModel, 'gemini-3.6-flash', 'gemini-3.5-flash-lite', 'gemini-3.7-flash', 'gemini-2.5-pro']);
+        $modelsToTry = array_unique([$primaryModel, 'gemini-3-flash-preview', 'gemini-3.7-flash', 'gemini-3.1-flash-lite-preview', 'gemini-3.8-flash', 'gemma-4-31b-it']);
         $lastError = null;
 
         foreach ($modelsToTry as $model) {
@@ -298,6 +303,11 @@ class ChatController extends Controller
 
             try {
                 $response = Http::timeout($timeout)
+                    ->withOptions([
+                        'curl' => [
+                            CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
+                        ],
+                    ])
                     ->withHeaders([
                         'Content-Type' => 'application/json',
                         'x-goog-api-key' => $apiKey,

@@ -27,8 +27,8 @@ class ScheduleController extends Controller
         $currentTime = $request->input('current_time') ?: date('H:i');
 
         $apiKey = config('services.gemini.api_key') ?: env('GEMINI_API_KEY');
-        $primaryModel = config('services.gemini.model') ?: env('GEMINI_MODEL', 'gemini-2.0-flash');
-        $timeout = (int) (config('services.gemini.timeout') ?: env('GEMINI_TIMEOUT', 45));
+        $primaryModel = config('services.gemini.model') ?: env('GEMINI_MODEL', 'gemini-3-flash-preview');
+        $timeout = (int) (config('services.gemini.timeout') ?: env('GEMINI_TIMEOUT', 15));
 
         if (empty($apiKey)) {
             return response()->json([
@@ -117,7 +117,7 @@ class ScheduleController extends Controller
             ]
         ];
 
-        $modelsToTry = array_unique([$primaryModel, 'gemini-2.0-flash', 'gemini-3.5-flash-lite', 'gemini-3.7-flash', 'gemini-2.5-pro']);
+        $modelsToTry = array_unique([$primaryModel, 'gemini-3-flash-preview', 'gemini-3.7-flash', 'gemini-3.1-flash-lite-preview', 'gemini-3.8-flash', 'gemma-4-31b-it']);
         $rawResult = null;
         $lastError = null;
 
@@ -126,6 +126,11 @@ class ScheduleController extends Controller
 
             try {
                 $response = Http::timeout($timeout)
+                    ->withOptions([
+                        'curl' => [
+                            CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
+                        ],
+                    ])
                     ->withHeaders([
                         'Content-Type' => 'application/json',
                         'x-goog-api-key' => $apiKey,
@@ -140,9 +145,11 @@ class ScheduleController extends Controller
                     }
                 } else {
                     $lastError = $response->body();
+                    \Illuminate\Support\Facades\Log::warning("Schedule model {$model} failed: {$lastError}");
                 }
             } catch (\Exception $e) {
                 $lastError = $e->getMessage();
+                \Illuminate\Support\Facades\Log::warning("Schedule model {$model} exception: {$lastError}");
             }
         }
 

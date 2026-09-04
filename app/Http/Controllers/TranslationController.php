@@ -65,12 +65,11 @@ class TranslationController extends Controller
         // Cache based on the MD5 hash of the text + target language
         $hash = md5($text . '_' . $langCode);
         $cacheKey = "translations_dynamic_{$langCode}_{$hash}";
-
         $translatedText = Cache::rememberForever($cacheKey, function () use ($text, $langCode, $source) {
             // 1. Try Google Gemini AI Translation
             $apiKey = config('services.gemini.api_key') ?: env('GEMINI_API_KEY');
             if (!empty($apiKey)) {
-                $modelsToTry = ['gemini-3.6-flash', 'gemini-3.5-flash-lite', 'gemini-3.7-flash'];
+                $modelsToTry = ['gemini-3-flash-preview', 'gemini-3.7-flash', 'gemini-3.1-flash-lite-preview', 'gemini-3.8-flash', 'gemma-4-31b-it'];
                 $prompt = "You are a professional multilingual translator for educational content.\n" .
                     "Translate the following text accurately, fluently, and naturally into target language '{$langCode}'.\n" .
                     "Output ONLY the translated text without explanations, greetings, quotes, or markdown formatting.\n\n" .
@@ -93,6 +92,11 @@ class TranslationController extends Controller
                     try {
                         $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key={$apiKey}";
                         $response = \Illuminate\Support\Facades\Http::timeout(15)
+                            ->withOptions([
+                                'curl' => [
+                                    CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
+                                ],
+                            ])
                             ->withHeaders([
                                 'Content-Type' => 'application/json',
                                 'x-goog-api-key' => $apiKey,

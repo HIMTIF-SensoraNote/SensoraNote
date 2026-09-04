@@ -58,8 +58,8 @@ return [
 
     'gemini' => [
         'api_key' => env('GEMINI_API_KEY'),
-        'model' => env('GEMINI_MODEL', 'gemini-3.7-flash'),
-        'timeout' => (int) env('GEMINI_TIMEOUT', 60),
+        'model' => env('GEMINI_MODEL', 'gemini-3-flash-preview'),
+        'timeout' => (int) env('GEMINI_TIMEOUT', 15),
     ],
 
     'cloudinary' => [
