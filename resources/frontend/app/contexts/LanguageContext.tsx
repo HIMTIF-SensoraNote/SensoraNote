@@ -22,17 +22,31 @@ const SUPPORTED_LANGUAGES: LanguageCode[] = [
 ];
 
 function detectSystemLanguage(): LanguageCode {
-  const browserLang = navigator.language?.toLowerCase() || 'id';
-  
-  // Exact match first (e.g. 'en-US', 'zh-TW', 'ja', 'ko')
-  const exact = SUPPORTED_LANGUAGES.find(l => browserLang === l.toLowerCase());
-  if (exact) return exact;
+  if (typeof window === 'undefined' || typeof navigator === 'undefined') return 'id';
 
-  // Prefix match (e.g. 'en-AU' -> 'en', 'zh-CN' -> 'zh', 'pt-BR' -> 'pt')
-  const prefix = browserLang.split('-')[0] as LanguageCode;
-  if (SUPPORTED_LANGUAGES.includes(prefix)) return prefix;
+  const candidates: string[] = [];
+  if (Array.isArray(navigator.languages) && navigator.languages.length > 0) {
+    candidates.push(...navigator.languages);
+  }
+  if (navigator.language) {
+    candidates.push(navigator.language);
+  }
 
-  // Default to Indonesian
+  for (const cand of candidates) {
+    if (!cand) continue;
+    const clean = cand.trim().toLowerCase();
+
+    // 1. Exact match (case-insensitive, e.g. 'en-US', 'zh-TW', 'en-GB', 'id')
+    const exact = SUPPORTED_LANGUAGES.find(l => l.toLowerCase() === clean);
+    if (exact) return exact;
+
+    // 2. Prefix match (e.g. 'id-ID' -> 'id', 'en-AU' -> 'en', 'es-ES' -> 'es', 'zh-CN' -> 'zh')
+    const prefix = clean.split('-')[0];
+    const prefixMatch = SUPPORTED_LANGUAGES.find(l => l.toLowerCase() === prefix);
+    if (prefixMatch) return prefixMatch;
+  }
+
+  // Default to Indonesian if no match
   return 'id';
 }
 
@@ -40,12 +54,19 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<LanguagePreference>(() => {
-    if (typeof window === 'undefined') return 'id';
+    if (typeof window === 'undefined') return 'system';
     const stored = localStorage.getItem('bayu-lang') as LanguagePreference | null;
-    return stored || 'id';
+    return stored || 'system';
   });
 
-  const [resolvedLanguage, setResolvedLanguage] = useState<LanguageCode>('id');
+  const [resolvedLanguage, setResolvedLanguage] = useState<LanguageCode>(() => {
+    if (typeof window === 'undefined') return 'id';
+    const stored = localStorage.getItem('bayu-lang') as LanguagePreference | null;
+    if (!stored || stored === 'system') {
+      return detectSystemLanguage();
+    }
+    return stored;
+  });
   const [translations, setTranslations] = useState<any>(idTranslations);
   const [loading, setLoading] = useState(false);
 

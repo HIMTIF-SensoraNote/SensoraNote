@@ -22,6 +22,7 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
 import axios from "axios";
 import { useToast } from "../contexts/ToastContext";
+import Cropper from "react-easy-crop";
 import { AvatarImage } from "../components/ui/DefaultImages";
 import { CustomSelect } from "../components/ui/CustomSelect";
 import { useTranslation } from "../hooks/useTranslation";
@@ -51,6 +52,111 @@ export default function EditProfilePage() {
     const [removeAvatar, setRemoveAvatar] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [showSourceSelector, setShowSourceSelector] = useState(false);
+
+    // Banner state
+    const [bannerFile, setBannerFile] = useState<File | null>(null);
+    const [bannerPreview, setBannerPreview] = useState<string | null>(null);
+    const [removeBanner, setRemoveBanner] = useState(false);
+    const bannerInputRef = useRef<HTMLInputElement>(null);
+
+    // Banner Cropper state
+    const [showBannerCropper, setShowBannerCropper] = useState(false);
+    const [bannerRawUrl, setBannerRawUrl] = useState<string | null>(null);
+    const [bannerCrop, setBannerCrop] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+    const [bannerZoom, setBannerZoom] = useState(1);
+    const [bannerCroppedAreaPixels, setBannerCroppedAreaPixels] = useState<{ x: number; y: number; width: number; height: number } | null>(null);
+
+    const handleBannerFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            if (file.size > 15 * 1024 * 1024) {
+                showToast(t('edit_profile.file_too_large') || "Ukuran gambar banner maksimal 15MB", "error");
+                return;
+            }
+            const url = URL.createObjectURL(file);
+            setBannerRawUrl(url);
+            setBannerCrop({ x: 0, y: 0 });
+            setBannerZoom(1);
+            setShowBannerCropper(true);
+        }
+        if (bannerInputRef.current) bannerInputRef.current.value = "";
+    };
+
+    const getCroppedBannerBlob = async (
+        imageSrc: string,
+        pixelCrop: { x: number; y: number; width: number; height: number }
+    ): Promise<Blob> => {
+        const image = await new Promise<HTMLImageElement>((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.onerror = (err) => reject(err);
+            if (imageSrc.startsWith('http')) {
+                img.crossOrigin = 'anonymous';
+            }
+            img.src = imageSrc;
+        });
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        if (!ctx) throw new Error('Canvas context not available');
+
+        // Target resolution: 1500 x 500 (3:1 aspect ratio matching profile display)
+        const targetWidth = Math.min(1500, Math.max(600, Math.round(pixelCrop.width)));
+        const targetHeight = Math.round(targetWidth / 3);
+
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+
+        ctx.drawImage(
+            image,
+            pixelCrop.x,
+            pixelCrop.y,
+            pixelCrop.width,
+            pixelCrop.height,
+            0,
+            0,
+            targetWidth,
+            targetHeight
+        );
+
+        return new Promise<Blob>((resolve, reject) => {
+            canvas.toBlob(
+                (blob) => {
+                    if (blob) resolve(blob);
+                    else reject(new Error('Canvas toBlob failed'));
+                },
+                'image/jpeg',
+                0.92
+            );
+        });
+    };
+
+    const handleApplyBannerCrop = async () => {
+        if (!bannerRawUrl || !bannerCroppedAreaPixels) return;
+        try {
+            const blob = await getCroppedBannerBlob(bannerRawUrl, bannerCroppedAreaPixels);
+            const file = new File([blob], `banner_${Date.now()}.jpg`, { type: 'image/jpeg' });
+            setBannerFile(file);
+            setBannerPreview(URL.createObjectURL(blob));
+            setRemoveBanner(false);
+            setShowBannerCropper(false);
+            if (bannerRawUrl.startsWith('blob:')) {
+                URL.revokeObjectURL(bannerRawUrl);
+            }
+            setBannerRawUrl(null);
+        } catch (err) {
+            console.error('Failed to crop banner', err);
+            showToast("Gagal memotong gambar banner.", "error");
+        }
+    };
+
+    const handleCancelBannerCrop = () => {
+        setShowBannerCropper(false);
+        if (bannerRawUrl && bannerRawUrl.startsWith('blob:')) {
+            URL.revokeObjectURL(bannerRawUrl);
+        }
+        setBannerRawUrl(null);
+    };
 
     // Camera state
     const [showCameraDialog, setShowCameraDialog] = useState(false);
@@ -308,6 +414,11 @@ export default function EditProfilePage() {
             } else if (avatarFile) {
                 submitData.append("avatar", avatarFile);
             }
+            if (removeBanner) {
+                submitData.append("remove_banner", "true");
+            } else if (bannerFile) {
+                submitData.append("banner", bannerFile);
+            }
 
             submitData.append("_method", "PUT");
 
@@ -325,6 +436,7 @@ export default function EditProfilePage() {
                 updateUserSession({
                     ...formData,
                     ...(removeAvatar ? { avatar: null } : {}),
+                    ...(removeBanner ? { banner: null } : {}),
                 });
             }
 
@@ -372,25 +484,55 @@ export default function EditProfilePage() {
         <MobileLayout showBottomNav={false} hideTopNav={isEditingPhoto} hideMobileTopNav={true}>
             <div className="min-h-screen pb-10 bg-[#FAFAFA] dark:bg-[#13111C]">
                 {/* Header - Transparent & Refined */}
-                <div className="sticky top-0 bg-[#FAFAFA]/95 dark:bg-[#13111C]/95 backdrop-blur-md z-20 px-5 pt-8 pb-4 flex items-center justify-between border-b border-gray-100 dark:border-white/5 mb-6">
-                    <button
-                        onClick={() => navigate(-1)}
-                        disabled={loading}
-                        className="w-10 h-10 flex items-center justify-center bg-white dark:bg-[#1C1A29] border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 rounded-full transition-colors shadow-sm dark:shadow-none disabled:opacity-50"
-                    >
-                        <ArrowLeft className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-                    </button>
-                    <h1 className="text-gray-900 dark:text-gray-100 font-['Lexend_Deca'] font-bold text-lg">
-                        {t('edit_profile.title') || 'Edit Profil'}
-                    </h1>
-                    <div className="w-10"></div>{" "}
-                    {/* Spacer for perfect centering */}
+                <div className="sticky top-0 bg-[#FAFAFA]/95 dark:bg-[#13111C]/95 backdrop-blur-md z-20 border-b border-gray-100 dark:border-white/5 mb-6">
+                    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                            <button
+                                onClick={() => navigate(-1)}
+                                disabled={loading}
+                                className="w-10 h-10 flex items-center justify-center bg-white dark:bg-[#1C1A29] border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 rounded-full transition-colors shadow-sm dark:shadow-none disabled:opacity-50 cursor-pointer"
+                                title="Kembali"
+                            >
+                                <ArrowLeft className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                            </button>
+                            <h1 className="text-gray-900 dark:text-gray-100 font-['Lexend_Deca'] font-bold text-lg sm:text-xl">
+                                {t('edit_profile.title') || 'Edit Profil'}
+                            </h1>
+                        </div>
+
+                        <button
+                            type="button"
+                            onClick={handleSave}
+                            disabled={loading}
+                            className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-full font-['Lexend_Deca'] font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all cursor-pointer disabled:opacity-70"
+                        >
+                            {loading ? (
+                                <>
+                                    <Loader2 className="w-4 h-4 animate-spin" />
+                                    <span>{t('edit_profile.saving') || 'Menyimpan...'}</span>
+                                </>
+                            ) : (
+                                <>
+                                    <Check className="w-4 h-4" />
+                                    <span>{t('edit_profile.save_button') || 'Simpan'}</span>
+                                </>
+                            )}
+                        </button>
+                    </div>
                 </div>
 
-                <div className="max-w-xl mx-auto px-5">
-                    {/* Avatar Section - Clean White Background */}
-                    <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none flex flex-col items-center mb-6">
-                        {/* Hidden file input */}
+                <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    {/* Banner & Avatar Profile Card */}
+                    <div className="bg-white dark:bg-[#1C1A29] rounded-3xl overflow-hidden border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none mb-6">
+                        {/* Hidden banner input */}
+                        <input
+                            type="file"
+                            ref={bannerInputRef}
+                            onChange={handleBannerFileChange}
+                            accept="image/*"
+                            className="hidden"
+                        />
+                        {/* Hidden avatar input */}
                         <input
                             type="file"
                             ref={fileInputRef}
@@ -398,99 +540,151 @@ export default function EditProfilePage() {
                             accept="image/*"
                             className="hidden"
                         />
-                        <div className="relative mb-2">
-                            <div
-                                className="relative cursor-pointer group"
-                                onClick={() => setShowSourceSelector(true)}
-                            >
-                                <AvatarImage
-                                    src={removeAvatar ? null : (avatarPreview || user?.avatar)}
-                                    alt={formData.name || user?.name}
-                                    name={formData.name || user?.name}
-                                    size={112}
-                                    className="sm:!w-28 sm:!h-28 !w-24 !h-24 border-4 border-gray-50 dark:border-white/10 shadow-sm transition-transform group-hover:scale-105"
+
+                        {/* Banner Preview Area (Responsive aspect ratio matching /app/profile) */}
+                        <div className="relative w-full h-40 sm:h-52 md:h-64 lg:h-72 bg-gradient-to-r from-[#E0E7FF] to-[#DBEAFE] dark:from-[#1C1A29] dark:to-[#222033] overflow-hidden group">
+                            {!removeBanner && (bannerPreview || user?.banner) ? (
+                                <img
+                                    src={bannerPreview || user?.banner || ''}
+                                    alt="Banner Preview"
+                                    className="w-full h-full object-cover"
                                 />
+                            ) : (
+                                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.04] dark:opacity-[0.02]"></div>
+                            )}
+
+                            {/* Banner Action Buttons (Icon Only) */}
+                            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex items-center gap-2 z-10">
+                                <button
+                                    type="button"
+                                    onClick={() => bannerInputRef.current?.click()}
+                                    className="p-2.5 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md text-white border border-white/20 shadow-md transition-all cursor-pointer hover:scale-110 active:scale-95"
+                                    title={(!removeBanner && (bannerPreview || user?.banner)) ? "Ganti Gambar Banner" : "Tambah Gambar Banner"}
+                                    aria-label="Tambah atau Ganti Banner"
+                                >
+                                    <Camera className="w-4 h-4" />
+                                </button>
+
+                                {!removeBanner && (bannerPreview || user?.banner) && (
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setBannerFile(null);
+                                            setBannerPreview(null);
+                                            setRemoveBanner(true);
+                                        }}
+                                        className="p-2.5 rounded-full bg-rose-600/80 hover:bg-rose-600 backdrop-blur-md text-white border border-white/20 shadow-md transition-all cursor-pointer hover:scale-110 active:scale-95"
+                                        title="Hapus Banner"
+                                        aria-label="Hapus Banner"
+                                    >
+                                        <Trash2 className="w-4 h-4" />
+                                    </button>
+                                )}
                             </div>
                         </div>
 
-                        {/* Action buttons (Icon Only) */}
-                        <div className="flex items-center gap-2.5 mt-1">
-                            <button
-                                type="button"
-                                onClick={() => setShowSourceSelector(true)}
-                                className="p-2.5 rounded-full bg-blue-50 dark:bg-blue-500/10 text-primary hover:bg-blue-100 dark:hover:bg-blue-500/20 border border-blue-200/80 dark:border-blue-500/30 shadow-xs hover:scale-110 active:scale-95 transition-all cursor-pointer"
-                                title="Ganti Foto Profil"
-                                aria-label="Ganti Foto Profil"
-                            >
-                                <Camera className="w-4 h-4" />
-                            </button>
-                            {(avatarPreview || (user?.avatar && !removeAvatar)) && (
+                        {/* Avatar & Photo Actions Container */}
+                        <div className="px-6 pb-6 pt-0 flex flex-col items-center relative">
+                            <div className="-mt-14 sm:-mt-16 md:-mt-20 mb-2 relative">
+                                <div
+                                    className="relative cursor-pointer group"
+                                    onClick={() => setShowSourceSelector(true)}
+                                >
+                                    <AvatarImage
+                                        src={removeAvatar ? null : (avatarPreview || user?.avatar)}
+                                        alt={formData.name || user?.name}
+                                        name={formData.name || user?.name}
+                                        size={128}
+                                        className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 border-4 border-white dark:border-[#1C1A29] shadow-md transition-transform group-hover:scale-105 bg-white dark:bg-[#1C1A29] rounded-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-black/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <Camera className="w-6 h-6 text-white drop-shadow" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Avatar Action buttons (Icon Only) */}
+                            <div className="flex items-center gap-2.5 mt-1">
                                 <button
                                     type="button"
-                                    onClick={() => {
-                                        setAvatarFile(null);
-                                        setAvatarPreview(null);
-                                        setRemoveAvatar(true);
-                                    }}
-                                    className="p-2.5 rounded-full bg-rose-50 dark:bg-rose-500/10 text-rose-500 hover:bg-rose-100 dark:hover:bg-rose-500/20 border border-rose-200/80 dark:border-rose-500/30 shadow-xs hover:scale-110 active:scale-95 transition-all cursor-pointer"
-                                    title="Hapus Foto Profil"
-                                    aria-label="Hapus Foto Profil"
+                                    onClick={() => setShowSourceSelector(true)}
+                                    className="p-2.5 rounded-full bg-blue-50 dark:bg-blue-500/10 text-primary hover:bg-blue-100 dark:hover:bg-blue-500/20 border border-blue-200/80 dark:border-blue-500/30 shadow-xs hover:scale-110 active:scale-95 transition-all cursor-pointer"
+                                    title="Ganti Foto Profil"
+                                    aria-label="Ganti Foto Profil"
                                 >
-                                    <Trash2 className="w-4 h-4" />
+                                    <Camera className="w-4 h-4" />
                                 </button>
-                            )}
+                                {(avatarPreview || (user?.avatar && !removeAvatar)) && (
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setAvatarFile(null);
+                                            setAvatarPreview(null);
+                                            setRemoveAvatar(true);
+                                        }}
+                                        className="p-2.5 rounded-full bg-rose-50 dark:bg-rose-500/10 text-rose-500 hover:bg-rose-100 dark:hover:bg-rose-500/20 border border-rose-200/80 dark:border-rose-500/30 shadow-xs hover:scale-110 active:scale-95 transition-all cursor-pointer"
+                                        title="Hapus Foto Profil"
+                                        aria-label="Hapus Foto Profil"
+                                    >
+                                        <Trash2 className="w-4 h-4" />
+                                    </button>
+                                )}
+                            </div>
+                            <span className="text-xs text-gray-500 dark:text-gray-400 font-['Manrope'] mt-1">Foto Profil</span>
                         </div>
                     </div>
 
-                    <div className="space-y-6 mb-10">
+                    <div className="space-y-6 mb-8">
                         {/* Section 1: Informasi Dasar */}
-                        <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none space-y-5">
-                            <div className="flex items-center gap-2 mb-2">
+                        <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 sm:p-7 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none space-y-5">
+                            <div className="flex items-center gap-2 mb-1">
                                 <User className="w-4 h-4 text-primary" />
-                                <h2 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100">
+                                <h2 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 text-base sm:text-lg">
                                     {t('edit_profile.section_personal') || 'Informasi Pribadi'}
                                 </h2>
                             </div>
 
-                            <div>
-                                <label className="block text-sm font-['Manrope'] font-black text-gray-900 dark:text-gray-200 mb-2">
-                                    {t('edit_profile.full_name') || 'Nama Lengkap'}{" "}
-                                    <span className="text-red-600 font-black">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    value={formData.name}
-                                    onChange={(e) =>
-                                        setFormData({
-                                            ...formData,
-                                            name: e.target.value,
-                                        })
-                                    }
-                                    className="w-full px-4 py-3.5 bg-gray-50/50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl font-['Manrope'] text-[15px] text-gray-900 dark:text-gray-100 focus:outline-none focus:bg-white dark:focus:bg-[#252336] focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder={t('edit_profile.full_name_placeholder') || "Masukkan nama lengkap"}
-                                    disabled={loading}
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-['Manrope'] font-black text-gray-900 dark:text-gray-200 mb-2">
-                                    {t('edit_profile.username') || 'Username'}
-                                </label>
-                                <div className="relative group">
-                                    <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-gray-500 group-focus-within:text-primary transition-colors">@</span>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label className="block text-sm font-['Manrope'] font-black text-gray-900 dark:text-gray-200 mb-2">
+                                        {t('edit_profile.full_name') || 'Nama Lengkap'}{" "}
+                                        <span className="text-red-600 font-black">*</span>
+                                    </label>
                                     <input
                                         type="text"
-                                        value={formData.username}
-                                        onChange={(e) => {
-                                            const val = e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, '');
-                                            setFormData({ ...formData, username: val });
-                                        }}
-                                        className="w-full pl-10 pr-4 py-3.5 bg-gray-50/50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl font-['Manrope'] text-[15px] text-gray-900 dark:text-gray-100 focus:outline-none focus:bg-white dark:focus:bg-[#252336] focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                        placeholder={t('edit_profile.username_placeholder') || "usernameanda"}
+                                        value={formData.name}
+                                        onChange={(e) =>
+                                            setFormData({
+                                                ...formData,
+                                                name: e.target.value,
+                                            })
+                                        }
+                                        className="w-full px-4 py-3.5 bg-gray-50/50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl font-['Manrope'] text-[15px] text-gray-900 dark:text-gray-100 focus:outline-none focus:bg-white dark:focus:bg-[#252336] focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                        placeholder={t('edit_profile.full_name_placeholder') || "Masukkan nama lengkap"}
                                         disabled={loading}
                                     />
                                 </div>
-                                <p className="font-['Manrope'] text-xs text-gray-500 mt-2" dangerouslySetInnerHTML={{ __html: t('edit_profile.username_hint') || 'Hanya boleh diubah <strong>1x setiap 15 hari</strong>.' }} />
+
+                                <div>
+                                    <label className="block text-sm font-['Manrope'] font-black text-gray-900 dark:text-gray-200 mb-2">
+                                        {t('edit_profile.username') || 'Username'}
+                                    </label>
+                                    <div className="relative group">
+                                        <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-gray-500 group-focus-within:text-primary transition-colors">@</span>
+                                        <input
+                                            type="text"
+                                            value={formData.username}
+                                            onChange={(e) => {
+                                                const val = e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, '');
+                                                setFormData({ ...formData, username: val });
+                                            }}
+                                            className="w-full pl-10 pr-4 py-3.5 bg-gray-50/50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl font-['Manrope'] text-[15px] text-gray-900 dark:text-gray-100 focus:outline-none focus:bg-white dark:focus:bg-[#252336] focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                            placeholder={t('edit_profile.username_placeholder') || "usernameanda"}
+                                            disabled={loading}
+                                        />
+                                    </div>
+                                    <p className="font-['Manrope'] text-xs text-gray-500 mt-2" dangerouslySetInnerHTML={{ __html: t('edit_profile.username_hint') || 'Hanya boleh diubah <strong>1x setiap 15 hari</strong>.' }} />
+                                </div>
                             </div>
 
                             <div>
@@ -516,131 +710,149 @@ export default function EditProfilePage() {
                             </div>
                         </div>
 
-                        {/* Section 2: Data Pendidikan */}
-                        <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none space-y-5">
-                            <div className="flex items-center gap-2 mb-2">
-                                <BookOpen className="w-4 h-4 text-emerald-500" />
-                                <h2 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100">
-                                    {t('edit_profile.section_academic') || 'Detail Akademik'}
-                                </h2>
-                            </div>
+                        {/* Grid for Section 2 & 3 on desktop */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            {/* Section 2: Data Pendidikan */}
+                            <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 sm:p-7 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none space-y-5 flex flex-col justify-between">
+                                <div className="space-y-5">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <BookOpen className="w-4 h-4 text-emerald-500" />
+                                        <h2 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 text-base sm:text-lg">
+                                            {t('edit_profile.section_academic') || 'Detail Akademik'}
+                                        </h2>
+                                    </div>
 
-                            <div>
-                                <label className="block text-sm font-['Manrope'] font-black text-gray-900 dark:text-gray-200 mb-2">
-                                    {t('edit_profile.edu_level') || 'Jenjang Pendidikan Terkini'}
-                                </label>
-                                <div className="relative">
-                                    <CustomSelect
-                                        value={formData.jenjang_pendidikan}
-                                        onChange={(val) => setFormData({ ...formData, jenjang_pendidikan: val as string })}
-                                        options={[
-                                            { value: "SD", label: t('edu_levels.SD') !== 'edu_levels.SD' ? t('edu_levels.SD') : "Sekolah Dasar (SD)" },
-                                            { value: "SMP", label: t('edu_levels.SMP') !== 'edu_levels.SMP' ? t('edu_levels.SMP') : "Menengah Pertama (SMP)" },
-                                            { value: "SMA", label: t('edu_levels.SMA') !== 'edu_levels.SMA' ? t('edu_levels.SMA') : "Menengah Atas (SMA/SMK)" },
-                                            { value: "Kuliah", label: t('edu_levels.Kuliah') !== 'edu_levels.Kuliah' ? t('edu_levels.Kuliah') : "Perguruan Tinggi (Kuliah)" },
-                                            { value: "Umum", label: t('edu_levels.Umum') !== 'edu_levels.Umum' ? t('edu_levels.Umum') : "Umum" },
-                                        ]}
-                                    />
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-sm font-['Manrope'] font-black text-gray-900 dark:text-gray-200 mb-2">
+                                                {t('edit_profile.edu_level') || 'Jenjang Pendidikan'}
+                                            </label>
+                                            <div className="relative">
+                                                <CustomSelect
+                                                    value={formData.jenjang_pendidikan}
+                                                    onChange={(val) => setFormData({ ...formData, jenjang_pendidikan: val as string })}
+                                                    options={[
+                                                        { value: "SD", label: t('edu_levels.SD') !== 'edu_levels.SD' ? t('edu_levels.SD') : "Sekolah Dasar (SD)" },
+                                                        { value: "SMP", label: t('edu_levels.SMP') !== 'edu_levels.SMP' ? t('edu_levels.SMP') : "Menengah Pertama (SMP)" },
+                                                        { value: "SMA", label: t('edu_levels.SMA') !== 'edu_levels.SMA' ? t('edu_levels.SMA') : "Menengah Atas (SMA/SMK)" },
+                                                        { value: "Kuliah", label: t('edu_levels.Kuliah') !== 'edu_levels.Kuliah' ? t('edu_levels.Kuliah') : "Perguruan Tinggi (Kuliah)" },
+                                                        { value: "Umum", label: t('edu_levels.Umum') !== 'edu_levels.Umum' ? t('edu_levels.Umum') : "Umum" },
+                                                    ]}
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-['Manrope'] font-black text-gray-900 dark:text-gray-200 mb-2">
+                                                {t('edit_profile.profession') || 'Profesi / Peran'}
+                                            </label>
+                                            <div className="relative">
+                                                <CustomSelect
+                                                    value={formData.profesi}
+                                                    onChange={(val) => setFormData({ ...formData, profesi: val as string })}
+                                                    options={[
+                                                        { value: "Pelajar", label: t('edit_profile.profesi_pelajar') !== 'edit_profile.profesi_pelajar' ? t('edit_profile.profesi_pelajar') : "Pelajar" },
+                                                        { value: "Mahasiswa", label: t('edit_profile.profesi_mahasiswa') !== 'edit_profile.profesi_mahasiswa' ? t('edit_profile.profesi_mahasiswa') : "Mahasiswa" },
+                                                        { value: "Pengajar", label: t('edit_profile.profesi_pengajar') !== 'edit_profile.profesi_pengajar' ? t('edit_profile.profesi_pengajar') : "Pengajar (Guru/Dosen)" },
+                                                        { value: "Umum", label: t('edit_profile.profesi_umum') !== 'edit_profile.profesi_umum' ? t('edit_profile.profesi_umum') : "Umum / Profesional" },
+                                                    ]}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-['Manrope'] font-black text-gray-900 dark:text-gray-200 mb-2">
+                                            {t('edit_profile.institution') || 'Asal Sekolah / Universitas / Instansi'}
+                                        </label>
+                                        <input
+                                            type="text"
+                                            value={formData.school}
+                                            onChange={(e) =>
+                                                setFormData({
+                                                    ...formData,
+                                                    school: e.target.value,
+                                                })
+                                            }
+                                            className="w-full px-4 py-3.5 bg-gray-50/50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl font-['Manrope'] text-[15px] text-gray-900 dark:text-gray-100 focus:outline-none focus:bg-white dark:focus:bg-[#252336] focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                            placeholder={t('edit_profile.institution_placeholder') || "Misal: SMAN 1 Jakarta"}
+                                            disabled={loading}
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
-                            <div>
-                                <label className="block text-sm font-['Manrope'] font-black text-gray-900 dark:text-gray-200 mb-2">
-                                    {t('edit_profile.profession') || 'Profesi / Peran'}
-                                </label>
-                                <div className="relative">
-                                    <CustomSelect
-                                        value={formData.profesi}
-                                        onChange={(val) => setFormData({ ...formData, profesi: val as string })}
-                                        options={[
-                                            { value: "Pelajar", label: t('edit_profile.profesi_pelajar') !== 'edit_profile.profesi_pelajar' ? t('edit_profile.profesi_pelajar') : "Pelajar" },
-                                            { value: "Mahasiswa", label: t('edit_profile.profesi_mahasiswa') !== 'edit_profile.profesi_mahasiswa' ? t('edit_profile.profesi_mahasiswa') : "Mahasiswa" },
-                                            { value: "Pengajar", label: t('edit_profile.profesi_pengajar') !== 'edit_profile.profesi_pengajar' ? t('edit_profile.profesi_pengajar') : "Pengajar (Guru/Dosen)" },
-                                            { value: "Umum", label: t('edit_profile.profesi_umum') !== 'edit_profile.profesi_umum' ? t('edit_profile.profesi_umum') : "Umum / Profesional" },
-                                        ]}
-                                    />
+                            {/* Section 3: Kontak (Locked Email) */}
+                            <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 sm:p-7 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none space-y-5 flex flex-col justify-between">
+                                <div className="space-y-5">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <Phone className="w-4 h-4 text-blue-500" />
+                                        <h2 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100 text-base sm:text-lg">
+                                            {t('edit_profile.section_contact') || 'Kontak'}
+                                        </h2>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-['Manrope'] font-bold text-gray-900 dark:text-gray-200 mb-2">
+                                            {t('edit_profile.email') || 'Alamat Email'}
+                                        </label>
+                                        <input
+                                            type="email"
+                                            value={user?.email || ""}
+                                            readOnly
+                                            className="w-full px-4 py-3.5 bg-gray-100/70 dark:bg-white/5 border border-transparent text-gray-500 dark:text-gray-500 rounded-2xl font-['Manrope'] text-[15px] cursor-not-allowed"
+                                        />
+                                        <p className="font-['Manrope'] text-xs text-gray-600 font-bold mt-2">
+                                            {t('edit_profile.email_hint') || 'Email utama tidak dapat diubah dari panel ini.'}
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-['Manrope'] font-bold text-gray-900 dark:text-gray-200 mb-2">
+                                            {t('edit_profile.phone') || 'Nomor Handphone (Opsional)'}
+                                        </label>
+                                        <input
+                                            type="tel"
+                                            value={formData.phone}
+                                            onChange={(e) =>
+                                                setFormData({
+                                                    ...formData,
+                                                    phone: e.target.value,
+                                                })
+                                            }
+                                            className="w-full px-4 py-3.5 bg-gray-50/50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl font-['Manrope'] text-[15px] text-gray-900 dark:text-gray-100 focus:outline-none focus:bg-white dark:focus:bg-[#252336] focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                            placeholder={t('edit_profile.phone_placeholder') || "Contoh: 0812xxxx"}
+                                            disabled={loading}
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-['Manrope'] font-black text-gray-900 dark:text-gray-200 mb-2">
-                                    {t('edit_profile.institution') || 'Asal Sekolah / Universitas / Instansi'}
-                                </label>
-                                <input
-                                    type="text"
-                                    value={formData.school}
-                                    onChange={(e) =>
-                                        setFormData({
-                                            ...formData,
-                                            school: e.target.value,
-                                        })
-                                    }
-                                    className="w-full px-4 py-3.5 bg-gray-50/50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl font-['Manrope'] text-[15px] text-gray-900 dark:text-gray-100 focus:outline-none focus:bg-white dark:focus:bg-[#252336] focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder={t('edit_profile.institution_placeholder') || "Misal: SMAN 1 Jakarta"}
-                                    disabled={loading}
-                                />
-                            </div>
-                        </div>
-
-                        {/* Section 3: Kontak (Locked Email) */}
-                        <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-sm dark:shadow-none space-y-5">
-                            <div className="flex items-center gap-2 mb-2">
-                                <Phone className="w-4 h-4 text-blue-500" />
-                                <h2 className="font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100">
-                                    {t('edit_profile.section_contact') || 'Kontak'}
-                                </h2>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-['Manrope'] font-bold text-gray-900 dark:text-gray-200 mb-2">
-                                    {t('edit_profile.email') || 'Alamat Email'}
-                                </label>
-                                <input
-                                    type="email"
-                                    value={user?.email || ""}
-                                    readOnly
-                                    className="w-full px-4 py-3.5 bg-gray-100/70 dark:bg-white/5 border border-transparent text-gray-500 dark:text-gray-500 rounded-2xl font-['Manrope'] text-[15px] cursor-not-allowed"
-                                />
-                                <p className="font-['Manrope'] text-xs text-gray-600 font-bold mt-2">
-                                    {t('edit_profile.email_hint') || 'Email utama tidak dapat diubah dari panel ini.'}
-                                </p>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-['Manrope'] font-bold text-gray-900 dark:text-gray-200 mb-2">
-                                    {t('edit_profile.phone') || 'Nomor Handphone (Opsional)'}
-                                </label>
-                                <input
-                                    type="tel"
-                                    value={formData.phone}
-                                    onChange={(e) =>
-                                        setFormData({
-                                            ...formData,
-                                            phone: e.target.value,
-                                        })
-                                    }
-                                    className="w-full px-4 py-3.5 bg-gray-50/50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl font-['Manrope'] text-[15px] text-gray-900 dark:text-gray-100 focus:outline-none focus:bg-white dark:focus:bg-[#252336] focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder={t('edit_profile.phone_placeholder') || "Contoh: 0812xxxx"}
-                                    disabled={loading}
-                                />
                             </div>
                         </div>
                     </div>
 
-                    {/* Fixed Action Button */}
-                    <div className="sticky bottom-6 mt-8 z-30">
+                    {/* Bottom Action Buttons */}
+                    <div className="flex flex-col-reverse sm:flex-row items-center justify-end gap-3 sm:gap-4 pb-12 pt-2">
                         <button
+                            type="button"
+                            onClick={() => navigate(-1)}
+                            disabled={loading}
+                            className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white font-['Lexend_Deca'] font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer text-center disabled:opacity-50"
+                        >
+                            {t('edit_profile.cancel_button') || 'Batalkan Perubahan'}
+                        </button>
+                        <button
+                            type="button"
                             onClick={handleSave}
                             disabled={loading}
-                            className="w-full flex items-center justify-center gap-2 bg-gray-900 dark:bg-primary text-white py-4 rounded-full font-['Lexend_Deca'] font-bold text-[15px] shadow-xl shadow-gray-200 dark:shadow-primary/10 hover:bg-black dark:hover:bg-primary/90 hover:-translate-y-0.5 transition-all disabled:opacity-70 disabled:hover:translate-y-0"
+                            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-full font-['Lexend_Deca'] font-bold text-sm shadow-xl shadow-primary/20 hover:-translate-y-0.5 transition-all cursor-pointer disabled:opacity-70 disabled:hover:translate-y-0"
                         >
                             {loading ? (
                                 <>
-                                    <Loader2 className="w-5 h-5 animate-spin" />{" "}
-                                    {t('edit_profile.saving') || 'Menyimpan...'}
+                                    <Loader2 className="w-5 h-5 animate-spin" />
+                                    <span>{t('edit_profile.saving') || 'Menyimpan...'}</span>
                                 </>
                             ) : (
-                                t('edit_profile.save_button') || "Simpan Perubahan Profil"
+                                <span>{t('edit_profile.save_button') || 'Simpan Perubahan Profil'}</span>
                             )}
                         </button>
                     </div>
@@ -951,6 +1163,97 @@ export default function EditProfilePage() {
                     </div>
 
                     <canvas ref={cropCanvasRef} className="hidden" />
+                </div>
+            )}
+
+            {/* Banner Cropper Modal (Aspect 3:1 matching /app/profile layout) */}
+            {showBannerCropper && bannerRawUrl && (
+                <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex flex-col animate-in fade-in duration-200">
+                    {/* Header */}
+                    <div className="flex items-center justify-between px-5 py-4 bg-black/60 border-b border-white/10 z-10">
+                        <button
+                            type="button"
+                            onClick={handleCancelBannerCrop}
+                            className="flex items-center gap-2 text-white/80 hover:text-white font-['Manrope'] font-semibold text-sm transition-colors cursor-pointer"
+                        >
+                            <X className="w-5 h-5" /> {t('edit_profile.crop_cancel') || 'Batal'}
+                        </button>
+                        <h3 className="font-['Lexend_Deca'] font-bold text-white text-base">
+                            Sesuaikan Banner
+                        </h3>
+                        <button
+                            type="button"
+                            onClick={handleApplyBannerCrop}
+                            className="flex items-center gap-1.5 bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-full font-['Lexend_Deca'] font-bold text-sm transition-all hover:scale-105 shadow-lg cursor-pointer"
+                        >
+                            <Check className="w-4 h-4" /> {t('edit_profile.crop_use') || 'Gunakan'}
+                        </button>
+                    </div>
+
+                    {/* Cropper Area */}
+                    <div className="flex-1 relative w-full h-full min-h-[300px] overflow-hidden bg-black/95">
+                        <Cropper
+                            image={bannerRawUrl}
+                            crop={bannerCrop}
+                            zoom={bannerZoom}
+                            aspect={3 / 1}
+                            onCropChange={setBannerCrop}
+                            onCropComplete={(_, pixels) => setBannerCroppedAreaPixels(pixels)}
+                            onZoomChange={setBannerZoom}
+                        />
+                    </div>
+
+                    {/* Zoom Controls */}
+                    <div className="px-6 py-5 bg-black/70 border-t border-white/10 z-10">
+                        <div className="flex items-center gap-4 max-w-sm mx-auto">
+                            <button
+                                type="button"
+                                onClick={() => setBannerZoom((prev) => Math.max(1, prev - 0.2))}
+                                className="p-2.5 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors cursor-pointer"
+                                title="Zoom Out"
+                            >
+                                <ZoomOut className="w-5 h-5" />
+                            </button>
+
+                            <div className="flex-1 relative">
+                                <input
+                                    type="range"
+                                    min="1"
+                                    max="5"
+                                    step="0.05"
+                                    value={bannerZoom}
+                                    onChange={(e) => setBannerZoom(parseFloat(e.target.value))}
+                                    className="w-full h-1.5 bg-white/20 rounded-full appearance-none cursor-pointer
+                    [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full 
+                    [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:shadow-lg
+                    [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-primary
+                    [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-125"
+                                />
+                            </div>
+
+                            <button
+                                type="button"
+                                onClick={() => setBannerZoom((prev) => Math.min(5, prev + 0.2))}
+                                className="p-2.5 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors cursor-pointer"
+                                title="Zoom In"
+                            >
+                                <ZoomIn className="w-5 h-5" />
+                            </button>
+                        </div>
+
+                        <div className="flex justify-center mt-3">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setBannerZoom(1);
+                                    setBannerCrop({ x: 0, y: 0 });
+                                }}
+                                className="flex items-center gap-1.5 text-white/50 hover:text-white/80 font-['Manrope'] text-xs transition-colors cursor-pointer"
+                            >
+                                <RotateCcw className="w-3.5 h-3.5" /> {t('edit_profile.crop_reset') || 'Reset'}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </MobileLayout>

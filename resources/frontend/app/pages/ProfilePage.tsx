@@ -315,6 +315,7 @@ export default function ProfilePage() {
         id: user?.id || user?._id || "",
         name: user?.name || "Pengguna",
         avatar: user?.avatar || null,
+        banner: user?.banner || null,
         role: user?.role || "siswa",
         jenjang: user?.jenjang_pendidikan || "",
         profesi: user?.profesi || "Pelajar",
@@ -331,6 +332,7 @@ export default function ProfilePage() {
     const [hasMore, setHasMore] = useState(true);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
     const [isProfileViewerOpen, setIsProfileViewerOpen] = useState(false);
+    const [isBannerViewerOpen, setIsBannerViewerOpen] = useState(false);
     const [totalNotesCount, setTotalNotesCount] = useState(0);
 
     const fetchApiNotes = async (pageNum: number) => {
@@ -495,10 +497,38 @@ export default function ProfilePage() {
                     onClose={() => setIsProfileViewerOpen(false)}
                 />
             )}
+            {currentUser && currentUser.banner && (
+                <ProfilePictureViewer
+                    isOpen={isBannerViewerOpen}
+                    imageUrl={currentUser.banner}
+                    altText={`${currentUser.name} Banner`}
+                    isBanner={true}
+                    onClose={() => setIsBannerViewerOpen(false)}
+                />
+            )}
             <div className="pb-16 bg-white dark:bg-[#13111C] min-h-screen">
                 {/* 1. Cover Banner (Twitter Aspect Ratio) */}
-                <div className="w-full h-32 sm:h-48 bg-gradient-to-r from-[#E0E7FF] to-[#DBEAFE] dark:from-[#1C1A29] dark:to-[#222033] relative overflow-hidden block border-b border-white/5">
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.04] dark:opacity-[0.02]"></div>
+                <div 
+                    className={`w-full h-32 sm:h-48 bg-gradient-to-r from-[#E0E7FF] to-[#DBEAFE] dark:from-[#1C1A29] dark:to-[#222033] relative overflow-hidden block border-b border-white/5 ${currentUser.banner ? 'cursor-pointer group' : ''}`}
+                    onClick={() => {
+                        if (currentUser.banner) {
+                            setIsBannerViewerOpen(true);
+                        }
+                    }}
+                    title={currentUser.banner ? 'Klik untuk melihat banner ukuran penuh' : undefined}
+                >
+                    {currentUser.banner ? (
+                        <>
+                            <img
+                                src={currentUser.banner}
+                                alt={`${currentUser.name} Banner`}
+                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+                            />
+                            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"></div>
+                        </>
+                    ) : (
+                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.04] dark:opacity-[0.02]"></div>
+                    )}
                 </div>
 
                 {/* 2. Main Profile Content Container */}

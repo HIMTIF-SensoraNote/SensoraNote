@@ -331,9 +331,9 @@ export default function HomePage() {
     if (isLoading) {
         return (
             <MobileLayout>
-                <div className="w-full h-full flex justify-center pb-20 pt-6">
-                    <div className="w-full max-w-[1140px] px-2 sm:px-4 md:px-6 flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-14 animate-pulse lg:justify-center mx-auto">
-                        <div className="flex-1 w-full lg:max-w-[640px] xl:max-w-[700px] min-w-0">
+                <div className="w-full h-full flex justify-center pb-20 pt-4 sm:pt-6">
+                    <div className="w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 xl:px-10 flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-12 animate-pulse mx-auto">
+                        <div className="flex-1 w-full min-w-0">
                             {/* FEED TABS SKELETON */}
                             <div className="w-full grid grid-cols-2 gap-2 p-1.5 bg-gray-100/50 dark:bg-white/5 rounded-2xl mb-6 border border-gray-200/40 dark:border-white/5">
                                 <Skeleton className="h-11 w-full rounded-xl" />
@@ -341,7 +341,19 @@ export default function HomePage() {
                             </div>
 
                             {/* HERO NOTE SKELETON */}
-                            <Skeleton className="w-full h-[350px] sm:h-[450px] rounded-[2rem] mb-12" />
+                            <div className="flex flex-col md:flex-row gap-8 items-center mb-12 pb-12 border-b border-gray-100 dark:border-white/5">
+                                <div className="w-full md:w-1/2 space-y-4">
+                                    <Skeleton className="h-6 w-28 rounded-md" />
+                                    <Skeleton className="h-10 w-full rounded-xl" />
+                                    <Skeleton className="h-10 w-3/4 rounded-xl" />
+                                    <Skeleton className="h-16 w-full rounded-xl" />
+                                    <div className="flex items-center gap-3 pt-2">
+                                        <Skeleton className="w-8 h-8 rounded-full" />
+                                        <Skeleton className="h-4 w-32 rounded-md" />
+                                    </div>
+                                </div>
+                                <Skeleton className="hidden md:block w-full md:w-1/2 h-[320px] lg:h-[360px] xl:h-[400px] rounded-[2rem]" />
+                            </div>
 
                             {/* FEED SKELETON */}
                             <div className="flex flex-col gap-0">
@@ -352,7 +364,7 @@ export default function HomePage() {
                         </div>
 
                         {/* RIGHT COLUMN SKELETON */}
-                        <div className="hidden lg:block w-[280px] xl:w-[320px] shrink-0 border-l border-gray-100 dark:border-white/5 pl-6 xl:pl-10 pt-4">
+                        <div className="hidden lg:block w-[300px] xl:w-[340px] 2xl:w-[360px] shrink-0 border-l border-gray-100 dark:border-white/5 pl-6 xl:pl-8 2xl:pl-10 pt-4">
                             <div className="h-6 w-32 bg-gray-100 dark:bg-white/5 rounded-md mb-8"></div>
                             <div className="space-y-6">
                                 {[...Array(4)].map((_, i) => (
@@ -374,10 +386,10 @@ export default function HomePage() {
 
     return (
         <MobileLayout>
-            <div className="w-full h-full flex justify-center pb-20 pt-6">
-                <div className="w-full max-w-[1140px] px-2 sm:px-4 md:px-6 flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-14 lg:justify-center mx-auto">
+            <div className="w-full h-full flex justify-center pb-20 pt-4 sm:pt-6">
+                <div className="w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 xl:px-10 flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-12 mx-auto">
                     {/* LEFT COLUMN (MAIN FEED GRID) */}
-                    <div className="flex-1 w-full lg:max-w-[640px] xl:max-w-[700px] min-w-0">
+                    <div className="flex-1 w-full min-w-0">
                         
                         {/* MAIN FEED TABS: "Untuk Anda" & "Mengikuti" (Full Width & Responsive) */}
                         <div className="mb-6 w-full p-1 sm:p-1.5 bg-gray-100/80 dark:bg-white/5 rounded-2xl grid grid-cols-2 gap-1.5 sm:gap-2 border border-gray-200/60 dark:border-white/10 shadow-xs">
@@ -433,21 +445,21 @@ export default function HomePage() {
 
                         {/* THE HERO ARTICLE (MAGAZINE STYLE) */}
                         {heroNote && (
-                            <div className="mb-12 pb-12 border-b border-gray-100 dark:border-white/5 relative group transition-all duration-500 ease-out flex flex-col md:flex-row gap-8">
+                            <div className="mb-12 pb-12 border-b border-gray-100 dark:border-white/5 relative group transition-all duration-500 ease-out flex flex-col md:flex-row gap-8 lg:gap-10 xl:gap-12 items-center">
                                 
                                 {/* Carousel Navigation Arrows */}
                                 {heroNotesCount > 1 && (
                                     <>
                                         <button 
                                             onClick={() => setCurrentHeroIndex((prev) => (prev - 1 + heroNotesCount) % heroNotesCount)}
-                                            className="absolute left-[-16px] lg:left-[-24px] top-[40%] md:top-[45%] -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-[#1C1A29]/90 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-full flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:bg-white dark:hover:bg-[#13111C] shadow-sm hover:shadow-md transition-all z-30 opacity-0 group-hover:opacity-100 focus:opacity-100 hidden md:flex"
+                                            className="absolute left-[-16px] xl:left-[-20px] top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-[#1C1A29]/90 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-full flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:bg-white dark:hover:bg-[#13111C] shadow-sm hover:shadow-md transition-all z-30 opacity-0 group-hover:opacity-100 focus:opacity-100 hidden md:flex cursor-pointer"
                                             aria-label="Previous slide"
                                         >
                                             <ChevronRight className="w-6 h-6 rotate-180" strokeWidth={2} />
                                         </button>
                                         <button 
                                             onClick={() => setCurrentHeroIndex((prev) => (prev + 1) % heroNotesCount)}
-                                            className="absolute right-[-16px] lg:right-[-24px] top-[40%] md:top-[45%] -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-[#1C1A29]/90 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-full flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:bg-white dark:hover:bg-[#13111C] shadow-sm hover:shadow-md transition-all z-30 opacity-0 group-hover:opacity-100 focus:opacity-100 hidden md:flex"
+                                            className="absolute right-[-16px] xl:right-[-20px] top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-[#1C1A29]/90 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-full flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:bg-white dark:hover:bg-[#13111C] shadow-sm hover:shadow-md transition-all z-30 opacity-0 group-hover:opacity-100 focus:opacity-100 hidden md:flex cursor-pointer"
                                             aria-label="Next slide"
                                         >
                                             <ChevronRight className="w-6 h-6" strokeWidth={2} />
@@ -456,7 +468,7 @@ export default function HomePage() {
                                 )}
 
                                 {/* Hero Text Content */}
-                                <div className="flex-1 flex flex-col justify-center z-10 w-full md:w-1/2">
+                                <div className="flex-1 flex flex-col justify-center z-10 w-full md:w-1/2 min-w-0">
                                     <div className="flex items-center gap-2 mb-4">
                                         <span className="bg-primary/10 text-primary text-[11px] font-['Lexend_Deca'] font-bold px-2 py-1 rounded-[6px] uppercase tracking-wider">
                                             {t('home.main_focus') !== 'home.main_focus' ? t('home.main_focus') : 'Fokus Utama'}
@@ -477,12 +489,12 @@ export default function HomePage() {
                                         to={`/note/${heroNote.id}`}
                                         className="block group/title outline-none"
                                     >
-                                        <h2 className="text-[28px] md:text-[36px] font-['Lexend_Deca'] font-extrabold text-gray-900 dark:text-gray-100 leading-[1.1] mb-4 tracking-tight group-hover/title:text-primary transition-colors line-clamp-3">
+                                        <h2 className="text-[28px] md:text-[34px] xl:text-[38px] font-['Lexend_Deca'] font-extrabold text-gray-900 dark:text-gray-100 leading-[1.15] mb-4 tracking-tight group-hover/title:text-primary transition-colors line-clamp-3">
                                             {heroNote.title}
                                         </h2>
                                     </Link>
 
-                                    <p className="text-[16px] font-['Manrope'] text-gray-700 dark:text-gray-400 leading-relaxed mb-6 line-clamp-3 md:line-clamp-2">
+                                    <p className="text-[15px] xl:text-[16px] font-['Manrope'] text-gray-700 dark:text-gray-400 leading-relaxed mb-6 line-clamp-3 font-medium">
                                         {heroNote.description}
                                     </p>
 
@@ -552,7 +564,7 @@ export default function HomePage() {
                                 </div>
 
                                 {/* Desktop Right Thumbnail */}
-                                <div className="hidden md:block w-full md:w-1/2 h-[350px] lg:h-[400px] overflow-hidden relative shrink-0 rounded-[2rem] bg-gray-50 dark:bg-[#1C1A29] shadow-md dark:shadow-none border border-gray-100 dark:border-white/5 group-hover/title:shadow-lg transition-all duration-500">
+                                <div className="hidden md:block w-full md:w-1/2 h-[320px] lg:h-[360px] xl:h-[400px] overflow-hidden relative shrink-0 rounded-[2rem] bg-gray-50 dark:bg-[#1C1A29] shadow-md dark:shadow-none border border-gray-100 dark:border-white/5 group-hover/title:shadow-lg transition-all duration-500">
                                     <Link
                                         to={`/note/${heroNote.id}`}
                                         className="w-full h-full block"
@@ -660,7 +672,7 @@ export default function HomePage() {
                     </div>
 
                     {/* RIGHT COLUMN (TRENDING / DISCOVERY & TOPICS SIDEBAR) */}
-                    <div className="hidden lg:block w-[280px] xl:w-[320px] shrink-0 border-l border-gray-100 dark:border-white/5 pl-6 xl:pl-10 pt-2">
+                    <div className="hidden lg:block w-[300px] xl:w-[340px] 2xl:w-[360px] shrink-0 border-l border-gray-100 dark:border-white/5 pl-6 xl:pl-8 2xl:pl-10 pt-2">
                         <div className="sticky top-20 flex flex-col gap-0">
                             
                             {/* Trending Section */}
@@ -700,7 +712,7 @@ export default function HomePage() {
                                                             size={18}
                                                             className="rounded-full shrink-0"
                                                         />
-                                                        <span className="text-[12px] font-['Lexend_Deca'] font-bold text-gray-700 dark:text-gray-300 group-hover/tauth:underline truncate max-w-[120px]">
+                                                        <span className="text-[12px] font-['Lexend_Deca'] font-bold text-gray-700 dark:text-gray-300 group-hover/tauth:underline truncate max-w-[140px] xl:max-w-[170px]">
                                                             {trend.author?.name}
                                                         </span>
                                                         <span className="text-[11px] font-['Manrope'] text-gray-400 dark:text-gray-500 font-medium">

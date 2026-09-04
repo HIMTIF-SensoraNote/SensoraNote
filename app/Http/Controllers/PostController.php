@@ -150,8 +150,63 @@ class PostController extends Controller
         $isSearch = $request->filled('search');
         if ($isSearch) {
             $search = $request->query('search');
-            $query->where(function ($q) use ($search) {
-                $q->where('title', 'like', '%'.$search.'%')->orWhere('plain_content', 'like', '%'.$search.'%')->orWhere('mapel', 'like', '%'.$search.'%');
+            $targetsParam = $request->query('targets');
+            $targets = $targetsParam ? array_filter(array_map('trim', explode(',', strtolower($targetsParam)))) : [];
+
+            $query->where(function ($q) use ($search, $targets) {
+                $matchAll = empty($targets);
+                $hasCondition = false;
+
+                if ($matchAll || in_array('title', $targets)) {
+                    $q->where('title', 'like', '%'.$search.'%');
+                    $hasCondition = true;
+                }
+
+                if ($matchAll || in_array('content', $targets) || in_array('desc', $targets)) {
+                    if ($hasCondition) {
+                        $q->orWhere('plain_content', 'like', '%'.$search.'%');
+                    } else {
+                        $q->where('plain_content', 'like', '%'.$search.'%');
+                        $hasCondition = true;
+                    }
+                }
+
+                if ($matchAll || in_array('subject', $targets) || in_array('mapel', $targets)) {
+                    if ($hasCondition) {
+                        $q->orWhere('mapel', 'like', '%'.$search.'%');
+                    } else {
+                        $q->where('mapel', 'like', '%'.$search.'%');
+                        $hasCondition = true;
+                    }
+                }
+
+                if ($matchAll || in_array('tags', $targets) || in_array('tag', $targets)) {
+                    if ($hasCondition) {
+                        $q->orWhere('tags', 'like', '%'.$search.'%');
+                    } else {
+                        $q->where('tags', 'like', '%'.$search.'%');
+                        $hasCondition = true;
+                    }
+                }
+
+                if ($matchAll || in_array('author', $targets) || in_array('creator', $targets) || in_array('user', $targets)) {
+                    if ($hasCondition) {
+                        $q->orWhereHas('user', function ($uq) use ($search) {
+                            $uq->where('name', 'like', '%'.$search.'%')->orWhere('username', 'like', '%'.$search.'%');
+                        });
+                    } else {
+                        $q->whereHas('user', function ($uq) use ($search) {
+                            $uq->where('name', 'like', '%'.$search.'%')->orWhere('username', 'like', '%'.$search.'%');
+                        });
+                        $hasCondition = true;
+                    }
+                }
+
+                if (! $hasCondition) {
+                    $q->where('title', 'like', '%'.$search.'%')
+                      ->orWhere('plain_content', 'like', '%'.$search.'%')
+                      ->orWhere('mapel', 'like', '%'.$search.'%');
+                }
             });
         }
 

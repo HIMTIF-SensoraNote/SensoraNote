@@ -19,6 +19,7 @@ export interface User {
     jenjang_pendidikan?: string;
     profesi?: string;
     avatar?: string | null;
+    banner?: string | null;
     bio?: string;
     school?: string;
     phone?: string;

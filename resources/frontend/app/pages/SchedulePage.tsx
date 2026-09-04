@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useTranslation } from '../hooks/useTranslation';
 import { MobileLayout } from '../components/MobileLayout';
 import { VoiceScheduleModal } from '../components/VoiceScheduleModal';
 import { VisualScheduleCard } from '../components/VisualScheduleCard';
@@ -58,7 +59,8 @@ const parseLocalDate = (dateStr: string): Date => {
 };
 
 export default function SchedulePage() {
-  useDocumentTitle('Asisten Perencana Jadwal | SensoraNote');
+  const { t, language } = useTranslation();
+  useDocumentTitle(`${t('schedule.title')} | SensoraNote`);
   const { showToast } = useToast();
 
   const [selectedDate, setSelectedDate] = useState<string>(() => formatLocalDate(new Date()));
@@ -122,14 +124,15 @@ export default function SchedulePage() {
   const isToday = selectedDate === todayStr;
 
   const dateObj = parseLocalDate(selectedDate);
-  const formattedDateTitle = dateObj.toLocaleDateString('id-ID', {
+  const dateLocale = language === 'id' ? 'id-ID' : language;
+  const formattedDateTitle = dateObj.toLocaleDateString(dateLocale, {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   });
 
-  const formattedDateTitleShort = dateObj.toLocaleDateString('id-ID', {
+  const formattedDateTitleShort = dateObj.toLocaleDateString(dateLocale, {
     weekday: 'short',
     day: 'numeric',
     month: 'short',
@@ -164,17 +167,17 @@ export default function SchedulePage() {
   // Helper to get activity real-time status
   const getActivityStatus = (item: ScheduleItem) => {
     if (item.is_completed) {
-      return { label: 'Selesai', color: 'text-emerald-500 bg-emerald-500/10' };
+      return { label: t('schedule.status_completed'), color: 'text-emerald-500 bg-emerald-500/10' };
     }
 
     const now = new Date();
     const today = formatLocalDate(now);
 
     if (selectedDate < today) {
-      return { label: 'Bisa Dicentang', color: 'text-emerald-500 bg-emerald-500/10' };
+      return { label: t('schedule.status_ready'), color: 'text-emerald-500 bg-emerald-500/10' };
     }
     if (selectedDate > today) {
-      return { label: `Mulai ${item.time_start}`, color: 'text-gray-500 bg-gray-500/10' };
+      return { label: t('schedule.start_prefix', { time: item.time_start }), color: 'text-gray-500 bg-gray-500/10' };
     }
 
     try {
@@ -188,14 +191,14 @@ export default function SchedulePage() {
       const endMinutes = endH * 60 + endM;
 
       if (currentMinutes < startMinutes) {
-        return { label: `Belum Mulai (${item.time_start})`, color: 'text-gray-500 bg-gray-100 dark:bg-white/5' };
+        return { label: t('schedule.status_not_started', { time: item.time_start }), color: 'text-gray-500 bg-gray-100 dark:bg-white/5' };
       } else if (currentMinutes >= startMinutes && currentMinutes < endMinutes) {
-        return { label: `Sedang Berjalan (s/d ${item.time_end})`, color: 'text-blue-500 bg-blue-50 dark:bg-blue-500/10 font-bold' };
+        return { label: t('schedule.status_in_progress', { time: item.time_end }), color: 'text-blue-500 bg-blue-50 dark:bg-blue-500/10 font-bold' };
       } else {
-        return { label: 'Waktu Selesai (Bisa Dicentang)', color: 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 font-bold' };
+        return { label: t('schedule.status_ready'), color: 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 font-bold' };
       }
     } catch {
-      return { label: 'Tersedia', color: 'text-gray-500' };
+      return { label: t('schedule.status_available'), color: 'text-gray-500' };
     }
   };
 
@@ -206,7 +209,7 @@ export default function SchedulePage() {
     // If locked and not completed, block action and notify user
     if (!checkable && !item.is_completed) {
       showToast(
-        `Kegiatan "${item.title}" baru dapat dicentang setelah melewati jam selesai (${item.time_end}) ⏰`,
+        t('schedule.lock_toast', { title: item.title, time: item.time_end }),
         'warning'
       );
       return;
@@ -231,7 +234,7 @@ export default function SchedulePage() {
       );
     } catch (error) {
       console.error('Failed to toggle item:', error);
-      showToast('Gagal mengubah status kegiatan.', 'error');
+      showToast(t('schedule.toggle_error'), 'error');
       fetchSchedule(selectedDate);
     }
   };
@@ -249,10 +252,10 @@ export default function SchedulePage() {
       await axios.delete(`/api/v1/schedules/${scheduleId}/items/${itemId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      showToast('Kegiatan berhasil dihapus.', 'info');
+      showToast(t('schedule.delete_success'), 'info');
     } catch (error) {
       console.error('Failed to delete item:', error);
-      showToast('Gagal menghapus kegiatan.', 'error');
+      showToast(t('schedule.delete_error'), 'error');
       fetchSchedule(selectedDate);
     }
   };
@@ -272,13 +275,13 @@ export default function SchedulePage() {
           <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6">
             <div className="space-y-2">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[11.5px] sm:text-[12px] font-bold font-['Manrope'] tracking-wide">
-                <Sparkles className="w-3.5 h-3.5" /> Sensora AI Schedule Planner
+                <Sparkles className="w-3.5 h-3.5" /> {t('schedule.badge')}
               </div>
               <h1 className="font-['Lexend_Deca'] font-extrabold text-xl sm:text-2xl md:text-3xl leading-tight">
-                Asisten Perencana Jadwal
+                {t('schedule.title')}
               </h1>
               <p className="font-['Manrope'] text-[13px] sm:text-[14px] text-blue-100/90 max-w-xl font-medium leading-relaxed">
-                Buat rencana jadwal harian otomatis cukup dengan suara Anda. Dapatkan poster visual estetik beresolusi tinggi dan unduh instan!
+                {t('schedule.subtitle')}
               </p>
             </div>
 
@@ -290,7 +293,7 @@ export default function SchedulePage() {
                 className="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-white text-primary font-['Manrope'] font-extrabold text-[14px] shadow-xl shadow-black/15 hover:bg-blue-50 active:scale-95 transition-all cursor-pointer"
               >
                 <Mic className="w-4 h-4 text-primary shrink-0" />
-                <span>Rencanakan Sekarang!</span>
+                <span>{t('schedule.plan_now')}</span>
               </button>
             </div>
           </div>
@@ -305,7 +308,7 @@ export default function SchedulePage() {
               type="button"
               onClick={() => handleDateChange(-1)}
               className="p-2 sm:p-2.5 rounded-xl bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300 transition-colors shrink-0 cursor-pointer"
-              title="Hari Sebelumnya"
+              title={t('schedule.prev_day')}
             >
               <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
@@ -317,7 +320,7 @@ export default function SchedulePage() {
                 <span className="truncate">{formattedDateTitleShort}</span>
                 {isToday && (
                   <span className="px-1.5 py-0.5 rounded-md bg-blue-100/70 dark:bg-blue-500/20 text-primary text-[10px] font-extrabold uppercase shrink-0">
-                    Hari Ini
+                    {t('schedule.today')}
                   </span>
                 )}
                 <input
@@ -337,7 +340,7 @@ export default function SchedulePage() {
               type="button"
               onClick={() => handleDateChange(1)}
               className="p-2 sm:p-2.5 rounded-xl bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-300 transition-colors shrink-0 cursor-pointer"
-              title="Hari Berikutnya"
+              title={t('schedule.next_day')}
             >
               <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
@@ -347,9 +350,9 @@ export default function SchedulePage() {
                 type="button"
                 onClick={handleSetToday}
                 className="hidden sm:inline-flex px-2.5 py-2 rounded-xl bg-blue-50 dark:bg-blue-500/10 text-primary text-[11.5px] font-['Manrope'] font-bold hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-colors shrink-0 cursor-pointer"
-                title="Kembali ke Hari Ini"
+                title={t('schedule.back_to_today')}
               >
-                Hari Ini
+                {t('schedule.today')}
               </button>
             )}
           </div>
@@ -370,24 +373,24 @@ export default function SchedulePage() {
               }`}
               title={
                 isReminderEnabled
-                  ? 'Pengingat aktif. Klik untuk menonaktifkan.'
-                  : 'Pengingat nonaktif. Klik untuk mengaktifkan.'
+                  ? t('schedule.reminder_on_tooltip')
+                  : t('schedule.reminder_off_tooltip')
               }
             >
               {isReminderEnabled && notificationPermission === 'granted' ? (
                 <>
                   <Bell className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                  <span>Pengingat Aktif</span>
+                  <span>{t('schedule.reminder_on')}</span>
                 </>
               ) : isReminderEnabled ? (
                 <>
                   <Bell className="w-3.5 h-3.5 text-amber-500 shrink-0 animate-pulse" />
-                  <span>Pengingat Aktif</span>
+                  <span>{t('schedule.reminder_on')}</span>
                 </>
               ) : (
                 <>
                   <BellOff className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                  <span>Pengingat Mati</span>
+                  <span>{t('schedule.reminder_off')}</span>
                 </>
               )}
             </button>
@@ -404,7 +407,7 @@ export default function SchedulePage() {
                 }`}
               >
                 <ListTodo className="w-3.5 h-3.5 shrink-0" />
-                <span>Checklist</span>
+                <span>{t('schedule.tab_checklist')}</span>
               </button>
 
               <button
@@ -417,7 +420,7 @@ export default function SchedulePage() {
                 }`}
               >
                 <ImageIcon className="w-3.5 h-3.5 shrink-0" />
-                <span>Poster</span>
+                <span>{t('schedule.tab_poster')}</span>
               </button>
             </div>
           </div>
@@ -427,7 +430,7 @@ export default function SchedulePage() {
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-16 space-y-3 bg-white dark:bg-[#1C1A29] rounded-3xl border border-gray-100 dark:border-white/5 shadow-xs">
             <Loader2 className="w-8 h-8 animate-spin text-primary" />
-            <p className="font-['Manrope'] text-[14px] text-gray-500">Memuat jadwal belajar...</p>
+            <p className="font-['Manrope'] text-[14px] text-gray-500">{t('schedule.loading')}</p>
           </div>
         ) : activeView === 'visual' ? (
           /* TAB 2: VISUAL POSTER CARD */
@@ -448,7 +451,7 @@ export default function SchedulePage() {
                 <div className="bg-white dark:bg-[#1C1A29] p-4 sm:p-5 rounded-3xl border border-gray-100 dark:border-white/5 shadow-xs space-y-3">
                   <div className="flex items-center justify-between text-[13px] font-['Manrope'] font-bold text-gray-600 dark:text-gray-400">
                     <span className="flex items-center gap-1.5">
-                      <TrendingUp className="w-4 h-4 text-emerald-500" /> Progres Target
+                      <TrendingUp className="w-4 h-4 text-emerald-500" /> {t('schedule.target_progress')}
                     </span>
                     <span className="text-primary font-extrabold">{progressPercent}%</span>
                   </div>
@@ -461,7 +464,7 @@ export default function SchedulePage() {
                   </div>
 
                   <p className="text-[12px] font-['Manrope'] text-gray-500 dark:text-gray-400 font-medium">
-                    {completedCount} dari {items.length} aktivitas terselesaikan
+                    {t('schedule.progress_desc', { count: completedCount, total: items.length })}
                   </p>
                 </div>
 
@@ -472,10 +475,10 @@ export default function SchedulePage() {
                   </div>
                   <div className="space-y-1">
                     <h4 className="text-[13.5px] font-['Lexend_Deca'] font-bold text-gray-900 dark:text-gray-100">
-                      Fokus: {formattedDateTitle}
+                      {t('schedule.focus')}: {formattedDateTitle}
                     </h4>
                     <p className="text-[12.5px] sm:text-[13px] font-['Manrope'] text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
-                      {scheduleData?.summary || 'Selesaikan setiap slot waktu secara konsisten untuk hasil belajar maksimal.'}
+                      {scheduleData?.summary || t('schedule.default_summary')}
                     </p>
                   </div>
                 </div>
@@ -486,7 +489,7 @@ export default function SchedulePage() {
             <div className="bg-white dark:bg-[#1C1A29] rounded-3xl p-4 sm:p-6 border border-gray-100 dark:border-white/5 shadow-xs space-y-4">
               <div className="flex items-center justify-between border-b border-gray-100 dark:border-white/5 pb-4">
                 <h3 className="font-['Lexend_Deca'] font-bold text-[15px] sm:text-[16px] text-gray-900 dark:text-gray-100 flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-primary" /> Rincian Kegiatan ({items.length})
+                  <Clock className="w-4 h-4 text-primary" /> {t('schedule.activity_details')} ({items.length})
                 </h3>
 
                 <button
@@ -495,7 +498,7 @@ export default function SchedulePage() {
                   className="text-[12.5px] sm:text-[13px] font-['Manrope'] font-bold text-primary hover:underline flex items-center gap-1.5 cursor-pointer px-2.5 py-1 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-500/10 transition-colors"
                 >
                   <Mic className="w-3.5 h-3.5" />
-                  <span>Ubah Jadwalmu?</span>
+                  <span>{t('schedule.change_schedule')}</span>
                 </button>
               </div>
 
@@ -506,10 +509,10 @@ export default function SchedulePage() {
                   </div>
                   <div className="space-y-1">
                     <h4 className="font-['Lexend_Deca'] font-bold text-[15px] sm:text-[16px] text-gray-800 dark:text-gray-200">
-                      Belum Ada Jadwal untuk {formattedDateTitle}
+                      {t('schedule.no_schedule_title', { date: formattedDateTitle })}
                     </h4>
                     <p className="font-['Manrope'] text-[12.5px] sm:text-[13px] text-gray-500 dark:text-gray-400 max-w-sm">
-                      Gunakan tombol "Rencanakan Sekarang!" di bagian atas untuk menyusun rencana aktivitas belajar Anda.
+                      {t('schedule.no_schedule_desc')}
                     </p>
                   </div>
                 </div>
@@ -542,10 +545,10 @@ export default function SchedulePage() {
                             }`}
                             title={
                               item.is_completed
-                                ? 'Tandai belum selesai'
+                                ? t('schedule.mark_incomplete')
                                 : checkable
-                                ? 'Tandai selesai'
-                                : `Baru dapat dicentang setelah pukul ${item.time_end}`
+                                ? t('schedule.mark_complete')
+                                : t('schedule.lock_tooltip', { time: item.time_end })
                             }
                           >
                             {item.is_completed ? (
@@ -570,7 +573,7 @@ export default function SchedulePage() {
                               </span>
                               {item.priority === 'tinggi' && (
                                 <span className="text-[10px] sm:text-[10.5px] font-bold text-rose-500 bg-rose-50 dark:bg-rose-500/10 px-1.5 py-0.5 rounded flex items-center gap-0.5">
-                                  <Flame className="w-3 h-3" /> Tinggi
+                                  <Flame className="w-3 h-3" /> {t('schedule.priority_high')}
                                 </span>
                               )}
 
@@ -595,7 +598,7 @@ export default function SchedulePage() {
                           type="button"
                           onClick={() => handleDeleteItem(item.id)}
                           className="p-2 text-gray-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 rounded-xl transition-colors shrink-0 ml-2 cursor-pointer"
-                          title="Hapus Kegiatan"
+                          title={t('schedule.delete_activity')}
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>

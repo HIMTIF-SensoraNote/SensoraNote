@@ -18,6 +18,7 @@ import {
   Check,
 } from 'lucide-react';
 import { useVoiceRecognition } from '../hooks/useVoiceRecognition';
+import { useTranslation } from '../hooks/useTranslation';
 import axios from 'axios';
 import { useToast } from '../contexts/ToastContext';
 
@@ -29,6 +30,8 @@ interface VoiceScheduleModalProps {
 }
 
 export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: VoiceScheduleModalProps) {
+  const { t, language } = useTranslation();
+  const dateLocale = language === 'id' ? 'id-ID' : language;
   const { showToast } = useToast();
   const {
     isListening,
@@ -118,7 +121,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
   const handleParseAndPreview = async () => {
     const fullText = (transcript + ' ' + interimTranscript).trim();
     if (!fullText) {
-      showToast('Silakan bicara terlebih dahulu atau ketik jadwal Anda.', 'warning');
+      showToast(t('schedule.modal_empty_voice'), 'warning');
       return;
     }
 
@@ -181,13 +184,13 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
       );
 
       if (res.data.status === 'success') {
-        showToast('Jadwal berhasil dikonfirmasi dan disimpan! 🎉', 'success');
+        showToast(t('schedule.modal_save_success'), 'success');
         onSuccess({ ...res.data.data, date: finalDate, target_date: finalDate });
         onClose();
       }
     } catch (err: any) {
       console.error('Failed to save confirmed schedule:', err);
-      showToast('Gagal menyimpan jadwal. Silakan coba lagi.', 'error');
+      showToast(t('schedule.modal_save_error'), 'error');
     } finally {
       setIsSavingConfirmation(false);
     }
@@ -211,10 +214,10 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
             </div>
             <div>
               <h3 className="font-['Lexend_Deca'] font-extrabold text-[16px] sm:text-[17px] text-gray-900 dark:text-gray-100">
-                {step === 'confirm' ? 'Konfirmasi Rencana Jadwal' : 'Rencanakan dengan Suara'}
+                {step === 'confirm' ? t('schedule.modal_confirm_title') : t('schedule.modal_record_title')}
               </h3>
               <p className="text-[12px] font-['Manrope'] text-gray-500 dark:text-gray-400 font-medium">
-                {step === 'confirm' ? 'Tinjau jadwal sebelum disimpan' : 'Bicara santai, AI otomatis susun jadwal'}
+                {step === 'confirm' ? t('schedule.modal_confirm_desc') : t('schedule.modal_record_desc')}
               </p>
             </div>
           </div>
@@ -237,7 +240,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
               {/* Target Date Picker */}
               <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-[#13111C] rounded-2xl border border-gray-200/80 dark:border-white/5">
                 <span className="text-[12.5px] font-['Manrope'] font-bold text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-primary shrink-0" /> Tanggal Jadwal:
+                  <Calendar className="w-4 h-4 text-primary shrink-0" /> {t('schedule.modal_date_label')}
                 </span>
                 <input
                   type="date"
@@ -267,7 +270,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
                         ? 'bg-rose-500 text-white hover:bg-rose-600 scale-105 shadow-rose-500/30'
                         : 'bg-gradient-to-tr from-primary to-indigo-500 text-white hover:scale-105 active:scale-95 shadow-primary/30'
                     } ${(!isSupported || isProcessingAI) ? 'opacity-50 cursor-not-allowed' : ''}`}
-                    title={isListening ? 'Hentikan Rekaman' : 'Mulai Bicara'}
+                    title={isListening ? t('schedule.modal_stop_record') : t('schedule.modal_start_record')}
                   >
                     <Mic className={`w-8 h-8 ${isListening ? 'animate-pulse' : ''}`} />
                   </button>
@@ -277,7 +280,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
                   <div className="text-center pt-1">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-bold font-['Manrope'] bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-500/20">
                       <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping shrink-0" />
-                      <span>Merekam {formatTimer(recordingSeconds)}</span>
+                      <span>{t('schedule.modal_recording')} {formatTimer(recordingSeconds)}</span>
                     </span>
                   </div>
                 )}
@@ -296,7 +299,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
                 <div className="flex items-center justify-between">
                   <label className="text-[12.5px] font-['Manrope'] font-bold text-gray-700 dark:text-gray-300 flex items-center gap-1.5">
                     <Volume2 className="w-4 h-4 text-primary" />
-                    Transkripsi Suara (Bisa Diedit):
+                    {t('schedule.modal_transcript_label')}
                   </label>
                   {transcript && (
                     <button
@@ -313,7 +316,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
                   <textarea
                     value={transcript + (interimTranscript ? ' ' + interimTranscript : '')}
                     onChange={(e) => setTranscript(e.target.value)}
-                    placeholder="Contoh: 'Besok jam 8 pagi belajar matematika matriks, siang jam 1 lanjut koding React, sore jam 4 bikin tugas biologi'..."
+                    placeholder={t('schedule.modal_transcript_placeholder')}
                     rows={4}
                     className="w-full p-3.5 sm:p-4 rounded-2xl bg-gray-50 dark:bg-[#13111C] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-gray-100 text-[13px] sm:text-[13.5px] font-['Manrope'] leading-relaxed focus:outline-none focus:border-primary/50 focus:ring-4 focus:ring-primary/10 transition-all resize-none placeholder-gray-400 dark:placeholder-gray-600"
                   />
@@ -325,15 +328,15 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
             <div className="space-y-4">
               {/* Target Date Badge */}
               <div className="flex items-center justify-between px-3.5 py-2.5 rounded-2xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-[12.5px] font-['Manrope'] font-bold text-primary">
-                <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4 text-primary" /> Target Tanggal:</span>
-                <span className="font-extrabold">{new Date(targetDate + 'T00:00:00').toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4 text-primary" /> {t('schedule.modal_target_date')}</span>
+                <span className="font-extrabold">{new Date(targetDate + 'T00:00:00').toLocaleDateString(dateLocale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</span>
               </div>
 
               {/* Focus Summary Card */}
               {previewData?.summary && (
                 <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-white/5 dark:to-transparent border border-blue-100 dark:border-white/10 space-y-1">
                   <p className="text-[11.5px] font-['Lexend_Deca'] font-bold text-primary flex items-center gap-1.5">
-                    <Sparkles className="w-4 h-4" /> Fokus AI Hari Ini:
+                    <Sparkles className="w-4 h-4" /> {t('schedule.modal_ai_focus')}
                   </p>
                   <p className="text-[13px] font-['Manrope'] text-gray-700 dark:text-gray-300 italic leading-relaxed">
                     "{previewData.summary}"
@@ -344,8 +347,8 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
               {/* Extracted Slots List */}
               <div className="space-y-2.5">
                 <div className="flex items-center justify-between text-[12.5px] font-['Manrope'] font-bold text-gray-600 dark:text-gray-400">
-                  <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-primary" /> Rincian Kegiatan yang Ditemukan:</span>
-                  <span className="text-primary font-extrabold">{previewData?.items?.length || 0} Aktivitas</span>
+                  <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-primary" /> {t('schedule.modal_activities_found')}</span>
+                  <span className="text-primary font-extrabold">{t('schedule.modal_activities_count', { count: previewData?.items?.length || 0 })}</span>
                 </div>
 
                 <div className="space-y-2 max-h-[220px] overflow-y-auto pr-1">
@@ -368,7 +371,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
                             </span>
                             {it.priority === 'tinggi' && (
                               <span className="text-[9.5px] font-bold text-rose-500 flex items-center gap-0.5">
-                                <Flame className="w-2.5 h-2.5" /> Prioritas
+                                <Flame className="w-2.5 h-2.5" /> {t('schedule.modal_priority')}
                               </span>
                             )}
                           </div>
@@ -392,7 +395,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
                 disabled={isProcessingAI}
                 className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-[13.5px] font-['Manrope'] font-semibold text-gray-600 dark:text-gray-400 hover:bg-gray-200/60 dark:hover:bg-white/10 transition-colors cursor-pointer text-center"
               >
-                Batal
+                {t('chatbot.cancel')}
               </button>
 
               <button
@@ -404,12 +407,12 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
                 {isProcessingAI ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Menganalisis Suara...</span>
+                    <span>{t('schedule.modal_analyzing')}</span>
                   </>
                 ) : (
                   <>
                     <Sparkles className="w-4 h-4" />
-                    <span>Rencanakan Sekarang!</span>
+                    <span>{t('schedule.plan_now')}</span>
                     <ArrowRight className="w-4 h-4" />
                   </>
                 )}
@@ -424,7 +427,7 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
                 className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-[13px] font-['Manrope'] font-semibold text-gray-600 dark:text-gray-400 hover:bg-gray-200/60 dark:hover:bg-white/10 transition-colors cursor-pointer"
               >
                 <ArrowLeft className="w-4 h-4" />
-                <span>Edit Kembali</span>
+                <span>{t('schedule.modal_back_edit')}</span>
               </button>
 
               <button
@@ -436,12 +439,12 @@ export function VoiceScheduleModal({ isOpen, onClose, onSuccess, initialDate }: 
                 {isSavingConfirmation ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Menyimpan Jadwal...</span>
+                    <span>{t('schedule.modal_saving')}</span>
                   </>
                 ) : (
                   <>
                     <Check className="w-4 h-4" />
-                    <span>Konfirmasi & Simpan Jadwal</span>
+                    <span>{t('schedule.modal_confirm_save')}</span>
                   </>
                 )}
               </button>

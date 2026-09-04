@@ -25,6 +25,10 @@ import {
     Users,
     Lock as LockIcon,
     ArrowRight,
+    FileText,
+    AlignLeft,
+    Tag as TagIcon,
+    RotateCcw,
 } from "lucide-react";
 import { mataPelajaran } from "../data/mockData";
 import axios from "axios";
@@ -40,6 +44,15 @@ import { DefaultThumbnail, AvatarImage } from "../components/ui/DefaultImages";
 import { NoteCard } from "../components/NoteCard";
 import { useToast } from "../contexts/ToastContext";
 import { useTranslation } from "../hooks/useTranslation";
+
+const SEARCH_TARGET_CATEGORIES = [
+    { id: 'title', labelKey: 'search_filter.target_title', defaultLabel: 'Judul Catatan', chipLabel: 'Judul', icon: FileText },
+    { id: 'content', labelKey: 'search_filter.target_desc', defaultLabel: 'Deskripsi & Isi', chipLabel: 'Deskripsi & Isi', icon: AlignLeft },
+    { id: 'subject', labelKey: 'search_filter.target_subject', defaultLabel: 'Mata Pelajaran', chipLabel: 'Mapel', icon: BookOpen },
+    { id: 'tags', labelKey: 'search_filter.target_tags', defaultLabel: 'Tag Catatan', chipLabel: 'Tag', icon: TagIcon },
+    { id: 'author', labelKey: 'search_filter.target_author', defaultLabel: 'Pembuat / Kreator', chipLabel: 'Kreator', icon: Users },
+];
+const ALL_CATEGORY_IDS = ['title', 'content', 'subject', 'tags', 'author'];
 
 export default function ExplorePage() {
     const { t, language } = useTranslation();
@@ -77,12 +90,57 @@ export default function ExplorePage() {
     const [searchQuery, setSearchQuery] = useState(searchTermFromUrl);
     const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchTermFromUrl);
 
+    const targetsFromUrl = queryParams.get("targets");
+    const [selectedTargets, setSelectedTargets] = useState<string[]>(() => {
+        if (targetsFromUrl !== null) {
+            return targetsFromUrl ? targetsFromUrl.split(',').map(s => s.trim()).filter(Boolean) : [];
+        }
+        try {
+            const saved = localStorage.getItem('sensora_search_targets');
+            if (saved !== null) {
+                const parsed = JSON.parse(saved);
+                if (Array.isArray(parsed)) return parsed;
+            }
+        } catch (e) {}
+        return ALL_CATEGORY_IDS;
+    });
+
+    const handleToggleTarget = (id: string) => {
+        setSelectedTargets((prev) => {
+            const updated = prev.includes(id)
+                ? prev.filter((item) => item !== id)
+                : [...prev, id];
+            try {
+                localStorage.setItem('sensora_search_targets', JSON.stringify(updated));
+            } catch (e) {}
+            return updated;
+        });
+    };
+
+    const handleSelectAllTargets = () => {
+        setSelectedTargets(ALL_CATEGORY_IDS);
+        try {
+            localStorage.setItem('sensora_search_targets', JSON.stringify(ALL_CATEGORY_IDS));
+        } catch (e) {}
+    };
+
+    const handleClearTargets = () => {
+        setSelectedTargets([]);
+        try {
+            localStorage.setItem('sensora_search_targets', JSON.stringify([]));
+        } catch (e) {}
+    };
+
     const subjectFromUrl = queryParams.get("subject") || queryParams.get("mapel") || "";
     const [selectedSubject, setSelectedSubject] = useState<string>(subjectFromUrl);
 
     useEffect(() => {
         const s = queryParams.get("subject") || queryParams.get("mapel") || "";
         setSelectedSubject(s);
+        const t = queryParams.get("targets");
+        if (t !== null) {
+            setSelectedTargets(t ? t.split(',').map(item => item.trim()).filter(Boolean) : []);
+        }
     }, [location.search]);
 
     useEffect(() => {
@@ -458,6 +516,9 @@ export default function ExplorePage() {
 
             if (keyword !== "") {
                 queryParamsAPI.search = keyword;
+                if (selectedTargets.length > 0 && selectedTargets.length < 5) {
+                    queryParamsAPI.targets = selectedTargets.join(',');
+                }
             }
 
             if (selectedJenjang !== "Semua") {
@@ -511,7 +572,7 @@ export default function ExplorePage() {
     useEffect(() => {
         setPage(1);
         fetchPosts(1, true);
-    }, [debouncedSearchQuery, activeSegment, sortOrder, selectedJenjang, selectedKelas, selectedTags, contentTypeFilter, selectedSubject]);
+    }, [debouncedSearchQuery, activeSegment, sortOrder, selectedJenjang, selectedKelas, selectedTags, contentTypeFilter, selectedSubject, selectedTargets]);
 
     // Fetch users when Pengguna tab is active and search query changes
     const fetchUsers = async (pageNum: number, isReset: boolean = false) => {
@@ -862,6 +923,56 @@ export default function ExplorePage() {
                                             <Filter className="w-5 h-5" strokeWidth={2.5} />
                                         </button>
                                     </div>
+
+                                    {/* SEARCH TARGET FILTER CHIPS */}
+                                    <div className="flex flex-wrap items-center gap-1.5 mt-3 max-w-[620px]">
+                                        <span className="text-[12px] font-['Manrope'] font-semibold text-gray-500 dark:text-gray-400 mr-0.5">
+                                            Kategori:
+                                        </span>
+                                        {SEARCH_TARGET_CATEGORIES.map((item) => {
+                                            const isActive = selectedTargets.includes(item.id);
+                                            return (
+                                                <button
+                                                    key={item.id}
+                                                    type="button"
+                                                    onClick={() => handleToggleTarget(item.id)}
+                                                    className={`px-2.5 py-1 rounded-full text-[11.5px] font-['Manrope'] font-bold transition-all border flex items-center gap-1 cursor-pointer ${
+                                                        isActive
+                                                            ? 'bg-primary/10 text-primary border-primary/30 shadow-2xs'
+                                                            : 'bg-gray-100/70 dark:bg-white/5 text-gray-400 dark:text-gray-500 border-transparent hover:border-gray-200 dark:hover:border-white/10'
+                                                    }`}
+                                                >
+                                                    {isActive && <Check className="w-3 h-3 stroke-[2.5]" />}
+                                                    <span>{item.chipLabel}</span>
+                                                </button>
+                                            );
+                                        })}
+                                        <div className="flex items-center gap-1.5 ml-1">
+                                            <button
+                                                type="button"
+                                                onClick={handleSelectAllTargets}
+                                                className={`text-[11px] font-['Manrope'] font-bold hover:underline cursor-pointer ${
+                                                    selectedTargets.length === ALL_CATEGORY_IDS.length
+                                                        ? 'text-gray-400 dark:text-gray-500'
+                                                        : 'text-primary'
+                                                }`}
+                                            >
+                                                Pilih Semua
+                                            </button>
+                                            <span className="text-gray-300 dark:text-gray-600 text-[10px]">•</span>
+                                            <button
+                                                type="button"
+                                                onClick={handleClearTargets}
+                                                className={`text-[11px] font-['Manrope'] font-bold hover:underline cursor-pointer ${
+                                                    selectedTargets.length === 0
+                                                        ? 'text-gray-400 dark:text-gray-500'
+                                                        : 'text-rose-500'
+                                                }`}
+                                            >
+                                                Reset
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         )}
@@ -1200,6 +1311,68 @@ export default function ExplorePage() {
                 </div>
 
                 <div className="flex-1 overflow-y-auto p-6 space-y-8 no-scrollbar bg-gray-50/50 dark:bg-[#13111C]/50">
+                    {/* Target Kategori Pencarian */}
+                    <div>
+                        <div className="flex items-center justify-between mb-4">
+                            <h4 className="font-['Lexend_Deca'] font-bold text-[15px] text-gray-900 dark:text-gray-100 flex items-center gap-2">
+                                <span>{t('search_filter.title') !== 'search_filter.title' ? t('search_filter.title') : 'Target Pencarian'}</span>
+                                {selectedTargets.length > 0 && selectedTargets.length < ALL_CATEGORY_IDS.length && (
+                                    <span className="text-[11px] font-['Lexend_Deca'] text-primary font-bold bg-primary/10 px-2 py-0.5 rounded-md">
+                                        {selectedTargets.length} {t('explore.selected')}
+                                    </span>
+                                )}
+                            </h4>
+                            <div className="flex items-center gap-2">
+                                <button
+                                    type="button"
+                                    onClick={handleSelectAllTargets}
+                                    className="text-[12px] font-['Manrope'] font-bold text-primary hover:underline cursor-pointer"
+                                >
+                                    {t('search_filter.select_all') !== 'search_filter.select_all' ? t('search_filter.select_all') : 'Pilih Semua'}
+                                </button>
+                                <span className="text-gray-300 dark:text-gray-600 text-[10px]">•</span>
+                                <button
+                                    type="button"
+                                    onClick={handleClearTargets}
+                                    className="text-[12px] font-['Manrope'] font-bold text-rose-500 hover:underline cursor-pointer"
+                                >
+                                    {t('search_filter.reset') !== 'search_filter.reset' ? t('search_filter.reset') : 'Kosongkan'}
+                                </button>
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            {SEARCH_TARGET_CATEGORIES.map((item) => {
+                                const isChecked = selectedTargets.includes(item.id);
+                                const label = t(item.labelKey) !== item.labelKey ? t(item.labelKey) : item.defaultLabel;
+                                const Icon = item.icon;
+                                return (
+                                    <button
+                                        key={item.id}
+                                        type="button"
+                                        onClick={() => handleToggleTarget(item.id)}
+                                        className={`px-3.5 py-2.5 rounded-2xl font-['Manrope'] text-[13px] font-bold transition-all border flex items-center justify-between text-left cursor-pointer ${
+                                            isChecked
+                                                ? 'bg-primary/10 border-primary/40 text-primary dark:bg-primary/20 shadow-xs'
+                                                : 'bg-white dark:bg-[#252336] text-gray-600 dark:text-gray-400 border-gray-200 dark:border-white/10 hover:border-primary/40 hover:text-primary hover:bg-primary/5'
+                                        }`}
+                                    >
+                                        <div className="flex items-center gap-2.5 min-w-0">
+                                            <Icon className="w-4 h-4 shrink-0 text-primary/80" strokeWidth={2.2} />
+                                            <span className="truncate">{label}</span>
+                                        </div>
+                                        <div className={`w-5 h-5 rounded-md flex items-center justify-center border transition-colors shrink-0 ml-2 ${
+                                            isChecked
+                                                ? 'bg-primary border-primary text-white'
+                                                : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-[#1C1A29]'
+                                        }`}>
+                                            {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                                        </div>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+
                     {/* Tipe Konten */}
                     <div>
                         <h4 className="font-['Lexend_Deca'] font-bold text-[15px] text-gray-900 dark:text-gray-100 mb-4 flex items-center justify-between">
@@ -1392,6 +1565,7 @@ export default function ExplorePage() {
                                 setSelectedTags([]);
                                 setTagInput("");
                                 setContentTypeFilter('semua');
+                                handleSelectAllTargets();
                             }}
                             className="px-5 py-3.5 rounded-xl font-['Lexend_Deca'] text-[14px] font-extrabold text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-gray-200 transition-colors w-1/3 border border-gray-200 dark:border-white/10"
                         >

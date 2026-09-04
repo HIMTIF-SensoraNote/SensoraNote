@@ -117,6 +117,7 @@ export default function PublicProfilePage() {
     const [showUnfollowDialog, setShowUnfollowDialog] = useState(false);
     const [isTogglingFollow, setIsTogglingFollow] = useState(false);
     const [isProfileViewerOpen, setIsProfileViewerOpen] = useState(false);
+    const [isBannerViewerOpen, setIsBannerViewerOpen] = useState(false);
 
     const openParam = searchParams.get("open");
 
@@ -507,10 +508,46 @@ export default function PublicProfilePage() {
 
     return (
         <MobileLayout>
+            {profileUser && (
+                <ProfilePictureViewer
+                    isOpen={isProfileViewerOpen}
+                    imageUrl={profileUser.avatar || ''}
+                    altText={profileUser.name}
+                    onClose={() => setIsProfileViewerOpen(false)}
+                />
+            )}
+            {profileUser && profileUser.banner && (
+                <ProfilePictureViewer
+                    isOpen={isBannerViewerOpen}
+                    imageUrl={profileUser.banner}
+                    altText={`${profileUser.name || 'User'} Banner`}
+                    isBanner={true}
+                    onClose={() => setIsBannerViewerOpen(false)}
+                />
+            )}
             <div className="pb-16 bg-white dark:bg-[#13111C] min-h-screen">
                 {/* 1. Cover Banner (Twitter Aspect Ratio) */}
-                <div className="w-full h-32 sm:h-48 bg-gradient-to-r from-[#E0E7FF] to-[#DBEAFE] dark:from-[#2E2C4B]/60 dark:to-[#1C1A29] relative overflow-hidden block">
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.04]"></div>
+                <div 
+                    className={`w-full h-32 sm:h-48 bg-gradient-to-r from-[#E0E7FF] to-[#DBEAFE] dark:from-[#2E2C4B]/60 dark:to-[#1C1A29] relative overflow-hidden block ${profileUser?.banner ? 'cursor-pointer group' : ''}`}
+                    onClick={() => {
+                        if (profileUser?.banner) {
+                            setIsBannerViewerOpen(true);
+                        }
+                    }}
+                    title={profileUser?.banner ? 'Klik untuk melihat banner ukuran penuh' : undefined}
+                >
+                    {profileUser?.banner ? (
+                        <>
+                            <img
+                                src={profileUser.banner}
+                                alt={`${profileUser.name || 'User'} Banner`}
+                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+                            />
+                            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"></div>
+                        </>
+                    ) : (
+                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.04]"></div>
+                    )}
                 </div>
 
                 {/* 2. Main Profile Content Container */}

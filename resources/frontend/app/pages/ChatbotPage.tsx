@@ -285,16 +285,6 @@ export default function ChatbotPage() {
     }
   }, [activeSessionId]);
 
-  // Sync speech transcript into input message
-  useEffect(() => {
-    if (isListening && transcript) {
-      setInputMessage(transcript);
-      if (textareaRef.current) {
-        textareaRef.current.style.height = 'auto';
-        textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 140)}px`;
-      }
-    }
-  }, [transcript, isListening]);
 
   // Handle voice errors
   useEffect(() => {
@@ -338,25 +328,25 @@ export default function ChatbotPage() {
     {
       icon: BookOpen,
       title: t('chatbot.starter_1'),
-      prompt: 'Bantu saya memahami materi pelajaran berikut ini secara sederhana dan terstruktur: ',
+      prompt: t('chatbot.starter_1_prompt'),
       color: 'from-blue-500/10 to-indigo-500/10 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-500/20',
     },
     {
       icon: Lightbulb,
       title: t('chatbot.starter_2'),
-      prompt: 'Buatkan ringkasan poin-poin penting dari konsep berikut: ',
+      prompt: t('chatbot.starter_2_prompt'),
       color: 'from-amber-500/10 to-orange-500/10 text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-500/20',
     },
     {
       icon: Layers,
       title: t('chatbot.starter_3'),
-      prompt: 'Jelaskan bagaimana sistem huruf Braille bekerja dan bagaimana cara membacanya untuk pemula.',
+      prompt: t('chatbot.starter_3_prompt'),
       color: 'from-emerald-500/10 to-teal-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/20',
     },
     {
       icon: GraduationCap,
       title: t('chatbot.starter_4'),
-      prompt: 'Buatkan 3 soal kuis pilihan ganda beserta pembahasannya untuk topik: ',
+      prompt: t('chatbot.starter_4_prompt'),
       color: 'from-purple-500/10 to-pink-500/10 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-500/20',
     },
   ];
@@ -372,7 +362,7 @@ export default function ChatbotPage() {
     const newId = 'session_' + Date.now();
     const newSession: ChatSession = {
       id: newId,
-      title: 'Percakapan Baru',
+      title: t('chatbot.new_session_title'),
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       messages: [],
@@ -395,21 +385,6 @@ export default function ChatbotPage() {
     setSessionToDelete(null);
   };
 
-  // Handle Voice Toggle
-  const handleToggleVoice = () => {
-    if (!isVoiceSupported) {
-      showToast('Browser ini belum mendukung Speech Recognition. Gunakan Chrome atau Edge.', 'warning');
-      return;
-    }
-
-    if (isListening) {
-      stopListening();
-    } else {
-      resetTranscript();
-      startListening();
-      showToast('Mendengarkan suara Anda... Silakan bicara 🎙️', 'info');
-    }
-  };
 
   // Handle File Upload Select (Supports Image, PDF, Word DOC/DOCX, HTML, TXT, MD, CSV, JSON, etc.)
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -571,10 +546,9 @@ export default function ChatbotPage() {
       })
     );
 
-    if (!customText) {
-      setInputMessage('');
-      setAttachedFile(null);
-    }
+    setInputMessage('');
+    setAttachedFile(null);
+    resetTranscript();
 
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
@@ -658,6 +632,52 @@ export default function ChatbotPage() {
     setInputMessage(e.target.value);
     e.target.style.height = 'auto';
     e.target.style.height = `${Math.min(e.target.scrollHeight, 140)}px`;
+  };
+
+  // Handle Finish Voice and Send immediately (never writes speech into inputMessage)
+  const handleFinishVoiceAndSend = () => {
+    if (isLoading) {
+      showToast('Mohon tunggu bot selesai menjawab sebelum mengirim pesan suara.', 'warning');
+      return;
+    }
+
+    const spoken = (transcript + (interimTranscript ? (transcript ? ' ' : '') + interimTranscript : '')).trim();
+
+    stopListening();
+    resetTranscript();
+
+    if (!spoken && !attachedFile) {
+      showToast('Tidak ada ucapan suara yang terdeteksi.', 'info');
+      textareaRef.current?.focus();
+      return;
+    }
+
+    // Directly send the spoken voice message without putting it in the input form!
+    handleSendMessage(spoken);
+  };
+
+  // Handle Cancel Voice without sending
+  const handleCancelVoice = () => {
+    stopListening();
+    resetTranscript();
+    showToast('Rekaman suara dibatalkan.', 'info');
+    textareaRef.current?.focus();
+  };
+
+  // Handle Voice Toggle (Clicking mic button while listening finishes and sends)
+  const handleToggleVoice = () => {
+    if (!isVoiceSupported) {
+      showToast('Browser ini belum mendukung Speech Recognition. Gunakan Google Chrome atau Microsoft Edge.', 'warning');
+      return;
+    }
+
+    if (isListening) {
+      handleFinishVoiceAndSend();
+    } else {
+      resetTranscript();
+      startListening();
+      showToast('Mendengarkan... Silakan bicara 🎙️', 'info');
+    }
   };
 
   const copyToClipboard = (id: string, text: string) => {
@@ -985,10 +1005,10 @@ export default function ChatbotPage() {
             <button
               onClick={() => navigate('/home')}
               className="flex items-center gap-1.5 text-xs font-bold text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white px-2.5 py-1.5 rounded-xl hover:bg-gray-200/60 dark:hover:bg-white/5 transition-colors cursor-pointer"
-              title="Kembali ke Beranda SensoraNote"
+              title={t('chatbot.back_to_home')}
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>Beranda</span>
+              <span>{t('chatbot.back_to_home')}</span>
             </button>
 
             <div className="flex items-center gap-2">
@@ -1000,7 +1020,7 @@ export default function ChatbotPage() {
               <button
                 onClick={() => setIsSidebarOpen(false)}
                 className="md:hidden p-1 rounded-lg text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer"
-                title="Tutup Menu"
+                title={t('chatbot.close_sidebar')}
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1014,20 +1034,20 @@ export default function ChatbotPage() {
               className="w-full flex items-center justify-center gap-2.5 py-2.5 sm:py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-['Lexend_Deca'] font-bold text-xs shadow-md shadow-blue-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
             >
               <Plus className="w-4 h-4 stroke-[2.5]" />
-              <span>Percakapan Baru</span>
+              <span>{t('chatbot.new_chat')}</span>
             </button>
           </div>
 
           {/* Sessions List (History) */}
           <div className="flex-1 overflow-y-auto p-2 sm:p-3 space-y-1 custom-scrollbar">
             <div className="px-2 py-1 text-[10px] font-extrabold uppercase tracking-wider text-gray-600 dark:text-gray-400 font-['Lexend_Deca']">
-              Riwayat Percakapan
+              {t('chatbot.chat_history')}
             </div>
 
             {sessions.length === 0 ? (
               <div className="py-8 px-4 text-center">
                 <MessageSquare className="w-6 h-6 text-gray-300 dark:text-gray-600 mx-auto mb-2 opacity-50" />
-                <p className="text-xs text-gray-400 dark:text-gray-500 font-medium">Belum ada percakapan tersimpan</p>
+                <p className="text-xs text-gray-400 dark:text-gray-500 font-medium">{t('chatbot.no_history')}</p>
               </div>
             ) : (
               sessions.map((s) => {
@@ -1059,7 +1079,7 @@ export default function ChatbotPage() {
                         setSessionToDelete(s.id);
                       }}
                       className="opacity-0 group-hover:opacity-100 p-1 text-gray-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 rounded-lg transition-all shrink-0 cursor-pointer"
-                      title="Hapus percakapan"
+                      title={t('chatbot.delete_chat')}
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -1078,7 +1098,7 @@ export default function ChatbotPage() {
                 size={28} 
                 className="ring-2 ring-primary/20 shadow-xs shrink-0" 
               />
-              <span className="truncate font-bold font-['Manrope'] text-gray-800 dark:text-gray-200">{user?.name || 'Pengguna'}</span>
+              <span className="truncate font-bold font-['Manrope'] text-gray-800 dark:text-gray-200">{user?.name || t('chatbot.user')}</span>
             </div>
           </div>
         </aside>
@@ -1092,7 +1112,7 @@ export default function ChatbotPage() {
               <button
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 className="p-2 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors cursor-pointer shrink-0"
-                title={isSidebarOpen ? 'Tutup Bilah Sisi' : 'Buka Bilah Sisi'}
+                title={isSidebarOpen ? t('chatbot.close_sidebar') : t('chatbot.open_sidebar')}
               >
                 {isSidebarOpen ? <PanelLeftClose className="w-5 h-5" /> : <PanelLeft className="w-5 h-5" />}
               </button>
@@ -1113,19 +1133,19 @@ export default function ChatbotPage() {
               <button
                 onClick={createNewSession}
                 className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-bold rounded-xl border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors cursor-pointer"
-                title="Mulai chat baru"
+                title={t('chatbot.clear_chat')}
               >
                 <RotateCcw className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Chat Baru</span>
+                <span className="hidden sm:inline">{t('chatbot.clear_chat')}</span>
               </button>
 
               <button
                 onClick={() => navigate('/home')}
                 className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold text-gray-600 dark:text-gray-400 hover:text-gray-900 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5"
-                title="Kembali ke Beranda"
+                title={t('chatbot.back_to_home')}
               >
                 <ArrowLeft className="w-4 h-4" />
-                <span className="hidden md:inline">Beranda</span>
+                <span className="hidden md:inline">{t('chatbot.back_to_home')}</span>
               </button>
             </div>
           </header>
@@ -1339,7 +1359,7 @@ export default function ChatbotPage() {
                       <div className="w-2 h-2 rounded-full bg-blue-500 animate-bounce" style={{ animationDelay: '0ms' }} />
                       <div className="w-2 h-2 rounded-full bg-indigo-500 animate-bounce" style={{ animationDelay: '150ms' }} />
                       <div className="w-2 h-2 rounded-full bg-purple-500 animate-bounce" style={{ animationDelay: '300ms' }} />
-                      <span className="text-xs text-gray-500 dark:text-gray-400 ml-1 font-['Manrope'] font-medium">Sensora AI sedang menganalisis & berpikir...</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400 ml-1 font-['Manrope'] font-medium">{t('chatbot.thinking')}</span>
                     </div>
                   </div>
                 )}
@@ -1350,7 +1370,7 @@ export default function ChatbotPage() {
                     <div className="flex items-start gap-2.5 sm:gap-3">
                       <AlertCircle className="w-4 sm:w-5 h-4 sm:h-5 shrink-0 mt-0.5" />
                       <div className="flex-1 space-y-1 min-w-0">
-                        <p className="font-bold font-['Lexend_Deca']">Gagal memproses pesan AI:</p>
+                        <p className="font-bold font-['Lexend_Deca']">{t('chatbot.error_title')}</p>
                         <p className="leading-relaxed break-words [overflow-wrap:anywhere]">{errorMessage}</p>
                       </div>
                     </div>
@@ -1414,21 +1434,39 @@ export default function ChatbotPage() {
 
               {/* Listening Live Transcript Banner */}
               {isListening && (
-                <div className="mb-2 flex items-center justify-between gap-2 px-3.5 py-2 rounded-2xl bg-gradient-to-r from-red-500/10 via-purple-500/10 to-blue-500/10 border border-red-500/20 text-xs text-gray-800 dark:text-gray-200 animate-pulse">
-                  <div className="flex items-center gap-2 min-w-0 flex-1">
-                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping shrink-0" />
-                    <span className="font-bold text-rose-600 dark:text-rose-400 shrink-0">Mendengarkan:</span>
-                    <span className="truncate italic text-gray-600 dark:text-gray-300">
-                      {interimTranscript || transcript || 'Bicara sekarang...'}
+                <div className="mb-2 flex items-center justify-between gap-2 px-3 sm:px-3.5 py-2 rounded-2xl bg-gradient-to-r from-red-500/10 via-purple-500/10 to-blue-500/10 border border-red-500/25 text-xs text-gray-800 dark:text-gray-200 shadow-sm">
+                  <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                    <span className="relative flex h-2.5 w-2.5 shrink-0">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500"></span>
+                    </span>
+                    <span className="font-bold text-rose-600 dark:text-rose-400 shrink-0 hidden xs:inline sm:inline">{t('chatbot.listening')}</span>
+                    <span className="truncate italic text-gray-700 dark:text-gray-300 font-medium">
+                      {interimTranscript || transcript || t('chatbot.listening_placeholder')}
                     </span>
                   </div>
-                  <button
-                    type="button"
-                    onClick={stopListening}
-                    className="px-2 py-0.5 rounded-lg bg-rose-500 text-white font-bold text-[11px] hover:bg-rose-600 transition-colors cursor-pointer shrink-0"
-                  >
-                    Selesai
-                  </button>
+
+                  <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                    <button
+                      type="button"
+                      onClick={handleCancelVoice}
+                      className="px-2.5 py-1 rounded-lg bg-gray-200/80 dark:bg-white/10 hover:bg-rose-100 hover:text-rose-600 dark:hover:bg-rose-500/20 text-[11px] font-medium text-gray-600 dark:text-gray-300 transition-colors cursor-pointer flex items-center gap-1"
+                      title={t('chatbot.cancel')}
+                    >
+                      <X className="w-3.5 h-3.5" />
+                      <span>{t('chatbot.cancel')}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={handleFinishVoiceAndSend}
+                      className="px-2.5 py-1 rounded-lg bg-rose-500 text-white font-bold text-[11px] hover:bg-rose-600 active:scale-95 shadow-xs transition-all cursor-pointer shrink-0 flex items-center gap-1.5"
+                      title={t('chatbot.finish')}
+                    >
+                      <span>{t('chatbot.finish')}</span>
+                      <Send className="w-3 h-3" />
+                    </button>
+                  </div>
                 </div>
               )}
 
@@ -1445,7 +1483,7 @@ export default function ChatbotPage() {
                       ? 'bg-blue-50 dark:bg-blue-500/20 text-primary'
                       : 'text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-200/60 dark:hover:bg-white/5'
                   }`}
-                  title="Lampirkan File (Gambar, Word DOCX/DOC, PDF, HTML, TXT, dll. Maks 15MB)"
+                  title={t('chatbot.attach_file')}
                 >
                   <Paperclip className="w-4 h-4" />
                 </button>
@@ -1460,7 +1498,7 @@ export default function ChatbotPage() {
                       ? 'bg-rose-500 text-white shadow-md shadow-rose-500/30 animate-pulse'
                       : 'text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-200/60 dark:hover:bg-white/5'
                   }`}
-                  title={isListening ? 'Hentikan Rekaman Suara' : 'Bicara dengan Mikrofon'}
+                  title={isListening ? t('chatbot.mic_finish') : t('chatbot.mic_start')}
                 >
                   {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
                 </button>
@@ -1473,9 +1511,9 @@ export default function ChatbotPage() {
                   onKeyDown={handleKeyDown}
                   placeholder={
                     isListening
-                      ? 'Sedang mendengarkan ucapan Anda...'
+                      ? t('chatbot.listening_input_placeholder')
                       : attachedFile
-                      ? 'Tanyakan sesuatu tentang file ini...'
+                      ? t('chatbot.file_input_placeholder')
                       : t('chatbot.input_placeholder')
                   }
                   rows={1}
@@ -1558,11 +1596,11 @@ export default function ChatbotPage() {
         <ConfirmDialog
           isOpen={!!sessionToDelete}
           onOpenChange={(open) => !open && setSessionToDelete(null)}
-          title="Hapus Percakapan Ini?"
-          description="Percakapan ini akan dihapus permanen dari riwayat chat Anda."
+          title={t('chatbot.delete_confirm_title')}
+          description={t('chatbot.delete_confirm_desc')}
           onConfirm={() => sessionToDelete && deleteSession(sessionToDelete)}
-          confirmText="Ya, Hapus"
-          cancelText="Batal"
+          confirmText={t('chatbot.delete_confirm_btn')}
+          cancelText={t('chatbot.cancel')}
           variant="danger"
         />
 

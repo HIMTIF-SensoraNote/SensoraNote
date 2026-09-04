@@ -12,6 +12,7 @@ import {
 import { toPng, toBlob } from 'html-to-image';
 import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../contexts/ToastContext';
+import { useTranslation } from '../hooks/useTranslation';
 import { AvatarImage } from './ui/DefaultImages';
 import ApplicationLogo from './ApplicationLogo';
 
@@ -305,6 +306,7 @@ export function VisualScheduleCard({
 }: VisualScheduleCardProps) {
   const { user } = useAuth();
   const { showToast } = useToast();
+  const { t, language } = useTranslation();
   
   // Interactive on-screen card ref & Hidden fixed desktop export ref
   const interactiveCardRef = useRef<HTMLDivElement>(null);
@@ -323,9 +325,10 @@ export function VisualScheduleCard({
   };
 
   const dateObj = parseLocalDate(date);
+  const dateLocale = language === 'id' ? 'id-ID' : language;
   const dayNumber = dateObj.getDate();
-  const dayName = dateObj.toLocaleDateString('id-ID', { weekday: 'long' }).toUpperCase();
-  const monthYear = dateObj.toLocaleDateString('id-ID', { month: 'long', year: 'numeric' });
+  const dayName = dateObj.toLocaleDateString(dateLocale, { weekday: 'long' }).toUpperCase();
+  const monthYear = dateObj.toLocaleDateString(dateLocale, { month: 'long', year: 'numeric' });
 
   const completedCount = items.filter((i) => i.is_completed).length;
   const progressPercent = items.length > 0 ? Math.round((completedCount / items.length) * 100) : 0;
@@ -353,7 +356,7 @@ export function VisualScheduleCard({
       link.click();
       document.body.removeChild(link);
 
-      showToast('Poster visual jadwal berhasil di-download! 🎨📸', 'success');
+      showToast(t('schedule.poster_download_success'), 'success');
     } catch (error: any) {
       console.error('html-to-image export failed, using blob fallback:', error);
       try {
@@ -370,13 +373,13 @@ export function VisualScheduleCard({
           link.click();
           document.body.removeChild(link);
           setTimeout(() => URL.revokeObjectURL(url), 2000);
-          showToast('Poster visual jadwal berhasil di-download! 🎨📸', 'success');
+          showToast(t('schedule.poster_download_success'), 'success');
         } else {
           throw new Error('Blob generation empty');
         }
       } catch (err2: any) {
         console.error('All download attempts failed:', err2);
-        showToast('Gagal mengunduh poster: ' + (err2?.message || 'Terjadi kesalahan peramban'), 'error');
+        showToast(t('schedule.poster_download_error') + (err2?.message || ''), 'error');
       }
     } finally {
       setIsDownloading(false);
@@ -418,7 +421,7 @@ export function VisualScheduleCard({
                 </span>
               </h3>
               <p className={`text-[11px] sm:text-[12px] font-['Manrope'] font-medium flex items-center gap-1 mt-0.5 ${cfg.dateSubtitleClass}`}>
-                <Calendar className="w-3.5 h-3.5 text-primary shrink-0" /> {dateObj.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
+                <Calendar className="w-3.5 h-3.5 text-primary shrink-0" /> {dateObj.toLocaleDateString(dateLocale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
               </p>
             </div>
           </div>
@@ -427,7 +430,7 @@ export function VisualScheduleCard({
           <div className={`flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full shrink-0 shadow-xs ${cfg.profileChipClass}`}>
             <AvatarImage src={user?.avatar} alt={user?.name} name={user?.name} size={24} className="rounded-full shrink-0" />
             <span className={`text-[11.5px] sm:text-[12.5px] font-['Manrope'] font-bold whitespace-nowrap ${cfg.profileTextClass}`}>
-              {user?.name || 'Pelajar'}
+              {user?.name || t('schedule.poster_user_fallback')}
             </span>
           </div>
         </div>
@@ -458,10 +461,10 @@ export function VisualScheduleCard({
             <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-emerald-500" />
             <div className="text-left sm:text-right">
               <p className={`text-[9.5px] sm:text-[10px] uppercase font-['Manrope'] font-bold tracking-wider ${cfg.targetBadgeLabelClass}`}>
-                Target Belajar
+                {t('schedule.poster_target_study')}
               </p>
               <p className={`text-[12.5px] sm:text-[13.5px] font-['Lexend_Deca'] font-black ${cfg.targetBadgeCountClass}`}>
-                {completedCount}/{items.length} Selesai ({progressPercent}%)
+                {t('schedule.poster_completed', { count: completedCount, total: items.length, percent: progressPercent })}
               </p>
             </div>
           </div>
@@ -476,7 +479,7 @@ export function VisualScheduleCard({
               </div>
               <div className="space-y-1 min-w-0">
                 <p className={`text-[11px] sm:text-[11.5px] font-['Lexend_Deca'] font-extrabold uppercase tracking-wider ${cfg.quoteTitleClass}`}>
-                  Fokus & Motivasi Belajar
+                  {t('schedule.poster_focus_quote')}
                 </p>
                 <p className={`text-[12.5px] sm:text-[13.5px] font-['Manrope'] font-medium leading-relaxed italic ${cfg.quoteTextClass}`}>
                   "{summary}"
@@ -490,16 +493,16 @@ export function VisualScheduleCard({
         <div className="mt-6 sm:mt-7 space-y-3 relative z-10">
           <div className="flex items-center justify-between px-1">
             <span className={`text-[11.5px] sm:text-[12.5px] font-['Lexend_Deca'] font-bold uppercase tracking-wider flex items-center gap-1.5 sm:gap-2 ${cfg.sectionHeaderClass}`}>
-              <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" /> Susunan Jadwal Harian:
+              <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" /> {t('schedule.poster_daily_schedule')}
             </span>
             <span className={`text-[11.5px] sm:text-[12px] font-['Manrope'] font-bold ${cfg.sectionCountClass}`}>
-              {completedCount}/{items.length} Selesai ({progressPercent}%)
+              {t('schedule.poster_completed', { count: completedCount, total: items.length, percent: progressPercent })}
             </span>
           </div>
 
           {items.length === 0 ? (
             <div className="text-center py-10 opacity-60 text-[13.5px] font-['Manrope']">
-              Belum ada jadwal untuk tanggal ini.
+              {t('schedule.poster_no_schedule')}
             </div>
           ) : (
             <div className="space-y-2.5 sm:space-y-3">
@@ -519,7 +522,7 @@ export function VisualScheduleCard({
                         {item.time_start}
                       </span>
                       <span className={`text-[9.5px] sm:text-[10px] font-['Manrope'] font-bold mt-1 leading-none ${cfg.timeEndClass}`}>
-                        s/d {item.time_end}
+                        {t('schedule.poster_until')} {item.time_end}
                       </span>
                     </div>
 
@@ -538,7 +541,7 @@ export function VisualScheduleCard({
 
                         {item.priority === 'tinggi' && (
                           <span className="text-[10px] sm:text-[10.5px] font-bold font-['Manrope'] text-rose-600 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded">
-                            🔥 Prioritas Tinggi
+                            {t('schedule.poster_high_priority')}
                           </span>
                         )}
                       </div>
@@ -580,7 +583,7 @@ export function VisualScheduleCard({
         <div className="flex items-center gap-2.5 flex-1 min-w-0">
           <div className="flex items-center gap-1.5 text-[12.5px] sm:text-[13px] font-['Manrope'] font-bold text-gray-700 dark:text-gray-300 shrink-0">
             <Palette className="w-4 h-4 text-primary" />
-            <span className="hidden sm:inline">Pilih Tema:</span>
+            <span className="hidden sm:inline">{t('schedule.poster_theme_label')}</span>
           </div>
 
           <div className="relative flex-1 min-w-0">
@@ -608,7 +611,7 @@ export function VisualScheduleCard({
           className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white font-['Manrope'] font-bold text-[12.5px] sm:text-[13px] shadow-md shadow-primary/20 hover:bg-primary/90 transition-all active:scale-95 disabled:opacity-50 cursor-pointer shrink-0"
         >
           {isDownloading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4 shrink-0" />}
-          <span>Download Poster (PNG)</span>
+          <span>{isDownloading ? t('schedule.poster_downloading') : t('schedule.poster_download')}</span>
         </button>
       </div>
 

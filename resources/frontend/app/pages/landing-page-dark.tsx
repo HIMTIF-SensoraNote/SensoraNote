@@ -10,6 +10,7 @@ import { BrutalistLoader } from '../components/brutalist-loader';
 import ApplicationLogo from '../components/ApplicationLogo';
 import AccordionGallery from '../components/AccordionGallery';
 import BorderGlow from '../components/BorderGlow';
+import { AiAccuracySection } from '../components/AiAccuracySection';
 import { useTranslation } from '../hooks/useTranslation';
 import { useAuth } from '../contexts/AuthContext';
 import { Navigate } from 'react-router';
@@ -801,7 +802,7 @@ export function LandingPageDark() {
               className="block tracking-normal font-serif text-gray-300 mt-6 max-w-2xl px-4 leading-relaxed font-medium"
               style={{ fontSize: 'clamp(1rem, 1.6vw, 1.25rem)' }}
             >
-              {t('landing.hero_desc') || 'Pindai catatan dengan AI OCR cerdas, konversi instan ke huruf Braille (.BRF & PDF), atur jadwal belajar dengan AI Planner, dan pelajari materi dalam 50+ bahasa.'}
+              {t('landing.hero_desc') || 'Pindai catatan dengan AI OCR cerdas, konversi instan ke huruf Braille, atur jadwal belajar dengan AI Planner, dan pelajari materi dalam 45 bahasa.'}
             </motion.span>
           </h1>
 
@@ -1759,6 +1760,11 @@ export function LandingPageDark() {
           </div>
         </div>
       </section>
+
+      {/* =============================================
+          6.5. AI ACCURACY & MODEL BENCHMARK SHOWCASE
+          ============================================= */}
+      <AiAccuracySection theme="dark" />
 
       {/* =============================================
           7. REFINED NOTEBOOK CTA SECTION

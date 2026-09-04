@@ -70,7 +70,7 @@ class TranslationController extends Controller
             // 1. Try Google Gemini AI Translation
             $apiKey = config('services.gemini.api_key') ?: env('GEMINI_API_KEY');
             if (!empty($apiKey)) {
-                $modelsToTry = ['gemini-2.0-flash', 'gemini-3.5-flash-lite', 'gemini-3.7-flash'];
+                $modelsToTry = ['gemini-3.6-flash', 'gemini-3.5-flash-lite', 'gemini-3.7-flash'];
                 $prompt = "You are a professional multilingual translator for educational content.\n" .
                     "Translate the following text accurately, fluently, and naturally into target language '{$langCode}'.\n" .
                     "Output ONLY the translated text without explanations, greetings, quotes, or markdown formatting.\n\n" .

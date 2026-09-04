@@ -18,6 +18,7 @@ use MongoDB\Laravel\Auth\User as Authenticatable;
  * @property string $name
  * @property string $email
  * @property string $avatar
+ * @property string|null $banner
  * @property string $password
  * @property string $role
  * @property string $jenjang_pendidikan
@@ -60,6 +61,7 @@ class User extends Authenticatable implements HasLocalePreference, MustVerifyEma
         'name',
         'email',
         'avatar',
+        'banner',
         'password',
         'jenjang_pendidikan',
         'profesi',
@@ -89,6 +91,7 @@ class User extends Authenticatable implements HasLocalePreference, MustVerifyEma
         'is_private' => false,
         'is_dormant' => false,
         'profile_completed' => true,
+        'banner' => null,
     ];
 
     protected $hidden = [

@@ -134,6 +134,7 @@ class UserController extends Controller
             'school' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:20',
             'avatar' => 'nullable',
+            'banner' => 'nullable',
         ]);
 
         $user = Auth::user();
@@ -155,6 +156,26 @@ class UserController extends Controller
 
             $validated['avatar'] = $upload['secure_url'];
             $user->avatar = $upload['secure_url'];
+        }
+
+        // 2. Handle banner removal / upload
+        if ($request->boolean('remove_banner') || $request->input('remove_banner') === 'true' || $request->input('banner') === 'null' || $request->input('banner') === '') {
+            $user->banner = null;
+            $validated['banner'] = null;
+        } elseif ($request->hasFile('banner')) {
+            $cloudinaryUrl = config('services.cloudinary.url') ?: env('CLOUDINARY_URL');
+            if ($cloudinaryUrl) {
+                $cloudinary = new Cloudinary($cloudinaryUrl);
+                $upload = $cloudinary->uploadApi()->upload($request->file('banner')->getRealPath(), [
+                    'folder' => 'sensoranote-banners',
+                ]);
+                $validated['banner'] = $upload['secure_url'];
+                $user->banner = $upload['secure_url'];
+            } else {
+                $path = $request->file('banner')->store('banners', 'public');
+                $validated['banner'] = asset('storage/' . $path);
+                $user->banner = asset('storage/' . $path);
+            }
         }
 
         if (isset($validated['username']) && $validated['username'] !== $user->username) {
@@ -290,6 +311,7 @@ class UserController extends Controller
                         'name' => $user->name,
                         'username' => $user->username,
                         'avatar' => $user->avatar,
+                        'banner' => $user->banner,
                         'role' => $user->role,
                         'is_private' => true,
                         'bio' => $user->bio,

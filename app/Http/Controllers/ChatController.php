@@ -187,7 +187,7 @@ class ChatController extends Controller
         ];
 
         // Model fallback queue
-        $modelsToTry = array_unique([$primaryModel, 'gemini-3.5-flash-lite', 'gemini-3.7-flash', 'gemini-2.5-pro']);
+        $modelsToTry = array_unique([$primaryModel, 'gemini-3.6-flash', 'gemini-3.5-flash-lite', 'gemini-3.7-flash', 'gemini-2.5-pro']);
         $lastError = null;
 
         foreach ($modelsToTry as $model) {
@@ -290,7 +290,7 @@ class ChatController extends Controller
             ]
         ];
 
-        $modelsToTry = array_unique([$primaryModel, 'gemini-3.5-flash-lite', 'gemini-3.7-flash', 'gemini-2.5-pro']);
+        $modelsToTry = array_unique([$primaryModel, 'gemini-3.6-flash', 'gemini-3.5-flash-lite', 'gemini-3.7-flash', 'gemini-2.5-pro']);
         $lastError = null;
 
         foreach ($modelsToTry as $model) {
